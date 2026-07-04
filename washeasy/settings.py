@@ -25,7 +25,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config(
+    "DEBUG",
+    cast=bool
+)
 
 if not DEBUG:
 
@@ -118,21 +121,27 @@ WSGI_APPLICATION = 'washeasy.wsgi.application'
 
 
 
-    
-DATABASES = {
+
+if DEBUG:
+
+    DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.postgresql",
-            "NAME": "washeasy_db",
-            "USER": "postgres",
-            "PASSWORD": "washeasy$26",
-            "HOST": "localhost",
-            "PORT": "5432",
+            "NAME": config("DB_NAME"),
+            "USER": config("DB_USER"),
+            "PASSWORD": config("DB_PASSWORD"),
+            "HOST": config("DB_HOST"),
+            "PORT": config("DB_PORT"),
         }
     }
 
+else:
 
-
-
+    DATABASES = {
+        "default": dj_database_url.config(
+            default=config("DATABASE_URL")
+        )
+    }
 
 
 # Password validation

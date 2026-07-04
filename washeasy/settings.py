@@ -52,15 +52,11 @@ if not DEBUG:
 
 
 ALLOWED_HOSTS = [
-
     "127.0.0.1",
-
     "localhost",
-
     ".onrender.com",
-
+    "washeasy-laundry-service.onrender.com",
     ".peneirize.com",
-
 ]
 
 
@@ -226,9 +222,9 @@ EMAIL_HOST_USER = config("EMAIL_HOST_USER")
 
 EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD")
 
-EMAIL_HOST_USER = config("EMAIL_HOST_USER_2")
+EMAIL_HOST_USER_2 = config("EMAIL_HOST_USER_2")
 
-EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD_2")
+EMAIL_HOST_PASSWORD_2 = config("EMAIL_HOST_PASSWORD_2")
 
 SITE_ID = 1
 

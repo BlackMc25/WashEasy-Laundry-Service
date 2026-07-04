@@ -1,0 +1,60 @@
+{% extends 'base_dashboard.html' %}
+
+{% block content %}
+
+<div class="cancel-card">
+
+    <h3 class="cancel-title">
+
+        Cancel Order #{{ order.customer_order_number }}
+
+    </h3>
+
+    <p>
+
+        Please tell us why you want to cancel this order.
+
+    </p>
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        <label class="cancel-label">
+
+            Cancellation Reason
+
+        </label>
+
+        <textarea
+            name="cancellation_reason"
+            class="cancel-textarea"
+            required></textarea>
+
+        <div class="cancel-actions">
+
+            <button
+                type="submit"
+                class="cancel-btn">
+
+                Confirm Cancellation
+
+            </button>
+
+            <a
+                href="{% url 'order_detail' order.id %}"
+                class="back-btn">
+
+                Back
+
+            </a>
+
+        </div>
+
+    </form>
+
+</div>
+
+
+
+{% endblock %}

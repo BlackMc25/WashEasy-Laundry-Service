@@ -1,0 +1,66 @@
+{% extends 'base_dashboard.html' %}
+
+{% block content %}
+
+<div class="container-fluid">
+
+    <h3 class="mb-4">
+        My Orders
+    </h3>
+
+    {% if orders %}
+
+        {% for order in orders %}
+
+       <a
+    href="{% url 'order_detail' order.id %}"
+    class="order-link">
+    <div class="order-card">
+
+            <div>
+
+                <h5>
+                   Order #{{ order.customer_order_number }}
+                </h5>
+
+                <p>
+                    {{ order.service_type }}
+                </p>
+
+            </div>
+
+            <div>
+
+                <h5>
+                    ₦{{ order.total_amount }}
+                </h5>
+
+                <span class="status-badge badge bg-primary">
+                    {{ order.status }}
+                </span>
+
+            </div>
+
+        </div>
+    </a>
+        {% endfor %}
+
+    {% else %}
+
+        <div class="card p-4">
+
+            <h5>
+                No Orders Yet
+            </h5>
+
+            <p>
+                Your laundry orders will appear here.
+            </p>
+
+        </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

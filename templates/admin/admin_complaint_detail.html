@@ -1,0 +1,165 @@
+{% extends 'admin/base_admin.html' %}
+
+{% block content %}
+
+<div class="admin-card">
+
+    <div class="d-flex justify-content-between mb-4">
+
+        <h2>
+
+            Complaint Details
+
+        </h2>
+
+        <a
+            href="{% url 'admin_complaints' %}"
+            class="btn btn-secondary">
+
+            Back
+
+        </a>
+
+    </div>
+
+    <p>
+
+        <strong>Complaint ID:</strong>
+
+        #{{ complaint.id }}
+
+    </p>
+
+    <p>
+
+        <strong>Order:</strong>
+
+        #{{ complaint.order.customer_order_number }}
+
+    </p>
+
+    <p>
+
+        <strong>Customer:</strong>
+
+        {{ complaint.customer }}
+
+    </p>
+
+    <p>
+
+        <strong>Subject:</strong>
+
+        {{ complaint.subject }}
+
+    </p>
+
+    <p>
+
+        <strong>Message:</strong>
+
+    </p>
+
+    <div class="alert alert-danger">
+
+        {{ complaint.message }}
+
+    </div>
+
+    {% if complaint.admin_response %}
+
+    <div class="alert alert-info">
+
+        <strong>Previous Response:</strong>
+
+        <br>
+
+        {{ complaint.admin_response }}
+
+    </div>
+
+    {% endif %}
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        <div class="mb-3">
+
+            <label>
+
+                Status
+
+            </label>
+
+            <select
+                name="status"
+                class="form-select">
+
+                <option value="Pending">
+
+                    Pending
+
+                </option>
+
+                <option value="In Progress">
+
+                    In Progress
+
+                </option>
+
+                <option value="Resolved">
+
+                    Resolved
+
+                </option>
+
+                <option value="Rejected">
+
+                    Rejected
+
+                </option>
+
+            </select>
+
+        </div>
+
+        <div class="mb-3">
+
+            <label>
+
+                Admin Response
+
+            </label>
+
+            <textarea
+                name="admin_response"
+                rows="4"
+                class="form-control">{{ complaint.admin_response }}</textarea>
+
+        </div>
+
+        <button
+            type="submit"
+            class="btn btn-success">
+
+            Save Update
+
+        </button>
+
+    </form>
+
+    <hr>
+
+    <a
+        href="{% url 'delete_complaint' complaint.id %}"
+        class="btn btn-danger"
+        onclick="return confirm('Delete this complaint?')">
+
+        Delete Complaint
+
+    </a>
+
+</div>
+
+{% endblock %}

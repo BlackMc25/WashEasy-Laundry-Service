@@ -1,0 +1,138 @@
+{% extends 'base_dashboard.html' %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <div class="card shadow-sm">
+
+        <div class="card-body">
+
+            <h3 class="mb-4">
+                My Profile
+            </h3>
+
+            <div class="row">
+
+                <div class="col-md-6">
+
+                    <p>
+                        <strong>First Name:</strong>
+                        {{ request.user.first_name }}
+                    </p>
+
+                    <p>
+                        <strong>Last Name:</strong>
+                        {{ request.user.last_name }}
+                    </p>
+
+                    <p>
+                        <strong>Username:</strong>
+                        {{ request.user.username }}
+                    </p>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <p>
+                        <strong>Email:</strong>
+                        {{ request.user.email }}
+                    </p>
+
+                    <p>
+                        <strong>Phone Number:</strong>
+                        {{ request.user.phone_number }}
+                    </p>
+
+                    <p>
+                        <strong>Date Joined:</strong>
+                        {{ request.user.date_joined }}
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="card shadow-sm mt-4">
+
+    <div class="card-body">
+
+        <h4 class="mb-4">
+
+            Customer Statistics
+
+        </h4>
+
+        <div class="row">
+
+            <div class="col-md-3">
+
+                <div class="stats-card">
+
+                    <i class="bi bi-box-seam-fill"></i>
+
+                    <h6>Total Orders</h6>
+
+                    <h3>{{ total_orders }}</h3>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-3">
+
+                <div class="stats-card">
+
+                    <i class="bi bi-clock-history"></i>
+
+                    <h6>Pending Orders</h6>
+
+                    <h3>{{ pending_orders }}</h3>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-3">
+
+                <div class="stats-card">
+
+                    <i class="bi bi-check-circle-fill"></i>
+
+                    <h6>Completed Orders</h6>
+
+                    <h3>{{ completed_orders }}</h3>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-3">
+
+                <div class="stats-card">
+
+                    <i class="bi bi-x-circle-fill"></i>
+
+                    <h6>Cancelled Orders</h6>
+
+                    <h3>{{ cancelled_orders }}</h3>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

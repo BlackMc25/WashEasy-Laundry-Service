@@ -1,0 +1,139 @@
+{% extends 'base_dashboard.html' %}
+{% load humanize %}
+{% block content %}
+<h1>
+    Welcome, {{request.user.first_name}}
+</h1>
+        <div class="mb-4">
+
+            <a href="{% url 'book_laundry' %}"
+            class="btn btn-primary me-2">
+
+                Book Laundry
+
+            </a>
+
+            <a href="{% url 'my_orders' %}"
+            class="btn btn-outline-primary">
+
+                My Orders
+
+            </a>
+
+        </div>
+    <div class="stats-container">
+
+        <div class="stats-card">
+
+            <div class="icon-box orders">
+                <i class="bi bi-box-seam"></i>
+            </div>
+
+            <div>
+                <h6>Total Orders</h6>
+                <h3>{{ total_orders }}</h3>
+            </div>
+
+        </div>
+
+        <div class="stats-card">
+
+            <div class="icon-box pending">
+                <i class="bi bi-clock-history"></i>
+            </div>
+
+            <div>
+                <h6>Pending Orders</h6>
+               <h3>{{ pending_orders }}</h3>
+            </div>
+
+        </div>
+
+        <div class="stats-card">
+
+            <div class="icon-box completed">
+                <i class="bi bi-check-circle"></i>
+            </div>
+
+            <div>
+                <h6>Completed</h6>
+               <h3>{{ completed_orders }}</h3>
+            </div>
+        </div>
+
+        <div class="stats-card">
+
+                <div class="icon-box cancelled">
+
+                    <i class="bi bi-ban"></i>
+
+                </div>
+
+                <div>
+
+                    <h6>Cancelled Orders</h6>
+
+                    <h3>{{ cancelled_orders }}</h3>
+
+                </div>
+
+        </div>
+
+    </div>
+    
+<div class="stats-container">
+
+    ...
+    
+</div>
+
+<div class="card mt-4 p-4">
+
+    <h4>
+        Recent Activity
+    </h4>
+
+    {% if recent_orders %}
+
+        {% for order in recent_orders %}
+
+        <div class="border-bottom py-2">
+
+            <strong>
+            Order #{{ order.customer_order_number }}
+            </strong>
+
+            <br>
+
+            <small>
+                {{ order.status }}
+            </small>
+
+            <p>
+                <strong>Total Amount:</strong>
+                <td>₦{{ order.total_amount|intcomma }}</td>
+            </p>
+
+            <br>
+
+            <small>
+                {{ order.created_at }}
+            </small>
+
+            <td>{{ order.payment_method }}</td>
+
+        </div>
+
+        {% endfor %}
+
+    {% else %}
+
+        <p>
+            No orders yet
+        </p>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

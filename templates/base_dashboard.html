@@ -1,0 +1,588 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WashEasy Dashboard</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link
+    rel="icon"
+    type="image/x-icon"
+    href="{% static 'images/faviconlogo.ico' %}">
+
+<style>
+/* Cancel-Order*/
+.cancel-card{
+
+    max-width:700px;
+
+    margin:40px auto;
+
+    background:#fff;
+
+    padding:30px;
+
+    border-radius:15px;
+
+    box-shadow:0 4px 15px rgba(0,0,0,0.1);
+
+}
+
+.cancel-title{
+
+    color:#dc3545;
+
+    font-weight:700;
+
+    margin-bottom:20px;
+
+}
+
+.cancel-label{
+
+    font-weight:600;
+
+    margin-bottom:10px;
+
+    display:block;
+
+}
+
+.cancel-textarea{
+
+    width:100%;
+
+    min-height:150px;
+
+    border:1px solid #ddd;
+
+    border-radius:10px;
+
+    padding:15px;
+
+    resize:none;
+
+}
+
+.cancel-textarea:focus{
+
+    outline:none;
+
+    border-color:#dc3545;
+
+    box-shadow:0 0 5px rgba(220,53,69,0.3);
+
+}
+
+.cancel-actions{
+
+    margin-top:20px;
+
+    display:flex;
+
+    gap:10px;
+
+}
+
+.cancel-btn{
+
+    background:#dc3545;
+
+    border:none;
+
+    color:white;
+
+    padding:12px 25px;
+
+    border-radius:8px;
+
+    font-weight:600;
+
+}
+
+.cancel-btn:hover{
+
+    background:#bb2d3b;
+
+}
+
+.back-btn{
+
+    background:#6c757d;
+
+    color:white;
+
+    padding:12px 25px;
+
+    border-radius:8px;
+
+    text-decoration:none;
+
+}
+
+.back-btn:hover{
+
+    background:#5c636a;
+
+    color:white;
+
+}
+
+.cancelled{
+
+    background: rgba(220, 53, 69, 0.15);
+
+    color: #dc3545;
+
+}
+
+</style>
+
+
+</head>
+
+<body class="{{ request.user.theme }}">
+<div>
+    <!--Sidebar-->
+<div class="sidebar collapsed" id="sidebar">
+    
+    <div>
+
+        <button id="toggle-btn" class="toggle-btn">
+            <i class="bi bi-list"></i>
+        </button>
+
+        <h2 class="logo">
+            WashEasy
+        </h2>
+
+        <ul class="sidebar-menu">
+
+            <li>
+                <a href="{% url 'dashboard' %}">
+                    <i class="bi bi-house-door"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="{% url 'book_laundry' %}">
+                    <i class="bi bi-basket"></i>
+                    <span>Book Laundry</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="{% url 'my_orders' %}">
+                    <i class="bi bi-box-seam"></i>
+                    <span>My Orders</span>
+                </a>
+            </li>
+
+           <li>
+                <a href="{% url 'profile' %}">
+                    <i class="bi bi-person"></i>
+                    <span>Profile</span>
+                </a>
+            </li>
+
+        </ul>
+
+    </div>
+
+    <ul class="sidebar-bottom">
+
+            <li>
+                <a href="{% url 'settings' %}">
+                    <i class="bi bi-gear"></i>
+                    <span>Settings</span>
+                </a>
+            </li>
+
+        <li>
+            <a href="{% url 'logout' %}">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Logout</span>
+            </a>
+        </li>
+
+    </ul>
+
+</div>
+
+            {% if messages %}
+
+                {% for message in messages %}
+
+                    <div class="alert alert-success alert-dismissible fade show">
+
+                        {{ message }}
+
+                        <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="alert">
+                        </button>
+
+                    </div>
+
+                {% endfor %}
+
+        {% endif %}
+
+<div class="topbar">
+
+    <div></div>
+
+    <div class="topbar-right">
+
+<div class="dropdown">
+
+    <button
+        class="notification-btn dropdown-toggle"
+        data-bs-toggle="dropdown">
+
+        <i class="bi bi-bell-fill"></i>
+
+        {% if unread_notifications > 0 %}
+            <span class="notification-badge">
+                {{ unread_notifications }}
+            </span>
+        {% endif %}
+
+    </button>
+
+    <ul class="dropdown-menu dropdown-menu-end notification-dropdown">
+
+        {% for notification in latest_notifications %}
+
+            <li>
+
+                <a class="dropdown-item">
+
+                    <strong>
+
+                        {{ notification.title }}
+
+                    </strong>
+
+                    <br>
+
+                    <small>
+
+                        {{ notification.message|truncatechars:40 }}
+
+                    </small>
+
+                </a>
+
+            </li>
+
+        {% empty %}
+
+            <li>
+
+                <span class="dropdown-item">
+
+                    No Notifications
+
+                </span>
+
+            </li>
+
+        {% endfor %}
+
+        <li>
+            <hr class="dropdown-divider">
+        </li>
+
+        <li>
+
+            <a
+                class="dropdown-item text-center"
+                href="{% url 'notifications' %}">
+
+                View All Notifications
+
+            </a>
+
+        </li>
+
+    </ul>
+
+</div>
+        <div class="dropdown">
+
+    <div
+        class="profile-info"
+        data-bs-toggle="dropdown"
+        style="cursor:pointer;">
+
+        <div class="profile-avatar">
+
+            {{ request.user.first_name|first|upper }}
+
+        </div>
+
+        <div class="profile-details">
+
+            <h6>
+                {{ request.user.first_name }}
+            </h6>
+
+            <small>
+                Customer
+            </small>
+
+        </div>
+
+    </div>
+
+    <ul class="dropdown-menu dropdown-menu-end">
+
+        <li>
+            <a
+                class="dropdown-item"
+                href="{% url 'profile' %}">
+
+                <i class="bi bi-person"></i>
+
+                Profile
+
+            </a>
+        </li>
+
+        <li>
+            <a
+                class="dropdown-item"
+                href="{% url 'settings' %}">
+
+                <i class="bi bi-gear"></i>
+
+                Settings
+
+            </a>
+        </li>
+
+        <li>
+            <a
+                class="dropdown-item"
+                href="{% url 'password_change' %}">
+
+                <i class="bi bi-lock"></i>
+
+                Change Password
+
+            </a>
+        </li>
+
+        <li><hr class="dropdown-divider"></li>
+
+        <li>
+                <a
+                    href="{% url 'admin_logout' %}"
+                    class="btn btn-danger"
+                    onclick="return confirm('Are you sure you want to logout?');">
+
+                    <i class="fas fa-sign-out-alt"></i>
+
+                    Logout
+
+                </a>
+        </li>
+
+    </ul>
+
+</div>
+
+    </div>
+
+</div>
+
+<!--Main Content-->
+
+   <div class="main-content expanded">
+
+    {% block content %}
+
+    <h1>
+        Welcome, {{request.user.first_name}}
+    </h1>
+
+    <div class="stats-container">
+
+        <div class="stats-card">
+
+            <div class="icon-box orders">
+                <i class="bi bi-box-seam"></i>
+            </div>
+
+            <div>
+                <h6>Total Orders</h6>
+                <h3>0</h3>
+            </div>
+
+        </div>
+
+        <div class="stats-card">
+
+            <div class="icon-box pending">
+                <i class="bi bi-clock-history"></i>
+            </div>
+
+            <div>
+                <h6>Pending Orders</h6>
+                <h3>0</h3>
+            </div>
+
+        </div>
+
+        <div class="stats-card">
+
+            <div class="icon-box completed">
+                <i class="bi bi-check-circle"></i>
+            </div>
+
+            <div>
+                <h6>Completed</h6>
+                <h3>0</h3>
+            </div>
+
+        </div>
+
+    </div>
+    {% endblock%}
+<script>
+
+const toggleBtn = document.getElementById('toggle-btn');
+
+const sidebar = document.getElementById('sidebar');
+
+const mainContent = document.querySelector('.main-content');
+
+toggleBtn.addEventListener('click', () => {
+
+    sidebar.classList.toggle('collapsed');
+
+    mainContent.classList.toggle('expanded');
+
+});
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<!-- no google maps script -->
+ <script
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBa1x3gYvDUSXSimHJdrcu3Fwn2EYfjha0
+&libraries=places">
+</script>
+
+<br>
+<br>
+<div class="whatsapp-container">
+
+    <span class="whatsapp-text">
+
+        Need Help?
+
+    </span>
+
+    <a
+        href="https://wa.me/2348136201074?text=Hello%20WashEasy,%20I%20need%20assistance."
+        target="_blank"
+        class="whatsapp-float">
+
+        <i class="fab fa-whatsapp"></i>
+
+    </a>
+
+</div>
+
+<audio id="customerNotificationSound">
+
+    <source
+        src="{% static 'sounds/notification.mp3' %}"
+        type="audio/mpeg">
+
+</audio>
+
+<script>
+
+function checkCustomerAlerts(){
+
+    fetch(
+        "/customer-alert-count/"
+    )
+
+    .then(
+        response => response.json()
+    )
+
+    .then(data => {
+
+        let storedCount =
+            localStorage.getItem(
+                "customer_alert_count"
+            );
+
+        if(storedCount === null){
+
+            localStorage.setItem(
+                "customer_alert_count",
+                data.count
+            );
+
+            return;
+        }
+
+        storedCount =
+            parseInt(
+                storedCount
+            );
+
+        if(data.count > storedCount){
+
+            document
+                .getElementById(
+                    "customerNotificationSound"
+                )
+                .play();
+
+        }
+
+        localStorage.setItem(
+            "customer_alert_count",
+            data.count
+        );
+
+    });
+
+}
+
+</script>
+
+{% if user.is_authenticated %}
+
+<script>
+
+checkCustomerAlerts();
+
+setInterval(
+    checkCustomerAlerts,
+    60000
+);
+
+</script>
+
+{% endif %}
+
+</body>
+
+</html>

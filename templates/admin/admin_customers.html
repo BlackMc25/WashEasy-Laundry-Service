@@ -1,0 +1,292 @@
+{% extends 'admin/base_admin.html' %}
+
+{% block content %}
+
+<div class="admin-card">
+
+    <div class="d-flex justify-content-between mb-4">
+
+        <h2>
+
+            Customers
+
+        </h2>
+
+        <form method="GET">
+
+            <input
+                type="text"
+                name="search"
+                value="{{ search }}"
+                placeholder="Search customer..."
+                class="form-control">
+
+        </form>
+
+    </div>
+
+    <table class="table">
+
+        <thead>
+
+            <tr>
+
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Joined</th>
+                <th>Orders</th>
+                <th>Action</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            {% for customer in customers %}
+
+            <tr>
+
+                <td>
+
+                    {{ customer.first_name }}
+                    {{ customer.last_name }}
+
+                </td>
+
+                <td>
+
+                    {{ customer.email }}
+
+                </td>
+
+                <td>
+
+                    {{ customer.phone_number }}
+
+                </td>
+
+                <td>
+
+                    {{ customer.date_joined|date:"M d, Y" }}
+
+                </td>
+
+                <td>
+
+                    {{ customer.laundryorder_set.count }}
+
+                </td>
+                
+
+                <td>
+
+                    <form
+                        method="POST"
+                        action="{% url 'delete_customer' customer.id %}">
+
+                        {% csrf_token %}
+
+                        <button
+                            type="button"
+                            class="btn btn-danger btn-sm delete-customer-btn"
+                            data-user-id="{{ customer.id }}">
+
+                            <i class="fas fa-trash"></i>
+
+                            Delete
+
+                        </button>
+
+                    </form>
+
+                </td>
+
+            
+            
+            </tr>
+
+
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+
+</div>
+<!-- Delete Customer PIN Modal -->
+
+<div
+    class="modal fade"
+    id="deleteCustomerModal"
+    tabindex="-1"
+    aria-hidden="true">
+
+    <div class="modal-dialog modal-dialog-centered">
+
+        <div class="modal-content">
+
+            <div class="modal-header bg-danger text-white">
+
+                <h5 class="modal-title">
+
+                    Delete Customer Account
+
+                </h5>
+
+                <button
+                    type="button"
+                    class="btn-close btn-close-white"
+                    data-bs-dismiss="modal">
+
+                </button>
+
+            </div>
+
+            <div class="modal-body">
+
+                <p class="text-muted">
+
+                    A 4-digit verification PIN has been sent to your email.
+
+                </p>
+
+                <form
+                    id="customerDeleteForm"
+                    method="POST">
+
+                    {% csrf_token %}
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+
+                            Verification PIN
+
+                        </label>
+
+                        <input
+                            type="text"
+                            name="pin"
+                            maxlength="4"
+                            class="form-control"
+                            placeholder="Enter PIN"
+                            required>
+
+                    </div>
+
+                    <button
+                        type="submit"
+                        class="btn btn-danger w-100">
+
+                        Confirm Delete
+
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+function openDeleteCustomerModal(userId){
+
+    fetch(
+        `/send-customer-delete-pin/${userId}/`
+    )
+
+    .then(response => response.json())
+
+    .then(data => {
+
+        if(data.success){
+
+            document.getElementById(
+                "customerDeleteForm"
+            ).action =
+            `/verify-customer-delete/${userId}/`;
+
+            const modal = new bootstrap.Modal(
+                document.getElementById(
+                    "deleteCustomerModal"
+                )
+            );
+
+            modal.show();
+
+        }else{
+
+            alert(
+                "Unable to send verification PIN."
+            );
+
+        }
+
+    })
+
+    .catch(error => {
+
+        console.error(error);
+
+        alert(
+            "Something went wrong."
+        );
+
+    });
+
+}
+
+</script>
+
+<script>
+
+function openDeleteCustomerModal(userId){
+
+    fetch(`/send-customer-delete-pin/${userId}/`)
+    .then(response => response.json())
+    .then(data => {
+
+        document.getElementById(
+            "customerDeleteForm"
+        ).action =
+        `/verify-customer-delete/${userId}/`;
+
+        new bootstrap.Modal(
+            document.getElementById(
+                "deleteCustomerModal"
+            )
+        ).show();
+
+    });
+
+}
+
+</script>
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    document.querySelectorAll(".delete-customer-btn").forEach(function(button){
+
+        button.addEventListener("click", function(){
+
+            const userId = this.dataset.userId;
+
+            openDeleteCustomerModal(userId);
+
+        });
+
+    });
+
+});
+
+</script>
+{% endblock %}

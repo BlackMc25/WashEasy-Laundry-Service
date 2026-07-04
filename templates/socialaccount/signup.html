@@ -1,0 +1,111 @@
+{% extends "base_dashboard.html" %}
+{% load socialaccount %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-6">
+
+            <div class="card border-0 shadow-lg rounded-4">
+
+                <div class="card-body p-5">
+
+                    <div class="text-center mb-4">
+
+
+                        <h2 class="fw-bold">
+
+                            Complete Your Registration
+
+                        </h2>
+
+                        <p class="text-muted">
+
+                            Your Google account has been verified.
+
+                            Complete the details below to create your WashEasy account.
+
+                        </p>
+
+                    </div>
+
+                    <form method="POST">
+
+                        {% csrf_token %}
+
+                        {% for field in form %}
+
+                            <div class="mb-3">
+
+                                <label class="form-label">
+
+                                    {{ field.label }}
+
+                                </label>
+
+                                {{ field }}
+
+                                {% if field.errors %}
+
+                                    <div class="text-danger small mt-1">
+
+                                        {{ field.errors }}
+
+                                    </div>
+
+                                {% endif %}
+
+                            </div>
+
+                        {% endfor %}
+
+                        <button
+                            type="submit"
+                            class="btn btn-primary w-100 py-3">
+
+                            Continue to WashEasy
+
+                        </button>
+
+                    </form>
+
+                    <hr>
+
+                    <div class="text-center">
+
+                        <small class="text-muted">
+
+                            By continuing you agree to the
+
+                            <a href="#">
+
+                                Terms of Service
+
+                            </a>
+
+                            and
+
+                            <a href="#">
+
+                                Privacy Policy
+
+                            </a>
+
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

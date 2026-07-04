@@ -1,0 +1,316 @@
+body {
+font-family: 'segoe UI', sans-serif;
+}
+
+/* Navbar */
+
+.navbar{
+    padding: 15px 0;
+}
+.custom-toggle-icon{
+    color:#124f8a;
+    font-size:1.5rem;
+    font-weight:bold;
+}
+
+.navbar-toggler{
+    border-color:#0d3b66;
+}
+
+.navbar-brand{
+    font-size: 1.7rem;
+    color:#0d3b66 !important;
+}
+
+.navbar .nav-link{
+    color:#0d3b66;
+    font-weight:500;
+    padding: 10px 18px; 
+    border-radius:30px;
+    transition: all 0.3s ease;
+}
+
+.navbar .nav-link:hover{
+    background-color:#e6f0fa;
+    color:#0d3b66;
+}
+.login-btn{
+    color:#0d3b66;
+    font-weight:500;
+    padding: 10px 18px; 
+    border-radius:30px;
+    transition: all 0.3s ease;
+}
+
+.login-btn:hover{
+    background-color:#e6f0fa;
+    color:#0d3b66;
+}
+
+.signup-btn{
+    color:#0d3b66;
+    font-weight:500;
+    padding: 10px 18px; 
+    border-radius:30px;
+    transition: all 0.3s ease;
+}
+.signup-btn:hover{
+    background-color:#e6f0fa;
+    color:#0d3b66;
+}
+
+/* Heor */
+.textcolor{
+    color:#124f8a;
+}
+.hero {
+    min-height:85vh;
+    display:flex;
+    align-items:center;
+}
+
+.hero-title{
+    font-size:4rem;
+    font-weight:700;
+    color:#0d3b66;
+}
+
+.hero-text{
+    color:#666;
+    font-size:1.2rem;
+}
+
+.book-btn{
+    background:#0d3b66;
+    border: none;
+    padding: 12px 30px;
+    border-radius:10px;
+}
+.book-btn:hover{
+    background:#124f8a;
+}
+.hero-container{
+    background-image: url("../images/dan-gold.jpg");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    margin-top:-50px;
+
+    min-height: 20vh;
+}
+.textedit{
+    padding:60px;
+}
+.textedit p{
+    font-weight:400;
+}
+
+.features{
+    width: 50%;
+    margin-top: 30px;
+}
+
+.features h6{
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.features p{
+    font-size: 15px;
+    margin: 0;
+}
+
+.feature-icon{
+    font-size:1.8rem;
+}
+
+
+
+/* Contact Section */
+.contact-section{
+    background:#f8f9fa;
+}
+
+.contact-card{
+    border: none;
+    border-radius:20px;
+}
+
+.contact-card:hover{
+    transform:translateY(-5px);
+    transition:0.3s;
+}
+
+.mb-3{
+    text-align:left;
+    font-size: 1.3rem;
+}
+.img-contact{
+    margin-top:-10px;
+}
+
+.img-contact img{
+    width:100%;
+    height:auto;
+}
+
+/* Scrolltop arrow*/
+.scroll-top{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+
+    width:50px;
+    height:50px;
+
+    background:#0d3b66;
+    color:white;
+
+    border:none;
+    border-radius:50%;
+
+    display:none;
+    align-items:center;
+    justify-content:center;
+
+    cursor:pointer;
+    font-size:24px;
+
+    box-shadow:0 4px 10px rgba(0,0,0,0.3);
+
+    z-index:999;
+    transition:0.3s;
+}
+
+.scroll-top:hover{
+    background:#124f8a;
+    transform:translateY(-5px);
+}
+
+/* footer */
+
+footer{
+    margin-top:50px;
+}
+
+/* LOGIN & SIGNUP MODALS */
+
+.login-modal,
+.signup-modal{
+    border:none;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.login-modal .modal-body,
+.signup-modal .modal-body{
+    padding:40px;
+}
+
+.login-modal h2,
+.signup-modal h2{
+    color:#0d3b66;
+}
+
+.login-btn-custom{
+    background:#0d3b66;
+    border:none;
+    padding:12px;
+    border-radius:10px;
+}
+
+.login-btn-custom:hover{
+    background:#124f8a;
+}
+
+.input-group-text{
+    background:#f8f9fa;
+    border-right:none;
+}
+
+.input-group .form-control{
+    border-left:none;
+}
+
+.modal-content{
+    box-shadow:0 15px 40px rgba(0,0,0,.15);
+}
+
+/* ==========================
+   WashEasy Logo
+========================== */
+
+.navbar-brand{
+
+    display:flex;
+
+    align-items:center;
+
+    text-decoration:none;
+
+}
+
+.navbar-logo{
+
+    width:55px;
+
+    height:55px;
+
+    object-fit:contain;
+
+    margin-right:12px;
+
+}
+
+.brand-name{
+
+    font-size:2rem;
+
+    font-weight:800;
+
+    color:#0d4f8b;
+
+    letter-spacing:.5px;
+
+}
+
+@media(max-width:768px){
+
+    .hero-container{
+        padding:30px 25px;
+        text-align:center;
+    }
+
+    .textedit{
+        padding:20px;
+    }
+
+    .features{
+        margin-top:20px;
+    }
+
+    .features .col-md-4{
+        margin-bottom:20px;
+    }
+
+    .about-container{
+        padding:20px;
+    }
+
+
+    .navbar-logo{
+
+        width:42px;
+
+        height:42px;
+
+    }
+
+    .brand-name{
+
+        font-size:1.5rem;
+
+    }
+
+}

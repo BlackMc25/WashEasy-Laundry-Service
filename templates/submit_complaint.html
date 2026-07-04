@@ -1,0 +1,61 @@
+{% extends 'base_dashboard.html' %}
+
+{% block content %}
+
+<div class="container mt-5">
+    
+    <h3>
+
+        Submit Complaint
+
+    </h3>
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        <div class="mb-3">
+
+            <label>
+
+                Subject
+
+            </label>
+
+            <input
+                type="text"
+                name="subject"
+                class="form-control"
+                required>
+
+        </div>
+
+        <div class="mb-3">
+
+            <label>
+
+                Complaint Details
+
+            </label>
+
+            <textarea
+                name="message"
+                rows="5"
+                class="form-control"
+                required></textarea>
+
+        </div>
+
+        <button
+            type="submit"
+            class="btn btn-primary">
+
+            Submit Complaint
+
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}

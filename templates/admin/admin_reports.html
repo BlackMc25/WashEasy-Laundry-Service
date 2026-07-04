@@ -1,0 +1,379 @@
+{% extends 'admin/base_admin.html' %}
+
+{% load humanize %}
+
+{% block content %}
+
+<div class="container-fluid">
+
+    <h2 class="mb-4">
+
+        Reports & Analytics
+
+    </h2>
+
+    <div class="row">
+
+        <div class="col-md-3 mb-3">
+
+            <div class="card bg-primary text-white">
+
+                <div class="card-body">
+
+                    <h6>Total Revenue</h6>
+
+                    <h3>
+
+                        ₦{{ total_revenue|intcomma }}
+
+                    </h3>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3 mb-3">
+
+            <div class="card bg-success text-white">
+
+                <div class="card-body">
+
+                    <h6>Laundry Revenue</h6>
+
+                    <h3>
+
+                        ₦{{ laundry_revenue|intcomma }}
+
+                    </h3>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3 mb-3">
+
+            <div class="card bg-warning text-dark">
+
+                <div class="card-body">
+
+                    <h6>Transport Revenue</h6>
+
+                    <h3>
+
+                        ₦{{ transport_revenue|intcomma }}
+
+                    </h3>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3 mb-3">
+
+            <div class="card bg-dark text-white">
+
+                <div class="card-body">
+
+                    <h6>Today's Revenue</h6>
+
+                    <h3>
+
+                        ₦{{ today_revenue|intcomma }}
+
+                    </h3>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-3 mb-3">
+
+            <div class="card">
+
+                <div class="card-body text-center">
+
+                    <h6>Total Customers</h6>
+
+                    <h3>
+
+                        {{ total_customers }}
+
+                    </h3>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-2 mb-3">
+
+            <div class="card">
+
+                <div class="card-body text-center">
+
+                    <h6>Orders</h6>
+
+                    <h3>
+
+                        {{ total_orders }}
+
+                    </h3>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-2 mb-3">
+
+            <div class="card">
+
+                <div class="card-body text-center">
+
+                    <h6>Delivered</h6>
+
+                    <h3>
+
+                        {{ delivered_orders }}
+
+                    </h3>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-2 mb-3">
+
+            <div class="card">
+
+                <div class="card-body text-center">
+
+                    <h6>Pending</h6>
+
+                    <h3>
+
+                        {{ pending_orders }}
+
+                    </h3>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-2 mb-3">
+
+            <div class="card">
+
+                <div class="card-body text-center">
+
+                    <h6>Cancelled</h6>
+
+                    <h3>
+
+                        {{ cancelled_orders }}
+
+                    </h3>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-1 mb-3">
+
+            <div class="card">
+
+                <div class="card-body text-center">
+
+                    <h6>Refunds</h6>
+
+                    <h3>
+
+                        {{ refund_requests }}
+
+                    </h3>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="card mt-4">
+
+        <div class="card-header">
+
+            Transportation Summary
+
+        </div>
+
+        <div class="card-body">
+
+            <p>
+
+                <strong>Total Transport Revenue:</strong>
+
+                ₦{{ transport_revenue|intcomma }}
+
+            </p>
+
+            <p>
+
+                <strong>Total Laundry Revenue:</strong>
+
+                ₦{{ laundry_revenue|intcomma }}
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="card mt-4">
+
+        <div class="card-header">
+
+            Recent Orders
+
+        </div>
+
+        <div class="card-body">
+
+            <table class="table table-hover">
+
+                <thead>
+
+                    <tr>
+
+                        <th>ID</th>
+
+                        <th>Customer</th>
+
+                        <th>Status</th>
+
+                        <th>Amount</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    {% for order in recent_orders %}
+
+                    <tr>
+
+                        <td>
+
+                            #{{ order.id }}
+
+                        </td>
+
+                        <td>
+
+                            {{ order.customer }}
+
+                        </td>
+
+                        <td>
+
+                            {{ order.status }}
+
+                        </td>
+
+                        <td>
+
+                            ₦{{ order.total_amount|intcomma }}
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+    <div class="card mt-4">
+
+        <div class="card-header">
+
+            Service Analytics
+
+        </div>
+
+        <div class="card-body">
+
+            <table class="table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Service Type</th>
+
+                        <th>Available Items</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    {% for service in service_analytics %}
+
+                    <tr>
+
+                        <td>
+
+                            {{ service.service_type }}
+
+                        </td>
+
+                        <td>
+
+                            {{ service.total }}
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,210 @@
+{% extends 'base_dashboard.html' %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <div class="card shadow-sm">
+
+        <div class="card-body">
+
+            <h3 class="mb-4">
+
+                Account Settings
+
+            </h3>
+
+           <form method="POST">
+
+    {% csrf_token %}
+
+    <div class="mb-3">
+
+        <label>
+            First Name
+        </label>
+
+        {{ form.first_name }}
+
+    </div>
+
+    <div class="mb-3">
+
+        <label>
+            Last Name
+        </label>
+
+        {{ form.last_name }}
+
+    </div>
+
+    <div class="mb-3">
+
+        <label>
+            Email
+        </label>
+
+        {{ form.email }}
+
+    </div>
+
+    <div class="mb-3">
+
+        <label>
+            Phone Number
+        </label>
+
+        {{ form.phone_number }}
+
+    </div>
+
+    <div class="mb-3">
+
+        <label>
+            Dashboard Theme
+        </label>
+
+        {{ form.theme }}
+
+    </div>
+
+<div class="mb-3">
+
+    <label>
+
+        Default Pickup Address
+
+    </label>
+
+    {{ form.default_pickup_address }}
+
+</div>
+
+    <div class="mb-3">
+
+        <label>
+
+            Default Delivery Address
+
+        </label>
+
+        {{ form.default_delivery_address }}
+
+    </div>
+    <button
+        type="submit"
+        class="btn btn-primary">
+
+        Save Changes
+
+    </button>
+
+</form>
+
+            <hr>
+            
+            <a
+                href="{% url 'password_change' %}"
+                class="btn btn-outline-dark">
+
+                Change Password
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+window.addEventListener(
+    'load',
+    function(){
+
+        const pickupInput =
+            document.getElementById(
+                'default-pickup-address'
+            );
+
+        const deliveryInput =
+            document.getElementById(
+                'default-delivery-address'
+            );
+
+        if(
+            pickupInput &&
+            google &&
+            google.maps &&
+            google.maps.places
+        ){
+
+            const pickupAutocomplete =
+                new google.maps.places.Autocomplete(
+                    pickupInput,
+                    {
+                        componentRestrictions:{
+                            country:['ng']
+                        }
+                    }
+                );
+
+            pickupAutocomplete.addListener(
+                'place_changed',
+                function(){
+
+                    const place =
+                        pickupAutocomplete.getPlace();
+
+                    console.log(
+                        'Pickup Selected:',
+                        place.formatted_address
+                    );
+
+                }
+            );
+
+        }
+
+        if(
+            deliveryInput &&
+            google &&
+            google.maps &&
+            google.maps.places
+        ){
+
+            const deliveryAutocomplete =
+                new google.maps.places.Autocomplete(
+                    deliveryInput,
+                    {
+                        componentRestrictions:{
+                            country:['ng']
+                        }
+                    }
+                );
+
+            deliveryAutocomplete.addListener(
+                'place_changed',
+                function(){
+
+                    const place =
+                        deliveryAutocomplete.getPlace();
+
+                    console.log(
+                        'Delivery Selected:',
+                        place.formatted_address
+                    );
+
+                }
+            );
+
+        }
+
+    }
+);
+
+</script>
+
+
+{% endblock %}

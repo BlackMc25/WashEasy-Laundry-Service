@@ -1,0 +1,570 @@
+{% extends 'base_dashboard.html' %}
+
+{% block content %}
+
+<div class="container-fluid">
+
+    <div class="card p-3 mb-3">
+
+        <h5>
+            Live Order Tracking
+        </h5>
+
+        <div
+            id="order-map"
+            style="
+                height:400px;
+                border-radius:10px;
+            ">
+        </div>
+    </div>
+
+    <div class="mb-3">
+
+        <a
+            href="{% url 'my_orders' %}"
+            class="btn btn-outline-secondary"
+        >
+            <i class="bi bi-arrow-left"></i>
+            Back to Orders
+        </a>
+
+    </div>
+
+    <h3>
+        Order #{{ order.customer_order_number }}
+    </h3>
+
+    <div class="card p-4 mt-3">
+        
+        <h5>Status Tracking</h5>
+
+        <div class="timeline">
+
+            <div class="timeline-step {% if order.status == 'Pending Pickup' or order.status == 'Picked Up' or order.status == 'Cleaning' or order.status == 'Ready' or order.status == 'Out For Delivery' or order.status == 'Delivered' %}active{% endif %}">
+                Pending Pickup
+            </div>
+
+            <div class="timeline-step {% if order.status == 'Picked Up' or order.status == 'Cleaning' or order.status == 'Ready' or order.status == 'Out For Delivery' or order.status == 'Delivered' %}active{% endif %}">
+                Picked Up
+            </div>
+
+            <div class="timeline-step {% if order.status == 'Cleaning' or order.status == 'Ready' or order.status == 'Out For Delivery' or order.status == 'Delivered' %}active{% endif %}">
+                Cleaning
+            </div>
+
+            <div class="timeline-step {% if order.status == 'Ready' or order.status == 'Out For Delivery' or order.status == 'Delivered' %}active{% endif %}">
+                Ready
+            </div>
+
+            <div class="timeline-step {% if order.status == 'Out For Delivery' or order.status == 'Delivered' %}active{% endif %}">
+                Out For Delivery
+            </div>
+
+            <div class="timeline-step {% if order.status == 'Delivered' %}active{% endif %}">
+                Delivered
+            </div>
+
+        </div>
+
+        <hr>
+
+        <p>
+            <strong>Service:</strong>
+            {{ order.service_type }}
+        </p>
+
+        <hr>
+           <div class="card mb-3">
+
+                <div class="card-body">
+
+                    <h5>Contact Information</h5>
+
+                    <p>
+                        <strong>Phone Number:</strong>
+                        {{ order.phone_number }}
+                    </p>
+
+                </div>
+
+            </div>
+            
+            <h5>
+                Distance Information
+            </h5>
+
+            <p>
+                <strong>
+                    Pickup Distance:
+                </strong>
+
+                {{ order.pickup_distance_km }} km
+            </p>
+
+            <p>
+                <strong>
+                    Delivery Distance:
+                </strong>
+
+                {{ order.delivery_distance_km }} km
+            </p>
+
+            <p>
+                <strong>
+                    Total Distance:
+                </strong>
+
+                {{ order.total_distance_km }} km
+            </p>
+            
+            <p>
+                <strong>Transport Fee:</strong>
+
+                <span class="text-success fw-bold">
+
+                    ₦{{ order.transport_fee }}
+
+                </span>
+
+            </p>
+
+        <p>
+            <strong>Pickup Address:</strong>
+            {{ order.pickup_address }}
+        </p>
+
+        <p>
+            <strong>Delivery Address:</strong>
+            {{ order.delivery_address }}
+        </p>
+        {% if order.status != 'Out For Delivery' and order.status != 'Delivered' %}
+
+                <a
+                    href="{% url 'update_delivery_address' order.id %}"
+                    class="btn btn-warning btn-sm mt-2">
+
+                    Update Delivery Address
+
+                </a>
+
+                {% endif %}
+
+        <p>
+            <strong>Total Cost:</strong>
+            ₦{{ order.total_amount }}
+        </p>
+
+    </div>
+
+    <div class="card p-4 mt-3">
+
+        <h5>Items</h5>
+
+       {% for item in order.items.all %}
+
+        <div class="order-item-card mb-3">
+
+            <div class="d-flex justify-content-between align-items-start">
+
+                <div>
+
+                    <h6 class="mb-1">
+
+                        {{ item.item.item_name }}
+
+                        × {{ item.quantity }}
+
+                    </h6>
+
+                    <span class="badge bg-primary">
+
+                        {{ item.item.service_type }}
+
+                    </span>
+
+                </div>
+
+                <strong class="text-success">
+
+                    ₦{{ item.subtotal }}
+
+                </strong>
+
+            </div>
+
+            <hr>
+
+            <div class="row">
+
+                <div class="col-md-6 col-12 mb-2">
+
+                    <strong>Payment Method</strong>
+
+                    <br>
+
+                    {{ order.payment_method }}
+
+                </div>
+
+                <div class="col-md-6 col-12">
+
+                    <strong>Pickup Date</strong>
+
+                    <br>
+
+                    {{ order.pickup_date|date:"F d, Y" }}
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+        
+       <hr>
+
+            <div class="mt-3">
+
+                <div class="d-flex justify-content-between">
+
+                    <strong>Laundry Cost</strong>
+
+                    <strong>
+
+                        ₦{{ laundry_total|floatformat:2 }}
+
+                    </strong>
+
+                </div>
+
+                <div class="d-flex justify-content-between mt-2">
+
+                    <span>Transport Fee</span>
+
+                    <span>
+
+                        ₦{{ order.transport_fee|floatformat:2 }}
+
+                    </span>
+
+                </div>
+
+                <hr>
+
+                <div class="d-flex justify-content-between">
+
+                    <h5>
+
+                        Grand Total
+
+                    </h5>
+
+                    <h5 class="text-success">
+
+                        ₦{{ order.total_amount|floatformat:2 }}
+
+                    </h5>
+
+                </div>
+
+            </div>
+    
+    <br>
+
+    {% if order.status == 'Pending Pickup' or order.status == 'Picked Up' %}
+
+        <a
+            href="{% url 'cancel_order' order.id %}"
+            class="btn btn-danger">
+
+            Cancel Order
+
+        </a>
+
+        {% endif %}
+
+</div>
+
+<hr>
+{% if order.delivery_code and order.status == 'Out For Delivery' %}
+
+<div class="alert alert-warning mt-3">
+
+    <h5>
+
+        Delivery Verification Code
+
+    </h5>
+
+    <h2 class="text-center">
+
+        {{ order.delivery_code }}
+
+    </h2>
+
+    <p class="mb-0">
+
+        Please provide this code to the delivery rider before receiving your laundry.
+
+    </p>
+
+</div>
+
+{% endif %}
+<hr>
+    <a
+        href="{% url 'submit_complaint' order.id %}"
+        class="btn btn-danger">
+
+        Submit Complaint
+
+    </a>
+
+
+        {% if order.refund_requested %}
+
+        <div class="alert alert-info mt-3">
+
+            <strong>
+
+                Refund Status:
+
+            </strong>
+
+            {{ order.refund_status }}
+
+        </div>
+
+        {% endif %}
+
+
+    <br>
+    <br>
+    {% if order.status == 'Delivered' or order.status == 'Cancelled' %}
+
+        {% if not order.refund_requested %}
+
+        <a
+            href="{% url 'request_refund' order.id %}"
+            class="btn btn-danger">
+
+            Request Refund
+
+        </a>
+
+        {% endif %}
+
+    {% endif %}
+
+
+<script>
+
+document.addEventListener(
+    'DOMContentLoaded',
+    function(){
+
+const STORE_LAT = parseFloat(
+    "{{ site_settings.business_latitude }}"
+);
+
+const STORE_LNG = parseFloat(
+    "{{ site_settings.business_longitude }}"
+);
+
+        if(
+            !document.getElementById(
+                'order-map'
+            )
+        ){
+            return;
+        }
+
+        const map =
+            L.map('order-map')
+            .setView(
+                [STORE_LAT, STORE_LNG],
+                13
+            );
+
+            L.tileLayer(
+                'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+                {
+                    attribution:
+                    '&copy; OpenStreetMap contributors'
+                }
+            ).addTo(map);
+
+        const bounds = [];
+
+        const storeMarker =
+            L.marker(
+                [STORE_LAT, STORE_LNG]
+            )
+            .addTo(map)
+            .bindPopup(
+                'WashEasy Store'
+            );
+
+        bounds.push(
+            [STORE_LAT, STORE_LNG]
+        );
+
+        const pickupLat =
+            parseFloat(
+                "{{ order.pickup_latitude|default:'' }}"
+            );
+
+        const pickupLng =
+            parseFloat(
+                "{{ order.pickup_longitude|default:'' }}"
+            );
+
+        const deliveryLat =
+            parseFloat(
+                "{{ order.delivery_latitude|default:'' }}"
+            );
+
+        const deliveryLng =
+            parseFloat(
+                "{{ order.delivery_longitude|default:'' }}"
+            );
+
+        const orderStatus =
+            "{{ order.status }}";
+
+        console.log(
+            'Pickup:',
+            pickupLat,
+            pickupLng
+        );
+
+        console.log(
+            'Delivery:',
+            deliveryLat,
+            deliveryLng
+        );
+
+        if(
+            !isNaN(pickupLat) &&
+            !isNaN(pickupLng)
+        ){
+
+            L.marker(
+                [
+                    pickupLat,
+                    pickupLng
+                ]
+            )
+            .addTo(map)
+            .bindPopup(
+                'Pickup Location'
+            );
+
+            bounds.push(
+                [
+                    pickupLat,
+                    pickupLng
+                ]
+            );
+
+            if(
+                orderStatus ===
+                'Pending Pickup'
+                ||
+                orderStatus ===
+                'Picked Up'
+            ){
+
+                L.polyline(
+                    [
+                        [
+                            pickupLat,
+                            pickupLng
+                        ],
+                        [
+                            STORE_LAT,
+                            STORE_LNG
+                        ]
+                    ],
+                    {
+                        color:'blue',
+                        weight:6
+                    }
+                ).addTo(map);
+
+            }
+
+        }
+
+        if(
+            !isNaN(deliveryLat) &&
+            !isNaN(deliveryLng)
+        ){
+
+            L.marker(
+                [
+                    deliveryLat,
+                    deliveryLng
+                ]
+            )
+            .addTo(map)
+            .bindPopup(
+                'Delivery Location'
+            );
+
+            bounds.push(
+                [
+                    deliveryLat,
+                    deliveryLng
+                ]
+            );
+
+            if(
+                orderStatus ===
+                'Out For Delivery'
+                ||
+                orderStatus ===
+                'Delivered'
+            ){
+
+                L.polyline(
+                    [
+                        [
+                            STORE_LAT,
+                            STORE_LNG
+                        ],
+                        [
+                            deliveryLat,
+                            deliveryLng
+                        ]
+                    ],
+                    {
+                        color:'green',
+                        weight:6
+                    }
+                ).addTo(map);
+
+            }
+
+        }
+
+        if(
+            bounds.length > 1
+        ){
+
+            map.fitBounds(
+                bounds,
+                {
+                    padding:[50,50]
+                }
+            );
+
+        }
+
+    }
+);
+
+</script>
+{% endblock %}

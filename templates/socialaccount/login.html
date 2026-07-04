@@ -1,0 +1,67 @@
+{% extends 'base_dashboard.html' %}
+
+{% load socialaccount %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="google-login-card">
+
+        <div class="google-icon">
+
+            <i class="fab fa-google"></i>
+
+        </div>
+
+        <h1>
+
+            Continue with Google
+
+        </h1>
+
+        <p class="mb-4">
+
+            Sign in securely to your WashEasy account using Google.
+
+        </p>
+
+        <div class="alert alert-info">
+
+            You will be redirected to Google to verify your account.
+
+        </div>
+
+        <form method="post">
+
+            {% csrf_token %}
+
+            <button
+                type="submit"
+                class="btn btn-danger btn-lg w-100">
+
+                <i class="fab fa-google"></i>
+
+                Continue with Google
+
+            </button>
+
+        </form>
+
+        <div class="mt-4">
+
+            <a
+                href="{% url 'home' %}"
+                class="btn btn-outline-light">
+
+                Back to Home
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

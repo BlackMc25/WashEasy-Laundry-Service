@@ -1,0 +1,76 @@
+{% extends 'admin/base_admin.html' %}
+
+{% block content %}
+
+<div class="admin-card">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <h2 class="mb-0">
+
+            Message Details
+
+        </h2>
+
+        <a
+            href="{% url 'admin_messages' %}"
+            class="btn btn-secondary">
+
+            <i class="fas fa-arrow-left"></i>
+
+            Back to Messages
+
+        </a>
+
+    </div>
+
+    <p>
+
+        <strong>Name:</strong>
+
+        {{ message.name }}
+
+    </p>
+
+    <p>
+
+        <strong>Email:</strong>
+
+        {{ message.email }}
+
+    </p>
+
+    <p>
+
+        <strong>Subject:</strong>
+
+        {{ message.subject }}
+
+    </p>
+
+    <hr>
+
+    <div class="alert alert-light">
+
+        {{ message.message }}
+
+    </div>
+
+    <div class="mt-4 d-flex gap-2">
+
+        <a
+            href="{% url 'delete_message' message.id %}"
+            class="btn btn-danger"
+            onclick="return confirm('Delete this message permanently?');">
+
+            <i class="fas fa-trash"></i>
+
+            Delete Message
+
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}

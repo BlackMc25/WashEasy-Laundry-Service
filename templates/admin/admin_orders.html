@@ -1,0 +1,240 @@
+{% extends 'admin/base_admin.html' %}
+{% load humanize %}
+{% block content %}
+
+<div class="container-fluid">
+
+    <div class="d-flex justify-content-between mb-4">
+
+        <h2>
+
+            Orders Management
+
+        </h2>
+
+    </div>
+
+    <div class="admin-card">
+
+        <table class="table">
+
+            <thead>
+
+                <tr>
+
+                    <th>ID</th>
+
+                    <th>Customer</th>
+
+                    <th>Status</th>
+
+                    <th>Payment</th>
+
+                    <th>Amount</th>
+
+                    <th>Date</th>
+
+                    <th>Actions</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% for order in orders %}
+
+                <tr>
+
+                    <td>
+
+                        Order #{{ order.customer_order_number }}
+
+                    </td>
+
+                    <td>
+
+                        {{ order.customer }}
+
+                    </td>
+
+                    <td>
+
+                        <span class="badge bg-primary">
+
+                            {{ order.status }}
+
+                        </span>
+
+                    </td>
+
+                        <td>
+
+                            {% if order.payment_method == 'Pay Online' %}
+
+                                <span class="badge bg-success">
+
+                                    Pay Online
+
+                                </span>
+
+                            {% else %}
+
+                                <span class="badge bg-warning text-dark">
+
+                                    Pay On Delivery
+
+                                </span>
+
+                            {% endif %}
+
+                        </td>
+
+                    <td>
+
+                        ₦{{ order.total_amount|intcomma }}
+
+                    </td>
+
+                    <td>
+
+                        {{ order.created_at|date:"M d, Y" }}
+
+                    </td>
+
+                        <td>
+
+                            <a
+                                href="{% url 'admin_order_detail' order.id %}"
+                                class="btn btn-sm btn-info">
+
+                                View
+
+                            </a>
+
+                                <button
+                                    type="button"
+                                    class="btn btn-danger"
+                                    onclick="openDeleteModal('{{ order.id}}')">
+
+                                    Delete Order
+
+                                </button>
+
+                        </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+<div
+    class="modal fade"
+    id="deleteModal"
+    tabindex="-1">
+
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h5 class="modal-title">
+
+                    Verify Order Deletion
+
+                </h5>
+
+            </div>
+
+            <div class="modal-body">
+
+                <p>
+                    A verification PIN has been sent to your email.
+                </p>
+
+                <form
+                    id="deleteForm"
+                    method="POST">
+
+                    {% csrf_token %}
+
+                    <input
+                        type="text"
+                        name="pin"
+                        maxlength="4"
+                        class="form-control"
+                        placeholder="Enter PIN">
+
+                    <button
+                        type="submit"
+                        class="btn btn-danger mt-3">
+
+                        Confirm Delete
+
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+function openDeleteModal(orderId){
+
+    console.log(
+        "Delete Order:",
+        orderId
+    );
+
+    const modalElement =
+        document.getElementById(
+            'deleteModal'
+        );
+
+    console.log(
+        modalElement
+    );
+
+    if(!modalElement){
+
+        alert(
+            "deleteModal not found"
+        );
+
+        return;
+    }
+
+    fetch(
+        `/send-delete-pin/${orderId}/`
+    );
+
+    document.getElementById(
+        'deleteForm'
+    ).action =
+        `/verify-delete-order/${orderId}/`;
+
+    const modal =
+        new bootstrap.Modal(
+            modalElement
+        );
+
+    modal.show();
+
+}
+
+</script>
+{% endblock %}

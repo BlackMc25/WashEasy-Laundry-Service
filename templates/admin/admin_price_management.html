@@ -1,0 +1,92 @@
+{% extends 'admin/base_admin.html' %}
+
+{% block content %}
+
+<div class="admin-card">
+
+    <div class="d-flex justify-content-between mb-4">
+
+        <h2>
+
+            Price Management
+
+        </h2>
+
+                <a
+                    href="{% url 'add_price_item' %}"
+                    class="btn btn-primary">
+
+                    <i class="bi bi-plus-circle"></i>
+
+                    Add New Item
+
+                </a>
+
+    </div>
+
+    <table class="table table-striped">
+
+        <thead>
+
+            <tr>
+
+                <th>Category</th>
+
+                <th>Item Name</th>
+
+                <th>Service Type</th>
+
+                <th>Price</th>
+
+                <th>Action</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            {% for item in prices %}
+
+            <tr>
+
+                <td>{{ item.category }}</td>
+
+                <td>{{ item.item_name }}</td>
+
+                <td>{{ item.service_type }}</td>
+
+                <td>₦{{ item.price }}</td>
+
+                <td>
+
+                    <a
+                        href="{% url 'update_price' item.id %}"
+                        class="btn btn-warning btn-sm">
+
+                        Edit
+
+                    </a>
+
+                        <a
+                            href="{% url 'delete_price_item' item.id %}"
+                            class="btn btn-danger btn-sm"
+                            onclick="return confirm('Delete this price item?')">
+
+                            Delete
+
+                        </a>
+
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+
+</div>
+
+{% endblock %}

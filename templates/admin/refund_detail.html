@@ -1,0 +1,65 @@
+{% extends 'admin/base_admin.html' %}
+
+{% block content %}
+
+<div class="admin-card">
+
+    <h2>
+        Refund Request Details
+    </h2>
+
+    <hr>
+
+    <p>
+        <strong>Order ID:</strong>
+        #{{ order.id }}
+    </p>
+
+    <p>
+        <strong>Customer:</strong>
+        {{ order.customer.username }}
+    </p>
+
+    <p>
+        <strong>Refund Reason:</strong>
+        {{ order.refund_reason }}
+    </p>
+
+    <p>
+        <strong>Status:</strong>
+        {{ order.refund_status }}
+    </p>
+
+</div>
+
+<div class="mt-4">
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        <button
+            type="submit"
+            name="action"
+            value="approve"
+            class="btn btn-success">
+
+            Approve Refund
+
+        </button>
+
+        <button
+            type="submit"
+            name="action"
+            value="reject"
+            class="btn btn-danger">
+
+            Reject Refund
+
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}

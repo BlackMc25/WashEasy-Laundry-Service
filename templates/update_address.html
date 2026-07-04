@@ -1,0 +1,213 @@
+{% extends 'base_dashboard.html' %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <div class="card">
+
+            <div class="card-header d-flex justify-content-between align-items-center">
+
+                <h4 class="mb-0">
+                    Update Delivery Address
+                </h4>
+
+                <a
+                    href="{% url 'order_detail' order.id %}"
+                    class="btn btn-secondary btn-sm">
+
+                    ← Back
+
+                </a>
+
+            </div>
+
+        <div class="card-body">
+
+            <form method="POST">
+
+                {% csrf_token %}
+
+                <label class="form-label">
+
+                    New Delivery Address
+
+                </label>
+
+                    <input
+                        type="text"
+                        name="delivery_address"
+                        id="delivery-address"
+                        class="form-control"
+                        list="address-history"
+                        value="{{ order.delivery_address }}"
+                        required>
+
+                        <input
+                            type="hidden"
+                            name="delivery_latitude"
+                            id="delivery-latitude"
+                            value="{{ order.delivery_latitude }}">
+
+                        <input
+                            type="hidden"
+                            name="delivery_longitude"
+                            id="delivery-longitude"
+                            value="{{ order.delivery_longitude }}">
+
+                        <input
+                            type="hidden"
+                            name="delivery_distance_km"
+                            id="delivery-distance-km"
+                            value="0">
+
+                    <datalist id="address-history">
+
+                        {% for address in previous_addresses %}
+
+                            <option value="{{ address }}">
+
+                        {% endfor %}
+
+                    </datalist>
+                <button
+                    type="submit"
+                    class="btn btn-primary mt-3">
+
+                    Save Address
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+ <script
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBa1x3gYvDUSXSimHJdrcu3Fwn2EYfjha0
+&libraries=places">
+</script>
+
+<script>
+
+    
+    const STORE_LAT = 6.4697;
+    const STORE_LNG = 3.5856;
+
+    function calculateDistance(
+    lat1,
+    lon1,
+    lat2,
+    lon2
+){
+
+    const R = 6371;
+
+    const dLat =
+        (lat2 - lat1) *
+        Math.PI / 180;
+
+    const dLon =
+        (lon2 - lon1) *
+        Math.PI / 180;
+
+    const a =
+        Math.sin(dLat/2) *
+        Math.sin(dLat/2)
+        +
+        Math.cos(lat1*Math.PI/180)
+        *
+        Math.cos(lat2*Math.PI/180)
+        *
+        Math.sin(dLon/2)
+        *
+        Math.sin(dLon/2);
+
+    const c =
+        2 *
+        Math.atan2(
+            Math.sqrt(a),
+            Math.sqrt(1-a)
+        );
+
+    return (
+        R * c
+    ).toFixed(2);
+
+}
+
+function initAutocomplete(){
+
+    const input =
+        document.getElementById(
+            'delivery-address'
+        );
+
+    const autocomplete =
+        new google.maps.places.Autocomplete(
+            input,
+            {
+                componentRestrictions:{
+                    country:['ng']
+                }
+            }
+        );
+
+    autocomplete.addListener(
+        'place_changed',
+        function(){
+
+            const place =
+                autocomplete.getPlace();
+
+            if(
+                place.geometry
+            ){
+
+                document.getElementById(
+                    'delivery-latitude'
+                ).value =
+                    place.geometry.location.lat();
+
+                document.getElementById(
+                    'delivery-longitude'
+                ).value =
+                    place.geometry.location.lng();
+
+                const distanceKm =
+                    calculateDistance(
+                        STORE_LAT,
+                        STORE_LNG,
+                        place.geometry.location.lat(),
+                        place.geometry.location.lng()
+                    );
+
+                document.getElementById(
+                    'delivery-distance-km'
+                ).value =
+                    distanceKm;
+
+                console.log(
+                    "Distance:",
+                    distanceKm
+                );
+
+            }
+
+        }
+    );
+
+}
+
+window.addEventListener(
+    'load',
+    initAutocomplete
+);
+
+</script>
+
+
+{% endblock %}

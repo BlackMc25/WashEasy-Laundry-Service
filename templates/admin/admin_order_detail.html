@@ -1,0 +1,359 @@
+{% extends 'admin/base_admin.html' %}
+{% load humanize %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+
+    <h2>
+
+        Order #{{ order.customer_order_number }}
+
+    </h2>
+
+    <a
+        href="{% url 'admin_orders' %}"
+        class="btn btn-secondary">
+
+        <i class="fas fa-arrow-left"></i>
+
+        Back to Orders
+
+    </a>
+
+</div>
+
+    <div class="admin-card mb-4">
+
+        <h4>Customer Details</h4>
+
+        <p>
+            <strong>Name:</strong>
+            {{ order.customer }}
+        </p>
+
+        <p>
+            <strong>Phone:</strong>
+            {{ order.customer.phone_number }}
+        </p>
+
+        <p>
+            <strong>Pickup Address:</strong>
+            {{ order.pickup_address }}
+        </p>
+
+        <p>
+            <strong>Delivery Address:</strong>
+            {{ order.delivery_address }}
+        </p>
+
+             <p>
+                <strong>Delivery Phone Number:</strong>
+                {{ order.phone_number }}
+            </p>
+
+        <p>
+            <strong>Total Distance:</strong>
+
+            {{ order.total_distance_km }} km
+
+        </p>
+
+        <p>
+            <strong>Pickup Date:</strong>
+            {{ order.pickup_date|date:"F d, Y" }}
+        </p>
+
+         <p>
+            <strong>Special Instructions:</strong>
+        </p>
+
+        <div class="alert alert-secondary">
+
+            {% if order.special_instructions %}
+
+                {{ order.special_instructions }}
+
+            {% else %}
+
+                No special instructions provided.
+
+            {% endif %}
+
+        </div>
+
+
+
+    </div>
+
+  <div class="admin-card mb-4">
+
+    <h4>
+
+        Laundry Items
+
+    </h4>
+
+    <table class="table">
+
+        <thead>
+
+            <tr>
+
+                <th>Item</th>
+
+                <th>Category</th>
+
+                <th>Service</th>
+
+                <th>Quantity</th>
+
+                <th>Subtotal</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            {% for item in items %}
+
+            <tr>
+
+                <td>
+
+                    {{ item.item.item_name }}
+
+                </td>
+
+                <td>
+
+                    {{ item.item.category }}
+
+                </td>
+
+                <td>
+
+                    <span class="badge bg-primary">
+
+                        {{ item.item.service_type }}
+
+                    </span>
+
+                </td>
+
+                <td>
+
+                    {{ item.quantity }}
+
+                </td>
+
+                <td>
+
+                    ₦{{ item.subtotal|intcomma  }}
+
+                </td>
+
+            </tr>
+
+            {% empty %}
+
+            <tr>
+
+                <td colspan="5" class="text-center">
+
+                    No Items Found
+
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+
+    <hr>
+
+        <div class="row">
+
+            <div class="mb-4 ms-auto">
+
+                <table class="table">
+
+                    <tr>
+
+                        <th>
+
+                            Laundry Cost
+
+                        </th>
+
+                        <td class="text-end">
+
+                            ₦{{ laundry_total|intcomma }}
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <th>
+
+                            Transport Fee
+
+                        </th>
+
+                        <td class="text-end">
+
+                            ₦{{ order.transport_fee|intcomma }}
+
+                        </td>
+
+                    </tr>
+
+                    <tr class="table-success">
+
+                        <th>
+
+                            Grand Total
+
+                        </th>
+
+                        <td class="text-end fw-bold">
+
+                            ₦{{ order.total_amount|intcomma }}
+
+                        </td>
+
+                    </tr>
+
+                </table>
+
+            </div>
+
+        </div>
+</div>
+
+
+    <!-- STATUS UPDATE SECTION -->
+
+    <div class="admin-card">
+
+        <h4 class="mb-3">
+
+            Update Order Status
+
+        </h4>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <select name="status" class="form-select">
+
+                <option value="Pending Pickup"
+                    {% if order.status == 'Pending Pickup' %}selected{% endif %}>
+                    Pending Pickup
+                </option>
+
+                <option value="Picked Up"
+                    {% if order.status == 'Picked Up' %}selected{% endif %}>
+                    Picked Up
+                </option>
+
+                <option value="Cleaning"
+                    {% if order.status == 'Cleaning' %}selected{% endif %}>
+                    In Cleaning
+                </option>
+
+                <option value="Ready"
+                    {% if order.status == 'Ready' %}selected{% endif %}>
+                    Ready For Delivery
+                </option>
+
+                <option value="Out For Delivery"
+                    {% if order.status == 'Out For Delivery' %}selected{% endif %}>
+                    Out For Delivery
+                </option>
+
+                <option value="Delivered"
+                    {% if order.status == 'Delivered' %}selected{% endif %}>
+                    Delivered
+                </option>
+
+                <option value="Cancelled"
+                    {% if order.status == 'Cancelled' %}selected{% endif %}>
+                    Cancelled
+                </option>
+
+            </select>
+
+            <button
+                type="submit"
+                class="btn btn-success mt-3">
+
+                Update Status
+
+            </button>
+
+        </form>
+
+        {% if order.status == "Cancelled" %}
+
+        <div class="card border-danger mt-4">
+
+            <div class="card-header bg-danger text-white">
+
+                <strong>
+
+                    Cancellation Details
+
+                </strong>
+
+            </div>
+
+            <div class="card-body">
+
+                <p>
+
+                    <strong>Cancelled By:</strong>
+
+                    {{ order.customer.username }}
+
+                </p>
+
+                <p>
+
+                    <strong>Reason:</strong>
+
+                    {% if order.cancellation_reason %}
+
+                        {{ order.cancellation_reason }}
+
+                    {% else %}
+
+                        No reason was provided.
+
+                    {% endif %}
+
+                </p>
+
+                <p>
+
+                    <strong>Date Cancelled:</strong>
+
+                    {{ order.updated_at|date:"F d, Y g:i A" }}
+
+                </p>
+
+            </div>
+
+        </div>
+
+{% endif %}
+    </div>
+
+</div>
+
+{% endblock %}

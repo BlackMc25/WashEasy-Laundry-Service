@@ -1,0 +1,53 @@
+{% extends 'base_dashboard.html' %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <div class="card p-4">
+
+        <h3 class="mb-4">
+
+            Notifications
+
+        </h3>
+
+        {% for notification in notifications %}
+
+            <div class="alert alert-info mb-3">
+
+                <strong>
+
+                    {{ notification.title }}
+
+                </strong>
+
+                <br>
+
+                {{ notification.message }}
+
+                <br>
+
+                <small>
+
+                    {{ notification.created_at }}
+
+                </small>
+
+            </div>
+
+        {% empty %}
+
+            <p>
+
+                No notifications yet.
+
+            </p>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+{% endblock %}

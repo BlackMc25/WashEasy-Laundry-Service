@@ -1,0 +1,52 @@
+{% extends 'base_dashboard.html' %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <div class="card p-4">
+
+        <h3>
+
+            Request Refund
+
+        </h3>
+
+        <p>
+
+            Order #{{ order.customer_order_number }}
+
+        </p>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <label>
+
+                Refund Reason
+
+            </label>
+
+            <textarea
+                name="refund_reason"
+                class="form-control"
+                rows="5"
+                required>
+
+            </textarea>
+
+            <button
+                class="btn btn-warning mt-3">
+
+                Submit Refund Request
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

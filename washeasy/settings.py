@@ -22,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-config("SECRET_KEY")
+SECRET_KEY = config("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config(
@@ -50,11 +50,14 @@ if not DEBUG:
 
     X_FRAME_OPTIONS = "DENY"
 
+
 ALLOWED_HOSTS = [
 
     "127.0.0.1",
 
     "localhost",
+
+    ".onrender.com",
 
     ".peneirize.com",
 
@@ -121,7 +124,7 @@ WSGI_APPLICATION = 'washeasy.wsgi.application'
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
 
-DEBUG = config("DEBUG", cast=bool)
+
 
 if DEBUG:
 
@@ -170,7 +173,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = "Africa/Lagos"
 
 USE_I18N = True
 
@@ -223,15 +226,11 @@ EMAIL_HOST_USER = config("EMAIL_HOST_USER")
 
 EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD")
 
-EMAIL_HOST_USER = config("EMAIL_HOST_USER")
+EMAIL_HOST_USER = config("EMAIL_HOST_USER_2")
 
-EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD")
+EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD_2")
 
 SITE_ID = 1
-
-LOGIN_REDIRECT_URL = 'dashboard'
-
-LOGOUT_REDIRECT_URL = 'home'
 
 AUTHENTICATION_BACKENDS = (
 
@@ -266,3 +265,26 @@ SOCIALACCOUNT_PROVIDERS = {
 }
 
 SOCIALACCOUNT_ADAPTER = 'accounts.adapter.CustomSocialAccountAdapter'
+
+SECURE_PROXY_SSL_HEADER = (
+    "HTTP_X_FORWARDED_PROTO",
+    "https",
+)
+SECURE_SSL_REDIRECT = True
+
+
+CSRF_TRUSTED_ORIGINS = [
+
+    "https://*.peneirize.com",
+
+    "https://*.onrender.com",
+
+]
+
+LOGGING = {
+
+    "version": 1,
+
+    "disable_existing_loggers": False,
+
+}

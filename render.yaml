@@ -8,6 +8,10 @@ services:
 
     startCommand: "gunicorn washeasy.wsgi:application"
 
+    autoDeploy: true
+
+    healthCheckPath: /
+
     envVars:
       - key: PYTHON_VERSION
         value: "3.13.5"

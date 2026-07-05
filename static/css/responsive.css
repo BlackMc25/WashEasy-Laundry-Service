@@ -57,6 +57,55 @@ table{
 
 }
 
+.summary-card{
+
+    position:sticky;
+
+    top:20px;
+
+    border-radius:20px;
+
+}
+
+
+.summary-card{
+
+    position:sticky;
+
+    top:20px;
+
+    border-radius:20px;
+
+}
+
+.booking-form .form-control{
+
+    min-height:48px;
+
+    border-radius:12px;
+
+}
+
+.booking-form textarea{
+
+    min-height:120px;
+
+}
+
+.booking-form select{
+
+    min-height:48px;
+
+}
+
+.booking-map{
+
+    height:400px;
+
+    border-radius:15px;
+
+}
+
 /* ===============================
 TABLETS
 =============================== */
@@ -66,6 +115,20 @@ TABLETS
 .container{
     width:95%;
     margin:auto;
+}
+
+}
+
+/* ==========================================
+BOOK LAUNDRY
+========================================== */
+
+@media(max-width:992px){
+
+.summary-card{
+
+    margin-top:25px;
+
 }
 
 }
@@ -250,6 +313,78 @@ button{
 .topbar{
 
     margin-left:0 !important;
+
+}
+
+.card{
+
+    border-radius:16px;
+
+    margin-bottom:20px;
+
+}
+
+.card-header{
+
+    padding:18px;
+
+    font-size:18px;
+
+}
+
+.card-body{
+
+    padding:18px;
+
+}
+
+.item-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:15px;
+
+}
+
+.quantity-controls2{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+.qty2-btn2{
+
+    width:42px;
+
+    height:42px;
+
+    border-radius:50%;
+
+    font-size:22px;
+
+}
+
+.qty2-value2{
+
+    width:60px;
+
+    text-align:center;
+
+    font-size:18px;
+
+}
+
+.booking-map{
+
+    height:280px;
 
 }
 

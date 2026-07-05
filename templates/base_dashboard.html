@@ -237,7 +237,6 @@
 
         {% endif %}
 
-{% if request.resolver_match.url_name != "socialaccount_login" and request.resolver_match.url_name != "socialaccount_signup" %}
 
 <div class="topbar">
 
@@ -320,10 +319,6 @@
     </ul>
 
 </div>
-
-{% include "includes/bottom_nav.html" %}
-
-{% endif %}
         <div class="dropdown">
 
     <div
@@ -519,9 +514,8 @@ window.addEventListener("resize",()=>{
 <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
 
 <!-- no google maps script -->
- <script
-src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBa1x3gYvDUSXSimHJdrcu3Fwn2EYfjha0
-&libraries=places">
+<script
+src="https://maps.googleapis.com/maps/api/js?key={{ GOOGLE_MAPS_API_KEY }}&libraries=places">
 </script>
 
 <br>

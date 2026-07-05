@@ -111,6 +111,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'core.context_processors.notifications',
                 'core.context_processors.site_settings',
+                'core.context_processors.google_maps',
             ],
         },
     },
@@ -207,6 +208,8 @@ SESSION_SAVE_EVERY_REQUEST = True
 PAYSTACK_PUBLIC_KEY = config("PAYSTACK_PUBLIC_KEY")
 
 PAYSTACK_SECRET_KEY = config("PAYSTACK_SECRET_KEY")
+
+GOOGLE_MAPS_API_KEY = config("GOOGLE_MAPS_API_KEY")
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

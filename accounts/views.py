@@ -377,7 +377,7 @@ def settings_view(request):
 from django.contrib.auth import logout
 from django.shortcuts import redirect
 
-
+@login_required
 def customer_logout(request):
     logout(request)
     return redirect("home")

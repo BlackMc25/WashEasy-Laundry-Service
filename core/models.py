@@ -15,7 +15,6 @@ class LaundryOrder(models.Model):
     ]
 
     PAYMENT_CHOICES = [
-        ('Pay Online', 'Pay Online'),
         ('Pay On Delivery', 'Pay On Delivery'),
     ]
 

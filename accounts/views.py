@@ -177,6 +177,15 @@ def initialize_payment(
         order_id
         ):
 
+        ONLINE_PAYMENT_ENABLED = False
+
+        if not ONLINE_PAYMENT_ENABLED:
+            messages.warning(
+                request,
+                "Online payment is temporarily unavailable."
+            )
+            return redirect("order_detail", order_id=order.id)
+
         order = get_object_or_404(
         LaundryOrder,
         id=order_id,

@@ -55,8 +55,9 @@ ALLOWED_HOSTS = [
     "127.0.0.1",
     "localhost",
     ".onrender.com",
-    "washeasy-laundry-service.onrender.com",
-    ".peneirize.com",
+    "washeasy.peneirize.com",
+    "washeasyadmin.peneirize.com",
+    "washeasydeliveryverify.peneirize.com",
 ]
 
 
@@ -266,11 +267,10 @@ SECURE_SSL_REDIRECT = True
 
 
 CSRF_TRUSTED_ORIGINS = [
-
-    "https://*.peneirize.com",
-
+    "https://washeasy.peneirize.com",
+    "https://washeasyadmin.peneirize.com",
+    "https://washeasydeliveryverify.peneirize.com",
     "https://*.onrender.com",
-
 ]
 
 LOGGING = {

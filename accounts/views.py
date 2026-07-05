@@ -374,6 +374,14 @@ def settings_view(request):
         }
     )
 
+from django.contrib.auth import logout
+from django.shortcuts import redirect
+
+
+def customer_logout(request):
+    logout(request)
+    return redirect("home")
+
 from django.core.mail import send_mail
 
 def contact_us(request):

@@ -18,6 +18,11 @@ urlpatterns = [
          views.logout_view,
          name='logout'),
 
+    path(
+    "customer/logout/",
+    views.customer_logout,
+    name="customer_logout",
+        ),
 
       path(
           'initialize-payment/<int:order_id>/',

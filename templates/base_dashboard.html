@@ -237,13 +237,15 @@
 
         {% endif %}
 
+{% if request.resolver_match.url_name != "socialaccount_login" and request.resolver_match.url_name != "socialaccount_signup" %}
+
 <div class="topbar">
 
     <div></div>
 
     <div class="topbar-right">
 
-<div class="dropdown">
+    <div class="dropdown">
 
     <button
         class="notification-btn dropdown-toggle"
@@ -318,6 +320,10 @@
     </ul>
 
 </div>
+
+{% include "includes/bottom_nav.html" %}
+
+{% endif %}
         <div class="dropdown">
 
     <div

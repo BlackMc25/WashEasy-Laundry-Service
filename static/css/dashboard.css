@@ -557,9 +557,9 @@ body{
 
     justify-content:flex-end;
 
-    gap:14px;
+    gap:10px;
 
-    min-width:170px;
+    flex-shrink:0;
 
 }
 
@@ -632,6 +632,28 @@ body{
     transform:scale(0.95);
 
 }
+
+.item-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:15px;
+
+}
+
+.item-info{
+
+    flex:1;
+
+    min-width:0;
+
+}
+
+
 
 
 /* Cancel-Order*/

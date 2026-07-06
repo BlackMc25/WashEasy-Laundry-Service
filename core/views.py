@@ -184,47 +184,47 @@ def book_laundry(request):
 
                     total_amount += subtotal
 
-                    total_amount += transport_fee
+            total_amount += transport_fee
 
-                    order.total_amount = total_amount
-                    order.save()
-
-                    # ------------------------------------
-                    # Create notification for the customer
-                    # ------------------------------------
-                    Notification.objects.create(
-                        user=request.user,
-                        title="Pickup Scheduled",
-                        message=(
-                            "Your booking has been received successfully.\n\n"
-                            "Please get your clothes ready. "
-                            "Our rider will arrive shortly to pick up your laundry."
-                        )
-                    )
-
-                    if order.payment_method == 'Pay Online':
-
-                        return redirect(
-                            'initialize_payment',
-                            order_id=order.id
-                        )
-
-                    return redirect('my_orders')
-            else:
-
-                form = LaundryOrderForm()
-
-            return render(
-                request,
-                'book_laundry.html',
-                {
-                    'categories': categories,
-                    'form': form,
-                    'previous_addresses': previous_addresses,
-                    'previous_delivery_addresses': previous_delivery_addresses,
-                    'site_settings': site_settings,
-                }
+            order.total_amount = total_amount
+            order.save()
+            # ------------------------------------
+            # Create notification for the customer
+            # ------------------------------------
+            Notification.objects.create(
+                user=request.user,
+                title="Pickup Scheduled",
+                message=(
+                    "Your booking has been received successfully.\n\n"
+                    "Please get your clothes ready. "
+                    "Our rider will arrive shortly to pick up your laundry."
+                )
             )
+
+            if order.payment_method == 'Pay Online':
+
+                return redirect(
+                    'initialize_payment',
+                    order_id=order.id
+                )
+
+            return redirect('my_orders')
+
+    else:
+
+        form = LaundryOrderForm()
+
+    return render(
+        request,
+        'book_laundry.html',
+        {
+            'categories': categories,
+            'form': form,
+            'previous_addresses': previous_addresses,
+            'previous_delivery_addresses': previous_delivery_addresses,
+            'site_settings': site_settings,
+        }
+    )
 
 
 

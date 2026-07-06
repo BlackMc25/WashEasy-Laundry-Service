@@ -1540,6 +1540,126 @@ body.light .pac-item-query{
 
 }
 
+/* ==========================================
+   LIGHT MODE FIXES
+   (Leave Dark Mode Untouched)
+========================================== */
+
+body:not(.dark) .stats-card,
+body:not(.dark) .order-card,
+body:not(.dark) .summary-card,
+body:not(.dark) .booking-form,
+body:not(.dark) .cancel-order-card,
+body:not(.dark) .notification-item{
+
+    background:#ffffff;
+
+    color:#1f2937;
+
+    border:1px solid #e5e7eb;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+}
+
+body:not(.dark) .accordion-item{
+
+    background:#ffffff;
+
+    border:1px solid #dee2e6;
+
+}
+
+body:not(.dark) .accordion-body{
+
+    background:#ffffff;
+
+}
+
+body:not(.dark) .accordion-button{
+
+    background:#0d6efd;
+
+    color:#ffffff;
+
+}
+
+body:not(.dark) .accordion-button:not(.collapsed){
+
+    background:#0b5ed7;
+
+    color:#ffffff;
+
+}
+
+body:not(.dark) .accordion-button::after{
+
+    filter:brightness(0) invert(1);
+
+}
+
+/* Clothing Category */
+
+body:not(.dark) .laundry-title,
+body:not(.dark) .item-title,
+body:not(.dark) .item-name,
+body:not(.dark) h5,
+body:not(.dark) h6{
+
+    color:#1f2937;
+
+}
+
+/* Prices */
+
+body:not(.dark) .item-price{
+
+    color:#6b7280;
+
+}
+
+/* Quantity Box */
+
+body:not(.dark) .qty2-value2{
+
+    background:#eef2f7;
+
+    color:#1f2937;
+
+    border:1px solid #d5d9df;
+
+}
+
+/* Quantity Buttons */
+
+body:not(.dark) .qty2-btn2{
+
+    background:#0d6efd;
+
+    color:#fff;
+
+}
+
+/* Order Summary */
+
+body:not(.dark) .order-summary{
+
+    background:#ffffff;
+
+    border:1px solid #e5e7eb;
+
+}
+
+/* Booking Guide */
+
+body:not(.dark) .booking-details{
+
+    background:#dff6ff;
+
+    color:#0f4c81;
+
+}
+
 /* ---------- DARK MODE ---------- */
 
 body.dark .pac-container{

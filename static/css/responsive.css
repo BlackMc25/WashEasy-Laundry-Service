@@ -513,25 +513,27 @@ button{
 
     }
 
-    .stats-container.mobile-grid{
+   .stats-container.mobile-grid{
 
-        display:grid;
+    display:flex;
 
-        grid-template-columns:1fr 1fr;
+    flex-direction:column;
 
-        gap:15px;
+    gap:16px;
 
-    }
+}
 
-    .stats-card{
+.stats-card{
 
-        min-height:130px;
+    width:100%;
 
-        padding:18px;
+    min-height:110px;
 
-        border-radius:20px;
+    padding:20px;
 
-    }
+    border-radius:20px;
+
+}
 
     .stats-card h3{
 
@@ -746,6 +748,24 @@ box-shadow:0 10px 25px rgba(0,0,0,.2);
 font-weight:700;
 
 margin-bottom:20px;
+
+}
+
+.item-row{
+
+align-items:flex-start;
+
+}
+
+.item-info{
+
+flex:1;
+
+}
+
+.quantity-controls2{
+
+margin-top:8px;
 
 }
 }

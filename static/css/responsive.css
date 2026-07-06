@@ -374,33 +374,29 @@ button{
 
 .quantity-controls2{
 
-    display:flex;
+    min-width:165px;
 
-    align-items:center;
-
-    gap:10px;
+    gap:12px;
 
 }
 
 .qty2-btn2{
 
-    width:42px;
+    width:50px;
 
-    height:42px;
+    height:50px;
 
-    border-radius:50%;
-
-    font-size:22px;
+    font-size:28px;
 
 }
 
 .qty2-value2{
 
-    width:60px;
+    width:65px;
 
-    text-align:center;
+    height:54px;
 
-    font-size:18px;
+    font-size:28px;
 
 }
 
@@ -751,15 +747,21 @@ margin-bottom:20px;
 
 }
 
-.item-row{
+.service-item{
 
-align-items:flex-start;
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:12px;
 
 }
 
 .item-info{
 
-flex:1;
+    flex:1;
 
 }
 
@@ -768,4 +770,43 @@ flex:1;
 margin-top:8px;
 
 }
+
+}
+
+@media (max-width:768px){
+
+    .quantity-controls2{
+
+        display:flex;
+
+        align-items:center;
+
+        justify-content:flex-end;
+
+        gap:8px;
+
+        flex-shrink:0;
+
+    }
+
+    .qty2-btn2{
+
+        width:48px;
+
+        height:48px;
+
+        font-size:26px;
+
+    }
+
+    .qty2-value2{
+
+        width:58px;
+
+        height:54px;
+
+        font-size:28px;
+
+    }
+
 }

@@ -189,6 +189,19 @@ def book_laundry(request):
             order.total_amount = total_amount
             order.save()
 
+            # ------------------------------------
+            # Create notification for the customer
+            # ------------------------------------
+            Notification.objects.create(
+                user=request.user,
+                title="Pickup Scheduled",
+                message=(
+                    "Your booking has been received successfully.\n\n"
+                    "Please get your clothes ready. "
+                    "Our rider will arrive shortly to pick up your laundry."
+                )
+            )
+
             if order.payment_method == 'Pay Online':
 
                 return redirect(
@@ -197,7 +210,6 @@ def book_laundry(request):
                 )
 
             return redirect('my_orders')
-
     else:
 
         form = LaundryOrderForm()
@@ -1696,149 +1708,3 @@ def delete_customer(request, user_id):
 
     return redirect("admin_customers")
 
-from datetime import timedelta
-from django.utils import timezone
-from accounts.models import AdminDeletePIN
-
-@staff_member_required
-def send_customer_delete_pin(
-    request,
-    user_id
-):
-
-    customer = get_object_or_404(
-        User,
-        id=user_id
-    )
-
-    AdminDeletePIN.objects.filter(
-        admin=request.user,
-        purpose="customer_delete"
-    ).delete()
-
-    pin = str(
-        random.randint(
-            1000,
-            9999
-        )
-    )
-
-    AdminDeletePIN.objects.create(
-
-        admin=request.user,
-
-        pin=pin,
-
-        purpose="customer_delete",
-
-        customer_id=customer.id
-
-    )
-
-    send_mail(
-
-        subject="WashEasy Customer Delete PIN",
-
-        message=f"""
-Customer Deletion Verification
-
-Customer:
-{customer.username}
-
-PIN:
-
-{pin}
-
-This PIN expires in 10 minutes.
-""",
-
-        from_email=settings.EMAIL_HOST_USER,
-
-        recipient_list=[
-            request.user.email
-        ],
-
-        fail_silently=False
-
-    )
-
-    return JsonResponse(
-        {
-            "success":True
-        }
-    )
-
-@staff_member_required
-def verify_customer_delete(
-    request,
-    user_id
-):
-
-    if request.method != "POST":
-
-        return redirect(
-            "admin_customers"
-        )
-
-    pin = request.POST.get(
-        "pin"
-    )
-
-    try:
-
-        record = AdminDeletePIN.objects.get(
-
-            admin=request.user,
-
-            pin=pin,
-
-            purpose="customer_delete",
-
-            customer_id=user_id
-
-        )
-
-    except AdminDeletePIN.DoesNotExist:
-
-        messages.error(
-            request,
-            "Invalid PIN."
-        )
-
-        return redirect(
-            "admin_customers"
-        )
-
-    if timezone.now() > record.created_at + timedelta(minutes=10):
-
-        record.delete()
-
-        messages.error(
-            request,
-            "PIN has expired."
-        )
-
-        return redirect(
-            "admin_customers"
-        )
-
-    customer = get_object_or_404(
-        User,
-        id=user_id
-    )
-
-    customer.delete()
-
-    record.delete()
-
-    messages.success(
-
-        request,
-
-        "Customer deleted successfully."
-
-    )
-
-    return redirect(
-        "admin_customers"
-    )

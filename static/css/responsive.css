@@ -778,25 +778,27 @@ margin-top:8px;
     }
 
 
-   .qty2-btn2{
+      .qty2-btn2{
 
-        width:46px;
+        width:36px;
+        height:36px;
 
-        height:46px;
+        min-width:36px;
+        min-height:36px;
 
-        font-size:24px;
-
+        font-size:18px;
     }
 
     .qty2-value2{
 
-        width:56px;
+        width:42px;
+        height:36px;
 
-        height:50px;
+        min-width:42px;
 
-        font-size:24px;
-
+        font-size:18px;
     }
+
 
 }
 

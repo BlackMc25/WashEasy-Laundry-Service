@@ -549,51 +549,30 @@ body{
    QUANTITY CONTROLS
 ===================================== */
 
-.quantity-controls2{
+ .quantity-controls2{
 
-    display:flex;
+        display:flex;
 
-    align-items:center;
+        align-items:center;
 
-    justify-content:flex-end;
+        justify-content:flex-end;
 
-    gap:10px;
+        gap:6px;
+    }
 
-    flex-shrink:0;
 
-}
+    .qty2-btn2{
 
-.qty2-btn2{
+        width:40px;
+        height:40px;
 
-    width:52px;
+        min-width:40px;
+        min-height:40px;
 
-    height:52px;
+        font-size:20px;
+        border-radius:50%;
+    }
 
-    border:none;
-
-    border-radius:50%;
-
-    background:#0d6efd;
-
-    color:#fff;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    font-size:30px;
-
-    font-weight:700;
-
-    cursor:pointer;
-
-    transition:.25s;
-
-    flex-shrink:0;
-
-}
 
 .qty2-btn2:hover{
 
@@ -601,37 +580,24 @@ body{
 
 }
 
-.qty2-value2{
+    .qty2-value2{
 
-    width:70px;
+        width:46px;
+        height:40px;
 
-    height:58px;
+        min-width:46px;
 
-    border-radius:14px;
+        font-size:20px;
+        font-weight:600;
 
-    border:1px solid #d8dce4;
-
-    background:#f5f6f8;
-
-    color:#222;
-
-    text-align:center;
-
-    font-size:30px;
-
-    font-weight:600;
-
-    outline:none;
-
-    flex-shrink:0;
-
-}
-
+        border-radius:12px;
+    }
 .qty2-btn2:active{
 
     transform:scale(0.95);
 
 }
+
 
 .item-row{
 

@@ -303,10 +303,10 @@ body{
 
 .item-row{
     display:flex;
-
     justify-content:space-between;
+    align-items:center;
 
-    padding:12px 0;
+    padding:15px 0;
 
     border-bottom:1px solid #eee;
 }
@@ -325,15 +325,6 @@ body{
     top:20px;
 }
 
-.item-row{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-
-    padding:15px 0;
-
-    border-bottom:1px solid #eee;
-}
 
 .item-info h6{
     margin-bottom:5px;
@@ -361,8 +352,11 @@ body{
 
     box-shadow:0 4px 15px rgba(0,0,0,.08);
 
-}
+    cursor:pointer;
 
+    transition:.3s;
+
+}
 .status-badge{
 
     background:#e8f5e9;
@@ -384,10 +378,6 @@ body{
     color:inherit;
 }
 
-.order-card{
-    cursor:pointer;
-    transition:.3s;
-}
 
 .order-card:hover{
     transform:translateY(-3px);
@@ -552,41 +542,53 @@ body{
 /* Qunatity Control */
 .quantity-controls2{
 
-    display:flex;
+display:flex;
 
-    align-items:center;
+align-items:center;
 
-    gap:12px;
+gap:10px;
 
 }
 
 .qty2-btn2{
 
-    width:36px;
+width:42px;
 
-    height:36px;
+height:42px;
 
-    border:none;
+border-radius:50%;
 
-    border-radius:50%;
+border:none;
 
-    background:#0d6efd;
+background:#0d6efd;
 
-    color:white;
+color:white;
 
-    font-size:20px;
+font-size:24px;
 
-    font-weight:bold;
+font-weight:bold;
 
-    display:flex;
+display:flex;
 
-    align-items:center;
+align-items:center;
 
-    justify-content:center;
+justify-content:center;
 
-    cursor:pointer;
+}
 
-    transition:0.3s ease;
+.qty2-value2{
+
+width:45px;
+
+text-align:center;
+
+font-size:18px;
+
+background:transparent;
+
+border:none;
+
+color:white;
 
 }
 
@@ -604,25 +606,6 @@ body{
 
 }
 
-.qty2-value2{
-
-    width:45px;
-
-    border:none;
-
-    background:transparent;
-
-    text-align:center;
-
-    font-size:18px;
-
-    font-weight:700;
-
-    color:#212529;
-
-    pointer-events:none;
-
-}
 
 /* Cancel-Order*/
 .cancel-card{
@@ -1669,17 +1652,27 @@ label{
     }
 
 
-    .notification-actions{
+.notification-actions{
 
     display:flex;
-    gap:10px;
-    flex-wrap:wrap;
 
-}
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:15px;
+
+    margin-bottom:25px;
+
+    flex-direction:column;
+
+    }
 
 .notification-actions .btn{
 
     flex:1;
+
+    width:100%;
 
 }
 
@@ -1907,6 +1900,39 @@ label{
 
     }
 
+    .page-container{
+
+    width:100%;
+
+    max-width:1400px;
+
+    margin:auto;
+
+    }
+
+    .page-title{
+
+    font-size:2rem;
+
+    font-weight:700;
+
+    margin-bottom:25px;
+
+    }
+
+    .mobile-card{
+
+    background:white;
+
+    border-radius:18px;
+
+    padding:20px;
+
+    box-shadow:0 4px 15px rgba(0,0,0,.08);
+
+ }
+
+
     .main-content{
 
         margin-left:0 !important;
@@ -1916,6 +1942,8 @@ label{
         padding-bottom:100px;
 
     }
+
+  
 
 }
 
@@ -1946,5 +1974,69 @@ label{
         opacity:1;
 
     }
+
+}
+
+  .notification-item{
+
+    background:white;
+
+    padding:18px;
+
+    border-radius:16px;
+
+    margin-bottom:15px;
+
+    box-shadow:0 3px 10px rgba(0,0,0,.08);
+
+ }
+
+ .laundry-card{
+
+    background:white;
+
+    border-radius:18px;
+
+    padding:18px;
+
+    margin-bottom:18px;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+
+}
+
+.laundry-title{
+
+    font-size:18px;
+
+    font-weight:700;
+
+    padding-bottom:12px;
+
+    border-bottom:1px solid #eee;
+
+    margin-bottom:15px;
+
+}
+
+.booking-title{
+
+    font-weight:700;
+
+    margin-bottom:18px;
+
+}
+
+.order-guide{
+
+    background:#eaf6ff;
+
+    color:#0d3b66;
+
+    border-radius:18px;
+
+    padding:20px;
+
+    margin-bottom:20px;
 
 }

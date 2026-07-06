@@ -2,18 +2,18 @@
 
 {% block content %}
 
-<div class="container-fluid">
+<div class="page-container">
 
         <form method="POST">
         {% csrf_token %}
 
-    <h3 class="mb-4">
+    <h1 class="page-title">
         Book Laundry
-    </h3>
+    </h1>
 
         {% if error_message %}
 
-        <div class="alert alert-danger">
+        <div class="order-guide">
 
             {{ error_message }}
 
@@ -44,7 +44,7 @@
 
                 {% for category, clothing_items in categories.items %}
 
-<div class="accordion-item">
+<div class="accordion-item laundry-category">
 
     <h2 class="accordion-header">
 
@@ -69,10 +69,9 @@
 
             {% for item_name, services in clothing_items.items %}
 
-            <div class="card mb-3">
+            <div class="laundry-card">
 
-                <div
-                    class="card-header"
+                <div class="laundry-title"
                     data-bs-toggle="collapse"
                     data-bs-target="#item{{ forloop.counter }}"
                     style="cursor:pointer;">
@@ -85,7 +84,7 @@
                     id="item{{ forloop.counter }}"
                     class="collapse">
 
-                <div class="card-body">
+                <div class="laundry-body">
 
                     {% for service in services %}
 
@@ -168,7 +167,7 @@
 
         <div class="col-lg-4">
 
-            <div class="summary-card">
+            <div class="summary-card mobile-summary">
 
                 <h5>Order Summary</h5>
                 <div id="selected-items">
@@ -218,9 +217,9 @@
 
                 <hr>
 
-                <h6 class="mt-3">
+                <h5 class="booking-title mt-3">
                     Booking Details
-                </h6>
+                </h5>
 
                 <div class="booking-form">
 

@@ -1,10 +1,16 @@
 {% extends 'base_dashboard.html' %}
 {% load humanize %}
 {% block content %}
-<h1>
-    Welcome, {{request.user.first_name}}
+<div class="page-container">
+
+<h1 class="page-title">
+
+    Welcome,
+
+    {{ request.user.first_name }}
+
 </h1>
-        <div class="mb-4">
+        <div class="dashboard-actions mb-4">
 
             <a href="{% url 'book_laundry' %}"
             class="btn btn-primary me-2">
@@ -21,7 +27,7 @@
             </a>
 
         </div>
-    <div class="stats-container">
+    <div class="stats-container mobile-grid">
 
         <div class="stats-card">
 
@@ -87,7 +93,7 @@
     
 </div>
 
-<div class="card mt-4 p-4">
+<div class="card mobile-card mt-4">
 
     <h4>
         Recent Activity
@@ -133,6 +139,8 @@
         </p>
 
     {% endif %}
+
+</div>
 
 </div>
 

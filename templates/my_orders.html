@@ -2,9 +2,9 @@
 
 {% block content %}
 
-<div class="container-fluid">
+<div class="page-container">
 
-    <h3 class="mb-4">
+    <h1 class="page-title">
         My Orders
     </h3>
 
@@ -13,9 +13,9 @@
         {% for order in orders %}
 
        <a
-    href="{% url 'order_detail' order.id %}"
+    href="{% url 'order_detail' order.customer_order_number %}"
     class="order-link">
-    <div class="order-card">
+    <div class="order-card mobile-card">
 
             <div>
 
@@ -47,7 +47,7 @@
 
     {% else %}
 
-        <div class="card p-4">
+        <div class="mobile-card">
 
             <h5>
                 No Orders Yet

@@ -106,6 +106,28 @@ table{
 
 }
 
+.accordion-button{
+
+    font-weight:600;
+
+}
+
+.accordion-button:not(.collapsed){
+
+    background:#e9f5ff;
+
+}
+
+.booking-form button[type="submit"]{
+
+    height:55px;
+
+    font-size:18px;
+
+    border-radius:12px;
+
+}
+
 /* ===============================
 TABLETS
 =============================== */
@@ -388,4 +410,342 @@ button{
 
 }
 
+.container-fluid{
+
+    padding-left:15px;
+
+    padding-right:15px;
+
+}
+
+.summary-card{
+
+    margin-top:30px;
+
+}
+
+}
+
+/* ==========================================
+   WASH EASY MOBILE APP DESIGN
+========================================== */
+
+@media (max-width:768px){
+
+    .page-container{
+
+        width:100%;
+        max-width:100%;
+
+        padding:20px 16px 110px;
+
+        margin:0 auto;
+
+    }
+
+    .page-title{
+
+        font-size:2rem;
+
+        font-weight:700;
+
+        margin-bottom:22px;
+
+        line-height:1.2;
+
+    }
+
+    .mobile-card{
+
+        background:#222c3f;
+
+        border-radius:20px;
+
+        padding:18px;
+
+        margin-bottom:18px;
+
+        border:1px solid rgba(255,255,255,.06);
+
+        box-shadow:0 10px 25px rgba(0,0,0,.15);
+
+    }
+
+    .mobile-grid{
+
+        display:grid;
+
+        grid-template-columns:1fr 1fr;
+
+        gap:15px;
+
+    }
+
+}
+
+/* ==========================================
+   DASHBOARD & ORDERS MOBILE IMPROVEMENTS
+========================================== */
+
+@media (max-width:768px){
+
+    .dashboard-actions{
+
+        display:grid;
+
+        grid-template-columns:1fr 1fr;
+
+        gap:12px;
+
+        margin-bottom:24px;
+
+    }
+
+    .dashboard-actions .btn{
+
+        width:100%;
+
+        height:50px;
+
+        border-radius:14px;
+
+        font-weight:600;
+
+    }
+
+    .stats-container.mobile-grid{
+
+        display:grid;
+
+        grid-template-columns:1fr 1fr;
+
+        gap:15px;
+
+    }
+
+    .stats-card{
+
+        min-height:130px;
+
+        padding:18px;
+
+        border-radius:20px;
+
+    }
+
+    .stats-card h3{
+
+        font-size:2rem;
+
+        margin-top:8px;
+
+    }
+
+    .stats-card h6{
+
+        font-size:.95rem;
+
+    }
+
+    .order-card{
+
+        display:flex;
+
+        justify-content:space-between;
+
+        align-items:center;
+
+        gap:15px;
+
+    }
+
+    .status-badge{
+
+        margin-top:10px;
+
+        border-radius:20px;
+
+        padding:8px 14px;
+
+        font-size:.8rem;
+
+    }
+
+}
+
+/*=========================================
+NOTIFICATIONS
+==========================================*/
+
+@media(max-width:768px){
+
+.notification-actions{
+
+display:flex;
+
+flex-direction:column;
+
+gap:12px;
+
+margin-bottom:25px;
+
+}
+
+.notification-actions .btn{
+
+width:100%;
+
+border-radius:14px;
+
+height:48px;
+
+font-weight:600;
+
+}
+
+.notification-item{
+
+background:#222c3f;
+
+padding:18px;
+
+border-radius:18px;
+
+margin-bottom:15px;
+
+border:1px solid rgba(255,255,255,.05);
+
+}
+
+.notification-item small{
+
+opacity:.7;
+
+}
+
+}
+
+.order-guide{
+
+background:#bfefff;
+
+color:#063b57;
+
+padding:18px;
+
+border-radius:18px;
+
+margin-bottom:25px;
+
+line-height:1.8;
+
+}
+
+/*======================================
+BOOK LAUNDRY
+=======================================*/
+
+@media(max-width:768px){
+
+.laundry-category{
+
+margin-bottom:20px;
+
+border:none;
+
+background:none;
+
+}
+
+.laundry-category .accordion-button{
+
+border-radius:18px;
+
+font-size:1.15rem;
+
+font-weight:700;
+
+padding:18px;
+
+}
+
+.laundry-card{
+
+background:#222c3f;
+
+border-radius:20px;
+
+padding:15px;
+
+margin-bottom:15px;
+
+box-shadow:0 8px 25px rgba(0,0,0,.18);
+
+}
+
+.laundry-title{
+
+font-size:1.2rem;
+
+font-weight:700;
+
+padding:10px;
+
+margin-bottom:15px;
+
+border-bottom:1px solid rgba(255,255,255,.08);
+
+cursor:pointer;
+
+}
+
+.laundry-body{
+
+padding:10px;
+
+}
+
+.item-row{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+gap:15px;
+
+padding:10px 0;
+
+}
+
+.item-info{
+
+flex:1;
+
+}
+
+.mobile-summary{
+
+position:sticky;
+
+top:90px;
+
+background:#222c3f;
+
+padding:22px;
+
+border-radius:22px;
+
+box-shadow:0 10px 25px rgba(0,0,0,.2);
+
+}
+
+.booking-title{
+
+font-weight:700;
+
+margin-bottom:20px;
+
+}
 }

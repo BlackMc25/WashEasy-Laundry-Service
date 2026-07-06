@@ -598,7 +598,6 @@ body{
 
 }
 
-
 .item-row{
 
     display:flex;
@@ -618,8 +617,6 @@ body{
     min-width:0;
 
 }
-
-
 
 
 /* Cancel-Order*/
@@ -2316,5 +2313,45 @@ label{
     padding:20px;
 
     margin-bottom:20px;
+
+}
+
+/* =====================================
+   FORCE LIGHT MODE - NOTIFICATIONS
+===================================== */
+
+body:not(.dark) .mobile-card.notification-card-wrapper{
+
+    background:#ffffff !important;
+
+    background-image:none !important;
+
+    color:#212529 !important;
+
+    border:1px solid #e5e7eb !important;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08) !important;
+
+}
+
+body:not(.dark) .notification-item{
+
+    background:#ffffff !important;
+
+    color:#212529 !important;
+
+    border:1px solid #e5e7eb !important;
+
+}
+
+body:not(.dark) .notification-item strong{
+
+    color:#212529 !important;
+
+}
+
+body:not(.dark) .notification-item small{
+
+    color:#6b7280 !important;
 
 }

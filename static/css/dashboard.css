@@ -1546,9 +1546,11 @@ body.light .pac-item-query{
 ========================================== */
 
 body:not(.dark) .stats-card,
+body:not(.dark) .card,
 body:not(.dark) .order-card,
 body:not(.dark) .summary-card,
 body:not(.dark) .booking-form,
+body:not(.dark) .laundry-card,
 body:not(.dark) .cancel-order-card,
 body:not(.dark) .notification-item{
 

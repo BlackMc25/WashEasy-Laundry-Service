@@ -302,7 +302,7 @@ body{
 }
 
 .item-row{
-    
+
     display:flex;
 
     justify-content:space-between;
@@ -545,70 +545,85 @@ body{
 
 }
 
-/* Qunatity Control */
+/* =====================================
+   QUANTITY CONTROLS
+===================================== */
+
 .quantity-controls2{
 
-display:flex;
+    display:flex;
 
-align-items:center;
+    align-items:center;
 
-justify-content:flex-end;
+    justify-content:flex-end;
 
-gap:12px;
+    gap:14px;
 
-flex-wrap:nowrap;
-
-min-width:150px;
+    min-width:170px;
 
 }
 
 .qty2-btn2{
 
-width:42px;
+    width:52px;
 
-height:42px;
+    height:52px;
 
-border-radius:50%;
+    border:none;
 
-border:none;
+    border-radius:50%;
 
-background:#0d6efd;
+    background:#0d6efd;
 
-color:white;
+    color:#fff;
 
-font-size:24px;
+    display:flex;
 
-font-weight:bold;
+    justify-content:center;
 
-display:flex;
+    align-items:center;
 
-align-items:center;
+    font-size:30px;
 
-justify-content:center;
+    font-weight:700;
 
-}
+    cursor:pointer;
 
-.qty2-value2{
+    transition:.25s;
 
-width:45px;
-
-text-align:center;
-
-font-size:18px;
-
-background:transparent;
-
-border:none;
-
-color:white;
+    flex-shrink:0;
 
 }
 
 .qty2-btn2:hover{
 
-    transform:scale(1.08);
+    transform:scale(1.05);
 
-    background:#0b5ed7;
+}
+
+.qty2-value2{
+
+    width:70px;
+
+    height:58px;
+
+    border-radius:14px;
+
+    border:1px solid #d8dce4;
+
+    background:#f5f6f8;
+
+    color:#222;
+
+    text-align:center;
+
+    font-size:30px;
+
+    font-weight:600;
+
+    outline:none;
+
+    flex-shrink:0;
 
 }
 

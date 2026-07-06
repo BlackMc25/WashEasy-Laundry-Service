@@ -1038,27 +1038,6 @@ body.dark .alert-danger{
 
 }
 
-body.dark .accordion-item{
-
-    background: #1e293b !important;
-
-    border: 1px solid #334155;
-
-}
-
-body.dark .accordion-body{
-
-    background: #1e293b !important;
-
-}
-
-body.dark .accordion-header button{
-
-    background: #0f4c81 !important;
-
-    color: white !important;
-
-}
 
 body.dark .accordion-button::after{
 
@@ -1113,31 +1092,31 @@ body.dark .container-fluid{
 
 }
 
-body.dark .order-summary,
+/* =====================================
+   ALL CARDS
+===================================== */
+
+body.dark .card,
+body.dark .stats-card,
 body.dark .booking-form,
-body.dark .card{
+body.dark .order-card,
+body.dark .summary-card,
+body.dark .cancel-card,
+body.dark .cancel-order-card,
+body.dark .notification-item,
+body.dark .laundry-card{
 
-    background: linear-gradient(
+    background:linear-gradient(
         145deg,
         #1e293b,
-        #0f172a
-    );
-
-}
-
-body.dark .summary-card{
-
-    background: linear-gradient(
-        145deg,
-        #1e293b,
-        #0f172a
+        #162233
     ) !important;
 
-    color: #f8fafc !important;
+    color:#f8fafc !important;
 
-    border: 1px solid #334155;
+    border:1px solid #334155;
 
-    box-shadow: 0 4px 12px rgba(0,0,0,.25);
+    box-shadow:0 8px 20px rgba(0,0,0,.28);
 
 }
 
@@ -1151,56 +1130,139 @@ body.dark .summary-card span{
     color: #f8fafc !important;
 
 }
+/* =====================================
+   BOOK LAUNDRY
+===================================== */
 
 body.dark .accordion-item{
 
-    background: #1e293b !important;
+    background:#1e293b;
 
-    border: 1px solid #334155;
+    border:1px solid #334155;
 
 }
 
 body.dark .accordion-body{
 
-    background: #1e293b !important;
+    background:#1e293b;
 
 }
 
 body.dark .accordion-button{
 
-    background: #0f4c81 !important;
+    background:#2563eb !important;
 
-    color: white !important;
+    color:#ffffff !important;
 
-    font-weight: 600;
+    font-weight:700;
 
 }
 
 body.dark .accordion-button:not(.collapsed){
 
-    background: #2563eb !important;
-
-    color: white !important;
+    background:#2563eb !important;
 
 }
 
 body.dark .accordion-button::after{
 
-    filter: brightness(0) invert(1);
+    filter:brightness(0) invert(1);
 
 }
 
-body.dark .cancel-order-card{
+body.dark .laundry-title,
+body.dark .laundry-title h4,
+body.dark .laundry-title h5,
+body.dark .laundry-title h6,
 
-    background: linear-gradient(
-        145deg,
-        #1e293b,
-        #0f172a
-    ) !important;
+body.dark .item-info,
+body.dark .item-info h4,
+body.dark .item-info h5,
+body.dark .item-info h6,
 
-    color: #f8fafc !important;
+body.dark .service-title{
+
+    color:#ffffff !important;
 
 }
+
+body.dark .item-price{
+
+    color:#cbd5e1 !important;
+
+}
+
+body.dark .order-guide{
+
+    background:#12324d;
+
+    color:#dbeafe;
+
+    border:1px solid #24598b;
+
+}
+
+/* =====================================
+   QUANTITY CONTROLS
+===================================== */
+
+body.dark .qty2-btn2{
+
+    background:#0d6efd;
+
+    color:#ffffff;
+
+}
+
+body.dark .qty2-btn2:hover{
+
+    background:#0b5ed7;
+
+}
+
+body.dark .qty2-value2{
+
+    background:#3b4758;
+
+    color:#ffffff;
+
+    border:1px solid #4b596d;
+
+}
+
+body.dark .notification-item{
+
+    background:#1e293b;
+
+    border:1px solid #334155;
+
+}
+
+body.dark .notification-item h5{
+
+    color:#ffffff;
+
+}
+
+body.dark .notification-item small{
+
+    color:#cbd5e1;
+
+}
+
+body.dark .stats-card h3{
+
+    color:#60a5fa;
+
+}
+
+body.dark .stats-card h6{
+
+    color:#ffffff;
+
+}
+
+
 
 /* Pending Pickup */
 
@@ -1244,10 +1306,7 @@ body.dark .status-completed{
 
 /* Cancel Order Page */
 
-body.dark .cancel-order-container,
-body.dark .cancel-order-card,
-body.dark .cancel-card,
-body.dark .card{
+body.dark .cancel-order-container{
 
     background: #1e293b !important;
 
@@ -1269,16 +1328,6 @@ body.dark .cancel-order-container label{
 }
 
 /* Order Cards */
-
-body.dark .order-card{
-
-    background: #1e293b !important;
-
-    border: 1px solid #334155;
-
-    color: #ffffff !important;
-
-}
 
 body.dark .order-card h3,
 body.dark .order-card h4,
@@ -1398,6 +1447,56 @@ body.dark .password-success{
     font-weight: 600;
 
 }
+
+body.dark .qty2-value2{
+
+    background:#3b4758;
+
+    border:1px solid #4b596d;
+
+    color:#fff;
+
+}
+
+body.dark .qty2-btn2{
+
+    background:#0d6efd;
+
+    color:#fff;
+
+}
+
+/* =====================================
+   GLOBAL COMPONENTS
+===================================== */
+
+body.dark .page-container{
+
+    background:#0f172a;
+
+    color:#f8fafc;
+
+}
+
+body.dark .page-title{
+
+    color:#ffffff;
+
+}
+
+body.dark .mobile-card{
+
+    background:#1e293b;
+
+    border:1px solid #334155;
+
+    color:#f8fafc;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.25);
+
+}
+
+
 
 /* ==========================================
    GOOGLE PLACES AUTOCOMPLETE

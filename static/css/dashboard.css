@@ -2069,24 +2069,20 @@ label{
    Active Bottom Navigation
 ==================================== */
 
+
 .mobile-nav-item{
 
-    transition:all .35s ease;
+    position: relative;
+
+    transition: all .35s ease;
 
 }
 
-.mobile-nav-item .book-circle{
-
-    background:transparent;
-
-    box-shadow:none;
-
-}
 .mobile-nav-item.active{
 
-    transform:translateY(-25px);
+    transform: none;
 
-    z-index:10001;
+    z-index: 10000;
 
 }
 
@@ -2098,18 +2094,43 @@ label{
 
     background:#2E8BFF;
 
-    box-shadow:0 10px 25px rgba(46,139,255,.45);
+    border-radius:50%;
 
-    }
+    display:flex;
 
-    .mobile-nav-item.active span{
+    justify-content:center;
+
+    align-items:center;
+
+    position:absolute;
+
+    top:-35px;          /* raise above navbar */
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    box-shadow:0 12px 30px rgba(46,139,255,.45);
+
+    z-index:10001;
+
+}
+
+.mobile-nav-item span{
+
+    margin-top:6px;
+
+}
+
+.mobile-nav-item.active span{
+
+    margin-top:38px;    /* move label below raised circle */
 
     color:#4EA5FF;
 
     font-weight:700;
 
-    }
-
+}
     .mobile-notification-badge{
 
         position:absolute;
@@ -2365,8 +2386,8 @@ body:not(.dark) .notification-item small{
  MY ORDERS - LIGHT MODE
 ==================================*/
 
-body.light .order-card,
-body.light .card.order-card,
+body.light .mobile-card,
+body.light .card.mobile-card,
 body.light .empty-orders{
 
 

@@ -331,7 +331,7 @@ footer{
 
     padding:14px 35px;
 
-    font-size:18px;
+    font-size:12px;
 
     font-weight:600;
 
@@ -351,13 +351,13 @@ footer{
 
 .hero-image{
 
-    height:340px;
+    height:400px;
 
 }
 
 .carousel-caption{
 
-    bottom:25px;
+    bottom:15px;
 
     left:20px;
 
@@ -383,7 +383,7 @@ footer{
 
     padding:10px 26px;
 
-    font-size:15px;
+    font-size:10px;
 
 }
 

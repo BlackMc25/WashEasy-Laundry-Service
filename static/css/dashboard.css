@@ -1992,37 +1992,34 @@ label{
 
     .mobile-bottom-nav{
 
-        position:fixed;
+    position:fixed;
 
-        left:0;
+    left:0;
 
-        right:0;
+    right:0;
 
-        bottom:0;
+    bottom:0;
 
-        height:78px;
+    height:78px;
 
-        background:#0d3b66;
+    background:#0d3b66;
 
-        display:flex;
+    display:flex;
 
-        justify-content:space-around;
+    justify-content:space-around;
 
-        align-items:center;
+    align-items:center;
 
-        z-index:9999;
+    border-top-left-radius:28px;
 
-        border-top-left-radius:28px;
+    border-top-right-radius:28px;
 
-        border-top-right-radius:28px;
+    box-shadow:0 -4px 25px rgba(0,0,0,.12);
 
-        box-shadow:
-            0 -4px 25px rgba(0,0,0,.12),
-            0 -1px 2px rgba(0,0,0,.08);
+    z-index:9999;
 
-        animation:slideUpNav .45s ease;
-
-    }
+    overflow:visible;     /* IMPORTANT */
+}
 
     .mobile-bottom-nav a{
 
@@ -2085,10 +2082,11 @@ label{
     box-shadow:none;
 
 }
-
 .mobile-nav-item.active{
 
-    transform:translateY(-18px);
+    transform:translateY(-25px);
+
+    z-index:10001;
 
 }
 
@@ -2163,7 +2161,13 @@ label{
 
         transition:.35s ease;
 
+        
+        position:relative;
+
+        z-index:10002;
+
     }
+
 
     .book-circle i{
 
@@ -2205,8 +2209,6 @@ label{
     border-radius:18px;
 
     padding:20px;
-
-    box-shadow:0 4px 15px rgba(0,0,0,.08);
 
  }
 
@@ -2367,13 +2369,14 @@ body.light .order-card,
 body.light .card.order-card,
 body.light .empty-orders{
 
+
     background:#ffffff !important;
 
-    color:#212529 !important;
+    color:#1f2937 !important;
 
     border:1px solid #e5e7eb;
 
-    box-shadow:0 12px 30px rgba(0,0,0,.08);
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
 
 }
 
@@ -2385,3 +2388,8 @@ body.light .order-card p{
     color:#212529 !important;
 
 }
+
+/* ==========================
+   LIGHT MODE ORDER CARDS
+========================== */
+

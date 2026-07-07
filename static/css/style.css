@@ -331,7 +331,7 @@ footer{
 
     padding:14px 35px;
 
-    font-size:12px;
+    font-size:20px;
 
     font-weight:600;
 
@@ -356,7 +356,8 @@ footer{
 }
 
 .carousel-caption{
-
+    top:18px;
+    
     bottom:18px;
 
     left:20px;

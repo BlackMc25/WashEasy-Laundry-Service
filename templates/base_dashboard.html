@@ -166,30 +166,14 @@
         <ul class="sidebar-menu">
 
             <li>
-                <a href="{% url 'dashboard' %}"
-
-                    class="mobile-nav-item
-
-                    {% if request.resolver_match.url_name == 'dashboard' %}
-
-                    active
-
-                    {% endif %}">
+                <a href="{% url 'dashboard' %}">
                     <i class="bi bi-house-door"></i>
                     <span>Dashboard</span>
                 </a>
             </li>
 
             <li>
-                <a href="{% url 'book_laundry' %}"
-
-                    class="mobile-nav-item
-
-                    {% if request.resolver_match.url_name == 'book_laundry' %}
-
-                    active
-
-                    {% endif %}">
+                <a href="{% url 'book_laundry' %}">
                     <i class="bi bi-basket"></i>
                     <span>Book Laundry</span>
                 </a>
@@ -211,15 +195,7 @@
             </li>
 
            <li>
-                <a href="{% url 'profile' %}"
-
-                    class="mobile-nav-item
-
-                    {% if request.resolver_match.url_name == 'profile' %}
-
-                    active
-
-                    {% endif %}">
+                <a href="{% url 'profile' %}">
                     <i class="bi bi-person"></i>
                     <span>Profile</span>
                 </a>
@@ -648,6 +624,83 @@ setInterval(
 </script>
 
 {% endif %}
+
+<!-- Mobile Bottom Navigation -->
+<nav class="mobile-bottom-nav d-md-none">
+
+    <!-- Dashboard -->
+    <a href="{% url 'dashboard' %}"
+       class="mobile-nav-item {% if request.resolver_match.url_name == 'dashboard' %}active{% endif %}">
+
+        <div class="book-circle">
+            <i class="bi bi-house-door-fill"></i>
+        </div>
+
+        <span>Home</span>
+
+    </a>
+
+    <!-- Book Laundry -->
+    <a href="{% url 'book_laundry' %}"
+       class="mobile-nav-item {% if request.resolver_match.url_name == 'book_laundry' %}active{% endif %}">
+
+        <div class="book-circle">
+            <i class="bi bi-basket-fill"></i>
+        </div>
+
+        <span>Book</span>
+
+    </a>
+
+    <!-- Orders -->
+    <a href="{% url 'my_orders' %}"
+       class="mobile-nav-item {% if request.resolver_match.url_name == 'my_orders' %}active{% endif %}">
+
+        <div class="book-circle">
+            <i class="bi bi-box-seam-fill"></i>
+        </div>
+
+        <span>Orders</span>
+
+    </a>
+
+    <!-- Notifications -->
+    <a href="{% url 'notifications' %}"
+       class="mobile-nav-item {% if request.resolver_match.url_name == 'notifications' %}active{% endif %}">
+
+        <div class="book-circle">
+
+            <i class="bi bi-bell-fill"></i>
+
+            {% if unread_notifications > 0 %}
+            <span class="mobile-notification-badge">
+
+                {{ unread_notifications }}
+
+            </span>
+            {% endif %}
+
+        </div>
+
+        <span>Alerts</span>
+
+    </a>
+
+    <!-- Profile -->
+    <a href="{% url 'profile' %}"
+       class="mobile-nav-item {% if request.resolver_match.url_name == 'profile' %}active{% endif %}">
+
+        <div class="book-circle">
+            <i class="bi bi-person-fill"></i>
+        </div>
+
+        <span>Profile</span>
+
+    </a>
+
+</nav>
+
+
 
 {% include "includes/bottom_nav.html" %}
 </body>

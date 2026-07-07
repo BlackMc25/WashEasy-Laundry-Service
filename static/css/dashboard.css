@@ -2104,7 +2104,7 @@ label{
 
     position:absolute;
 
-    top:-35px;          /* raise above navbar */
+    top:-25px;          /* raise above navbar */
 
     left:50%;
 
@@ -2124,7 +2124,7 @@ label{
 
 .mobile-nav-item.active span{
 
-    margin-top:88px;    /* move label below raised circle */
+    margin-top:95px;    /* move label below raised circle */
 
     color:#4EA5FF;
 

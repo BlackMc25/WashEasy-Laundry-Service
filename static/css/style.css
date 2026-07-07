@@ -357,6 +357,8 @@ footer{
 
     height:45px;
 
+    right:35px;
+
     border:none;
 
     border-radius:50%;
@@ -394,6 +396,13 @@ body.dark .theme-toggle{
     color:#FFD43B;
 
 }
+
+.theme-toggle-mobile{
+
+    display:none;
+
+}
+
 
 @media(max-width:768px){
 
@@ -458,15 +467,35 @@ body.dark .theme-toggle{
 
 }
 
-    .theme-toggle{
+    #themeToggleDesktop{
 
-        position:absolute;
+        display:none;
 
-        top:12px;
+    }
 
-        right:65px;      /* beside hamburger */
+    .theme-toggle-mobile{
 
-        z-index:9999;
+        display:flex;
+
+        width:58px;
+
+        height:58px;
+
+        border-radius:50%;
+
+        justify-content:center;
+
+        align-items:center;
+
+        margin-right:12px;
+
+        background:#fff;
+
+        color:#0d6efd;
+
+        border:none;
+
+        box-shadow:0 8px 25px rgba(0,0,0,.18);
 
     }
 

@@ -2074,7 +2074,7 @@ label{
 
     }
 
-    .mobile-bottom-nav a.active .book-circle{
+    .mobile-bottom-nav .book-circle{
 
     background:#1e90ff;
 
@@ -2353,5 +2353,32 @@ body:not(.dark) .notification-item strong{
 body:not(.dark) .notification-item small{
 
     color:#6b7280 !important;
+
+}
+
+/*=================================
+ MY ORDERS - LIGHT MODE
+==================================*/
+
+body.light .order-card,
+body.light .card.order-card,
+body.light .empty-orders{
+
+    background:#ffffff !important;
+
+    color:#212529 !important;
+
+    border:1px solid #e5e7eb;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.08);
+
+}
+
+body.light .order-card h3,
+body.light .order-card h4,
+body.light .order-card h5,
+body.light .order-card p{
+
+    color:#212529 !important;
 
 }

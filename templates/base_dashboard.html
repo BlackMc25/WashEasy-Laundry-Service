@@ -518,22 +518,14 @@ window.addEventListener("resize",()=>{
 src="https://maps.googleapis.com/maps/api/js?key={{ GOOGLE_MAPS_API_KEY }}&libraries=places">
 </script>
 
-<br>
-<br>
-<div class="whatsapp-container">
 
-    <span class="whatsapp-text">
+<div id="whatsapp-float">
 
-        Need Help?
+    <a href="https://wa.me/2348136201074?text=Hello%20WashEasy,%20I%20need%20assistance."
+       target="_blank"
+       id="whatsapp-link">
 
-    </span>
-
-    <a
-        href="https://wa.me/2348136201074?text=Hello%20WashEasy,%20I%20need%20assistance."
-        target="_blank"
-        class="whatsapp-float">
-
-        <i class="fab fa-whatsapp"></i>
+        <i class="bi bi-whatsapp"></i>
 
     </a>
 
@@ -616,6 +608,104 @@ setInterval(
 </script>
 
 {% endif %}
+
+<script>
+
+const dragItem = document.getElementById("whatsapp-float");
+
+let active = false;
+let currentX;
+let currentY;
+let initialX;
+let initialY;
+
+const savedX = localStorage.getItem("waX");
+const savedY = localStorage.getItem("waY");
+
+if(savedX && savedY){
+
+    dragItem.style.left = savedX + "px";
+    dragItem.style.top = savedY + "px";
+    dragItem.style.right = "auto";
+    dragItem.style.bottom = "auto";
+
+}
+
+dragItem.addEventListener("touchstart", dragStart);
+dragItem.addEventListener("touchmove", dragMove);
+dragItem.addEventListener("touchend", dragEnd);
+
+dragItem.addEventListener("mousedown", dragStart);
+document.addEventListener("mousemove", dragMove);
+document.addEventListener("mouseup", dragEnd);
+
+function dragStart(e){
+
+    active = true;
+
+    const point = e.type.includes("mouse")
+        ? e
+        : e.touches[0];
+
+    const rect = dragItem.getBoundingClientRect();
+
+    initialX = point.clientX - rect.left;
+    initialY = point.clientY - rect.top;
+
+}
+
+function dragMove(e){
+
+    if(!active) return;
+
+    e.preventDefault();
+
+    const point = e.type.includes("mouse")
+        ? e
+        : e.touches[0];
+
+    currentX = point.clientX - initialX;
+    currentY = point.clientY - initialY;
+
+    dragItem.style.left = currentX + "px";
+    dragItem.style.top = currentY + "px";
+    dragItem.style.right = "auto";
+    dragItem.style.bottom = "auto";
+
+}
+
+function dragEnd(){
+
+    if(!active) return;
+
+    active = false;
+
+    const screenWidth = window.innerWidth;
+    const rect = dragItem.getBoundingClientRect();
+
+    if(rect.left < screenWidth/2){
+
+        dragItem.style.left = "10px";
+
+    }else{
+
+        dragItem.style.left = (screenWidth-74)+"px";
+
+    }
+
+    localStorage.setItem(
+        "waX",
+        parseInt(dragItem.style.left)
+    );
+
+    localStorage.setItem(
+        "waY",
+        parseInt(dragItem.style.top)
+    );
+
+}
+
+</script>
 
 <!-- Mobile Bottom Navigation -->
 <nav class="mobile-bottom-nav d-md-none">

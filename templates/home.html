@@ -275,7 +275,7 @@ border-radius:20px;
     <div id="heroCarousel"
          class="carousel slide carousel-fade"
          data-bs-ride="carousel"
-         data-bs-interval="5000">
+         data-bs-interval="15000">
 
         <div class="carousel-inner">
 
@@ -342,6 +342,15 @@ border-radius:20px;
                         before delivering it back to your doorstep.
 
                     </p>
+
+                    {% if user.is_authenticated %}
+
+                    {% else %}
+
+
+                    {% endif %}
+
+                </div>
 
             </div>
 

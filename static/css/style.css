@@ -398,7 +398,7 @@ body.dark .theme-toggle{
 }
 
 
-.theme-toggle-mobile{
+.mobile-controls .theme-toggle-mobile{
 
     display:none;
 
@@ -466,9 +466,9 @@ body.dark .theme-toggle{
 
     display:none;
 
-}
+    }
 
-    .theme-toggle{
+    .nav-item .theme-toggle{
 
         display:none;
 

@@ -347,6 +347,54 @@ footer{
 
 }
 
+/*==============================
+ Theme Toggle
+==============================*/
+
+.theme-toggle{
+
+    width:45px;
+
+    height:45px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#ffffff;
+
+    color:#0d6efd;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:20px;
+
+    cursor:pointer;
+
+    transition:.35s;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.12);
+
+}
+
+.theme-toggle:hover{
+
+    transform:rotate(20deg);
+
+}
+
+body.dark .theme-toggle{
+
+    background:#1f2937;
+
+    color:#FFD43B;
+
+}
+
 @media(max-width:768px){
 
 .hero-image{
@@ -409,5 +457,27 @@ footer{
     display:none;
 
 }
+
+    .theme-toggle{
+
+        position:absolute;
+
+        top:12px;
+
+        right:65px;      /* beside hamburger */
+
+        z-index:9999;
+
+    }
+
+}
+
+@media(min-width:992px){
+
+    .theme-toggle{
+
+        position:static;
+
+    }
 
 }

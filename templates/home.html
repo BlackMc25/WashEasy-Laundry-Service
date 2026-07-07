@@ -262,6 +262,16 @@ border-radius:20px;
                     <li class="nav-item">
                         <a class="btn signup-btn ms-2" data-bs-toggle="modal" data-bs-target="#signupModal">SignUp</a>
                     </li>
+
+                    <li class="nav-item ms-2">
+
+                        <button id="themeToggle" class="theme-toggle">
+
+                            <i class="bi bi-moon-stars-fill"></i>
+
+                        </button>
+
+                    </li>
             </ul>
         </div>
     </div>
@@ -1684,6 +1694,52 @@ document
 
     }
 );
+</script>
+
+<script>
+
+const toggle = document.getElementById("themeToggle");
+
+const icon = toggle.querySelector("i");
+
+function setTheme(theme){
+
+    document.body.classList.remove("light","dark");
+
+    document.body.classList.add(theme);
+
+    localStorage.setItem("theme",theme);
+
+    if(theme==="dark"){
+
+        icon.className="bi bi-sun-fill";
+
+    }else{
+
+        icon.className="bi bi-moon-stars-fill";
+
+    }
+
+}
+
+const savedTheme = localStorage.getItem("theme") || "light";
+
+setTheme(savedTheme);
+
+toggle.addEventListener("click",()=>{
+
+    if(document.body.classList.contains("dark")){
+
+        setTheme("light");
+
+    }else{
+
+        setTheme("dark");
+
+    }
+
+});
+
 </script>
 
 </body>

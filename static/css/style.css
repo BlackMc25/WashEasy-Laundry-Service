@@ -237,80 +237,162 @@ footer{
     box-shadow:0 15px 40px rgba(0,0,0,.15);
 }
 
-/* ==========================
-   WashEasy Logo
-========================== */
 
-.navbar-brand{
+/*===============================
+ HERO SECTION
+================================*/
 
-    display:flex;
+.hero-section{
 
-    align-items:center;
+    margin-top:25px;
 
-    text-decoration:none;
-
-}
-
-.navbar-logo{
-
-    width:55px;
-
-    height:55px;
-
-    object-fit:contain;
-
-    margin-right:12px;
+    margin-bottom:70px;
 
 }
 
-.brand-name{
+.hero-image{
 
-    font-size:2rem;
+    height:520px;
 
-    font-weight:800;
+    object-fit:cover;
 
-    color:#0d4f8b;
+    border-radius:28px;
 
-    letter-spacing:.5px;
+    filter:brightness(.72);
+
+}
+
+.carousel-item{
+
+    position:relative;
+
+}
+
+.carousel-item::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    border-radius:28px;
+
+    background:linear-gradient(
+        rgba(0,15,40,.20),
+        rgba(0,20,50,.65)
+    );
+
+}
+
+.carousel-caption{
+
+    left:8%;
+
+    right:8%;
+
+    bottom:15%;
+
+    text-align:left;
+
+    z-index:2;
+
+}
+
+.carousel-caption h1{
+
+    font-size:3.3rem;
+
+    font-weight:700;
+
+    color:#fff;
+
+    margin-bottom:20px;
+
+}
+
+.carousel-caption p{
+
+    font-size:1.15rem;
+
+    max-width:520px;
+
+    color:#fff;
+
+    line-height:1.8;
+
+    margin-bottom:25px;
+
+}
+
+.carousel-caption .btn{
+
+    border-radius:50px;
+
+    padding:14px 35px;
+
+    font-size:18px;
+
+    font-weight:600;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.25);
+
+}
+
+.carousel-control-prev,
+
+.carousel-control-next{
+
+    width:7%;
 
 }
 
 @media(max-width:768px){
 
-    .hero-container{
-        padding:30px 25px;
-        text-align:center;
-    }
+.hero-image{
 
-    .textedit{
-        padding:20px;
-    }
+    height:340px;
 
-    .features{
-        margin-top:20px;
-    }
+}
 
-    .features .col-md-4{
-        margin-bottom:20px;
-    }
+.carousel-caption{
 
-    .about-container{
-        padding:20px;
-    }
+    bottom:25px;
 
+    left:20px;
 
-    .navbar-logo{
+    right:20px;
 
-        width:42px;
+}
 
-        height:42px;
+.carousel-caption h1{
 
-    }
+    font-size:1.9rem;
 
-    .brand-name{
+}
 
-        font-size:1.5rem;
+.carousel-caption p{
 
-    }
+    font-size:.92rem;
+
+    margin-bottom:18px;
+
+}
+
+.carousel-caption .btn{
+
+    padding:10px 26px;
+
+    font-size:15px;
+
+}
+
+.carousel-control-prev,
+
+.carousel-control-next{
+
+    display:none;
+
+}
 
 }

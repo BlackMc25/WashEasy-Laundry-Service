@@ -398,6 +398,11 @@ body.dark .theme-toggle{
 }
 
 
+.theme-toggle-mobile{
+
+    display:none;
+
+}
 
 
 @media(max-width:768px){

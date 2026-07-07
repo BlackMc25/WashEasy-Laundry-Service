@@ -468,7 +468,7 @@ body.dark .theme-toggle{
 
 }
 
-    #themeToggleDesktop{
+    .theme-toggle{
 
         display:none;
 

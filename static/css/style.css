@@ -244,9 +244,9 @@ footer{
 
 .hero-section{
 
-    margin-top:25px;
+    margin-top:15px;
 
-    margin-bottom:70px;
+    margin-bottom:50px;
 
 }
 
@@ -379,13 +379,29 @@ footer{
 
 }
 
-.carousel-indicators .btn{
 
-    padding:5px 15px;
 
-    font-size:14px;
+    .hero-section .carousel-indicators{
 
-}
+        bottom:5px;
+
+    }
+
+    .hero-section .carousel-indicators button{
+
+        width:8px;
+        height:8px;
+
+        margin:0 3px;
+
+    }
+
+    .hero-section .carousel-indicators .active{
+
+        width:22px;
+
+    }
+
 
 .carousel-control-prev,
 

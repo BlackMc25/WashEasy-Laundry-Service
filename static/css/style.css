@@ -468,13 +468,13 @@ body.dark .theme-toggle{
 
     }
 
-    .nav-item .theme-toggle{
+    .navbar-nav .theme-toggle{
 
         display:none;
 
     }
 
-    .theme-toggle-mobile{
+    .mobile-controls .theme-toggle-mobile{
 
         display:flex;
 

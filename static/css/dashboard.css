@@ -265,6 +265,10 @@ body{
     align-items:center;
 }
 
+.page-container{
+    margin-bottom:35px;
+}
+
 /* profile Avatar */
 .profile-avatar{
     width:45px;

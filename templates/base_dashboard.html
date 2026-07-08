@@ -147,7 +147,7 @@
 
 </head>
 
-<body class="{{ request.user.theme }}">
+<body class="{{ request.user.theme }} {{ request.resolver_match.url_name }}">
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
 <div>
     <!--Sidebar-->
@@ -237,11 +237,10 @@
 
         {% endif %}
 
-{% if request.resolver_match.url_name == 'dashboard' %}
+
 <div class="topbar">
 
     <div class="topbar-right">
-
         <div class="dropdown">
 
             <button
@@ -317,10 +316,7 @@
          </div>
     </div>
 </div>
-{% endif %}
 
-
-{% if request.resolver_match.url_name == 'dashboard' %}
 <div class="dropdown">
 
     <div
@@ -404,7 +400,6 @@
             </ul>
 
         </div>
-{% endif %}
     </div>
 
 </div>

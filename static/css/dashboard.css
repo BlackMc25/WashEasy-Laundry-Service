@@ -7,6 +7,16 @@ body{
     background:#f4f6f9;
 }
 
+.book_laundry .top-right,
+.my_orders .top-right,
+.notifications .top-right,
+.settings .top-right,
+.profile .top-right{
+
+    display:none;
+
+}
+
 /* Dashboard Layout */
 
 .dashboard-container{
@@ -267,7 +277,6 @@ body{
     justify-content:center;
     align-items:center;
 }
-
 
 
 /* profile Avatar */

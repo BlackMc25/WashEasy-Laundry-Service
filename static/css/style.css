@@ -468,13 +468,14 @@ body.dark .theme-toggle{
 
     }
 
-     .navbar-collaps .theme-toggle{
+        .theme-toggle{
 
-        display:none;
+            display:none;
 
-    }
+        }
 
-    .mobile-controls .theme-toggle-mobile{
+
+     .mobile-controls .theme-toggle-mobile{
 
         display:flex;
 
@@ -504,11 +505,18 @@ body.dark .theme-toggle{
 
 @media(min-width:992px){
 
-    .theme-toggle{
+.theme-toggle{
 
-        position:static;
+    display:flex;
 
-    }
+}
+
+.theme-toggle-mobile{
+
+    display:none;
+
+}
+    
 
 }
 
@@ -524,9 +532,9 @@ body.light{
 
 }
 
-body.light .navbar{
+body.light section{
 
-    background:#ffffff !important;
+    background:#ffffff;
 
 }
 
@@ -540,40 +548,175 @@ body.light .card{
 
 }
 
-body.light .theme-toggle,
-body.light .theme-toggle-mobile{
 
-    background:#ffffff;
-
-    color:#0d6efd;
-
-    border:1px solid #dbe2ea;
-
-    box-shadow:0 10px 25px rgba(0,0,0,.12);
-
-}
-
-
+/*==========================
+ DARK MODE
+===========================*/
 
 body.dark{
 
     background:#0f172a;
-
     color:#f8fafc;
 
 }
+
+/* Navbar */
 
 body.dark .navbar{
 
     background:#111827 !important;
 
+    border-bottom:1px solid #283548;
+
 }
+
+/* Sections */
+
+body.dark section{
+
+    background:#0f172a !important;
+
+}
+
+/* White Cards */
+
+body.dark .card,
+body.dark .service-card,
+body.dark .process-card,
+body.dark .delivery-banner,
+body.dark .modal-content{
+
+    background:#1e293b !important;
+
+    color:#f8fafc !important;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.35);
+
+}
+
+/* Headings */
+
+body.dark h1,
+body.dark h2,
+body.dark h3,
+body.dark h4,
+body.dark h5,
+body.dark h6{
+
+    color:#ffffff !important;
+
+}
+
+/* Paragraphs */
+
+body.dark p{
+
+    color:#cbd5e1 !important;
+
+}
+
+/* Lists */
+
+body.dark li{
+
+    color:#cbd5e1;
+
+}
+
+/* Links */
+
+body.dark a{
+
+    color:#7cc4ff;
+
+}
+
+/* Input */
+
+body.dark input,
+body.dark textarea,
+body.dark select{
+
+    background:#1e293b;
+
+    color:white;
+
+    border:1px solid #334155;
+
+}
+
+/* Placeholder */
+
+body.dark input::placeholder,
+body.dark textarea::placeholder{
+
+    color:#94a3b8;
+
+}
+
+/* Bootstrap text-muted */
+
+body.dark .text-muted{
+
+    color:#94a3b8 !important;
+
+}
+
+/* Footer */
+
+body.dark footer{
+
+    background:#020617 !important;
+
+}
+
+/* How it Works */
+
+body.dark .how-it-works-section{
+
+    background:#0f172a !important;
+
+}
+
+/* About */
+
+body.dark .about-container{
+
+    background:#0f172a;
+
+}
+
+/* Contact */
+
+body.dark #ContactUs-sections{
+
+    background:#0f172a;
+
+}
+
+/* Buttons */
+
+body.dark .btn-outline-primary{
+
+    border-color:#60a5fa;
+
+    color:#60a5fa;
+
+}
+
+/* Theme button */
 
 body.dark .theme-toggle,
 body.dark .theme-toggle-mobile{
 
-    background:#1f2937;
+    background:#1e293b;
 
     color:#FFD43B;
+
+}
+
+body.dark .main-title{
+
+    color:white;
 
 }

@@ -219,6 +219,9 @@ body{
     color:#777;
     padding-right:45px;
 }
+.dropdown{
+    margin-left:35px;
+}
 
 /* notification bell */
 .notification-btn{
@@ -266,7 +269,7 @@ body{
 }
 
 .page-container{
-    margin-bottom:35px;
+    margin-bottom:-35px;
 }
 
 /* profile Avatar */

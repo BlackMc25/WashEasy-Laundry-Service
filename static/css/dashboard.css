@@ -7,16 +7,6 @@ body{
     background:#f4f6f9;
 }
 
-.book_laundry .top-right,
-.my_orders .top-right,
-.notifications .top-right,
-.settings .top-right,
-.profile .top-right{
-
-    display:none;
-
-}
-
 /* Dashboard Layout */
 
 .dashboard-container{
@@ -230,7 +220,7 @@ body{
     padding-right:45px;
 }
 .dropdown{
-right:28px;
+    left:28px;
 }
 
 /* notification bell */
@@ -278,6 +268,9 @@ right:28px;
     align-items:center;
 }
 
+.notification-card-wrapper{
+    top:-15px;
+}
 
 /* profile Avatar */
 .profile-avatar{

@@ -219,9 +219,6 @@ body{
     color:#777;
     padding-right:45px;
 }
-.dropdown{
-    left:33px;
-}
 
 /* notification bell */
 .notification-btn{
@@ -268,8 +265,8 @@ body{
     align-items:center;
 }
 
-.notification-card-wrapper{
-    top:-35px;
+.page-container{
+    margin-bottom:-35px;
 }
 
 /* profile Avatar */
@@ -2244,8 +2241,6 @@ label{
     border-radius:18px;
 
     padding:20px;
-
-    top:-35px;
 
  }
 

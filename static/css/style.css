@@ -631,6 +631,14 @@ body.dark a{
 
 }
 
+body.dark .logo h2{
+    color:#7cc4ff;
+}
+
+body.dark .nav-link a{
+    color:#7cc4ff;
+}
+
 /* Input */
 
 body.dark input,
@@ -691,6 +699,12 @@ body.dark .about-container{
 body.dark #ContactUs-sections{
 
     background:#0f172a;
+   
+
+}
+
+body.dark #ContactUs-sections label{
+
     color:white;
 
 }

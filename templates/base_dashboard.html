@@ -245,6 +245,7 @@
 
         <!-- Notification -->
 
+{% if request.resolver_match.url_name == 'dashboard' %}
         <div class="dropdown">
 
             <button
@@ -400,6 +401,7 @@
     </div>
 
 </div>
+{% endif %}
 
 <!--Main Content-->
 

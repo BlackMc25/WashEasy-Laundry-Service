@@ -237,172 +237,174 @@
 
         {% endif %}
 
-
+{% if request.resolver_match.url_name == 'dashboard' %}
 <div class="topbar">
-
-    <div></div>
 
     <div class="topbar-right">
 
-    <div class="dropdown">
-
-    <button
-        class="notification-btn dropdown-toggle"
-        data-bs-toggle="dropdown">
-
-        <i class="bi bi-bell-fill"></i>
-
-        {% if unread_notifications > 0 %}
-            <span class="notification-badge">
-                {{ unread_notifications }}
-            </span>
-        {% endif %}
-
-    </button>
-
-    <ul class="dropdown-menu dropdown-menu-end notification-dropdown">
-
-        {% for notification in latest_notifications %}
-
-            <li>
-
-                <a class="dropdown-item">
-
-                    <strong>
-
-                        {{ notification.title }}
-
-                    </strong>
-
-                    <br>
-
-                    <small>
-
-                        {{ notification.message|truncatechars:40 }}
-
-                    </small>
-
-                </a>
-
-            </li>
-
-        {% empty %}
-
-            <li>
-
-                <span class="dropdown-item">
-
-                    No Notifications
-
-                </span>
-
-            </li>
-
-        {% endfor %}
-
-        <li>
-            <hr class="dropdown-divider">
-        </li>
-
-        <li>
-
-            <a
-                class="dropdown-item text-center"
-                href="{% url 'notifications' %}">
-
-                View All Notifications
-
-            </a>
-
-        </li>
-
-    </ul>
-
-</div>
         <div class="dropdown">
+
+            <button
+                class="notification-btn dropdown-toggle"
+                data-bs-toggle="dropdown">
+
+                <i class="bi bi-bell-fill"></i>
+
+                {% if unread_notifications > 0 %}
+                    <span class="notification-badge">
+                        {{ unread_notifications }}
+                    </span>
+                {% endif %}
+
+            </button>
+
+            <ul class="dropdown-menu dropdown-menu-end notification-dropdown">
+
+                {% for notification in latest_notifications %}
+
+                    <li>
+
+                        <a class="dropdown-item">
+
+                            <strong>
+
+                                {{ notification.title }}
+
+                            </strong>
+
+                            <br>
+
+                            <small>
+
+                                {{ notification.message|truncatechars:40 }}
+
+                            </small>
+
+                        </a>
+
+                    </li>
+
+                {% empty %}
+
+                    <li>
+
+                        <span class="dropdown-item">
+
+                            No Notifications
+
+                        </span>
+
+                    </li>
+
+                {% endfor %}
+
+                <li>
+                    <hr class="dropdown-divider">
+                </li>
+
+                <li>
+
+                    <a
+                        class="dropdown-item text-center"
+                        href="{% url 'notifications' %}">
+
+                        View All Notifications
+
+                    </a>
+
+                </li>
+            </ul>
+         </div>
+    </div>
+</div>
+{% endif %}
+
+
+{% if request.resolver_match.url_name == 'dashboard' %}
+<div class="dropdown">
 
     <div
         class="profile-info"
         data-bs-toggle="dropdown"
         style="cursor:pointer;">
 
-        <div class="profile-avatar">
+            <div class="profile-avatar">
 
-            {{ request.user.first_name|first|upper }}
+                {{ request.user.first_name|first|upper }}
 
-        </div>
+            </div>
 
-        <div class="profile-details">
+            <div class="profile-details">
 
-            <h6>
-                {{ request.user.first_name }}
-            </h6>
+                <h6>
+                    {{ request.user.first_name }}
+                </h6>
 
-            <small>
-                Customer
-            </small>
+                <small>
+                    Customer
+                </small>
 
-        </div>
+            </div>
 
     </div>
 
-    <ul class="dropdown-menu dropdown-menu-end">
+            <ul class="dropdown-menu dropdown-menu-end">
 
-        <li>
-            <a
-                class="dropdown-item"
-                href="{% url 'profile' %}">
+                <li>
+                    <a
+                        class="dropdown-item"
+                        href="{% url 'profile' %}">
 
-                <i class="bi bi-person"></i>
+                        <i class="bi bi-person"></i>
 
-                Profile
+                        Profile
 
-            </a>
-        </li>
+                    </a>
+                </li>
 
-        <li>
-            <a
-                class="dropdown-item"
-                href="{% url 'settings' %}">
+                <li>
+                    <a
+                        class="dropdown-item"
+                        href="{% url 'settings' %}">
 
-                <i class="bi bi-gear"></i>
+                        <i class="bi bi-gear"></i>
 
-                Settings
+                        Settings
 
-            </a>
-        </li>
+                    </a>
+                </li>
 
-        <li>
-            <a
-                class="dropdown-item"
-                href="{% url 'password_change' %}">
+                <li>
+                    <a
+                        class="dropdown-item"
+                        href="{% url 'password_change' %}">
 
-                <i class="bi bi-lock"></i>
+                        <i class="bi bi-lock"></i>
 
-                Change Password
+                        Change Password
 
-            </a>
-        </li>
+                    </a>
+                </li>
 
-        <li><hr class="dropdown-divider"></li>
+                <li><hr class="dropdown-divider"></li>
 
-        <li>
-                <a
-                    href="{% url 'home' %}"
-                    class="btn btn-danger"
-                    onclick="return confirm('Are you sure you want to logout?');">
+                    <li>
+                            <a
+                                href="{% url 'home' %}"
+                                class="btn btn-danger"
+                                onclick="return confirm('Are you sure you want to logout?');">
 
-                    <i class="fas fa-sign-out-alt"></i>
+                                <i class="fas fa-sign-out-alt"></i>
 
-                    Logout
+                                Logout
 
-                </a>
-        </li>
+                            </a>
+                    </li>
 
-    </ul>
+            </ul>
 
-</div>
-
+        </div>
+{% endif %}
     </div>
 
 </div>
@@ -781,8 +783,6 @@ function dragEnd(){
     </a>
 
 </nav>
-
-
 
 {% include "includes/bottom_nav.html" %}
 </body>

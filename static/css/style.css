@@ -67,6 +67,7 @@ font-family: 'segoe UI', sans-serif;
     min-height:85vh;
     display:flex;
     align-items:center;
+    right: 25px;
 }
 
 .hero-title{

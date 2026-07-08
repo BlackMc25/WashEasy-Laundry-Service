@@ -268,9 +268,7 @@ body{
     align-items:center;
 }
 
-.notification-card-wrapper{
-    top:-15px;
-}
+
 
 /* profile Avatar */
 .profile-avatar{
@@ -2245,7 +2243,6 @@ label{
 
     padding:20px;
 
-    top:-15px;
 
  }
 

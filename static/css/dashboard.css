@@ -220,7 +220,7 @@ body{
     padding-right:45px;
 }
 .dropdown{
-    left:38px;
+    left:33px;
 }
 
 /* notification bell */
@@ -268,7 +268,7 @@ body{
     align-items:center;
 }
 
-.page-container{
+.notification-card-wrapper{
     top:-85px;
 }
 

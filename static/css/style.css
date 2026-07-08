@@ -468,7 +468,7 @@ body.dark .theme-toggle{
 
     }
 
-    .navbar-nav .theme-toggle{
+     .navbar-collaps .theme-toggle{
 
         display:none;
 
@@ -509,5 +509,71 @@ body.dark .theme-toggle{
         position:static;
 
     }
+
+}
+
+/*=============================
+ LIGHT MODE
+=============================*/
+
+body.light{
+
+    background:#ffffff;
+
+    color:#1f2937;
+
+}
+
+body.light .navbar{
+
+    background:#ffffff !important;
+
+}
+
+body.light .service-card,
+body.light .process-card,
+body.light .card{
+
+    background:#ffffff;
+
+    color:#1f2937;
+
+}
+
+body.light .theme-toggle,
+body.light .theme-toggle-mobile{
+
+    background:#ffffff;
+
+    color:#0d6efd;
+
+    border:1px solid #dbe2ea;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.12);
+
+}
+
+
+
+body.dark{
+
+    background:#0f172a;
+
+    color:#f8fafc;
+
+}
+
+body.dark .navbar{
+
+    background:#111827 !important;
+
+}
+
+body.dark .theme-toggle,
+body.dark .theme-toggle-mobile{
+
+    background:#1f2937;
+
+    color:#FFD43B;
 
 }

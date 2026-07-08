@@ -239,7 +239,7 @@ border-radius:20px;
                 <i class="bi bi-moon-stars-fill"></i>
 
             </button>
-
+            
         </div>
 
         <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -277,7 +277,7 @@ border-radius:20px;
 
                     <li class="nav-item ms-2">
 
-                        <button  id="themeToggleMobile" class="theme-toggle-mobile">
+                        <button  id="themeToggleMobile" class="theme-toggle">
 
                             <i class="bi bi-moon-stars-fill"></i>
 
@@ -1710,9 +1710,29 @@ document
 
 <script>
 
-const toggle = document.getElementById("themeToggle");
+const desktopBtn = document.getElementById("themeToggleDesktop");
+const mobileBtn = document.getElementById("themeToggleMobile");
 
-const icon = toggle.querySelector("i");
+function updateIcons(theme){
+
+    const iconClass =
+        theme === "dark"
+        ? "bi bi-sun-fill"
+        : "bi bi-moon-stars-fill";
+
+    if(desktopBtn){
+
+        desktopBtn.querySelector("i").className = iconClass;
+
+    }
+
+    if(mobileBtn){
+
+        mobileBtn.querySelector("i").className = iconClass;
+
+    }
+
+}
 
 function setTheme(theme){
 
@@ -1722,23 +1742,16 @@ function setTheme(theme){
 
     localStorage.setItem("theme",theme);
 
-    if(theme==="dark"){
-
-        icon.className="bi bi-sun-fill";
-
-    }else{
-
-        icon.className="bi bi-moon-stars-fill";
-
-    }
+    updateIcons(theme);
 
 }
 
-const savedTheme = localStorage.getItem("theme") || "light";
+const savedTheme =
+    localStorage.getItem("theme") || "light";
 
 setTheme(savedTheme);
 
-toggle.addEventListener("click",()=>{
+function toggleTheme(){
 
     if(document.body.classList.contains("dark")){
 
@@ -1750,8 +1763,19 @@ toggle.addEventListener("click",()=>{
 
     }
 
-});
+}
 
+if(desktopBtn){
+
+    desktopBtn.addEventListener("click",toggleTheme);
+
+}
+
+if(mobileBtn){
+
+    mobileBtn.addEventListener("click",toggleTheme);
+
+}
 </script>
 
 </body>

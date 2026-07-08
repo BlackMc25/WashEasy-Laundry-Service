@@ -269,7 +269,7 @@ body{
 }
 
 .notification-card-wrapper{
-    top:-85px;
+    top:-35px;
 }
 
 /* profile Avatar */
@@ -2244,6 +2244,8 @@ label{
     border-radius:18px;
 
     padding:20px;
+
+    top:-35px;
 
  }
 

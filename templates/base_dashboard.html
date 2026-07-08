@@ -149,7 +149,7 @@
 
 <body class="{{ request.user.theme }}">
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
-<div>
+
     <!--Sidebar-->
 <div class="sidebar collapsed" id="sidebar">
     
@@ -216,6 +216,8 @@
     </ul>
 
 </div>
+<!-- Main Content -->
+    <div class="main-content expanded">
             {% if messages %}
 
                 {% for message in messages %}
@@ -239,13 +241,13 @@
 
 <div class="topbar">
 
-    <div></div>
+    <div class="topbar-left"></div>
 
-    <div class="topbar-right">
+        <div class="topbar-right">
 
         <!-- Notification -->
 
-{% if request.resolver_match.url_name == 'dashboard' %}
+        {% if request.resolver_match.url_name == 'dashboard' %}
         <div class="dropdown">
 
             <button
@@ -317,17 +319,17 @@
         <div class="dropdown">
 
             <div
-                class="profile-info"
+                class="profile-info d-flex align-items-center"
                 data-bs-toggle="dropdown"
                 style="cursor:pointer;">
 
-                <div class="profile-avatar">
+                <div class="profile-avatar flex-shrink-0">
 
                     {{ request.user.first_name|first|upper }}
 
                 </div>
 
-                <div class="profile-details">
+                <div class="profile-details ms-2">
 
                     <h6>{{ request.user.first_name }}</h6>
 
@@ -403,9 +405,6 @@
 </div>
 {% endif %}
 
-<!--Main Content-->
-
-   <div class="main-content expanded">
 
     {% block content %}
 
@@ -456,6 +455,7 @@
 
     </div>
     {% endblock%}
+</div>
 
 <script>
 

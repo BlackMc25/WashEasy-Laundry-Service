@@ -185,6 +185,7 @@ body{
 }
 
 /* Top Bar */
+
 .topbar{
 
     display:flex;
@@ -193,7 +194,15 @@ body{
 
     align-items:center;
 
-    margin-bottom:30px;
+    width:100%;
+
+    margin-bottom:25px;
+
+}
+
+.topbar-left{
+
+    flex:1;
 
 }
 
@@ -203,9 +212,12 @@ body{
 
     align-items:center;
 
-    gap:18px;
+    justify-content:flex-end;
+
+    gap:15px;
 
 }
+
 
 .profile-info{
     display:flex;

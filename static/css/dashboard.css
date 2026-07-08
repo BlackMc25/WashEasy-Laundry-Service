@@ -220,7 +220,7 @@ body{
     padding-right:45px;
 }
 .dropdown{
-    left:55px;
+    left:38px;
 }
 
 /* notification bell */
@@ -269,7 +269,7 @@ body{
 }
 
 .page-container{
-    margin-bottom:-85px;
+    top:-85px;
 }
 
 /* profile Avatar */

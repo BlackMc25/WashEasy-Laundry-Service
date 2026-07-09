@@ -149,11 +149,10 @@
 
 <body class="{{ request.user.theme }}">
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
-<div>
     <!--Sidebar-->
 <div class="sidebar collapsed" id="sidebar">
     
-    <div>
+    <div class="sidebar-top">
 
         <button id="toggle-btn" class="toggle-btn">
             <i class="bi bi-list"></i>
@@ -217,30 +216,38 @@
 
 </div>
 
-            {% if messages %}
+        {% if messages %}
 
-                {% for message in messages %}
+    {% for message in messages %}
 
-                    <div class="alert alert-success alert-dismissible fade show">
+        <div class="alert alert-success alert-dismissible fade show">
 
-                        {{ message }}
+            {{ message }}
 
-                        <button
-                            type="button"
-                            class="btn-close"
-                            data-bs-dismiss="alert">
-                        </button>
+            <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="alert">
+            </button>
 
-                    </div>
+        </div>
 
-                {% endfor %}
+    {% endfor %}
 
-        {% endif %}
+{% endif %}
 
-{% if request.resolver_match.url_name == 'dashboard' %}
+<!-- Main Content -->
+<div class="main-content expanded">
+
+{% if request.resolver_match.url_name == "dashboard" %}
+
 <div class="topbar">
 
+    <div class="topbar-left"></div>
+
     <div class="topbar-right">
+
+        <!-- Notification -->
 
         <div class="dropdown">
 
@@ -251,9 +258,11 @@
                 <i class="bi bi-bell-fill"></i>
 
                 {% if unread_notifications > 0 %}
-                    <span class="notification-badge">
-                        {{ unread_notifications }}
-                    </span>
+                <span class="notification-badge">
+
+                    {{ unread_notifications }}
+
+                </span>
                 {% endif %}
 
             </button>
@@ -262,93 +271,89 @@
 
                 {% for notification in latest_notifications %}
 
-                    <li>
+                <li>
 
-                        <a class="dropdown-item">
+                    <a class="dropdown-item">
 
-                            <strong>
+                        <strong>{{ notification.title }}</strong>
 
-                                {{ notification.title }}
+                        <br>
 
-                            </strong>
+                        <small>{{ notification.message|truncatechars:40 }}</small>
 
-                            <br>
+                    </a>
 
-                            <small>
-
-                                {{ notification.message|truncatechars:40 }}
-
-                            </small>
-
-                        </a>
-
-                    </li>
+                </li>
 
                 {% empty %}
 
-                    <li>
+                <li>
 
-                        <span class="dropdown-item">
+                    <span class="dropdown-item">
 
-                            No Notifications
+                        No Notifications
 
-                        </span>
+                    </span>
 
-                    </li>
+                </li>
 
                 {% endfor %}
 
-                <li>
-                    <hr class="dropdown-divider">
-                </li>
+                <li><hr class="dropdown-divider"></li>
 
                 <li>
 
                     <a
-                        class="dropdown-item text-center"
-                        href="{% url 'notifications' %}">
+                        href="{% url 'notifications' %}"
+                        class="dropdown-item text-center">
 
                         View All Notifications
 
                     </a>
 
                 </li>
+
             </ul>
-         </div>
-    </div>
-</div>
-{% endif %}
 
-<div class="dropdown">
+        </div>
 
-    <div
-        class="profile-info"
-        data-bs-toggle="dropdown"
-        style="cursor:pointer;">
+        <!-- Profile -->
 
-            <div class="profile-avatar">
+        <div class="dropdown">
 
-                {{ request.user.first_name|first|upper }}
+            <div
+                class="profile-info d-flex align-items-center"
+                data-bs-toggle="dropdown"
+                style="cursor:pointer;">
+
+                <div class="profile-avatar">
+
+                    {{ request.user.first_name|first|upper }}
+
+                </div>
+
+                <div class="profile-details ms-2">
+
+                    <h6>
+
+                        {{ request.user.first_name }}
+
+                    </h6>
+
+                    <small>
+
+                        Customer
+
+                    </small>
+
+                </div>
 
             </div>
-
-            <div class="profile-details">
-
-                <h6>
-                    {{ request.user.first_name }}
-                </h6>
-
-                <small>
-                    Customer
-                </small>
-
-            </div>
-
-    </div>
 
             <ul class="dropdown-menu dropdown-menu-end">
 
                 <li>
+
                     <a
                         class="dropdown-item"
                         href="{% url 'profile' %}">
@@ -358,9 +363,11 @@
                         Profile
 
                     </a>
+
                 </li>
 
                 <li>
+
                     <a
                         class="dropdown-item"
                         href="{% url 'settings' %}">
@@ -370,9 +377,11 @@
                         Settings
 
                     </a>
+
                 </li>
 
                 <li>
+
                     <a
                         class="dropdown-item"
                         href="{% url 'password_change' %}">
@@ -382,22 +391,24 @@
                         Change Password
 
                     </a>
+
                 </li>
 
                 <li><hr class="dropdown-divider"></li>
 
-                    <li>
-                            <a
-                                href="{% url 'home' %}"
-                                class="btn btn-danger"
-                                onclick="return confirm('Are you sure you want to logout?');">
+                <li>
 
-                                <i class="fas fa-sign-out-alt"></i>
+                    <a
+                        href="{% url 'customer_logout' %}"
+                        class="dropdown-item text-danger">
 
-                                Logout
+                        <i class="bi bi-box-arrow-right"></i>
 
-                            </a>
-                    </li>
+                        Logout
+
+                    </a>
+
+                </li>
 
             </ul>
 
@@ -407,11 +418,9 @@
 
 </div>
 
-<!--Main Content-->
+{% endif %}
 
-   <div class="main-content expanded">
-
-    {% block content %}
+{% block content %}
 
     <h1>
         Welcome, {{request.user.first_name}}
@@ -459,7 +468,7 @@
         </div>
 
     </div>
-    {% endblock%}
+    {% endblock %}
 
 <script>
 

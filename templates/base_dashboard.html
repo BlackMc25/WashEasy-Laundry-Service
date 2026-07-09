@@ -319,44 +319,40 @@
 
         <!-- Profile -->
 
-        <div class="dropdown">
+       <div class="dropdown">
 
             <div
-                class="profile-info d-flex align-items-center"
+                class="profile-avatar"
                 data-bs-toggle="dropdown"
                 style="cursor:pointer;">
 
-                <div class="profile-avatar">
-
-                    {{ request.user.first_name|first|upper }}
-
-                </div>
-
-                <div class="profile-details ms-2">
-
-                    <h6>
-
-                        {{ request.user.first_name }}
-
-                    </h6>
-
-                    <small>
-
-                        Customer
-
-                    </small>
-
-                </div>
+                {{ request.user.first_name|first|upper }}
 
             </div>
 
-            <ul class="dropdown-menu dropdown-menu-end">
+            <ul class="dropdown-menu dropdown-menu-end profile-dropdown">
+
+                <li class="dropdown-header">
+
+                    <strong>
+
+                        {{ request.user.first_name }}
+                        {{ request.user.last_name }}
+
+                    </strong>
+
+                    <br>
+
+                    <small>Customer</small>
+
+                </li>
+
+                <li><hr class="dropdown-divider"></li>
 
                 <li>
 
-                    <a
-                        class="dropdown-item"
-                        href="{% url 'profile' %}">
+                    <a class="dropdown-item"
+                    href="{% url 'profile' %}">
 
                         <i class="bi bi-person"></i>
 
@@ -368,9 +364,8 @@
 
                 <li>
 
-                    <a
-                        class="dropdown-item"
-                        href="{% url 'settings' %}">
+                    <a class="dropdown-item"
+                    href="{% url 'settings' %}">
 
                         <i class="bi bi-gear"></i>
 
@@ -382,9 +377,8 @@
 
                 <li>
 
-                    <a
-                        class="dropdown-item"
-                        href="{% url 'password_change' %}">
+                    <a class="dropdown-item"
+                    href="{% url 'password_change' %}">
 
                         <i class="bi bi-lock"></i>
 
@@ -398,9 +392,8 @@
 
                 <li>
 
-                    <a
-                        href="{% url 'customer_logout' %}"
-                        class="dropdown-item text-danger">
+                    <a class="dropdown-item text-danger"
+                    href="{% url 'customer_logout' %}">
 
                         <i class="bi bi-box-arrow-right"></i>
 
@@ -413,18 +406,31 @@
             </ul>
 
         </div>
-
     </div>
 
 </div>
 
 {% endif %}
 
-{% block content %}
+        {% block content %}
 
-    <h1>
-        Welcome, {{request.user.first_name}}
-    </h1>
+        <div class="dashboard-header">
+
+            <div>
+
+                <h1 class="welcome-title">
+
+                    Welcome,<br>
+
+                    {{ request.user.first_name }}
+
+                </h1>
+
+            </div>
+
+            <div class="mobile-profile-space"></div>
+
+        </div>
 
     <div class="stats-container">
 

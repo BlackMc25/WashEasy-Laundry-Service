@@ -2233,6 +2233,12 @@ label{
 
     }
 
+.book-button span{
+
+    margin-top:8px;
+
+    }
+
     .page-container{
 
     width:100%;
@@ -2440,7 +2446,63 @@ body.light .order-card p{
 
 }
 
-/* ==========================
-   LIGHT MODE ORDER CARDS
-========================== */
+.dashboard-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-start;
+
+    margin-bottom:30px;
+
+}
+
+.welcome-title{
+
+    margin:0;
+
+    font-size:3rem;
+
+    font-weight:700;
+
+}
+
+.profile-avatar{
+
+    width:58px;
+
+    height:58px;
+
+    border-radius:50%;
+
+    background:#0d3b66;
+
+    color:#fff;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:26px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+}
+
+.profile-dropdown{
+
+    min-width:240px;
+
+}
+
+.dropdown-header{
+
+    text-align:center;
+
+}
 

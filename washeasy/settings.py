@@ -112,6 +112,7 @@ TEMPLATES = [
                 'core.context_processors.notifications',
                 'core.context_processors.site_settings',
                 'core.context_processors.google_maps',
+                 "django.contrib.sitemaps",
             ],
         },
     },

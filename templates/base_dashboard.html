@@ -721,7 +721,7 @@ function dragEnd(){
 }
 
 </script>
-
+{% if request.resolver_match.url_name not in 'password_reset password_reset_done password_reset_confirm password_reset_complete' %}
 <!-- Mobile Bottom Navigation -->
 <nav class="mobile-bottom-nav d-md-none">
 
@@ -798,6 +798,7 @@ function dragEnd(){
 </nav>
 
 {% include "includes/bottom_nav.html" %}
+{% endif %}
 </body>
 
 </html>

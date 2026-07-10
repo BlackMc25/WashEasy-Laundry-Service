@@ -71,6 +71,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+     "django.contrib.sitemaps",
     'django.contrib.humanize',
     'django.contrib.sites',
 
@@ -112,7 +113,7 @@ TEMPLATES = [
                 'core.context_processors.notifications',
                 'core.context_processors.site_settings',
                 'core.context_processors.google_maps',
-                 "django.contrib.sitemaps",
+                
             ],
         },
     },

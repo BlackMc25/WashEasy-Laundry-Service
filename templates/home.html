@@ -1880,7 +1880,30 @@ document.getElementById("openSignupFromLogin").addEventListener("click", functio
 
 });
 
+// already have an account 
+
+document.getElementById("openLoginFromSignup").addEventListener("click", function(e){
+
+    e.preventDefault();
+
+    // Close Signup Modal
+    const signupModal = bootstrap.Modal.getInstance(document.getElementById("signupModal"));
+
+    signupModal.hide();
+
+    // Open Login Modal
+    setTimeout(function(){
+
+        const loginModal = new bootstrap.Modal(document.getElementById("loginModal"));
+
+        loginModal.show();
+
+    },300);
+
+});
+
 </script>
+
 
 </body>
 

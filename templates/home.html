@@ -1119,6 +1119,24 @@ border-radius:20px;
 
                     </button>
 
+                    <div class="text-center mt-3">
+
+                        <small class="text-muted">
+
+                            Don't have an account?
+
+                            <a href="#"
+                            id="openSignupFromLogin"
+                            class="text-decoration-none fw-semibold">
+
+                                Sign Up
+
+                            </a>
+
+                        </small>
+
+                    </div>
+
                     <div class="text-end mt-2">
 
                         <a
@@ -1388,6 +1406,24 @@ border-radius:20px;
                         Create Account
 
                     </button>
+
+                    <div class="text-center mt-3">
+
+                        <small class="text-muted">
+
+                            Already have an account?
+
+                            <a href="#"
+                            id="openLoginFromSignup"
+                            class="text-decoration-none fw-semibold">
+
+                                Login
+
+                            </a>
+
+                        </small>
+
+                    </div>
 
                 </form>
 
@@ -1820,6 +1856,30 @@ if(mobileBtn){
     mobileBtn.addEventListener("click",toggleTheme);
 
 }
+</script>
+// don't have an account: Siygu 
+<script>
+
+document.getElementById("openSignupFromLogin").addEventListener("click", function(e){
+
+    e.preventDefault();
+
+    // Close Login Modal
+    const loginModal = bootstrap.Modal.getInstance(document.getElementById("loginModal"));
+
+    loginModal.hide();
+
+    // Wait for login modal to close
+    setTimeout(function(){
+
+        const signupModal = new bootstrap.Modal(document.getElementById("signupModal"));
+
+        signupModal.show();
+
+    },300);
+
+});
+
 </script>
 
 </body>

@@ -38,6 +38,10 @@
 
                 <th>Price</th>
 
+                <th>Express Price</th>
+
+                <th>Express</th>
+
                 <th>Action</th>
 
             </tr>
@@ -60,25 +64,60 @@
 
                 <td>
 
-                    <a
-                        href="{% url 'update_price' item.id %}"
-                        class="btn btn-warning btn-sm">
+                    {% if item.express_available %}
 
-                        Edit
+                        ₦{{ item.express_price }}
 
-                    </a>
+                    {% else %}
 
-                        <a
-                            href="{% url 'delete_price_item' item.id %}"
-                            class="btn btn-danger btn-sm"
-                            onclick="return confirm('Delete this price item?')">
+                        -
 
-                            Delete
-
-                        </a>
+                    {% endif %}
 
                 </td>
 
+        <td>
+
+            {% if item.express_available %}
+
+                <span class="badge bg-success">
+
+                    Enabled
+
+                </span>
+
+            {% else %}
+
+                <span class="badge bg-secondary">
+
+                    Disabled
+
+                </span>
+
+            {% endif %}
+
+        </td>
+
+        <td>
+
+            <a
+                href="{% url 'update_price' item.id %}"
+                class="btn btn-warning btn-sm">
+
+                Edit
+
+            </a>
+
+            <a
+                href="{% url 'delete_price_item' item.id %}"
+                class="btn btn-danger btn-sm"
+                onclick="return confirm('Delete this price item?')">
+
+                Delete
+
+            </a>
+
+        </td>
             </tr>
 
             {% endfor %}

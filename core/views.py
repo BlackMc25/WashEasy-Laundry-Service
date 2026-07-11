@@ -1333,38 +1333,43 @@ def admin_price_management(request):
     )
 
 @staff_member_required
-def update_price(
-    request,
-    price_id
-):
+def update_price(request, price_id):
 
     item = get_object_or_404(
         PriceList,
         id=price_id
     )
 
-    if request.method == 'POST':
+    if request.method == "POST":
 
-        item.price = request.POST.get(
-            'price'
+        item.price = request.POST.get("price")
+
+        item.express_price = request.POST.get(
+            "express_price",
+            0
+        )
+
+        item.express_available = (
+            "express_available"
+            in request.POST
         )
 
         item.save()
 
         messages.success(
             request,
-            'Price updated successfully.'
+            "Price updated successfully."
         )
 
         return redirect(
-            'admin_price_management'
+            "admin_price_management"
         )
 
     return render(
         request,
-        'admin/update_price.html',
+        "admin/update_price.html",
         {
-            'item': item
+            "item": item
         }
     )
 
@@ -1374,18 +1379,33 @@ def add_price_item(request):
     if request.method == 'POST':
 
         PriceList.objects.create(
-            item_name=request.POST.get(
-                'item_name'
-            ),
-            category=request.POST.get(
-                'category'
-            ),
-            service_type=request.POST.get(
-                'service_type'
-            ),
-            price=request.POST.get(
-                'price'
-            )
+
+        item_name=request.POST.get(
+            "item_name"
+        ),
+
+        category=request.POST.get(
+            "category"
+        ),
+
+        service_type=request.POST.get(
+            "service_type"
+        ),
+
+        price=request.POST.get(
+            "price"
+        ),
+
+        express_price=request.POST.get(
+            "express_price",
+            0
+        ),
+
+        express_available=(
+            "express_available"
+            in request.POST
+        )
+
         )
 
         messages.success(

@@ -575,6 +575,8 @@ function updateSummary(){
             "expressService"
         ).checked;
 
+        console.log("Express Selected:", expressSelected);
+
     let selectedItemsHTML = '';
 
     document
@@ -600,6 +602,13 @@ function updateSummary(){
                 parseFloat(
                     input.dataset.price
                 );
+
+                console.log({
+                item: input.dataset.item,
+                qty: qty2,
+                price: price,
+                express: input.dataset.express
+            });
 
             const subtotal =
                 qty2 * price;

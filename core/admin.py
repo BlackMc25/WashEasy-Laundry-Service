@@ -8,7 +8,6 @@ from .models import (
 admin.site.register(LaundryOrder)
 
 @admin.register(PriceList)
-@admin.register(PriceList)
 class PriceListAdmin(admin.ModelAdmin):
 
     list_display = (

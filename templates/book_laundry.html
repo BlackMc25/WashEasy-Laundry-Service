@@ -124,6 +124,7 @@
                                 readonly
                                 class="qty2-value2"
                                 data-price="{{ service.price }}"
+                                data-express="{{ service.express_price }}"
                                 data-item="{{ item_name }}"
                                 data-service="{{ service.service_type }}"
                             >
@@ -206,6 +207,18 @@
                     <strong id="transport-fee">
                         ₦0
                     </strong>
+                </p>
+
+                <p>
+
+                    Express Service:
+
+                    <strong id="express-fee">
+
+                        ₦0
+
+                    </strong>
+
                 </p>
 
                 <hr>
@@ -530,12 +543,23 @@ function updateGrandTotal(){
             .replace(/,/g,'')
         ) || 0;
 
+    const expressFee =
+        parseFloat(
+            document.getElementById(
+                "express-fee"
+            )
+            .innerText
+            .replace("₦","")
+            .replace(/,/g,"")
+        ) || 0;
+
     document.getElementById(
         'total-cost'
     ).innerText =
         (
-            laundryCost +
-            transportFee
+        laundryCost +
+        expressFee +
+        transportFee
         ).toLocaleString();
 
 }
@@ -543,6 +567,13 @@ function updateGrandTotal(){
 function updateSummary(){
 
     let laundryCost = 0;
+
+    let expressFee = 0;
+
+    const expressSelected =
+        document.getElementById(
+            "expressService"
+        ).checked;
 
     let selectedItemsHTML = '';
 
@@ -574,6 +605,16 @@ function updateSummary(){
                 qty2 * price;
 
             laundryCost += subtotal;
+
+            if(expressSelected){
+
+            expressFee +=
+                qty2 *
+                parseFloat(
+                    input.dataset.express
+                );
+
+            }
 
             selectedItemsHTML += `
 
@@ -629,6 +670,12 @@ function updateSummary(){
     ).innerText =
         laundryCost.toLocaleString();
 
+    document.getElementById(
+    "express-fee"
+    ).innerText =
+    "₦" +
+    expressFee.toLocaleString();
+
     updateGrandTotal();
 
 }
@@ -683,8 +730,20 @@ minusButtons.forEach(button => {
 
 });
 
-
 updateSummary();
+
+document
+.querySelectorAll(
+    'input[name="express_service"]'
+)
+.forEach(radio=>{
+
+    radio.addEventListener(
+        "change",
+        updateSummary
+    );
+
+});
 
 </script>
 

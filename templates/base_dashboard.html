@@ -149,6 +149,10 @@
 
 <body class="{{ request.user.theme }}">
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    {% if request.resolver_match.url_name != "password_reset" and
+      request.resolver_match.url_name != "password_reset_done" and
+      request.resolver_match.url_name != "password_reset_confirm" and
+      request.resolver_match.url_name != "password_reset_complete" %}
     <!--Sidebar-->
 <div class="sidebar collapsed" id="sidebar">
     
@@ -215,6 +219,7 @@
     </ul>
 
 </div>
+{% endif %}
 
         {% if messages %}
 

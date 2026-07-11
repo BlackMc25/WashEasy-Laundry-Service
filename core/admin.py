@@ -6,5 +6,33 @@ from .models import (
 )
 
 admin.site.register(LaundryOrder)
-admin.site.register(PriceList)
+
+@admin.register(PriceList)
+@admin.register(PriceList)
+class PriceListAdmin(admin.ModelAdmin):
+
+    list_display = (
+        "item_name",
+        "category",
+        "service_type",
+        "price",
+        "express_price",
+        "express_available",
+    )
+
+    list_filter = (
+        "category",
+        "service_type",
+        "express_available",
+    )
+
+    search_fields = (
+        "item_name",
+    )
+
+    ordering = (
+        "category",
+        "item_name",
+    )
+
 admin.site.register(OrderItem)

@@ -124,6 +124,16 @@ class LaundryOrder(models.Model):
             decimal_places=2,
             default=0
         )
+    
+    express_service = models.BooleanField(
+    default=False
+)
+
+    express_fee = models.DecimalField(
+    max_digits=10,
+    decimal_places=2,
+    default=0
+    )
 
     pickup_date = models.DateField()
 
@@ -277,6 +287,16 @@ class PriceList(models.Model):
         max_digits=10,
         decimal_places=2
     )
+    express_price = models.DecimalField(
+    max_digits=10,
+    decimal_places=2,
+    default=0,
+    help_text="Extra charge per item for Express Service"
+)
+
+    express_available = models.BooleanField(
+    default=True
+)
 
     def __str__(self):
         return f"{self.item_name} - {self.service_type}"

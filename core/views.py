@@ -22,7 +22,8 @@ from .models import (
     PriceList,
     LaundryOrder,
     OrderItem,
-    Complaint
+    Complaint,
+    
 )
 from core.models import ContactMessage
 from django.shortcuts import (
@@ -93,7 +94,7 @@ def book_laundry(request):
                     )
                 )
 
-                if quantity > 0:
+                if quantity > 0 or express_quantity > 0:
                     selected_items = True
                     break
 
@@ -171,18 +172,40 @@ def book_laundry(request):
                     )
                 )
 
+
+                express_quantity = int(
+                    request.POST.get(
+                        f'express_item_{item.id}',
+                        0
+                    )
+                )
+
                 if quantity > 0:
 
                     subtotal = quantity * item.price
 
+                    express_fee = express_quantity * item.express_price
+
+                    total_subtotal = subtotal + express_fee
+
                     OrderItem.objects.create(
+
                         order=order,
+
                         item=item,
+
                         quantity=quantity,
-                        subtotal=subtotal
+
+                        subtotal=subtotal,
+
+                        express_quantity=express_quantity,
+
+                        express_fee=express_fee,
+
+                        total_subtotal=total_subtotal
                     )
 
-                    total_amount += subtotal
+                    total_amount += total_subtotal
 
             total_amount += transport_fee
 

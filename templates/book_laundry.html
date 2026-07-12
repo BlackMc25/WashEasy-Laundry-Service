@@ -597,11 +597,7 @@ function calculateLaundryItem(card){
         standardQty * price;
 
     const expressSubtotal =
-        expressQty *
-        (
-            price +
-            expressPrice
-        );
+        expressQty * price;
 
     return{
 
@@ -633,96 +629,137 @@ function updateSummary(){
 
     let expressFee = 0;
 
-
-    let selectedItemsHTML = '';
+    let selectedItemsHTML = "";
 
     document
-        .querySelectorAll('.qty2-value2')
-        .forEach(input => {
+    .querySelectorAll(".item-row")
+    .forEach(card=>{
 
-            const qty2 =
-                parseInt(
-                    input.value
-                ) || 0;
+        const result =
+            calculateLaundryItem(card);
 
-            if(qty2 <= 0){
-                return;
-            }
+        if(
+            result.standardQty===0 &&
+            result.expressQty===0
+        ){
+            return;
+        }
 
-            const itemName =
-                input.dataset.item;
+        laundryCost +=
+            result.standardSubtotal +
+            result.expressSubtotal;
 
-            const serviceType =
-                input.dataset.service;
+        expressFee +=
+            result.expressFee;
 
-            const price =
-                parseFloat(
-                    input.dataset.price
-                );
+        selectedItemsHTML += `
 
-            const subtotal =
-                qty2 * price;
+        <div class="summary-item">
 
-            laundryCost += subtotal;
+            <div>
 
-            selectedItemsHTML += `
+                <strong>
 
-                <div class="summary-item">
+                    ${result.item}
 
-                    <div>
+                </strong>
 
-                        <strong>
-                            ${itemName}
-                        </strong>
+                <br>
 
-                        <br>
+                <small>
 
-                        <small>
-                            ${serviceType}
-                        </small>
+                    ${result.service}
 
-                        <br>
+                </small>
 
-                        <small>
-                            Qty: ${qty2}
-                        </small>
+                <br>
 
-                    </div>
+                ${
+                    result.standardQty>0 ?
 
-                    <span>
+                    `<small>
 
-                        ₦${subtotal.toLocaleString()}
+                    Standard:
+                    ${result.standardQty}
+                    × ₦${(
+                        result.standardSubtotal/
+                        result.standardQty
+                    ).toLocaleString()}
 
-                    </span>
+                    =
+                    ₦${result.standardSubtotal.toLocaleString()}
 
-                </div>
+                    </small><br>`
 
-            `;
-        });
+                    :
 
-    if(selectedItemsHTML === ''){
+                    ""
 
-        selectedItemsHTML = `
-            <p class="text-muted">
-                No items selected
-            </p>
+                }
+
+                ${
+                    result.expressQty>0 ?
+
+                    `<small style="color:#0d6efd;">
+
+                    ⚡ Express:
+                    ${result.expressQty}
+                    × ₦${result.expressFee/result.expressQty}
+
+                    =
+                    ₦${result.expressFee.toLocaleString()}
+
+                    </small>`
+
+                    :
+
+                    ""
+
+                }
+
+            </div>
+
+            <strong>
+
+                ₦${(
+                    result.standardSubtotal +
+                    result.expressSubtotal
+                ).toLocaleString()}
+
+            </strong>
+
+        </div>
+
         `;
+
+    });
+
+    if(selectedItemsHTML===""){
+
+        selectedItemsHTML =
+
+        `<p class="text-muted">
+
+        No items selected
+
+        </p>`;
+
     }
 
     document.getElementById(
-        'selected-items'
+        "selected-items"
     ).innerHTML =
-        selectedItemsHTML;
+    selectedItemsHTML;
 
     document.getElementById(
-        'laundry-cost'
+        "laundry-cost"
     ).innerText =
-        laundryCost.toLocaleString();
+    laundryCost.toLocaleString();
 
     document.getElementById(
-    "express-fee"
+        "express-fee"
     ).innerText =
-    "₦" +
+    "₦"+
     expressFee.toLocaleString();
 
     updateGrandTotal();

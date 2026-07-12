@@ -179,35 +179,30 @@ def book_laundry(request):
                     )
                 )
 
+                if quantity == 0 and express_quantity == 0:
+                    continue
 
-                if quantity > 0 or express_quantity > 0:
-                    selected_items = True
-                    break
+                standard_subtotal = quantity * item.price
 
-                subtotal = quantity * item.price
+                express_subtotal = express_quantity * item.price
+
+                subtotal = standard_subtotal + express_subtotal
 
                 express_fee = express_quantity * item.express_price
 
                 total_subtotal = subtotal + express_fee
 
                 OrderItem.objects.create(
-
                     order=order,
-
                     item=item,
-
                     quantity=quantity,
-
                     subtotal=subtotal,
-
                     express_quantity=express_quantity,
-
                     express_fee=express_fee,
-
-                    total_subtotal=total_subtotal
+                    total_subtotal=total_subtotal,
                 )
 
-            total_amount += total_subtotal
+                total_amount += total_subtotal
 
             total_amount += transport_fee
 

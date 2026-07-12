@@ -207,7 +207,7 @@ def book_laundry(request):
                     total_subtotal=total_subtotal
                 )
 
-                total_amount += total_subtotal
+            total_amount += total_subtotal
 
             total_amount += transport_fee
 

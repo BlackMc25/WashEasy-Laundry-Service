@@ -88,7 +88,7 @@
 
                     {% for service in services %}
 
-                    <div class="item-row mb-3">
+                   <div class="item-row mb-3" data-service-id="{{ service.id }}">
 
                         <div class="item-info">
 
@@ -317,94 +317,6 @@
 
                 <hr>
 
-            <!-- ==========================
-                EXPRESS SERVICE
-            ========================== -->
-
-            <div class="express-card">
-
-                <h5 class="mb-3">
-
-                    ⚡ Laundry Speed
-
-                </h5>
-
-                <div class="form-check express-option">
-
-                    <input
-                        class="form-check-input"
-                        type="radio"
-                        name="express_service"
-                        id="standardService"
-                        value="False"
-                        checked>
-
-                    <label
-                        class="form-check-label"
-                        for="standardService">
-
-                        <strong>
-
-                            Standard Service
-
-                        </strong>
-
-                        <br>
-
-                        <small>
-
-                            Estimated completion:
-                            2 - 3 Business Days
-
-                        </small>
-
-                    </label>
-
-                </div>
-
-                <div class="form-check express-option mt-3">
-
-                    <input
-                        class="form-check-input"
-                        type="radio"
-                        name="express_service"
-                        id="expressService"
-                        value="True">
-
-                    <label
-                        class="form-check-label"
-                        for="expressService">
-
-                        <strong>
-
-                            ⚡ Express Service
-
-                        </strong>
-
-                        <br>
-
-                        <small>
-
-                            Priority Cleaning
-
-                            <br>
-
-                            Same Day / Next Day
-
-                            <br>
-
-                            Additional charges apply.
-
-                        </small>
-
-                    </label>
-
-                </div>
-
-            </div>
-
-            <hr>
-
             <h5 class="booking-title mt-3">
 
                 Booking Details
@@ -608,6 +520,12 @@ const plusButtons =
 const minusButtons =
     document.querySelectorAll('.minus-btn2');
 
+const expressPlusButtons =
+    document.querySelectorAll(".plus-express-btn");
+
+const expressMinusButtons =
+    document.querySelectorAll(".minus-express-btn");
+
 function updateGrandTotal(){
 
     const laundryCost =
@@ -651,18 +569,83 @@ function updateGrandTotal(){
 
 }
 
+function calculateLaundryItem(card){
+
+    const standardInput =
+        card.querySelector(".qty2-value2");
+
+    const expressInput =
+        card.querySelector(".express-qty");
+
+    const expressToggle =
+        card.querySelector(".express-toggle");
+
+    const price =
+        parseFloat(
+            standardInput.dataset.price
+        ) || 0;
+
+    const expressPrice =
+        parseFloat(
+            standardInput.dataset.express
+        ) || 0;
+
+    const standardQty =
+        parseInt(
+            standardInput.value
+        ) || 0;
+
+    let expressQty = 0;
+
+    if(expressToggle && expressToggle.checked){
+
+        expressQty =
+            parseInt(
+                expressInput.value
+            ) || 0;
+
+    }
+
+    const standardSubtotal =
+        standardQty * price;
+
+    const expressSubtotal =
+        expressQty *
+        (
+            price +
+            expressPrice
+        );
+
+    return{
+
+        item:
+            standardInput.dataset.item,
+
+        service:
+            standardInput.dataset.service,
+
+        standardQty,
+
+        expressQty,
+
+        standardSubtotal,
+
+        expressSubtotal,
+
+        expressFee:
+            expressQty *
+            expressPrice
+
+    };
+
+}
+
 function updateSummary(){
 
     let laundryCost = 0;
 
     let expressFee = 0;
 
-    const expressSelected =
-        document.getElementById(
-            "expressService"
-        ).checked;
-
-        console.log("Express Selected:", expressSelected);
 
     let selectedItemsHTML = '';
 
@@ -690,27 +673,10 @@ function updateSummary(){
                     input.dataset.price
                 );
 
-                console.log({
-                item: input.dataset.item,
-                qty: qty2,
-                price: price,
-                express: input.dataset.express
-            });
-
             const subtotal =
                 qty2 * price;
 
             laundryCost += subtotal;
-
-            if(expressSelected){
-
-            expressFee +=
-                qty2 *
-                parseFloat(
-                    input.dataset.express
-                );
-
-            }
 
             selectedItemsHTML += `
 
@@ -797,6 +763,29 @@ plusButtons.forEach(button => {
 
 });
 
+expressPlusButtons.forEach(button => {
+
+    button.addEventListener(
+        "click",
+        function(){
+
+            const qtyInput =
+                this.parentElement.querySelector(
+                    ".express-qty"
+                );
+
+            qtyInput.value =
+                parseInt(
+                    qtyInput.value || 0
+                ) + 1;
+
+            updateSummary();
+
+        }
+    );
+
+});
+
 
 minusButtons.forEach(button => {
 
@@ -826,20 +815,83 @@ minusButtons.forEach(button => {
 
 });
 
-updateSummary();
+expressMinusButtons.forEach(button => {
 
-document
-.querySelectorAll(
-    'input[name="express_service"]'
-)
-.forEach(radio=>{
+    button.addEventListener(
+        "click",
+        function(){
 
-    radio.addEventListener(
-        "change",
-        updateSummary
+            const qtyInput =
+                this.parentElement.querySelector(
+                    ".express-qty"
+                );
+
+            let value =
+                parseInt(
+                    qtyInput.value || 0
+                );
+
+            if(value > 0){
+
+                qtyInput.value =
+                    value - 1;
+
+            }
+
+            updateSummary();
+
+        }
     );
 
 });
+
+/* ==========================
+   EXPRESS TOGGLE
+========================== */
+
+document
+.querySelectorAll(".express-toggle")
+.forEach(toggle=>{
+
+    toggle.addEventListener(
+        "change",
+        function(){
+
+            const id =
+                this.dataset.id;
+
+            const section =
+                document.getElementById(
+                    "expressQty"+id
+                );
+
+            const expressInput =
+                section.querySelector(
+                    ".express-qty"
+                );
+
+            if(this.checked){
+
+                section.style.display =
+                    "block";
+
+            }else{
+
+                section.style.display =
+                    "none";
+
+                expressInput.value = 0;
+
+            }
+
+            updateSummary();
+
+        }
+    );
+
+});
+
+updateSummary();
 
 </script>
 

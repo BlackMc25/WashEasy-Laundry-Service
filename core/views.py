@@ -45,51 +45,52 @@ def book_laundry(request):
 
     for item in items:
 
-        category = item.category
-        item_name = item.item_name
+        if item.category not in categories:
+            categories[item.category] = {}
 
-        if category not in categories:
-            categories[category] = {}
+        if item.item_name not in categories[item.category]:
+            categories[item.category][item.item_name] = []
 
-        if item_name not in categories[category]:
-            categories[category][item_name] = []
-
-        categories[category][item_name].append(item)
+        categories[item.category][item.item_name].append(item)
 
     previous_addresses = LaundryOrder.objects.filter(
         customer=request.user
     ).values_list(
-        'pickup_address',
+        "pickup_address",
         flat=True
     ).distinct()
 
     previous_delivery_addresses = LaundryOrder.objects.filter(
         customer=request.user
     ).values_list(
-        'delivery_address',
+        "delivery_address",
         flat=True
     ).distinct()
 
     if request.method == "POST":
 
-        print(request.POST)
-
         form = LaundryOrderForm(request.POST)
-
-        print("FORM VALID:", form.is_valid())
-
-        if not form.is_valid():
-            print("FORM ERRORS:", form.errors)
 
         if form.is_valid():
 
             selected_items = False
 
+            # -----------------------------
+            # Check if customer selected
+            # at least one item
+            # -----------------------------
             for item in items:
 
                 quantity = int(
                     request.POST.get(
-                        f'item_{item.id}',
+                        f"item_{item.id}",
+                        0
+                    )
+                )
+
+                express_quantity = int(
+                    request.POST.get(
+                        f"express_item_{item.id}",
                         0
                     )
                 )
@@ -107,34 +108,34 @@ def book_laundry(request):
 
                 return render(
                     request,
-                    'book_laundry.html',
+                    "book_laundry.html",
                     {
-                        'categories': categories,
-                        'form': form,
-                        'previous_addresses': previous_addresses,
-                        'previous_delivery_addresses': previous_delivery_addresses,
-                        'site_settings': site_settings,
-                    }
+                        "categories": categories,
+                        "form": form,
+                        "previous_addresses": previous_addresses,
+                        "previous_delivery_addresses": previous_delivery_addresses,
+                        "site_settings": site_settings,
+                    },
                 )
 
+            # -----------------------------
+            # Save order
+            # -----------------------------
             order = form.save(commit=False)
 
             order.customer = request.user
 
-            order.pickup_distance_km = request.POST.get(
-                'pickup_distance_km',
-                0
-            ) or 0
+            order.pickup_distance_km = (
+                request.POST.get("pickup_distance_km", 0) or 0
+            )
 
-            order.delivery_distance_km = request.POST.get(
-                'delivery_distance_km',
-                0
-            ) or 0
+            order.delivery_distance_km = (
+                request.POST.get("delivery_distance_km", 0) or 0
+            )
 
-            order.total_distance_km = request.POST.get(
-                'total_distance_km',
-                0
-            ) or 0
+            order.total_distance_km = (
+                request.POST.get("total_distance_km", 0) or 0
+            )
 
             PRICE_PER_KM = Decimal("150")
 
@@ -147,7 +148,9 @@ def book_laundry(request):
 
             last_order = LaundryOrder.objects.filter(
                 customer=request.user
-            ).order_by("-customer_order_number").first()
+            ).order_by(
+                "-customer_order_number"
+            ).first()
 
             if last_order:
 
@@ -163,18 +166,21 @@ def book_laundry(request):
 
             total_amount = Decimal("0")
 
+            # -----------------------------
+            # Save each laundry item
+            # -----------------------------
             for item in items:
-                
+
                 quantity = int(
                     request.POST.get(
-                        f'item_{item.id}',
+                        f"item_{item.id}",
                         0
                     )
                 )
 
                 express_quantity = int(
                     request.POST.get(
-                        f'express_item_{item.id}',
+                        f"express_item_{item.id}",
                         0
                     )
                 )
@@ -182,15 +188,30 @@ def book_laundry(request):
                 if quantity == 0 and express_quantity == 0:
                     continue
 
-                standard_subtotal = quantity * item.price
+                standard_subtotal = (
+                    Decimal(quantity)
+                    * item.price
+                )
 
-                express_subtotal = express_quantity * item.price
+                express_subtotal = (
+                    Decimal(express_quantity)
+                    * item.price
+                )
 
-                subtotal = standard_subtotal + express_subtotal
+                subtotal = (
+                    standard_subtotal
+                    + express_subtotal
+                )
 
-                express_fee = express_quantity * item.express_price
+                express_fee = (
+                    Decimal(express_quantity)
+                    * item.express_price
+                )
 
-                total_subtotal = subtotal + express_fee
+                total_subtotal = (
+                    subtotal
+                    + express_fee
+                )
 
                 OrderItem.objects.create(
                     order=order,
@@ -204,13 +225,17 @@ def book_laundry(request):
 
                 total_amount += total_subtotal
 
+            # -----------------------------
+            # Add transport fee
+            # -----------------------------
             total_amount += transport_fee
 
             order.total_amount = total_amount
             order.save()
-            # ------------------------------------
-            # Create notification for the customer
-            # ------------------------------------
+
+            # -----------------------------
+            # Notification
+            # -----------------------------
             Notification.objects.create(
                 user=request.user,
                 title="Pickup Scheduled",
@@ -218,17 +243,24 @@ def book_laundry(request):
                     "Your booking has been received successfully.\n\n"
                     "Please get your clothes ready. "
                     "Our rider will arrive shortly to pick up your laundry."
-                )
+                ),
             )
 
-            if order.payment_method == 'Pay Online':
+            # -----------------------------
+            # Payment
+            # -----------------------------
+            if order.payment_method == "Pay Online":
 
                 return redirect(
-                    'initialize_payment',
-                    order_id=order.id
+                    "initialize_payment",
+                    order_id=order.id,
                 )
 
-            return redirect('my_orders')
+            return redirect("my_orders")
+
+        else:
+
+            print(form.errors)
 
     else:
 
@@ -236,16 +268,15 @@ def book_laundry(request):
 
     return render(
         request,
-        'book_laundry.html',
+        "book_laundry.html",
         {
-            'categories': categories,
-            'form': form,
-            'previous_addresses': previous_addresses,
-            'previous_delivery_addresses': previous_delivery_addresses,
-            'site_settings': site_settings,
-        }
+            "categories": categories,
+            "form": form,
+            "previous_addresses": previous_addresses,
+            "previous_delivery_addresses": previous_delivery_addresses,
+            "site_settings": site_settings,
+        },
     )
-
 
 
 @login_required

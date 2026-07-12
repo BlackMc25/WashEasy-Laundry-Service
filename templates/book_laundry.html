@@ -88,60 +88,59 @@
 
                     {% for service in services %}
 
-                   <div class="item-row mb-3" data-service-id="{{ service.id }}">
+                        <div class="item-row mb-3" data-service-id="{{ service.id }}">
 
-                        <div class="item-info">
+                            <!-- Top Row -->
 
-                            <p class="fw-bold mb-1">
+                            <div class="service-row">
 
-                                {{ service.service_type }}
+                                <div class="item-info">
 
-                            </p>
+                                    <p class="fw-bold mb-1">
+                                        {{ service.service_type }}
+                                    </p>
 
-                            <small>
+                                    <small>
+                                        ₦{{ service.price }}
+                                    </small>
 
-                                ₦{{ service.price }}
+                                </div>
 
-                            </small>
+                                <div class="quantity-controls2">
 
-                        </div>
+                                    <button
+                                        class="qty2-btn2 minus-btn2"
+                                        type="button">
 
-                       <div class="quantity-controls2">
+                                        −
 
-                            <button
-                                class="qty2-btn2 minus-btn2"
-                                type="button">
+                                    </button>
 
-                                −
+                                    <input
+                                        type="number"
+                                        name="item_{{ service.id }}"
+                                        value="0"
+                                        min="0"
+                                        readonly
+                                        class="qty2-value2"
+                                        data-price="{{ service.price }}"
+                                        data-express="{{ service.express_price }}"
+                                        data-item="{{ item_name }}"
+                                        data-service="{{ service.service_type }}">
 
-                            </button>
+                                    <button
+                                        class="qty2-btn2 plus-btn2"
+                                        type="button">
 
-                            <input
-                                type="number"
-                                name="item_{{ service.id }}"
-                                value="0"
-                                min="0"
-                                readonly
-                                class="qty2-value2"
-                                data-price="{{ service.price }}"
-                                data-express="{{ service.express_price }}"
-                                data-item="{{ item_name }}"
-                                data-service="{{ service.service_type }}"
-                            >
+                                        +
 
-                            <button
-                                class="qty2-btn2 plus-btn2"
-                                type="button">
+                                    </button>
 
-                                +
+                                </div>
 
-                            </button>
+                            </div>
 
-                        </div>
-
-                        <!-- ===========================
-                                EXPRESS SERVICE
-                            =========================== -->
+                            <!-- EXPRESS -->
 
                             <div class="express-container">
 
@@ -168,48 +167,35 @@
 
                                 <div
                                     class="express-quantity"
-
                                     id="expressQty{{ service.id }}"
-
                                     style="display:none;">
 
-                                    <small class="text-primary">
+                                    <small class="express-price">
 
-                                        + ₦{{ service.express_price }}
-                                        each
+                                        + ₦{{ service.express_price }} per item
 
                                     </small>
 
-                                    <div class="qty2-wrapper mt-2">
+                                    <div class="qty2-wrapper">
 
                                         <button
                                             type="button"
                                             class="minus-express-btn">
 
-                                            -
+                                            −
 
                                         </button>
 
                                         <input
-
                                             type="number"
-
                                             class="express-qty"
-
                                             name="express_item_{{ service.id }}"
-
                                             value="0"
-
                                             min="0"
-
                                             readonly
-
                                             data-price="{{ service.price }}"
-
                                             data-express="{{ service.express_price }}"
-
                                             data-item="{{ item_name }}"
-
                                             data-service="{{ service.service_type }}">
 
                                         <button
@@ -225,7 +211,8 @@
                                 </div>
 
                             </div>
-                       </div>
+
+                        </div>
 
                     <hr>
 

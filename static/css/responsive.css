@@ -372,6 +372,12 @@ button{
 
 }
 
+    .service-row{
+
+        align-items:flex-start;
+
+    }
+
 .quantity-controls2{
 
     min-width:165px;

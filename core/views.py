@@ -282,6 +282,11 @@ def order_detail(request, order_id):
         for item in order.items.all()
     )
 
+    express_total = sum(
+    item.express_fee
+    for item in order.items.all()
+    )
+
     site_settings = SiteSettings.objects.first()
 
     context = {
@@ -290,6 +295,8 @@ def order_detail(request, order_id):
 
         'laundry_total': laundry_total,
 
+        "express_total": express_total,
+        
         'site_settings': site_settings,
 
     }

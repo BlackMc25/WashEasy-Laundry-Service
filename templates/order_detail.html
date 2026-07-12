@@ -161,19 +161,17 @@
 
         <h5>Items</h5>
 
-       {% for item in order.items.all %}
+      {% for item in order.items.all %}
 
         <div class="order-item-card mb-3">
 
-            <div class="d-flex justify-content-between align-items-start">
+            <div class="d-flex justify-content-between">
 
                 <div>
 
-                    <h6 class="mb-1">
+                    <h6 class="mb-2">
 
                         {{ item.item.item_name }}
-
-                        × {{ item.quantity }}
 
                     </h6>
 
@@ -187,7 +185,7 @@
 
                 <strong class="text-success">
 
-                    ₦{{ item.subtotal }}
+                    ₦{{ item.total_subtotal }}
 
                 </strong>
 
@@ -195,11 +193,112 @@
 
             <hr>
 
-            <div class="row">
+            <div class="mb-2">
 
-                <div class="col-md-6 col-12 mb-2">
+                <strong>
 
-                    <strong>Payment Method</strong>
+                    Standard Quantity
+
+                </strong>
+
+                <br>
+
+                {{ item.quantity }}
+
+                ×
+
+                ₦{{ item.item.price }}
+
+            </div>
+
+            {% if item.express_quantity > 0 %}
+
+            <div class="mb-2">
+
+                <strong class="text-primary">
+
+                    ⚡ Express Quantity
+
+                </strong>
+
+                <br>
+
+                {{ item.express_quantity }}
+
+                ×
+
+                ₦{{ item.item.express_price }}
+
+            </div>
+
+            {% endif %}
+            <hr>
+
+            <div class="mt-3">
+
+            <div class="d-flex justify-content-between">
+
+                <span>
+
+                    Laundry Cost
+
+                </span>
+
+                <strong>
+
+                    ₦{{ item.subtotal }}
+
+                </strong>
+
+            </div>
+
+            {% if item.express_quantity > 0 %}
+
+            <div class="d-flex justify-content-between mt-2">
+
+                <span class="text-primary">
+
+                    Express Fee
+
+                </span>
+
+                <strong class="text-primary">
+
+                    ₦{{ item.express_fee }}
+
+                </strong>
+
+            </div>
+
+            {% endif %}
+
+            <hr>
+
+            <div class="d-flex justify-content-between">
+
+                <strong>
+
+                    Item Total
+
+                </strong>
+
+                <strong class="text-success">
+
+                    ₦{{ item.total_subtotal }}
+
+                </strong>
+
+            </div>
+
+        </div>
+
+        <hr>
+
+    <div class="row">
+
+        <div class="col-md-6 col-12 mb-2">
+
+             <strong>Payment Method</strong>
 
                     <br>
 
@@ -238,6 +337,22 @@
                     </strong>
 
                 </div>
+
+                <div class="d-flex justify-content-between mt-2">
+
+                        <span>
+
+                            ⚡ Express Fee
+
+                        </span>
+
+                        <span class="text-primary">
+
+                            ₦{{ express_total|floatformat:2 }}
+
+                        </span>
+
+                 </div>
 
                 <div class="d-flex justify-content-between mt-2">
 

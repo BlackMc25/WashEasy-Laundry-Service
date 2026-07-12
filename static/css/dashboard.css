@@ -343,9 +343,23 @@ body{
 
     justify-content:space-between;
 
-    align-items:center;
+    align-items:flex-start;
 
     gap:20px;
+
+}
+
+.item-info{
+
+    flex:1;
+
+    min-width:0;
+
+}
+
+.quantity-controls2{
+
+    flex-shrink:0;
 
 }
 
@@ -636,11 +650,13 @@ body{
 
 .express-container{
 
-    margin-top:20px;
+    width:100%;
+
+    margin-top:18px;
 
     padding-top:15px;
 
-    border-top:1px solid rgba(255,255,255,.12);
+    border-top:1px solid rgba(0,0,0,.15);
 
 }
 
@@ -652,7 +668,7 @@ body{
 
     align-items:center;
 
-    margin-bottom:15px;
+    width:100%;
 
 }
 
@@ -786,13 +802,13 @@ body{
 
     display:flex;
 
-    justify-content:center;
-
     align-items:center;
 
     gap:12px;
 
-    width:100%;
+    justify-content:flex-start;
+
+    margin-top:10px;
 
 }
 

@@ -400,6 +400,20 @@ button{
 
 }
 
+    .express-header{
+
+        flex-direction:row;
+
+        align-items:center;
+
+    }
+
+    .express-quantity .qty2-wrapper{
+
+        justify-content:flex-start;
+
+    }
+
 .booking-map{
 
     height:280px;
@@ -748,7 +762,7 @@ margin-bottom:20px;
 
 }
 
-  .item-row{
+.item-row{
 
         gap:10px;
 

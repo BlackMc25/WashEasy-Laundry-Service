@@ -158,19 +158,19 @@
 
                 <td>
 
-                {% if item.express_quantity > 0 %}
+                    {% if item.express_quantity > 0 %}
 
-                <span class="badge bg-danger">
+                        <span class="badge bg-danger">
 
-                ⚡ EXPRESS × {{ item.express_quantity }}
+                            ⚡ EXPRESS × {{ item.express_quantity }}
 
-                </span>
+                        </span>
 
-                {% endif %}
+                    {% else %}
 
-                —
+                        —
 
-                {% endif %}
+                    {% endif %}
 
                 </td>
 
@@ -213,8 +213,8 @@
             {% empty %}
 
             <tr>
-
-                <td colspan="5" class="text-center">
+                
+                <td colspan="7" class="text-center">
 
                     No Items Found
 

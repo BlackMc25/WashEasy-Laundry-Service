@@ -164,14 +164,13 @@ def book_laundry(request):
             total_amount = Decimal("0")
 
             for item in items:
-
+                
                 quantity = int(
                     request.POST.get(
                         f'item_{item.id}',
                         0
                     )
                 )
-
 
                 express_quantity = int(
                     request.POST.get(
@@ -180,32 +179,35 @@ def book_laundry(request):
                     )
                 )
 
-                if quantity > 0:
 
-                    subtotal = quantity * item.price
+                if quantity > 0 or express_quantity > 0:
+                    selected_items = True
+                    break
 
-                    express_fee = express_quantity * item.express_price
+                subtotal = quantity * item.price
 
-                    total_subtotal = subtotal + express_fee
+                express_fee = express_quantity * item.express_price
 
-                    OrderItem.objects.create(
+                total_subtotal = subtotal + express_fee
 
-                        order=order,
+                OrderItem.objects.create(
 
-                        item=item,
+                    order=order,
 
-                        quantity=quantity,
+                    item=item,
 
-                        subtotal=subtotal,
+                    quantity=quantity,
 
-                        express_quantity=express_quantity,
+                    subtotal=subtotal,
 
-                        express_fee=express_fee,
+                    express_quantity=express_quantity,
 
-                        total_subtotal=total_subtotal
-                    )
+                    express_fee=express_fee,
 
-                    total_amount += total_subtotal
+                    total_subtotal=total_subtotal
+                )
+
+                total_amount += total_subtotal
 
             total_amount += transport_fee
 

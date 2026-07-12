@@ -98,57 +98,113 @@
 
             <tr>
 
-                <th>Item</th>
+            <th>Item</th>
 
-                <th>Category</th>
+            <th>Service</th>
 
-                <th>Service</th>
+            <th>Standard Qty</th>
 
-                <th>Quantity</th>
+            <th>Express Qty</th>
 
-                <th>Subtotal</th>
+            <th>Laundry Cost</th>
+
+            <th>Express Fee</th>
+
+            <th>Total</th>
 
             </tr>
 
         </thead>
 
-        <tbody>
+         <tbody>
 
             {% for item in items %}
 
-            <tr>
+           <tr>
 
                 <td>
 
-                    {{ item.item.item_name }}
+                <strong>
+
+                {{ item.item.item_name }}
+
+                </strong>
+
+                <br>
+
+                <small class="text-muted">
+
+                {{ item.item.category }}
+
+                </small>
 
                 </td>
 
                 <td>
 
-                    {{ item.item.category }}
+                <span class="badge bg-primary">
+
+                {{ item.item.service_type }}
+
+                </span>
 
                 </td>
 
                 <td>
 
-                    <span class="badge bg-primary">
-
-                        {{ item.item.service_type }}
-
-                    </span>
+                {{ item.quantity }}
 
                 </td>
 
                 <td>
 
-                    {{ item.quantity }}
+                {% if item.express_quantity > 0 %}
+
+                <span class="badge bg-danger">
+
+                ⚡ EXPRESS × {{ item.express_quantity }}
+
+                </span>
+
+                {% endif %}
+
+                —
+
+                {% endif %}
 
                 </td>
 
                 <td>
 
-                    ₦{{ item.subtotal|intcomma  }}
+                ₦{{ item.subtotal|intcomma }}
+
+                </td>
+
+                <td>
+
+                {% if item.express_fee > 0 %}
+
+                <span class="text-primary fw-bold">
+
+                ₦{{ item.express_fee|intcomma }}
+
+                </span>
+
+                {% else %}
+
+                —
+
+                {% endif %}
+
+                </td>
+
+                <td>
+
+                <strong class="text-success">
+
+                ₦{{ item.total_subtotal|intcomma }}
+
+                </strong>
 
                 </td>
 
@@ -195,6 +251,22 @@
                         </td>
 
                     </tr>
+
+                    <tr>
+
+                        <th>
+
+                        ⚡ Express Fee
+
+                        </th>
+
+                        <td class="text-end text-primary fw-bold">
+
+                        ₦{{ express_total|intcomma }}
+
+                        </td>
+
+                        </tr>
 
                     <tr>
 

@@ -914,6 +914,11 @@ is now {new_status}.
         for item in items
     )
 
+    express_total = sum(
+        item.express_fee
+        for item in items
+    )
+
     return render(
         request,
         'admin/admin_order_detail.html',
@@ -921,6 +926,8 @@ is now {new_status}.
             'order': order,
             'items': items,
             'laundry_total': laundry_total,
+            'express_total': express_total,
+
         }
     )
 

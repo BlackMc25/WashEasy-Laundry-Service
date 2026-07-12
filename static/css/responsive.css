@@ -360,24 +360,6 @@ button{
 
 }
 
-.item-row{
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    gap:15px;
-
-}
-
-    .service-row{
-
-        align-items:flex-start;
-
-    }
-
 .quantity-controls2{
 
     min-width:165px;
@@ -722,27 +704,42 @@ cursor:pointer;
 
 padding:10px;
 
-}
-
 .item-row{
 
-display:flex;
+    display:flex;
 
-justify-content:space-between;
+    flex-direction:column;
 
-align-items:center;
+    align-items:stretch;
 
-gap:15px;
+    gap:14px;
 
-padding:10px 0;
+    padding:14px 0;
+
+}
+
+.service-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-start;
+
+    gap:14px;
 
 }
 
 .item-info{
 
-flex:1;
+    flex:1;
+
+    min-width:0;
 
 }
+
+}
+
 
 .mobile-summary{
 
@@ -784,7 +781,39 @@ margin-bottom:20px;
 
 .quantity-controls2{
 
-margin-top:8px;
+    display:flex;
+
+    align-items:center;
+
+    justify-content:flex-end;
+
+    gap:8px;
+
+    flex-shrink:0;
+
+}
+
+.item-info p{
+
+    margin-bottom:4px;
+
+    font-size:18px;
+
+    font-weight:700;
+
+    line-height:1.35;
+
+    word-break:normal;
+
+}
+
+.item-info small{
+
+    display:block;
+
+    margin-top:4px;
+
+    font-size:15px;
 
 }
 
@@ -792,11 +821,6 @@ margin-top:8px;
 
 @media (max-width:768px){
 
-     .quantity-controls2{
-
-        gap:6px;
-
-    }
 
 
       .qty2-btn2{

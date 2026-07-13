@@ -1,0 +1,193 @@
+/*=====================================
+ PREMIUM NAVBAR
+=====================================*/
+
+.navbar{
+
+    position:fixed;
+
+    top:18px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:95%;
+
+    max-width:1350px;
+
+    padding:14px 30px;
+
+    border-radius:22px;
+
+    background:rgba(255,255,255,.75);
+
+    backdrop-filter:blur(18px);
+
+    -webkit-backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.35);
+
+    box-shadow:0 15px 45px rgba(0,0,0,.08);
+
+    transition:.4s ease;
+
+    z-index:9999;
+
+}
+
+/* Navbar after scrolling */
+
+.navbar.scrolled{
+
+    padding:10px 25px;
+
+    background:rgba(255,255,255,.92);
+
+    box-shadow:0 18px 50px rgba(0,0,0,.12);
+
+}
+
+/* Logo */
+
+.navbar-brand{
+
+    font-size:1.8rem;
+
+    font-weight:700;
+
+    color:#0d3b66 !important;
+
+    letter-spacing:.5px;
+
+    transition:.35s;
+
+}
+
+.navbar-brand:hover{
+
+    transform:scale(1.05);
+
+}
+
+/* Links */
+
+.navbar .nav-link{
+
+    position:relative;
+
+    margin:0 6px;
+
+    color:#0d3b66;
+
+    font-weight:600;
+
+    padding:10px 18px;
+
+    transition:.35s;
+
+}
+
+/* Animated underline */
+
+.navbar .nav-link::after{
+
+    content:"";
+
+    position:absolute;
+
+    bottom:0;
+
+    left:50%;
+
+    width:0;
+
+    height:3px;
+
+    border-radius:30px;
+
+    background:#0d6efd;
+
+    transition:.35s;
+
+    transform:translateX(-50%);
+
+}
+
+.navbar .nav-link:hover::after{
+
+    width:70%;
+
+}
+
+.navbar .nav-link:hover{
+
+    color:#0d6efd;
+
+}
+
+/* Login Button */
+
+.login-btn{
+
+    padding:10px 22px;
+
+    border-radius:40px;
+
+    color:#0d3b66;
+
+    font-weight:600;
+
+    transition:.35s;
+
+}
+
+.login-btn:hover{
+
+    background:#eef6ff;
+
+}
+
+/* Signup */
+
+.signup-btn{
+
+    background:#0d6efd;
+
+    color:white !important;
+
+    padding:11px 26px;
+
+    border-radius:40px;
+
+    font-weight:600;
+
+    transition:.35s;
+
+    box-shadow:0 10px 25px rgba(13,110,253,.25);
+
+}
+
+.signup-btn:hover{
+
+    background:#0056d6;
+
+    transform:translateY(-3px);
+
+    box-shadow:0 18px 35px rgba(13,110,253,.35);
+
+}
+
+.navbar-toggler{
+
+    border:none;
+
+}
+
+.custom-toggle-icon{
+
+    color:#0d6efd;
+
+    font-size:1.8rem;
+
+}

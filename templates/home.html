@@ -17,6 +17,11 @@ WashEasy | Laundry Pickup, Dry Cleaning & Ironing Services in Lagos, Nigeria
 
 <link rel="stylesheet" href="{% static 'css/style.css' %}" >
 <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+<link rel="stylesheet" href="{% static 'css/homepage.css' %}">
+<link rel="stylesheet" href="{% static 'css/hero.css' %}">
+<link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+<link rel="stylesheet" href="{% static 'css/darkmode.css' %}">
+<link rel="stylesheet" href="{% static 'css/animation.css' %}">
 
 <!-- Web Awesome -->
 <link rel="stylesheet" href="https://ka-f.webawesome.com/webawesome@3.8.0/styles/themes/default.css">
@@ -1453,6 +1458,25 @@ border-radius:20px;
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
+<script>
+    window.addEventListener("scroll",()=>{
+
+    const navbar=document.querySelector(".navbar");
+
+    if(window.scrollY>80){
+
+        navbar.classList.add("scrolled");
+
+    }
+
+    else{
+
+        navbar.classList.remove("scrolled");
+
+    }
+
+});
+</script>
 <script>
     const scrollBtn = document.getElementById("scrollBtn");
 

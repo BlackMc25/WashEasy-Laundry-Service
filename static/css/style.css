@@ -1,62 +1,6 @@
 body {
 font-family: 'segoe UI', sans-serif;
-}
-
-/* Navbar */
-
-.navbar{
-    padding: 15px 0;
-}
-.custom-toggle-icon{
-    color:#124f8a;
-    font-size:1.5rem;
-    font-weight:bold;
-}
-
-.navbar-toggler{
-    border-color:#0d3b66;
-}
-
-.navbar-brand{
-    font-size: 1.7rem;
-    color:#0d3b66 !important;
-}
-
-.navbar .nav-link{
-    color:#0d3b66;
-    font-weight:500;
-    padding: 10px 18px; 
-    border-radius:30px;
-    transition: all 0.3s ease;
-}
-
-.navbar .nav-link:hover{
-    background-color:#e6f0fa;
-    color:#0d3b66;
-}
-.login-btn{
-    color:#0d3b66;
-    font-weight:500;
-    padding: 10px 18px; 
-    border-radius:30px;
-    transition: all 0.3s ease;
-}
-
-.login-btn:hover{
-    background-color:#e6f0fa;
-    color:#0d3b66;
-}
-
-.signup-btn{
-    color:#0d3b66;
-    font-weight:500;
-    padding: 10px 18px; 
-    border-radius:30px;
-    transition: all 0.3s ease;
-}
-.signup-btn:hover{
-    background-color:#e6f0fa;
-    color:#0d3b66;
+ padding-top:110px;
 }
 
 /* Heor */

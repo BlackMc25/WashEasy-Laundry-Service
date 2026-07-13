@@ -69,6 +69,10 @@ content="https://washeasy.peneirize.com/static/images/logo.png">
 href="{% static 'images/logo.png' %}">
 
 <link
+rel="stylesheet"
+href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+
+<link
     rel="icon"
     type="image/x-icon"
     href="{% static 'images/faviconlogo.ico' %}">
@@ -92,28 +96,7 @@ max-width:700px;
 margin:auto;
 }
 
-.process-card{
-background:#fff;
-padding:25px;
-border-radius:20px;
-box-shadow:0 5px 15px rgba(0,0,0,0.08);
-transition:.3s;
-height:100%;
-}
 
-.process-card:hover{
-transform:translateY(-8px);
-}
-
-.process-card i{
-font-size:3rem;
-color:#0d6efd;
-}
-
-.service-header{
-margin-top:80px;
-margin-bottom:40px;
-}
 
 
 
@@ -593,13 +576,19 @@ margin-bottom:40px;
 
     <div class="row text-center process-row">
 
-        <div class="col-md-3">
+        <div class="col-md-3" data-aos="fade-right">
 
             <div class="process-card">
 
                 <i class="bi bi-calendar-check-fill"></i>
 
                 <h4>Book</h4>
+
+                <small class="step-time">
+
+                    ⏱ 1 Minute
+
+                </small>
 
                 <p>
                     Schedule a pickup in minutes through our platform.
@@ -609,13 +598,21 @@ margin-bottom:40px;
 
         </div>
 
-        <div class="col-md-3">
+        <div class="timeline-line"></div>
+
+       <div class="col-md-3"  data-aos="fade-up">
 
             <div class="process-card">
 
                 <i class="bi bi-house-door-fill"></i>
 
                 <h4>Pickup</h4>
+
+                <small class="step-time">
+
+                   ⏱ 30-60 Minutes
+
+                </small>
 
                 <p>
                     Our rider collects your laundry at your preferred location.
@@ -625,13 +622,21 @@ margin-bottom:40px;
 
         </div>
 
-        <div class="col-md-3">
+        <div class="timeline-line"></div>
+
+       <div class="col-md-3" data-aos="zoom-in">
 
             <div class="process-card">
 
                 <i class="bi bi-droplet-fill"></i>
 
                 <h4>Clean</h4>
+
+                 <small class="step-time">
+
+                    ⏱ 4-24 Hours
+
+                </small>
 
                 <p>
                     Your garments are professionally cleaned and inspected.
@@ -641,13 +646,21 @@ margin-bottom:40px;
 
         </div>
 
-        <div class="col-md-3">
+        <div class="timeline-line"></div>
+
+        <div class="col-md-3" data-aos="fade-left">
 
             <div class="process-card">
 
                 <i class="bi bi-box-seam-fill"></i>
 
                 <h4>Deliver</h4>
+
+                    <small class="step-time">
+
+                    ⏱ At Your Convenience
+
+                    </small>
 
                 <p>
                     Fresh, clean and ready-to-wear laundry delivered back to you.
@@ -864,10 +877,70 @@ margin-bottom:40px;
 
 </p>
 
-
 </div>
 
+    <section class="express-section">
 
+        <div class="container">
+
+        <div class="express-card">
+
+        <div class="express-left">
+
+        <span class="express-tag">
+
+        ⚡ EXPRESS SERVICE
+
+        </span>
+
+        <h2>
+
+        Need Your Laundry Today?
+
+        </h2>
+
+        <p>
+
+        Skip the regular queue and enjoy priority washing, drying, ironing and delivery.
+
+        Perfect for meetings, weddings, interviews and emergencies.
+
+        </p>
+
+        <ul>
+
+        <li>⚡ Priority Processing</li>
+
+        <li>🚚 Faster Delivery</li>
+
+        <li>🧺 Premium Handling</li>
+
+        <li>⏰ Same-Day Availability*</li>
+
+        </ul>
+
+        <a href="#home"
+        class="express-btn">
+
+        Book Express
+
+        <i class="bi bi-arrow-right"></i>
+
+        </a>
+
+        </div>
+
+        <div class="express-right">
+
+        ⚡
+
+        </div>
+
+        </div>
+
+        </div>
+
+    </section>
 
 </section>
 
@@ -2053,7 +2126,19 @@ document.getElementById("openLoginFromSignup").addEventListener("click", functio
 
 </script>
 
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 
+<script>
+AOS.init({
+
+    duration:1000,
+
+    once:true,
+
+    easing:"ease-in-out"
+
+});
+</script>
 </body>
 
 </html>

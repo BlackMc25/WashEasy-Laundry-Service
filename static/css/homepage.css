@@ -1,0 +1,294 @@
+/*====================================
+PREMIUM SERVICE CARD
+====================================*/
+
+.service-card{
+
+    position:relative;
+
+    background:#fff;
+
+    border-radius:26px;
+
+    padding:40px 30px;
+
+    overflow:hidden;
+
+    transition:.45s;
+
+    border:1px solid rgba(13,110,253,.08);
+
+    box-shadow:
+
+    0 15px 45px rgba(0,0,0,.06);
+
+    height:100%;
+
+}
+
+.service-card:hover{
+
+    transform:
+
+        translateY(-15px);
+
+    box-shadow:
+
+        0 30px 70px rgba(13,110,253,.18);
+
+}
+
+.service-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:5px;
+
+    background:
+
+    linear-gradient(
+
+        90deg,
+
+        #0d6efd,
+
+        #38bdf8,
+
+        #0dcaf0
+
+    );
+
+}
+
+.service-icon{
+
+    width:90px;
+
+    height:90px;
+
+    margin:auto;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:42px;
+
+    background:
+
+        linear-gradient(
+
+            135deg,
+
+            #eaf4ff,
+
+            #ffffff
+
+        );
+
+    box-shadow:
+
+        0 15px 35px rgba(13,110,253,.15);
+
+    transition:.45s;
+
+}
+
+.service-price{
+
+    margin:20px 0;
+
+    font-size:36px;
+
+    font-weight:800;
+
+    color:#0d6efd;
+
+}
+
+.service-price span{
+
+    font-size:15px;
+
+    color:#888;
+
+}
+
+.service-card ul{
+
+    margin-top:25px;
+
+    padding:0;
+
+    list-style:none;
+
+}
+
+.service-card li{
+
+    padding:8px 0;
+
+    color:#555;
+
+    font-size:15px;
+
+}
+
+.service-btn{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    margin-top:30px;
+
+    text-decoration:none;
+
+    color:white;
+
+    background:
+
+        linear-gradient(
+
+            135deg,
+
+            #0d6efd,
+
+            #38bdf8
+
+        );
+
+    padding:14px 28px;
+
+    border-radius:40px;
+
+    transition:.45s;
+
+}
+
+.service-btn:hover{
+
+    color:white;
+
+    transform:
+
+        translateX(8px);
+
+}
+
+.featured-service{
+
+    transform:scale(1.05);
+
+    border:2px solid #0d6efd;
+
+    background:
+
+    linear-gradient(
+
+        white,
+
+        #f7fbff
+
+    );
+
+}
+
+
+.featured-service:hover{
+transform:scale(1.05);
+}
+
+.popular-badge{
+
+    position:absolute;
+
+    top:20px;
+
+    right:-35px;
+
+    background:#0d6efd;
+
+    color:white;
+
+    padding:8px 45px;
+
+    transform:rotate(40deg);
+
+    font-size:12px;
+
+    font-weight:700;
+
+}
+
+.delivery-banner{
+
+    margin-top:70px;
+
+    padding:50px;
+
+    border-radius:30px;
+
+    color:white;
+
+    background:
+
+    linear-gradient(
+
+        135deg,
+
+        #0d6efd,
+
+        #38bdf8
+
+    );
+
+    box-shadow:
+
+        0 25px 60px rgba(13,110,253,.25);
+
+}
+
+#Ourservice-container{
+
+    position:relative;
+
+}
+
+#Ourservice-container::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:300px;
+
+    height:300px;
+
+    border-radius:50%;
+
+    background:
+
+    rgba(56,189,248,.08);
+
+    top:-80px;
+
+    left:-120px;
+
+    z-index:-1;
+
+}

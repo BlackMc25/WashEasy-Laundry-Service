@@ -524,6 +524,76 @@ border-radius:20px;
 
             </div>
 
+        <div class="hero-stats mt-5">
+
+            <div>
+
+                <h2 class="counter"
+                    data-target="2500">
+
+                    0
+
+                </h2>
+
+                <span>
+
+                    Happy Customers
+
+                </span>
+
+            </div>
+
+            <div>
+
+                <h2 class="counter"
+                    data-target="6000">
+
+                    0
+
+                </h2>
+
+                <span>
+
+                    Orders Completed
+
+                </span>
+
+            </div>
+
+            <div>
+
+                <h2>
+
+                    99%
+
+                </h2>
+
+                <span>
+
+                    Satisfaction
+
+                </span>
+
+            </div>
+
+            <div>
+
+                <h2>
+
+                    24hrs
+
+                </h2>
+
+                <span>
+
+                    Express Service
+
+                </span>
+
+            </div>
+
+        </div>
+
     </div>
 
 </section>
@@ -1590,6 +1660,41 @@ window.addEventListener('pageshow', function(event) {
     ) {
         window.location.reload();
     }
+
+});
+</script>
+
+<script>
+
+    document.querySelectorAll(".counter").forEach(counter=>{
+
+const update=()=>{
+
+const target=+counter.dataset.target;
+
+const count=+counter.innerText;
+
+const speed=60;
+
+const inc=Math.ceil(target/speed);
+
+if(count<target){
+
+counter.innerText=count+inc;
+
+setTimeout(update,25);
+
+}
+
+else{
+
+counter.innerText=target.toLocaleString()+"+";
+
+}
+
+}
+
+update();
 
 });
 </script>

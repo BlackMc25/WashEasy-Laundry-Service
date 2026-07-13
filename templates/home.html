@@ -340,34 +340,25 @@ border-radius:20px;
 
 
 <!-- Hero Section -->
-
+ 
 <section class="hero-section" id="home">
 
-    <div class="floating-elements">
+<div class="floating-elements">
 
-        <div class="float shirt">
+<div class="glass-circle one">👕</div>
 
-            <i class="bi bi-bag-heart-fill"></i>
+<div class="glass-circle two">🧺</div>
 
-        </div>
+<div class="glass-circle three">🧼</div>
 
-        <div class="float bubble1"></div>
+<div class="glass-circle four">✨</div>
 
-        <div class="float bubble2"></div>
+<div class="glass-circle five">🫧</div>
 
-        <div class="float basket">
+<div class="bubbles"></div>
 
-            <i class="bi bi-basket-fill"></i>
+</div>
 
-        </div>
-
-        <div class="float sparkle">
-
-            ✨
-
-        </div>
-
-    </div>
 
     <div id="heroCarousel"
          class="carousel slide carousel-fade"
@@ -1584,6 +1575,7 @@ border-radius:20px;
 
 });
 </script>
+
 <script>
     const scrollBtn = document.getElementById("scrollBtn");
 
@@ -1605,6 +1597,32 @@ scrollBtn.addEventListener("click", function(){
     });
 
 });
+</script>
+
+<script>
+
+const bubbles=document.querySelector(".bubbles");
+
+for(let i=0;i<20;i++){
+
+    const bubble=document.createElement("span");
+
+    bubble.className="bubble";
+
+    bubble.style.left=Math.random()*100+"%";
+
+    bubble.style.animationDelay=Math.random()*6+"s";
+
+    bubble.style.animationDuration=5+Math.random()*6+"s";
+
+    bubble.style.width=8+Math.random()*18+"px";
+
+    bubble.style.height=bubble.style.width;
+
+    bubbles.appendChild(bubble);
+
+}
+
 </script>
 
 

@@ -13,6 +13,13 @@ backdrop-filter:blur(18px);
 body.light .hero-stats{
 
 background:white;
+color: #222;
+
+}
+
+body.light .scroll-indicator{
+
+color:#222;
 
 }
 

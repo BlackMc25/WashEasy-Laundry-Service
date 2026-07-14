@@ -637,13 +637,13 @@ button{
 
 .hero-glass{
 
-    width:100%;
-
-    max-width:420px;
-
-    min-height:580px;
-
     padding:35px 30px;
+
+    width:72px;
+
+    height:72px;
+
+    font-size:26px;
 
     display:flex;
 
@@ -804,38 +804,42 @@ button{
 
 }
 
+/* Top Left Bubble */
 .glass-circle.one{
 
-    top:100px;
+    top: 145px;
 
-    left:18px;
-
-}
-
-.glass-circle .two{
-
-    bottom:230px;
-
-    left:25px;
+    left: -18px;
 
 }
 
-.glass-circle .three{
+/* Left Middle Bubble */
+.glass-circle.two{
 
-   top:410px;
+    top: 260px;
 
-    right:35px;  
-
-}
-
-.glass-circle .four{
-
-
-   display: none;
+    left: 18px;
 
 }
 
-.glass-circle .five{
+/* Bottom Right Bubble */
+.glass-circle.three{
+
+    bottom: 120px;
+
+    right: -18px;
+
+}
+
+/* Hide extra bubbles on mobile */
+
+.glass-circle.four{
+
+    display:none;
+
+}
+
+.glass-circle.five{
 
     display:none;
 

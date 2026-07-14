@@ -210,3 +210,45 @@ transform:scale(1);
 }
 
 }
+
+@media (max-width:768px){
+.glass-circle.one{
+
+    animation: floatBubble 7s ease-in-out infinite;
+
+}
+
+.glass-circle.two{
+
+    animation: floatBubble 9s ease-in-out infinite;
+
+}
+
+.glass-circle.three{
+
+    animation: floatBubble 8s ease-in-out infinite;
+
+}
+
+@keyframes floatBubble{
+
+    0%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-12px);
+
+    }
+
+    100%{
+
+        transform:translateY(0);
+
+    }
+
+}
+}

@@ -649,8 +649,6 @@ button{
 
     flex-direction:column;
 
-    justify-content:space-between;
-
     border-radius:30px;
 
     backdrop-filter:blur(16px);
@@ -671,17 +669,23 @@ button{
 
     height:44px;
 
+    z-index:100;
+
 }
 
 .carousel-control-prev{
 
     left:10px;
 
+    opacity:1;
+
 }
 
 .carousel-control-next{
 
     right:10px;
+
+     opacity:1;
 
 }
 

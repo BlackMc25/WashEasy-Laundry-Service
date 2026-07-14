@@ -212,6 +212,7 @@ transform:scale(1);
 }
 
 @media (max-width:768px){
+    
 .glass-circle.one{
 
     animation: floatBubble 7s ease-in-out infinite;
@@ -220,7 +221,7 @@ transform:scale(1);
 
 .glass-circle.two{
 
-    animation: floatBubble 9s ease-in-out infinite;
+    animation:floatBubble 4s ease-in-out infinite;
 
 }
 
@@ -251,4 +252,28 @@ transform:scale(1);
     }
 
 }
+
+@keyframes floatBubble{
+
+    0%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-14px);
+
+    }
+
+    100%{
+
+        transform:translateY(0);
+
+    }
+
 }
+
+}
+

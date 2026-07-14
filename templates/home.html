@@ -347,21 +347,35 @@ margin:auto;
                 <div class="hero-glass">
                     <h1>Professional Wash & Iron Service</h1>
 
-                    <p>
+                        <p>
 
-                        Your clothes deserve expert care.
-                        We wash, iron and neatly package every item
-                        before delivering it back to your doorstep.
+                            Your clothes deserve expert care.
+                            We wash, iron and neatly package every item
+                            before delivering it back to your doorstep.
 
-                    </p>
-                </div>
-                    {% if user.is_authenticated %}
+                        </p>
+                    
+                     {% if user.is_authenticated %}
+
+                        <a href="{% url 'book_laundry' %}"
+                        class="btn btn-primary btn-lg hero-btn">
+
+                            Book Laundry
+
+                        </a>
 
                     {% else %}
 
+                        <button
+                            class="btn btn-primary btn-lg hero-btn"
+                            data-bs-toggle="modal"
+                            data-bs-target="#loginModal">
+
+                            Book Laundry
+
+                        </button>
 
                     {% endif %}
-
                 </div>
 
             </div>
@@ -384,6 +398,28 @@ margin:auto;
                         everyday use.
 
                     </p>
+
+                     {% if user.is_authenticated %}
+
+                        <a href="{% url 'book_laundry' %}"
+                        class="btn btn-primary btn-lg hero-btn">
+
+                            Book Laundry
+
+                        </a>
+
+                    {% else %}
+
+                        <button
+                            class="btn btn-primary btn-lg hero-btn"
+                            data-bs-toggle="modal"
+                            data-bs-target="#loginModal">
+
+                            Book Laundry
+
+                        </button>
+
+                    {% endif %}
                     </div>
                 </div>
 
@@ -406,6 +442,27 @@ margin:auto;
                         suits, dresses and premium garments.
 
                     </p>
+                     {% if user.is_authenticated %}
+
+                        <a href="{% url 'book_laundry' %}"
+                        class="btn btn-primary btn-lg hero-btn">
+
+                            Book Laundry
+
+                        </a>
+
+                    {% else %}
+
+                        <button
+                            class="btn btn-primary btn-lg hero-btn"
+                            data-bs-toggle="modal"
+                            data-bs-target="#loginModal">
+
+                            Book Laundry
+
+                        </button>
+
+                    {% endif %}
                     </div>
                 </div>
 
@@ -428,6 +485,28 @@ margin:auto;
                         you looking smart for work and special events.
 
                     </p>
+                    
+                     {% if user.is_authenticated %}
+
+                        <a href="{% url 'book_laundry' %}"
+                        class="btn btn-primary btn-lg hero-btn">
+
+                            Book Laundry
+
+                        </a>
+
+                    {% else %}
+
+                        <button
+                            class="btn btn-primary btn-lg hero-btn"
+                            data-bs-toggle="modal"
+                            data-bs-target="#loginModal">
+
+                            Book Laundry
+
+                        </button>
+
+                    {% endif %}
                 </div>
                 </div>
 

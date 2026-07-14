@@ -685,7 +685,7 @@ button{
 
     right:10px;
 
-     opacity:1;
+    opacity:1;
 
 }
 
@@ -806,13 +806,13 @@ button{
 
 .glass-circle.one{
 
-    top:115px;
+    top:100px;
 
     left:18px;
 
 }
 
-.glass-circle.two{
+.glass-circle .two{
 
     bottom:230px;
 
@@ -820,7 +820,7 @@ button{
 
 }
 
-.glass-circle.three{
+.glass-circle .three{
 
    top:410px;
 
@@ -828,16 +828,14 @@ button{
 
 }
 
-.glass-circle.four{
+.glass-circle .four{
 
 
-    top:210px;
-
-    right:20px;
+   display: none;
 
 }
 
-.glass-circle.five{
+.glass-circle .five{
 
     display:none;
 

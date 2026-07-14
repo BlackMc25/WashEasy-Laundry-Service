@@ -695,7 +695,7 @@ button{
 
 .hero-glass h1{
 
-    font-size:2.15rem;
+    font-size:6.15rem;
 
     line-height:1.05;
 
@@ -748,7 +748,7 @@ button{
 
 .carousel-indicators{
 
-    bottom:165px;
+    bottom:145px;
 
 }
 
@@ -758,7 +758,7 @@ button{
 
     height:10px;
 
-    border-radius:60%;
+    border-radius:50%;
 
 }
 
@@ -818,7 +818,7 @@ button{
 
     top: 260px;
 
-    right: -18px;
+    left: -18px;
 
 }
 

@@ -882,39 +882,59 @@ object-fit:cover;
 
 .carousel-caption{
 
-left:15px;
+left:18px;
 
-right:15px;
+right:18px;
 
-bottom:70px;
+top:50%;
+
+bottom:auto;
+
+transform:translateY(-50%);
 
 padding:0;
 
-text-align:center;
+display:flex;
+
+justify-content:center;
+
+align-items:center;
 
 }
+
+
 
 .hero-glass{
 
-padding:25px;
+    padding:28px;
 
-border-radius:25px;
+    min-height:auto;
+
+    height:auto;
+
+    max-height:none;
+
+    border-radius:28px;
 
 }
 
+
+
 .hero-glass h1{
 
-font-size:2rem;
+    font-size:3rem;
 
-line-height:1.25;
+    line-height:1.05;
+
+    margin-bottom:18px;
 
 }
 
 .hero-glass p{
 
-font-size:16px;
+    font-size:18px;
 
-margin-top:15px;
+    line-height:1.8;
 
 }
 
@@ -922,13 +942,15 @@ margin-top:15px;
 
 width:100%;
 
-margin-top:20px;
+margin-top:25px;
 
-padding:15px;
+padding:16px;
 
 font-size:18px;
 
 border-radius:50px;
+
+display:block;
 
 }
 
@@ -988,7 +1010,13 @@ border-radius:50%;
 
 }
 
-.hero-image{
+.hero-.hero-image{
+
+height:92vh;
+
+object-fit:cover;
+
+}image{
 
 filter:brightness(.7);
 
@@ -1004,31 +1032,70 @@ height:18px;
 
 }
 
-.one{
+.glass-circle{
 
-left:5%;
-
-top:12%;
+transform:scale(.65);
 
 }
 
-.two{
+.glass-circle.one{
 
-right:5%;
+left:8%;
 
-bottom:15%;
-
-}
-
-.three{
-
-display:none;
+top:8%;
 
 }
 
+.glass-circle.two{
+
+left:3%;
+
+bottom:8%;
+
+}
+
+.glass-circle.three{
+
+right:10%;
+
+top:18%;
+
+}
+
+.glass-circle.four{
+
+right:38%;
+
+top:42%;
+
+}
+
+.glass-circle.five{
+
+right:6%;
+
+bottom:20%;
+
+}
 .hero-glass{
 
 backdrop-filter:blur(10px);
+
+}
+
+.hero-stats{
+
+display:grid;
+
+grid-template-columns:repeat(2,1fr);
+
+gap:16px;
+
+padding:20px;
+
+margin-top:25px;
+
+border-radius:20px;
 
 }
 

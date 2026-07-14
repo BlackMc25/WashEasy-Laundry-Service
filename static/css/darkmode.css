@@ -63,6 +63,26 @@ background:white;
 
 }
 
+body.light .hero-stats{
+
+background:white;
+
+color:#1f2937;
+
+}
+
+body.light .hero-stats h2{
+
+color:#0d6efd;
+
+}
+
+body.light .hero-stats span{
+
+color:#475569;
+
+}
+
 body.light .contact-info-card{
 
 background:white;
@@ -166,13 +186,27 @@ linear-gradient(
 
 135deg,
 
-#e69c00,
+#f6b100,
 
-#ffbf00
+#ffd43b
 
 );
 
-color:#111827;
+color:#1f2937;
+
+box-shadow:
+
+0 25px 80px rgba(255,193,7,.35);
+
+}
+
+body.dark .express-right{
+
+opacity:.12;
+
+color:white;
+
+font-size:220px;
 
 }
 
@@ -361,3 +395,4 @@ border-color .35s,
 box-shadow .35s;
 
 }
+

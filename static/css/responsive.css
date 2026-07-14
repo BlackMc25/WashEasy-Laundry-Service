@@ -748,7 +748,7 @@ button{
 
 .carousel-indicators{
 
-    bottom:145px;
+    bottom:165px;
 
 }
 
@@ -759,6 +759,8 @@ button{
     height:10px;
 
     border-radius:50%;
+
+    bottom:50px;
 
 }
 
@@ -818,7 +820,7 @@ button{
 
     top: 260px;
 
-    right: -18px;
+    right: -38px;
 
 }
 

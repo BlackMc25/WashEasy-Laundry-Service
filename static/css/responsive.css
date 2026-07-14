@@ -821,7 +821,7 @@ button{
 
 .glass-circle.two{
 
-    top:36%;
+    bottom: 120px;
 
     right:12px !important; 
 
@@ -830,7 +830,7 @@ button{
 /* Bottom Right Bubble */
 .glass-circle.three{
 
-    bottom: 120px;
+    top:36%;
 
     right: 18px;
 

@@ -859,21 +859,19 @@ HOME PAGE MOBILE
 
 .hero-section{
 
-min-height:auto;
+    min-height:105vh;
 
-padding-top:90px;
+    padding-top:110px;
 
-padding-bottom:60px;
-
-overflow:hidden;
+    padding-bottom:140px;
 
 }
 
 .hero-image{
 
-height:80vh;
+    height:105vh;
 
-object-fit:cover;
+    object-fit:cover;
 
 }
 }
@@ -882,23 +880,19 @@ object-fit:cover;
 
 .carousel-caption{
 
-left:18px;
+    top:110px;
 
-right:18px;
+    bottom:40px;
 
-top:50%;
+    left:20px;
 
-bottom:auto;
+    right:20px;
 
-transform:translateY(-50%);
+    transform:none;
 
-padding:0;
+    display:block;
 
-display:flex;
-
-justify-content:center;
-
-align-items:center;
+    padding:0;
 
 }
 
@@ -906,13 +900,15 @@ align-items:center;
 
 .hero-glass{
 
-    padding:28px;
+    display:flex;
 
-    min-height:auto;
+    flex-direction:column;
 
-    height:auto;
+    justify-content:space-between;
 
-    max-height:none;
+    padding:30px;
+
+    min-height:620px;
 
     border-radius:28px;
 
@@ -922,17 +918,17 @@ align-items:center;
 
 .hero-glass h1{
 
-    font-size:3rem;
+    font-size:2.8rem;
 
-    line-height:1.05;
+    line-height:1.1;
 
-    margin-bottom:18px;
+    margin-bottom:20px;
 
 }
 
 .hero-glass p{
 
-    font-size:18px;
+    font-size:17px;
 
     line-height:1.8;
 
@@ -972,7 +968,12 @@ gap:18px;
 
 padding:25px;
 
-margin-top:30px;
+position:relative;
+
+margin-top:40px;
+
+z-index:5;
+
 
 }
 
@@ -985,6 +986,14 @@ font-size:30px;
 .hero-stats span{
 
 font-size:14px;
+
+}
+
+.hero-glass .btn{
+
+    margin-top:auto;
+
+    width:100%;
 
 }
 

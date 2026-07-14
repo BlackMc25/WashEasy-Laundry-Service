@@ -159,37 +159,34 @@ BOOK LAUNDRY
 MOBILE
 =============================== */
 
-
-
-/* ==========================================
-   DASHBOARD & ORDERS MOBILE IMPROVEMENTS
-========================================== */
-
 @media (max-width:768px){
 
-/*=====================================
-NAVBAR
-======================================*/
+.hero{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+}
 
-.navbar{
+.hero-container{
 
-    padding:16px 18px;
+    min-height:auto;
 
-    border-radius:24px;
+    padding:80px 20px;
 
-    margin:15px;
+    background-position:center;
 
 }
 
-.logo h2{
+.hero h1{
 
-    font-size:2rem;
+    font-size:2.3rem;
 
 }
 
-.logo img{
+.hero p{
 
-    width:52px;
+    font-size:18px;
 
 }
 
@@ -203,79 +200,727 @@ NAVBAR
 
     display:block;
 
-    font-size:34px;
+}
+
+.dashboard-container{
+
+    display:block;
 
 }
 
-.theme-toggle-mobile{
+.main-content{
 
-    width:64px;
+    width:100%;
 
-    height:64px;
+    margin:0;
 
-    border-radius:50%;
+    padding:20px;
 
 }
 
-/*=====================================
-HERO
-======================================*/
+.stats{
+
+    display:grid;
+
+    grid-template-columns:1fr;
+
+    gap:15px;
+
+}
+
+.booking-container{
+
+    display:block;
+
+}
+
+.products{
+
+    width:100%;
+
+}
+
+.summary{
+
+    width:100%;
+
+    margin-top:25px;
+
+}
+
+.service-card{
+
+    width:100%;
+
+}
+
+.quantity-controls{
+
+    justify-content:center;
+
+}
+
+.profile-form input,
+
+.profile-form textarea,
+
+.profile-form select,
+
+.profile-form button{
+
+    width:100%;
+
+}
+
+.settings-container{
+
+    width:100%;
+
+}
+
+.settings-card{
+
+    width:100%;
+
+}
+
+.map-container iframe{
+
+    width:100%;
+
+    height:300px;
+
+}
+
+button{
+
+    min-height:48px;
+
+}
+
+.sidebar{
+
+    position:fixed;
+
+    left:-270px;
+
+    top:0;
+
+    width:260px;
+
+    height:100vh;
+
+    z-index:999;
+
+    transition:.35s ease;
+
+}
+
+.sidebar.show{
+
+    left:0;
+
+}
+
+.main-content{
+
+    margin-left:0 !important;
+
+    width:100%;
+
+    padding:20px;
+
+}
+
+.topbar{
+
+    margin-left:0 !important;
+
+}
+
+.card{
+
+    border-radius:16px;
+
+    margin-bottom:20px;
+
+}
+
+.card-header{
+
+    padding:18px;
+
+    font-size:18px;
+
+}
+
+.card-body{
+
+    padding:18px;
+
+}
+
+.quantity-controls2{
+
+    min-width:165px;
+
+    gap:12px;
+
+}
+
+.qty2-btn2{
+
+    width:50px;
+
+    height:50px;
+
+    font-size:28px;
+
+}
+
+.qty2-value2{
+
+    width:65px;
+
+    height:54px;
+
+    font-size:28px;
+
+}
+
+    .express-header{
+
+        flex-direction:row;
+
+        align-items:center;
+
+    }
+
+    .express-quantity .qty2-wrapper{
+
+        justify-content:flex-start;
+
+    }
+
+.booking-map{
+
+    height:280px;
+
+}
+
+.container-fluid{
+
+    padding-left:15px;
+
+    padding-right:15px;
+
+}
+
+.summary-card{
+
+    margin-top:30px;
+
+}
+
+}
+
+/* ==========================================
+   WASH EASY MOBILE APP DESIGN
+========================================== */
+
+@media (max-width:768px){
+
+    .page-container{
+
+        width:100%;
+        max-width:100%;
+
+        padding:20px 16px 110px;
+
+        margin:0 auto;
+
+    }
+
+    .page-title{
+
+        font-size:2rem;
+
+        font-weight:700;
+
+        margin-bottom:22px;
+
+        line-height:1.2;
+
+    }
+
+    .mobile-card{
+
+        background:#222c3f;
+
+        border-radius:20px;
+
+        padding:18px;
+
+        margin-bottom:18px;
+
+        border:1px solid rgba(255,255,255,.06);
+
+        box-shadow:0 10px 25px rgba(0,0,0,.15);
+
+    }
+
+    .mobile-grid{
+
+        display:grid;
+
+        grid-template-columns:1fr 1fr;
+
+        gap:15px;
+
+    }
+
+}
+
+/* ==========================================
+   DASHBOARD & ORDERS MOBILE IMPROVEMENTS
+========================================== */
+
+@media (max-width:768px){
+
+    .dashboard-actions{
+
+        display:grid;
+
+        grid-template-columns:1fr 1fr;
+
+        gap:12px;
+
+        margin-bottom:24px;
+
+    }
+
+    .dashboard-actions .btn{
+
+        width:100%;
+
+        height:50px;
+
+        border-radius:14px;
+
+        font-weight:600;
+
+    }
+
+   .stats-container.mobile-grid{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:16px;
+
+}
+
+.stats-card{
+
+    width:100%;
+
+    min-height:110px;
+
+    padding:20px;
+
+    border-radius:20px;
+
+}
+
+    .stats-card h3{
+
+        font-size:2rem;
+
+        margin-top:8px;
+
+    }
+
+    .stats-card h6{
+
+        font-size:.95rem;
+
+    }
+
+    .order-card{
+
+        display:flex;
+
+        justify-content:space-between;
+
+        align-items:center;
+
+        gap:15px;
+
+    }
+
+    .status-badge{
+
+        margin-top:10px;
+
+        border-radius:20px;
+
+        padding:8px 14px;
+
+        font-size:.8rem;
+
+    }
+    
+
+}
+
+/*=========================================
+NOTIFICATIONS
+==========================================*/
+
+@media(max-width:768px){
+
+.notification-actions{
+
+display:flex;
+
+flex-direction:column;
+
+gap:12px;
+
+margin-bottom:25px;
+
+}
+
+.notification-actions .btn{
+
+width:100%;
+
+border-radius:14px;
+
+height:48px;
+
+font-weight:600;
+
+}
+
+.notification-item{
+
+background:#222c3f;
+
+padding:18px;
+
+border-radius:18px;
+
+margin-bottom:15px;
+
+border:1px solid rgba(255,255,255,.05);
+
+}
+
+.notification-item small{
+
+opacity:.7;
+
+}
+
+}
+
+.order-guide{
+
+background:#bfefff;
+
+color:#063b57;
+
+padding:18px;
+
+border-radius:18px;
+
+margin-bottom:25px;
+
+line-height:1.8;
+
+}
+
+/*======================================
+BOOK LAUNDRY
+=======================================*/
+
+@media(max-width:768px){
+
+.laundry-category{
+
+margin-bottom:20px;
+
+border:none;
+
+background:none;
+
+}
+
+.laundry-category .accordion-button{
+
+border-radius:18px;
+
+font-size:1.15rem;
+
+font-weight:700;
+
+padding:18px;
+
+}
+
+.laundry-card{
+
+background:#222c3f;
+
+border-radius:20px;
+
+padding:15px;
+
+margin-bottom:15px;
+
+box-shadow:0 8px 25px rgba(0,0,0,.18);
+
+}
+
+.laundry-title{
+
+font-size:1.2rem;
+
+font-weight:700;
+
+padding:10px;
+
+margin-bottom:15px;
+
+border-bottom:1px solid rgba(255, 255, 255, 0.607);
+
+cursor:pointer;
+
+}
+
+.laundry-body{
+
+padding:10px;
+
+.item-row{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:stretch;
+
+    gap:14px;
+
+    padding:14px 0;
+
+}
+
+.service-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-start;
+
+    gap:14px;
+
+}
+
+.item-info{
+
+    flex:1;
+
+    min-width:0;
+
+}
+
+}
+
+
+.mobile-summary{
+
+position:sticky;
+
+top:90px;
+
+background:#222c3f;
+
+padding:22px;
+
+border-radius:22px;
+
+box-shadow:0 10px 25px rgba(0,0,0,.2);
+
+}
+
+.booking-title{
+
+font-weight:700;
+
+margin-bottom:20px;
+
+}
+
+.item-row{
+
+        gap:10px;
+
+    }
+
+ .item-info{
+
+        flex:1;
+
+        min-width:0;
+
+    }
+
+.quantity-controls2{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:flex-end;
+
+    gap:8px;
+
+    flex-shrink:0;
+
+}
+
+.item-info p{
+
+    margin-bottom:4px;
+
+    font-size:18px;
+
+    font-weight:700;
+
+    line-height:1.35;
+
+    word-break:normal;
+
+}
+
+.item-info small{
+
+    display:block;
+
+    margin-top:4px;
+
+    font-size:15px;
+
+}
+
+}
+
+@media (max-width:768px){
+
+
+
+      .qty2-btn2{
+
+        width:36px;
+        height:36px;
+
+        min-width:36px;
+        min-height:36px;
+
+        font-size:18px;
+    }
+
+    .qty2-value2{
+
+        width:42px;
+        height:36px;
+
+        min-width:42px;
+
+        font-size:18px;
+    }
+
+    .dropdown-toggle{
+        display:none;
+    }
+
+
+}
+
+/*=========================================
+HOME PAGE MOBILE
+=========================================*/
+
+@media (max-width:768px){
 
 .hero-section{
 
-    min-height:100vh;
+    min-height:105vh;
 
-    overflow:hidden;
+    padding-top:110px;
 
-    position:relative;
+    padding-bottom:140px;
 
 }
 
 .hero-image{
 
-    height:100vh;
-
-    width:100%;
-
     object-fit:cover;
 
-    filter:brightness(.58);
-
 }
+}
+
+@media (max-width:768px){
 
 .carousel-caption{
 
-    inset:0;
+position:absolute;
 
-    display:flex;
+left:18px;
 
-    justify-content:center;
+right:18px;
 
-    align-items:center;
+top:120px;
 
-    padding:22px;
+bottom:auto;
+
+padding:0;
+
+text-align:left;
 
 }
+
+
 
 .hero-glass{
 
-    width:100%;
+display:flex;
 
-    max-width:360px;
+flex-direction:column;
 
-    padding:30px;
+justify-content:flex-start;
 
-    border-radius:32px;
+padding:28px;
+
+min-height:auto;
+
+height:auto;
 
 }
 
+
+
 .hero-glass h1{
 
-    font-size:3rem;
+    font-size:2.8rem;
 
-    line-height:1.05;
+    line-height:1.1;
 
-    margin-bottom:18px;
+    margin-bottom:20px;
 
 }
 
@@ -285,118 +930,179 @@ HERO
 
     line-height:1.8;
 
-    margin-bottom:28px;
-
 }
 
 .hero-glass .btn{
 
-    width:100%;
+margin-top:30px;
 
-    height:58px;
+width:100%;
 
-    border-radius:40px;
+display:block;
 
-    font-size:18px;
+padding:18px;
+
+font-size:18px;
+
+border-radius:50px;
+
+}
+
+.float{
+
+transform:scale(.7);
+
+opacity:.45;
 
 }
 
 .hero-stats{
 
-    position:absolute;
+display:grid;
 
-    left:15px;
+grid-template-columns:repeat(2,1fr);
 
-    right:15px;
+gap:18px;
 
-    bottom:20px;
+padding:25px;
 
-    display:grid;
+position:relative;
 
-    grid-template-columns:repeat(2,1fr);
+margin:35px 20px 0;
 
-    gap:14px;
+z-index:5;
 
-}
-
-.hero-stats>div{
-
-    border-radius:18px;
-
-    padding:16px;
 
 }
 
 .hero-stats h2{
 
-    font-size:2rem;
+font-size:30px;
 
 }
 
 .hero-stats span{
 
-    font-size:14px;
+font-size:14px;
+
+}
+
+.hero-glass .btn{
+
+    margin-top:auto;
+
+    width:100%;
 
 }
 
 .scroll-indicator{
 
-    display:none;
+display:none;
 
 }
 
 .carousel-indicators{
 
-    bottom:160px;
+margin-bottom:15px;
+
+}
+
+.carousel-indicators button{
+
+width:10px;
+
+height:10px;
+
+border-radius:50%;
+
+}
+
+
+.image{
+
+filter:brightness(.7);
+
+}
+
+.bubble1,
+
+.bubble2{
+
+width:18px;
+
+height:18px;
 
 }
 
 .glass-circle{
 
-    width:85px;
-
-    height:85px;
-
-    font-size:30px;
+transform:scale(.65);
 
 }
 
-.one{
+.glass-circle.one{
 
-    left:5%;
+left:8%;
 
-    top:8%;
-
-}
-
-.two{
-
-    left:6%;
-
-    bottom:18%;
+top:6%;
 
 }
 
-.three{
+.glass-circle.two{
 
-    right:6%;
+left:5%;
 
-    top:18%;
-
-}
-
-.four,
-
-.five{
-
-    display:none;
+bottom:28%;
 
 }
 
-.sidebar{
-    display: none
-}
-    
+.glass-circle.three{
+
+right:10%;
+
+top:12%;
 
 }
+
+.glass-circle.four{
+
+display: none;
+
+}
+
+.glass-circle.five{
+
+display: none;
+
+}
+.hero-glass{
+
+backdrop-filter:blur(10px);
+
+}
+
+.hero-stats{
+
+display:grid;
+
+grid-template-columns:repeat(2,1fr);
+
+gap:16px;
+
+padding:20px;
+
+margin-top:5px;
+
+border-radius:20px;
+
+}
+
+}
+
+  
+
+   
+
+  
+  
 

@@ -103,6 +103,68 @@ color:#ddd;
 
 }
 
+/*=========================================================
+            PREMIUM NAVBAR LIGHT MODE
+=========================================================*/
+
+body.light .navbar{
+
+    background:rgba(255,255,255,.82);
+
+    backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,255,255,.45);
+
+}
+
+body.light .navbar-brand,
+body.light .brand-name{
+
+    color:#0d3b66;
+
+}
+
+body.light .navbar .nav-link{
+
+    color:#0d3b66;
+
+}
+
+body.light .navbar .nav-link:hover{
+
+    color:#0d6efd;
+
+}
+
+body.light .navbar-collapse{
+
+    background:rgba(255,255,255,.96);
+
+}
+
+body.light .theme-toggle,
+body.light .theme-toggle-mobile{
+
+    background:white;
+
+    color:#0d6efd;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.12);
+
+}
+
+body.light .login-btn{
+
+    color:#0d3b66;
+
+}
+
+body.light .signup-btn{
+
+    background:#0d6efd;
+
+}
+
 
 /*=====================================
 GLOBAL DARK MODE
@@ -398,5 +460,194 @@ body.dark .express-card p,
 body.dark .express-card li{
 
 color:#1f2937 !important;
+
+}
+
+/*=========================================================
+            PREMIUM NAVBAR DARK MODE
+=========================================================*/
+
+body.dark .navbar{
+
+    background:rgba(15,23,42,.88);
+
+    backdrop-filter:blur(22px);
+
+    -webkit-backdrop-filter:blur(22px);
+
+    border:1px solid rgba(124,196,255,.25);
+
+    box-shadow:0 15px 45px rgba(0,0,0,.45);
+
+}
+
+/* Navbar after scroll */
+
+body.dark .navbar.scrolled{
+
+    background:rgba(15,23,42,.95);
+
+    border-color:rgba(124,196,255,.30);
+
+}
+
+/* Logo */
+
+body.dark .navbar-brand,
+body.dark .brand-name{
+
+    color:#7cc4ff !important;
+
+}
+
+/* Navigation Links */
+
+body.dark .navbar .nav-link{
+
+    color:#e2e8f0;
+
+}
+
+body.dark .navbar .nav-link:hover{
+
+    color:#7cc4ff;
+
+}
+
+body.dark .navbar .nav-link::after{
+
+    background:#60a5fa;
+
+}
+
+/* Mobile Menu */
+
+body.dark .navbar-collapse{
+
+    background:rgba(15,23,42,.95);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(124,196,255,.18);
+
+}
+
+/* Hamburger */
+
+body.dark .custom-toggle-icon{
+
+    color:#60a5fa;
+
+}
+
+body.dark .navbar-toggler{
+
+    border:none;
+
+    box-shadow:none;
+
+}
+
+body.dark .navbar-toggler:focus{
+
+    box-shadow:none;
+
+}
+
+/* Theme Buttons */
+
+body.dark .theme-toggle,
+body.dark .theme-toggle-mobile{
+
+    background:#1e293b;
+
+    color:#FFD43B;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    box-shadow:0 10px 30px rgba(0,0,0,.35);
+
+}
+
+body.dark .theme-toggle:hover,
+body.dark .theme-toggle-mobile:hover{
+
+    background:#334155;
+
+    transform:translateY(-2px);
+
+}
+
+/* Login Button */
+
+body.dark .login-btn{
+
+    color:#7cc4ff;
+
+    border:1px solid rgba(124,196,255,.25);
+
+    background:transparent;
+
+}
+
+body.dark .login-btn:hover{
+
+    background:#1e293b;
+
+    color:white;
+
+}
+
+/* Signup Button */
+
+body.dark .signup-btn{
+
+    background:#2563eb;
+
+    color:white !important;
+
+}
+
+body.dark .signup-btn:hover{
+
+    background:#3b82f6;
+
+}
+
+/* Mobile Links */
+
+body.dark .navbar-nav .nav-link{
+
+    border-radius:12px;
+
+}
+
+body.dark .navbar-nav .nav-link:hover{
+
+    background:#1e293b;
+
+}
+
+/* Dropdown */
+
+body.dark .dropdown-menu{
+
+    background:#1e293b;
+
+    border:1px solid rgba(255,255,255,.08);
+
+}
+
+body.dark .dropdown-item{
+
+    color:#e2e8f0;
+
+}
+
+body.dark .dropdown-item:hover{
+
+    background:#334155;
+
+    color:white;
 
 }

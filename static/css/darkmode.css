@@ -180,23 +180,17 @@ background:#0f172a;
 
 body.dark .express-card{
 
-background:
-
-linear-gradient(
-
+background:linear-gradient(
 135deg,
-
 #f6b100,
-
 #ffd43b
+) !important;
 
-);
+color:#1f2937 !important;
 
-color:#1f2937;
+border:none !important;
 
-box-shadow:
-
-0 25px 80px rgba(255,193,7,.35);
+box-shadow:0 25px 70px rgba(255,193,7,.4);
 
 }
 
@@ -396,3 +390,13 @@ box-shadow .35s;
 
 }
 
+body.dark .express-card h2,
+body.dark .express-card h3,
+body.dark .express-card h4,
+body.dark .express-card h5,
+body.dark .express-card p,
+body.dark .express-card li{
+
+color:#1f2937 !important;
+
+}

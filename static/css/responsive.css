@@ -869,8 +869,6 @@ HOME PAGE MOBILE
 
 .hero-image{
 
-    height:105vh;
-
     object-fit:cover;
 
 }
@@ -880,19 +878,19 @@ HOME PAGE MOBILE
 
 .carousel-caption{
 
-    top:100px;
+position:absolute;
 
-    bottom:70px;
+left:18px;
 
-    left:20px;
+right:18px;
 
-    right:20px;
+top:120px;
 
-    transform:none;
+bottom:auto;
 
-    display:block;
+padding:0;
 
-    padding:0;
+text-align:left;
 
 }
 
@@ -900,17 +898,17 @@ HOME PAGE MOBILE
 
 .hero-glass{
 
-    display:flex;
+display:flex;
 
-    flex-direction:column;
+flex-direction:column;
 
-    justify-content:space-between;
+justify-content:flex-start;
 
-    padding:30px;
+padding:28px;
 
-    min-height:620px;
+min-height:auto;
 
-    border-radius:28px;
+height:auto;
 
 }
 
@@ -934,19 +932,19 @@ HOME PAGE MOBILE
 
 }
 
-.hero-section .btn{
+.hero-glass .btn{
+
+margin-top:30px;
 
 width:100%;
 
-margin-top:25px;
+display:block;
 
-padding:16px;
+padding:18px;
 
 font-size:18px;
 
 border-radius:50px;
-
-display:block;
 
 }
 
@@ -970,7 +968,7 @@ padding:25px;
 
 position:relative;
 
-margin-top:40px;
+margin:35px 20px 0;
 
 z-index:5;
 
@@ -1019,13 +1017,8 @@ border-radius:50%;
 
 }
 
-.hero-.hero-image{
 
-height:92vh;
-
-object-fit:cover;
-
-}image{
+.image{
 
 filter:brightness(.7);
 
@@ -1088,21 +1081,6 @@ backdrop-filter:blur(10px);
 
 }
 
-.hero-stats{
-
-display:grid;
-
-grid-template-columns:repeat(2,1fr);
-
-gap:16px;
-
-padding:20px;
-
-margin-top:5px;
-
-border-radius:20px;
-
-}
 
 }
 

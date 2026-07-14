@@ -1042,13 +1042,13 @@ transform:scale(.65);
 
 left:8%;
 
-top:8%;
+top:10%;
 
 }
 
 .glass-circle.two{
 
-left:3%;
+left:5%;
 
 bottom:8%;
 
@@ -1058,23 +1058,19 @@ bottom:8%;
 
 right:10%;
 
-top:18%;
+top:12%;
 
 }
 
 .glass-circle.four{
 
-right:38%;
-
-top:42%;
+display: none;
 
 }
 
 .glass-circle.five{
 
-right:6%;
-
-bottom:20%;
+display: none;
 
 }
 .hero-glass{

@@ -540,6 +540,223 @@ animation:pulseLightning 2s infinite;
 
 }
 
+
+/*=========================
+ABOUT SECTION
+=========================*/
+
+#aboutus-container{
+
+padding:90px 0;
+
+}
+
+.section-tag{
+
+display:inline-block;
+
+padding:8px 18px;
+
+border-radius:30px;
+
+background:#eaf4ff;
+
+color:#0d6efd;
+
+font-weight:700;
+
+letter-spacing:1px;
+
+margin-bottom:18px;
+
+}
+
+.about-title{
+
+font-size:48px;
+
+font-weight:800;
+
+margin-bottom:20px;
+
+}
+
+.about-subtitle{
+
+font-size:18px;
+
+line-height:1.8;
+
+color:#666;
+
+margin-bottom:35px;
+
+}
+
+.about-features{
+
+display:grid;
+
+grid-template-columns:repeat(2,1fr);
+
+gap:18px;
+
+margin-top:35px;
+
+}
+
+.about-features div{
+
+padding:18px;
+
+border-radius:18px;
+
+background:white;
+
+box-shadow:0 15px 35px rgba(0,0,0,.06);
+
+transition:.4s;
+
+}
+
+.about-features div:hover{
+
+transform:translateY(-8px);
+
+}
+
+.about-features i{
+
+font-size:22px;
+
+color:#0d6efd;
+
+margin-right:10px;
+
+}
+
+.about-stats{
+
+display:flex;
+
+gap:50px;
+
+margin-top:45px;
+
+flex-wrap:wrap;
+
+}
+
+.about-stats h3{
+
+font-size:34px;
+
+font-weight:800;
+
+color:#0d6efd;
+
+}
+
+/*=========================
+CONTACT
+=========================*/
+
+.contact-info-card{
+
+padding:28px;
+
+margin-bottom:22px;
+
+border-radius:22px;
+
+background:white;
+
+box-shadow:0 18px 45px rgba(0,0,0,.06);
+
+transition:.4s;
+
+}
+
+.contact-info-card:hover{
+
+transform:translateY(-10px);
+
+box-shadow:0 30px 60px rgba(13,110,253,.15);
+
+}
+
+.contact-info-card i{
+
+width:65px;
+
+height:65px;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+border-radius:50%;
+
+background:#eef6ff;
+
+font-size:28px;
+
+color:#0d6efd;
+
+margin-bottom:18px;
+
+transition:.4s;
+
+}
+
+.contact-info-card:hover i{
+
+background:#0d6efd;
+
+color:white;
+
+transform:rotate(10deg);
+
+}
+
+.contact-form-card{
+
+padding:40px;
+
+border-radius:30px;
+
+background:white;
+
+box-shadow:0 25px 55px rgba(0,0,0,.08);
+
+}
+
+.contact-form-card input,
+
+.contact-form-card textarea{
+
+border-radius:16px;
+
+padding:15px;
+
+border:1px solid #ddd;
+
+transition:.35s;
+
+}
+
+.contact-form-card input:focus,
+
+.contact-form-card textarea:focus{
+
+border-color:#0d6efd;
+
+box-shadow:0 0 15px rgba(13,110,253,.18);
+
+}
+
 @media(max-width:992px){
 
 .timeline-line{

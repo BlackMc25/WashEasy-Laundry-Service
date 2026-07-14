@@ -25,15 +25,6 @@ font-family: 'segoe UI', sans-serif;
     font-size:1.2rem;
 }
 
-.book-btn{
-    background:#0d3b66;
-    border: none;
-    padding: 12px 30px;
-    border-radius:10px;
-}
-.book-btn:hover{
-    background:#124f8a;
-}
 .hero-container{
     background-image: url("../images/dan-gold.jpg");
     background-size:cover;
@@ -71,26 +62,6 @@ font-family: 'segoe UI', sans-serif;
 }
 
 
-
-/* Contact Section */
-.contact-section{
-    background:#f8f9fa;
-}
-
-.contact-card{
-    border: none;
-    border-radius:20px;
-}
-
-.contact-card:hover{
-    transform:translateY(-5px);
-    transition:0.3s;
-}
-
-.mb-3{
-    text-align:left;
-    font-size: 1.3rem;
-}
 .img-contact{
     margin-top:-10px;
 }
@@ -195,17 +166,6 @@ footer{
 
 }
 
-.hero-image{
-
-    height:520px;
-
-    object-fit:cover;
-
-    border-radius:28px;
-
-    filter:brightness(.72);
-
-}
 
 .carousel-item{
 
@@ -213,22 +173,7 @@ footer{
 
 }
 
-.carousel-item::after{
 
-    content:"";
-
-    position:absolute;
-
-    inset:0;
-
-    border-radius:28px;
-
-    background:linear-gradient(
-        rgba(0,15,40,.20),
-        rgba(0,20,50,.65)
-    );
-
-}
 
 .carousel-caption{
 
@@ -244,45 +189,8 @@ footer{
 
 }
 
-.carousel-caption h1{
 
-    font-size:3.3rem;
 
-    font-weight:700;
-
-    color:#fff;
-
-    margin-bottom:20px;
-
-}
-
-.carousel-caption p{
-
-    font-size:1.15rem;
-
-    max-width:520px;
-
-    color:#fff;
-
-    line-height:1.8;
-
-    margin-bottom:25px;
-
-}
-
-.carousel-caption .btn{
-
-    border-radius:50px;
-
-    padding:14px 35px;
-
-    font-size:20px;
-
-    font-weight:600;
-
-    box-shadow:0 10px 30px rgba(0,0,0,.25);
-
-}
 
 .carousel-control-prev,
 

@@ -637,13 +637,13 @@ button{
 
 .hero-glass{
 
+    width:100%;
+
+    max-width:420px;
+
+    min-height:580px;
+
     padding:35px 30px;
-
-    width:72px;
-
-    height:72px;
-
-    font-size:26px;
 
     display:flex;
 
@@ -786,11 +786,11 @@ button{
 
     align-items:center;
 
-    width:82px;
+    width:72px;
 
-    height:82px;
+    height:72px;
 
-    font-size:28px;
+    font-size:26px;
 
     border-radius:50%;
 

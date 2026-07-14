@@ -280,16 +280,27 @@ button{
 
     position:absolute;
 
-    right:25px;
+    right:42px;
 
-    top:50%;
+    top:118px;
 
-    transform:translateY(-50%);
+    display:flex !important;
 
-    font-size:34px;
+    align-items:center;
+
+    justify-content:center;
+
+    z-index:1001;
 
 }
 
+.mobile-menu i{
+
+    font-size:34px;
+
+    color:#0d6efd;
+
+}
 
 
 /*=========================================================
@@ -882,11 +893,11 @@ button{
 
 .glass-circle.two{
 
-    top:50%;
+    top:56%;
 
-    right:-18px;
+    right:12px;
 
-    transform:translateY(-50%);
+    transform:none;
 
 }
 

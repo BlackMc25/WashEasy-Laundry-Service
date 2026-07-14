@@ -230,6 +230,69 @@ button{
 }
 
 /*=========================================================
+                    Home topbar
+=========================================================*/
+
+.navbar{
+
+    position:relative;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:22px 24px;
+
+}
+
+.mobile-controls{
+
+    position:absolute;
+
+    right:25px;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+}
+
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+}
+
+
+.theme-toggle-mobile{
+
+    margin-right:70px;
+
+}
+
+.mobile-menu{
+
+    position:absolute;
+
+    right:25px;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    font-size:34px;
+
+}
+
+
+
+/*=========================================================
                     SIDEBAR
 =========================================================*/
 
@@ -816,11 +879,14 @@ button{
 }
 
 /* Left Middle Bubble */
+
 .glass-circle.two{
 
-    top: 260px;
+    top:50%;
 
-    right: 48px;
+    right:-18px;
+
+    transform:translateY(-50%);
 
 }
 

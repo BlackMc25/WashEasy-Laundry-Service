@@ -392,6 +392,10 @@ HERO
     display:none;
 
 }
+
+.sidebar{
+    display: none
+}
     
 
 }

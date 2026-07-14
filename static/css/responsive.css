@@ -139,14 +139,6 @@ TABLETS
     margin:auto;
 }
 
-}
-
-/* ==========================================
-BOOK LAUNDRY
-========================================== */
-
-@media(max-width:992px){
-
 .summary-card{
 
     margin-top:25px;
@@ -155,476 +147,10 @@ BOOK LAUNDRY
 
 }
 
-/* ===============================
-MOBILE
-=============================== */
-
-@media (max-width:768px){
-
-.hero{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    text-align:center;
-}
-
-.hero-container{
-
-    min-height:auto;
-
-    padding:80px 20px;
-
-    background-position:center;
-
-}
-
-.hero h1{
-
-    font-size:2.3rem;
-
-}
-
-.hero p{
-
-    font-size:18px;
-
-}
-
-.nav-links{
-
-    display:none;
-
-}
-
-.mobile-menu{
-
-    display:block;
-
-}
-
-.dashboard-container{
-
-    display:block;
-
-}
-
-.main-content{
-
-    width:100%;
-
-    margin:0;
-
-    padding:20px;
-
-}
-
-.stats{
-
-    display:grid;
-
-    grid-template-columns:1fr;
-
-    gap:15px;
-
-}
-
-.booking-container{
-
-    display:block;
-
-}
-
-.products{
-
-    width:100%;
-
-}
-
-.summary{
-
-    width:100%;
-
-    margin-top:25px;
-
-}
-
-.service-card{
-
-    width:100%;
-
-}
-
-.quantity-controls{
-
-    justify-content:center;
-
-}
-
-.profile-form input,
-
-.profile-form textarea,
-
-.profile-form select,
-
-.profile-form button{
-
-    width:100%;
-
-}
-
-.settings-container{
-
-    width:100%;
-
-}
-
-.settings-card{
-
-    width:100%;
-
-}
-
-.map-container iframe{
-
-    width:100%;
-
-    height:300px;
-
-}
-
-button{
-
-    min-height:48px;
-
-}
-
-.sidebar{
-
-    position:fixed;
-
-    left:-270px;
-
-    top:0;
-
-    width:260px;
-
-    height:100vh;
-
-    z-index:999;
-
-    transition:.35s ease;
-
-}
-
-.sidebar.show{
-
-    left:0;
-
-}
-
-.main-content{
-
-    margin-left:0 !important;
-
-    width:100%;
-
-    padding:20px;
-
-}
-
-.topbar{
-
-    margin-left:0 !important;
-
-}
-
-.card{
-
-    border-radius:16px;
-
-    margin-bottom:20px;
-
-}
-
-.card-header{
-
-    padding:18px;
-
-    font-size:18px;
-
-}
-
-.card-body{
-
-    padding:18px;
-
-}
-
-.quantity-controls2{
-
-    min-width:165px;
-
-    gap:12px;
-
-}
-
-.qty2-btn2{
-
-    width:50px;
-
-    height:50px;
-
-    font-size:28px;
-
-}
-
-.qty2-value2{
-
-    width:65px;
-
-    height:54px;
-
-    font-size:28px;
-
-}
-
-    .express-header{
-
-        flex-direction:row;
-
-        align-items:center;
-
-    }
-
-    .express-quantity .qty2-wrapper{
-
-        justify-content:flex-start;
-
-    }
-
-.booking-map{
-
-    height:280px;
-
-}
-
-.container-fluid{
-
-    padding-left:15px;
-
-    padding-right:15px;
-
-}
-
-.summary-card{
-
-    margin-top:30px;
-
-}
-
-}
-
-/* ==========================================
-   WASH EASY MOBILE APP DESIGN
-========================================== */
-
-@media (max-width:768px){
-
-    .page-container{
-
-        width:100%;
-        max-width:100%;
-
-        padding:20px 16px 110px;
-
-        margin:0 auto;
-
-    }
-
-    .page-title{
-
-        font-size:2rem;
-
-        font-weight:700;
-
-        margin-bottom:22px;
-
-        line-height:1.2;
-
-    }
-
-    .mobile-card{
-
-        background:#222c3f;
-
-        border-radius:20px;
-
-        padding:18px;
-
-        margin-bottom:18px;
-
-        border:1px solid rgba(255,255,255,.06);
-
-        box-shadow:0 10px 25px rgba(0,0,0,.15);
-
-    }
-
-    .mobile-grid{
-
-        display:grid;
-
-        grid-template-columns:1fr 1fr;
-
-        gap:15px;
-
-    }
-
-}
-
-/* ==========================================
-   DASHBOARD & ORDERS MOBILE IMPROVEMENTS
-========================================== */
-
-@media (max-width:768px){
-
-    .dashboard-actions{
-
-        display:grid;
-
-        grid-template-columns:1fr 1fr;
-
-        gap:12px;
-
-        margin-bottom:24px;
-
-    }
-
-    .dashboard-actions .btn{
-
-        width:100%;
-
-        height:50px;
-
-        border-radius:14px;
-
-        font-weight:600;
-
-    }
-
-   .stats-container.mobile-grid{
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:16px;
-
-}
-
-.stats-card{
-
-    width:100%;
-
-    min-height:110px;
-
-    padding:20px;
-
-    border-radius:20px;
-
-}
-
-    .stats-card h3{
-
-        font-size:2rem;
-
-        margin-top:8px;
-
-    }
-
-    .stats-card h6{
-
-        font-size:.95rem;
-
-    }
-
-    .order-card{
-
-        display:flex;
-
-        justify-content:space-between;
-
-        align-items:center;
-
-        gap:15px;
-
-    }
-
-    .status-badge{
-
-        margin-top:10px;
-
-        border-radius:20px;
-
-        padding:8px 14px;
-
-        font-size:.8rem;
-
-    }
-    
-
-}
 
 /*=========================================
 NOTIFICATIONS
 ==========================================*/
-
-@media(max-width:768px){
-
-.notification-actions{
-
-display:flex;
-
-flex-direction:column;
-
-gap:12px;
-
-margin-bottom:25px;
-
-}
-
-.notification-actions .btn{
-
-width:100%;
-
-border-radius:14px;
-
-height:48px;
-
-font-weight:600;
-
-}
-
-.notification-item{
-
-background:#222c3f;
-
-padding:18px;
-
-border-radius:18px;
-
-margin-bottom:15px;
-
-border:1px solid rgba(255,255,255,.05);
-
-}
-
-.notification-item small{
-
-opacity:.7;
-
-}
-
-}
 
 .order-guide{
 
@@ -642,462 +168,856 @@ line-height:1.8;
 
 }
 
-/*======================================
-BOOK LAUNDRY
-=======================================*/
+/*=========================================================
+                MOBILE RESPONSIVE
+                WASH EASY MOBILE
+=========================================================*/
 
-@media(max-width:768px){
+@media (max-width:768px){
+
+/*=========================================================
+                    GLOBAL
+=========================================================*/
+
+.nav-links{
+    display:none;
+}
+
+.mobile-menu{
+    display:block;
+}
+
+button{
+    min-height:48px;
+}
+
+.container-fluid{
+    padding-left:15px;
+    padding-right:15px;
+}
+
+.dropdown-toggle{
+    display:none;
+}
+
+.page-container{
+    width:100%;
+    max-width:100%;
+    margin:0 auto;
+    padding:20px 16px 110px;
+}
+
+.page-title{
+    font-size:2rem;
+    font-weight:700;
+    line-height:1.2;
+    margin-bottom:22px;
+}
+
+.mobile-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+}
+
+.mobile-card{
+    background:#222c3f;
+    border-radius:20px;
+    padding:18px;
+    margin-bottom:18px;
+    border:1px solid rgba(255,255,255,.06);
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
+}
+
+/*=========================================================
+                    SIDEBAR
+=========================================================*/
+
+.sidebar{
+    position:fixed;
+    left:-270px;
+    top:0;
+    width:260px;
+    height:100vh;
+    z-index:999;
+    transition:.35s ease;
+}
+
+.sidebar.show{
+    left:0;
+}
+
+.main-content{
+    width:100%;
+    margin:0 !important;
+    padding:20px;
+}
+
+.topbar{
+    margin-left:0 !important;
+}
+
+/*=========================================================
+                    CARDS
+=========================================================*/
+
+.card{
+    border-radius:16px;
+    margin-bottom:20px;
+}
+
+.card-header{
+    padding:18px;
+    font-size:18px;
+}
+
+.card-body{
+    padding:18px;
+}
+
+/*=========================================================
+                    DASHBOARD
+=========================================================*/
+
+.dashboard-container{
+    display:block;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:15px;
+}
+
+.dashboard-actions{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    margin-bottom:24px;
+}
+
+.dashboard-actions .btn{
+    width:100%;
+    height:50px;
+    border-radius:14px;
+    font-weight:600;
+}
+
+.stats-container.mobile-grid{
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+}
+
+.stats-card{
+    width:100%;
+    min-height:110px;
+    padding:20px;
+    border-radius:20px;
+}
+
+.stats-card h3{
+    font-size:2rem;
+    margin-top:8px;
+}
+
+.stats-card h6{
+    font-size:.95rem;
+}
+
+.order-card{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+}
+
+.status-badge{
+    margin-top:10px;
+    border-radius:20px;
+    padding:8px 14px;
+    font-size:.8rem;
+}
+
+/*=========================================================
+                    SETTINGS / PROFILE
+=========================================================*/
+
+.profile-form input,
+.profile-form textarea,
+.profile-form select,
+.profile-form button{
+    width:100%;
+}
+
+.settings-container{
+    width:100%;
+}
+
+.settings-card{
+    width:100%;
+}
+
+.map-container iframe{
+    width:100%;
+    height:300px;
+}
+
+/*=========================================================
+                    BOOKING
+=========================================================*/
+
+.booking-container{
+    display:block;
+}
+
+.products{
+    width:100%;
+}
+
+.summary{
+    width:100%;
+    margin-top:25px;
+}
+
+.summary-card{
+    margin-top:30px;
+}
+
+.booking-map{
+    height:280px;
+}
+
+.mobile-summary{
+    position:sticky;
+    top:90px;
+    background:#222c3f;
+    padding:22px;
+    border-radius:22px;
+    box-shadow:0 10px 25px rgba(0,0,0,.2);
+}
+
+.booking-title{
+    font-weight:700;
+    margin-bottom:20px;
+}
+
+/*=========================================================
+                    NOTIFICATIONS
+=========================================================*/
+
+.notification-actions{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    margin-bottom:25px;
+}
+
+.notification-actions .btn{
+    width:100%;
+    height:48px;
+    border-radius:14px;
+    font-weight:600;
+}
+
+.notification-item{
+    background:#222c3f;
+    padding:18px;
+    border-radius:18px;
+    margin-bottom:15px;
+    border:1px solid rgba(255,255,255,.05);
+}
+
+.notification-item small{
+    opacity:.7;
+}
+
+/*=========================================================
+                    BOOK LAUNDRY
+=========================================================*/
 
 .laundry-category{
-
-margin-bottom:20px;
-
-border:none;
-
-background:none;
-
+    margin-bottom:20px;
+    border:none;
+    background:none;
 }
 
 .laundry-category .accordion-button{
-
-border-radius:18px;
-
-font-size:1.15rem;
-
-font-weight:700;
-
-padding:18px;
-
+    padding:18px;
+    border-radius:18px;
+    font-size:1.15rem;
+    font-weight:700;
 }
 
 .laundry-card{
-
-background:#222c3f;
-
-border-radius:20px;
-
-padding:15px;
-
-margin-bottom:15px;
-
-box-shadow:0 8px 25px rgba(0,0,0,.18);
-
+    background:#222c3f;
+    border-radius:20px;
+    padding:15px;
+    margin-bottom:15px;
+    box-shadow:0 8px 25px rgba(0,0,0,.18);
 }
 
 .laundry-title{
-
-font-size:1.2rem;
-
-font-weight:700;
-
-padding:10px;
-
-margin-bottom:15px;
-
-border-bottom:1px solid rgba(255, 255, 255, 0.607);
-
-cursor:pointer;
-
+    padding:10px;
+    margin-bottom:15px;
+    font-size:1.2rem;
+    font-weight:700;
+    cursor:pointer;
+    border-bottom:1px solid rgba(255,255,255,.60);
 }
 
 .laundry-body{
+    padding:10px;
+}
 
-padding:10px;
+/*=========================================================
+                    ITEM ROW
+=========================================================*/
 
 .item-row{
+    display:flex;
+    flex-direction:column;
+    align-items:stretch;
+    gap:10px;
+    padding:14px 0;
+}
+
+.service-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:14px;
+}
+
+.item-info{
+    flex:1;
+    min-width:0;
+}
+
+.item-info p{
+    margin-bottom:4px;
+    font-size:18px;
+    font-weight:700;
+    line-height:1.35;
+    word-break:normal;
+}
+
+.item-info small{
+    display:block;
+    margin-top:4px;
+    font-size:15px;
+}
+
+/*=========================================================
+                    QUANTITY BUTTONS
+=========================================================*/
+
+.quantity-controls{
+    justify-content:center;
+}
+
+.quantity-controls2{
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
+    gap:8px;
+    flex-shrink:0;
+    min-width:165px;
+}
+
+.qty2-btn2{
+    width:36px;
+    height:36px;
+    min-width:36px;
+    min-height:36px;
+    font-size:18px;
+}
+
+.qty2-value2{
+    width:42px;
+    height:36px;
+    min-width:42px;
+    font-size:18px;
+}
+
+/*=========================================================
+                    EXPRESS SERVICE
+=========================================================*/
+
+.express-header{
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+}
+
+.express-quantity .qty2-wrapper{
+    justify-content:flex-start;
+}
+
+/* ===== HERO COMES IN CHUNK 3 ===== */
+/*=========================================================
+                        HERO SECTION
+=========================================================*/
+
+.hero-section{
+
+    position:relative;
+
+    overflow:hidden;
+
+    min-height:100vh;
+
+    padding:0;
 
     display:flex;
 
     flex-direction:column;
 
-    align-items:stretch;
-
-    gap:14px;
-
-    padding:14px 0;
-
 }
 
-.service-row{
+/*-------------------------------------
+        CAROUSEL
+--------------------------------------*/
 
-    display:flex;
+#heroCarousel{
 
-    justify-content:space-between;
-
-    align-items:flex-start;
-
-    gap:14px;
-
-}
-
-.item-info{
+    width:100%;
 
     flex:1;
 
-    min-width:0;
-
 }
 
-}
+.carousel-item{
 
-
-.mobile-summary{
-
-position:sticky;
-
-top:90px;
-
-background:#222c3f;
-
-padding:22px;
-
-border-radius:22px;
-
-box-shadow:0 10px 25px rgba(0,0,0,.2);
-
-}
-
-.booking-title{
-
-font-weight:700;
-
-margin-bottom:20px;
-
-}
-
-.item-row{
-
-        gap:10px;
-
-    }
-
- .item-info{
-
-        flex:1;
-
-        min-width:0;
-
-    }
-
-.quantity-controls2{
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:flex-end;
-
-    gap:8px;
-
-    flex-shrink:0;
-
-}
-
-.item-info p{
-
-    margin-bottom:4px;
-
-    font-size:18px;
-
-    font-weight:700;
-
-    line-height:1.35;
-
-    word-break:normal;
-
-}
-
-.item-info small{
-
-    display:block;
-
-    margin-top:4px;
-
-    font-size:15px;
-
-}
-
-}
-
-@media (max-width:768px){
-
-
-
-      .qty2-btn2{
-
-        width:36px;
-        height:36px;
-
-        min-width:36px;
-        min-height:36px;
-
-        font-size:18px;
-    }
-
-    .qty2-value2{
-
-        width:42px;
-        height:36px;
-
-        min-width:42px;
-
-        font-size:18px;
-    }
-
-    .dropdown-toggle{
-        display:none;
-    }
-
-
-}
-
-/*=========================================
-HOME PAGE MOBILE
-=========================================*/
-
-@media (max-width:768px){
-
-.hero-section{
-
-    min-height:105vh;
-
-    padding-top:110px;
-
-    padding-bottom:140px;
+    height:100vh;
 
 }
 
 .hero-image{
 
+    width:100%;
+
+    height:100vh;
+
     object-fit:cover;
 
-}
+    object-position:center;
+
+    filter:brightness(.58);
+
 }
 
-@media (max-width:768px){
+/*-------------------------------------
+        HERO CAPTION
+--------------------------------------*/
 
 .carousel-caption{
 
-position:absolute;
+    position:absolute;
 
-left:18px;
+    inset:0;
 
-right:18px;
+    display:flex;
 
-top:120px;
+    align-items:center;
 
-bottom:auto;
+    justify-content:center;
 
-padding:0;
+    padding:24px;
 
-text-align:left;
+    text-align:left;
+
+    z-index:5;
 
 }
 
-
+/*-------------------------------------
+        GLASS CARD
+--------------------------------------*/
 
 .hero-glass{
 
-display:flex;
+    width:100%;
 
-flex-direction:column;
+    max-width:420px;
 
-justify-content:flex-start;
+    padding:34px 28px;
 
-padding:28px;
+    display:flex;
 
-min-height:auto;
+    flex-direction:column;
 
-height:auto;
+    justify-content:flex-start;
+
+    border-radius:30px;
+
+    backdrop-filter:blur(16px);
+
+    background:rgba(18,27,44,.42);
+
+    border:1px solid rgba(255,255,255,.12);
 
 }
 
-
+/*-------------------------------------
+        HERO TITLE
+--------------------------------------*/
 
 .hero-glass h1{
 
-    font-size:2.8rem;
+    font-size:3.15rem;
 
-    line-height:1.1;
+    line-height:1.05;
+
+    font-weight:800;
 
     margin-bottom:20px;
 
 }
 
+/*-------------------------------------
+        HERO DESCRIPTION
+--------------------------------------*/
+
 .hero-glass p{
 
-    font-size:17px;
+    font-size:18px;
 
-    line-height:1.8;
+    line-height:1.75;
+
+    margin-bottom:28px;
 
 }
+
+/*-------------------------------------
+        HERO BUTTON
+--------------------------------------*/
 
 .hero-glass .btn{
-
-margin-top:30px;
-
-width:100%;
-
-display:block;
-
-padding:18px;
-
-font-size:18px;
-
-border-radius:50px;
-
-}
-
-.float{
-
-transform:scale(.7);
-
-opacity:.45;
-
-}
-
-.hero-stats{
-
-display:grid;
-
-grid-template-columns:repeat(2,1fr);
-
-gap:18px;
-
-padding:25px;
-
-position:relative;
-
-margin:35px 20px 0;
-
-z-index:5;
-
-
-}
-
-.hero-stats h2{
-
-font-size:30px;
-
-}
-
-.hero-stats span{
-
-font-size:14px;
-
-}
-
-.hero-glass .btn{
-
-    margin-top:auto;
 
     width:100%;
 
+    height:58px;
+
+    border-radius:50px;
+
+    font-size:18px;
+
+    font-weight:700;
+
+    margin-top:10px;
+
 }
 
-.scroll-indicator{
-
-display:none;
-
-}
+/*-------------------------------------
+        CAROUSEL DOTS
+--------------------------------------*/
 
 .carousel-indicators{
 
-margin-bottom:15px;
+    bottom:165px;
 
 }
 
 .carousel-indicators button{
 
-width:10px;
+    width:10px;
 
-height:10px;
+    height:10px;
 
-border-radius:50%;
-
-}
-
-
-.image{
-
-filter:brightness(.7);
+    border-radius:50%;
 
 }
 
-.bubble1,
+/*-------------------------------------
+        SCROLL INDICATOR
+--------------------------------------*/
 
-.bubble2{
+.scroll-indicator{
 
-width:18px;
-
-height:18px;
+    display:none;
 
 }
+
+/*=========================================================
+                FLOATING ICONS
+=========================================================*/
 
 .glass-circle{
 
-transform:scale(.65);
+    position:absolute;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    width:82px;
+
+    height:82px;
+
+    font-size:28px;
+
+    border-radius:50%;
+
+    backdrop-filter:blur(12px);
+
+    background:rgba(255,255,255,.12);
+
+    border:1px solid rgba(255,255,255,.20);
+
+    z-index:3;
 
 }
 
 .glass-circle.one{
 
-left:8%;
+    top:115px;
 
-top:6%;
+    left:18px;
 
 }
 
 .glass-circle.two{
 
-left:5%;
+    bottom:230px;
 
-bottom:28%;
+    left:25px;
 
 }
 
 .glass-circle.three{
 
-right:10%;
+    top:210px;
 
-top:12%;
+    right:20px;
 
 }
 
 .glass-circle.four{
 
-display: none;
+    top:410px;
+
+    right:35px;
 
 }
 
 .glass-circle.five{
 
-display: none;
+    display:none;
 
 }
-.hero-glass{
 
-backdrop-filter:blur(10px);
-
-}
+/*=========================================================
+                    HERO STATS
+=========================================================*/
 
 .hero-stats{
 
-display:grid;
+    display:grid;
 
-grid-template-columns:repeat(2,1fr);
+    grid-template-columns:repeat(2,1fr);
 
-gap:16px;
+    gap:14px;
 
-padding:20px;
+    padding:18px;
 
-margin-top:5px;
+    margin-top:-70px;
 
-border-radius:20px;
+    position:relative;
+
+    z-index:10;
+
+}
+
+.hero-stats>div{
+
+    padding:18px;
+
+    border-radius:20px;
+
+    text-align:center;
+
+    background:rgba(15,23,42,.92);
+
+    backdrop-filter:blur(14px);
+
+    box-shadow:0 12px 30px rgba(0,0,0,.20);
+
+}
+
+.hero-stats h2{
+
+    font-size:2rem;
+
+    margin-bottom:6px;
+
+}
+
+.hero-stats span{
+
+    font-size:13px;
+
+}
+
+/*=========================================================
+                    ABOUT
+=========================================================*/
+
+.about-container{
+
+    padding:25px 18px;
+
+}
+
+.about-container img{
+
+    margin-bottom:25px;
+
+}
+
+.about-container h1{
+
+    text-align:center;
+
+}
+
+.about-container p{
+
+    text-align:center;
+
+}
+
+/*=========================================================
+                    CONTACT
+=========================================================*/
+
+.contact-info-wrapper{
+
+    margin-bottom:25px;
+
+}
+
+.contact-info-card{
+
+    padding:18px;
+
+}
+
+.contact-form-card{
+
+    padding:10px;
+
+}
+
+/*=========================================================
+                WHY CHOOSE US
+=========================================================*/
+
+.why-card{
+
+    margin-bottom:18px;
+
+}
+
+/*=========================================================
+                    FOOTER
+=========================================================*/
+
+.footer{
+
+    text-align:center;
+
+}
+
+.footer-links{
+
+    margin-top:25px;
+
+}
+
+.footer-links a{
+
+    display:block;
+
+    margin-bottom:12px;
+
+}
+
+.footer-social{
+
+    justify-content:center;
+
+    margin-top:20px;
+
+}
+
+
+
+/*=========================================================
+                HERO LIGHT MODE
+=========================================================*/
+
+body.light .hero-glass{
+
+    background:rgba(255,255,255,.18);
+
+}
+
+body.light .hero-stats>div{
+
+    background:rgba(255,255,255,.85);
+
+}
+
+body.light .hero-stats h2{
+
+    color:#0d6efd;
+
+}
+
+body.light .hero-stats span{
+
+    color:#475569;
+
+}
+
+/*=========================================================
+                HERO DARK MODE
+=========================================================*/
+
+body.dark .hero-glass{
+
+    background:rgba(2,6,23,.50);
+
+}
+
+body.dark .hero-stats>div{
+
+    background:rgba(15,23,42,.92);
+
+}
+
+body.dark .hero-stats h2{
+
+    color:white;
+
+}
+
+body.dark .hero-stats span{
+
+    color:#dbe4f1;
 
 }
 
 }
+
+
+
+
+
+
 
   
 

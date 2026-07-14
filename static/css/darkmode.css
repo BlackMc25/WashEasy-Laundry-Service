@@ -1,0 +1,356 @@
+/*=====================================
+NEW LIGHT MODE COMPONENTS
+======================================*/
+
+body.light .hero-glass{
+
+background:rgba(255,255,255,.18);
+
+backdrop-filter:blur(18px);
+
+}
+
+body.light .hero-stats{
+
+background:white;
+
+}
+
+body.light .express-card{
+
+background:linear-gradient(
+135deg,
+#FFD43B,
+#FFB703
+);
+
+color:#222;
+
+}
+
+body.light .why-section{
+
+background:#f8fbff;
+
+}
+
+body.light .why-card{
+
+background:white;
+
+color:#1f2937;
+
+}
+
+body.light .about-features div{
+
+background:white;
+
+}
+
+body.light .contact-info-wrapper,
+
+body.light .contact-form-card{
+
+background:white;
+
+}
+
+body.light .contact-info-card{
+
+background:white;
+
+}
+
+body.light .footer{
+
+background:#081b33;
+
+color:white;
+
+}
+
+body.light .footer a{
+
+color:#ddd;
+
+}
+
+
+/*=====================================
+GLOBAL DARK MODE
+======================================*/
+
+body.dark{
+
+background:#0f172a;
+
+color:#f8fafc;
+
+transition:.35s;
+
+}
+
+body.dark .hero-glass{
+
+background:rgba(15,23,42,.45);
+
+backdrop-filter:blur(18px);
+
+border:1px solid rgba(255,255,255,.08);
+
+}
+
+body.dark .hero-stats{
+
+background:#1e293b;
+
+}
+
+body.dark .scroll-indicator{
+
+color:white;
+
+}
+
+body.dark .service-card,
+
+body.dark .process-card,
+
+body.dark .why-card,
+
+body.dark .about-features div,
+
+body.dark .contact-info-card,
+
+body.dark .contact-info-wrapper,
+
+body.dark .contact-form-card,
+
+body.dark .summary-card,
+
+body.dark .laundry-card,
+
+body.dark .mobile-card,
+
+body.dark .stats-card{
+
+background:#1e293b;
+
+color:white;
+
+border:1px solid rgba(255,255,255,.05);
+
+box-shadow:0 15px 35px rgba(0,0,0,.35);
+
+}
+
+body.dark .express-section{
+
+background:#0f172a;
+
+}
+
+body.dark .express-card{
+
+background:
+
+linear-gradient(
+
+135deg,
+
+#e69c00,
+
+#ffbf00
+
+);
+
+color:#111827;
+
+}
+
+body.dark .why-section{
+
+background:#111827;
+
+}
+
+body.dark .why-icon,
+
+body.dark .process-card i,
+
+body.dark .contact-icon{
+
+background:#334155;
+
+color:#7cc4ff;
+
+}
+
+body.dark .why-card:hover .why-icon,
+
+body.dark .process-card:hover i,
+
+body.dark .contact-info-card:hover .contact-icon{
+
+background:#60a5fa;
+
+color:white;
+
+}
+
+body.dark .section-tag{
+
+background:#1e3a5f;
+
+color:#7cc4ff;
+
+}
+
+body.dark .about-subtitle{
+
+color:#cbd5e1;
+
+}
+
+body.dark .about-stats h3{
+
+color:#7cc4ff;
+
+}
+
+body.dark .contact-title,
+
+body.dark .contact-info-card h5{
+
+color:white;
+
+}
+
+body.dark .contact-subtitle,
+
+body.dark .contact-info-card p{
+
+color:#cbd5e1;
+
+}
+
+body.dark .contact-social a{
+
+background:#334155;
+
+color:#7cc4ff;
+
+}
+
+body.dark .contact-social a:hover{
+
+background:#60a5fa;
+
+color:white;
+
+}
+
+body.dark input,
+
+body.dark textarea,
+
+body.dark select{
+
+background:#111827;
+
+color:white;
+
+border:1px solid #475569;
+
+}
+
+body.dark input:focus,
+
+body.dark textarea:focus{
+
+background:#111827;
+
+color:white;
+
+border-color:#60a5fa;
+
+box-shadow:0 0 15px rgba(96,165,250,.25);
+
+}
+
+body.dark .btn-primary{
+
+background:#2563eb;
+
+border:none;
+
+}
+
+body.dark .btn-primary:hover{
+
+background:#3b82f6;
+
+}
+
+body.dark .about-btn,
+
+body.dark .express-btn{
+
+background:#2563eb;
+
+}
+
+body.dark .about-btn:hover,
+
+body.dark .express-btn:hover{
+
+background:#3b82f6;
+
+}
+
+body.dark .footer{
+
+background:#020617;
+
+}
+
+body.dark .footer input{
+
+background:#1e293b;
+
+color:white;
+
+}
+
+body.dark .footer button{
+
+background:#2563eb;
+
+}
+
+body.dark .footer-social a{
+
+background:#1e293b;
+
+}
+
+body.dark .footer-social a:hover{
+
+background:#3b82f6;
+
+}
+
+*{
+
+transition:
+
+background-color .35s,
+
+color .35s,
+
+border-color .35s,
+
+box-shadow .35s;
+
+}

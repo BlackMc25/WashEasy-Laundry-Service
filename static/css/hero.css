@@ -430,4 +430,60 @@ font-size:15px;
 
 }
 
+/*==============================
+    Glass Carousel Arrows
+==============================*/
+
+.glass-arrow{
+
+    width:55px;
+
+    height:55px;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.15);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.25);
+
+    opacity:1;
+
+    transition:.35s;
+
+}
+
+.carousel-control-prev{
+
+    left:18px;
+
+}
+
+.carousel-control-next{
+
+    right:18px;
+
+}
+
+.glass-arrow:hover{
+
+    background:rgba(255,255,255,.28);
+
+    transform:translateY(-50%) scale(1.08);
+
+}
+
+.glass-arrow span{
+
+    width:22px;
+
+    height:22px;
+
+}
+
 

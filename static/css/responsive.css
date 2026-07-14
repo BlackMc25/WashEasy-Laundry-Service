@@ -821,9 +821,9 @@ button{
 
 .glass-circle.two{
 
-    top:26%;
+    top:36%;
 
-    left:52px !important; 
+    right:12px !important; 
 
 }
 
@@ -832,7 +832,7 @@ button{
 
     bottom: 120px;
 
-    left: 18px;
+    right: 18px;
 
 }
 

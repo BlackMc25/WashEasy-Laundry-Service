@@ -818,7 +818,7 @@ button{
 
     top: 260px;
 
-    left: 18px;
+    right: 18px;
 
 }
 
@@ -827,7 +827,7 @@ button{
 
     bottom: 120px;
 
-    right: -18px;
+    left: -18px;
 
 }
 

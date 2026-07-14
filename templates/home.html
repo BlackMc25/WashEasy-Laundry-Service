@@ -188,74 +188,158 @@ margin:auto;
 <body>
 
     <!-- Navbar-->
-<nav class ="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+<nav class="navbar navbar-expand-lg">
+
     <div class="container">
-        <a class="navbar-brand d-flex align-items-center" href="{% url 'home' %}">
+
+        <!-- Mobile Hamburger -->
+
+        <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav"
+                aria-controls="navbarNav"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+
+            <span class="custom-toggle-icon">
+
+                <i class="bi bi-list"></i>
+
+            </span>
+
+        </button>
+
+
+        <!-- Logo -->
+
+        <a class="navbar-brand d-flex align-items-center"
+           href="{% url 'home' %}">
 
             <span class="brand-name">
+
                 🧺 WashEasy
+
             </span>
 
         </a>
 
-        <div class="d-flex align-items-center mobile-controls">
 
-            <button id="themeToggleMobile"
-                    class="theme-toggle-mobile">
+        <!-- Mobile Theme -->
 
-                <i class="bi bi-moon-stars-fill"></i>
+        <button id="themeToggleMobile"
+                class="theme-toggle-mobile">
 
-            </button>
-            
-        </div>
+            <i class="bi bi-moon-stars-fill"></i>
 
-        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="custom-toggle-icon">☰</span>
         </button>
-        
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
+
+
+        <!-- Navigation -->
+
+        <div class="collapse navbar-collapse"
+             id="navbarNav">
+
+            <ul class="navbar-nav ms-auto align-items-lg-center">
+
                 <li class="nav-item">
-                    <a class="nav-link" href="#home">Home</a>
+
+                    <a class="nav-link"
+                       href="#home">
+
+                        Home
+
+                    </a>
+
                 </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="#Ourservice-container">Our Service</a>
-                    </li>
+                <li class="nav-item">
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="#Howitworks-container ">How it Works</a>
-                    </li>
+                    <a class="nav-link"
+                       href="#Ourservice-container">
 
-                     <li class="nav-item">
-                        <a class="nav-link" href="#aboutus-container">About</a>
-                    </li>
+                        Our Service
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="#ContactUs-sections">Contact</a>
-                    </li>
+                    </a>
 
-                    <li class="nav-item">
-                        <a class="btn login-btn ms-2" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="btn signup-btn ms-2" data-bs-toggle="modal" data-bs-target="#signupModal">SignUp</a>
-                    </li>
+                </li>
 
-                <li class="nav-item ms-2">
+                <li class="nav-item">
 
-                    <button
-                    id="themeToggleDesktop"
-                    class="theme-toggle">
+                    <a class="nav-link"
+                       href="#Howitworks-container">
 
-                    <i class="bi bi-moon-stars-fill"></i>
+                        How It Works
+
+                    </a>
+
+                </li>
+
+                <li class="nav-item">
+
+                    <a class="nav-link"
+                       href="#aboutus-container">
+
+                        About
+
+                    </a>
+
+                </li>
+
+                <li class="nav-item">
+
+                    <a class="nav-link"
+                       href="#ContactUs-sections">
+
+                        Contact
+
+                    </a>
+
+                </li>
+
+                <li class="nav-item">
+
+                    <a class="btn login-btn ms-lg-2"
+                       data-bs-toggle="modal"
+                       data-bs-target="#loginModal">
+
+                        Login
+
+                    </a>
+
+                </li>
+
+                <li class="nav-item">
+
+                    <a class="btn signup-btn ms-lg-2"
+                       data-bs-toggle="modal"
+                       data-bs-target="#signupModal">
+
+                        Sign Up
+
+                    </a>
+
+                </li>
+
+                <!-- Desktop Theme -->
+
+                <li class="nav-item ms-lg-2 desktop-theme">
+
+                    <button id="themeToggleDesktop"
+                            class="theme-toggle">
+
+                        <i class="bi bi-moon-stars-fill"></i>
 
                     </button>
 
                 </li>
+
             </ul>
+
         </div>
+
     </div>
+
 </nav>
 
 

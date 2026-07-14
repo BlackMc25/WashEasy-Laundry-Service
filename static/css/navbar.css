@@ -192,19 +192,178 @@
 
 }
 
+.theme-toggle-mobile{
+
+    display:none;
+
+}
+
+
+/*=========================================================
+                PREMIUM MOBILE NAVBAR
+=========================================================*/
+
 @media (max-width:768px){
 
 .navbar{
 
-    padding:12px 20px;
-
-    border-radius:20px;
+    padding:18px 20px;
 
 }
 
-.navbar-brand img{
+.navbar .container{
 
-    height:42px;
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    position:relative;
+
+}
+
+/* Hide Desktop Theme */
+
+.desktop-theme{
+
+    display:none !important;
+
+}
+
+/* Hamburger */
+
+.navbar-toggler{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border:none;
+
+    background:transparent;
+
+    padding:0;
+
+    box-shadow:none;
+
+    order:1;
+
+}
+
+.navbar-toggler:focus{
+
+    box-shadow:none;
+
+}
+
+.custom-toggle-icon{
+
+    font-size:34px;
+
+    color:#0d6efd;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+}
+
+/* Logo */
+
+.navbar-brand{
+
+    order:2;
+
+    margin:0;
+
+    padding:0;
+
+    flex:1;
+
+    text-align:center;
+
+}
+
+.brand-name{
+
+    font-size:2rem;
+
+    font-weight:700;
+
+    color:#0d3b66;
+
+}
+
+/* Theme Button */
+
+.theme-toggle-mobile{
+
+    order:3;
+
+    width:58px;
+
+    height:58px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#fff;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
+
+}
+
+/* Mobile Menu */
+
+.navbar-collapse{
+
+    margin-top:22px;
+
+    padding:18px;
+
+    border-radius:20px;
+
+    background:rgba(255,255,255,.95);
+
+    backdrop-filter:blur(18px);
+
+}
+
+.navbar-nav{
+
+    gap:12px;
+
+}
+
+.navbar-nav .nav-link{
+
+    text-align:center;
+
+    padding:14px;
+
+    border-radius:12px;
+
+}
+
+.login-btn,
+
+.signup-btn{
+
+    width:100%;
+
+    margin-top:10px;
 
 }
 

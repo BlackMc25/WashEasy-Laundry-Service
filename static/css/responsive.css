@@ -229,67 +229,6 @@ button{
     box-shadow:0 10px 25px rgba(0,0,0,.15);
 }
 
-/*=========================================================
-                    Home topbar
-=========================================================*/
-
-.navbar{
-
-    position:relative;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    padding:22px 24px;
-
-}
-
-
-.logo{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:12px;
-
-}
-
-
-.theme-toggle-mobile{
-
-    margin-right:70px;
-
-}
-
-.mobile-menu{
-
-    position:absolute;
-
-    right:42px;
-
-    top:118px;
-
-    display:flex !important;
-
-    align-items:center;
-
-    justify-content:center;
-
-    z-index:1001;
-
-}
-
-.mobile-menu i{
-
-    font-size:34px;
-
-    color:#0d6efd;
-
-}
 
 
 /*=========================================================

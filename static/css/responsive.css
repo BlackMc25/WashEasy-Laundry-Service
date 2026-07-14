@@ -247,17 +247,6 @@ button{
 
 }
 
-.mobile-controls{
-
-    position:absolute;
-
-    right:25px;
-
-    top:50%;
-
-    transform:translateY(-50%);
-
-}
 
 .logo{
 
@@ -893,11 +882,9 @@ button{
 
 .glass-circle.two{
 
-    top:56%;
+    top:36%;
 
-    right:12px;
-
-    transform:none;
+    right:12px !important; 
 
 }
 

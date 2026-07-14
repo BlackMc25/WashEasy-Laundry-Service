@@ -695,7 +695,7 @@ button{
 
 .hero-glass h1{
 
-    font-size:3.15rem;
+    font-size:2.15rem;
 
     line-height:1.05;
 
@@ -758,7 +758,7 @@ button{
 
     height:10px;
 
-    border-radius:50%;
+    border-radius:60%;
 
 }
 
@@ -827,7 +827,7 @@ button{
 
     bottom: 120px;
 
-    left: -18px;
+    left: 18px;
 
 }
 

@@ -51,13 +51,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (!popup) return;
 
-   bubbles.forEach(function(bubble){
+        bubbles.forEach(function(bubble){
 
-    bubble.addEventListener("click", function(){
+        bubble.addEventListener("click", function(){
 
         console.log("Bubble clicked!");
 
-        this.style.background = "red";
+        popup.classList.add("show");
 
     });
 

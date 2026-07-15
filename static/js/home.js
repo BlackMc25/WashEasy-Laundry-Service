@@ -52,35 +52,39 @@ window.addEventListener("scroll",()=>{
                 SCROLL TO TOP BUTTON
 =========================================================*/
 
-const scrollBtn=document.getElementById("scrollBtn");
+const scrollBtn = document.getElementById("scrollBtn");
 
-window.onscroll=function(){
+if(scrollBtn){
 
-    if(window.scrollY>300){
+    window.onscroll=function(){
 
-        scrollBtn.style.display="flex";
+        if(window.scrollY>300){
 
-    }
+            scrollBtn.style.display="flex";
 
-    else{
+        }
 
-        scrollBtn.style.display="none";
+        else{
 
-    }
+            scrollBtn.style.display="none";
 
-};
+        }
 
-scrollBtn.addEventListener("click",function(){
+    };
 
-    window.scrollTo({
+    scrollBtn.addEventListener("click",function(){
 
-        top:0,
+        window.scrollTo({
 
-        behavior:"smooth"
+            top:0,
+
+            behavior:"smooth"
+
+        });
 
     });
 
-});
+}
 
 
 /*=========================================================
@@ -89,7 +93,7 @@ scrollBtn.addEventListener("click",function(){
 
 const bubbles=document.querySelector(".bubbles");
 
-for(let i=0;i<20;i++){
+if(bubbles){for(let i=0;i<20;i++){
 
     const bubble=document.createElement("span");
 
@@ -106,6 +110,8 @@ for(let i=0;i<20;i++){
     bubble.style.height=bubble.style.width;
 
     bubbles.appendChild(bubble);
+
+}
 
 }
 

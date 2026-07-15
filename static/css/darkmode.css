@@ -651,3 +651,39 @@ body.dark .dropdown-item:hover{
     color:white;
 
 }
+
+body.dark .modal-bubble{
+
+    background:rgba(255,255,255,.05);
+
+    border:1px solid rgba(255,255,255,.12);
+
+}
+
+body.light .modal-bubble{
+
+    background:rgba(255,255,255,.20);
+
+}
+
+body.dark .modal-content{
+
+    background:
+
+    rgba(15,23,42,.88);
+
+    backdrop-filter:blur(24px);
+
+    border:1px solid rgba(124,196,255,.20);
+
+}
+
+body.dark .login-modal .form-control,
+body.dark .signup-modal .form-control{
+
+    background:rgba(30,41,59,.65);
+
+    color:white;
+
+}
+

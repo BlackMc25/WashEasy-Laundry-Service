@@ -1,18 +1,43 @@
+/*=========================================================
+                    WashEasy Home JavaScript
+=========================================================*/
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    console.log("✅ Home.js Loaded");
+
+    initBubblePopup();
+    initNavbarScroll();
+    initScrollTopButton();
+    createFloatingBubbles();
+    initLoginPasswordToggle();
+    initCounterAnimation();
+    initSignupValidation();
+    initThemeToggle();
+    initModalSwitching();
+    initAOS();
+
+});
 
 
-document.addEventListener("DOMContentLoaded", function () {
+/*=========================================================
+                    Bubble Popup
+=========================================================*/
 
-    console.log("✅ Bubble JS Loaded");
+function initBubblePopup(){
+
+    console.log("Bubble JS Loaded");
 
     const bubbles = document.querySelectorAll(".glass-circle, .modal-bubble");
 
     console.log("Bubbles Found:", bubbles.length);
 
-    bubbles.forEach(function(bubble){
+    bubbles.forEach(bubble => {
 
+        // Temporary Debug Border
         bubble.style.border = "3px solid red";
 
-        bubble.addEventListener("click", function(){
+        bubble.addEventListener("click", () => {
 
             alert("Bubble Clicked!");
 
@@ -20,523 +45,444 @@ document.addEventListener("DOMContentLoaded", function () {
 
     });
 
-});
-
-
-
-
-    window.addEventListener("scroll",()=>{
-
-    const navbar=document.querySelector(".navbar");
-
-    if(window.scrollY>80){
-
-        navbar.classList.add("scrolled");
-
-    }
-
-    else{
-
-        navbar.classList.remove("scrolled");
-
-    }
-
-});
-
-
-
-    const scrollBtn = document.getElementById("scrollBtn");
-
-window.onscroll = function(){
-
-    if(window.scrollY > 300){
-        scrollBtn.style.display = "flex";
-    } else {
-        scrollBtn.style.display = "none";
-    }
-
-};
-
-scrollBtn.addEventListener("click", function(){
-
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
-
-});
-
-
-
-
-const bubbles=document.querySelector(".bubbles");
-
-for(let i=0;i<20;i++){
-
-    const bubble=document.createElement("span");
-
-    bubble.className="bubble";
-
-    bubble.style.left=Math.random()*100+"%";
-
-    bubble.style.animationDelay=Math.random()*6+"s";
-
-    bubble.style.animationDuration=5+Math.random()*6+"s";
-
-    bubble.style.width=8+Math.random()*18+"px";
-
-    bubble.style.height=bubble.style.width;
-
-    bubbles.appendChild(bubble);
-
 }
 
 
+/*=========================================================
+                    Navbar Scroll Effect
+=========================================================*/
 
+function initNavbarScroll(){
 
-document
-.getElementById("toggleLoginPassword")
-.addEventListener(
-    "click",
-    function(){
+    const navbar = document.querySelector(".navbar");
 
-        const password =
-            document.getElementById(
-                "loginPassword"
-            );
+    window.addEventListener("scroll", () => {
 
-        const icon =
-            this.querySelector("i");
+        if(window.scrollY > 80){
 
-        if(password.type === "password"){
-
-            password.type = "text";
-
-            icon.classList.remove(
-                "fa-eye"
-            );
-
-            icon.classList.add(
-                "fa-eye-slash"
-            );
+            navbar.classList.add("scrolled");
 
         }else{
 
-            password.type = "password";
-
-            icon.classList.remove(
-                "fa-eye-slash"
-            );
-
-            icon.classList.add(
-                "fa-eye"
-            );
+            navbar.classList.remove("scrolled");
 
         }
+
+    });
+
+}
+
+
+/*=========================================================
+                    Scroll To Top Button
+=========================================================*/
+
+function initScrollTopButton(){
+
+    const scrollBtn = document.getElementById("scrollBtn");
+
+    if(!scrollBtn) return;
+
+    window.addEventListener("scroll", () => {
+
+        scrollBtn.style.display =
+            window.scrollY > 300 ? "flex" : "none";
+
+    });
+
+    scrollBtn.addEventListener("click", () => {
+
+        window.scrollTo({
+
+            top:0,
+            behavior:"smooth"
+
+        });
+
+    });
+
+}
+
+
+/*=========================================================
+                Floating Background Bubbles
+=========================================================*/
+
+function createFloatingBubbles(){
+
+    const container = document.querySelector(".bubbles");
+
+    if(!container) return;
+
+    for(let i=0;i<20;i++){
+
+        const bubble = document.createElement("span");
+
+        bubble.className="bubble";
+
+        bubble.style.left=Math.random()*100+"%";
+
+        bubble.style.animationDelay=Math.random()*6+"s";
+
+        bubble.style.animationDuration=(5+Math.random()*6)+"s";
+
+        bubble.style.width=(8+Math.random()*18)+"px";
+
+        bubble.style.height=bubble.style.width;
+
+        container.appendChild(bubble);
 
     }
-);
 
-    document.addEventListener(
-        'DOMContentLoaded',
-        function(){
+}
 
-            new bootstrap.Modal(
-                document.getElementById('loginModal')
-            ).show();
+
+/*=========================================================
+                Login Password Toggle
+=========================================================*/
+
+function initLoginPasswordToggle(){
+
+    const btn = document.getElementById("toggleLoginPassword");
+
+    if(!btn) return;
+
+    btn.addEventListener("click",function(){
+
+        const password=document.getElementById("loginPassword");
+
+        const icon=this.querySelector("i");
+
+        if(password.type==="password"){
+
+            password.type="text";
+
+            icon.classList.replace("fa-eye","fa-eye-slash");
+
+        }else{
+
+            password.type="password";
+
+            icon.classList.replace("fa-eye-slash","fa-eye");
+
         }
-    );
+
+    });
+
+}
 
 
+/*=========================================================
+                Page Show Refresh
+=========================================================*/
 
+window.addEventListener("pageshow",function(event){
 
-window.addEventListener('pageshow', function(event) {
+    if(event.persisted || performance.navigation.type===2){
 
-    if (
-        event.persisted ||
-        window.performance.navigation.type === 2
-    ) {
         window.location.reload();
+
     }
 
 });
 
 
+/*=========================================================
+                Counter Animation
+=========================================================*/
 
+function initCounterAnimation(){
 
     document.querySelectorAll(".counter").forEach(counter=>{
 
-const update=()=>{
+        function update(){
 
-const target=+counter.dataset.target;
+            const target=+counter.dataset.target;
 
-const count=+counter.innerText;
+            const current=+counter.innerText;
 
-const speed=60;
+            const increment=Math.ceil(target/60);
 
-const inc=Math.ceil(target/speed);
+            if(current<target){
 
-if(count<target){
+                counter.innerText=current+increment;
 
-counter.innerText=count+inc;
+                setTimeout(update,25);
 
-setTimeout(update,25);
+            }else{
 
-}
-
-else{
-
-counter.innerText=target.toLocaleString()+"+";
-
-}
-
-}
-
-update();
-
-});
-
-
-
-    const password =
-    document.getElementById("password1");
-
-const confirmPassword =
-    document.getElementById("password2");
-
-const strength =
-    document.getElementById("passwordStrength");
-
-const match =
-    document.getElementById("passwordMatch");
-
-function updateRequirement(id, passed){
-
-    const item =
-        document.getElementById(id);
-
-    if(passed){
-
-        item.innerHTML =
-            "✅ " +
-            item.innerHTML.substring(2);
-
-        item.classList.remove("text-danger");
-
-        item.classList.add("text-success");
-
-    }else{
-
-        item.innerHTML =
-            "❌ " +
-            item.innerHTML.substring(2);
-
-        item.classList.remove("text-success");
-
-        item.classList.add("text-danger");
-
-    }
-
-}
-
-password.addEventListener(
-    "input",
-    function(){
-
-        const value =
-            password.value;
-
-        const checks = {
-
-            length:
-                value.length >= 8,
-
-            uppercase:
-                /[A-Z]/.test(value),
-
-            lowercase:
-                /[a-z]/.test(value),
-
-            number:
-                /[0-9]/.test(value),
-
-            special:
-                /[^A-Za-z0-9]/.test(value)
-
-        };
-
-        let score = 0;
-
-        for(const key in checks){
-
-            updateRequirement(
-                key,
-                checks[key]
-            );
-
-            if(checks[key]){
-
-                score++;
+                counter.innerText=target.toLocaleString()+"+";
 
             }
 
         }
 
-        if(score <= 2){
+        update();
 
-            strength.innerHTML =
-                "🔴 Weak";
+    });
 
-            strength.className =
-                "text-danger";
+}
+
+
+/*=========================================================
+                Signup Validation
+=========================================================*/
+
+function initSignupValidation(){
+
+    const password=document.getElementById("password1");
+
+    const confirmPassword=document.getElementById("password2");
+
+    const strength=document.getElementById("passwordStrength");
+
+    const match=document.getElementById("passwordMatch");
+
+    if(!password || !confirmPassword) return;
+
+    password.addEventListener("input",function(){
+
+        const value=password.value;
+
+        const checks={
+
+            length:value.length>=8,
+
+            uppercase:/[A-Z]/.test(value),
+
+            lowercase:/[a-z]/.test(value),
+
+            number:/[0-9]/.test(value),
+
+            special:/[^A-Za-z0-9]/.test(value)
+
+        };
+
+        updateRequirement("length",checks.length);
+
+        updateRequirement("uppercase",checks.uppercase);
+
+        updateRequirement("lowercase",checks.lowercase);
+
+        updateRequirement("number",checks.number);
+
+        updateRequirement("special",checks.special);
+
+        const score=Object.values(checks).filter(Boolean).length;
+
+        if(score<=2){
+
+            strength.innerHTML="🔴 Weak";
+
+            strength.className="text-danger";
+
+        }else if(score===3){
+
+            strength.innerHTML="🟠 Medium";
+
+            strength.className="text-warning";
+
+        }else if(score===4){
+
+            strength.innerHTML="🟡 Good";
+
+            strength.className="text-info";
+
+        }else{
+
+            strength.innerHTML="🟢 Strong";
+
+            strength.className="text-success";
 
         }
-        else if(score == 3){
 
-            strength.innerHTML =
-                "🟠 Medium";
+    });
 
-            strength.className =
-                "text-warning";
+    confirmPassword.addEventListener("input",()=>{
 
-        }
-        else if(score == 4){
+        if(confirmPassword.value===password.value){
 
-            strength.innerHTML =
-                "🟡 Good";
+            match.innerHTML="✅ Passwords match";
 
-            strength.className =
-                "text-info";
+            match.className="text-success";
 
-        }
-        else{
+        }else{
 
-            strength.innerHTML =
-                "🟢 Strong";
+            match.innerHTML="❌ Passwords do not match";
 
-            strength.className =
-                "text-success";
+            match.className="text-danger";
 
         }
 
-    }
-);
+    });
 
-confirmPassword.addEventListener(
-    "input",
-    function(){
-
-        if(
-            confirmPassword.value ==
-            password.value
-        ){
-
-            match.innerHTML =
-                "✅ Passwords match";
-
-            match.className =
-                "text-success";
-
-        }
-        else{
-
-            match.innerHTML =
-                "❌ Passwords do not match";
-
-            match.className =
-                "text-danger";
-
-        }
-
-    }
-);
+}
 
 
-    function togglePassword(
-    inputId,
-    buttonId
-){
+/*=========================================================
+            Password Requirement Helper
+=========================================================*/
 
-    const input =
-        document.getElementById(inputId);
+function updateRequirement(id,passed){
 
-    const icon =
-        document.querySelector(
-            "#" +
-            buttonId +
-            " i"
-        );
+    const item=document.getElementById(id);
 
-    if(input.type === "password"){
+    if(!item) return;
 
-        input.type = "text";
+    item.innerHTML=(passed?"✅ ":"❌ ")+item.innerHTML.substring(2);
 
-        icon.className =
-            "fas fa-eye-slash";
+    item.classList.toggle("text-success",passed);
+
+    item.classList.toggle("text-danger",!passed);
+
+}
+
+
+/*=========================================================
+                Password Eye Toggle
+=========================================================*/
+
+function togglePassword(inputId,buttonId){
+
+    const input=document.getElementById(inputId);
+
+    const icon=document.querySelector(`#${buttonId} i`);
+
+    if(input.type==="password"){
+
+        input.type="text";
+
+        icon.className="fas fa-eye-slash";
 
     }else{
 
-        input.type = "password";
+        input.type="password";
 
-        icon.className =
-            "fas fa-eye";
-
-    }
-
-}
-
-document
-.getElementById("togglePassword1")
-.addEventListener(
-    "click",
-    function(){
-
-        togglePassword(
-            "password1",
-            "togglePassword1"
-        );
-
-    }
-);
-
-document
-.getElementById("togglePassword2")
-.addEventListener(
-    "click",
-    function(){
-
-        togglePassword(
-            "password2",
-            "togglePassword2"
-        );
-
-    }
-);
-
-
-
-const desktopBtn = document.getElementById("themeToggleDesktop");
-const mobileBtn = document.getElementById("themeToggleMobile");
-
-function updateIcons(theme){
-
-    const iconClass =
-        theme === "dark"
-        ? "bi bi-sun-fill"
-        : "bi bi-moon-stars-fill";
-
-    if(desktopBtn){
-
-        desktopBtn.querySelector("i").className = iconClass;
-
-    }
-
-    if(mobileBtn){
-
-        mobileBtn.querySelector("i").className = iconClass;
+        icon.className="fas fa-eye";
 
     }
 
 }
 
-function setTheme(theme){
+document.getElementById("togglePassword1")?.addEventListener("click",()=>{
 
-    document.body.classList.remove("light","dark");
-
-    document.body.classList.add(theme);
-
-    localStorage.setItem("theme",theme);
-
-    updateIcons(theme);
-
-}
-
-const savedTheme =
-    localStorage.getItem("theme") || "light";
-
-setTheme(savedTheme);
-
-function toggleTheme(){
-
-    if(document.body.classList.contains("dark")){
-
-        setTheme("light");
-
-    }else{
-
-        setTheme("dark");
-
-    }
-
-}
-
-if(desktopBtn){
-
-    desktopBtn.addEventListener("click",toggleTheme);
-
-}
-
-if(mobileBtn){
-
-    mobileBtn.addEventListener("click",toggleTheme);
-
-}
-
-
-
-// don't have an account SignUp
-document.getElementById("openSignupFromLogin").addEventListener("click", function(e){
-
-    e.preventDefault();
-
-    // Close Login Modal
-    const loginModal = bootstrap.Modal.getInstance(document.getElementById("loginModal"));
-
-    loginModal.hide();
-
-    // Wait for login modal to close
-    setTimeout(function(){
-
-        const signupModal = new bootstrap.Modal(document.getElementById("signupModal"));
-
-        signupModal.show();
-
-    },300);
+    togglePassword("password1","togglePassword1");
 
 });
 
-// already have an account 
+document.getElementById("togglePassword2")?.addEventListener("click",()=>{
 
-document.getElementById("openLoginFromSignup").addEventListener("click", function(e){
-
-    e.preventDefault();
-
-    // Close Signup Modal
-    const signupModal = bootstrap.Modal.getInstance(document.getElementById("signupModal"));
-
-    signupModal.hide();
-
-    // Open Login Modal
-    setTimeout(function(){
-
-        const loginModal = new bootstrap.Modal(document.getElementById("loginModal"));
-
-        loginModal.show();
-
-    },300);
-
-})
-
-
-
-
-AOS.init({
-
-    duration:1000,
-
-    once:true,
-
-    easing:"ease-in-out"
+    togglePassword("password2","togglePassword2");
 
 });
 
+
+/*=========================================================
+                    Dark / Light Mode
+=========================================================*/
+
+function initThemeToggle(){
+
+    const desktopBtn=document.getElementById("themeToggleDesktop");
+
+    const mobileBtn=document.getElementById("themeToggleMobile");
+
+    function updateIcons(theme){
+
+        const icon=theme==="dark"
+            ?"bi bi-sun-fill"
+            :"bi bi-moon-stars-fill";
+
+        desktopBtn?.querySelector("i").className=icon;
+
+        mobileBtn?.querySelector("i").className=icon;
+
+    }
+
+    function setTheme(theme){
+
+        document.body.classList.remove("light","dark");
+
+        document.body.classList.add(theme);
+
+        localStorage.setItem("theme",theme);
+
+        updateIcons(theme);
+
+    }
+
+    setTheme(localStorage.getItem("theme") || "light");
+
+    function toggleTheme(){
+
+        setTheme(
+
+            document.body.classList.contains("dark")
+            ?"light"
+            :"dark"
+
+        );
+
+    }
+
+    desktopBtn?.addEventListener("click",toggleTheme);
+
+    mobileBtn?.addEventListener("click",toggleTheme);
+
+}
+
+
+/*=========================================================
+                Login / Signup Modal Switch
+=========================================================*/
+
+function initModalSwitching(){
+
+    document.getElementById("openSignupFromLogin")?.addEventListener("click",function(e){
+
+        e.preventDefault();
+
+        bootstrap.Modal.getInstance(document.getElementById("loginModal")).hide();
+
+        setTimeout(()=>{
+
+            new bootstrap.Modal(document.getElementById("signupModal")).show();
+
+        },300);
+
+    });
+
+    document.getElementById("openLoginFromSignup")?.addEventListener("click",function(e){
+
+        e.preventDefault();
+
+        bootstrap.Modal.getInstance(document.getElementById("signupModal")).hide();
+
+        setTimeout(()=>{
+
+            new bootstrap.Modal(document.getElementById("loginModal")).show();
+
+        },300);
+
+    });
+
+}
+
+
+/*=========================================================
+                    AOS Animation
+=========================================================*/
+
+function initAOS(){
+
+    AOS.init({
+
+        duration:1000,
+
+        once:true,
+
+        easing:"ease-in-out"
+
+    });
+
+}

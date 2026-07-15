@@ -1125,7 +1125,7 @@ LOGIN & SIGNUP FLOATING BACKGROUND
 
     overflow:hidden;
 
-    z-index:1;
+    z-index:25;
 
 }
 
@@ -1140,6 +1140,12 @@ LOGIN & SIGNUP FLOATING BACKGROUND
 .modal-bubble{
 
     position:absolute;
+
+    z-index:30;
+
+    pointer-events:auto;
+
+    cursor:pointer;
 
     width:58px;
 

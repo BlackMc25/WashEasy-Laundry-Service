@@ -357,19 +357,7 @@
 
 }
 
-.modal-floating{
 
-    position:absolute;
-
-    inset:0;
-
-    overflow:hidden;
-
-    pointer-events:none;
-
-    z-index:1;
-
-}
 
 /*=========================================================
                 PREMIUM MOBILE NAVBAR

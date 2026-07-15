@@ -2901,37 +2901,25 @@ AOS.init({
 
 <script>
 
-const popup=document.getElementById("bubblePopup");
+document.addEventListener("DOMContentLoaded", function () {
 
-const popupTitle=document.getElementById("popupTitle");
+    console.log("✅ Bubble JS Loaded");
 
-const popupMessage=document.getElementById("popupMessage");
+    const bubbles = document.querySelectorAll(".glass-circle, .modal-bubble");
 
-const popupIcon=document.getElementById("popupIcon");
+    console.log("Bubbles Found:", bubbles.length);
 
-document.querySelectorAll(".glass-circle,.modal-bubble").forEach(bubble=>{
+    bubbles.forEach(function(bubble){
 
-bubble.addEventListener("click",()=>{
+        bubble.style.border = "3px solid red";
 
-popupTitle.innerHTML=bubble.dataset.title;
+        bubble.addEventListener("click", function(){
 
-popupMessage.innerHTML=bubble.dataset.message;
+            alert("Bubble Clicked!");
 
-popupIcon.innerHTML=bubble.innerHTML;
+        });
 
-bubble.style.animation="bubblePop .45s forwards";
-
-popup.classList.add("show");
-
-setTimeout(()=>{
-
-popup.classList.remove("show");
-
-bubble.style.animation="";
-
-},2200);
-
-});
+    });
 
 });
 

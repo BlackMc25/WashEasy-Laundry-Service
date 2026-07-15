@@ -355,12 +355,21 @@ margin:auto;
 
     <div class="floating-elements">
 
-        <div class="glass-circle one">👕</div>
-        <div class="glass-circle two">🧺</div>
-        <div class="glass-circle three">🧼</div>
-        <div class="glass-circle four">✨</div>
-        <div class="glass-circle five">🫧</div>
-
+        <div class="glass-circle one"
+             data-title="Fresh Laundry"
+            data-message="Every garment is professionally cleaned and perfectly folded.">👕</div>
+        <div class="glass-circle two" 
+             data-title="Pickup & Delivery"
+             data-message="Book online and we'll pick up and deliver your laundry.">🧺</div>
+        <div class="glass-circle three"
+             data-title="Premium Cleaning"
+             data-message="Premium quality garment care for every fabric.">🧼</div>
+        <div class="glass-circle four"
+             data-title="Premium Quality"
+             data-message="Premium quality always.">✨</div>
+        <div class="glass-circle five"
+             data-title="Fresh Every Time"
+             data-message="Your clothes deserve the freshest wash.">🫧</div>
         <div class="bubbles"></div>
 
     </div>
@@ -1833,11 +1842,15 @@ margin:auto;
 
             <div class="modal-floating">
 
-            <div class="modal-bubble bubble-premium">
+            <div class="modal-bubble bubble-premium"
+                 data-title="Premium Quality"
+                 data-message="Premium quality always.">
                 ⭐
             </div>
 
-            <div class="modal-bubble bubble-clean">
+            <div class="modal-bubble bubble-clean"
+                 data-title="Fresh Every Time"
+                 data-message="Your clothes deserve the freshest wash.">
                 🫧
             </div>
 
@@ -1845,7 +1858,9 @@ margin:auto;
                 🚚
             </div>
 
-            <div class="modal-bubble bubble-fold">
+            <div class="modal-bubble bubble-fold"
+                 data-title="Fresh Laundry"
+                 data-message="Every garment is professionally cleaned and perfectly folded.">
                 👕
             </div>
 
@@ -2849,6 +2864,58 @@ AOS.init({
 
 });
 </script>
+
+<script>
+
+const popup=document.getElementById("bubblePopup");
+
+const popupTitle=document.getElementById("popupTitle");
+
+const popupMessage=document.getElementById("popupMessage");
+
+const popupIcon=document.getElementById("popupIcon");
+
+document.querySelectorAll(".glass-circle,.modal-bubble").forEach(bubble=>{
+
+bubble.addEventListener("click",()=>{
+
+popupTitle.innerHTML=bubble.dataset.title;
+
+popupMessage.innerHTML=bubble.dataset.message;
+
+popupIcon.innerHTML=bubble.innerHTML;
+
+bubble.style.animation="bubblePop .45s forwards";
+
+popup.classList.add("show");
+
+setTimeout(()=>{
+
+popup.classList.remove("show");
+
+bubble.style.animation="";
+
+},2200);
+
+});
+
+});
+
+</script>
+
+<div id="bubblePopup">
+
+    <div class="popup-card">
+
+        <div id="popupIcon"></div>
+
+        <h3 id="popupTitle"></h3>
+
+        <p id="popupMessage"></p>
+
+    </div>
+
+</div>
 </body>
 
 </html>

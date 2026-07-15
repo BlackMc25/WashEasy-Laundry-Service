@@ -243,11 +243,20 @@ font-size:15px;
 
     inset:0;
 
-    z-index:5;
+    z-index:25;
 
     pointer-events:none;
 
     overflow:hidden;
+
+}
+
+.glass-circle,
+.modal-bubble{
+
+    pointer-events:auto;
+
+    cursor:pointer;
 
 }
 
@@ -304,6 +313,12 @@ font-size:15px;
 .glass-circle{
 
     position:absolute;
+
+    z-index:30;
+
+    pointer-events:auto;
+
+    cursor:pointer;
 
     width:80px;
 

@@ -51,19 +51,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (!popup) return;
 
-    bubbles.forEach(function (bubble) {
-        
-        bubbles.forEach((bubble) => {
+    bubbles.forEach((bubble) => {
 
-            bubble.addEventListener("click", function () {
+    bubble.addEventListener("click", function () {
 
-                console.log("Bubble clicked!");
+        console.log("Bubble clicked!");
 
-            });
-
-        });
     });
 
+});
     /*---------------------------------------
         Close Popup
     ---------------------------------------*/

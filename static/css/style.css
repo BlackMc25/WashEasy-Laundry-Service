@@ -112,22 +112,6 @@ footer{
 
 /* LOGIN & SIGNUP MODALS */
 
-.login-modal,
-.signup-modal{
-    border:none;
-    border-radius:20px;
-    overflow:hidden;
-}
-
-.login-modal .modal-body,
-.signup-modal .modal-body{
-    padding:40px;
-}
-
-.login-modal h2,
-.signup-modal h2{
-    color:#0d3b66;
-}
 
 .login-btn-custom{
     background:#0d3b66;
@@ -149,9 +133,6 @@ footer{
     border-left:none;
 }
 
-.modal-content{
-    box-shadow:0 15px 40px rgba(0,0,0,.15);
-}
 
 
 /*===============================

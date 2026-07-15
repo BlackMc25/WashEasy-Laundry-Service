@@ -260,6 +260,26 @@ font-size:15px;
 
 }
 
+.burst-particle{
+
+    position:fixed;
+
+    width:10px;
+
+    height:10px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.85);
+
+    pointer-events:none;
+
+    z-index:999999;
+
+    animation:particleBurst .8s ease forwards;
+
+}
+
 .float{
 
     position:absolute;
@@ -500,5 +520,26 @@ font-size:15px;
     height:22px;
 
 }
+
+.ripple{
+
+    position:fixed;
+
+    width:30px;
+
+    height:30px;
+
+    border-radius:50%;
+
+    border:2px solid rgba(255,255,255,.7);
+
+    pointer-events:none;
+
+    animation:ripple .7s ease forwards;
+
+    z-index:99999;
+
+}
+
 
 

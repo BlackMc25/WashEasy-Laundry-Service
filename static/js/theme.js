@@ -1,3 +1,7 @@
+
+
+document.addEventListener("DOMContentLoaded", function () {
+
 /*=========================================================
                 DARK/LIGHT MODE
 =========================================================*/
@@ -73,3 +77,5 @@ if(mobileBtn){
 mobileBtn.addEventListener("click",toggleTheme);
 
 }
+
+});

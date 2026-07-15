@@ -1,3 +1,7 @@
+
+
+document.addEventListener("DOMContentLoaded", function () {
+
 /*=========================================================
                 LOGIN PASSWORD TOGGLE
 =========================================================*/
@@ -259,5 +263,7 @@ setTimeout(function(){
 new bootstrap.Modal(document.getElementById("loginModal")).show();
 
 },300);
+
+});
 
 });

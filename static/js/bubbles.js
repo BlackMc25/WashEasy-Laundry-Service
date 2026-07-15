@@ -52,33 +52,16 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!popup) return;
 
     bubbles.forEach(function (bubble) {
+        
+        bubbles.forEach((bubble) => {
 
-        bubble.addEventListener("click", function () {
+            bubble.addEventListener("click", function () {
 
-            const icon = this.textContent.trim();
+                console.log("Bubble clicked!");
 
-            const title = this.dataset.title;
-
-            const message = this.dataset.message;
-
-            popupIcon.textContent = icon;
-
-            popupTitle.textContent = title;
-
-            popupMessage.textContent = message;
-
-            popup.classList.add("show");
-
-            this.classList.add("bubble-pop");
-
-            setTimeout(() => {
-
-                this.classList.remove("bubble-pop");
-
-            }, 450);
+            });
 
         });
-
     });
 
     /*---------------------------------------

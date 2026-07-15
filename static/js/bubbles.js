@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         bubbles.forEach(function(bubble){
 
-        bubble.addEventListener("click", function () {
+            bubble.addEventListener("click", function () {
 
             const icon = this.textContent.trim();
 
@@ -66,6 +66,42 @@ document.addEventListener("DOMContentLoaded", function () {
             popupTitle.textContent = title;
 
             popupMessage.textContent = message;
+
+            const rect = this.getBoundingClientRect();
+
+            for(let i=0;i<14;i++){
+
+                const particle=document.createElement("span");
+
+                particle.className="burst-particle";
+
+                particle.style.left=(rect.left+rect.width/2)+"px";
+
+                particle.style.top=(rect.top+rect.height/2)+"px";
+
+                particle.style.setProperty(
+                    "--x",
+                    (Math.random()*180-90)+"px"
+                );
+
+                particle.style.setProperty(
+                    "--y",
+                    (Math.random()*180-90)+"px"
+                );
+
+                document.body.appendChild(particle);
+
+                particle.addEventListener("animationend",()=>{
+
+                    particle.remove();
+
+                });
+
+            }
+
+           popup.style.transformOrigin =
+           rect.left + rect.width/2 + "px " +
+           (rect.top + rect.height/2) + "px";
 
             popup.classList.add("show");
 

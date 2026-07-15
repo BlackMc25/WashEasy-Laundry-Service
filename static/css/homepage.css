@@ -1100,6 +1100,168 @@ background:#38bdf8;
 
 }
 
+/*=============================================
+LOGIN & SIGNUP FLOATING BACKGROUND
+=============================================*/
+
+.login-modal,
+.signup-modal{
+
+    position:relative;
+
+    overflow:hidden;
+
+    border-radius:28px;
+
+}
+
+.modal-floating{
+
+    position:absolute;
+
+    inset:0;
+
+    pointer-events:none;
+
+    overflow:hidden;
+
+    z-index:1;
+
+}
+
+.modal-body{
+
+    position:relative;
+
+    z-index:5;
+
+}
+
+.modal-bubble{
+
+    position:absolute;
+
+    width:58px;
+
+    height:58px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:24px;
+
+    backdrop-filter:blur(18px);
+
+    background:rgba(255,255,255,.08);
+
+    border:1px solid rgba(255,255,255,.20);
+
+    box-shadow:
+
+    0 8px 20px rgba(0,0,0,.15);
+
+    opacity:.65;
+
+    cursor:pointer;
+
+    pointer-events:auto;
+
+}
+
+.bubble-premium{
+
+    top:8%;
+
+    left:8%;
+
+}
+
+.bubble-clean{
+
+    top:20%;
+
+    right:8%;
+
+}
+
+.bubble-truck{
+
+    top:48%;
+
+    left:4%;
+
+}
+
+.bubble-fold{
+
+    bottom:18%;
+
+    right:8%;
+
+}
+
+.bubble-love{
+
+    bottom:10%;
+
+    left:15%;
+
+}
+
+.bubble-leaf{
+
+    top:70%;
+
+    right:20%;
+
+}
+
+.bubble-premium{
+
+    animation:
+    modalFloat 9s ease-in-out infinite;
+
+}
+
+.bubble-clean{
+
+    animation:
+    modalFloat 7s ease-in-out infinite;
+
+}
+
+.bubble-truck{
+
+    animation:
+    modalFloat 11s ease-in-out infinite;
+
+}
+
+.bubble-fold{
+
+    animation:
+    modalFloat 8s ease-in-out infinite;
+
+}
+
+.bubble-love{
+
+    animation:
+    modalFloat 10s ease-in-out infinite;
+
+}
+
+.bubble-leaf{
+
+    animation:
+    modalFloat 6s ease-in-out infinite;
+
+}
 
 
 @media(max-width:992px){

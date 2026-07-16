@@ -333,9 +333,11 @@
 
     position:relative;
 
-    z-index:10;
+    z-index:30;
 
     padding:40px;
+
+    color:#f8fafc;
 
 }
 

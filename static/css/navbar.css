@@ -610,24 +610,13 @@ BACKGROUND BLUR
 
     z-index:101;
 
-}
-
-.auth-links a{
-
-    position:relative;
-
-    z-index:101;
 
 }
 
-.text-muted{
+.text-center small{
+
     color:#f8fafc;
 }
-
-.text-decoration-none{
-    z-index:10;
-}
-
 .password-rules{
 
     display:flex;

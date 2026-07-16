@@ -613,10 +613,11 @@ BACKGROUND BLUR
 
 }
 
-.auth-links small{
+.auth-links p{
 
     color:#f8fafc;
 }
+
 .password-rules{
 
     display:flex;

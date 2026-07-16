@@ -17,6 +17,10 @@ color: #222;
 
 }
 
+body.light .process-card p{
+    color:#222;
+}
+
 body.light .scroll-indicator{
 
 color:#222;

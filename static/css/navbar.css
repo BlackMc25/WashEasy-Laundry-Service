@@ -320,18 +320,14 @@
 .login-modal h2,
 .signup-modal h2{
 
-    font-size:34px;
-
-    font-weight:800;
-
-    color:#0d3b66;
+    color:white;
 
 }
 
 .login-modal p,
 .signup-modal p{
 
-    color:#5f6f81;
+    color:#dbeafe;
 
 }
 
@@ -346,7 +342,9 @@
 
     border:none;
 
-    border-bottom:2px solid rgba(13,110,253,.25);
+    border-bottom:
+
+    2px solid rgba(255,255,255,.25);
 
     border-radius:0;
 
@@ -354,7 +352,7 @@
 
     font-size:17px;
 
-    color:#1e293b;
+    color:white;
 
     box-shadow:none;
 
@@ -365,11 +363,20 @@
 
     border-bottom:
 
-    2px solid #0d6efd;
+    2px solid #38bdf8;
+
+    box-shadow:
+
+    0 8px 25px
+
+    rgba(56,189,248,.25);
+
 
     box-shadow:none;
 
     background:transparent;
+
+     color:#cbd5e1;
 
 }
 

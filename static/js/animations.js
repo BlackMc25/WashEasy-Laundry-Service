@@ -20,8 +20,37 @@ document.addEventListener("DOMContentLoaded", function(){
 
 });
 
-window.addEventListener("load", function(){
 
-    AOS.refresh();
+window.addEventListener("load", function () {
+
+    AOS.refreshHard();
 
 });
+
+/*=========================================================
+        MOBILE AOS FIX
+=========================================================*/
+
+window.addEventListener("pageshow", function () {
+
+    AOS.refreshHard();
+
+});
+
+window.addEventListener("resize", function () {
+
+    AOS.refreshHard();
+
+});
+
+window.addEventListener("orientationchange", function () {
+
+    AOS.refreshHard();
+
+});
+
+window.addEventListener("scroll", function () {
+
+    AOS.refreshHard();
+
+}, { passive: true });

@@ -1017,21 +1017,36 @@ AUTH MODAL - MOBILE
 .signup-modal .modal-dialog{
 
     width:92%;
-    margin:25px auto;
+    max-width:420px;
+
+    margin:0 auto;
+
+    height:100vh;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
 
 }
 
 .login-modal .modal-content,
 .signup-modal .modal-content{
 
-    min-height:auto;
+    width:100%;
+
+    max-height:85vh;
+
     height:auto;
 
-    max-height:90vh;
+    overflow-y:auto;
+
+    overflow-x:hidden;
 
     border-radius:26px;
 
-    overflow-y:auto;
+    -webkit-overflow-scrolling:touch;
 
 }
 
@@ -1042,12 +1057,24 @@ AUTH MODAL - MOBILE
 
 }
 
+.modal{
+
+    overflow-y:auto;
+
+    overflow-x:hidden;
+
+}
+
+.modal.show{
+
+    padding-right:0 !important;
+
+}
+
 .login-modal input,
 .signup-modal input{
 
-font-size:16px;
-
-color:#e9f5ff;
+ font-size:16px !important;
 
 }
 
@@ -1088,6 +1115,25 @@ margin-top:18px;
 .auth-header p{
 
 font-size:17px;
+
+}
+
+html,
+body{
+
+    height:100%;
+
+    overflow-x:hidden;
+
+}
+
+body.modal-open{
+
+    overflow:hidden;
+
+    position:fixed;
+
+    width:100%;
 
 }
 

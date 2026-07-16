@@ -380,3 +380,19 @@ document
             );
 
     });
+
+    document.querySelectorAll(".modal").forEach(modal=>{
+
+    modal.addEventListener("shown.bs.modal",()=>{
+
+        document.body.style.overflow="hidden";
+
+    });
+
+    modal.addEventListener("hidden.bs.modal",()=>{
+
+        document.body.style.overflow="auto";
+
+    });
+
+});

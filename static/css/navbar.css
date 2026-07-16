@@ -333,7 +333,7 @@
 
     position:relative;
 
-    z-index:30;
+    z-index:10;
 
     padding:40px;
 
@@ -351,7 +351,7 @@
 .login-modal p,
 .signup-modal p{
 
-     color:rgba(255,255,255,.72);
+     color:#f8fafc;
 
 }
 
@@ -596,6 +596,7 @@ BACKGROUND BLUR
     margin-top:8px;
 
     opacity:.8;
+    
 
 }
 
@@ -605,8 +606,16 @@ BACKGROUND BLUR
 
     margin:auto;
 
-     color:#dbeafe;
+     
 
+}
+
+.text-muted{
+    color:#f8fafc;
+}
+
+.text-decoration-none{
+    z-index:10;
 }
 
 .password-rules{

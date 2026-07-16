@@ -18,7 +18,7 @@ color: #222;
 }
 
 body.light .process-card p{
-    color:#222;
+    color: #222 !important;;
 }
 
 body.light .scroll-indicator{
@@ -169,6 +169,11 @@ body.light .signup-btn{
 
 }
 
+
+body.light .form-control text{
+
+    color: #f8fbff;
+}
 
 /*=====================================
 GLOBAL DARK MODE

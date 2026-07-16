@@ -250,6 +250,9 @@ loginModalElement.addEventListener("hidden.bs.modal", function () {
         .getElementById("pageContent")
         .classList.remove("page-blur");
 
+
+        AOS.refresh();
+
 });
 
 
@@ -270,6 +273,7 @@ signupModalElement.addEventListener("hidden.bs.modal", function () {
         .getElementById("pageContent")
         .classList.remove("page-blur");
 
+        AOS.refresh();
 });
 
 

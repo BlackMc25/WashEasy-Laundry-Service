@@ -2,12 +2,26 @@
                     AOS ANIMATION
 =========================================================*/
 
-AOS.init({
+document.addEventListener("DOMContentLoaded", function(){
 
-duration:1000,
+    AOS.init({
 
-once:true,
+        duration:900,
 
-easing:"ease-in-out"
+        once:true,
+
+        offset:80,
+
+        easing:"ease-in-out",
+
+        mirror:false
+
+    });
+
+});
+
+window.addEventListener("load", function(){
+
+    AOS.refresh();
 
 });

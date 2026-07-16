@@ -1219,13 +1219,13 @@ LOGIN & SIGNUP FLOATING BACKGROUND
 
     bottom:10%;
 
-    left:25%;
+    left:15%;
 
 }
 
 .bubble-leaf{
 
-    top:50%;
+    top:75%;
 
     right:9%;
 
@@ -1378,6 +1378,8 @@ font-size:28px;
 
 font-weight:700;
 
+color:#f8fbff;
+
 margin-bottom:12px;
 
 }
@@ -1385,6 +1387,8 @@ margin-bottom:12px;
 #popupMessage{
 
 font-size:16px;
+
+color:#f8fbff; 
 
 line-height:1.7;
 

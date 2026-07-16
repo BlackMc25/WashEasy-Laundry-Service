@@ -427,13 +427,13 @@ BACKGROUND BLUR
 
 .page-blur{
 
-    filter:blur(30px);
+    filter:blur(10px);
 
     transform:scale(.98);
 
     transition:.4s;
 
-    opacity:.75;
+    opacity:.55;
 
 }
 /*=========================================================

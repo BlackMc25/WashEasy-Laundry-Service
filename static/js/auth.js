@@ -265,12 +265,48 @@ new bootstrap.Modal(document.getElementById("loginModal")).show();
 },300);
 
 });
-
-});
-
 /*=========================================================
             LOGIN / SIGNUP MODAL BACKGROUND BLUR
 =========================================================*/
+});
+
+
+
+const loginModal=document.getElementById("loginModal");
+
+loginModal.addEventListener("show.bs.modal",function(){
+
+    document
+    .getElementById("pageContent")
+    .classList.add("page-blur");
+
+});
+
+loginModal.addEventListener("hidden.bs.modal",function(){
+
+    document
+    .getElementById("pageContent")
+    .classList.remove("page-blur");
+
+});
+
+const loginModal=document.getElementById("signupModal");
+
+loginModal.addEventListener("show.bs.modal",function(){
+
+    document
+    .getElementById("pageContent")
+    .classList.add("page-blur");
+
+});
+
+loginModal.addEventListener("hidden.bs.modal",function(){
+
+    document
+    .getElementById("pageContent")
+    .classList.remove("page-blur");
+
+});
 
 document.getElementById("openSignupFromLogin").addEventListener("click", function(e){
 

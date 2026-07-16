@@ -232,9 +232,9 @@
 
     background:linear-gradient(
         135deg,
-        rgba(248,250,252,.92),
-        rgba(236,244,255,.88)
-    );
+        rgba(15,23,42,.88),
+        rgba(30,41,59,.82)
+        );
 
     border:1px solid rgba(255,255,255,.65);
 
@@ -245,6 +245,28 @@
     box-shadow:
         0 25px 60px rgba(15,23,42,.30),
         0 10px 25px rgba(13,110,253,.12);
+
+}
+
+/*=========================================================
+                PREMIUM AUTH CARD SIZE
+=========================================================*/
+
+.login-modal .modal-dialog,
+.signup-modal .modal-dialog{
+
+    max-width:540px;
+
+    margin:3rem auto;
+
+}
+
+.login-modal .modal-content,
+.signup-modal .modal-content{
+
+    min-height:720px;
+
+    border-radius:34px;
 
 }
 
@@ -327,7 +349,7 @@
 .login-modal p,
 .signup-modal p{
 
-    color:#dbeafe;
+     color:rgba(255,255,255,.72);
 
 }
 
@@ -352,7 +374,7 @@
 
     font-size:17px;
 
-    color:white;
+    color:#f8fafc;
 
     box-shadow:none;
 
@@ -383,7 +405,7 @@
 .login-modal .form-control::placeholder,
 .signup-modal .form-control::placeholder{
 
-    color:#6b7280;
+    color:rgba(255,255,255,.55);
 
 }
 
@@ -409,13 +431,13 @@ BACKGROUND BLUR
 
 .page-blur{
 
-    filter:blur(10px);
+    filter:blur(30px);
 
     transform:scale(.98);
 
     transition:.4s;
 
-    opacity:.55;
+    opacity:.75;
 
 }
 /*=========================================================
@@ -580,6 +602,8 @@ BACKGROUND BLUR
     width:72%;
 
     margin:auto;
+
+     color:#dbeafe;
 
 }
 

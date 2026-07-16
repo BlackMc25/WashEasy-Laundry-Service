@@ -319,33 +319,46 @@ signupModalElement.addEventListener("hidden.bs.modal", function () {
 =========================================================*/
 
 document
-    .getElementById("openSignupFromLogin")
-    .addEventListener("click", function (e) {
+.getElementById("openSignupFromLogin")
+.addEventListener("click", function(e){
 
-        e.preventDefault();
+    e.preventDefault();
 
-        const loginModal =
-            bootstrap.Modal.getInstance(
-                document.getElementById("loginModal")
-            );
+    const loginModalElement =
+        document.getElementById("loginModal");
 
-        loginModal.hide();
+    const signupModalElement =
+        document.getElementById("signupModal");
 
-        document
-            .getElementById("loginModal")
-            .addEventListener(
-                "hidden.bs.modal",
-                function () {
+    const loginModal =
+        bootstrap.Modal.getInstance(loginModalElement);
 
-                    new bootstrap.Modal(
-                        document.getElementById("signupModal")
-                    ).show();
+    loginModal.hide();
 
-                },
-                { once: true }
-            );
+    loginModalElement.addEventListener(
+        "hidden.bs.modal",
+        function(){
 
-    });
+            // Clean Bootstrap leftovers
+            document.body.classList.remove("modal-open");
+
+            document.body.style.removeProperty("padding-right");
+
+            document
+            .querySelectorAll(".modal-backdrop")
+            .forEach(backdrop => backdrop.remove());
+
+            bootstrap
+            .Modal
+            .getOrCreateInstance(signupModalElement)
+            .show();
+
+        },
+        { once:true }
+
+    );
+
+});
 
 
 /*=========================================================
@@ -353,33 +366,74 @@ document
 =========================================================*/
 
 document
-    .getElementById("openLoginFromSignup")
-    .addEventListener("click", function (e) {
+.getElementById("openLoginFromSignup")
+.addEventListener("click", function(e){
 
-        e.preventDefault();
+    e.preventDefault();
 
-        const signupModal =
-            bootstrap.Modal.getInstance(
-                document.getElementById("signupModal")
-            );
+    const signupModalElement =
+        document.getElementById("signupModal");
 
-        signupModal.hide();
+    const loginModalElement =
+        document.getElementById("loginModal");
+
+    const signupModal =
+        bootstrap.Modal.getInstance(signupModalElement);
+
+    signupModal.hide();
+
+    signupModalElement.addEventListener(
+        "hidden.bs.modal",
+        function(){
+
+            // Clean Bootstrap leftovers
+            document.body.classList.remove("modal-open");
+
+            document.body.style.removeProperty("padding-right");
+
+            document
+            .querySelectorAll(".modal-backdrop")
+            .forEach(backdrop => backdrop.remove());
+
+            bootstrap
+            .Modal
+            .getOrCreateInstance(loginModalElement)
+            .show();
+
+        },
+        { once:true }
+
+    );
+
+});
+
+/*=========================================================
+            CLEANUP AFTER MODALS CLOSE
+=========================================================*/
+
+["loginModal","signupModal"].forEach(function(id){
+
+    const modal = document.getElementById(id);
+
+    modal.addEventListener("hidden.bs.modal", function(){
+
+        // Remove Bootstrap leftovers
+        document.body.classList.remove("modal-open");
+
+        document.body.style.removeProperty("padding-right");
 
         document
-            .getElementById("signupModal")
-            .addEventListener(
-                "hidden.bs.modal",
-                function () {
+        .querySelectorAll(".modal-backdrop")
+        .forEach(backdrop => backdrop.remove());
 
-                    new bootstrap.Modal(
-                        document.getElementById("loginModal")
-                    ).show();
-
-                },
-                { once: true }
-            );
+        // Remove page blur
+        document
+        .getElementById("pageContent")
+        .classList.remove("page-blur");
 
     });
+
+});
 
     document.querySelectorAll(".modal").forEach(modal=>{
 

@@ -230,7 +230,11 @@
 
     border-radius:30px;
 
-    background:#ffffff;
+    background:linear-gradient(
+        135deg,
+        rgba(15,23,42,.88),
+        rgba(30,41,59,.82)
+    );
 
     border:none;
 
@@ -335,13 +339,13 @@
 .login-modal h2,
 .signup-modal h2{
 
-    color:#0d3b66;
+    color:white;
 
 }
 .login-modal p,
 .signup-modal p{
 
-    color:#64748b;
+    color:#f8fafc;
 
 }
 
@@ -390,14 +394,14 @@
 
     background:transparent;
 
-     color:#cbd5e1;
+    color:#f8fafc;
 
 }
 
 .login-modal .form-control::placeholder,
 .signup-modal .form-control::placeholder{
 
-    color:#94a3b8;
+    color:rgba(255,255,255,.55);
 
 }
 

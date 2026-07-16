@@ -292,7 +292,7 @@ loginModal.addEventListener("hidden.bs.modal",function(){
 
 const signupModal = document.getElementById("signupModal");
 
-loginModal.addEventListener("show.bs.modal",function(){
+signupModal.addEventListener("show.bs.modal",function(){
 
     document
     .getElementById("pageContent")
@@ -300,7 +300,7 @@ loginModal.addEventListener("show.bs.modal",function(){
 
 });
 
-loginModal.addEventListener("hidden.bs.modal",function(){
+signupModal.addEventListener("hidden.bs.modal",function(){
 
     document
     .getElementById("pageContent")

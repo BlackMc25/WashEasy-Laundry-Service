@@ -265,99 +265,118 @@ new bootstrap.Modal(document.getElementById("loginModal")).show();
 },300);
 
 });
+
+});
+
+
+
 /*=========================================================
             LOGIN / SIGNUP MODAL BACKGROUND BLUR
 =========================================================*/
-});
 
+// Login Modal
+const loginModalElement = document.getElementById("loginModal");
 
-
-const loginModal=document.getElementById("loginModal");
-
-loginModal.addEventListener("show.bs.modal",function(){
+loginModalElement.addEventListener("show.bs.modal", function () {
 
     document
-    .getElementById("pageContent")
-    .classList.add("page-blur");
+        .getElementById("pageContent")
+        .classList.add("page-blur");
 
 });
 
-loginModal.addEventListener("hidden.bs.modal",function(){
+loginModalElement.addEventListener("hidden.bs.modal", function () {
 
     document
-    .getElementById("pageContent")
-    .classList.remove("page-blur");
+        .getElementById("pageContent")
+        .classList.remove("page-blur");
 
 });
 
-const loginModal=document.getElementById("signupModal");
 
-loginModal.addEventListener("show.bs.modal",function(){
+// Signup Modal
+const signupModalElement = document.getElementById("signupModal");
+
+signupModalElement.addEventListener("show.bs.modal", function () {
 
     document
-    .getElementById("pageContent")
-    .classList.add("page-blur");
+        .getElementById("pageContent")
+        .classList.add("page-blur");
 
 });
 
-loginModal.addEventListener("hidden.bs.modal",function(){
+signupModalElement.addEventListener("hidden.bs.modal", function () {
 
     document
-    .getElementById("pageContent")
-    .classList.remove("page-blur");
+        .getElementById("pageContent")
+        .classList.remove("page-blur");
 
 });
 
-document.getElementById("openSignupFromLogin").addEventListener("click", function(e){
 
-    e.preventDefault();
+/*=========================================================
+        LOGIN  →  SIGNUP
+=========================================================*/
 
-    const loginModal =
-        bootstrap.Modal.getInstance(
-            document.getElementById("loginModal")
-        );
+document
+    .getElementById("openSignupFromLogin")
+    .addEventListener("click", function (e) {
 
-    loginModal.hide();
+        e.preventDefault();
 
-    document
-        .getElementById("loginModal")
-        .addEventListener(
-            "hidden.bs.modal",
-            function(){
+        const loginModal =
+            bootstrap.Modal.getInstance(
+                document.getElementById("loginModal")
+            );
 
-                new bootstrap.Modal(
-                    document.getElementById("signupModal")
-                ).show();
+        loginModal.hide();
 
-            },
-            { once:true }
-        );
+        document
+            .getElementById("loginModal")
+            .addEventListener(
+                "hidden.bs.modal",
+                function () {
 
-});
+                    new bootstrap.Modal(
+                        document.getElementById("signupModal")
+                    ).show();
 
-document.getElementById("openLoginFromSignup").addEventListener("click", function(e){
+                },
+                { once: true }
+            );
 
-    e.preventDefault();
+    });
 
-    const signupModal =
-        bootstrap.Modal.getInstance(
-            document.getElementById("signupModal")
-        );
 
-    loginModal.hide();
+/*=========================================================
+        SIGNUP  →  LOGIN
+=========================================================*/
 
-    document
-        .getElementById("signupModal")
-        .addEventListener(
-            "hidden.bs.modal",
-            function(){
+document
+    .getElementById("openLoginFromSignup")
+    .addEventListener("click", function (e) {
 
-                new bootstrap.Modal(
-                    document.getElementById("loginModal")
-                ).show();
+        e.preventDefault();
 
-            },
-            { once:true }
-        );
+        const signupModal =
+            bootstrap.Modal.getInstance(
+                document.getElementById("signupModal")
+            );
 
-});
+        signupModal.hide();
+
+        document
+            .getElementById("signupModal")
+            .addEventListener(
+                "hidden.bs.modal",
+                function () {
+
+                    new bootstrap.Modal(
+                        document.getElementById("loginModal")
+                    ).show();
+
+                },
+                { once: true }
+            );
+
+    });

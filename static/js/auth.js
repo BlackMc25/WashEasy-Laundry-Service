@@ -225,47 +225,6 @@ togglePassword("password2","togglePassword2");
 
 });
 
-/*=========================================================
-            LOGIN / SIGNUP MODAL SWITCH
-=========================================================*/
-
-// Don't have an account?
-
-document.getElementById("openSignupFromLogin").addEventListener("click",function(e){
-
-e.preventDefault();
-
-const loginModal=bootstrap.Modal.getInstance(document.getElementById("loginModal"));
-
-loginModal.hide();
-
-setTimeout(function(){
-
-new bootstrap.Modal(document.getElementById("signupModal")).show();
-
-},300);
-
-});
-
-
-// Already have an account?
-
-document.getElementById("openLoginFromSignup").addEventListener("click",function(e){
-
-e.preventDefault();
-
-const signupModal=bootstrap.Modal.getInstance(document.getElementById("signupModal"));
-
-signupModal.hide();
-
-setTimeout(function(){
-
-new bootstrap.Modal(document.getElementById("loginModal")).show();
-
-},300);
-
-});
-
 });
 
 
@@ -438,18 +397,3 @@ document
 
 });
 
-    document.querySelectorAll(".modal").forEach(modal=>{
-
-    modal.addEventListener("shown.bs.modal",()=>{
-
-        document.body.style.overflow="hidden";
-
-    });
-
-    modal.addEventListener("hidden.bs.modal",()=>{
-
-        document.body.style.overflow="auto";
-
-    });
-
-});

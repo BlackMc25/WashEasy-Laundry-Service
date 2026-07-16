@@ -176,7 +176,7 @@ match.className="text-success";
 
 else{
 
-match.innerHTML="❌ Passwords do not match";
+match.innerHTML= element.classList.add("active");
 
 match.className="text-danger";
 

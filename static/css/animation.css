@@ -396,6 +396,91 @@ transform:scale(1);
 
 }
 
+
+/*=========================================================
+                PREMIUM BUTTONS
+=========================================================*/
+
+@keyframes shine{
+
+    to{
+
+        left:160%;
+
+    }
+
+}
+
+/*=========================================================
+                Auth Header
+=========================================================*/
+@keyframes floatingLogo{
+
+    50%{
+
+        transform:
+
+        translateY(-8px);
+
+    }
+
+}
+
+.auth-header{
+
+    animation:fadeUp .5s .1s both;
+
+}
+
+.input-group:nth-child(1){
+
+    animation:fadeUp .5s .25s both;
+
+}
+
+.input-group:nth-child(2){
+
+    animation:fadeUp .5s .35s both;
+
+}
+
+.login-btn-custom{
+
+    animation:fadeUp .5s .45s both;
+
+}
+
+.auth-links{
+
+    animation:fadeUp .5s .55s both;
+
+}
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:
+
+        translateY(25px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+
+        translateY(0);
+
+    }
+
+}
+
+
 @media (max-width:768px){
     
 .glass-circle.one{

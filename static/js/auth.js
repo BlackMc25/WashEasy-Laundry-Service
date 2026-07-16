@@ -333,33 +333,35 @@ document
     const loginModal =
         bootstrap.Modal.getInstance(loginModalElement);
 
-    loginModal.hide();
-
     loginModalElement.addEventListener(
         "hidden.bs.modal",
         function(){
 
-            // Clean Bootstrap leftovers
+            // Remove Bootstrap leftovers
             document.body.classList.remove("modal-open");
-
             document.body.style.removeProperty("padding-right");
 
             document
-            .querySelectorAll(".modal-backdrop")
-            .forEach(backdrop => backdrop.remove());
+                .querySelectorAll(".modal-backdrop")
+                .forEach(backdrop => backdrop.remove());
 
-            bootstrap
-            .Modal
-            .getOrCreateInstance(signupModalElement)
-            .show();
+            // Wait one frame before opening Signup
+            requestAnimationFrame(function(){
+
+                bootstrap
+                    .Modal
+                    .getOrCreateInstance(signupModalElement)
+                    .show();
+
+            });
 
         },
         { once:true }
-
     );
 
-});
+    loginModal.hide();
 
+});
 
 /*=========================================================
         SIGNUP  →  LOGIN
@@ -380,30 +382,31 @@ document
     const signupModal =
         bootstrap.Modal.getInstance(signupModalElement);
 
-    signupModal.hide();
-
     signupModalElement.addEventListener(
         "hidden.bs.modal",
         function(){
 
-            // Clean Bootstrap leftovers
             document.body.classList.remove("modal-open");
-
             document.body.style.removeProperty("padding-right");
 
             document
-            .querySelectorAll(".modal-backdrop")
-            .forEach(backdrop => backdrop.remove());
+                .querySelectorAll(".modal-backdrop")
+                .forEach(backdrop => backdrop.remove());
 
-            bootstrap
-            .Modal
-            .getOrCreateInstance(loginModalElement)
-            .show();
+            requestAnimationFrame(function(){
+
+                bootstrap
+                    .Modal
+                    .getOrCreateInstance(loginModalElement)
+                    .show();
+
+            });
 
         },
         { once:true }
-
     );
+
+    signupModal.hide();
 
 });
 

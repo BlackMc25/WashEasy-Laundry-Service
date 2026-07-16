@@ -265,45 +265,49 @@ new bootstrap.Modal(document.getElementById("loginModal")).show();
 },300);
 
 });
+
+});
 /*=========================================================
             LOGIN / SIGNUP MODAL BACKGROUND BLUR
 =========================================================*/
-});
 
+const login =
+bootstrap.Modal.getInstance(
+document.getElementById("loginModal")
+);
+login.hide();
 
+document
+.getElementById("loginModal")
+.addEventListener(
+"hidden.bs.modal",
+function(){
 
-const loginModal=document.getElementById("loginModal");
+new bootstrap.Modal(
+document.getElementById("loginModal")
+).show();
 
-loginModal.addEventListener("show.bs.modal",function(){
+},
+{once:true}
+);
 
-    document
-    .getElementById("pageContent")
-    .classList.add("page-blur");
+const signup =
+bootstrap.Modal.getInstance(
+document.getElementById("signupModal")
+);
 
-});
+signup.hide();
 
-loginModal.addEventListener("hidden.bs.modal",function(){
+document
+.getElementById("signupModal")
+.addEventListener(
+"hidden.bs.modal",
+function(){
 
-    document
-    .getElementById("pageContent")
-    .classList.remove("page-blur");
+new bootstrap.Modal(
+document.getElementById("signupModal")
+).show();
 
-});
-
-const signupModal = document.getElementById("signupModal");
-
-signupModal.addEventListener("show.bs.modal",function(){
-
-    document
-    .getElementById("pageContent")
-    .classList.add("page-blur");
-
-});
-
-signupModal.addEventListener("hidden.bs.modal",function(){
-
-    document
-    .getElementById("pageContent")
-    .classList.remove("page-blur");
-
-});
+},
+{once:true}
+);

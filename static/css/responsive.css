@@ -855,13 +855,13 @@ button{
 =========================================================*/
 .modal-bubble{
 
-    width:46px;
+    width:38px;
 
-    height:46px;
+    height:38px;
 
-    font-size:20px;
+    font-size:18px;
 
-    opacity:.55;
+    opacity:.45;
 
 }
 
@@ -1009,6 +1009,87 @@ button{
 
 }
 
+/*=====================================
+AUTH MODAL - MOBILE
+======================================*/
+
+.login-modal .modal-dialog,
+.signup-modal .modal-dialog{
+
+    width:92%;
+    margin:25px auto;
+
+}
+
+.login-modal .modal-content,
+.signup-modal .modal-content{
+
+    min-height:auto;
+    height:auto;
+
+    max-height:90vh;
+
+    border-radius:26px;
+
+    overflow-y:auto;
+
+}
+
+.login-modal .modal-body,
+.signup-modal .modal-body{
+
+    padding:28px 24px 35px;
+
+}
+
+.login-modal input,
+.signup-modal input{
+
+font-size:16px;
+
+color:#e9f5ff;
+
+}
+
+
+.auth-form{
+
+width:100%;
+max-width:none;
+
+}
+
+.auth-header{
+
+text-align:center;
+
+margin-bottom:28px;
+
+}
+
+.auth-logo{
+
+width:70px;
+
+height:70px;
+
+font-size:38px;
+
+}
+
+.auth-header h2{
+
+font-size:34px;
+
+margin-top:18px;
+
+}
+
+.auth-header p{
+
+font-size:17px;
+
+}
 
 
 /*=========================================================
@@ -1066,6 +1147,8 @@ body.dark .hero-stats span{
     color:#dbe4f1;
 
 }
+
+
 
 }
 

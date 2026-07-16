@@ -1175,6 +1175,10 @@ LOGIN & SIGNUP FLOATING BACKGROUND
 
     cursor:pointer;
 
+    opacity:.75;
+
+    transform:scale(.8);
+
     pointer-events:auto;
 
 }

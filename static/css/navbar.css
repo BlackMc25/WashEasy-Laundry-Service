@@ -217,6 +217,10 @@
 
 }
 
+/*=====================================================
+        AUTH CARD
+======================================================*/
+
 .login-modal .modal-content,
 .signup-modal .modal-content{
 
@@ -224,19 +228,23 @@
 
     overflow:hidden;
 
-    border-radius:34px;
+    border-radius:30px;
 
-    border:1px solid rgba(255,255,255,.55);
+    background:linear-gradient(
+        135deg,
+        rgba(248,250,252,.92),
+        rgba(236,244,255,.88)
+    );
 
-    background:rgba(255,255,255,.78);
+    border:1px solid rgba(255,255,255,.65);
 
-    backdrop-filter:blur(28px);
+    backdrop-filter:blur(18px);
 
-    -webkit-backdrop-filter:blur(28px);
+    -webkit-backdrop-filter:blur(18px);
 
     box-shadow:
-        0 30px 80px rgba(0,0,0,.30),
-        0 0 45px rgba(13,110,253,.15);
+        0 25px 60px rgba(15,23,42,.30),
+        0 10px 25px rgba(13,110,253,.12);
 
 }
 
@@ -303,9 +311,9 @@
 
     position:relative;
 
-    z-index:2;
+    z-index:10;
 
-    padding:45px;
+    padding:40px;
 
 }
 
@@ -338,17 +346,15 @@
 
     border:none;
 
-    border-bottom:2px solid rgba(255,255,255,.25);
+    border-bottom:2px solid rgba(13,110,253,.25);
 
     border-radius:0;
 
-    padding:18px 8px 12px;
+    padding:12px 4px;
 
     font-size:17px;
 
-    color:#0d3b66;
-
-    transition:.35s;
+    color:#1e293b;
 
     box-shadow:none;
 

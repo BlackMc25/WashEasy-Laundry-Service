@@ -267,47 +267,61 @@ new bootstrap.Modal(document.getElementById("loginModal")).show();
 });
 
 });
+
 /*=========================================================
             LOGIN / SIGNUP MODAL BACKGROUND BLUR
 =========================================================*/
 
-const login =
-bootstrap.Modal.getInstance(
-document.getElementById("loginModal")
-);
-login.hide();
+document.getElementById("openSignupFromLogin").addEventListener("click", function(e){
 
-document
-.getElementById("loginModal")
-.addEventListener(
-"hidden.bs.modal",
-function(){
+    e.preventDefault();
 
-new bootstrap.Modal(
-document.getElementById("loginModal")
-).show();
+    const loginModal =
+        bootstrap.Modal.getInstance(
+            document.getElementById("loginModal")
+        );
 
-},
-{once:true}
-);
+    loginModal.hide();
 
-const signup =
-bootstrap.Modal.getInstance(
-document.getElementById("signupModal")
-);
+    document
+        .getElementById("loginModal")
+        .addEventListener(
+            "hidden.bs.modal",
+            function(){
 
-signup.hide();
+                new bootstrap.Modal(
+                    document.getElementById("signupModal")
+                ).show();
 
-document
-.getElementById("signupModal")
-.addEventListener(
-"hidden.bs.modal",
-function(){
+            },
+            { once:true }
+        );
 
-new bootstrap.Modal(
-document.getElementById("signupModal")
-).show();
+});
 
-},
-{once:true}
-);
+document.getElementById("openLoginFromSignup").addEventListener("click", function(e){
+
+    e.preventDefault();
+
+    const signupModal =
+        bootstrap.Modal.getInstance(
+            document.getElementById("signupModal")
+        );
+
+    loginModal.hide();
+
+    document
+        .getElementById("signupModal")
+        .addEventListener(
+            "hidden.bs.modal",
+            function(){
+
+                new bootstrap.Modal(
+                    document.getElementById("loginModal")
+                ).show();
+
+            },
+            { once:true }
+        );
+
+});

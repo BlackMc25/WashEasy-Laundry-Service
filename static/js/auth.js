@@ -176,7 +176,7 @@ match.className="text-success";
 
 else{
 
-match.innerHTML= element.classList.add("active");
+match.innerHTML= "❌ Passwords do not match";
 
 match.className="text-danger";
 
@@ -199,7 +199,7 @@ if(input.type==="password"){
 
 input.type="text";
 
-icon.className="fas fa-eye-slash";
+icon.className="bi bi-eye-slash";
 
 }
 
@@ -207,7 +207,7 @@ else{
 
 input.type="password";
 
-icon.className="fas fa-eye";
+icon.className="bi bi-eye";
 
 }
 
@@ -290,7 +290,7 @@ loginModal.addEventListener("hidden.bs.modal",function(){
 
 });
 
-const loginModal=document.getElementById("signupModal");
+const signupModal = document.getElementById("signupModal");
 
 loginModal.addEventListener("show.bs.modal",function(){
 

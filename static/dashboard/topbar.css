@@ -1,0 +1,71 @@
+/*=========================================================
+                    TOPBAR
+=========================================================*/
+
+.topbar{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    width:100%;
+
+    margin-bottom:25px;
+
+}
+
+.topbar-left{
+
+    flex:1;
+
+}
+
+.topbar-right{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:flex-end;
+
+    gap:15px;
+
+}
+
+.page-container{
+
+    margin-bottom:-35px;
+
+}
+
+/*=========================================================
+                DASHBOARD HEADER
+=========================================================*/
+
+/* Header Layout */
+
+.dashboard-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-start;
+
+    margin-bottom:30px;
+
+}
+
+/* Welcome Title */
+
+.welcome-title{
+
+    margin:0;
+
+    font-size:3rem;
+
+    font-weight:700;
+
+}

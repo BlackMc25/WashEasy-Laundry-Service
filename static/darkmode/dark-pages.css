@@ -1,0 +1,239 @@
+/*=========================================================
+                BOOK LAUNDRY PAGE
+=========================================================*/
+
+/*=========================================================
+                ORDER STATUS
+=========================================================*/
+
+/* Pending Pickup */
+
+body.dark .status-pending{
+
+    background:#f59e0b;
+
+    color:#ffffff !important;
+
+}
+
+/* Out For Delivery */
+
+body.dark .status-delivery{
+
+    background:#3b82f6;
+
+    color:#ffffff !important;
+
+}
+
+/* Cancelled */
+
+body.dark .status-cancelled{
+
+    background:#ef4444;
+
+    color:#ffffff !important;
+
+}
+
+/* Delivered */
+
+body.dark .status-completed{
+
+    background:#10b981;
+
+    color:#ffffff !important;
+
+}
+
+/*=========================================================
+                CANCEL ORDER PAGE
+=========================================================*/
+
+/* Cancel Order Container */
+
+body.dark .cancel-order-container{
+
+    background:#1e293b !important;
+
+    color:#f8fafc !important;
+
+    border:1px solid #334155;
+
+}
+
+/* Typography */
+
+body.dark .cancel-order-container h1,
+body.dark .cancel-order-container h2,
+body.dark .cancel-order-container h3,
+body.dark .cancel-order-container h4,
+body.dark .cancel-order-container p,
+body.dark .cancel-order-container label{
+
+    color:#f8fafc !important;
+
+}
+
+/* Order Card Content */
+
+body.dark .order-card h3,
+body.dark .order-card h4,
+body.dark .order-card h5,
+body.dark .order-card p{
+
+    color:#ffffff !important;
+
+}
+
+/*---------------------------------------------------------
+    Accordion
+---------------------------------------------------------*/
+
+body.dark .accordion-item{
+
+    background:#1e293b;
+
+    border:1px solid #334155;
+
+}
+
+body.dark .accordion-body{
+
+    background:#1e293b;
+
+}
+
+body.dark .accordion-button{
+
+    background:#2563eb !important;
+
+    color:#ffffff !important;
+
+    font-weight:700;
+
+}
+
+body.dark .accordion-button:not(.collapsed){
+
+    background:#2563eb !important;
+
+}
+
+body.dark .accordion-button::after{
+
+    filter:brightness(0) invert(1);
+
+}
+
+/*---------------------------------------------------------
+    Order Summary
+---------------------------------------------------------*/
+
+body.dark .order-summary{
+
+    background:#1e293b !important;
+
+    color:#f8fafc !important;
+
+    border:1px solid #334155;
+
+}
+
+body.dark .order-summary h4,
+body.dark .order-summary h5,
+body.dark .order-summary p{
+
+    color:#f8fafc !important;
+
+}
+
+/*---------------------------------------------------------
+    Booking Details
+---------------------------------------------------------*/
+
+body.dark .booking-details{
+
+    background:#1e293b !important;
+
+    color:#ffffff !important;
+
+}
+
+/*---------------------------------------------------------
+    Google Map
+---------------------------------------------------------*/
+
+body.dark #map{
+
+    border:1px solid #334155;
+
+    border-radius:10px;
+
+}
+
+/*---------------------------------------------------------
+    Laundry Services
+---------------------------------------------------------*/
+
+body.dark .laundry-title,
+body.dark .laundry-title h4,
+body.dark .laundry-title h5,
+body.dark .laundry-title h6,
+body.dark .item-info,
+body.dark .item-info h4,
+body.dark .item-info h5,
+body.dark .item-info h6,
+body.dark .service-title{
+
+    color:#ffffff !important;
+
+}
+
+body.dark .item-price{
+
+    color:#cbd5e1 !important;
+
+}
+
+/*---------------------------------------------------------
+    Booking Guide
+---------------------------------------------------------*/
+
+body.dark .order-guide{
+
+    background:#12324d;
+
+    color:#dbeafe;
+
+    border:1px solid #24598b;
+
+}
+
+/*---------------------------------------------------------
+    Quantity Controls
+---------------------------------------------------------*/
+
+body.dark .qty2-btn2{
+
+    background:#0d6efd;
+
+    color:#ffffff;
+
+}
+
+body.dark .qty2-btn2:hover{
+
+    background:#0b5ed7;
+
+}
+
+body.dark .qty2-value2{
+
+    background:#3b4758;
+
+    color:#ffffff;
+
+    border:1px solid #4b596d;
+
+}

@@ -1,0 +1,376 @@
+
+/* Hidden on Desktop */
+
+.mobile-bottom-nav{
+
+    display:none;
+
+}
+
+/*=========================================================
+                ADMIN MOBILE
+=========================================================*/
+
+@media(max-width:768px){
+
+    .card,
+    .admin-card{
+
+        padding:18px !important;
+
+        border-radius:18px;
+
+    }
+
+    .order-item-card .d-flex{
+
+        flex-direction:column;
+
+        align-items:flex-start !important;
+
+    }
+
+    .order-item-card strong.text-success{
+
+        margin-top:10px;
+
+        font-size:18px;
+
+    }
+
+    .cancel-buttons{
+
+        display:flex;
+
+        flex-direction:column;
+
+        gap:10px;
+
+    }
+
+    .cancel-buttons .btn{
+
+        width:100%;
+
+    }
+
+    .notification-actions{
+
+        display:flex;
+
+        flex-direction:column;
+
+        justify-content:space-between;
+
+        align-items:center;
+
+        gap:15px;
+
+        margin-bottom:25px;
+
+    }
+
+    .notification-actions .btn{
+
+        flex:1;
+
+        width:100%;
+
+    }
+
+    .cancel-actions{
+
+        display:flex;
+
+        justify-content:center;
+
+        gap:15px;
+
+        margin-top:30px;
+
+    }
+
+    .cancel-btn,
+    .back-btn{
+
+        flex:1;
+
+    }
+
+    .back-btn{
+
+        text-align:center;
+
+    }
+
+/*---------------------------------------------------------
+    Mobile Layout
+---------------------------------------------------------*/
+
+    .mobile-bottom-nav{
+
+        position:fixed;
+
+        left:0;
+
+        right:0;
+
+        bottom:0;
+
+        height:78px;
+
+        display:flex;
+
+        justify-content:space-around;
+
+        align-items:center;
+
+        background:#0d3b66;
+
+        border-top-left-radius:28px;
+
+        border-top-right-radius:28px;
+
+        box-shadow:0 -4px 25px rgba(0,0,0,.12);
+
+        overflow:visible;
+
+        z-index:9999;
+
+    }
+
+    .mobile-bottom-nav a{
+
+        display:flex;
+
+        flex-direction:column;
+
+        justify-content:center;
+
+        align-items:center;
+
+        color:#ffffff;
+
+        text-decoration:none;
+
+        font-size:12px;
+
+        position:relative;
+
+        transition:.25s;
+
+        -webkit-tap-highlight-color:transparent;
+
+    }
+
+    .mobile-bottom-nav a:hover{
+
+        color:#4EA5FF;
+
+    }
+
+    .mobile-bottom-nav a:active{
+
+        transform:scale(.92);
+
+    }
+
+    .mobile-bottom-nav i{
+
+        font-size:20px;
+
+        margin-bottom:4px;
+
+    }
+
+    /* Active Item */
+
+    .mobile-nav-item{
+
+        position:relative;
+
+        transition:.35s;
+
+    }
+
+    .mobile-nav-item.active{
+
+        z-index:10000;
+
+    }
+
+    .mobile-nav-item.active .book-circle{
+
+        position:absolute;
+
+        top:-35px;
+
+        left:50%;
+
+        transform:translateX(-50%);
+
+        width:68px;
+
+        height:68px;
+
+        display:flex;
+
+        justify-content:center;
+
+        align-items:center;
+
+        background:#2E8BFF;
+
+        border-radius:50%;
+
+        box-shadow:0 12px 30px rgba(46,139,255,.45);
+
+        z-index:10001;
+
+    }
+
+    .mobile-nav-item span{
+
+        margin-top:6px;
+
+    }
+
+    .mobile-nav-item.active span{
+
+        margin-top:135px;
+
+        color:#4EA5FF;
+
+        font-weight:700;
+
+    }
+
+    .mobile-notification-badge{
+
+        position:absolute;
+
+        top:-2px;
+
+        right:-6px;
+
+        width:18px;
+
+        height:18px;
+
+        display:flex;
+
+        justify-content:center;
+
+        align-items:center;
+
+        background:#dc3545;
+
+        color:#ffffff;
+
+        border-radius:50%;
+
+        font-size:10px;
+
+        font-weight:bold;
+
+    }
+
+    /* Floating Book Button */
+
+    .book-circle{
+
+        position:relative;
+
+        z-index:10002;
+
+        width:56px;
+
+        height:56px;
+
+        display:flex;
+
+        justify-content:center;
+
+        align-items:center;
+
+        border-radius:50%;
+
+        transition:.35s ease;
+
+    }
+
+    .book-circle i{
+
+        font-size:22px;
+
+        color:#ffffff;
+
+    }
+
+    .mobile-nav-item .book-span{
+
+        margin-top:6px;
+
+    }
+
+    /* Layout */
+
+    .dashboard-container .sidebar{
+
+        display:none;
+
+    }
+
+    .page-container{
+
+        width:100%;
+
+        max-width:1400px;
+
+        margin:auto;
+
+    }
+
+    .page-title{
+
+        font-size:2rem;
+
+        font-weight:700;
+
+        margin-bottom:5px;
+
+    }
+
+    .mobile-card{
+
+        background:#ffffff;
+
+        border-radius:18px;
+
+        padding:20px;
+
+    }
+
+    .main-content{
+
+        margin-left:0 !important;
+
+        width:100%;
+
+        padding-bottom:100px;
+
+    }
+
+
+
+/* Blur Effect */
+
+.mobile-bottom-nav{
+
+    backdrop-filter:blur(12px);
+
+    -webkit-backdrop-filter:blur(12px);
+
+}
+
+}

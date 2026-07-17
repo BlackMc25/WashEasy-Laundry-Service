@@ -1,0 +1,77 @@
+/*=========================================================
+                BUTTON COMPONENTS
+=========================================================*/
+
+/* Primary Button */
+
+.btn-primary{
+
+    padding:12px;
+
+    border-radius:12px;
+
+    font-weight:600;
+
+}
+
+/* Quantity Buttons */
+
+.qty2-btn2:hover{
+
+    transform:scale(1.05);
+
+}
+
+.qty2-btn2:active{
+
+    transform:scale(.95);
+
+}
+
+/*=========================================================
+                ACTION BUTTONS
+=========================================================*/
+
+.cancel-btn{
+
+    background:#dc3545;
+
+    color:#fff;
+
+    border:none;
+
+    padding:12px 25px;
+
+    border-radius:8px;
+
+    font-weight:600;
+
+}
+
+.cancel-btn:hover{
+
+    background:#bb2d3b;
+
+}
+
+.back-btn{
+
+    background:#6c757d;
+
+    color:#fff;
+
+    padding:12px 25px;
+
+    border-radius:8px;
+
+    text-decoration:none;
+
+}
+
+.back-btn:hover{
+
+    background:#5c636a;
+
+    color:#fff;
+
+}

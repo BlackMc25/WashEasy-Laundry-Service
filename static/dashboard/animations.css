@@ -1,0 +1,47 @@
+/*=========================================================
+                EXPRESS ANIMATIONS
+=========================================================*/
+
+@keyframes slideDown{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(-10px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/*=========================================================
+                MOBILE NAVIGATION
+=========================================================*/
+
+@keyframes slideUpNav{
+
+    from{
+
+        transform:translateY(100%);
+
+        opacity:0;
+
+    }
+
+    to{
+
+        transform:translateY(0);
+
+        opacity:1;
+
+    }
+
+}

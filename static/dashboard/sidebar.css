@@ -1,0 +1,108 @@
+/*=========================================================
+                    SIDEBAR
+=========================================================*/
+
+.sidebar{
+
+    width:260px;
+
+    background:#0d3b66;
+
+    color:white;
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    bottom:0;
+
+    padding:25px 20px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:space-between;
+
+    transition:.3s;
+
+}
+
+/* Sidebar Navigation */
+
+.sidebar-menu,
+.sidebar-bottom{
+
+    list-style:none;
+
+    padding:0;
+
+    margin:0;
+
+}
+
+.sidebar-menu li,
+.sidebar-bottom li{
+
+    margin-bottom:15px;
+
+}
+
+.sidebar-menu li a,
+.sidebar-bottom li a{
+
+    display:block;
+
+    padding:12px 15px;
+
+    color:white;
+
+    text-decoration:none;
+
+    border-radius:10px;
+
+    transition:.3s;
+
+}
+
+.sidebar-menu li a:hover,
+.sidebar-bottom li a:hover{
+
+    background:#124f8a;
+
+}
+
+/* Sidebar Toggle Button */
+
+.toggle-btn{
+
+    background:none;
+
+    border:none;
+
+    color:white;
+
+    font-size:1.5rem;
+
+    margin-bottom:20px;
+
+    cursor:pointer;
+
+}
+
+/* Sidebar Collapse */
+
+.sidebar.collapsed{
+
+    width:80px;
+
+}
+
+.sidebar.collapsed .logo,
+.sidebar.collapsed span{
+
+    display:none;
+
+}

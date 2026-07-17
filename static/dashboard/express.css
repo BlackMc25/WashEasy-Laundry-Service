@@ -1,0 +1,57 @@
+/*=========================================================
+                    EXPRESS SERVICE
+=========================================================*/
+
+/* Express Card */
+
+.express-card{
+
+    background:#fff8e8;
+
+    border:2px solid #ffd54f;
+
+    border-radius:16px;
+
+    padding:20px;
+
+    margin:20px 0;
+
+}
+
+/* Express Option */
+
+.express-option{
+
+    padding:15px;
+
+    border-radius:12px;
+
+    transition:.3s;
+
+}
+
+.express-option:hover{
+
+    background:#fff3cd;
+
+    cursor:pointer;
+
+}
+
+/*---------------------------------------------------------
+    Dark Mode
+---------------------------------------------------------*/
+
+body.dark .express-card{
+
+    background:#2a2313;
+
+    border-color:#ffca28;
+
+}
+
+body.dark .express-option:hover{
+
+    background:#3b2f18;
+
+}

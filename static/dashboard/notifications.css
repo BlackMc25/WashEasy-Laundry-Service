@@ -1,0 +1,65 @@
+/*=========================================================
+                NOTIFICATIONS
+=========================================================*/
+
+/* Notification Button */
+
+.notification-btn{
+
+    position:relative;
+
+    width:45px;
+
+    height:45px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:white;
+
+    box-shadow:0 3px 10px rgba(0,0,0,.08);
+
+    cursor:pointer;
+
+    font-size:1.2rem;
+
+    transition:.3s;
+
+}
+
+.notification-btn:hover{
+
+    transform:translateY(-2px);
+
+}
+
+/* Notification Badge */
+
+.notification-badge{
+
+    position:absolute;
+
+    top:-4px;
+
+    right:-4px;
+
+    width:18px;
+
+    height:18px;
+
+    border-radius:50%;
+
+    background:#dc3545;
+
+    color:white;
+
+    font-size:10px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}

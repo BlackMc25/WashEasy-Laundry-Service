@@ -1,0 +1,175 @@
+/*=========================================================
+                DARK MODE COMPONENTS
+=========================================================*/
+
+/*---------------------------------------------------------
+    Dropdown Menu
+---------------------------------------------------------*/
+
+body.dark .dropdown-menu{
+
+    background:#1e293b;
+
+    border:1px solid #334155;
+
+}
+
+body.dark .dropdown-item{
+
+    color:#f8fafc;
+
+}
+
+body.dark .dropdown-item:hover{
+
+    background:#334155;
+
+}
+
+/*---------------------------------------------------------
+    Global Links
+---------------------------------------------------------*/
+
+body.dark a{
+
+    color:#60a5fa;
+
+}
+
+body.dark a:hover{
+
+    color:#93c5fd;
+
+}
+
+/*---------------------------------------------------------
+    Alerts
+---------------------------------------------------------*/
+
+body.dark .alert-success{
+
+    background:#14532d;
+
+    color:#dcfce7;
+
+    border:none;
+
+}
+
+body.dark .alert-warning{
+
+    background:#78350f;
+
+    color:#fef3c7;
+
+    border:none;
+
+}
+
+body.dark .alert-danger{
+
+    background:#7f1d1d;
+
+    color:#fee2e2;
+
+    border:none;
+
+}
+
+/*---------------------------------------------------------
+    Containers
+---------------------------------------------------------*/
+
+body.dark .bg-white{
+
+    background:#1e293b !important;
+
+}
+
+body.dark .container,
+body.dark .container-fluid{
+
+    color:#f8fafc;
+
+}
+
+/*---------------------------------------------------------
+    Global Cards
+---------------------------------------------------------*/
+
+body.dark .card,
+body.dark .stats-card,
+body.dark .booking-form,
+body.dark .order-card,
+body.dark .summary-card,
+body.dark .cancel-card,
+body.dark .cancel-order-card,
+body.dark .notification-item,
+body.dark .laundry-card{
+
+    background:linear-gradient(
+        145deg,
+        #1e293b,
+        #162233
+    ) !important;
+
+    color:#f8fafc !important;
+
+    border:1px solid #334155;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.28);
+
+}
+
+/* Summary Card */
+
+body.dark .summary-card h2,
+body.dark .summary-card h3,
+body.dark .summary-card h4,
+body.dark .summary-card h5,
+body.dark .summary-card p,
+body.dark .summary-card span{
+
+    color:#f8fafc !important;
+
+}
+
+/*---------------------------------------------------------
+    Notification Card
+---------------------------------------------------------*/
+
+body.dark .notification-item{
+
+    background:#1e293b;
+
+    border:1px solid #334155;
+
+}
+
+body.dark .notification-item h5{
+
+    color:#ffffff;
+
+}
+
+body.dark .notification-item small{
+
+    color:#cbd5e1;
+
+}
+
+/*---------------------------------------------------------
+    Statistics Cards
+---------------------------------------------------------*/
+
+body.dark .stats-card h3{
+
+    color:#60a5fa;
+
+}
+
+body.dark .stats-card h6{
+
+    color:#ffffff;
+
+}

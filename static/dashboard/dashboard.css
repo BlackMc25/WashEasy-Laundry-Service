@@ -1,0 +1,47 @@
+/* ======================================================
+   WASH EASY DASHBOARD
+   Main Stylesheet
+====================================================== */
+
+@import url("layout.css");
+
+@import url("sidebar.css");
+
+@import url("topbar.css");
+
+@import url("cards.css");
+
+@import url("buttons.css");
+
+@import url("whatsapp.css");
+
+@import url("darkmode/darkmode.css");
+
+@import url("mobile-nav.css");
+
+@import url("animations.css");
+
+@import url("responsive.css");
+
+@import url("icons.css");
+
+@import url("profile.css");
+
+@import url("notifications.css");
+
+@import url("orders.css");
+
+@import url("timeline.css");
+
+@import url("booking.css");
+
+@import url("cancel-order.css");
+
+
+@import url("admin.css");
+
+
+@import url("express.css");
+
+
+@import url("forms.css");

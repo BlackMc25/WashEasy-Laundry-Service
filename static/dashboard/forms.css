@@ -1,0 +1,71 @@
+/*=========================================================
+                    FORM COMPONENTS
+=========================================================*/
+
+/*---------------------------------------------------------
+    Global Inputs
+---------------------------------------------------------*/
+
+input{
+
+    width:100%;
+
+    padding:12px 15px;
+
+    border:1px solid #dee2e6;
+
+    border-radius:10px;
+
+    outline:none;
+
+    transition:.3s;
+
+}
+
+input:focus{
+
+    border-color:#0d6efd;
+
+    box-shadow:0 0 0 .2rem rgba(13,110,253,.25);
+
+}
+
+/* Labels */
+
+label{
+
+    font-weight:600;
+
+}
+
+/*---------------------------------------------------------
+    Bootstrap Modals
+---------------------------------------------------------*/
+
+.modal-content{
+
+    border-radius:18px;
+
+}
+
+.modal-header{
+
+    border-top-left-radius:18px;
+
+    border-top-right-radius:18px;
+
+}
+
+/* Delete Confirmation */
+
+#customerDeleteForm input{
+
+    text-align:center;
+
+    font-size:22px;
+
+    letter-spacing:8px;
+
+    font-weight:bold;
+
+}

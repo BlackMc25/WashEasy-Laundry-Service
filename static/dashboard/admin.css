@@ -1,0 +1,61 @@
+/*=========================================================
+                    ADMIN DASHBOARD
+=========================================================*/
+
+/*---------------------------------------------------------
+    Dashboard Cards
+---------------------------------------------------------*/
+
+.admin-card{
+
+    background:#17253d;
+
+    color:#ffffff;
+
+    border-radius:15px;
+
+    padding:20px;
+
+    box-shadow:0 4px 12px rgba(0,0,0,.15);
+
+}
+
+.admin-card h3{
+
+    font-size:2rem;
+
+    font-weight:700;
+
+}
+
+.admin-card p{
+
+    margin:0;
+
+    opacity:.8;
+
+}
+
+.admin-card table{
+
+    color:#ffffff;
+
+}
+
+.admin-card th{
+
+    color:#60a5fa;
+
+}
+
+/*---------------------------------------------------------
+    Order Items
+---------------------------------------------------------*/
+
+.order-item-card{
+
+    border-bottom:1px solid rgba(255,255,255,.15);
+
+    padding-bottom:15px;
+
+}

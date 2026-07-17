@@ -1,0 +1,61 @@
+/*=========================================================
+                WHATSAPP FLOAT BUTTON
+=========================================================*/
+
+/* Floating Container */
+
+#whatsapp-float{
+
+    position:fixed;
+
+    width:64px;
+
+    height:64px;
+
+    right:20px;
+
+    bottom:110px;
+
+    z-index:99999;
+
+    cursor:grab;
+
+    touch-action:none;
+
+}
+
+/* WhatsApp Link */
+
+#whatsapp-link{
+
+    width:100%;
+
+    height:100%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:#25D366;
+
+    border-radius:50%;
+
+    color:#ffffff;
+
+    text-decoration:none;
+
+    font-size:34px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.25);
+
+}
+
+/* Dragging */
+
+#whatsapp-float:active{
+
+    cursor:grabbing;
+
+}

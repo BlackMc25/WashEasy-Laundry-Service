@@ -1,0 +1,59 @@
+/*=========================================================
+                GLOBAL LAYOUT
+=========================================================*/
+
+/* Body */
+
+body{
+
+    margin:0;
+
+    padding:0;
+
+    font-family:'Segoe UI', sans-serif;
+
+    background:#f4f6f9;
+
+}
+
+/* Dashboard Container */
+
+.dashboard-container{
+
+    display:flex;
+
+    min-height:100vh;
+
+}
+
+/* Main Content */
+
+.main-content{
+
+    margin-left:260px;
+
+    padding:30px 40px;
+
+    transition:0.3s;
+
+}
+
+.main-content.expanded{
+
+    margin-left:80px;
+
+    padding:30px 40px;
+
+}
+
+.main-content h1{
+
+    margin-top:0;
+
+    margin-bottom:25px;
+
+    font-size:2rem;
+
+    color:#0d3b66;
+
+}

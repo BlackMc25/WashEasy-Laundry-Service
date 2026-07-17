@@ -1,0 +1,289 @@
+/*=========================================================
+                CANCEL ORDER
+=========================================================*/
+
+/* Cancel Card */
+
+.cancel-card{
+
+    max-width:700px;
+
+    margin:40px auto;
+
+    background:#fff;
+
+    padding:30px;
+
+    border-radius:15px;
+
+    box-shadow:0 4px 15px rgba(0,0,0,.10);
+
+}
+
+/* Title */
+
+.cancel-title{
+
+    color:#dc3545;
+
+    font-weight:700;
+
+    margin-bottom:20px;
+
+}
+
+/* Label */
+
+.cancel-label{
+
+    display:block;
+
+    margin-bottom:10px;
+
+    font-weight:600;
+
+}
+
+/* Textarea */
+
+.cancel-textarea{
+
+    width:100%;
+
+    min-height:150px;
+
+    padding:15px;
+
+    resize:none;
+
+    border:1px solid #ddd;
+
+    border-radius:10px;
+
+}
+
+.cancel-textarea:focus{
+
+    outline:none;
+
+    border-color:#dc3545;
+
+    box-shadow:0 0 5px rgba(220,53,69,.30);
+
+}
+
+/* Action Buttons */
+
+.cancel-actions{
+
+    display:flex;
+
+    gap:10px;
+
+    margin-top:20px;
+
+}
+
+/* Cancel Button */
+
+.cancel-btn{
+
+    background:#dc3545;
+
+    color:#fff;
+
+    border:none;
+
+    padding:12px 25px;
+
+    border-radius:8px;
+
+    font-weight:600;
+
+}
+
+.cancel-btn:hover{
+
+    background:#bb2d3b;
+
+}
+
+/* Back Button */
+
+.back-btn{
+
+    background:#6c757d;
+
+    color:#fff;
+
+    padding:12px 25px;
+
+    border-radius:8px;
+
+    text-decoration:none;
+
+}
+
+.back-btn:hover{
+
+    background:#5c636a;
+
+    color:#fff;
+
+}
+
+/*=========================================================
+                    CANCEL ORDER PAGE
+=========================================================*/
+
+/*---------------------------------------------------------
+    Cancel Card
+---------------------------------------------------------*/
+
+.cancel-card{
+
+    max-width:700px;
+
+    margin:40px auto;
+
+    background:#ffffff;
+
+    padding:30px;
+
+    border-radius:15px;
+
+    box-shadow:0 4px 15px rgba(0,0,0,.10);
+
+}
+
+/*---------------------------------------------------------
+    Typography
+---------------------------------------------------------*/
+
+/* Page Title */
+
+.cancel-title{
+
+    color:#dc3545;
+
+    font-weight:700;
+
+    margin-bottom:20px;
+
+}
+
+/* Form Label */
+
+.cancel-label{
+
+    display:block;
+
+    margin-bottom:10px;
+
+    font-weight:600;
+
+}
+
+/*---------------------------------------------------------
+    Reason Textarea
+---------------------------------------------------------*/
+
+.cancel-textarea{
+
+    width:100%;
+
+    min-height:150px;
+
+    padding:15px;
+
+    border:1px solid #dddddd;
+
+    border-radius:10px;
+
+    resize:none;
+
+}
+
+.cancel-textarea:focus{
+
+    outline:none;
+
+    border-color:#dc3545;
+
+    box-shadow:0 0 5px rgba(220,53,69,.30);
+
+}
+
+/*---------------------------------------------------------
+    Action Buttons
+---------------------------------------------------------*/
+
+.cancel-actions{
+
+    display:flex;
+
+    gap:10px;
+
+    margin-top:20px;
+
+}
+
+/* Cancel Button */
+
+.cancel-btn{
+
+    background:#dc3545;
+
+    color:#ffffff;
+
+    border:none;
+
+    padding:12px 25px;
+
+    border-radius:8px;
+
+    font-weight:600;
+
+}
+
+.cancel-btn:hover{
+
+    background:#bb2d3b;
+
+}
+
+/* Back Button */
+
+.back-btn{
+
+    background:#6c757d;
+
+    color:#ffffff;
+
+    padding:12px 25px;
+
+    border-radius:8px;
+
+    text-decoration:none;
+
+}
+
+.back-btn:hover{
+
+    background:#5c636a;
+
+    color:#ffffff;
+
+}
+
+/*---------------------------------------------------------
+    Status Badge
+---------------------------------------------------------*/
+
+.cancelled{
+
+    background:rgba(220,53,69,.15);
+
+    color:#dc3545;
+
+}

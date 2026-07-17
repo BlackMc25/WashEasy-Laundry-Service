@@ -1,0 +1,63 @@
+/*=========================================================
+                ORDER COMPONENTS
+=========================================================*/
+
+/* Order Card */
+
+.order-card{
+
+    background:white;
+
+    border-radius:15px;
+
+    padding:20px;
+
+    margin-bottom:15px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    box-shadow:0 4px 15px rgba(0,0,0,.08);
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.order-card:hover{
+
+    transform:translateY(-3px);
+
+}
+
+/* Order Link */
+
+.order-link{
+
+    text-decoration:none;
+
+    color:inherit;
+
+}
+
+/* Status Badge */
+
+.status-badge{
+
+    background:#e8f5e9;
+
+    color:#2e7d32;
+
+    padding:6px 12px;
+
+    border-radius:20px;
+
+    font-size:12px;
+
+    font-weight:600;
+
+}

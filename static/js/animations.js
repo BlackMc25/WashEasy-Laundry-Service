@@ -2,7 +2,7 @@
                     AOS ANIMATION
 =========================================================*/
 
-document.addEventListener("DOMContentLoaded", function(){
+function initAOS() {
 
     AOS.init({
 
@@ -18,39 +18,28 @@ document.addEventListener("DOMContentLoaded", function(){
 
     });
 
-});
+}
 
+// Run immediately
+initAOS();
 
+// Refresh after everything (images/fonts) has loaded
 window.addEventListener("load", function () {
 
     AOS.refreshHard();
 
 });
 
-/*=========================================================
-        MOBILE AOS FIX
-=========================================================*/
-
-window.addEventListener("pageshow", function () {
-
-    AOS.refreshHard();
-
-});
-
+// Refresh on resize
 window.addEventListener("resize", function () {
 
     AOS.refreshHard();
 
 });
 
+// Refresh when device orientation changes
 window.addEventListener("orientationchange", function () {
 
     AOS.refreshHard();
 
 });
-
-window.addEventListener("scroll", function () {
-
-    AOS.refreshHard();
-
-}, { passive: true });

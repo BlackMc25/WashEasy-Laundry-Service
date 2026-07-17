@@ -231,7 +231,7 @@ togglePassword("password2","togglePassword2");
 
 /*=========================================================
             LOGIN / SIGNUP MODAL BACKGROUND BLUR
-=========================================================*/
+=========================================================
 
 // Login Modal
 const loginModalElement = document.getElementById("loginModal");
@@ -276,10 +276,10 @@ signupModalElement.addEventListener("hidden.bs.modal", function () {
         AOS.refreshHard();
 });
 
-
+*/
 /*=========================================================
         LOGIN  →  SIGNUP
-=========================================================*/
+=========================================================
 
 document
 .getElementById("openSignupFromLogin")
@@ -325,10 +325,10 @@ document
     loginModal.hide();
 
 });
-
+*/
 /*=========================================================
         SIGNUP  →  LOGIN
-=========================================================*/
+=========================================================
 
 document
 .getElementById("openLoginFromSignup")
@@ -372,10 +372,10 @@ document
     signupModal.hide();
 
 });
-
+*/
 /*=========================================================
             CLEANUP AFTER MODALS CLOSE
-=========================================================*/
+=========================================================
 
 ["loginModal","signupModal"].forEach(function(id){
 
@@ -400,4 +400,4 @@ document
     });
 
 });
-
+*/

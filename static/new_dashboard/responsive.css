@@ -1,0 +1,107 @@
+
+/* Hidden on Desktop */
+
+.mobile-bottom-nav{
+
+    display:none;
+
+}
+
+/*=========================================================
+                ADMIN MOBILE
+=========================================================*/
+
+@media(max-width:768px){
+
+    .card,
+    .admin-card{
+
+        padding:18px !important;
+
+        border-radius:18px;
+
+    }
+
+    .order-item-card .d-flex{
+
+        flex-direction:column;
+
+        align-items:flex-start !important;
+
+    }
+
+    .order-item-card strong.text-success{
+
+        margin-top:10px;
+
+        font-size:18px;
+
+    }
+
+    .cancel-buttons{
+
+        display:flex;
+
+        flex-direction:column;
+
+        gap:10px;
+
+    }
+
+    .cancel-buttons .btn{
+
+        width:100%;
+
+    }
+
+    .notification-actions{
+
+        display:flex;
+
+        flex-direction:column;
+
+        justify-content:space-between;
+
+        align-items:center;
+
+        gap:15px;
+
+        margin-bottom:25px;
+
+    }
+
+    .notification-actions .btn{
+
+        flex:1;
+
+        width:100%;
+
+    }
+
+    .cancel-actions{
+
+        display:flex;
+
+        justify-content:center;
+
+        gap:15px;
+
+        margin-top:30px;
+
+    }
+
+    .cancel-btn,
+    .back-btn{
+
+        flex:1;
+
+    }
+
+    .back-btn{
+
+        text-align:center;
+
+    }
+
+
+}

@@ -1,45 +1,35 @@
 /*=========================================================
-                    AOS ANIMATION
+        CUSTOM SCROLL ANIMATION ENGINE
 =========================================================*/
 
-function initAOS() {
+const observer = new IntersectionObserver(
 
-    AOS.init({
+(entries)=>{
 
-        duration:900,
+    entries.forEach(entry=>{
 
-        once:true,
+        if(entry.isIntersecting){
 
-        offset:80,
+            entry.target.classList.add("animate");
 
-        easing:"ease-in-out",
-
-        mirror:false
+        }
 
     });
 
+},
+
+{
+
+    threshold:0.18
+
 }
 
-// Run immediately
-initAOS();
+);
 
-// Refresh after everything (images/fonts) has loaded
-window.addEventListener("load", function () {
+document.querySelectorAll("[data-aos]")
 
-    AOS.refreshHard();
+.forEach(element=>{
 
-});
-
-// Refresh on resize
-window.addEventListener("resize", function () {
-
-    AOS.refreshHard();
-
-});
-
-// Refresh when device orientation changes
-window.addEventListener("orientationchange", function () {
-
-    AOS.refreshHard();
+    observer.observe(element);
 
 });

@@ -526,3 +526,75 @@ transform:scale(1);
 
 }
 
+/*=========================================================
+        CUSTOM SCROLL ANIMATIONS
+=========================================================*/
+
+[data-aos]{
+
+    opacity:0;
+
+    transition:
+
+        opacity .8s ease,
+
+        transform .8s ease;
+
+    will-change:
+
+        opacity,
+
+        transform;
+
+}
+
+/* fade up */
+
+[data-aos="fade-up"]{
+
+    transform:translateY(70px);
+
+}
+
+/* fade down */
+
+[data-aos="fade-down"]{
+
+    transform:translateY(-70px);
+
+}
+
+/* fade left */
+
+[data-aos="fade-left"]{
+
+    transform:translateX(70px);
+
+}
+
+/* fade right */
+
+[data-aos="fade-right"]{
+
+    transform:translateX(-70px);
+
+}
+
+/* zoom */
+
+[data-aos="zoom-in"]{
+
+    transform:scale(.85);
+
+}
+
+/* animated */
+
+[data-aos].animate{
+
+    opacity:1;
+
+    transform:none;
+
+}
+

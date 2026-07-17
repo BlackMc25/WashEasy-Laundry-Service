@@ -3,13 +3,13 @@
 <nav class="mobile-bottom-nav">
 
     <a href="{% url 'dashboard' %}"
-       class="{% if request.resolver_match.url_name == 'dashboard' %}active{% endif %}">
+       class="mobile-nav-item {% if request.resolver_match.url_name == 'dashboard' %}active{% endif %}">
         <i class="fa-solid fa-house"></i>
         <span>Home</span>
     </a>
 
     <a href="{% url 'book_laundry' %}"
-        class="book-button
+        class=" mobile-nav-item book-button
         {% if request.resolver_match.url_name == 'book_laundry' %}
         active
         {% endif %}">
@@ -25,13 +25,13 @@
         </a>
 
     <a href="{% url 'my_orders' %}"
-       class="{% if request.resolver_match.url_name == 'my_orders' %}active{% endif %}">
+       class="mobile-nav-item {% if request.resolver_match.url_name == 'my_orders' %}active{% endif %}">
         <i class="fa-solid fa-box"></i>
         <span>Orders</span>
     </a>
 
     <a href="{% url 'notifications' %}"
-       class="{% if request.resolver_match.url_name == 'notifications' %}active{% endif %} notification-link">
+       class="mobile-nav-item {% if request.resolver_match.url_name == 'notifications' %}active{% endif %} notification-link">
 
         <i class="fa-solid fa-bell"></i>
 
@@ -45,7 +45,7 @@
     </a>
 
     <a href="{% url 'profile' %}"
-       class="{% if request.resolver_match.url_name == 'profile' %}active{% endif %}">
+       class="mobile-nav-item {% if request.resolver_match.url_name == 'profile' %}active{% endif %}">
         <i class="fa-solid fa-user"></i>
         <span>Profile</span>
     </a>

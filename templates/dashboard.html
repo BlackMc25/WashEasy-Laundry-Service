@@ -3,31 +3,119 @@
 {% block content %}
 <div class="page-container">
 
-<h1 class="page-title">
+    <!-- Dashboard Hero -->
+    <section class="dashboard-hero">
 
-    Welcome,
+        <div class="hero-content">
 
-    {{ request.user.first_name }}
+            <span class="hero-greeting">
+                👋 Welcome back,
+            </span>
 
-</h1>
-        <div class="dashboard-actions mb-4">
+            <h1 class="hero-title">
 
-            <a href="{% url 'book_laundry' %}"
-            class="btn btn-primary me-2">
+                {{ request.user.first_name }}
 
-                Book Laundry
+            </h1>
 
-            </a>
+            <p class="hero-subtitle">
 
-            <a href="{% url 'my_orders' %}"
-            class="btn btn-outline-primary">
+                Manage your laundry bookings, orders and deliveries all in one place.
 
-                My Orders
-
-            </a>
+            </p>
 
         </div>
-    <div class="stats-container mobile-grid">
+
+    </section>
+
+    <!-- Quick Actions -->
+    <section class="quick-actions">
+
+        <a href="{% url 'book_laundry' %}" class="action-card primary">
+
+            <div class="action-icon">
+
+                <i class="bi bi-basket2-fill"></i>
+
+            </div>
+
+            <div>
+
+                <h5>Book Laundry</h5>
+
+                <small>Create a new booking</small>
+
+            </div>
+
+        </a>
+
+        <a href="{% url 'my_orders' %}" class="action-card">
+
+            <div class="action-icon">
+
+                <i class="bi bi-box-seam-fill"></i>
+
+            </div>
+
+            <div>
+
+                <h5>My Orders</h5>
+
+                <small>Track your laundry</small>
+
+            </div>
+
+        </a>
+
+        <a href="{% url 'notifications' %}" class="action-card">
+
+            <div class="action-icon">
+
+                <i class="bi bi-bell-fill"></i>
+
+            </div>
+
+            <div>
+
+                <h5>Notifications</h5>
+
+                <small>
+
+                    {{ unread_notifications }}
+
+                    unread
+
+                </small>
+
+            </div>
+
+        </a>
+
+        <a href="{% url 'profile' %}" class="action-card">
+
+            <div class="action-icon">
+
+                <i class="bi bi-person-fill"></i>
+
+            </div>
+
+            <div>
+
+                <h5>Profile</h5>
+
+                <small>Manage your account</small>
+
+            </div>
+
+        </a>
+
+    </section>
+
+    <!-- Statistics -->
+
+<section class="dashboard-stats">
+
+    <div class="stats-container">
 
         <div class="stats-card">
 
@@ -86,57 +174,60 @@
         </div>
 
     </div>
-    
-<hr>
+ </section>
 
-<div class="card mobile-card mt-4">
+    <section class="recent-orders-section">
+        
+            <div class="card mobile-card mt-4">
 
-    <h4>
-        Recent Activity
-    </h4>
+                <h4>
+                    Recent Activity
+                </h4>
 
-    {% if recent_orders %}
+                {% if recent_orders %}
 
-        {% for order in recent_orders %}
+                    {% for order in recent_orders %}
 
-        <div class="border-bottom py-2">
+                    <div class="border-bottom py-2">
 
-            <strong>
-            Order #{{ order.customer_order_number }}
-            </strong>
+                        <strong>
+                        Order #{{ order.customer_order_number }}
+                        </strong>
 
-            <br>
+                        <br>
 
-            <small>
-                {{ order.status }}
-            </small>
+                        <small>
+                            {{ order.status }}
+                        </small>
 
-            <p>
-                <strong>Total Amount:</strong>
-                <td>₦{{ order.total_amount|intcomma }}</td>
-            </p>
+                        <p>
+                            <strong>Total Amount:</strong>
+                            <td>₦{{ order.total_amount|intcomma }}</td>
+                        </p>
 
-            <br>
+                        <br>
 
-            <small>
-                {{ order.created_at }}
-            </small>
+                        <small>
+                            {{ order.created_at }}
+                        </small>
 
-            <td>{{ order.payment_method }}</td>
+                        <td>{{ order.payment_method }}</td>
 
-        </div>
+                    </div>
 
-        {% endfor %}
+                    {% endfor %}
 
-    {% else %}
+                {% else %}
 
-        <p>
-            No orders yet
-        </p>
+                    <p>
+                        No orders yet
+                    </p>
 
-    {% endif %}
+                {% endif %}
 
-</div>
+            </div>
+
+    </section>
 
 </div>
 

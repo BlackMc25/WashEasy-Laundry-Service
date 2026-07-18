@@ -1,0 +1,95 @@
+/*=========================================================
+                BOOKING STEPPER
+=========================================================*/
+
+.booking-progress{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:1rem;
+
+    margin:2rem 0;
+
+    flex-wrap:wrap;
+
+}
+
+.progress-step{
+
+    flex:1;
+
+    min-width:140px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:.8rem;
+
+    padding:1rem;
+
+    border-radius:var(--radius-md);
+
+    background:var(--background);
+
+    border:1px solid var(--border);
+
+}
+
+.progress-number{
+
+    width:42px;
+
+    height:42px;
+
+    border-radius:50%;
+
+    background:var(--surface);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-weight:700;
+
+    border:2px solid var(--border);
+
+}
+
+.progress-active{
+
+    background:#EEF6FF;
+
+    border-color:var(--primary);
+
+}
+
+.progress-active .progress-number{
+
+    background:var(--primary);
+
+    color:white;
+
+    border:none;
+
+}
+
+.progress-label{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.progress-label small{
+
+    color:var(--muted);
+
+}

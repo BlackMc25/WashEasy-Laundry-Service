@@ -1,0 +1,127 @@
+/*=========================================================
+                BOOKING PAGE
+=========================================================*/
+
+.booking-page{
+
+    display:grid;
+
+    grid-template-columns:2fr 420px;
+
+    gap:2rem;
+
+    align-items:start;
+
+}
+
+/*=========================================================
+                HERO
+=========================================================*/
+
+.booking-hero{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    flex-wrap:wrap;
+
+    gap:2rem;
+
+    margin-bottom:2rem;
+
+}
+
+.booking-title{
+
+    margin-bottom:.75rem;
+
+}
+
+.booking-subtitle{
+
+    color:var(--muted);
+
+    max-width:650px;
+
+    line-height:1.8;
+
+}
+
+/*=========================================================
+                LEFT CONTENT
+=========================================================*/
+
+.booking-main{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:2rem;
+
+}
+
+/*=========================================================
+                SECTION
+=========================================================*/
+
+.booking-section{
+
+    background:var(--surface);
+
+    border-radius:var(--radius-lg);
+
+    padding:2rem;
+
+    box-shadow:var(--shadow-sm);
+
+}
+
+.booking-section-title{
+
+    margin-bottom:1.5rem;
+
+}
+
+/*=========================================================
+                SIDEBAR
+=========================================================*/
+
+.booking-sidebar{
+
+    position:sticky;
+
+    top:100px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:1.5rem;
+
+}
+
+/*=========================================================
+                RESPONSIVE
+=========================================================*/
+
+@media(max-width:1200px){
+
+.booking-page{
+
+grid-template-columns:1fr;
+
+}
+
+.booking-sidebar{
+
+position:relative;
+
+top:0;
+
+}
+
+}

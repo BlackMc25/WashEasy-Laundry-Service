@@ -1,0 +1,75 @@
+/*=========================================================
+                SUMMARY
+=========================================================*/
+
+.summary-card{
+
+    background:var(--surface);
+
+    border-radius:var(--radius-lg);
+
+    padding:2rem;
+
+    box-shadow:var(--shadow-md);
+
+}
+
+.summary-card h4{
+
+    margin-bottom:1.5rem;
+
+}
+
+.summary-item{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-start;
+
+    padding:1rem 0;
+
+    border-bottom:1px solid var(--border);
+
+}
+
+.summary-item:last-child{
+
+    border-bottom:none;
+
+}
+
+.summary-total{
+
+    margin-top:1.5rem;
+
+    padding-top:1rem;
+
+    border-top:2px solid var(--border);
+
+}
+
+.summary-total h3{
+
+    color:var(--primary);
+
+}
+
+.booking-checklist{
+
+    margin-top:2rem;
+
+}
+
+.booking-check{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:.8rem;
+
+    margin-bottom:1rem;
+
+}

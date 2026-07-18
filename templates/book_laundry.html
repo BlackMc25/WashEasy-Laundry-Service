@@ -1,29 +1,126 @@
 {% extends 'base_dashboard.html' %}
 
 {% block content %}
-
 <div class="page-container">
 
-        <form method="POST">
-        {% csrf_token %}
+    <form method="POST">
 
-    <h1 class="page-title">
-        Book Laundry
+    {% csrf_token %}
+
+    <div class="booking-hero">
+
+    <div>
+
+    <h1 class="page-title booking-title">
+
+    Book Laundry
+
     </h1>
 
-        {% if error_message %}
+    <p class="booking-subtitle">
 
-        <div class="order-guide">
+    Select your laundry items, choose your pickup and delivery locations, and we'll handle the rest.
 
-            {{ error_message }}
+    </p>
 
-        </div>
+    </div>
 
-        {% endif %}
+    </div>
 
-    <div class="row">
+    <div class="booking-progress">
 
-        <div class="col-lg-8">
+    <div class="progress-step progress-active">
+
+    <div class="progress-number">
+
+    1
+
+    </div>
+
+    <div class="progress-label">
+
+    <strong>
+
+    Select Items
+
+    </strong>
+
+    <small>
+
+    Choose laundry services
+
+    </small>
+
+    </div>
+
+    </div>
+
+    <div class="progress-step">
+
+    <div class="progress-number">
+
+    2
+
+    </div>
+
+    <div class="progress-label">
+
+    <strong>
+
+    Booking
+
+    </strong>
+
+    <small>
+
+    Pickup & Delivery
+
+    </small>
+
+    </div>
+
+    </div>
+
+    <div class="progress-step">
+
+    <div class="progress-number">
+
+    3
+
+    </div>
+
+    <div class="progress-label">
+
+    <strong>
+
+    Review
+
+    </strong>
+
+    <small>
+
+    Confirm your order
+
+    </small>
+
+    </div>
+
+    </div>
+
+    </div>
+
+<div class="booking-page">
+
+    <div class="booking-main">
+
+        <section class="booking-section">
+
+            <h3 class="booking-section-title">
+
+            Select Laundry Items
+
+            </h3>
+        
             <div class="alert alert-info mb-4">
 
                 <strong>How to Order:</strong>
@@ -222,27 +319,27 @@
 
             </div>
 
+        </div>
 
+            {% endfor %}
+
+                    </div>
+
+                </div>
 
             </div>
 
-            {% endfor %}
+    {% endfor %}
 
         </div>
 
     </div>
 
-</div>
+</section>
 
-{% endfor %}
+    <aside class="booking-sidebar">
 
-</div>
-
-</div>
-
-        <div class="col-lg-4">
-
-            <div class="summary-card mobile-summary">
+         <div class="summary-card">
 
                 <h5>Order Summary</h5>
                 <div id="selected-items">
@@ -495,9 +592,9 @@
 
         </div>
 
-    </div>
+        </div>
 
-</div>
+    </div>
 
 <script>
 
@@ -1528,6 +1625,9 @@ window.addEventListener(
 
 </script>
 
+</aside>
+
+</div>
 </form>
 
 {% endblock %}

@@ -1,0 +1,99 @@
+/*=========================================================
+                    MAP
+=========================================================*/
+
+.booking-map-card{
+
+    background:var(--surface);
+
+    border-radius:var(--radius-lg);
+
+    overflow:hidden;
+
+    box-shadow:var(--shadow-sm);
+
+}
+
+.booking-map-header{
+
+    padding:1.5rem 2rem;
+
+    border-bottom:1px solid var(--border);
+
+}
+
+.booking-map{
+
+    height:420px;
+
+}
+
+.distance-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+
+    gap:1rem;
+
+    padding:2rem;
+
+}
+
+.distance-card{
+
+    background:var(--background);
+
+    border-radius:var(--radius-md);
+
+    padding:1.25rem;
+
+}
+
+.distance-card span{
+
+    display:block;
+
+    color:var(--muted);
+
+    margin-bottom:.4rem;
+
+}
+
+.distance-card strong{
+
+    font-size:1.2rem;
+
+}
+
+.review-card{
+
+    background:linear-gradient(135deg,#2B6CB0,#3B82F6);
+
+    color:#fff;
+
+    border-radius:var(--radius-lg);
+
+    padding:2rem;
+
+    margin-top:2rem;
+
+}
+
+.review-card h3{
+
+    color:#fff;
+
+}
+
+.review-card p{
+
+    opacity:.9;
+
+}
+
+.review-btn{
+
+    margin-top:1.5rem;
+
+}

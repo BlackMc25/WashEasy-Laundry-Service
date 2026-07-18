@@ -400,140 +400,147 @@
                 </h4>
 
                 <hr>
+    <section class="booking-section">
 
-            <h5 class="booking-title mt-3">
+            <h3 class="booking-section-title">
 
-                Booking Details
+            Booking Details
 
-            </h5>
+            </h3>
 
-                <div class="booking-form">
+                    <div class="booking-form">
 
-                        <div class="mb-3">
-                            <label class="form-label">
-                                Pickup Address
-                            </label>
+                    <div class="booking-card">
 
-                            <div class="position-relative">
+                    <div class="booking-card-title">
 
-                                <input
-                                type="text"
-                                name="pickup_address"
-                                id="pickup-address"
-                                class="form-control"
-                                value="{{ request.user.default_pickup_address|default:'' }}"
-                                list="pickup-history"
-                                placeholder="Enter pickup address"
-                                >
-                                <button
-                                    type="button"
-                                    id="clearPickup"
-                                    class="btn btn-sm btn-outline-danger position-absolute top-50 end-0 translate-middle-y me-2">
+                    <i class="bi bi-geo-alt-fill"></i>
 
-                                    <i class="fas fa-times"></i>
+                    <h5>Addresses</h5>
 
-                                </button>
+                    </div>
 
-                            </div>
+                <div class="booking-grid">
+                    <div class="mb-3">
+                        <label class="form-label">
+                            Pickup Address
+                        </label>
 
-                            <datalist id="pickup-history">
+                        <div class="position-relative">
 
-                                {% for address in previous_addresses %}
+                            <input
+                            type="text"
+                            name="pickup_address"
+                            id="pickup-address"
+                            class="form-control"
+                            value="{{ request.user.default_pickup_address|default:'' }}"
+                            list="pickup-history"
+                            placeholder="Enter pickup address"
+                            >
+                            <button
+                                type="button"
+                                id="clearPickup"
+                                class="btn btn-sm btn-outline-danger position-absolute top-50 end-0 translate-middle-y me-2">
 
-                                    <option value="{{ address }}">
+                                <i class="fas fa-times"></i>
 
-                                {% endfor %}
-
-                            </datalist>
-
-                            {{ form.pickup_latitude }}
-                            {{ form.pickup_longitude }}
-
+                            </button>
 
                         </div>
-                            
-                        {{ form.pickup_distance_km }}
-                        {{ form.delivery_distance_km }}
-                        {{ form.total_distance_km }}
 
-                        <div class="mb-3">
+                        <datalist id="pickup-history">
 
-                                <label class="form-label">
-                                    Delivery Address
-                                </label>
+                            {% for address in previous_addresses %}
 
-                                <div class="position-relative">
+                                <option value="{{ address }}">
 
-                                <input
-                                        type="text"
-                                        name="delivery_address"
-                                        id="delivery-address"
-                                        class="form-control"
-                                        value="{{ request.user.default_delivery_address|default:'' }}"
-                                        list="delivery-history"
-                                        placeholder="Enter delivery address"
-                                        >
+                            {% endfor %}
 
-                                    <button
-                                        type="button"
-                                        id="clearDelivery"
-                                        class="btn btn-sm btn-outline-danger position-absolute top-50 end-0 translate-middle-y me-2">
+                        </datalist>
 
-                                        <i class="fas fa-times"></i>
-
-                                    </button>
-
-                                </div>
-
-                                <datalist id="delivery-history">
-
-                                    {% for address in previous_delivery_addresses %}
-
-                                        <option value="{{ address }}">
-
-                                    {% endfor %}
-
-                                </datalist>
-
-                                {{ form.delivery_latitude }}
-                                {{ form.delivery_longitude }}
-
-                                    <div class="mb-3">
-
-                                        <label class="form-label">
-
-                                            Delivery Mobile Number
-
-                                        </label>
-
-                                        <input
-                                            type="tel"
-                                            name="phone_number"
-                                            class="form-control"
-                                            placeholder="e.g. 08136201074"
-                                            required>
-
-                                    </div>
-                        </div>
-
-                            <div class="mb-4">
-
-                            <div id="map" class="booking-map"></div>
-
-                                <div class="card mt-3 p-3">
-
-                                    <p>
-                                        Total Distance:
-                                        <strong id="total-distance">
-                                            0 km
-                                        </strong>
-                                    </p>
-
-                                </div>
-
-                            </div>
+                        {{ form.pickup_latitude }}
+                        {{ form.pickup_longitude }}
+                        
+                    </div>
 
                     <div class="mb-3">
+
+                        <label class="form-label">
+                            Delivery Address
+                        </label>
+
+                        <div class="position-relative">
+
+                        <input
+                                type="text"
+                                name="delivery_address"
+                                id="delivery-address"
+                                class="form-control"
+                                value="{{ request.user.default_delivery_address|default:'' }}"
+                                list="delivery-history"
+                                placeholder="Enter delivery address"
+                                >
+
+                            <button
+                                type="button"
+                                id="clearDelivery"
+                                class="btn btn-sm btn-outline-danger position-absolute top-50 end-0 translate-middle-y me-2">
+
+                                <i class="fas fa-times"></i>
+
+                            </button>
+
+                        </div>
+
+                        <datalist id="delivery-history">
+
+                            {% for address in previous_delivery_addresses %}
+
+                                <option value="{{ address }}">
+
+                            {% endfor %}
+
+                        </datalist>
+
+                        {{ form.delivery_latitude }}
+                        {{ form.delivery_longitude }}
+
+                        </div>
+
+                            <div class="booking-card">
+
+                                <div class="booking-card-title">
+
+                                <i class="bi bi-telephone-fill"></i>
+
+                                <h5>Contact Information</h5>
+
+                                </div>
+
+                                <label class="form-label">
+
+                                    Delivery Mobile Number
+
+                                </label>
+
+                                <input
+                                    type="tel"
+                                    name="phone_number"
+                                    class="form-control"
+                                    placeholder="e.g. 08136201074"
+                                    required>
+
+                            </div>
+
+                        <div class="booking-card">
+
+                            <div class="booking-card-title">
+
+                            <i class="bi bi-calendar-event-fill"></i>
+
+                            <h5>Pickup Schedule</h5>
+
+                            </div>
 
                             <label class="form-label">
                                 Pickup Date
@@ -544,26 +551,87 @@
 
                         </div>
 
-                        <div class="mb-3">
-                            <div class="alert alert-warning">
+                            <section class="booking-map-card">
 
-                                <strong>Note:</strong>
+                                <div class="booking-map-header">
 
-                                If any item requires special care, stain treatment,
-                                delicate handling, or has specific washing instructions,
-                                please include the details in the Special Instructions box below.
+                                <h4>
+
+                                Choose Pickup & Delivery Locations
+
+                                </h4>
+
+                                <p>
+
+                                We'll automatically calculate the transport fee.
+
+                                </p>
+
+                                </div>
+
+                                <div id="map" class="booking-map"></div>
+
+                               <div class="distance-card">
+
+                                    <span>
+
+                                    Pickup Distance
+
+                                    </span>
+
+                                    <strong id="pickup-distance">
+
+                                    0 km
+
+                                    </strong>
+
+                                    </div>
+
+                                    <div class="distance-card">
+
+                                    <span>
+
+                                    Delivery Distance
+
+                                    </span>
+
+                                    <strong id="delivery-distance">
+
+                                    0 km
+
+                                    </strong>
+
+                                    </div>
+
+                                    <div class="distance-card">
+
+                                    <span>
+
+                                    Total Distance
+
+                                    </span>
+
+                                    <strong id="total-distance">
+
+                                    0 km
+
+                                    </strong>
+
+                                    </div>
+
+                                 <div id="map" class="booking-map"></div>
+
+                            </section>
+
+                        <div class="booking-card">
+
+                            <div class="booking-card-title">
+
+                            <i class="bi bi-credit-card-fill"></i>
+
+                            <h5>Payment Method</h5>
 
                             </div>
-                            
-                            <label class="form-label">
-                                Special Instructions
-                            </label>
-
-                            {{ form.special_instructions }}
-
-                        </div>
-
-                        <div class="mb-3">
 
                             <label class="form-label">
                                 Payment Method
@@ -573,24 +641,66 @@
 
                         </div>
 
-                    </div>
+                        <div class="booking-card">
 
-                        <input
-                            type="hidden"
-                            name="test_input"
-                            value="123">
-                    <button
-                        type="submit"
-                        class="btn btn-primary w-100 mt-3">
+                            <div class="booking-card-title">
 
-                        Book Laundry
+                            <i class="bi bi-chat-left-text-fill"></i>
 
-                    </button>
+                            <h5>Special Instructions</h5>
 
+                            </div>
+
+                            <div class="booking-note">
+
+                            If your garments require delicate handling, stain treatment, or any special washing instructions, let us know below.
+
+                            </div>
+
+                            <br>
+
+                            <label class="form-label">
+                                Special Instructions
+                            </label>
+
+                            {{ form.special_instructions }}
+
+                        </div>
+
+                </div>
 
             </div>
 
-        </div>
+                    <div class="review-card">
+
+                        <h3>
+
+                        Ready to Book?
+
+                        </h3>
+
+                        <p>
+
+                        Review your selected laundry items, pickup details, and payment information. When everything looks good, submit your booking and we'll take it from there.
+
+                        </p>
+
+                        <button
+
+                        type="submit"
+
+                        class="btn btn-light btn-lg review-btn">
+
+                        <i class="bi bi-check-circle-fill"></i>
+
+                        Confirm Booking
+
+                        </button>
+
+                    </div>
+             </div>
+
+         </div>
 
         </div>
 

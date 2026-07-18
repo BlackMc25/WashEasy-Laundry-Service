@@ -1,0 +1,113 @@
+/*=========================================================
+                BOOKING FORM
+=========================================================*/
+
+.booking-form{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:2rem;
+
+}
+
+.booking-card{
+
+    background:var(--surface);
+
+    border-radius:var(--radius-lg);
+
+    padding:1.75rem;
+
+    box-shadow:var(--shadow-sm);
+
+}
+
+.booking-card-title{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:.75rem;
+
+    margin-bottom:1.5rem;
+
+}
+
+.booking-card-title i{
+
+    width:42px;
+
+    height:42px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:#EEF6FF;
+
+    color:var(--primary);
+
+    font-size:18px;
+
+}
+
+.booking-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+
+    gap:1.5rem;
+
+}
+
+.form-control,
+.form-select{
+
+    border-radius:var(--radius-md);
+
+    padding:.85rem 1rem;
+
+    border:1px solid var(--border);
+
+    background:var(--surface);
+
+    transition:var(--transition-normal);
+
+}
+
+.form-control:focus,
+.form-select:focus{
+
+    border-color:var(--primary);
+
+    box-shadow:0 0 0 4px rgba(43,108,176,.10);
+
+}
+
+textarea.form-control{
+
+    min-height:140px;
+
+    resize:vertical;
+
+}
+
+.booking-note{
+
+    padding:1rem;
+
+    border-radius:var(--radius-md);
+
+    background:#FFF9E8;
+
+    border-left:4px solid var(--warning);
+
+}

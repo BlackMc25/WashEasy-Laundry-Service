@@ -10,9 +10,9 @@
 
     align-items:center;
 
-    width:100%;
+    margin-bottom:28px;
 
-    margin-bottom:25px;
+    padding:0 4px;
 
 }
 
@@ -28,44 +28,235 @@
 
     align-items:center;
 
-    justify-content:flex-end;
-
-    gap:15px;
-
-}
-
-.page-container{
-
-    margin-bottom:-35px;
+    gap:18px;
 
 }
 
 /*=========================================================
-                DASHBOARD HEADER
+                NOTIFICATION BUTTON
 =========================================================*/
 
-/* Header Layout */
+.notification-btn{
 
-.dashboard-header{
+    position:relative;
+
+    width:52px;
+
+    height:52px;
 
     display:flex;
 
-    justify-content:space-between;
+    justify-content:center;
 
-    align-items:flex-start;
+    align-items:center;
 
-    margin-bottom:30px;
+    border:none;
+
+    outline:none;
+
+    border-radius:16px;
+
+    background:#ffffff;
+
+    color:#334155;
+
+    font-size:1.2rem;
+
+    box-shadow:0 10px 25px rgba(15,23,42,.06);
+
+    transition:all .3s ease;
 
 }
 
-/* Welcome Title */
+.notification-btn:hover{
 
-.welcome-title{
+    background:#0d6efd;
+
+    color:#ffffff;
+
+    transform:translateY(-3px);
+
+}
+
+.notification-badge{
+
+    position:absolute;
+
+    top:8px;
+
+    right:8px;
+
+    min-width:18px;
+
+    height:18px;
+
+    padding:0 5px;
+
+    border-radius:50px;
+
+    background:#ef4444;
+
+    color:#ffffff;
+
+    font-size:.7rem;
+
+    font-weight:700;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border:2px solid #ffffff;
+
+}
+
+/*=========================================================
+                PROFILE AVATAR
+=========================================================*/
+
+.profile-avatar{
+
+    width:52px;
+
+    height:52px;
+
+    border-radius:18px;
+
+    background:linear-gradient(135deg,#0d6efd,#3b82f6);
+
+    color:#ffffff;
+
+    font-size:1rem;
+
+    font-weight:700;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    cursor:pointer;
+
+    box-shadow:0 10px 25px rgba(13,110,253,.20);
+
+    transition:all .3s ease;
+
+}
+
+.profile-avatar:hover{
+
+    transform:translateY(-3px);
+
+}
+
+/*=========================================================
+                DROPDOWNS
+=========================================================*/
+
+.notification-dropdown,
+.profile-dropdown{
+
+    border:none;
+
+    border-radius:18px;
+
+    padding:10px;
+
+    min-width:270px;
+
+    box-shadow:0 20px 45px rgba(15,23,42,.10);
+
+}
+
+.dropdown-item{
+
+    border-radius:12px;
+
+    padding:10px 14px;
+
+    transition:.25s;
+
+}
+
+.dropdown-item:hover{
+
+    background:#eef4ff;
+
+}
+
+.dropdown-header{
+
+    padding:12px;
+
+}
+
+/*=========================================================
+                HERO HEADER
+=========================================================*/
+
+.dashboard-header{
+
+    margin-bottom:28px;
+
+}
+
+.hero-title{
 
     margin:0;
 
-    font-size:3rem;
+    font-size:clamp(2rem,4vw,3rem);
 
     font-weight:700;
+
+    line-height:1.15;
+
+    color:#ffffff;
+
+}
+
+.hero-greeting{
+
+    display:inline-block;
+
+    margin-bottom:12px;
+
+    font-size:.95rem;
+
+    font-weight:600;
+
+    letter-spacing:.3px;
+
+}
+
+.hero-subtitle{
+
+    margin-top:14px;
+
+    font-size:1rem;
+
+    line-height:1.7;
+
+    color:rgba(255,255,255,.92);
+
+    max-width:560px;
+
+}
+
+/*=========================================================
+                PAGE TITLE (OTHER PAGES)
+=========================================================*/
+
+.page-title{
+
+    margin-bottom:28px;
+
+    font-size:2.2rem;
+
+    font-weight:700;
+
+    color:#0f172a;
 
 }

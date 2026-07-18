@@ -93,3 +93,121 @@
     color:var(--muted);
 
 }
+
+.booking-hidden{
+
+display:none;
+
+opacity:0;
+
+transform:translateY(25px);
+
+transition:.45s;
+
+}
+
+.booking-visible{
+
+display:block;
+
+opacity:1;
+
+transform:translateY(0);
+
+animation:fadeBooking .45s ease;
+
+}
+
+@keyframes fadeBooking{
+
+from{
+
+opacity:0;
+
+transform:translateY(30px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+/*=========================================================
+                STEP STATES
+=========================================================*/
+
+.progress-active{
+
+    background:#EEF6FF;
+
+    border:2px solid var(--primary);
+
+}
+
+.progress-active .progress-number{
+
+    background:var(--primary);
+
+    color:#fff;
+
+}
+
+.progress-complete{
+
+    background:#ECFDF3;
+
+    border:2px solid var(--success);
+
+}
+
+.progress-complete .progress-number{
+
+    background:var(--success);
+
+    color:#fff;
+
+}
+
+/*=========================================================
+                SHOW / HIDE
+=========================================================*/
+
+.booking-hidden{
+
+    display:none;
+
+}
+
+.booking-visible{
+
+    display:block;
+
+    animation:fadeBooking .45s ease;
+
+}
+
+@keyframes fadeBooking{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(25px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}

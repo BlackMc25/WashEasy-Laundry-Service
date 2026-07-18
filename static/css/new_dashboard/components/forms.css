@@ -1,71 +1,95 @@
 /*=========================================================
-                    FORM COMPONENTS
+                    FORM SYSTEM
 =========================================================*/
 
-/*---------------------------------------------------------
-    Global Inputs
----------------------------------------------------------*/
+.form-group{
 
-input{
-
-    width:100%;
-
-    padding:12px 15px;
-
-    border:1px solid #dee2e6;
-
-    border-radius:10px;
-
-    outline:none;
-
-    transition:.3s;
+    margin-bottom:var(--space-lg);
 
 }
 
-input:focus{
+.form-label{
 
-    border-color:#0d6efd;
+    display:block;
 
-    box-shadow:0 0 0 .2rem rgba(13,110,253,.25);
-
-}
-
-/* Labels */
-
-label{
+    margin-bottom:.5rem;
 
     font-weight:600;
 
-}
-
-/*---------------------------------------------------------
-    Bootstrap Modals
----------------------------------------------------------*/
-
-.modal-content{
-
-    border-radius:18px;
+    color:var(--text);
 
 }
 
-.modal-header{
+.form-control{
 
-    border-top-left-radius:18px;
+    width:100%;
 
-    border-top-right-radius:18px;
+    padding:.9rem 1rem;
+
+    border:1px solid var(--border);
+
+    border-radius:var(--radius-md);
+
+    background:var(--surface);
+
+    color:var(--text);
+
+    transition:var(--transition-fast);
 
 }
 
-/* Delete Confirmation */
+.form-control::placeholder{
 
-#customerDeleteForm input{
+    color:var(--muted);
 
-    text-align:center;
+}
 
-    font-size:22px;
+.form-control:focus{
 
-    letter-spacing:8px;
+    border-color:var(--primary);
 
-    font-weight:bold;
+    outline:none;
+
+    box-shadow:0 0 0 4px rgba(13,110,253,.12);
+
+}
+
+textarea.form-control{
+
+    resize:vertical;
+
+    min-height:140px;
+
+}
+
+.form-select{
+
+    width:100%;
+
+    padding:.9rem 1rem;
+
+    border-radius:var(--radius-md);
+
+    border:1px solid var(--border);
+
+    background:var(--surface);
+
+}
+
+.form-check{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:.6rem;
+
+}
+
+.form-check input{
+
+    width:18px;
+
+    height:18px;
 
 }

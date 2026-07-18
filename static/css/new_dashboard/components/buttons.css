@@ -1,77 +1,203 @@
 /*=========================================================
-                BUTTON COMPONENTS
+                    BUTTON SYSTEM
 =========================================================*/
 
-/* Primary Button */
+/*---------------------------------------------------------
+                    Base Button
+---------------------------------------------------------*/
 
-.btn-primary{
+.btn{
 
-    padding:12px;
+    display:inline-flex;
 
-    border-radius:12px;
+    justify-content:center;
 
-    font-weight:600;
+    align-items:center;
 
-}
+    gap:.6rem;
 
-/* Quantity Buttons */
-
-.qty2-btn2:hover{
-
-    transform:scale(1.05);
-
-}
-
-.qty2-btn2:active{
-
-    transform:scale(.95);
-
-}
-
-/*=========================================================
-                ACTION BUTTONS
-=========================================================*/
-
-.cancel-btn{
-
-    background:#dc3545;
-
-    color:#fff;
+    padding:.85rem 1.4rem;
 
     border:none;
 
-    padding:12px 25px;
+    outline:none;
 
-    border-radius:8px;
+    cursor:pointer;
+
+    font-size:.95rem;
 
     font-weight:600;
 
+    text-decoration:none;
+
+    border-radius:var(--radius-md);
+
+    transition:var(--transition-normal);
+
+    user-select:none;
+
 }
 
-.cancel-btn:hover{
-
-    background:#bb2d3b;
-
-}
-
-.back-btn{
-
-    background:#6c757d;
-
-    color:#fff;
-
-    padding:12px 25px;
-
-    border-radius:8px;
+.btn:hover{
 
     text-decoration:none;
 
+    transform:translateY(-2px);
+
 }
 
-.back-btn:hover{
+.btn:active{
 
-    background:#5c636a;
+    transform:scale(.98);
 
-    color:#fff;
+}
+
+/*---------------------------------------------------------
+                    Primary
+---------------------------------------------------------*/
+
+.btn-primary{
+
+    background:var(--primary);
+
+    color:var(--white);
+
+    box-shadow:var(--shadow-sm);
+
+}
+
+.btn-primary:hover{
+
+    background:var(--primary-dark);
+
+    color:var(--white);
+
+}
+
+/*---------------------------------------------------------
+                    Secondary
+---------------------------------------------------------*/
+
+.btn-secondary{
+
+    background:var(--secondary);
+
+    color:var(--white);
+
+}
+
+.btn-secondary:hover{
+
+    filter:brightness(.95);
+
+    color:var(--white);
+
+}
+
+/*---------------------------------------------------------
+                    Success
+---------------------------------------------------------*/
+
+.btn-success{
+
+    background:var(--success);
+
+    color:var(--white);
+
+}
+
+/*---------------------------------------------------------
+                    Danger
+---------------------------------------------------------*/
+
+.btn-danger{
+
+    background:var(--danger);
+
+    color:var(--white);
+
+}
+
+/*---------------------------------------------------------
+                    Outline
+---------------------------------------------------------*/
+
+.btn-outline{
+
+    background:transparent;
+
+    color:var(--primary);
+
+    border:1px solid var(--primary);
+
+}
+
+.btn-outline:hover{
+
+    background:var(--primary);
+
+    color:var(--white);
+
+}
+
+/*---------------------------------------------------------
+                    Ghost
+---------------------------------------------------------*/
+
+.btn-ghost{
+
+    background:transparent;
+
+    color:var(--text);
+
+}
+
+.btn-ghost:hover{
+
+    background:var(--background);
+
+}
+
+/*---------------------------------------------------------
+                    Light
+---------------------------------------------------------*/
+
+.btn-light{
+
+    background:var(--surface);
+
+    color:var(--text);
+
+    box-shadow:var(--shadow-xs);
+
+}
+
+/*---------------------------------------------------------
+                    Sizes
+---------------------------------------------------------*/
+
+.btn-sm{
+
+    padding:.55rem 1rem;
+
+    font-size:.85rem;
+
+}
+
+.btn-lg{
+
+    padding:1rem 2rem;
+
+    font-size:1rem;
+
+}
+
+/*---------------------------------------------------------
+                    Full Width
+---------------------------------------------------------*/
+
+.btn-block{
+
+    width:100%;
 
 }

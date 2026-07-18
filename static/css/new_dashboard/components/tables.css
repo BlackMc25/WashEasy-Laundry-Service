@@ -1,0 +1,65 @@
+/*=========================================================
+                    TABLE SYSTEM
+=========================================================*/
+
+.table-card{
+
+    background:var(--surface);
+
+    border-radius:var(--radius-lg);
+
+    box-shadow:var(--shadow-sm);
+
+    overflow:hidden;
+
+}
+
+.table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+.table thead{
+
+    background:var(--background);
+
+}
+
+.table th{
+
+    text-align:left;
+
+    padding:18px;
+
+    font-size:.9rem;
+
+    font-weight:700;
+
+    color:var(--muted);
+
+}
+
+.table td{
+
+    padding:18px;
+
+    border-top:1px solid var(--border);
+
+    color:var(--text);
+
+}
+
+.table tbody tr{
+
+    transition:var(--transition-fast);
+
+}
+
+.table tbody tr:hover{
+
+    background:#fafcff;
+
+}

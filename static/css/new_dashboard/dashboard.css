@@ -23,6 +23,8 @@
 
 @import url("darkmode/darkmode.css");
 
+@import url("components/components.css");
+
 @import url("mobile-nav.css");
 
 @import url("animations.css");

@@ -1,0 +1,189 @@
+/*=========================================================
+                ORDER DETAIL
+=========================================================*/
+
+.order-hero{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    flex-wrap:wrap;
+
+    gap:1.5rem;
+
+    margin-bottom:2rem;
+
+}
+
+.order-actions{
+
+    display:flex;
+
+    gap:1rem;
+
+    flex-wrap:wrap;
+
+}
+
+/*=========================================================
+                SECTIONS
+=========================================================*/
+
+.detail-section{
+
+    background:var(--surface);
+
+    border-radius:var(--radius-lg);
+
+    padding:2rem;
+
+    margin-bottom:2rem;
+
+    box-shadow:var(--shadow-sm);
+
+}
+
+.detail-title{
+
+    margin-bottom:1.5rem;
+
+}
+
+/*=========================================================
+                MAP
+=========================================================*/
+
+.order-map{
+
+    height:420px;
+
+    border-radius:var(--radius-lg);
+
+    overflow:hidden;
+
+}
+
+/*=========================================================
+                SUMMARY GRID
+=========================================================*/
+
+.summary-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+
+    gap:1rem;
+
+}
+
+.summary-item{
+
+    background:var(--background);
+
+    padding:1rem;
+
+    border-radius:var(--radius-md);
+
+}
+
+.summary-item span{
+
+    display:block;
+
+    margin-bottom:.4rem;
+
+    color:var(--muted);
+
+}
+
+/*=========================================================
+                ITEMS
+=========================================================*/
+
+.item-card{
+
+    padding:1.5rem;
+
+    border:1px solid var(--border);
+
+    border-radius:var(--radius-md);
+
+    margin-bottom:1.2rem;
+
+    transition:var(--transition-normal);
+
+}
+
+.item-card:hover{
+
+    box-shadow:var(--shadow-sm);
+
+}
+
+/*=========================================================
+                TOTALS
+=========================================================*/
+
+.total-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin:.8rem 0;
+
+}
+
+.total-row.grand{
+
+    font-size:1.25rem;
+
+    font-weight:700;
+
+    border-top:1px solid var(--border);
+
+    padding-top:1rem;
+
+}
+
+/*=========================================================
+                DELIVERY CODE
+=========================================================*/
+
+.delivery-code{
+
+    text-align:center;
+
+    background:#FFF8E6;
+
+    border-radius:var(--radius-lg);
+
+    padding:2rem;
+
+}
+
+.delivery-code h2{
+
+    margin:1rem 0;
+
+    letter-spacing:8px;
+
+}
+
+/*=========================================================
+                ACTIONS
+=========================================================*/
+
+.action-buttons{
+
+    display:flex;
+
+    gap:1rem;
+
+    flex-wrap:wrap;
+
+}

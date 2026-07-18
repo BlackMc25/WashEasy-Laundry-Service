@@ -506,6 +506,64 @@
                         {{ form.delivery_longitude }}
 
                         </div>
+                        
+                            <div class="booking-map-card">
+
+                                <div class="booking-map-header">
+
+                                <h4>
+
+                                Choose Pickup & Delivery Locations
+
+                                </h4>
+
+                                <p>
+
+                                We'll automatically calculate the transport fee.
+
+                                </p>
+
+                                </div>
+
+                                <div id="map" class="booking-map"></div>
+
+                               <div class="distance-card">
+
+                                    <span>
+
+                                    Pickup Distance
+
+                                    </span>
+
+                                    {{ form.pickup_distance_km }}
+
+
+                                    </div>
+
+                                    <div class="distance-card">
+
+                                    <span>
+
+                                    Delivery Distance
+
+                                    </span>
+                                    {{ form.delivery_distance_km }}
+
+                                    </div>
+
+                                    <div class="distance-card">
+
+                                    <span>
+
+                                    Total Distance
+
+                                    </span>
+                                    {{ form.total_distance_km }}       
+
+                                    </div>
+
+                                 <div id="map" class="booking-map"></div>
+                            </div>
 
                             <div class="booking-card">
 
@@ -551,77 +609,6 @@
 
                         </div>
 
-                            <section class="booking-map-card">
-
-                                <div class="booking-map-header">
-
-                                <h4>
-
-                                Choose Pickup & Delivery Locations
-
-                                </h4>
-
-                                <p>
-
-                                We'll automatically calculate the transport fee.
-
-                                </p>
-
-                                </div>
-
-                                <div id="map" class="booking-map"></div>
-
-                               <div class="distance-card">
-
-                                    <span>
-
-                                    Pickup Distance
-
-                                    </span>
-
-                                    <strong id="pickup-distance">
-
-                                    0 km
-
-                                    </strong>
-
-                                    </div>
-
-                                    <div class="distance-card">
-
-                                    <span>
-
-                                    Delivery Distance
-
-                                    </span>
-
-                                    <strong id="delivery-distance">
-
-                                    0 km
-
-                                    </strong>
-
-                                    </div>
-
-                                    <div class="distance-card">
-
-                                    <span>
-
-                                    Total Distance
-
-                                    </span>
-
-                                    <strong id="total-distance">
-
-                                    0 km
-
-                                    </strong>
-
-                                    </div>
-
-                                 <div id="map" class="booking-map"></div>
-
-                            </section>
 
                         <div class="booking-card">
 

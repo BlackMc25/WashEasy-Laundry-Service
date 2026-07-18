@@ -1,18 +1,8 @@
 /*=========================================================
-                ORDER COMPONENTS
+                    ORDERS PAGE
 =========================================================*/
 
-/* Order Card */
-
-.order-card{
-
-    background:white;
-
-    border-radius:15px;
-
-    padding:20px;
-
-    margin-bottom:15px;
+.orders-header{
 
     display:flex;
 
@@ -20,21 +10,35 @@
 
     align-items:center;
 
-    box-shadow:0 4px 15px rgba(0,0,0,.08);
-
-    cursor:pointer;
-
-    transition:.3s;
+    margin-bottom:var(--space-xl);
 
 }
 
-.order-card:hover{
+.orders-header p{
 
-    transform:translateY(-3px);
+    margin-top:.5rem;
+
+    color:var(--muted);
 
 }
 
-/* Order Link */
+/*=========================================================
+                    GRID
+=========================================================*/
+
+.orders-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+
+    gap:var(--space-lg);
+
+}
+
+/*=========================================================
+                    ORDER CARD
+=========================================================*/
 
 .order-link{
 
@@ -44,20 +48,124 @@
 
 }
 
-/* Status Badge */
+.order-card{
 
-.status-badge{
+    background:var(--surface);
 
-    background:#e8f5e9;
+    border-radius:var(--radius-lg);
 
-    color:#2e7d32;
+    padding:1.5rem;
 
-    padding:6px 12px;
+    box-shadow:var(--shadow-sm);
 
-    border-radius:20px;
+    transition:var(--transition-normal);
 
-    font-size:12px;
+}
 
-    font-weight:600;
+.order-card:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:var(--shadow-md);
+
+}
+
+.order-top{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-start;
+
+    margin-bottom:1.2rem;
+
+}
+
+.order-number{
+
+    display:block;
+
+    color:var(--muted);
+
+    font-size:.85rem;
+
+    margin-bottom:.4rem;
+
+}
+
+.order-service{
+
+    font-size:1.15rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+}
+
+.order-middle{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-bottom:1.4rem;
+
+    color:var(--text-light);
+
+    font-size:.9rem;
+
+}
+
+.order-bottom{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    border-top:1px solid var(--border);
+
+    padding-top:1rem;
+
+}
+
+.order-price{
+
+    font-size:1.35rem;
+
+    font-weight:700;
+
+    color:var(--primary);
+
+}
+
+.order-arrow{
+
+    width:44px;
+
+    height:44px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border-radius:var(--radius-md);
+
+    background:var(--background);
+
+    transition:var(--transition-normal);
+
+}
+
+.order-card:hover .order-arrow{
+
+    background:var(--primary);
+
+    color:white;
 
 }

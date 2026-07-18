@@ -12,37 +12,79 @@
 
         {% for order in orders %}
 
-       <a
-    href="{% url 'order_detail' order.id %}"
-    class="order-link">
-    <div class="order-card mobile-card">
+       <a href="{% url 'order_detail' order.id %}" class="order-link">
+
+            <div class="order-card">
+
+            <div class="order-top">
 
             <div>
 
-                <h5>
-                   Order #{{ order.customer_order_number }}
-                </h5>
+            <span class="order-number">
 
-                <p>
-                    {{ order.service_type }}
-                </p>
+            Order #{{ order.customer_order_number }}
+
+            </span>
+
+            <div class="order-service">
+
+            {{ order.service_type }}
+
+            </div>
+
+            </div>
+
+            <span class="badge badge-primary">
+
+            {{ order.status }}
+
+            </span>
+
+            </div>
+
+            <div class="order-middle">
+
+            <div>
+
+            <strong>Total</strong>
+
+            <br>
+
+            ₦{{ order.total_amount }}
 
             </div>
 
             <div>
 
-                <h5>
-                    ₦{{ order.total_amount }}
-                </h5>
+            <strong>Pickup</strong>
 
-                <span class="status-badge badge bg-primary">
-                    {{ order.status }}
-                </span>
+            <br>
+
+            {{ order.pickup_date|date:"M d, Y"|default:"Pending" }}
 
             </div>
 
-        </div>
-    </a>
+            </div>
+
+            <div class="order-bottom">
+
+            <div class="order-price">
+
+            ₦{{ order.total_amount }}
+
+            </div>
+
+            <div class="order-arrow">
+
+            <i class="bi bi-arrow-right"></i>
+
+            </div>
+
+            </div>
+
+            </div>
+
+        </a>
         {% endfor %}
 
     {% else %}

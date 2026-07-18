@@ -54,11 +54,11 @@
 
     outline:none;
 
-    border-radius:16px;
+    border-radius:var(--radius-md);
 
-    background:#ffffff;
+    background:var(--surface);
 
-    color:#334155;
+    color:var(--text-light);
 
     font-size:1.2rem;
 
@@ -70,7 +70,7 @@
 
 .notification-btn:hover{
 
-    background:#0d6efd;
+    background:var(--primary);
 
     color:#ffffff;
 
@@ -94,7 +94,7 @@
 
     border-radius:50px;
 
-    background:#ef4444;
+    background:var(--danger);
 
     color:#ffffff;
 
@@ -124,7 +124,11 @@
 
     border-radius:18px;
 
-    background:linear-gradient(135deg,#0d6efd,#3b82f6);
+    background:linear-gradient(
+    135deg,
+    var(--primary),
+    var(--secondary)
+    );
 
     color:#ffffff;
 
@@ -161,7 +165,7 @@
 
     border:none;
 
-    border-radius:18px;
+    border-radius:var(--radius-md);
 
     padding:10px;
 
@@ -183,7 +187,7 @@
 
 .dropdown-item:hover{
 
-    background:#eef4ff;
+    background:#eef6ff;
 
 }
 

@@ -32,7 +32,7 @@
 
     padding:0 10px;
 
-    border-radius:24px;
+    border-radius:var(--radius-lg);
 
     background:rgba(255,255,255,.92);
 
@@ -69,7 +69,7 @@
 
     text-decoration:none;
 
-    color:#64748b;
+    color:var(--muted);
 
     border-radius:18px;
 
@@ -87,7 +87,7 @@
 
 .mobile-nav-item:hover{
 
-    color:#0d6efd;
+    color:var(--primary);
 
     text-decoration:none;
 
@@ -157,7 +157,7 @@
 
 .mobile-nav-item.active .book-circle{
 
-    background:#e8f1ff;
+   background:#eef6ff;
 
 }
 
@@ -175,7 +175,7 @@
 
     border-radius:20px;
 
-    background:#0d6efd;
+    background:var(--primary);
 
 }
 
@@ -203,7 +203,7 @@
 
     align-items:center;
 
-    background:#ef4444;
+    background:var(--danger);
 
     color:#ffffff;
 

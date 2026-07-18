@@ -14,22 +14,21 @@
     align-items:center;
     gap:18px;
 
-    background:#ffffff;
+    background:var(--surface);
 
     padding:24px;
 
-    border-radius:22px;
+    border-radius:var(--radius-lg);
 
     overflow:hidden;
 
-    border:1px solid #eef2f7;
+    border:1px solid var(--border);
 
-    box-shadow:
-        0 10px 35px rgba(15,23,42,.05);
+    box-shadow:var(--shadow-md);
 
     transition:
-        transform .35s ease,
-        box-shadow .35s ease;
+    transform var(--transition-normal),
+    box-shadow var(--transition-normal);
 }
 
 .stats-card:hover{
@@ -55,7 +54,7 @@
 
     height:100%;
 
-    background:#0d6efd;
+    background:var(--primary);
 
 }
 
@@ -87,7 +86,7 @@
 
     background:#eaf3ff;
 
-    color:#0d6efd;
+    color:var(--primary);
 
 }
 
@@ -95,7 +94,7 @@
 
     background:#fff7e6;
 
-    color:#f59e0b;
+    color:var(--warning);
 
 }
 
@@ -103,7 +102,7 @@
 
     background:#ecfdf3;
 
-    color:#16a34a;
+    color:var(--success);
 
 }
 
@@ -111,7 +110,7 @@
 
     background:#fdecec;
 
-    color:#dc2626;
+    color:var(--danger);
 
 }
 
@@ -127,7 +126,7 @@
 
     font-weight:600;
 
-    color:#64748b;
+    color:var(--muted);
 
     letter-spacing:.3px;
 
@@ -143,7 +142,7 @@
 
     font-weight:700;
 
-    color:#0f172a;
+    color:var(--text);
 
 }
 
@@ -153,16 +152,15 @@
 
 .mobile-card{
 
-    background:#ffffff;
+    background:var(--surface);   
 
     border:none;
 
-    border-radius:24px;
+    border-radius:var(--radius-lg);
 
     padding:28px;
 
-    box-shadow:
-        0 12px 35px rgba(15,23,42,.05);
+   box-shadow:var(--shadow-md);
 
 }
 

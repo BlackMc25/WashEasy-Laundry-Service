@@ -1129,10 +1129,44 @@ function updateSummary(){
     ).innerText =
     "₦"+
     expressFee.toLocaleString();
-
+    updateBookingProgress();
     updateGrandTotal();
 
 }
+
+    /* ==========================
+    BOOKING PROGRESS
+    ========================== */
+
+    function updateBookingProgress(){
+
+        const steps =
+            document.querySelectorAll(".progress-step");
+
+        // Step 1: Selected Items
+        let hasItems = false;
+
+        document.querySelectorAll(".qty2-value2").forEach(input => {
+
+            if(parseInt(input.value) > 0){
+
+                hasItems = true;
+
+            }
+
+        });
+
+        if(hasItems){
+
+            steps[0].classList.add("progress-active");
+
+        }else{
+
+            steps[0].classList.remove("progress-active");
+
+        }
+
+    }
 
 plusButtons.forEach(button => {
 

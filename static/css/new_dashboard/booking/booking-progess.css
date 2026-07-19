@@ -175,30 +175,34 @@ transform:translateY(0);
 }
 
 /*=========================================================
-                SHOW / HIDE
+                BOOKING WIZARD
 =========================================================*/
 
-.booking-hidden{
+.booking-step{
 
     display:none;
 
+    opacity:0;
+
+    transform:translateX(40px);
+
 }
 
-.booking-visible{
+.booking-step.active{
 
     display:block;
 
-    animation:fadeBooking .45s ease;
+    animation:stepSlide .45s ease forwards;
 
 }
 
-@keyframes fadeBooking{
+@keyframes stepSlide{
 
     from{
 
         opacity:0;
 
-        transform:translateY(25px);
+        transform:translateX(40px);
 
     }
 
@@ -206,8 +210,45 @@ transform:translateY(0);
 
         opacity:1;
 
-        transform:translateY(0);
+        transform:translateX(0);
 
     }
+
+}
+/*=========================================================
+                NAVIGATION
+=========================================================*/
+
+.booking-navigation{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-top:2rem;
+
+}
+
+.booking-navigation .btn{
+
+    min-width:180px;
+
+}
+
+.progress-step{
+
+    cursor:pointer;
+
+    user-select:none;
+
+    transition:.3s;
+
+}
+
+.progress-step:hover{
+
+    transform:translateY(-3px);
 
 }

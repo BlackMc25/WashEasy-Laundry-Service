@@ -1,81 +1,160 @@
 /*=========================================================
-                BOOKING PROGRESS
+                WASHEASY BOOKING WIZARD
 =========================================================*/
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
 
-    const step1 = document.getElementById("step-1");
-    const step2 = document.getElementById("step-2");
-    const step3 = document.getElementById("step-3");
+    /*=====================================================
+                    ELEMENTS
+    =====================================================*/
 
-    const bookingSection =
-        document.getElementById("booking-details-section");
+    const pages = {
 
-    const reviewSection =
-        document.getElementById("review-section");
+        step1: document.getElementById("step1-page"),
+        step2: document.getElementById("step2-page"),
+        step3: document.getElementById("step3-page")
 
-    function showSection(section){
+    };
 
-        if(!section) return;
+    const progress = [
 
-        section.classList.remove("booking-hidden");
-        section.classList.add("booking-visible");
+        document.getElementById("step-1"),
+        document.getElementById("step-2"),
+        document.getElementById("step-3")
 
-    }
+    ];
 
-    function hideSection(section){
+    const nextBooking =
+        document.getElementById("next-to-booking");
 
-        if(!section) return;
+    const nextReview =
+        document.getElementById("next-to-review");
 
-        section.classList.remove("booking-visible");
-        section.classList.add("booking-hidden");
+    const backItems =
+        document.getElementById("back-to-items");
 
-    }
+    const backBooking =
+        document.getElementById("back-to-booking");
 
-    function completeStep(step){
+    let currentStep = 1;
 
-        step.classList.remove("progress-active");
-        step.classList.add("progress-complete");
+    /*=====================================================
+                    PAGE CONTROL
+    =====================================================*/
 
-    }
+    function hideAllPages(){
 
-    function activateStep(step){
+        Object.values(pages).forEach(page=>{
 
-        step.classList.add("progress-active");
+            page.classList.remove("active");
 
-    }
-
-    function resetStep(step){
-
-        step.classList.remove(
-            "progress-active",
-            "progress-complete"
-        );
+        });
 
     }
 
-    function hasLaundryItems(){
+    function resetProgress(){
+
+        progress.forEach(step=>{
+
+            step.classList.remove(
+                "progress-active",
+                "progress-complete"
+            );
+
+        });
+
+    }
+
+    function showStep(step){
+
+        currentStep = step;
+
+        hideAllPages();
+
+        resetProgress();
+
+        switch(step){
+
+            case 1:
+
+                pages.step1.classList.add("active");
+
+                progress[0].classList.add(
+                    "progress-active"
+                );
+
+                break;
+
+            case 2:
+
+                pages.step2.classList.add("active");
+
+                progress[0].classList.add(
+                    "progress-complete"
+                );
+
+                progress[1].classList.add(
+                    "progress-active"
+                );
+
+                break;
+
+            case 3:
+
+                pages.step3.classList.add("active");
+
+                progress[0].classList.add(
+                    "progress-complete"
+                );
+
+                progress[1].classList.add(
+                    "progress-complete"
+                );
+
+                progress[2].classList.add(
+                    "progress-active"
+                );
+
+                break;
+
+        }
+
+        window.scrollTo({
+
+            top:0,
+
+            behavior:"smooth"
+
+        });
+
+    }
+
+    /*=====================================================
+                    VALIDATION
+    =====================================================*/
+
+    function validateItems(){
 
         const quantities =
             document.querySelectorAll(".qty2-value2");
 
-        let selected = false;
+        for(const qty of quantities){
 
-        quantities.forEach(input=>{
+            if(parseInt(qty.value)>0){
 
-            if(parseInt(input.value) > 0){
-
-                selected = true;
+                return true;
 
             }
 
-        });
+        }
 
-        return selected;
+        alert("Please select at least one laundry item.");
+
+        return false;
 
     }
 
-    function bookingDetailsCompleted(){
+    function validateBooking(){
 
         const phone =
             document.querySelector(
@@ -83,116 +162,126 @@ document.addEventListener("DOMContentLoaded", function () {
             );
 
         const pickup =
-            document.getElementById("id_pickup_date");
+            document.getElementById(
+                "id_pickup_date"
+            );
 
-        if(!phone || !pickup){
+        if(phone.value.trim()===""){
+
+            alert("Please enter your phone number.");
+
+            phone.focus();
 
             return false;
 
         }
 
-        return (
+        if(pickup.value===""){
 
-            phone.value.trim() !== "" &&
+            alert("Please select a pickup date.");
 
-            pickup.value.trim() !== ""
+            pickup.focus();
 
-        );
-
-    }
-
-    function updateProgress(){
-
-        // STEP 1
-
-        if(hasLaundryItems()){
-
-            completeStep(step1);
-
-            activateStep(step2);
-
-            showSection(bookingSection);
-
-        }else{
-
-            activateStep(step1);
-
-            resetStep(step2);
-            resetStep(step3);
-
-            hideSection(bookingSection);
-            hideSection(reviewSection);
-
-            return;
+            return false;
 
         }
 
-        // STEP 2
-
-        if(bookingDetailsCompleted()){
-
-            completeStep(step2);
-
-            activateStep(step3);
-
-            showSection(reviewSection);
-
-        }else{
-
-            resetStep(step3);
-
-            hideSection(reviewSection);
-
-        }
+        return true;
 
     }
 
-    // Watch quantity buttons
+    /*=====================================================
+                    BUTTONS
+    =====================================================*/
 
-    document.querySelectorAll(
-        ".plus-btn2,.minus-btn2,.plus-express-btn,.minus-express-btn"
-    ).forEach(button=>{
+    if(nextBooking){
 
-        button.addEventListener("click",function(){
+        nextBooking.addEventListener("click",()=>{
 
-            setTimeout(updateProgress,100);
+            if(validateItems()){
+
+                showStep(2);
+
+            }
 
         });
 
+    }
+
+    if(backItems){
+
+        backItems.addEventListener("click",()=>{
+
+            showStep(1);
+
+        });
+
+    }
+
+    if(nextReview){
+
+        nextReview.addEventListener("click",()=>{
+
+            if(validateBooking()){
+
+                showStep(3);
+
+            }
+
+        });
+
+    }
+
+    if(backBooking){
+
+        backBooking.addEventListener("click",()=>{
+
+            showStep(2);
+
+        });
+
+    }
+
+    /*=====================================================
+                CLICKABLE PROGRESS
+    =====================================================*/
+
+    progress[0].addEventListener("click",()=>{
+
+        showStep(1);
+
     });
 
-    // Watch phone
+    progress[1].addEventListener("click",()=>{
 
-    const phone =
-        document.querySelector(
-            'input[name="phone_number"]'
-        );
+        if(validateItems()){
 
-    if(phone){
+            showStep(2);
 
-        phone.addEventListener(
-            "input",
-            updateProgress
-        );
+        }
 
-    }
+    });
 
-    // Watch pickup date
+    progress[2].addEventListener("click",()=>{
 
-    const pickupDate =
-        document.getElementById("id_pickup_date");
+        if(
 
-    if(pickupDate){
+            validateItems() &&
 
-        pickupDate.addEventListener(
-            "change",
-            updateProgress
-        );
+            validateBooking()
 
-    }
+        ){
 
-    // Initial state
+            showStep(3);
 
-    updateProgress();
+        }
+
+    });
+
+    /*=====================================================
+                    START
+    =====================================================*/
+
+    showStep(1);
 
 });

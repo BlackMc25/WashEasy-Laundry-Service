@@ -84,77 +84,122 @@
         <div class="booking-page">
 
             <div class="booking-main">
+             <!-- STEP 1 -->
+        <section id="step1-page"  class="booking-section">
+                
+                           <h3 class="booking-section-title">
 
-                <section class="booking-section">
+                                Select Laundry Items
 
-                    <h3 class="booking-section-title">
+                            </h3>
 
-                        Select Laundry Items
+                            <div class="alert alert-info booking-guide">
 
-                    </h3>
+                                <strong>
 
-                    <div class="alert alert-info booking-guide">
+                                    <i class="bi bi-info-circle-fill me-2"></i>
 
-                        <strong>
+                                    How to Order
 
-                            <i class="bi bi-info-circle-fill me-2"></i>
+                                </strong>
 
-                            How to Order
+                                <p class="mt-2 mb-0">
 
-                        </strong>
+                                    Select the service required for each clothing item,
+                                    then use the <strong>+</strong> and
+                                    <strong>−</strong> buttons to choose the quantity.
 
-                        <p class="mt-2 mb-0">
+                                </p>
 
-                            Select the service required for each clothing item,
-                            then use the <strong>+</strong> and
-                            <strong>−</strong> buttons to choose the quantity.
+                                <ul class="mt-3 mb-0">
 
-                        </p>
+                                    <li>Shirts → Wash & Iron</li>
 
-                        <ul class="mt-3 mb-0">
+                                    <li>Suits → Dry Cleaning</li>
 
-                            <li>Shirts → Wash & Iron</li>
+                                    <li>Trousers → Wash & Fold</li>
 
-                            <li>Suits → Dry Cleaning</li>
+                                </ul>
 
-                            <li>Trousers → Wash & Fold</li>
+                            </div>
 
-                        </ul>
+                            <!-- ==========================
+                                CATEGORY ACCORDION
+                            =========================== -->
 
-                    </div>
+                            <div class="accordion" id="laundryAccordion">
 
-                    <!-- ==========================
-                        CATEGORY ACCORDION
-                    =========================== -->
+                                {% for category, clothing_items in categories.items %}
 
-                    <div class="accordion" id="laundryAccordion">
+                                <div class="accordion-item laundry-category">
 
-                        {% for category, clothing_items in categories.items %}
+                                    <h2 class="accordion-header">
 
-                        <div class="accordion-item laundry-category">
+                                        <button
+                                            class="accordion-button {% if not forloop.first %}collapsed{% endif %}"
+                                            type="button"
+                                            data-bs-toggle="collapse"
+                                            data-bs-target="#category{{ forloop.counter }}"
+                                            aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}">
 
-                            <h2 class="accordion-header">
+                                            <div class="category-header">
 
-                                <button
-                                    class="accordion-button {% if not forloop.first %}collapsed{% endif %}"
-                                    type="button"
-                                    data-bs-toggle="collapse"
-                                    data-bs-target="#category{{ forloop.counter }}"
-                                    aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}">
+                                                <div>
 
-                                    <div class="category-header">
+                                                    <h5>
+
+                                                        {{ category }}
+
+                                                    </h5>
+
+                                                    <small>
+
+                                                        {{ clothing_items|length }} Clothing Types
+
+                                                    </small>
+
+                                                </div>
+
+                                                <i class="bi bi-chevron-down"></i>
+
+                                            </div>
+
+                                        </button>
+
+                                    </h2>
+
+                <div
+                    id="category{{ forloop.counter }}"
+                    class="accordion-collapse collapse {% if forloop.first %}show{% endif %}"
+                    data-bs-parent="#laundryAccordion">
+
+                <div class="accordion-body">
+
+                    {% for item_name, services in clothing_items.items %}
+
+                                <!-- ==========================
+                                    ITEM CARD
+                                =========================== -->
+
+                                <div class="laundry-card">
+
+                                    <div
+                                        class="laundry-title"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target="#item{{ forloop.counter }}"
+                                        style="cursor:pointer;">
 
                                         <div>
 
                                             <h5>
 
-                                                {{ category }}
+                                                {{ item_name }}
 
                                             </h5>
 
                                             <small>
 
-                                                {{ clothing_items|length }} Clothing Types
+                                                Choose a laundry service
 
                                             </small>
 
@@ -164,360 +209,183 @@
 
                                     </div>
 
-                                </button>
+                    <div
+                        id="item{{ forloop.counter }}"
+                        class="collapse">
 
-                            </h2>
+                        <div class="laundry-body">
 
-        <div
-            id="category{{ forloop.counter }}"
-            class="accordion-collapse collapse {% if forloop.first %}show{% endif %}"
-            data-bs-parent="#laundryAccordion">
+                            {% for service in services %}
 
-        <div class="accordion-body">
+                                <div class="item-row mb-3" data-service-id="{{ service.id }}">
 
-            {% for item_name, services in clothing_items.items %}
+                                    <!-- Top Row -->
 
-                        <!-- ==========================
-                            ITEM CARD
-                        =========================== -->
+                                    <div class="service-row">
 
-                        <div class="laundry-card">
+                                        <div class="item-info">
 
-                            <div
-                                class="laundry-title"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#item{{ forloop.counter }}"
-                                style="cursor:pointer;">
+                                            <p class="fw-bold mb-1">
+                                                {{ service.service_type }}
+                                            </p>
 
-                                <div>
+                                            <small>
+                                                ₦{{ service.price }}
+                                            </small>
 
-                                    <h5>
+                                        </div>
 
-                                        {{ item_name }}
+                                        <div class="quantity-controls2">
 
-                                    </h5>
+                                            <button
+                                                class="qty2-btn2 minus-btn2"
+                                                type="button">
 
-                                    <small>
+                                                −
 
-                                        Choose a laundry service
+                                            </button>
 
-                                    </small>
+                                            <input
+                                                type="number"
+                                                name="item_{{ service.id }}"
+                                                value="0"
+                                                min="0"
+                                                readonly
+                                                class="qty2-value2"
+                                                data-price="{{ service.price }}"
+                                                data-express="{{ service.express_price }}"
+                                                data-item="{{ item_name }}"
+                                                data-service="{{ service.service_type }}">
 
-                                </div>
+                                            <button
+                                                class="qty2-btn2 plus-btn2"
+                                                type="button">
 
-                                <i class="bi bi-chevron-down"></i>
+                                                +
 
-                            </div>
+                                            </button>
 
-            <div
-                id="item{{ forloop.counter }}"
-                class="collapse">
+                                        </div>
 
-                <div class="laundry-body">
+                                    </div>
 
-                    {% for service in services %}
+                                    <!-- EXPRESS -->
 
-                        <div class="item-row mb-3" data-service-id="{{ service.id }}">
+                                    <div class="express-container">
 
-                            <!-- Top Row -->
+                                        <div class="express-header">
 
-                            <div class="service-row">
+                                            <span>
 
-                                <div class="item-info">
+                                                ⚡ Express Service
 
-                                    <p class="fw-bold mb-1">
-                                        {{ service.service_type }}
-                                    </p>
+                                            </span>
 
-                                    <small>
-                                        ₦{{ service.price }}
-                                    </small>
+                                            <label class="express-switch">
 
-                                </div>
+                                                <input
+                                                    type="checkbox"
+                                                    class="express-toggle"
+                                                    data-id="{{ service.id }}">
 
-                                <div class="quantity-controls2">
+                                                <span class="slider"></span>
 
-                                    <button
-                                        class="qty2-btn2 minus-btn2"
-                                        type="button">
+                                            </label>
 
-                                        −
+                                        </div>
 
-                                    </button>
+                                        <div
+                                            class="express-quantity"
+                                            id="expressQty{{ service.id }}"
+                                            style="display:none;">
 
-                                    <input
-                                        type="number"
-                                        name="item_{{ service.id }}"
-                                        value="0"
-                                        min="0"
-                                        readonly
-                                        class="qty2-value2"
-                                        data-price="{{ service.price }}"
-                                        data-express="{{ service.express_price }}"
-                                        data-item="{{ item_name }}"
-                                        data-service="{{ service.service_type }}">
+                                            <small class="express-price">
 
-                                    <button
-                                        class="qty2-btn2 plus-btn2"
-                                        type="button">
+                                                + ₦{{ service.express_price }} per item
 
-                                        +
+                                            </small>
 
-                                    </button>
+                                            <div class="qty2-wrapper">
 
-                                </div>
+                                                <button
+                                                    type="button"
+                                                    class="minus-express-btn">
 
-                            </div>
+                                                    −
 
-                            <!-- EXPRESS -->
+                                                </button>
 
-                            <div class="express-container">
+                                                <input
+                                                    type="number"
+                                                    class="express-qty"
+                                                    name="express_item_{{ service.id }}"
+                                                    value="0"
+                                                    min="0"
+                                                    readonly
+                                                    data-price="{{ service.price }}"
+                                                    data-express="{{ service.express_price }}"
+                                                    data-item="{{ item_name }}"
+                                                    data-service="{{ service.service_type }}">
 
-                                <div class="express-header">
+                                                <button
+                                                    type="button"
+                                                    class="plus-express-btn">
 
-                                    <span>
+                                                    +
 
-                                        ⚡ Express Service
+                                                </button>
 
-                                    </span>
+                                            </div>
 
-                                    <label class="express-switch">
-
-                                        <input
-                                            type="checkbox"
-                                            class="express-toggle"
-                                            data-id="{{ service.id }}">
-
-                                        <span class="slider"></span>
-
-                                    </label>
-
-                                </div>
-
-                                <div
-                                    class="express-quantity"
-                                    id="expressQty{{ service.id }}"
-                                    style="display:none;">
-
-                                    <small class="express-price">
-
-                                        + ₦{{ service.express_price }} per item
-
-                                    </small>
-
-                                    <div class="qty2-wrapper">
-
-                                        <button
-                                            type="button"
-                                            class="minus-express-btn">
-
-                                            −
-
-                                        </button>
-
-                                        <input
-                                            type="number"
-                                            class="express-qty"
-                                            name="express_item_{{ service.id }}"
-                                            value="0"
-                                            min="0"
-                                            readonly
-                                            data-price="{{ service.price }}"
-                                            data-express="{{ service.express_price }}"
-                                            data-item="{{ item_name }}"
-                                            data-service="{{ service.service_type }}">
-
-                                        <button
-                                            type="button"
-                                            class="plus-express-btn">
-
-                                            +
-
-                                        </button>
+                                        </div>
 
                                     </div>
 
                                 </div>
 
+                            <hr>
+
+                            {% endfor %}
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                    {% endfor %}
+
                             </div>
 
                         </div>
 
-                    <hr>
-
-                    {% endfor %}
-
-                </div>
-
-            </div>
-
-        </div>
-
-            {% endfor %}
-
                     </div>
 
-                </div>
-
-            </div>
-
-    {% endfor %}
-
-        </div>
-
-    </div>
-
-    </section>
-
-    <aside class="booking-sidebar">
-
-         <div class="summary-card">
-
-                <div class="summary-header">
-
-                    <div>
-
-                        <h4>Order Summary</h4>
-
-                        <small>
-
-                            Your selected laundry items
-
-                        </small>
-
-                    </div>
-
-                    <div class="summary-icon">
-
-                        <i class="bi bi-bag-check"></i>
-
-                    </div>
+                {% endfor %}
 
                 </div>
 
-                <div id="selected-items">
-
-                    <p class="text-muted">
-                        No items selected
-                    </p>
-
                 </div>
 
-                <hr>
+                <div class="booking-navigation">
 
-                <hr>
+                    <div></div>
 
-            <div class="summary-row">
+                    <button
+                        type="button"
+                        id="next-to-booking"
+                        class="btn btn-primary btn-lg">
 
-                <span>
+                        Continue
 
-                Laundry Cost
+                        <i class="bi bi-arrow-right"></i>
 
-                </span>
-
-                <strong>
-
-                ₦<span id="laundry-cost">0</span>
-
-                </strong>
+                    </button>
 
                 </div>
+        </section>
 
-                <div class="summary-row">
-
-                <span>
-
-                Transport Fee
-
-                </span>
-
-                <strong id="transport-fee">
-
-                ₦0
-
-                </strong>
-
-                </div>
-
-                <div class="summary-row">
-
-                <span>
-
-                Express Service
-
-                </span>
-
-                <strong id="express-fee">
-
-                ₦0
-
-                </strong>
-
-                </div>
-                <p>
-                    Pickup Distance:
-                    <span id="pickup-distance">
-                        0 km
-                    </span>
-                </p>
-
-                <p>
-                    Delivery Distance:
-                    <span id="delivery-distance">
-                        0 km
-                    </span>
-                </p>
-
-                <p>
-                    Transport Fee:
-                    <strong id="transport-fee">
-                        ₦0
-                    </strong>
-                </p>
-
-                <p>
-
-                    Express Service:
-
-                    <strong id="express-fee">
-
-                        ₦0
-
-                    </strong>
-
-                </p>
-
-                <hr>
-
-                <h4>
-                    Total:
-                    ₦<span id="total-cost">0</span>
-                </h4>
-
-                <hr>
-               
-            </div>
-
-            <div class="summary-total-card">
-
-                <small>
-
-                Estimated Total
-
-                </small>
-
-                <h2>
-
-                ₦<span id="total-cost">
-
-                0
-
-                </span>
-
-                </h2>
-
-                </div>
-            <section class="booking-section booking-hidden""  id="booking-details-section">
+        <section id="step2-page"  class="booking-section booking-hidden""  id="booking-details-section">
 
                     <h3 class="booking-section-title">
                         Booking Details
@@ -804,46 +672,239 @@
                                 If your garments require delicate handling, stain treatment, or any special washing instructions, let us know below.
 
                             </div>
-
                             <br>
 
                             {{ form.special_instructions }}
 
                         </div>
 
-                        <!-- ==========================
-                            REVIEW
-                        =========================== -->
+                    </div>
 
-                        <div class="review-card booking-hidden" id="review-section">
+                    <div class="booking-navigation">
 
-                            <h3>
+                        <button
+                            type="button"
+                            id="back-to-items"
+                            class="btn btn-outline">
 
-                                Ready to Book?
+                            <i class="bi bi-arrow-left"></i>
 
-                            </h3>
+                            Back
 
-                            <p>
+                        </button>
 
-                                Review your selected laundry items, pickup details and payment information before confirming your booking.
+                        <button
+                            type="button"
+                            id="next-to-review"
+                            class="btn btn-primary">
 
-                            </p>
+                            Continue
 
-                            <button
-                                type="submit"
-                                class="btn btn-light btn-lg review-btn">
+                            <i class="bi bi-arrow-right"></i>
 
-                                <i class="bi bi-check-circle-fill"></i>
-
-                                Confirm Booking
-
-                            </button>
-
-                        </div>
+                        </button>
 
                     </div>
 
                 </section>
+
+             <!-- ==========================
+                            REVIEW
+            =========================== -->
+
+        <!-- STEP 3 -->
+    <section id="step3-page">
+        <div class="review-card booking-hidden" id="review-section">
+
+                <h3>
+
+                    Ready to Book?
+
+                </h3>
+
+                <p>
+
+                    Review your selected laundry items, pickup details and payment information before confirming your booking.
+
+                </p>
+
+                <div class="booking-navigation">
+
+                    <button
+                        type="button"
+                        id="back-to-booking"
+                        class="btn btn-outline">
+
+                        <i class="bi bi-arrow-left"></i>
+
+                        Back
+
+                    </button>
+
+                </div>
+
+                <button
+                    type="submit"
+                    class="btn btn-light btn-lg review-btn">
+
+                    <i class="bi bi-check-circle-fill"></i>
+
+                    Confirm Booking
+
+                </button>
+
+            </div>
+
+        </section>
+
+    <aside class="booking-sidebar">
+
+         <div class="summary-card">
+
+                <div class="summary-header">
+
+                    <div>
+
+                        <h4>Order Summary</h4>
+
+                        <small>
+
+                            Your selected laundry items
+
+                        </small>
+
+                    </div>
+
+                    <div class="summary-icon">
+
+                        <i class="bi bi-bag-check"></i>
+
+                    </div>
+
+                </div>
+
+                <div id="selected-items">
+
+                    <p class="text-muted">
+                        No items selected
+                    </p>
+
+                </div>
+
+                <hr>
+
+                <hr>
+
+            <div class="summary-row">
+
+                <span>
+
+                Laundry Cost
+
+                </span>
+
+                <strong>
+
+                ₦<span id="laundry-cost">0</span>
+
+                </strong>
+
+                </div>
+
+                <div class="summary-row">
+
+                <span>
+
+                Transport Fee
+
+                </span>
+
+                <strong id="transport-fee">
+
+                ₦0
+
+                </strong>
+
+                </div>
+
+                <div class="summary-row">
+
+                <span>
+
+                Express Service
+
+                </span>
+
+                <strong id="express-fee">
+
+                ₦0
+
+                </strong>
+
+                </div>
+                <p>
+                    Pickup Distance:
+                    <span id="pickup-distance">
+                        0 km
+                    </span>
+                </p>
+
+                <p>
+                    Delivery Distance:
+                    <span id="delivery-distance">
+                        0 km
+                    </span>
+                </p>
+
+                <p>
+                    Transport Fee:
+                    <strong id="transport-fee">
+                        ₦0
+                    </strong>
+                </p>
+
+                <p>
+
+                    Express Service:
+
+                    <strong id="express-fee">
+
+                        ₦0
+
+                    </strong>
+
+                </p>
+
+                <hr>
+
+                <h4>
+                    Total:
+                    ₦<span id="total-cost">0</span>
+                </h4>
+
+                <hr>
+               
+            </div>
+
+            <div class="summary-total-card">
+
+                <small>
+
+                Estimated Total
+
+                </small>
+
+                <h2>
+
+                ₦<span id="total-cost">
+
+                0
+
+                </span>
+
+                </h2>
+
+                </div>
 
         </div>
 
@@ -1111,44 +1172,11 @@ function updateSummary(){
     ).innerText =
     "₦"+
     expressFee.toLocaleString();
-    updateBookingProgress();
+    
     updateGrandTotal();
 
 }
 
-    /* ==========================
-    BOOKING PROGRESS
-    ========================== */
-
-    function updateBookingProgress(){
-
-        const steps =
-            document.querySelectorAll(".progress-step");
-
-        // Step 1: Selected Items
-        let hasItems = false;
-
-        document.querySelectorAll(".qty2-value2").forEach(input => {
-
-            if(parseInt(input.value) > 0){
-
-                hasItems = true;
-
-            }
-
-        });
-
-        if(hasItems){
-
-            steps[0].classList.add("progress-active");
-
-        }else{
-
-            steps[0].classList.remove("progress-active");
-
-        }
-
-    }
 
 plusButtons.forEach(button => {
 

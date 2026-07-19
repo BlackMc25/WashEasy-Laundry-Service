@@ -3,9 +3,10 @@
 =========================================================*/
 
 .booking-page{
-    display:flex !important;
-    align-items:flex-start;
+    display:grid;
+    grid-template-columns:2fr 420px;
     gap:2rem;
+    border:5px solid red;
 }
 
 
@@ -86,11 +87,9 @@
 =========================================================*/
 
 .booking-sidebar{
-    width:420px;
-    position:sticky;
-    top:100px;
-    align-self:flex-start;
+    background:yellow;
 }
+
 
 /*=========================================================
                 RESPONSIVE

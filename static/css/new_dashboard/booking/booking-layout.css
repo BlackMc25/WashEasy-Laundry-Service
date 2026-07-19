@@ -3,16 +3,16 @@
 =========================================================*/
 
 .booking-page{
-
-    display:grid;
-
-    grid-template-columns:2fr 420px;
-
+    display:flex !important;
+    align-items:flex-start;
     gap:2rem;
-
-    align-items:start;
-
 }
+
+
+
+
+
+
 
 /*=========================================================
                 HERO
@@ -55,13 +55,8 @@
 =========================================================*/
 
 .booking-main{
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:2rem;
-
+    flex:1;
+    min-width:0;
 }
 
 /*=========================================================
@@ -91,17 +86,10 @@
 =========================================================*/
 
 .booking-sidebar{
-
+    width:420px;
     position:sticky;
-
     top:100px;
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:1.5rem;
-
+    align-self:flex-start;
 }
 
 /*=========================================================

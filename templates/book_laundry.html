@@ -1529,6 +1529,12 @@ function initAutocomplete(){
                         + ' km';
 
                     document.getElementById(
+                        "pickup-distance"
+                    ).innerText =
+                        pickupDistance.toFixed(2)
+                        + " km";
+
+                    document.getElementById(
                         'id_pickup_distance_km'
                     ).value =
                         pickupDistance.toFixed(2);
@@ -1668,6 +1674,12 @@ function initAutocomplete(){
         ).innerText =
             deliveryDistance.toFixed(2)
             + ' km';
+
+        document.getElementById(
+            "delivery-distance"
+        ).innerText =
+            deliveryDistance.toFixed(2)
+            + " km";
 
         document.getElementById(
             'id_delivery_distance_km'
@@ -1907,20 +1919,6 @@ window.addEventListener(
 </script>
 
 
-
-<script>
-document.querySelector("form").addEventListener("submit", function(){
-
-    console.log("POST VALUES");
-
-    console.log(document.getElementById("id_pickup_distance_km").value);
-
-    console.log(document.getElementById("id_delivery_distance_km").value);
-
-    console.log(document.getElementById("id_total_distance_km").value);
-
-});
-</script>
 
 </form>
 

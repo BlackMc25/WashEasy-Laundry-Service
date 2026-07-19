@@ -231,10 +231,15 @@ def book_laundry(request):
             total_amount += transport_fee
 
             order.total_amount = total_amount
-            print("POST Pickup:", request.POST.get("pickup_distance_km"))
-            print("POST Delivery:", request.POST.get("delivery_distance_km"))
-            print("POST Total:", request.POST.get("total_distance_km"))
-            print("Order Pickup:", order.pickup_distance_km)
+            return HttpResponse(f"""
+            Pickup: {request.POST.get('pickup_distance_km')}<br>
+            Delivery: {request.POST.get('delivery_distance_km')}<br>
+            Total: {request.POST.get('total_distance_km')}<br>
+
+            Order Pickup: {order.pickup_distance_km}<br>
+            Order Delivery: {order.delivery_distance_km}<br>
+            Order Total: {order.total_distance_km}
+            """)
             order.save()
 
             # -----------------------------

@@ -3,15 +3,23 @@
 =========================================================*/
 
 .booking-page{
+
     display:grid;
+
     grid-template-columns:2fr 420px;
+
     gap:2rem;
-    border:5px solid red;
+
+    align-items:start;
+
 }
 
 
 
-
+.booking-main{
+    flex:1;
+    min-width:0;
+}
 
 
 
@@ -56,8 +64,13 @@
 =========================================================*/
 
 .booking-main{
-    flex:1;
-    min-width:0;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:2rem;
+
 }
 
 /*=========================================================
@@ -87,9 +100,11 @@
 =========================================================*/
 
 .booking-sidebar{
-    background:yellow;
+    width:420px;
+    position:sticky;
+    top:100px;
+    align-self:flex-start;
 }
-
 
 /*=========================================================
                 RESPONSIVE

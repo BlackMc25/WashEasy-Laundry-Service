@@ -845,20 +845,12 @@
                 </div>
                 <p>
                     Pickup Distance:
-                    <span id="pickup-distance">
-                        0 km
-                    </span>
-
-                    {{ form.pickup_distance_km }}
+                    <span id="summary-pickup-distance">0 km</span>
                 </p>
 
                 <p>
                     Delivery Distance:
-                    <span id="delivery-distance">
-                        0 km
-                    </span>
-
-                    {{ form.delivery_distance_km }}
+                    <span id="summary-delivery-distance">0 km</span>
                 </p>
 
                 <hr>
@@ -1536,7 +1528,7 @@ function initAutocomplete(){
                         );
 
                     document.getElementById(
-                        'pickup-distance'
+                        'summary-pickup-distance'
                     ).innerText =
                         pickupDistance.toFixed(2)
                         + ' km';
@@ -1677,7 +1669,7 @@ function initAutocomplete(){
             );
 
         document.getElementById(
-            'delivery-distance'
+            'summary-delivery-distance'
         ).innerText =
             deliveryDistance.toFixed(2)
             + ' km';

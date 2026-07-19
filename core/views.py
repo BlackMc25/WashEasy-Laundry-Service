@@ -235,16 +235,7 @@ def book_laundry(request):
             order.save()
 
             order.refresh_from_db()
-
-            return HttpResponse(f"""
-            Pickup: {request.POST.get('pickup_distance_km')}<br>
-            Delivery: {request.POST.get('delivery_distance_km')}<br>
-            Total: {request.POST.get('total_distance_km')}<br>
             
-            Database Pickup: {order.pickup_distance_km}<br>
-            Database Delivery: {order.delivery_distance_km}<br>
-            Database Total: {order.total_distance_km}<br>
-            """)
             # -----------------------------
             # Notification
             # -----------------------------

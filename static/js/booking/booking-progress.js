@@ -194,19 +194,28 @@ document.addEventListener("DOMContentLoaded", () => {
                     BUTTONS
     =====================================================*/
 
-    if(nextBooking){
+if(nextBooking){
 
-        nextBooking.addEventListener("click",()=>{
+    nextBooking.addEventListener("click",()=>{
 
-            if(validateItems()){
+        if(validateItems()){
 
-                showStep(2);
+            showStep(2);
 
-            }
+            // Refresh Leaflet after Step 2 becomes visible
+            setTimeout(() => {
 
-        });
+                if (typeof map !== "undefined" && map) {
+                    map.invalidateSize();
+                }
 
-    }
+            }, 300);
+
+        }
+
+    });
+
+}
 
     if(backItems){
 

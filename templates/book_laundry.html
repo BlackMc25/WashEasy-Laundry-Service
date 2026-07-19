@@ -1351,6 +1351,17 @@ window.addEventListener(
         )
         .openPopup();
 
+        // Refresh map after the booking wizard makes it visible
+        document.addEventListener("bookingStepVisible", function () {
+
+            setTimeout(() => {
+
+                map.invalidateSize();
+
+            }, 200);
+
+        });
+
     }
 );
 

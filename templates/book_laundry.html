@@ -423,7 +423,7 @@
 
                                         <input
                                             type="text"
-                                            name="pickup_address"
+                                            name="pickup_address_km"
                                             id="pickup-address"
                                             class="form-control"
                                             value="{{ request.user.default_pickup_address|default:'' }}"
@@ -469,7 +469,7 @@
                                         <input
                                             type="text"
                                             name="delivery_address"
-                                            id="delivery-address"
+                                            id="delivery-address_km"
                                             class="form-control"
                                             value="{{ request.user.default_delivery_address|default:'' }}"
                                             list="delivery-history"

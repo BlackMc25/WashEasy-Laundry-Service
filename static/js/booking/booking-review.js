@@ -31,7 +31,7 @@ function updateReviewPage(){
         "review-phone"
     ).innerText =
         document.getElementById(
-            "id_phone_number"
+            "phone_number"
         ).value || "Not Provided";
 
 
@@ -40,14 +40,14 @@ function updateReviewPage(){
         "review-date"
     ).innerText =
         document.getElementById(
-            "id_pickup_date"
+            "pickup_date"
         ).value || "Not Selected";
 
 
     // Payment Method
     const payment =
         document.getElementById(
-            "id_payment_method"
+            "payment_method"
         );
 
     document.getElementById(

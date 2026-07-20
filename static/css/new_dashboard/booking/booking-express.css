@@ -1,0 +1,111 @@
+/*=========================================
+        EXPRESS CARD
+=========================================*/
+
+.express-card{
+
+    margin-top:18px;
+    border:1px solid var(--border);
+    border-radius:18px;
+    background:var(--surface);
+    padding:20px;
+    transition:.35s;
+    overflow:hidden;
+
+}
+
+.express-card:hover{
+
+    transform:translateY(-2px);
+    box-shadow:var(--shadow-md);
+
+}
+
+/*=========================================
+        HEADER
+=========================================*/
+
+.express-top{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:20px;
+
+}
+
+.express-info h6{
+
+    margin:12px 0 6px;
+    font-size:18px;
+    font-weight:700;
+
+}
+
+.express-info p{
+
+    margin:0;
+    color:var(--muted);
+    font-size:14px;
+    line-height:1.6;
+
+}
+
+.express-badge{
+
+    display:inline-block;
+    padding:6px 12px;
+    border-radius:999px;
+    background:#EEF6FF;
+    color:var(--primary);
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:.5px;
+
+}
+
+/*=========================================
+        PRICE
+=========================================*/
+
+.express-price-card{
+
+    margin-top:18px;
+    padding:14px;
+    border-radius:14px;
+    background:var(--background);
+
+}
+
+.express-price-card small{
+
+    display:block;
+    color:var(--muted);
+    margin-bottom:4px;
+
+}
+
+.express-price-card strong{
+
+    font-size:18px;
+    color:var(--primary);
+
+}
+
+/*=========================================
+        QUANTITY
+=========================================*/
+
+.express-quantity{
+
+    margin-top:20px;
+
+}
+
+.quantity-title{
+
+    display:block;
+    margin-bottom:12px;
+    font-weight:600;
+
+}

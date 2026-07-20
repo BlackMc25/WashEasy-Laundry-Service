@@ -273,67 +273,103 @@
 
                                     <div class="express-container">
 
-                                        <div class="express-header">
+                                        <div class="express-card">
 
-                                            <span>
+                                            <div class="express-top">
 
-                                                ⚡ Express Service
+                                                <div class="express-info">
 
-                                            </span>
+                                                    <span class="express-badge">
 
-                                            <label class="express-switch">
+                                                        ⚡ FASTEST
 
-                                                <input
-                                                    type="checkbox"
-                                                    class="express-toggle"
-                                                    data-id="{{ service.id }}">
+                                                    </span>
 
-                                                <span class="slider"></span>
+                                                    <h6>
 
-                                            </label>
+                                                        Express Care
 
-                                        </div>
+                                                    </h6>
 
-                                        <div
-                                            class="express-quantity"
-                                            id="expressQty{{ service.id }}"
-                                            style="display:none;">
+                                                    <p>
 
-                                            <small class="express-price">
+                                                        Same-day cleaning with priority processing.
 
-                                                + ₦{{ service.express_price }} per item
+                                                    </p>
 
-                                            </small>
+                                                </div>
 
-                                            <div class="qty2-wrapper">
+                                                <label class="express-switch">
 
-                                                <button
-                                                    type="button"
-                                                    class="minus-express-btn">
+                                                    <input
+                                                        type="checkbox"
+                                                        class="express-toggle"
+                                                        data-id="{{ service.id }}">
 
-                                                    −
+                                                    <span class="slider"></span>
 
-                                                </button>
+                                                </label>
 
-                                                <input
-                                                    type="number"
-                                                    class="express-qty"
-                                                    name="express_item_{{ service.id }}"
-                                                    value="0"
-                                                    min="0"
-                                                    readonly
-                                                    data-price="{{ service.price }}"
-                                                    data-express="{{ service.express_price }}"
-                                                    data-item="{{ item_name }}"
-                                                    data-service="{{ service.service_type }}">
+                                            </div>
 
-                                                <button
-                                                    type="button"
-                                                    class="plus-express-btn">
+                                            <div class="express-price-card">
 
-                                                    +
+                                                <small>
 
-                                                </button>
+                                                    Extra Fee
+
+                                                </small>
+
+                                                <strong>
+
+                                                    ₦{{ service.express_price }} / item
+
+                                                </strong>
+
+                                            </div>
+
+                                            <div
+                                                class="express-quantity"
+                                                id="expressQty{{ service.id }}"
+                                                style="display:none;">
+
+                                                <span class="quantity-title">
+
+                                                    Express Quantity
+
+                                                </span>
+
+                                                <div class="qty2-wrapper">
+
+                                                    <button
+                                                        type="button"
+                                                        class="minus-express-btn">
+
+                                                        −
+
+                                                    </button>
+
+                                                    <input
+                                                        type="number"
+                                                        class="express-qty"
+                                                        name="express_item_{{ service.id }}"
+                                                        value="0"
+                                                        min="0"
+                                                        readonly
+                                                        data-price="{{ service.price }}"
+                                                        data-express="{{ service.express_price }}"
+                                                        data-item="{{ item_name }}"
+                                                        data-service="{{ service.service_type }}">
+
+                                                    <button
+                                                        type="button"
+                                                        class="plus-express-btn">
+
+                                                        +
+
+                                                    </button>
+
+                                                </div>
 
                                             </div>
 

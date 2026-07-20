@@ -41,36 +41,72 @@
 }
 
 /*=========================================================
-                ITEM CARD
+                PREMIUM LAUNDRY CARD
 =========================================================*/
 
 .laundry-card{
 
-    background:var(--background);
+    background:var(--surface);
 
-    border-radius:var(--radius-lg);
+    border:1px solid var(--border);
 
-    padding:1.5rem;
+    border-radius:22px;
 
-    margin-bottom:1rem;
+    padding:24px;
 
-    transition:var(--transition-normal);
+    margin-bottom:24px;
+
+    position:relative;
+
+    overflow:hidden;
+
+    transition:.35s ease;
+
+    box-shadow:0 6px 18px rgba(0,0,0,.04);
 
 }
 
 .laundry-card:hover{
 
-    box-shadow:var(--shadow-sm);
+    transform:translateY(-4px);
+
+    box-shadow:0 16px 35px rgba(0,0,0,.08);
+
+    border-color:rgba(43,108,176,.35);
 
 }
 
 .laundry-title{
 
-    font-size:1.1rem;
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding-bottom:18px;
+
+    margin-bottom:20px;
+
+    border-bottom:1px solid var(--border);
+
+}
+
+.laundry-title h5{
+
+    margin:0;
+
+    font-size:22px;
 
     font-weight:700;
 
-    margin-bottom:1rem;
+}
+
+.laundry-title small{
+
+    color:var(--muted);
+
+    font-size:14px;
 
 }
 
@@ -86,7 +122,9 @@
 
     align-items:center;
 
-    gap:1rem;
+    gap:30px;
+
+    padding:18px 0;
 
 }
 
@@ -112,31 +150,43 @@
 
     align-items:center;
 
-    gap:.8rem;
+    gap:14px;
+
+    padding:8px;
+
+    background:var(--background);
+
+    border-radius:50px;
 
 }
 
 .qty2-btn2{
 
-width:44px;
+width:46px;
 
-height:44px;
+height:46px;
 
 border:none;
 
 border-radius:50%;
 
-background:var(--primary);
+background:linear-gradient(
+135deg,
+var(--primary),
+#3B82F6
+);
 
-color:white;
+color:#fff;
 
 font-size:22px;
 
 font-weight:700;
 
-box-shadow:var(--shadow-sm);
+cursor:pointer;
 
-transition:.25s;
+transition:.3s;
+
+box-shadow:0 8px 18px rgba(43,108,176,.25);
 
 }
 
@@ -148,17 +198,23 @@ transform:scale(1.08);
 
 .qty2-value2{
 
-width:70px;
+width:72px;
 
-height:44px;
+height:46px;
+
+border:none;
 
 border-radius:14px;
 
-font-size:18px;
+background:var(--surface);
+
+text-align:center;
+
+font-size:20px;
 
 font-weight:700;
 
-background:white;
+color:var(--text);
 
 }
 

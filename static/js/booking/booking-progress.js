@@ -224,9 +224,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if(nextReview){
 
-        nextReview.addEventListener("click",()=>{
+    nextReview.addEventListener("click",()=>{
 
             if(validateBooking()){
+
+                /* ==========================
+                    REVIEW DETAILS
+                ========================== */
+
+                document.getElementById("review-pickup").textContent =
+                    document.getElementById("pickup-address").value || "Not provided";
+
+                document.getElementById("review-delivery").textContent =
+                    document.getElementById("delivery-address").value || "Not provided";
+
+                document.getElementById("review-phone").textContent =
+                    document.querySelector('input[name="phone_number"]').value || "Not provided";
+
+                document.getElementById("review-date").textContent =
+                    document.getElementById("id_pickup_date").value || "Not selected";
+
+                const payment =
+                    document.getElementById("id_payment_method");
+
+                document.getElementById("review-payment").textContent =
+                    payment.options[payment.selectedIndex].text;
 
                 showStep(3);
 
@@ -235,7 +257,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
     }
-
     if(backBooking){
 
         backBooking.addEventListener("click",()=>{

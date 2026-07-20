@@ -745,38 +745,125 @@
 
         <!-- STEP 3 -->
     <section id="step3-page" class="booking-step">
-        <div class="review-card" id="review-section">
 
-                <h3>
+        <div class="review-card">
 
-                    Ready to Book?
+            <div class="review-header">
 
-                </h3>
+                <h2>
+
+                    ✅ Review Your Booking
+
+                </h2>
 
                 <p>
 
-                    Review your selected laundry items, pickup details and payment information before confirming your booking.
+                    Please review your order before confirming your booking.
 
                 </p>
 
-                <div class="booking-navigation">
+            </div>
 
-                    <button
-                        type="button"
-                        id="back-to-booking"
-                        class="btn btn-outline">
+            <div class="review-body">
 
-                        <i class="bi bi-arrow-left"></i>
+                <div class="review-section">
 
-                        Back
+                    <h5>
 
-                    </button>
+                        🧺 Laundry Items
+
+                    </h5>
+
+                    <div id="review-items">
+
+                    </div>
 
                 </div>
 
+                <div class="review-section">
+
+                    <h5>
+
+                        📍 Pickup Address
+
+                    </h5>
+
+                    <p id="review-pickup"></p>
+
+                </div>
+
+                <div class="review-section">
+
+                    <h5>
+
+                        🚚 Delivery Address
+
+                    </h5>
+
+                    <p id="review-delivery"></p>
+
+                </div>
+
+                <div class="review-grid">
+
+                    <div>
+
+                        <h6>📞 Phone</h6>
+
+                        <p id="review-phone"></p>
+
+                    </div>
+
+                    <div>
+
+                        <h6>📅 Pickup Date</h6>
+
+                        <p id="review-date"></p>
+
+                    </div>
+
+                    <div>
+
+                        <h6>💳 Payment</h6>
+
+                        <p id="review-payment"></p>
+
+                    </div>
+
+                </div>
+
+                <div class="review-section">
+
+                    <h5>
+
+                        💰 Charges
+
+                    </h5>
+
+                    <div id="review-charges">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="review-actions">
+
+                <button
+                    type="button"
+                    id="back-to-booking"
+                    class="btn btn-outline">
+
+                    <i class="bi bi-arrow-left"></i>
+
+                    Back
+
+                </button>
+
                 <button
                     type="submit"
-                    class="btn btn-light btn-lg review-btn">
+                    class="btn btn-primary review-btn">
 
                     <i class="bi bi-check-circle-fill"></i>
 
@@ -785,6 +872,8 @@
                 </button>
 
             </div>
+
+        </div>
 
         </section>
 
@@ -1872,6 +1961,10 @@ document
         ).innerText = "0 km";
 
         document.getElementById(
+            "summary-pickup-distance"
+        ).innerText = "0 km";
+
+        document.getElementById(
             "id_pickup_distance_km"
         ).value = 0;
 
@@ -1920,6 +2013,10 @@ document
 
         document.getElementById(
             "delivery-distance"
+        ).innerText = "0 km";
+
+        document.getElementById(
+            "summary-delivery-distance"
         ).innerText = "0 km";
 
         document.getElementById(

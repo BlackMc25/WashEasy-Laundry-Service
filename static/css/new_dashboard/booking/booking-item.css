@@ -8,35 +8,162 @@
 
     background:transparent;
 
-    margin-bottom:1.5rem;
+    margin-bottom:28px;
 
 }
 
-.accordion-button{
+.laundry-category{
 
-    border-radius:var(--radius-lg) !important;
+    position:relative;
+
+}
+
+.laundry-category::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    top:20px;
+
+    bottom:20px;
+
+    width:5px;
+
+    border-radius:20px;
+
+    background:linear-gradient(
+        to bottom,
+        var(--primary),
+        #3B82F6
+    );
+
+}
+
+/*=========================================================
+            PREMIUM CATEGORY HEADER
+=========================================================*/
+
+.accordion-button{
 
     background:var(--surface);
 
-    padding:1.3rem;
+    border:1px solid var(--border);
 
-    font-weight:700;
+    border-radius:22px !important;
 
-    box-shadow:var(--shadow-sm);
+    padding:22px 24px;
+
+    box-shadow:0 6px 18px rgba(0,0,0,.04);
+
+    transition:.35s ease;
+
+}
+
+.accordion-button:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:0 14px 30px rgba(0,0,0,.08);
 
 }
 
 .accordion-button:not(.collapsed){
 
-    background:#EEF6FF;
+    background:linear-gradient(
+        135deg,
+        #EEF6FF,
+        #F7FBFF
+    );
+
+    border-color:rgba(43,108,176,.35);
 
     color:var(--primary);
+
+    box-shadow:0 14px 28px rgba(43,108,176,.12);
+
+}
+
+.accordion-button::after{
+
+    display:none;
 
 }
 
 .accordion-body{
 
-    padding:1.5rem;
+    padding:26px;
+
+    background:transparent;
+
+}
+
+.category-header{
+
+    width:100%;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.category-header h5{
+
+    margin:0;
+
+    font-size:22px;
+
+    font-weight:700;
+
+}
+
+.category-header small{
+
+    display:block;
+
+    margin-top:6px;
+
+    color:var(--muted);
+
+    font-size:14px;
+
+}
+
+.category-header i{
+
+    width:42px;
+
+    height:42px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border-radius:50%;
+
+    background:var(--background);
+
+    transition:.35s ease;
+
+    font-size:18px;
+
+}
+
+
+.accordion-button:not(.collapsed) .category-header i{
+
+    transform:rotate(180deg);
+
+    background:var(--primary);
+
+    color:#fff;
 
 }
 

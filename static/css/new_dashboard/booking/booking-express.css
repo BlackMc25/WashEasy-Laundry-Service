@@ -109,3 +109,82 @@
     font-weight:600;
 
 }
+
+/*=========================================================
+            EXPRESS QUANTITY CONTROLS
+=========================================================*/
+
+.qty2-wrapper{
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+    margin-top:15px;
+
+}
+
+.minus-express-btn,
+.plus-express-btn{
+
+    width:46px;
+    height:46px;
+
+    border:none;
+    border-radius:50%;
+
+    background:linear-gradient(
+        135deg,
+        var(--primary),
+        #3B82F6
+    );
+
+    color:#fff;
+
+    font-size:22px;
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.3s ease;
+
+    box-shadow:0 8px 18px rgba(43,108,176,.25);
+
+}
+
+.minus-express-btn:hover,
+.plus-express-btn:hover{
+
+    transform:translateY(-2px) scale(1.05);
+
+    box-shadow:0 14px 26px rgba(43,108,176,.35);
+
+}
+
+.minus-express-btn:active,
+.plus-express-btn:active{
+
+    transform:scale(.95);
+
+}
+
+.express-qty{
+
+    width:72px;
+    height:46px;
+
+    border:1px solid var(--border);
+    border-radius:14px;
+
+    background:var(--surface);
+
+    text-align:center;
+
+    font-size:18px;
+    font-weight:700;
+
+    color:var(--text);
+
+    outline:none;
+
+}

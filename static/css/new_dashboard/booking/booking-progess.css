@@ -257,8 +257,8 @@ transform:translateY(0);
 
     background:linear-gradient(
         135deg,
-        #2F6CB5,
-        #4B8CF8
+        white,
+        white
     );
 
     border-radius:24px;

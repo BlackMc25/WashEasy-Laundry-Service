@@ -681,8 +681,9 @@ function dragEnd(){
 
 <script src="{% static 'js/booking/booking-summary.js' %}"></script>
 
-<script src="{% static 'js/booking/booking-map.js' %}"></script>
 
+<script src="{% static 'js/booking/booking-map.js' %}"></script>
+  
 <script src="{% static 'js/booking/booking-express.js' %}"></script>
 
 <script src="{% static 'js/booking/booking-review.js' %}"></script>
@@ -697,6 +698,17 @@ function dragEnd(){
 
 <script src="{% static 'js/booking/booking-items.js' %}"></script>
 
+<script>
+console.log("CONFIG TEST");
+
+window.WashEasyConfig = {
+    STORE_LAT: 6.53699,
+    STORE_LNG: 3.39630,
+    PRICE_PER_KM: 150
+};
+
+console.log(window.WashEasyConfig);
+</script>
 </body>
 
 </html>

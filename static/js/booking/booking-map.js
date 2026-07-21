@@ -18,14 +18,9 @@ let deliveryRoute = null;
                 STORE LOCATION
 =========================================================*/
 
-const STORE_LAT = parseFloat(
-    "{{ site_settings.business_latitude }}"
-);
+const STORE_LAT = window.WashEasyConfig.STORE_LAT;
 
-const STORE_LNG = parseFloat(
-    "{{ site_settings.business_longitude }}"
-);
-
+const STORE_LNG = window.WashEasyConfig.STORE_LNG;
 
 /*=========================================================
                 INITIALIZE MAP
@@ -169,9 +164,7 @@ function recalculateTransportFee(){
 
     // Transport Price Per Kilometer
     const PRICE_PER_KM =
-        parseFloat(
-            "{{ site_settings.transport_price_per_km }}"
-        );
+    window.WashEasyConfig.PRICE_PER_KM;
 
     // Calculate Transport Fee
     const transportFee =

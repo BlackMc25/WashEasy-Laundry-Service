@@ -5,20 +5,30 @@
 =========================================================*/
 
 function updateReviewPage(){
-
+    console.log("Review page updating...");
+    
     // Pickup Address
     document.getElementById("review-pickup").innerText =
+
+        console.log("Pickup:", pickup);
+
         document.getElementById("pickup-address").value || "Not Provided";
 
     // Delivery Address
     document.getElementById("review-delivery").innerText =
-        document.getElementById("delivery-address").value || "Not Provided";
+
+    console.log("Delivery:",
+    document.getElementById("delivery-address").value);
+
+    document.getElementById("delivery-address").value || "Not Provided";
 
     // Phone Number
     const phoneInput =
         document.querySelector('input[name="phone_number"]');
 
     document.getElementById("review-phone").innerText =
+        console.log("Phone:",
+        document.querySelector('input[name="phone_number"]').value);
         phoneInput ? phoneInput.value : "Not Provided";
 
     // Pickup Date
@@ -26,6 +36,10 @@ function updateReviewPage(){
         document.getElementById("id_pickup_date");
 
     document.getElementById("review-date").innerText =
+
+        console.log("Pickup Date:",
+        document.getElementById("id_pickup_date").value);
+
         pickupDate ? pickupDate.value : "Not Selected";
 
     // Payment Method
@@ -33,6 +47,9 @@ function updateReviewPage(){
         document.getElementById("id_payment_method");
 
     document.getElementById("review-payment").innerText =
+
+    console.log("Payment:",
+    document.getElementById("id_payment_method").value);
         payment
             ? payment.options[payment.selectedIndex].text
             : "Not Selected";

@@ -681,6 +681,19 @@ function dragEnd(){
 
 <script src="{% static 'js/booking/booking-summary.js' %}"></script>
 
+<script>
+
+window.WashEasyConfig = {
+
+    STORE_LAT: {{ site_settings.business_latitude|default_if_none:"0" }},
+
+    STORE_LNG: {{ site_settings.business_longitude|default_if_none:"0" }},
+
+    PRICE_PER_KM: {{ site_settings.transport_price_per_km|default_if_none:"0" }}
+
+};
+
+</script>
 
 <script src="{% static 'js/booking/booking-map.js' %}"></script>
   

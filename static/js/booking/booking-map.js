@@ -325,9 +325,7 @@ function initAutocomplete(){
             =================================================*/
 
             const PRICE_PER_KM =
-                parseFloat(
-                    "{{ site_settings.transport_price_per_km }}"
-                );
+                window.WashEasyConfig.PRICE_PER_KM;
 
             const transportFee =
                 totalDistance *
@@ -516,9 +514,8 @@ function initAutocomplete(){
                     TRANSPORT FEE
             =================================================*/
 
-            const PRICE_PER_KM = parseFloat(
-                "{{ site_settings.transport_price_per_km }}"
-            );
+            const PRICE_PER_KM =
+                window.WashEasyConfig.PRICE_PER_KM;
 
             const transportFee =
                 totalDistance *

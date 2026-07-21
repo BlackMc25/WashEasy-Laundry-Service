@@ -4,7 +4,7 @@
 
 .sidebar{
 
-    width:260px;
+    width:280px;
 
     background:#0d3b66;
 
@@ -18,7 +18,7 @@
 
     bottom:0;
 
-    padding:25px 20px;
+    padding:28px 18px;
 
     display:flex;
 
@@ -53,24 +53,56 @@
 .sidebar-menu li a,
 .sidebar-bottom li a{
 
-    display:block;
+    display:flex;
 
-    padding:12px 15px;
+    align-items:center;
 
-    color:white;
+    gap:16px;
 
-    text-decoration:none;
+    padding:15px 18px;
 
-    border-radius:10px;
+    border-radius:16px;
 
-    transition:.3s;
+    font-weight:600;
+
+    transition:.35s;
+
+}
+
+.sidebar i{
+
+    width:24px;
+
+    font-size:22px;
+
+    text-align:center;
 
 }
 
 .sidebar-menu li a:hover,
 .sidebar-bottom li a:hover{
 
-    background:#124f8a;
+    background:rgba(255,255,255,.12);
+
+    transform:translateX(6px);
+
+}
+
+.sidebar a.active{
+
+    background:white;
+
+    color:#0d3b66;
+
+    box-shadow:
+
+        0 10px 25px rgba(0,0,0,.15);
+
+}
+
+.sidebar a.active i{
+
+    color:#0d3b66;
 
 }
 

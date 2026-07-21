@@ -1,65 +1,134 @@
-
-
 /*=========================================================
                 UPDATE REVIEW PAGE
 =========================================================*/
 
 function updateReviewPage(){
-    console.log("Review page updating...");
-    
-    // Pickup Address
-    document.getElementById("review-pickup").innerText =
 
-        console.log("Pickup:", pickup);
+    console.log("Updating Review Page...");
 
-        document.getElementById("pickup-address").value || "Not Provided";
+    /*=========================
+        PICKUP ADDRESS
+    =========================*/
 
-    // Delivery Address
-    document.getElementById("review-delivery").innerText =
+    const pickup =
+        document.getElementById(
+            "pickup-address"
+        ).value;
 
-    console.log("Delivery:",
-    document.getElementById("delivery-address").value);
+    console.log("Pickup:", pickup);
 
-    document.getElementById("delivery-address").value || "Not Provided";
+    document.getElementById(
+        "review-pickup"
+    ).innerText =
+        pickup || "Not Provided";
 
-    // Phone Number
+
+    /*=========================
+        DELIVERY ADDRESS
+    =========================*/
+
+    const delivery =
+        document.getElementById(
+            "delivery-address"
+        ).value;
+
+    console.log("Delivery:", delivery);
+
+    document.getElementById(
+        "review-delivery"
+    ).innerText =
+        delivery || "Not Provided";
+
+
+    /*=========================
+        PHONE
+    =========================*/
+
     const phoneInput =
-        document.querySelector('input[name="phone_number"]');
+        document.querySelector(
+            'input[name="phone_number"]'
+        );
 
-    document.getElementById("review-phone").innerText =
-        console.log("Phone:",
-        document.querySelector('input[name="phone_number"]').value);
-        phoneInput ? phoneInput.value : "Not Provided";
+    console.log(
+        "Phone:",
+        phoneInput ? phoneInput.value : null
+    );
 
-    // Pickup Date
+    document.getElementById(
+        "review-phone"
+    ).innerText =
+        phoneInput
+        ? phoneInput.value
+        : "Not Provided";
+
+
+    /*=========================
+        PICKUP DATE
+    =========================*/
+
     const pickupDate =
-        document.getElementById("id_pickup_date");
+        document.getElementById(
+            "id_pickup_date"
+        );
 
-    document.getElementById("review-date").innerText =
+    console.log(
+        "Pickup Date:",
+        pickupDate ? pickupDate.value : null
+    );
 
-        console.log("Pickup Date:",
-        document.getElementById("id_pickup_date").value);
+    document.getElementById(
+        "review-date"
+    ).innerText =
+        pickupDate
+        ? pickupDate.value
+        : "Not Selected";
 
-        pickupDate ? pickupDate.value : "Not Selected";
 
-    // Payment Method
+    /*=========================
+        PAYMENT
+    =========================*/
+
     const payment =
-        document.getElementById("id_payment_method");
+        document.getElementById(
+            "id_payment_method"
+        );
 
-    document.getElementById("review-payment").innerText =
-
-    console.log("Payment:",
-    document.getElementById("id_payment_method").value);
+    console.log(
+        "Payment:",
         payment
-            ? payment.options[payment.selectedIndex].text
-            : "Not Selected";
+        ? payment.value
+        : null
+    );
 
-    // Laundry Items
-    document.getElementById("review-items").innerHTML =
-        document.getElementById("selected-items").innerHTML;
+    document.getElementById(
+        "review-payment"
+    ).innerText =
+        payment
+        ? payment.options[
+            payment.selectedIndex
+        ].text
+        : "Not Selected";
 
-    // Charges
-    document.getElementById("review-charges").innerHTML = `
+
+    /*=========================
+        LAUNDRY ITEMS
+    =========================*/
+
+    document.getElementById(
+        "review-items"
+    ).innerHTML =
+        document.getElementById(
+            "selected-items"
+        ).innerHTML;
+
+
+    /*=========================
+        CHARGES
+    =========================*/
+
+    document.getElementById(
+        "review-charges"
+    ).innerHTML = `
 
         <div class="summary-row">
             <span>Laundry Cost</span>
@@ -84,4 +153,5 @@ function updateReviewPage(){
         </div>
 
     `;
+
 }

@@ -282,6 +282,8 @@ class="subscription-step">
 
                     <li>✔ Pickup</li>
 
+                    <li>✔ Delivery</li>
+
                 </ul>
 
                 {% elif plan.name == "Standard" %}
@@ -330,13 +332,16 @@ class="subscription-step">
 
             </div>
 
-            <button
-                class="select-plan-btn"
-                type="button">
+        <button
+            id="continueSubscription"
+            class="btn btn-primary subscription-next-btn"
+            disabled>
 
-                Choose Plan
+            Continue
 
-            </button>
+            <i class="bi bi-arrow-right-circle-fill"></i>
+
+        </button>
 
         </div>
 
@@ -348,6 +353,333 @@ class="subscription-step">
         type="hidden"
         id="selected-plan"
         name="selected_plan">
+
+</section>
+
+<!-- ==========================================
+        STEP 2
+========================================== -->
+
+<section
+id="subscription-step2"
+class="subscription-step"
+style="display:none;">
+
+    <div class="subscription-details-card">
+
+        <h3>
+
+            Subscription Details
+
+        </h3>
+
+        <p>
+
+            Tell us where and when you'd like your subscription service to begin.
+
+        </p>
+
+        <div class="subscription-grid">
+
+            <!-- Pickup Address -->
+
+            <div class="form-group">
+
+                <label>
+
+                    Pickup Address
+
+                </label>
+
+                <input
+                    type="text"
+                    id="subscription-pickup"
+                    class="form-control"
+                    placeholder="Enter pickup address">
+
+            </div>
+
+            <!-- Delivery Address -->
+
+            <div class="form-group">
+
+                <label>
+
+                    Delivery Address
+
+                </label>
+
+                <input
+                    type="text"
+                    id="subscription-delivery"
+                    class="form-control"
+                    placeholder="Enter delivery address">
+
+            </div>
+
+            <!-- Phone -->
+
+            <div class="form-group">
+
+                <label>
+
+                    Phone Number
+
+                </label>
+
+                <input
+                    type="tel"
+                    id="subscription-phone"
+                    class="form-control"
+                    placeholder="08012345678">
+
+            </div>
+
+            <!-- Pickup Date -->
+
+            <div class="form-group">
+
+                <label>
+
+                    First Pickup Date
+
+                </label>
+
+                {{ form.start_date }}
+
+            </div>
+
+            <!-- Payment -->
+
+            <div class="form-group">
+
+                <label>
+
+                    Payment Method
+
+                </label>
+
+                <select
+                    id="subscription-payment"
+                    class="form-select">
+
+                    <option>
+
+                        Paystack
+
+                    </option>
+
+                    <option>
+
+                        Cash
+
+                    </option>
+
+                    <option>
+
+                        Bank Transfer
+
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+        <div class="wizard-buttons">
+
+            <button
+            type="button"
+            id="subscriptionBack1"
+            class="btn btn-outline-primary">
+
+                ← Back
+
+            </button>
+
+            <button
+            type="button"
+            id="subscriptionNext2"
+            class="btn btn-primary">
+
+                Continue →
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!--==========================
+        STEP 3
+==========================-->
+
+<section
+id="subscription-step3"
+class="subscription-step"
+style="display:none;">
+
+    <div class="review-card">
+
+        <div class="review-header">
+
+            <h2>
+
+                ✅ Review Your Subscription
+
+            </h2>
+
+            <p>
+
+                Please review your subscription details before confirming.
+
+            </p>
+
+        </div>
+
+        <div class="review-body">
+
+            <!-- Selected Plan -->
+
+            <div class="review-section">
+
+                <h5>
+
+                    👑 Selected Plan
+
+                </h5>
+
+                <div id="review-plan">
+
+                </div>
+
+            </div>
+
+            <!-- Subscription Details -->
+
+            <div class="review-grid">
+
+                <div>
+
+                    <h6>
+
+                        📍 Pickup Address
+
+                    </h6>
+
+                    <p id="review-pickup">
+
+                    </p>
+
+                </div>
+
+                <div>
+
+                    <h6>
+
+                        🚚 Delivery Address
+
+                    </h6>
+
+                    <p id="review-delivery">
+
+                    </p>
+
+                </div>
+
+                <div>
+
+                    <h6>
+
+                        📞 Phone Number
+
+                    </h6>
+
+                    <p id="review-phone">
+
+                    </p>
+
+                </div>
+
+                <div>
+
+                    <h6>
+
+                        📅 First Pickup
+
+                    </h6>
+
+                    <p id="review-date">
+
+                    </p>
+
+                </div>
+
+                <div>
+
+                    <h6>
+
+                        💳 Payment Method
+
+                    </h6>
+
+                    <p id="review-payment">
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- Charges -->
+
+            <div class="review-section">
+
+                <h5>
+
+                    💰 Subscription Summary
+
+                </h5>
+
+                <div
+                id="subscription-summary">
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="wizard-buttons">
+
+            <button
+            type="button"
+            id="subscriptionBack2"
+            class="btn btn-outline-primary">
+
+                <i class="bi bi-arrow-left"></i>
+
+                Back
+
+            </button>
+
+            <button
+            type="submit"
+            id="confirmSubscription"
+            class="btn btn-success">
+
+                <i class="bi bi-check-circle-fill"></i>
+
+                Confirm Subscription
+
+            </button>
+
+        </div>
+
+    </div>
 
 </section>
 
@@ -365,5 +697,9 @@ class="subscription-step">
     </div>
 
 </div>
+
+<script
+src="{% static 'js/subscription.js' %}">
+</script>
 
 {% endblock %}

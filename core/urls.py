@@ -204,6 +204,12 @@ urlpatterns = [
     ),
 
     path(
+        'admin-subscription-management/',
+        views.subscription_price_management,
+        name='subscription_price_management'
+    ),
+
+    path(
         'update-price/<int:price_id>/',
         views.update_price,
         name='update_price'
@@ -256,6 +262,12 @@ urlpatterns = [
         "admin/subscription/add/",
         views.add_subscription_plan,
         name="add_subscription_plan",
+        ),
+
+        path(
+            "admin/subscription/update/<int:plan_id>/",
+            views.update_subscription_plan,
+            name="update_subscription_plan",
         ),
 
         path(

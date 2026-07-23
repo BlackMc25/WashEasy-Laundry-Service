@@ -258,23 +258,29 @@ urlpatterns = [
             name="subscription",
         ),
 
-        path(
-        "admin/subscription/add/",
-        views.add_subscription_plan,
-        name="add_subscription_plan",
+          path(
+            "add-subscription-plan/",
+            views.add_subscription_plan,
+            name="add_subscription_plan",
         ),
 
-        path(
-            "admin/subscription/update/<int:plan_id>/",
+       path(
+            "update-subscription-plan/<int:plan_id>/",
             views.update_subscription_plan,
             name="update_subscription_plan",
         ),
 
-        path(
-        "admin/subscription/delete/<int:plan_id>/",
-        views.delete_subscription_plan,
-        name="delete_subscription_plan",
-    ),
+     path(
+            "delete-subscription-plan/<int:plan_id>/",
+            views.delete_subscription_plan,
+            name="delete_subscription_plan",
+        ),
+
+
+
+
+
+
 
 ]
 

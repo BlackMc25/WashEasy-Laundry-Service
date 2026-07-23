@@ -217,7 +217,7 @@
 
                             {% for service in services %}
 
-                                <div class="item-row mb-3" data-service-id="{{ service.id }}">
+                            <div class="item-row mb-3" data-service-id="{{ service.id }}">
 
                                     <!-- Top Row -->
 
@@ -349,29 +349,25 @@
 
                                                     </button>
 
-                                                    <input
-                                                        type="number"
-                                                        class="express-qty"
-                                                        name="express_item_{{ service.id }}"
-                                                        value="0"
-                                                        min="0"
-                                                        readonly
-                                                        data-price="{{ service.price }}"
-                                                        data-express="{{ service.express_price }}"
-                                                        data-item="{{ item_name }}"
-                                                        data-service="{{ service.service_type }}">
+                                            <input
+                                                type="number"
+                                                class="express-qty"
+                                                name="express_item_{{ service.id }}"
+                                                value="0"
+                                                min="0"
+                                                readonly
+                                                data-price="{{ service.price }}"
+                                                data-express="{{ service.express_price }}"
+                                                data-item="{{ item_name }}"
+                                                data-service="{{ service.service_type }}">
 
-                                                    <button
-                                                        type="button"
-                                                        class="plus-express-btn">
+                                            <button
+                                                type="button"
+                                                class="plus-express-btn">
 
-                                                        +
+                                                +
 
-                                                    </button>
-
-                                                </div>
-
-                                            </div>
+                                            </button>
 
                                         </div>
 
@@ -379,15 +375,11 @@
 
                                 </div>
 
-                            <hr>
-
-                            {% endfor %}
+                            </div>
 
                         </div>
 
-                    </div>
-
-                </div>
+                    <hr>
 
                     {% endfor %}
 
@@ -396,6 +388,14 @@
             </div>
 
         </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</div>
 
                 {% endfor %}
 
@@ -637,7 +637,7 @@
                                 type="tel"
                                 name="phone_number"
                                 class="form-control"
-                                placeholder="e.g. +234"
+                                placeholder="e.g. 0812920****"
                                 required>
 
                         </div>
@@ -1004,6 +1004,36 @@
     </div>
 
 </form>
+
+{% block extra_js %}
+
+<script src="{% static 'js/booking/booking-progress.js' %}"></script>
+
+<script src="{% static 'js/booking/booking-summary.js' %}"></script>
+
+<script>
+
+window.WashEasyConfig = {
+
+    STORE_LAT: {{ site_settings.business_latitude|default_if_none:"0" }},
+
+    STORE_LNG: {{ site_settings.business_longitude|default_if_none:"0" }},
+
+    PRICE_PER_KM: {{ site_settings.transport_price_per_km|default_if_none:"0" }}
+
+};
+
+</script>
+
+<script src="{% static 'js/booking/booking-map.js' %}"></script>
+  
+<script src="{% static 'js/booking/booking-express.js' %}"></script>
+
+<script src="{% static 'js/booking/booking-review.js' %}"></script>
+
+<script src="{% static 'js/booking/booking-items.js' %}"></script>
+
+{% endblock %}
 
 {% endblock %}
 

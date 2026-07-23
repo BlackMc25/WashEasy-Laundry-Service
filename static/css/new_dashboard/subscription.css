@@ -137,3 +137,307 @@
     border-radius:50px;
 
 }
+
+/* ==========================================================
+                    PLAN GRID
+========================================================== */
+
+.plan-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+
+    gap:35px;
+
+    margin-top:50px;
+
+}
+
+/* ==========================================================
+                    PLAN CARD
+========================================================== */
+
+.plan-card{
+
+    position:relative;
+
+    background:#ffffff;
+
+    border-radius:25px;
+
+    padding:35px;
+
+    border:2px solid #ececec;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.06);
+
+    transition:.35s ease;
+
+    overflow:hidden;
+
+}
+
+.plan-card:hover{
+
+    transform:translateY(-12px);
+
+    box-shadow:0 22px 50px rgba(13,110,253,.18);
+
+    border-color:#0d6efd;
+
+}
+
+/* ==========================================================
+                PLAN HEADER
+========================================================== */
+
+.plan-header{
+
+    text-align:center;
+
+    margin-bottom:30px;
+
+}
+
+.plan-header h2{
+
+    font-size:30px;
+
+    font-weight:700;
+
+    margin-bottom:10px;
+
+}
+
+.plan-header h1{
+
+    font-size:42px;
+
+    color:#0d6efd;
+
+    font-weight:800;
+
+}
+
+.plan-header p{
+
+    margin-top:15px;
+
+    font-size:17px;
+
+    color:#555;
+
+}
+
+.plan-header small{
+
+    color:#999;
+
+}
+
+/* ==========================================================
+                BADGES
+========================================================== */
+
+.popular-badge{
+
+    display:inline-block;
+
+    padding:8px 18px;
+
+    background:#198754;
+
+    color:#fff;
+
+    border-radius:50px;
+
+    font-size:13px;
+
+    margin-bottom:18px;
+
+}
+
+.premium-badge{
+
+    display:inline-block;
+
+    padding:8px 18px;
+
+    background:linear-gradient(
+        135deg,
+        #FFD700,
+        #FFB400
+    );
+
+    color:#222;
+
+    border-radius:50px;
+
+    font-size:13px;
+
+    margin-bottom:18px;
+
+    font-weight:bold;
+
+}
+
+/* ==========================================================
+                CATEGORY & SERVICE
+========================================================== */
+
+.plan-section{
+
+    margin-top:28px;
+
+}
+
+.plan-section h5{
+
+    margin-bottom:15px;
+
+    font-size:17px;
+
+    font-weight:700;
+
+    color:#222;
+
+}
+
+.plan-section ul{
+
+    list-style:none;
+
+    padding:0;
+
+    margin:0;
+
+}
+
+.plan-section li{
+
+    margin-bottom:12px;
+
+    color:#666;
+
+    font-size:15px;
+
+}
+
+/* ==========================================================
+                BUTTON
+========================================================== */
+
+.select-plan-btn{
+
+    width:100%;
+
+    margin-top:30px;
+
+    border:none;
+
+    border-radius:14px;
+
+    padding:15px;
+
+    background:#0d6efd;
+
+    color:#fff;
+
+    font-weight:700;
+
+    transition:.3s;
+
+}
+
+.select-plan-btn:hover{
+
+    background:#0b5ed7;
+
+}
+
+/* ==========================================================
+                SELECTED CARD
+========================================================== */
+
+.plan-card.selected{
+
+    border:3px solid #0d6efd;
+
+    background:#f4f8ff;
+
+    transform:translateY(-12px);
+
+    box-shadow:0 25px 60px rgba(13,110,253,.22);
+
+}
+
+.plan-card.selected::after{
+
+    content:"✔ Selected";
+
+    position:absolute;
+
+    top:18px;
+
+    right:18px;
+
+    background:#0d6efd;
+
+    color:white;
+
+    padding:8px 14px;
+
+    border-radius:30px;
+
+    font-size:12px;
+
+    font-weight:bold;
+
+}
+
+/* ==========================================================
+                PREMIUM CARD
+========================================================== */
+
+.plan-card:nth-child(3){
+
+    background:linear-gradient(
+        180deg,
+        #fffdf4,
+        #ffffff
+    );
+
+    border-color:#FFD700;
+
+}
+
+/* ==========================================================
+                EXECUTIVE CARD
+========================================================== */
+
+.plan-card:nth-child(4){
+
+    background:linear-gradient(
+        180deg,
+        #f7f1ff,
+        #ffffff
+    );
+
+    border-color:#9c6bff;
+
+}
+
+/* ==========================================================
+                RESPONSIVE
+========================================================== */
+
+@media(max-width:992px){
+
+    .plan-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+}

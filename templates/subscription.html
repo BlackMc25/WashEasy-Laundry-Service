@@ -1,0 +1,153 @@
+{% extends 'base_dashboard.html' %}
+
+{% load static %}
+
+{% block title %}
+
+Subscription
+
+{% endblock %}
+
+{% block extra_css %}
+
+<link
+rel="stylesheet"
+href="{% static 'css/subscription.css' %}">
+
+{% endblock %}
+
+{% block content %}
+
+<div class="subscription-wrapper">
+
+    <!--==========================
+            PAGE HEADER
+    ===========================-->
+
+    <div class="subscription-header">
+
+        <h1>
+
+            WashEasy+
+
+        </h1>
+
+        <h2>
+
+            Laundry Subscription
+
+        </h2>
+
+        <p>
+
+            Save more. Enjoy scheduled pickups and deliveries.
+            Choose the subscription that fits your lifestyle.
+
+        </p>
+
+    </div>
+
+    <!--==========================
+            PROGRESS BAR
+    ===========================-->
+
+    <div class="subscription-progress">
+
+        <div class="progress-step active">
+
+            <span>
+
+                1
+
+            </span>
+
+            <p>
+
+                Choose Plan
+
+            </p>
+
+        </div>
+
+        <div class="progress-line"></div>
+
+        <div class="progress-step">
+
+            <span>
+
+                2
+
+            </span>
+
+            <p>
+
+                Details
+
+            </p>
+
+        </div>
+
+        <div class="progress-line"></div>
+
+        <div class="progress-step">
+
+            <span>
+
+                3
+
+            </span>
+
+            <p>
+
+                Review
+
+            </p>
+
+        </div>
+
+        <div class="progress-line"></div>
+
+        <div class="progress-step">
+
+            <span>
+
+                4
+
+            </span>
+
+            <p>
+
+                Success
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <!--==========================
+            STEP 1
+    ===========================-->
+
+    <section
+    id="subscription-step1"
+    class="subscription-step">
+
+    </section>
+
+    <div class="subscription-footer">
+
+        <button
+        id="continueSubscription"
+        class="btn btn-primary"
+        disabled>
+
+            Continue
+
+        </button>
+
+    </div>
+
+</div>
+
+{% endblock %}

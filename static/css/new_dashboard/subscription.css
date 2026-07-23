@@ -1,0 +1,139 @@
+.subscription-wrapper{
+
+    max-width:1400px;
+
+    margin:auto;
+
+    padding:40px;
+
+}
+
+.subscription-header{
+
+    text-align:center;
+
+    margin-bottom:60px;
+
+}
+
+.subscription-header h1{
+
+    font-size:48px;
+
+    font-weight:800;
+
+    color:#0d6efd;
+
+}
+
+.subscription-header h2{
+
+    font-size:34px;
+
+    margin-top:10px;
+
+}
+
+.subscription-header p{
+
+    width:700px;
+
+    max-width:100%;
+
+    margin:20px auto;
+
+    color:#777;
+
+    line-height:1.8;
+
+}
+
+/* ==========================
+        PROGRESS BAR
+========================== */
+
+.subscription-progress{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    margin-bottom:70px;
+
+}
+
+.progress-step{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+}
+
+.progress-step span{
+
+    width:48px;
+
+    height:48px;
+
+    border-radius:50%;
+
+    background:#ddd;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-weight:bold;
+
+}
+
+.progress-step.active span{
+
+    background:#0d6efd;
+
+    color:white;
+
+}
+
+.progress-step p{
+
+    margin-top:12px;
+
+    font-weight:600;
+
+}
+
+.progress-line{
+
+    width:120px;
+
+    height:4px;
+
+    background:#ddd;
+
+    margin:0 15px;
+
+}
+
+.subscription-footer{
+
+    text-align:center;
+
+    margin-top:70px;
+
+}
+
+.subscription-footer button{
+
+    padding:14px 60px;
+
+    border-radius:50px;
+
+}

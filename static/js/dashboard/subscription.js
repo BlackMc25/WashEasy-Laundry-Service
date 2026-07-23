@@ -23,41 +23,30 @@ const selectedPlanInput =
                 SELECT PLAN
 ========================================================== */
 
-planCards.forEach(card=>{
+const planButtons =
+    document.querySelectorAll(".select-plan-btn");
 
-    card.addEventListener(
-        "click",
-        function(){
+planButtons.forEach(button => {
 
-            /* Remove previous selection */
+    button.addEventListener("click", function () {
 
-            planCards.forEach(c=>{
+        const card =
+            this.closest(".plan-card");
 
-                c.classList.remove(
-                    "selected"
-                );
+        planCards.forEach(c => {
 
-            });
+            c.classList.remove("selected");
 
-            /* Highlight current card */
+        });
 
-            this.classList.add(
-                "selected"
-            );
+        card.classList.add("selected");
 
-            /* Save selected plan */
+        selectedPlanInput.value =
+            card.dataset.plan;
 
-            selectedPlanInput.value =
-                this.dataset.plan;
+        continueButton.disabled = false;
 
-            /* Enable Continue button */
-
-            continueButton.disabled =
-                false;
-
-        }
-
-    );
+    });
 
 });
 

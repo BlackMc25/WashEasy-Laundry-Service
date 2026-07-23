@@ -270,6 +270,7 @@ urlpatterns = [
             name="update_subscription_plan",
         ),
 
+
      path(
             "delete-subscription-plan/<int:plan_id>/",
             views.delete_subscription_plan,

@@ -258,6 +258,12 @@ urlpatterns = [
         name="add_subscription_plan",
         ),
 
+        path(
+        "admin/subscription/delete/<int:plan_id>/",
+        views.delete_subscription_plan,
+        name="delete_subscription_plan",
+    ),
+
 ]
 
 

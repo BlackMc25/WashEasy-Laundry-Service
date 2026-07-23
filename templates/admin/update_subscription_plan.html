@@ -1,0 +1,145 @@
+{% extends 'admin/base_admin.html' %}
+
+{% block content %}
+
+<div class="mb-3">
+
+    <a
+        href="{% url 'subscription_price_management' %}"
+        class="btn btn-secondary">
+
+        <i class="bi bi-arrow-left"></i>
+
+        Back
+
+    </a>
+
+</div>
+
+<div class="card shadow-sm">
+
+    <div class="card-body">
+
+        <h3 class="mb-4">
+
+            Update Subscription Plan
+
+        </h3>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <div class="mb-3">
+
+                <label>
+
+                    Plan Name
+
+                </label>
+
+                <input
+                    type="text"
+                    class="form-control"
+                    value="{{ plan.name }}"
+                    readonly>
+
+            </div>
+
+            <div class="mb-3">
+
+                <label>
+
+                    Price (₦)
+
+                </label>
+
+                <input
+                    type="number"
+                    name="price"
+                    value="{{ plan.price }}"
+                    class="form-control"
+                    required>
+
+            </div>
+
+            <div class="mb-3">
+
+                <label>
+
+                    Total Items
+
+                </label>
+
+                <input
+                    type="number"
+                    name="total_items"
+                    value="{{ plan.total_items }}"
+                    class="form-control"
+                    required>
+
+            </div>
+
+            <div class="mb-3">
+
+                <label>
+
+                    Validity Days
+
+                </label>
+
+                <input
+                    type="number"
+                    name="validity_days"
+                    value="{{ plan.validity_days }}"
+                    class="form-control"
+                    required>
+
+            </div>
+
+            <div class="mb-3">
+
+                <label>
+
+                    Description
+
+                </label>
+
+                <textarea
+                    name="description"
+                    class="form-control"
+                    rows="5">{{ plan.description }}</textarea>
+
+            </div>
+
+            <div class="form-check mb-4">
+
+                <input
+                    type="checkbox"
+                    class="form-check-input"
+                    name="is_active"
+                    {% if plan.is_active %}checked{% endif %}>
+
+                <label class="form-check-label">
+
+                    Active Plan
+
+                </label>
+
+            </div>
+
+            <button
+                type="submit"
+                class="btn btn-success">
+
+                Update Subscription
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

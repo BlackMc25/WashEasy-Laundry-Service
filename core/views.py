@@ -1946,3 +1946,34 @@ def update_subscription_plan(request, plan_id):
         }
     )
 
+# ==========================================================
+#          DELETE SUBSCRIPTION PLAN
+# ==========================================================
+
+@staff_member_required
+def delete_subscription_plan(request, plan_id):
+
+    plan = get_object_or_404(
+
+        SubscriptionPlan,
+
+        id=plan_id
+
+    )
+
+    plan.delete()
+
+    messages.success(
+
+        request,
+
+        "Subscription plan deleted successfully."
+
+    )
+
+    return redirect(
+
+        "subscription_price_management"
+
+    )
+

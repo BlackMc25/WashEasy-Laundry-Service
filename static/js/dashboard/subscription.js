@@ -85,9 +85,17 @@ nextButton.addEventListener(
     "click",
     function(){
 
-        step1.style.display="none";
+        if(selectedPlanInput.value === ""){
 
-        step2.style.display="block";
+            alert("Please select a subscription plan before continuing.");
+
+            return;
+
+        }
+
+        step1.style.display = "none";
+
+        step2.style.display = "block";
 
     }
 );
@@ -125,40 +133,68 @@ nextStep2.addEventListener(
 
     function(){
 
+        const pickup =
+            document.getElementById(
+                "subscription-pickup"
+            );
+
+        const delivery =
+            document.getElementById(
+                "subscription-delivery"
+            );
+
+        const phone =
+            document.getElementById(
+                "subscription-phone"
+            );
+
+        const pickupDate =
+            document.querySelector(
+                "[name='start_date']"
+            );
+
+        const payment =
+            document.getElementById(
+                "subscription-payment"
+            );
+
+        if(
+            pickup.value.trim() === "" ||
+            delivery.value.trim() === "" ||
+            phone.value.trim() === "" ||
+            pickupDate.value.trim() === "" ||
+            payment.value.trim() === ""
+        ){
+
+            alert(
+                "Please complete all required fields."
+            );
+
+            return;
+
+        }
+
+        /* REVIEW */
+
         document.getElementById(
             "review-pickup"
-        ).innerText =
-        document.getElementById(
-            "subscription-pickup"
-        ).value;
+        ).innerText = pickup.value;
 
         document.getElementById(
             "review-delivery"
-        ).innerText =
-        document.getElementById(
-            "subscription-delivery"
-        ).value;
+        ).innerText = delivery.value;
 
         document.getElementById(
             "review-phone"
-        ).innerText =
-        document.getElementById(
-            "subscription-phone"
-        ).value;
+        ).innerText = phone.value;
 
         document.getElementById(
             "review-date"
-        ).innerText =
-        document.querySelector(
-            "[name='start_date']"
-        ).value;
+        ).innerText = pickupDate.value;
 
         document.getElementById(
             "review-payment"
-        ).innerText =
-        document.getElementById(
-            "subscription-payment"
-        ).value;
+        ).innerText = payment.value;
 
         const selectedCard =
             document.querySelector(
@@ -189,37 +225,26 @@ nextStep2.addEventListener(
 
             document.getElementById(
                 "review-plan"
-            ).innerHTML =
-
-            `
-            <h3>${plan}</h3>
-
-            <p>${price}</p>
-
-            <p>${items}</p>
-
-            <p>${duration}</p>
+            ).innerHTML = `
+                <h3>${plan}</h3>
+                <p>${price}</p>
+                <p>${items}</p>
+                <p>${duration}</p>
             `;
 
             document.getElementById(
                 "subscription-summary"
-            ).innerHTML =
-
-            `
-            <strong>Plan:</strong> ${plan}<br>
-
-            <strong>Price:</strong> ${price}<br>
-
-            <strong>Items:</strong> ${items}<br>
-
-            <strong>Duration:</strong> ${duration}
+            ).innerHTML = `
+                <strong>Plan:</strong> ${plan}<br>
+                <strong>Price:</strong> ${price}<br>
+                <strong>Items:</strong> ${items}<br>
+                <strong>Duration:</strong> ${duration}
             `;
-
         }
 
-        step2.style.display="none";
+        step2.style.display = "none";
 
-        step3.style.display="block";
+        step3.style.display = "block";
 
     }
 

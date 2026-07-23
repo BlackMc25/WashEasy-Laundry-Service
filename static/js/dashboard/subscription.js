@@ -79,6 +79,45 @@ const nextStep2 =
         "subscriptionNext2"
     );
 
+    /*==========================================================
+                PROGRESS BAR
+==========================================================*/
+
+const progressStep1 =
+    document.getElementById(
+        "progress-step-1"
+    );
+
+const progressStep2 =
+    document.getElementById(
+        "progress-step-2"
+    );
+
+const progressStep3 =
+    document.getElementById(
+        "progress-step-3"
+    );
+
+const progressStep4 =
+    document.getElementById(
+        "progress-step-4"
+    );
+
+const progressLine1 =
+    document.getElementById(
+        "progress-line-1"
+    );
+
+const progressLine2 =
+    document.getElementById(
+        "progress-line-2"
+    );
+
+const progressLine3 =
+    document.getElementById(
+        "progress-line-3"
+    );
+
 /* Step 1 -> Step 2 */
 
 nextButton.addEventListener(
@@ -100,6 +139,63 @@ nextButton.addEventListener(
     }
 );
 
+function updateProgress(step){
+
+    const steps = [
+
+        progressStep1,
+
+        progressStep2,
+
+        progressStep3,
+
+        progressStep4
+
+    ];
+
+    const lines = [
+
+        progressLine1,
+
+        progressLine2,
+
+        progressLine3
+
+    ];
+
+    steps.forEach(s =>
+
+        s.classList.remove(
+            "active"
+        )
+
+    );
+
+    lines.forEach(l =>
+
+        l.classList.remove(
+            "active"
+        )
+
+    );
+
+    for(let i = 0; i < step; i++){
+
+        steps[i].classList.add(
+            "active"
+        );
+
+    }
+
+    for(let i = 0; i < step - 1; i++){
+
+        lines[i].classList.add(
+            "active"
+        );
+
+    }
+
+}
 /* Step 2 -> Step 1 */
 
 backButton.addEventListener(

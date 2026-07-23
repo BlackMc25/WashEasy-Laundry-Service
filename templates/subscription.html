@@ -129,11 +129,228 @@ href="{% static 'css/subscription.css' %}">
             STEP 1
     ===========================-->
 
-    <section
-    id="subscription-step1"
-    class="subscription-step">
+<!--==========================
+        STEP 1
+==========================-->
 
-    </section>
+<section
+id="subscription-step1"
+class="subscription-step">
+
+    <div class="plan-grid">
+
+        {% for plan in plans %}
+
+        <div
+            class="plan-card"
+            data-plan="{{ plan.id }}">
+
+            <!-- Plan Header -->
+
+            <div class="plan-header">
+
+                {% if plan.name == "Standard" %}
+
+                <span class="popular-badge">
+
+                    ⭐ Most Popular
+
+                </span>
+
+                {% endif %}
+
+                {% if plan.name == "Premium" %}
+
+                <span class="premium-badge">
+
+                    👑 Premium
+
+                </span>
+
+                {% endif %}
+
+                <h2>
+
+                    {{ plan.name }}
+
+                </h2>
+
+                <h1>
+
+                    ₦{{ plan.price|floatformat:0 }}
+
+                </h1>
+
+                <p>
+
+                    {{ plan.total_items }} Items
+
+                </p>
+
+                <small>
+
+                    {{ plan.validity_days }} Days
+
+                </small>
+
+            </div>
+
+            <!-- Categories -->
+
+            <div class="plan-section">
+
+                <h5>
+
+                    Categories
+
+                </h5>
+
+                {% if plan.name == "Basic" %}
+
+                <ul>
+
+                    <li>✔ Everyday Wear</li>
+
+                    <li>✔ Children's Wear</li>
+
+                    <li>✔ Underwear</li>
+
+                    <li>✔ Casual Wear</li>
+
+                </ul>
+
+                {% elif plan.name == "Standard" %}
+
+                <ul>
+
+                    <li>✔ Everyday Wear</li>
+
+                    <li>✔ Corporate Wear</li>
+
+                    <li>✔ Native Wear</li>
+
+                    <li>✔ School Uniform</li>
+
+                </ul>
+
+                {% elif plan.name == "Premium" %}
+
+                <ul>
+
+                    <li>✔ Suits</li>
+
+                    <li>✔ Blazers</li>
+
+                    <li>✔ Silk</li>
+
+                    <li>✔ Delicate Wear</li>
+
+                </ul>
+
+                {% else %}
+
+                <ul>
+
+                    <li>✔ Unlimited Categories</li>
+
+                    <li>✔ Custom Garments</li>
+
+                </ul>
+
+                {% endif %}
+
+            </div>
+
+            <!-- Services -->
+
+            <div class="plan-section">
+
+                <h5>
+
+                    Included Services
+
+                </h5>
+
+                {% if plan.name == "Basic" %}
+
+                <ul>
+
+                    <li>✔ Wash & Fold</li>
+
+                    <li>✔ Pickup</li>
+
+                    <li>✔ Delivery</li>
+
+                </ul>
+
+                {% elif plan.name == "Standard" %}
+
+                <ul>
+
+                    <li>✔ Wash & Iron</li>
+
+                    <li>✔ Fold</li>
+
+                    <li>✔ Pickup</li>
+
+                    <li>✔ Delivery</li>
+
+                    <li>✔ Extra Care</li>
+
+                </ul>
+
+                {% elif plan.name == "Premium" %}
+
+                <ul>
+
+                    <li>✔ Premium Care</li>
+
+                    <li>✔ Dry Cleaning</li>
+
+                    <li>✔ Wash & Iron</li>
+
+                    <li>✔ Pickup</li>
+
+                    <li>✔ Delivery</li>
+
+                </ul>
+
+                {% else %}
+
+                <ul>
+
+                    <li>✔ Everything Included</li>
+
+                    <li>✔ Dedicated Support</li>
+
+                    <li>✔ Priority Pickup</li>
+
+                </ul>
+
+                {% endif %}
+
+            </div>
+
+            <button
+                class="select-plan-btn"
+                type="button">
+
+                Choose Plan
+
+            </button>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    <input
+        type="hidden"
+        id="selected-plan"
+        name="selected_plan">
+
+</section>
 
     <div class="subscription-footer">
 

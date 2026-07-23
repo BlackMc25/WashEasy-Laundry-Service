@@ -54,6 +54,14 @@ class LaundryOrder(models.Model):
         on_delete=models.CASCADE
     )
 
+    subscription = models.ForeignKey(
+    "CustomerSubscription",
+    on_delete=models.SET_NULL,
+    blank=True,
+    null=True,
+    related_name="orders"
+    )
+
     phone_number = models.CharField(
     max_length=15
    )
@@ -494,5 +502,266 @@ class Complaint(models.Model):
     def __str__(self):
 
         return f"Complaint #{self.id}"
+    
+
+# ==========================================================
+#                   SUBSCRIPTION PLANS
+# ==========================================================
+
+class SubscriptionPlan(models.Model):
+
+    PLAN_CHOICES = [
+
+        ('Basic', 'Basic'),
+        ('Standard', 'Standard'),
+        ('Premium', 'Premium'),
+        ('Executive', 'Executive'),
+
+    ]
+
+    name = models.CharField(
+        max_length=30,
+        choices=PLAN_CHOICES,
+        unique=True
+    )
+
+    price = models.DecimalField(
+        max_digits=10,
+        decimal_places=2
+    )
+
+    total_items = models.PositiveIntegerField()
+
+    validity_days = models.PositiveIntegerField(
+        default=30
+    )
+
+    description = models.TextField(
+        blank=True,
+        null=True
+    )
+
+    is_active = models.BooleanField(
+        default=True
+    )
+
+    created_at = models.DateTimeField(
+        auto_now_add=True
+    )
+
+    def __str__(self):
+
+        return self.name
+    
+# ==========================================================
+#              SUBSCRIPTION SERVICES
+# ==========================================================
+
+class SubscriptionService(models.Model):
+
+    plan = models.ForeignKey(
+
+        SubscriptionPlan,
+
+        on_delete=models.CASCADE,
+
+        related_name="services"
+
+    )
+
+    service_name = models.CharField(
+
+        max_length=100
+
+    )
+
+    def __str__(self):
+
+        return f"{self.plan.name} - {self.service_name}"
+    
+
+# ==========================================================
+#           SUBSCRIPTION CATEGORIES
+# ==========================================================
+
+class SubscriptionCategory(models.Model):
+
+    plan = models.ForeignKey(
+        SubscriptionPlan,
+        on_delete=models.CASCADE,
+        related_name="categories"
+    )
+
+    category_name = models.CharField(
+        max_length=100
+    )
+
+    def __str__(self):
+
+        return f"{self.plan.name} - {self.category_name}"
+
+# ==========================================================
+#              CUSTOMER SUBSCRIPTION
+# ==========================================================
+
+class CustomerSubscription(models.Model):
+
+    STATUS_CHOICES = [
+
+        ('Active', 'Active'),
+
+        ('Expired', 'Expired'),
+
+        ('Cancelled', 'Cancelled'),
+
+    ]
+
+    customer = models.ForeignKey(
+
+        settings.AUTH_USER_MODEL,
+
+        on_delete=models.CASCADE,
+
+        related_name="subscriptions"
+
+    )
+
+    plan = models.ForeignKey(
+
+        SubscriptionPlan,
+
+        on_delete=models.CASCADE
+
+    )
+
+    subscription_number = models.PositiveIntegerField(
+
+        blank=True,
+
+        null=True
+
+    )
+
+    total_items = models.PositiveIntegerField()
+
+    remaining_items = models.PositiveIntegerField()
+
+    used_items = models.PositiveIntegerField(
+
+        default=0
+
+    )
+
+    start_date = models.DateField()
+
+    expiry_date = models.DateField()
+
+    amount_paid = models.DecimalField(
+
+        max_digits=10,
+
+        decimal_places=2
+
+    )
+
+    status = models.CharField(
+
+        max_length=20,
+
+        choices=STATUS_CHOICES,
+
+        default="Active"
+
+    )
+
+    created_at = models.DateTimeField(
+
+        auto_now_add=True
+
+    )
+
+    def save(self, *args, **kwargs):
+    
+        if not self.pk:
+
+            self.remaining_items = self.total_items
+
+            last_subscription = CustomerSubscription.objects.filter(
+
+                customer=self.customer
+
+            ).count()
+
+            self.subscription_number = last_subscription + 1
+
+        super().save(*args, **kwargs)
+
+    @property
+    def progress_percentage(self):
+
+        if self.total_items == 0:
+
+            return 0
+
+        return int(
+
+            (self.remaining_items / self.total_items) * 100
+
+        )
+    @property
+    def days_remaining(self):
+
+        from django.utils import timezone
+
+        today = timezone.now().date()
+
+        remaining = (self.expiry_date - today).days
+
+        return max(remaining, 0)
+
+    @property
+    def items_used(self):
+
+        return self.total_items - self.remaining_items
+
+    def __str__(self):
+
+        return f"{self.customer} - {self.plan.name}"
+    
+# ====================================================  ======
+#            SUBSCRIPTION ITEM USAGE HISTORY
+# ==========================================================
+
+class SubscriptionUsage(models.Model):
+
+    subscription = models.ForeignKey(
+
+        CustomerSubscription,
+
+        on_delete=models.CASCADE,
+
+        related_name="usage"
+
+    )
+
+    order = models.ForeignKey(
+
+        LaundryOrder,
+
+        on_delete=models.CASCADE
+
+    )
+
+    items_used = models.PositiveIntegerField()
+
+    created_at = models.DateTimeField(
+
+        auto_now_add=True
+
+    )
+
+    def __str__(self):
+
+        return f"{self.subscription.plan.name} - {self.items_used} Items"
     
   

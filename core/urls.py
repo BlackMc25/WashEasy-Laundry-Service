@@ -237,14 +237,26 @@ urlpatterns = [
         'delete-customer/<int:user_id>/',
         views.delete_customer,
         name='delete_customer'
-    ),
+        ),
 
         path(
         "sitemap.xml",
         sitemap,
         {"sitemaps": sitemaps},
         name="django.contrib.sitemaps.views.sitemap",
-    ),
+        ),
+
+        path(
+            "subscription/",
+            views.subscription,
+            name="subscription",
+        ),
+
+        path(
+        "admin/subscription/add/",
+        views.add_subscription_plan,
+        name="add_subscription_plan",
+        ),
 
 ]
 

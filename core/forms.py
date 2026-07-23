@@ -200,3 +200,38 @@ class SiteSettingsForm(forms.ModelForm):
             ),
 
         }
+
+# ==========================================================
+#               SUBSCRIPTION FORM
+# ==========================================================
+
+from .models import CustomerSubscription
+
+
+class CustomerSubscriptionForm(forms.ModelForm):
+
+    class Meta:
+
+        model = CustomerSubscription
+
+        fields = [
+
+            "start_date",
+
+        ]
+
+        widgets = {
+
+            "start_date": forms.DateInput(
+
+                attrs={
+
+                    "type": "date",
+
+                    "class": "form-control",
+
+                }
+
+            ),
+
+        }

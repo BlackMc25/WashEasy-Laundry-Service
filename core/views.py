@@ -23,6 +23,8 @@ from .models import (
     LaundryOrder,
     OrderItem,
     Complaint,
+
+     SubscriptionPlan,
     
 )
 from core.models import ContactMessage
@@ -235,7 +237,7 @@ def book_laundry(request):
             order.save()
 
             order.refresh_from_db()
-            
+
             # -----------------------------
             # Notification
             # -----------------------------
@@ -727,6 +729,45 @@ has been submitted.
             'order': order
         }
     )
+
+
+# ==========================================================
+#               SUBSCRIPTION PAGE
+# ==========================================================
+
+from .models import SubscriptionPlan
+from .forms import CustomerSubscriptionForm
+
+
+@login_required
+def subscription(request):
+
+    plans = SubscriptionPlan.objects.filter(
+
+        is_active=True
+
+    ).order_by("price")
+
+    form = CustomerSubscriptionForm()
+
+    context = {
+
+        "plans": plans,
+
+        "form": form,
+
+    }
+
+    return render(
+
+        request,
+
+        "subscription.html",
+
+        context,
+
+    )
+
 
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth import get_user_model
@@ -1494,6 +1535,50 @@ def add_price_item(request):
         }
     )
 
+# ==========================================================
+#           ADD SUBSCRIPTION PLAN
+# ==========================================================
+
+@staff_member_required
+def add_subscription_plan(request):
+
+    if request.method == "POST":
+
+        SubscriptionPlan.objects.create(
+
+            name=request.POST.get("name"),
+
+            price=request.POST.get("price"),
+
+            total_items=request.POST.get("total_items"),
+
+            validity_days=request.POST.get("validity_days"),
+
+            description=request.POST.get("description"),
+
+            is_active=(
+                "is_active" in request.POST
+            )
+
+        )
+
+        messages.success(
+            request,
+            "Subscription plan added successfully."
+        )
+
+        return redirect(
+            "subscription_price_management"
+        )
+
+    return render(
+
+        request,
+
+        "admin/add_subscription_plan.html"
+
+    )
+
 @staff_member_required
 def delete_price_item(
     request,
@@ -1795,4 +1880,69 @@ def delete_customer(request, user_id):
         )
 
     return redirect("admin_customers")
+
+# ==========================================================
+#       SUBSCRIPTION PRICE MANAGEMENT
+# ==========================================================
+
+@staff_member_required
+def subscription_price_management(request):
+
+    plans = SubscriptionPlan.objects.prefetch_related(
+        "categories",
+        "services"
+    ).order_by("price")
+
+    return render(
+        request,
+        "admin/subscription_price_management.html",
+        {
+            "plans": plans
+        }
+    )
+
+# ==========================================================
+#         UPDATE SUBSCRIPTION PLAN
+# ==========================================================
+
+@staff_member_required
+def update_subscription_plan(request, plan_id):
+
+    plan = get_object_or_404(
+        SubscriptionPlan,
+        id=plan_id
+    )
+
+    if request.method == "POST":
+
+        plan.price = request.POST.get("price")
+
+        plan.total_items = request.POST.get("total_items")
+
+        plan.validity_days = request.POST.get("validity_days")
+
+        plan.description = request.POST.get("description")
+
+        plan.is_active = (
+            "is_active" in request.POST
+        )
+
+        plan.save()
+
+        messages.success(
+            request,
+            "Subscription updated successfully."
+        )
+
+        return redirect(
+            "subscription_price_management"
+        )
+
+    return render(
+        request,
+        "admin/update_subscription_plan.html",
+        {
+            "plan": plan
+        }
+    )
 

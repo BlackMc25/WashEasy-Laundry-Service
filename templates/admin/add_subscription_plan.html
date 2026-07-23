@@ -1,0 +1,168 @@
+{% extends 'admin/base_admin.html' %}
+
+{% block content %}
+
+<div class="mb-3">
+
+    <a
+        href="{% url 'subscription_price_management' %}"
+        class="btn btn-secondary">
+
+        <i class="bi bi-arrow-left"></i>
+
+        Back
+
+    </a>
+
+</div>
+
+<div class="card shadow-sm">
+
+    <div class="card-body">
+
+        <h3 class="mb-4">
+
+            Add Subscription Plan
+
+        </h3>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <div class="mb-3">
+
+                <label>
+
+                    Plan Name
+
+                </label>
+
+                <select
+                    name="name"
+                    class="form-select"
+                    required>
+
+                    <option value="Basic">
+
+                        Basic
+
+                    </option>
+
+                    <option value="Standard">
+
+                        Standard
+
+                    </option>
+
+                    <option value="Premium">
+
+                        Premium
+
+                    </option>
+
+                    <option value="Executive">
+
+                        Executive
+
+                    </option>
+
+                </select>
+
+            </div>
+
+            <div class="mb-3">
+
+                <label>
+
+                    Price (₦)
+
+                </label>
+
+                <input
+                    type="number"
+                    name="price"
+                    class="form-control"
+                    required>
+
+            </div>
+
+            <div class="mb-3">
+
+                <label>
+
+                    Total Items
+
+                </label>
+
+                <input
+                    type="number"
+                    name="total_items"
+                    class="form-control"
+                    required>
+
+            </div>
+
+            <div class="mb-3">
+
+                <label>
+
+                    Validity (Days)
+
+                </label>
+
+                <input
+                    type="number"
+                    name="validity_days"
+                    class="form-control"
+                    value="30">
+
+            </div>
+
+            <div class="mb-3">
+
+                <label>
+
+                    Description
+
+                </label>
+
+                <textarea
+                    name="description"
+                    class="form-control"
+                    rows="4"></textarea>
+
+            </div>
+
+            <div class="form-check mb-4">
+
+                <input
+                    class="form-check-input"
+                    type="checkbox"
+                    name="is_active"
+                    checked>
+
+                <label
+                    class="form-check-label">
+
+                    Active Plan
+
+                </label>
+
+            </div>
+
+            <button
+                type="submit"
+                class="btn btn-success">
+
+                Save Subscription
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -578,7 +578,7 @@ def update_delivery_address(
             items_total +
             order.transport_fee
         )
-
+        
         order.save()
 
         return redirect(
@@ -859,7 +859,7 @@ def subscription_detail(request, subscription_id):
         subscription=subscription
     ).select_related(
         "order"
-    ).order_by("-start_date")
+    ).order_by("-created_at")
 
     context = {
 

@@ -346,6 +346,8 @@ nextStep2.addEventListener(
 
         step3.style.display = "block";
 
+        updateProgress(3);
+
 
     }
 
@@ -363,7 +365,7 @@ backStep2.addEventListener(
 
         step2.style.display="block";
 
-        updateProgress(3);
+       updateProgress(2);
 
     }
 

@@ -696,29 +696,6 @@ function dragEnd(){
 
 {% include "includes/bottom_nav.html" %}
 {% endif %}
-<script src="{% static 'js/booking/booking-progress.js' %}"></script>
-
-<script src="{% static 'js/booking/booking-summary.js' %}"></script>
-
-<script>
-
-window.WashEasyConfig = {
-
-    STORE_LAT: {{ site_settings.business_latitude|default_if_none:"0" }},
-
-    STORE_LNG: {{ site_settings.business_longitude|default_if_none:"0" }},
-
-    PRICE_PER_KM: {{ site_settings.transport_price_per_km|default_if_none:"0" }}
-
-};
-
-</script>
-
-<script src="{% static 'js/booking/booking-map.js' %}"></script>
-  
-<script src="{% static 'js/booking/booking-express.js' %}"></script>
-
-<script src="{% static 'js/booking/booking-review.js' %}"></script>
 
 <script src="{% static 'js/dashboard/sidebar.js' %}"></script>
 
@@ -728,7 +705,7 @@ window.WashEasyConfig = {
 
 <script src="{% static 'js/dashboard/dashboard.js' %}"></script>
 
-<script src="{% static 'js/booking/booking-items.js' %}"></script>
+
 
 </body>
 

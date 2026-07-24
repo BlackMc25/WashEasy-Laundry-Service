@@ -9,6 +9,68 @@
 
     <div class="booking-hero">
 
+        {% if active_subscription %}
+
+<div class="subscription-booking-banner">
+
+    <div class="subscription-left">
+
+        <h4>
+
+            ⭐ WashEasy+ Active
+
+        </h4>
+
+        <p>
+
+            {{ active_subscription.plan.name }} Plan
+
+        </p>
+
+        <small>
+
+            {{ active_subscription.remaining_items }}
+
+            /
+
+            {{ active_subscription.total_items }}
+
+            Items Remaining
+
+        </small>
+
+    </div>
+
+    <div class="subscription-right">
+
+        <label class="form-check form-switch">
+
+            <input
+                type="checkbox"
+                class="form-check-input"
+                id="useSubscription"
+                checked>
+
+            <span>
+
+                Use Subscription
+
+            </span>
+
+        </label>
+
+    </div>
+
+</div>
+
+<input
+type="hidden"
+name="use_subscription"
+id="use_subscription"
+value="true">
+
+{% endif %}
+
     <div>
 
     <h1 class="page-title booking-title">
@@ -253,6 +315,9 @@
                                                 readonly
                                                 class="qty2-value2"
                                                 data-price="{{ service.price }}"
+                                                data-basic="{{ service.basic_subscription|yesno:'true,false' }}"
+                                                data-standard="{{ service.standard_subscription|yesno:'true,false' }}"
+                                                data-premium="{{ service.premium_subscription|yesno:'true,false' }}"
                                                 data-express="{{ service.express_price }}"
                                                 data-item="{{ item_name }}"
                                                 data-service="{{ service.service_type }}">
@@ -1004,6 +1069,12 @@
     </div>
 
 </form>
+
+<script>
+
+window.subscriptionPlan = "{% if active_subscription %}{{ active_subscription.plan.name }}{% endif %}";
+
+</script>
 
 {% block extra_js %}
 

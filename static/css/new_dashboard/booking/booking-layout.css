@@ -59,6 +59,40 @@
 
 }
 
+.subscription-booking-banner{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    background:linear-gradient(135deg,#0d6efd,#4f9bff);
+
+    color:#fff;
+
+    padding:22px;
+
+    border-radius:16px;
+
+    margin-bottom:25px;
+
+}
+
+.subscription-left h4{
+
+    margin-bottom:5px;
+
+    font-weight:700;
+
+}
+
+.subscription-right{
+
+    font-size:18px;
+
+}
+
 /*=========================================================
                 LEFT CONTENT
 =========================================================*/

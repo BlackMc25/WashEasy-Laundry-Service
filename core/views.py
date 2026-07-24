@@ -42,6 +42,12 @@ def book_laundry(request):
 
     items = PriceList.objects.all()
     site_settings = SiteSettings.objects.first()
+    active_subscription = CustomerSubscription.objects.filter(
+    customer=request.user,
+    status="Active",
+    payment_status="Paid",
+    remaining_items__gt=0
+    ).select_related("plan").first()
 
     categories = {}
 
@@ -117,6 +123,7 @@ def book_laundry(request):
                         "previous_addresses": previous_addresses,
                         "previous_delivery_addresses": previous_delivery_addresses,
                         "site_settings": site_settings,
+                        "active_subscription": active_subscription,
                     },
                 )
 
@@ -280,6 +287,7 @@ def book_laundry(request):
             "previous_addresses": previous_addresses,
             "previous_delivery_addresses": previous_delivery_addresses,
             "site_settings": site_settings,
+            "active_subscription": active_subscription,
         },
     )
 

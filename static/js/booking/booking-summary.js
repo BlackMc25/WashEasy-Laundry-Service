@@ -128,18 +128,77 @@ function calculateLaundryItem(card){
     }
 
 
-    // Standard Laundry Cost
-    const standardSubtotal =
-        standardQty * price;
+            /*=========================================
+                SUBSCRIPTION CALCULATION
+        =========================================*/
 
+        const useSubscription =
 
-    // Express Laundry Cost
-    const expressSubtotal =
-        expressQty * price;
+            document.getElementById("use_subscription") &&
+
+            document.getElementById("use_subscription").value === "true";
+
+        let covered = false;
+
+        if(useSubscription){
+
+            if(
+
+                window.subscriptionPlan === "Basic" &&
+
+                standardInput.dataset.basic === "true"
+
+            ){
+
+                covered = true;
+
+            }
+
+            else if(
+
+                window.subscriptionPlan === "Standard" &&
+
+                standardInput.dataset.standard === "true"
+
+            ){
+
+                covered = true;
+
+            }
+
+            else if(
+
+                window.subscriptionPlan === "Premium" &&
+
+                standardInput.dataset.premium === "true"
+
+            ){
+
+                covered = true;
+
+            }
+
+        }
+
+        const standardSubtotal =
+
+            covered ?
+
+            0 :
+
+            standardQty * price;
+
+        const expressSubtotal =
+
+            covered ?
+
+            0 :
+
+            expressQty * price;
 
 
     // Return Item Information
-    return{
+        return{
 
         item:
             standardInput.dataset.item,
@@ -156,8 +215,14 @@ function calculateLaundryItem(card){
         expressSubtotal,
 
         expressFee:
-            expressQty *
-            expressPrice
+
+            covered ?
+
+            0 :
+
+            expressQty * expressPrice,
+
+        covered
 
     };
 
@@ -221,6 +286,27 @@ function updateSummary(){
 
                     </strong>
 
+                    <br>
+
+                    ${
+                        result.covered ?
+
+                        `<span
+                            style="
+                                color:#198754;
+                                font-size:13px;
+                                font-weight:bold;
+                            ">
+
+                            ✔ Covered by Subscription
+
+                        </span>`
+
+                        :
+
+                        ""
+
+}
                     <br>
 
                     <small>
@@ -320,6 +406,14 @@ function updateSummary(){
         "laundry-cost"
     ).innerText =
         laundryCost.toLocaleString();
+        
+    const coveredItems =
+
+    document.querySelectorAll(
+
+        ".summary-covered"
+
+    ).length;
 
 
     // Update Express Fee

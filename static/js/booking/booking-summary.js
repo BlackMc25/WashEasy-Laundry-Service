@@ -140,6 +140,18 @@ function calculateLaundryItem(card){
 
         let covered = false;
 
+        console.log("================================");
+
+        console.log("Subscription:", useSubscription);
+
+        console.log("Plan:", window.subscriptionPlan);
+
+        console.log("Basic:", standardInput.dataset.basic);
+
+        console.log("Standard:", standardInput.dataset.standard);
+
+        console.log("Premium:", standardInput.dataset.premium);
+
         if(useSubscription){
 
             if(
@@ -406,7 +418,7 @@ function updateSummary(){
         "laundry-cost"
     ).innerText =
         laundryCost.toLocaleString();
-        
+
     const coveredItems =
 
     document.querySelectorAll(

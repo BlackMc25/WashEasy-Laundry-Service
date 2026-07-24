@@ -295,6 +295,21 @@ class PriceList(models.Model):
         max_digits=10,
         decimal_places=2
     )
+
+    basic_subscription = models.BooleanField(
+    default=False,
+    verbose_name="Basic Subscription"
+    )
+
+    standard_subscription = models.BooleanField(
+        default=False,
+        verbose_name="Standard Subscription"
+    )
+
+    premium_subscription = models.BooleanField(
+        default=False,
+        verbose_name="Premium Subscription"
+    )
     express_price = models.DecimalField(
     max_digits=10,
     decimal_places=2,

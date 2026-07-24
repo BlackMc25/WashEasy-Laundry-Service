@@ -51,3 +51,74 @@
     min-width:180px;
 
 }
+
+
+/*==========================================================
+                SUBSCRIPTION USAGE
+==========================================================*/
+
+.usage-card{
+
+    background:#fff;
+
+    padding:25px;
+
+    border-radius:18px;
+
+    margin-bottom:20px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+}
+
+.usage-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:20px;
+
+}
+
+.usage-body{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:25px;
+
+}
+
+.usage-footer{
+
+    margin-top:25px;
+
+}
+
+.empty-usage{
+
+    text-align:center;
+
+    padding:60px;
+
+    background:#fff;
+
+    border-radius:18px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+}
+
+.empty-usage i{
+
+    font-size:60px;
+
+    color:#d0d0d0;
+
+    margin-bottom:15px;
+
+}

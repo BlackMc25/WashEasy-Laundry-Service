@@ -378,7 +378,142 @@ href="{% static 'css/new_dashboard/subscription_detail.css' %}">
         </div>
 
     </section>
+    
+<!-- ==========================
+        USAGE HISTORY
+=========================== -->
 
+<section class="detail-section">
+
+    <h3 class="detail-title">
+
+        Usage History
+
+    </h3>
+
+    {% if usage_history %}
+
+        {% for usage in usage_history %}
+
+        <div class="usage-card">
+
+            <div class="usage-header">
+
+                <div>
+
+                    <h5>
+
+                        Order #{{ usage.order.id }}
+
+                    </h5>
+
+                    <small>
+
+                        {{ usage.created_at|date:"d M Y" }}
+
+                    </small>
+
+                </div>
+
+                <span class="badge bg-success">
+
+                    {{ usage.order.status }}
+
+                </span>
+
+            </div>
+
+            <div class="usage-body">
+
+                <div>
+
+                    <strong>
+
+                        Items Used
+
+                    </strong>
+
+                    <p>
+
+                        {{ usage.items_used }}
+
+                    </p>
+
+                </div>
+
+                <div>
+
+                    <strong>
+
+                        Service
+
+                    </strong>
+
+                    <p>
+
+                        {{ usage.order.service_type }}
+
+                    </p>
+
+                </div>
+
+                <div>
+
+                    <strong>
+
+                        Total Paid
+
+                    </strong>
+
+                    <p>
+
+                        ₦{{ usage.order.total_amount }}
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="usage-footer">
+
+                <a
+                href="{% url 'order_detail' usage.order.id %}"
+                class="btn btn-outline-primary">
+
+                    View Order
+
+                </a>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    {% else %}
+
+        <div class="empty-usage">
+
+            <i class="bi bi-bag-x"></i>
+
+            <h4>
+
+                No Usage Yet
+
+            </h4>
+
+            <p>
+
+                Your subscription hasn't been used for any laundry orders yet.
+
+            </p>
+
+        </div>
+
+    {% endif %}
+
+</section>
 
     <!-- ==========================
         SUPPORT
@@ -406,6 +541,9 @@ href="{% static 'css/new_dashboard/subscription_detail.css' %}">
 
     </section>
 
+
 </div>
+
+
 
 {% endblock %}

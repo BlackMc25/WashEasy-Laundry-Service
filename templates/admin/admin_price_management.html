@@ -42,6 +42,12 @@
 
                 <th>Express</th>
 
+                <th>Basic</th>
+
+                <th>Standard</th>
+
+                <th>Premium</th>
+
                 <th>Action</th>
 
             </tr>
@@ -97,6 +103,71 @@
             {% endif %}
 
         </td>
+            <td>
+
+        {% if item.basic_subscription %}
+
+            <span class="badge bg-success">
+
+                ✓
+
+            </span>
+
+        {% else %}
+
+            <span class="badge bg-secondary">
+
+                —
+
+            </span>
+
+        {% endif %}
+
+    </td>
+
+    <td>
+
+        {% if item.standard_subscription %}
+
+            <span class="badge bg-success">
+
+                ✓
+
+            </span>
+
+        {% else %}
+
+            <span class="badge bg-secondary">
+
+                —
+
+            </span>
+
+        {% endif %}
+
+    </td>
+
+    <td>
+
+        {% if item.premium_subscription %}
+
+            <span class="badge bg-success">
+
+                ✓
+
+            </span>
+
+        {% else %}
+
+            <span class="badge bg-secondary">
+
+                —
+
+            </span>
+
+        {% endif %}
+
+    </td>
 
         <td>
 

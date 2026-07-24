@@ -788,27 +788,29 @@ def subscription(request):
 def subscription_detail(request, subscription_id):
 
     subscription = get_object_or_404(
-
         CustomerSubscription,
-
         id=subscription_id,
-
         customer=request.user,
-
     )
 
+    usage_history = "SubscriptionUsage".objects.filter(
+        subscription=subscription
+    ).select_related(
+        "order"
+    ).order_by("-created_at")
+
+    context = {
+
+        "subscription": subscription,
+
+        "usage_history": usage_history,
+
+    }
+
     return render(
-
         request,
-
         "subscription_detail.html",
-
-        {
-
-            "subscription": subscription,
-
-        }
-
+        context,
     )
 
 @login_required
@@ -1568,14 +1570,6 @@ def admin_notifications(request):
         }
     )
 
-@staff_member_required
-def admin_messages(request):
-
-    return render(
-        request,
-        'admin/admin_messages.html'
-    )
-
 
 @staff_member_required
 def admin_messages(request):
@@ -1820,6 +1814,18 @@ def update_price(request, price_id):
         item.express_available = (
             "express_available"
             in request.POST
+        )
+
+        item.basic_subscription = (
+        "basic_subscription" in request.POST
+        )
+
+        item.standard_subscription = (
+            "standard_subscription" in request.POST
+        )
+
+        item.premium_subscription = (
+            "premium_subscription" in request.POST
         )
 
         item.save()

@@ -109,12 +109,12 @@ def book_laundry(request):
 
         if use_subscription:
 
-            subscription = CustomerSubscription.objects.filter(
+            active_subscription = CustomerSubscription.objects.filter(
                 customer=request.user,
                 status="Active",
                 payment_status="Paid",
                 remaining_items__gt=0
-            ).select_related("plan").first()
+            ).order_by("-start_date").first()
 
         form = LaundryOrderForm(request.POST)
 
@@ -358,7 +358,7 @@ def my_orders(request):
     subscription = CustomerSubscription.objects.filter(
         customer=request.user,
         status="Active"
-    ).order_by("-created_at").first()
+    ).order_by("-start_date").first()
 
     context = {
 
@@ -578,9 +578,7 @@ def update_delivery_address(
             items_total +
             order.transport_fee
         )
-        print("Delivery Distance:", order.delivery_distance_km)
-        print("Total Distance:", order.total_distance_km)
-        print("Transport Fee:", order.transport_fee)
+
         order.save()
 
         return redirect(
@@ -861,7 +859,7 @@ def subscription_detail(request, subscription_id):
         subscription=subscription
     ).select_related(
         "order"
-    ).order_by("-created_at")
+    ).order_by("-start_date")
 
     context = {
 

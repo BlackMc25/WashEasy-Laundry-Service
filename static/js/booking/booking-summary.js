@@ -190,6 +190,11 @@ function calculateLaundryItem(card){
 
             }
 
+            console.log(
+                standardInput.dataset.item,
+                covered
+            );
+
         }
 
         const standardSubtotal =
@@ -210,33 +215,29 @@ function calculateLaundryItem(card){
 
 
     // Return Item Information
-        return{
+        return {
 
-        item:
-            standardInput.dataset.item,
+    item: standardInput.dataset.item,
 
-        service:
-            standardInput.dataset.service,
+    service: standardInput.dataset.service,
 
-        standardQty,
+    price,
 
-        expressQty,
+    expressPrice,
 
-        standardSubtotal,
+    standardQty,
 
-        expressSubtotal,
+    expressQty,
 
-        expressFee:
+    standardSubtotal,
 
-            covered ?
+    expressSubtotal,
 
-            0 :
+    expressFee: covered ? 0 : expressQty * expressPrice,
 
-            expressQty * expressPrice,
+    covered
 
-        covered
-
-    };
+};
 
 }
 
@@ -321,7 +322,7 @@ function updateSummary(){
 
                     Standard:
                     ${result.standardQty}
-                    × ₦${price.toLocaleString()}
+                    × ₦${result.price.toLocaleString()}
 
                     =
 
@@ -334,7 +335,7 @@ function updateSummary(){
             :
 
             ""
-}
+            }
                     <br>
 
                     <small>
@@ -344,30 +345,6 @@ function updateSummary(){
                     </small>
 
                     <br>
-
-                    ${
-                        result.standardQty > 0 ?
-
-                        `<small>
-
-                        Standard:
-                        ${result.standardQty}
-                        × ₦${(
-                            result.standardSubtotal /
-                            result.standardQty
-                        ).toLocaleString()}
-
-                        =
-
-                        ₦${result.standardSubtotal.toLocaleString()}
-
-                        </small><br>`
-
-                        :
-
-                        ""
-
-                    }
 
                     ${
                         result.expressQty > 0 ?

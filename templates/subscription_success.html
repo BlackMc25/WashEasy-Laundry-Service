@@ -1,0 +1,204 @@
+{% extends 'base_dashboard.html' %}
+
+{% load static %}
+
+{% block title %}
+
+Subscription Successful
+
+{% endblock %}
+
+{% block extra_css %}
+
+<link
+rel="stylesheet"
+href="{% static 'css/new_dashboard/subscription.css' %}">
+
+{% endblock %}
+
+{% block content %}
+
+<div class="subscription-success-wrapper">
+
+    <div class="subscription-success-card">
+
+        <div class="success-icon">
+
+            <i class="bi bi-patch-check-fill"></i>
+
+        </div>
+
+        <h1>
+
+            Subscription Activated!
+
+        </h1>
+
+        <p class="success-message">
+
+            Thank you for subscribing to WashEasy+.
+            Your payment has been confirmed successfully.
+
+        </p>
+
+        <div class="success-details">
+
+            <div class="success-row">
+
+                <span>
+
+                    Subscription Plan
+
+                </span>
+
+                <strong>
+
+                    {{ subscription.plan.name }}
+
+                </strong>
+
+            </div>
+
+            <div class="success-row">
+
+                <span>
+
+                    Total Items
+
+                </span>
+
+                <strong>
+
+                    {{ subscription.total_items }}
+
+                </strong>
+
+            </div>
+
+            <div class="success-row">
+
+                <span>
+
+                    Remaining Items
+
+                </span>
+
+                <strong>
+
+                    {{ subscription.remaining_items }}
+
+                </strong>
+
+            </div>
+
+            <div class="success-row">
+
+                <span>
+
+                    Amount Paid
+
+                </span>
+
+                <strong>
+
+                    ₦{{ subscription.amount_paid }}
+
+                </strong>
+
+            </div>
+
+            <div class="success-row">
+
+                <span>
+
+                    Start Date
+
+                </span>
+
+                <strong>
+
+                    {{ subscription.start_date }}
+
+                </strong>
+
+            </div>
+
+            <div class="success-row">
+
+                <span>
+
+                    Expiry Date
+
+                </span>
+
+                <strong>
+
+                    {{ subscription.expiry_date }}
+
+                </strong>
+
+            </div>
+
+            <div class="success-row">
+
+                <span>
+
+                    Payment Status
+
+                </span>
+
+                <span class="badge bg-success">
+
+                    {{ subscription.payment_status }}
+
+                </span>
+
+            </div>
+
+            <div class="success-row">
+
+                <span>
+
+                    Payment Reference
+
+                </span>
+
+                <strong>
+
+                    {{ subscription.payment_reference }}
+
+                </strong>
+
+            </div>
+
+        </div>
+
+        <div class="success-buttons">
+
+            <a
+            href="{% url 'dashboard' %}"
+            class="btn btn-primary">
+
+                <i class="bi bi-speedometer2"></i>
+
+                Dashboard
+
+            </a>
+
+            <a
+            href="{% url 'my_orders' %}"
+            class="btn btn-outline-primary">
+
+                <i class="bi bi-bag-check-fill"></i>
+
+                My Orders
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

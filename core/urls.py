@@ -297,6 +297,12 @@ urlpatterns = [
 
     ),
 
+    path(
+    "subscription/success/<int:subscription_id>/",
+    views.subscription_success,
+    name="subscription_success",
+),
+
 
 ]
 

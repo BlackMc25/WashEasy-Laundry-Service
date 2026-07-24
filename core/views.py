@@ -979,36 +979,10 @@ def verify_subscription_payment(
     )
 
 @login_required
-def subscription_success(
+def subscription_success(request, subscription_id):
 
-    request,
-
-    subscription_id
-
-):
-
-    subscription = get_object_or_404(
-
-        CustomerSubscription,
-
-        id=subscription_id,
-
-        customer=request.user
-
-    )
-
-    return render(
-
-        request,
-
-        "subscription_success.html",
-
-        {
-
-            "subscription": subscription
-
-        }
-
+    return HttpResponse(
+        f"Subscription Success: {subscription_id}"
     )
 
 

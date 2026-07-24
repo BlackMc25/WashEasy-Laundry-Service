@@ -258,17 +258,18 @@ nextStep2.addEventListener(
                 "subscription-payment"
             );
 
-        if(
+        if (
+            !pickup ||
+            !delivery ||
+            !phone ||
+            !pickupDate ||
             pickup.value.trim() === "" ||
             delivery.value.trim() === "" ||
             phone.value.trim() === "" ||
-            pickupDate.value.trim() === "" ||
-            payment.value.trim() === ""
-        ){
+            pickupDate.value.trim() === ""
+        ) {
 
-            alert(
-                "Please complete all required fields."
-            );
+            alert("Please complete all required fields.");
 
             return;
 
@@ -294,7 +295,7 @@ nextStep2.addEventListener(
 
         document.getElementById(
             "review-payment"
-        ).innerText = payment.value;
+        ).innerText = "Paystack";
 
         const selectedCard =
             document.querySelector(
@@ -310,6 +311,11 @@ nextStep2.addEventListener(
 
                 const planId =
                     selectedCard.dataset.plan;
+
+                    document.getElementById(
+                        "paystackButton"
+                    ).href =
+                    `/subscription/pay/${planId}/`;
 
             const price =
                 selectedCard.querySelector(
@@ -374,75 +380,7 @@ backStep2.addEventListener(
 
 );
 
-/*==========================================================
-                STEP 3 -> STEP 4
-==========================================================*/
 
-const step4 =
-    document.getElementById(
-        "subscription-step4"
-    );
-
-const confirmSubscription =
-    document.getElementById(
-        "confirmSubscription"
-    );
-
-confirmSubscription.addEventListener(
-
-    "click",
-
-    function(e){
-
-        e.preventDefault();
-
-        document.getElementById(
-            "success-plan"
-        ).innerText =
-            document.querySelector(
-                "#review-plan h3"
-            ).innerText;
-
-        document.getElementById(
-            "success-items"
-        ).innerText =
-            document.querySelector(
-                "#review-plan p:nth-of-type(2)"
-            ).innerText;
-
-        document.getElementById(
-            "success-duration"
-        ).innerText =
-            document.querySelector(
-                "#review-plan p:nth-of-type(3)"
-            ).innerText;
-
-        document.getElementById(
-            "success-payment"
-        ).innerText =
-            document.getElementById(
-                "review-payment"
-            ).innerText;
-
-        step3.style.display="none";
-
-        step4.style.display="block";
-
-        updateProgress(4);
-
-    }
-
-);
-
-document.getElementById(
-    "paystackButton"
-).href =
-
-"/subscription/pay/" +
-
-planId +
-
-"/";
 
 });
 

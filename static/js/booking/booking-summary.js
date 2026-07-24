@@ -301,23 +301,39 @@ function updateSummary(){
                     <br>
 
                     ${
-                        result.covered ?
+            result.standardQty > 0 ?
 
-                        `<span
-                            style="
-                                color:#198754;
-                                font-size:13px;
-                                font-weight:bold;
-                            ">
+            (
+                result.covered ?
 
-                            ✔ Covered by Subscription
+                `<small style="color:#198754;font-weight:bold;">
 
-                        </span>`
+                    Standard:
+                    ${result.standardQty} Item(s)
 
-                        :
+                    — FREE
 
-                        ""
+                </small><br>`
 
+                :
+
+                `<small>
+
+                    Standard:
+                    ${result.standardQty}
+                    × ₦${price.toLocaleString()}
+
+                    =
+
+                    ₦${result.standardSubtotal.toLocaleString()}
+
+                </small><br>`
+
+            )
+
+            :
+
+            ""
 }
                     <br>
 

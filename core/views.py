@@ -186,11 +186,13 @@ def book_laundry(request):
             )
 
             PRICE_PER_KM = Decimal("150")
-
-            transport_fee = (
-                Decimal(str(order.total_distance_km))
-                * PRICE_PER_KM
-            )
+            if subscription:
+                transport_fee = 0
+            else:
+                transport_fee = (
+                    Decimal(str(order.total_distance_km))
+                    * PRICE_PER_KM
+                )
 
             order.transport_fee = transport_fee
 
@@ -236,10 +238,25 @@ def book_laundry(request):
                 if quantity == 0 and express_quantity == 0:
                     continue
 
-                standard_subtotal = (
-                    Decimal(quantity)
-                    * item.price
-                )
+                covered_by_subscription = False
+
+                if subscription:
+
+                    covered_by_subscription = is_subscription_item(
+                        item,
+                        subscription
+                    )
+
+                if covered_by_subscription:
+
+                    standard_subtotal = 0
+
+                else:
+                        standard_subtotal = ( 
+                                    Decimal(quantity)
+
+                                    * item.price
+                                )
 
                 express_subtotal = (
                     Decimal(express_quantity)

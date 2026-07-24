@@ -1,0 +1,144 @@
+{% extends 'base_dashboard.html' %}
+
+{% load static %}
+
+{% block title %}
+
+Submit Complaint
+
+{% endblock %}
+
+{% block extra_css %}
+
+<link rel="stylesheet"
+href="{% static 'css/new_dashboard/subscription_detail.css' %}">
+
+{% endblock %}
+
+{% block content %}
+
+<div class="page-container">
+
+    <!-- ==========================
+            PAGE HEADER
+    =========================== -->
+
+    <div class="order-hero">
+
+        <div>
+
+            <a
+            href="{% url 'subscription_detail' subscription.id %}"
+            class="btn btn-outline">
+
+                <i class="bi bi-arrow-left"></i>
+
+                Back
+
+            </a>
+
+            <h1 class="page-title mt-md">
+
+                Submit Complaint
+
+            </h1>
+
+            <p class="text-muted">
+
+                Subscription #{{ subscription.subscription_number }}
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- ==========================
+            COMPLAINT CARD
+    =========================== -->
+
+    <div class="detail-section">
+
+        <div class="complaint-card">
+
+            <h3>
+
+                Tell us what happened
+
+            </h3>
+
+            <p>
+
+                Our support team will review your complaint and respond as soon as possible.
+
+            </p>
+
+            <form method="POST">
+
+                {% csrf_token %}
+
+                <div class="mb-4">
+
+                    <label class="form-label">
+
+                        Complaint Subject
+
+                    </label>
+
+                    <input
+                    type="text"
+                    name="subject"
+                    class="form-control"
+                    placeholder="Example: Late Pickup"
+                    required>
+
+                </div>
+
+                <div class="mb-4">
+
+                    <label class="form-label">
+
+                        Complaint Details
+
+                    </label>
+
+                    <textarea
+                    name="message"
+                    rows="8"
+                    class="form-control"
+                    placeholder="Please describe your issue..."
+                    required></textarea>
+
+                </div>
+
+                <div class="d-flex justify-content-between mt-4">
+
+                    <a
+                    href="{% url 'subscription_detail' subscription.id %}"
+                    class="btn btn-outline-secondary">
+
+                        Cancel
+
+                    </a>
+
+                    <button
+                    type="submit"
+                    class="btn btn-danger">
+
+                        <i class="bi bi-send-fill"></i>
+
+                        Submit Complaint
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

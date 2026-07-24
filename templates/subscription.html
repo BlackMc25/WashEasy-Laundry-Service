@@ -426,21 +426,27 @@ style="display:none;">
 
                 </label>
 
-                <select
-                    id="subscription-payment"
-                    class="form-select">
+               <div class="payment-card">
 
-                    <option>
+            <img src="Paystack Logo">
 
-                        Bank Transfer
+                <h5>
 
-                    </option>
+                    Secure Payment
 
-                </select>
+                </h5>
+
+                <p>
+
+                    Payments are securely processed by Paystack.
+
+                </p>
 
             </div>
 
         </div>
+
+    </div>
 
         <div class="wizard-buttons">
 
@@ -621,22 +627,136 @@ style="display:none;">
 
             </button>
 
-            <button
-            type="submit"
-            id="confirmSubscription"
+            <a
+            id="paystackButton"
+            href="#"
             class="btn btn-success">
 
-                <i class="bi bi-check-circle-fill"></i>
+            Proceed to Secure Payment
 
-                Confirm Subscription
+            <i class="bi bi-lock-fill"></i>
 
-            </button>
-
+            </a>
+            
         </div>
 
     </div>
 
 </section>
+
+<!--==========================
+        STEP 4
+==========================-->
+
+        <section
+        id="subscription-step4"
+        class="subscription-step"
+        style="display:none;">
+
+            <div class="subscription-success-card">
+
+                <div class="success-icon">
+
+                    <i class="bi bi-patch-check-fill"></i>
+
+                </div>
+
+                <h2>
+
+                    Subscription Activated!
+
+                </h2>
+
+                <p>
+
+                    Welcome to WashEasy+.
+                    Your subscription has been successfully activated.
+
+                </p>
+
+                <div class="success-summary">
+
+                    <div class="summary-row">
+
+                        <span>
+
+                            Subscription
+
+                        </span>
+
+                        <strong id="success-plan">
+
+                        </strong>
+
+                    </div>
+
+                    <div class="summary-row">
+
+                        <span>
+
+                            Total Items
+
+                        </span>
+
+                        <strong id="success-items">
+
+                        </strong>
+
+                    </div>
+
+                    <div class="summary-row">
+
+                        <span>
+
+                            Duration
+
+                        </span>
+
+                        <strong id="success-duration">
+
+                        </strong>
+
+                    </div>
+
+                    <div class="summary-row">
+
+                        <span>
+
+                            Payment
+
+                        </span>
+
+                        <strong id="success-payment">
+
+                        </strong>
+
+                    </div>
+
+                </div>
+
+                <div class="success-buttons">
+
+                    <a
+                    href="{% url 'dashboard' %}"
+                    class="btn btn-primary">
+
+                        Dashboard
+
+                    </a>
+
+                    <a
+                    href="{% url 'my_orders' %}"
+                    class="btn btn-outline-primary">
+
+                        My Orders
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
 
     <div class="subscription-footer">
 

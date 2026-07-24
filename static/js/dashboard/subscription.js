@@ -308,6 +308,9 @@ nextStep2.addEventListener(
                     "h2"
                 ).innerText;
 
+                const planId =
+                    selectedCard.dataset.plan;
+
             const price =
                 selectedCard.querySelector(
                     "h1"
@@ -371,4 +374,75 @@ backStep2.addEventListener(
 
 );
 
+/*==========================================================
+                STEP 3 -> STEP 4
+==========================================================*/
+
+const step4 =
+    document.getElementById(
+        "subscription-step4"
+    );
+
+const confirmSubscription =
+    document.getElementById(
+        "confirmSubscription"
+    );
+
+confirmSubscription.addEventListener(
+
+    "click",
+
+    function(e){
+
+        e.preventDefault();
+
+        document.getElementById(
+            "success-plan"
+        ).innerText =
+            document.querySelector(
+                "#review-plan h3"
+            ).innerText;
+
+        document.getElementById(
+            "success-items"
+        ).innerText =
+            document.querySelector(
+                "#review-plan p:nth-of-type(2)"
+            ).innerText;
+
+        document.getElementById(
+            "success-duration"
+        ).innerText =
+            document.querySelector(
+                "#review-plan p:nth-of-type(3)"
+            ).innerText;
+
+        document.getElementById(
+            "success-payment"
+        ).innerText =
+            document.getElementById(
+                "review-payment"
+            ).innerText;
+
+        step3.style.display="none";
+
+        step4.style.display="block";
+
+        updateProgress(4);
+
+    }
+
+);
+
+document.getElementById(
+    "paystackButton"
+).href =
+
+"/subscription/pay/" +
+
+planId +
+
+"/";
+
 });
+

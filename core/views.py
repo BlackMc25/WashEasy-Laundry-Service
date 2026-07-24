@@ -737,6 +737,13 @@ has been submitted.
 
 from .models import SubscriptionPlan
 from .forms import CustomerSubscriptionForm
+from datetime import timedelta
+from django.utils import timezone
+from .models import (
+    CustomerSubscription,
+    SubscriptionPlan
+)
+
 
 
 @login_required
@@ -765,6 +772,242 @@ def subscription(request):
         "subscription.html",
 
         context,
+
+    )
+
+
+
+@login_required
+def initialize_subscription_payment(
+    request,
+    plan_id
+):
+
+    plan = get_object_or_404(
+        SubscriptionPlan,
+        id=plan_id,
+        is_active=True
+    )
+
+    subscription = CustomerSubscription.objects.create(
+
+        customer=request.user,
+
+        plan=plan,
+
+        total_items=plan.total_items,
+
+        remaining_items=plan.total_items,
+
+        amount_paid=plan.price,
+
+        start_date=timezone.now().date(),
+
+        expiry_date=timezone.now().date() + timedelta(
+            days=plan.validity_days
+        ),
+
+        payment_status="Pending",
+
+        status="Cancelled"
+
+    )
+
+    url = "https://api.paystack.co/transaction/initialize"
+
+    headers = {
+
+        "Authorization":
+        f"Bearer {settings.PAYSTACK_SECRET_KEY}",
+
+        "Content-Type":
+        "application/json"
+
+    }
+
+    reference = f"SUB-{subscription.id}"
+
+    data = {
+
+        "email":
+        request.user.email,
+
+        "amount":
+        int(plan.price * 100),
+
+        "reference":
+        reference,
+
+        "callback_url":
+        request.build_absolute_uri(
+
+            f"/subscription/verify/{subscription.id}/"
+
+        )
+
+    }
+
+    response = requests.post(
+
+        url,
+
+        json=data,
+
+        headers=headers
+
+    )
+
+    response_data = response.json()
+
+    if response_data.get("status"):
+
+        subscription.payment_reference = reference
+
+        subscription.save()
+
+        return redirect(
+
+            response_data["data"]["authorization_url"]
+
+        )
+
+    subscription.delete()
+
+    messages.error(
+
+        request,
+
+        "Unable to initialize payment."
+
+    )
+
+    return redirect(
+        "subscription"
+    )
+
+@login_required
+def verify_subscription_payment(
+
+    request,
+
+    subscription_id
+
+):
+
+    subscription = get_object_or_404(
+
+        CustomerSubscription,
+
+        id=subscription_id,
+
+        customer=request.user
+
+    )
+
+    url = (
+
+        "https://api.paystack.co/transaction/verify/"
+
+        f"{subscription.payment_reference}"
+
+    )
+
+    headers = {
+
+        "Authorization":
+
+        f"Bearer {settings.PAYSTACK_SECRET_KEY}"
+
+    }
+
+    response = requests.get(
+
+        url,
+
+        headers=headers
+
+    )
+
+    response_data = response.json()
+
+    if (
+
+        response_data.get("status")
+
+        and
+
+        response_data["data"]["status"] == "success"
+
+    ):
+
+        subscription.payment_status = "Paid"
+
+        subscription.payment_date = timezone.now()
+
+        subscription.status = "Active"
+
+        subscription.save()
+
+        messages.success(
+
+            request,
+
+            "Subscription activated successfully."
+
+        )
+
+        return redirect(
+
+            "subscription_success",
+
+            subscription.id
+
+        )
+
+    subscription.delete()
+
+    messages.error(
+
+        request,
+
+        "Payment failed."
+
+    )
+
+    return redirect(
+        "subscription"
+    )
+
+@login_required
+def subscription_success(
+
+    request,
+
+    subscription_id
+
+):
+
+    subscription = get_object_or_404(
+
+        CustomerSubscription,
+
+        id=subscription_id,
+
+        customer=request.user
+
+    )
+
+    return render(
+
+        request,
+
+        "subscription_success.html",
+
+        {
+
+            "subscription": subscription
+
+        }
 
     )
 

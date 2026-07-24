@@ -664,6 +664,28 @@ class CustomerSubscription(models.Model):
 
     )
 
+    payment_reference = models.CharField(
+    max_length=200,
+    blank=True,
+    null=True,
+    unique=True
+    )
+
+    payment_status = models.CharField(
+        max_length=20,
+        choices=[
+            ("Pending", "Pending"),
+            ("Paid", "Paid"),
+            ("Failed", "Failed"),
+        ],
+        default="Pending"
+    )
+
+    payment_date = models.DateTimeField(
+        blank=True,
+        null=True
+    )
+
     status = models.CharField(
 
         max_length=20,

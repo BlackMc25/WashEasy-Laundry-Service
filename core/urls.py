@@ -277,10 +277,25 @@ urlpatterns = [
             name="delete_subscription_plan",
         ),
 
+    path(
 
+        "subscription/pay/<int:plan_id>/",
 
+        views.initialize_subscription_payment,
 
+        name="initialize_subscription_payment"
 
+    ),
+
+    path(
+
+        "subscription/verify/<int:subscription_id>/",
+
+        views.verify_subscription_payment,
+
+        name="verify_subscription_payment"
+
+    ),
 
 
 ]

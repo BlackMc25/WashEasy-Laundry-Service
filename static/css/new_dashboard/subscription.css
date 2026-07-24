@@ -653,3 +653,95 @@
     background:#0d6efd;
 
 }
+
+/*==========================================================
+                SUCCESS PAGE
+==========================================================*/
+
+.subscription-success-card{
+
+    max-width:700px;
+
+    margin:50px auto;
+
+    padding:60px;
+
+    background:#fff;
+
+    border-radius:25px;
+
+    text-align:center;
+
+    box-shadow:0 20px 45px rgba(0,0,0,.08);
+
+}
+
+.success-icon{
+
+    font-size:90px;
+
+    color:#198754;
+
+    margin-bottom:25px;
+
+}
+
+.subscription-success-card h2{
+
+    font-size:36px;
+
+    font-weight:700;
+
+    margin-bottom:15px;
+
+}
+
+.subscription-success-card p{
+
+    color:#666;
+
+    margin-bottom:40px;
+
+}
+
+.success-summary{
+
+    background:#f8f9fa;
+
+    border-radius:18px;
+
+    padding:30px;
+
+    margin-bottom:40px;
+
+}
+
+.summary-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    padding:15px 0;
+
+    border-bottom:1px solid #e6e6e6;
+
+}
+
+.summary-row:last-child{
+
+    border-bottom:none;
+
+}
+
+.success-buttons{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+
+}

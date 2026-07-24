@@ -812,7 +812,8 @@ from datetime import timedelta
 from django.utils import timezone
 from .models import (
     CustomerSubscription,
-    SubscriptionPlan
+    SubscriptionPlan,
+    SubscriptionUsage
 )
 
 
@@ -855,18 +856,15 @@ def subscription_detail(request, subscription_id):
         customer=request.user,
     )
 
-    usage_history = "SubscriptionUsage".objects.filter(
+    usage_history = SubscriptionUsage.objects.filter(
         subscription=subscription
     ).select_related(
         "order"
     ).order_by("-created_at")
 
     context = {
-
         "subscription": subscription,
-
         "usage_history": usage_history,
-
     }
 
     return render(

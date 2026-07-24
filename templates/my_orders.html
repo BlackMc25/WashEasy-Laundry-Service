@@ -10,6 +10,79 @@
 
     {% if orders %}
 
+        {% if subscription %}
+
+    <div class="subscription-order-card">
+
+        <div class="subscription-top">
+
+            <div>
+
+                <h4>
+
+                    ⭐ Subscription #{{ subscription.id }}
+
+                </h4>
+
+                <p>
+
+                    {{ subscription.plan.name }}
+
+                </p>
+
+            </div>
+
+            <span class="badge bg-success">
+
+                {{ subscription.status }}
+
+            </span>
+
+        </div>
+
+        <div class="subscription-progress">
+
+            {% widthratio subscription.remaining_items subscription.total_items 100 as progress %}
+
+            <div class="progress">
+
+                <div
+                    class="progress-bar bg-primary"
+                    style="width: {{ progress }}%;">
+
+                </div>
+
+            </div>
+
+            <p>
+
+                {{ subscription.remaining_items }}
+                /
+                {{ subscription.total_items }}
+                Items Remaining
+
+            </p>
+
+        </div>
+
+        <div class="subscription-actions">
+
+            <a
+            href="{% url 'subscription_detail' subscription.id %}"
+            class="btn btn-primary">
+
+                <i class="bi bi-eye-fill"></i>
+
+                View Subscription
+
+            </a>
+
+        </div>
+
+    </div>
+
+    {% endif %}
+    
         {% for order in orders %}
 
        <a href="{% url 'order_detail' order.id %}" class="order-link">

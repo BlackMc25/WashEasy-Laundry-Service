@@ -289,16 +289,25 @@ def my_orders(request):
 
     orders = LaundryOrder.objects.filter(
         customer=request.user
-    ).order_by('-created_at')
+    ).order_by("-created_at")
+
+    subscription = CustomerSubscription.objects.filter(
+        customer=request.user,
+        status="Active"
+    ).order_by("-created_at").first()
 
     context = {
-        'orders': orders
+
+        "orders": orders,
+
+        "subscription": subscription,
+
     }
 
     return render(
         request,
-        'my_orders.html',
-        context
+        "my_orders.html",
+        context,
     )
 
 @login_required
@@ -775,6 +784,32 @@ def subscription(request):
 
     )
 
+@login_required
+def subscription_detail(request, subscription_id):
+
+    subscription = get_object_or_404(
+
+        CustomerSubscription,
+
+        id=subscription_id,
+
+        customer=request.user,
+
+    )
+
+    return render(
+
+        request,
+
+        "subscription_detail.html",
+
+        {
+
+            "subscription": subscription,
+
+        }
+
+    )
 
 
 @login_required

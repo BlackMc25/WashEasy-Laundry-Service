@@ -1,0 +1,411 @@
+{% extends 'base_dashboard.html' %}
+
+{% load static %}
+
+{% block title %}
+Subscription Details
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet"
+href="{% static 'css/new_dashboard/subscription_detail.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="page-container">
+
+    <!-- ==========================
+            HERO
+    =========================== -->
+
+    <div class="order-hero">
+
+        <div>
+
+            <a
+            href="{% url 'my_orders' %}"
+            class="btn btn-outline">
+
+                <i class="bi bi-arrow-left"></i>
+
+                Back
+
+            </a>
+
+            <h1 class="page-title mt-md">
+
+                Subscription #{{ subscription.id }}
+
+            </h1>
+
+            <span class="badge badge-success">
+
+                {{ subscription.status }}
+
+            </span>
+
+        </div>
+
+        <div class="order-actions">
+
+            <a
+            href="{% url 'update_subscription_address' subscription.id %}"
+            class="btn btn-primary">
+
+                <i class="bi bi-geo-alt-fill"></i>
+
+                Update Address
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==========================
+        SUBSCRIPTION USAGE
+    =========================== -->
+
+    <section class="detail-section">
+
+        <h3 class="detail-title">
+
+            Subscription Usage
+
+        </h3>
+
+        {% widthratio subscription.remaining_items subscription.total_items 100 as progress %}
+
+        <div class="subscription-progress-card">
+
+            <div class="progress">
+
+                <div
+                    class="progress-bar bg-primary"
+                    style="width:{{ progress }}%;">
+
+                </div>
+
+            </div>
+
+            <div class="usage-stats">
+
+                <div>
+
+                    <h4>
+
+                        {{ subscription.remaining_items }}
+
+                    </h4>
+
+                    <span>
+
+                        Remaining Items
+
+                    </span>
+
+                </div>
+
+                <div>
+
+                    <h4>
+
+                        {{ subscription.total_items }}
+
+                    </h4>
+
+                    <span>
+
+                        Total Items
+
+                    </span>
+
+                </div>
+
+                <div>
+
+                    <h4>
+
+                        {{ subscription.expiry_date }}
+
+                    </h4>
+
+                    <span>
+
+                        Expiry Date
+
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================
+        SUMMARY
+    =========================== -->
+
+    <section class="detail-section">
+
+        <h3 class="detail-title">
+
+            Subscription Summary
+
+        </h3>
+
+        <div class="summary-grid">
+
+            <div class="summary-item">
+
+                <span>
+
+                    Plan
+
+                </span>
+
+                <strong>
+
+                    {{ subscription.plan.name }}
+
+                </strong>
+
+            </div>
+
+            <div class="summary-item">
+
+                <span>
+
+                    Payment Status
+
+                </span>
+
+                <strong>
+
+                    {{ subscription.payment_status }}
+
+                </strong>
+
+            </div>
+
+            <div class="summary-item">
+
+                <span>
+
+                    Amount Paid
+
+                </span>
+
+                <strong>
+
+                    ₦{{ subscription.amount_paid }}
+
+                </strong>
+
+            </div>
+
+            <div class="summary-item">
+
+                <span>
+
+                    Start Date
+
+                </span>
+
+                <strong>
+
+                    {{ subscription.start_date }}
+
+                </strong>
+
+            </div>
+
+            <div class="summary-item">
+
+                <span>
+
+                    Expiry Date
+
+                </span>
+
+                <strong>
+
+                    {{ subscription.expiry_date }}
+
+                </strong>
+
+            </div>
+
+            <div class="summary-item">
+
+                <span>
+
+                    Payment Reference
+
+                </span>
+
+                <strong>
+
+                    {{ subscription.payment_reference }}
+
+                </strong>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================
+        SERVICES
+    =========================== -->
+
+    <section class="detail-section">
+
+        <h3 class="detail-title">
+
+            Included Services
+
+        </h3>
+
+        <div class="feature-grid">
+
+            {% if subscription.plan.name == "Basic" %}
+
+                <div>✔ Wash & Fold</div>
+                <div>✔ Pickup</div>
+                <div>✔ Delivery</div>
+
+            {% elif subscription.plan.name == "Standard" %}
+
+                <div>✔ Wash & Iron</div>
+                <div>✔ Fold</div>
+                <div>✔ Pickup</div>
+                <div>✔ Delivery</div>
+                <div>✔ Extra Care</div>
+
+            {% else %}
+
+                <div>✔ Premium Care</div>
+                <div>✔ Wash & Iron</div>
+                <div>✔ Pickup</div>
+                <div>✔ Delivery</div>
+
+            {% endif %}
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================
+        CATEGORIES
+    =========================== -->
+
+    <section class="detail-section">
+
+        <h3 class="detail-title">
+
+            Clothing Categories
+
+        </h3>
+
+        <div class="feature-grid">
+
+            {% if subscription.plan.name == "Basic" %}
+
+                <div>✔ Everyday Wear</div>
+                <div>✔ Underwear</div>
+                <div>✔ Children Wear</div>
+
+            {% elif subscription.plan.name == "Standard" %}
+
+                <div>✔ Everyday Wear</div>
+                <div>✔ Corporate Wear</div>
+                <div>✔ Native Wear</div>
+                <div>✔ School Uniform</div>
+
+            {% else %}
+
+                <div>✔ Suits</div>
+                <div>✔ Blazers</div>
+                <div>✔ Silk</div>
+                <div>✔ Delicate Wear</div>
+
+            {% endif %}
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================
+        DELIVERY ADDRESS
+    =========================== -->
+
+    <section class="detail-section">
+
+        <h3 class="detail-title">
+
+            Delivery Address
+
+        </h3>
+
+        <div class="summary-grid">
+
+            <div class="summary-item">
+
+                <span>
+
+                    Current Delivery Address
+
+                </span>
+
+                <strong>
+
+                    {{ subscription.delivery_address }}
+
+                </strong>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================
+        SUPPORT
+    =========================== -->
+
+    <section class="detail-section">
+
+        <h3 class="detail-title">
+
+            Need Help?
+
+        </h3>
+
+        <div class="action-buttons">
+
+            <a
+            href="#"
+            class="btn btn-danger">
+
+                Contact Support
+
+            </a>
+
+        </div>
+
+    </section>
+
+</div>
+
+{% endblock %}

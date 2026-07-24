@@ -303,6 +303,16 @@ urlpatterns = [
     name="subscription_success",
 ),
 
+    path(
+
+        "subscription/<int:subscription_id>/",
+
+        views.subscription_detail,
+
+        name="subscription_detail",
+
+    ),
+
 
 ]
 

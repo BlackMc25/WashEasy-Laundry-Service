@@ -37,6 +37,26 @@ from django.shortcuts import (
 def home(request):
     return render(request, 'home.html')
 
+
+
+def is_subscription_item(price_obj, subscription):
+    
+    if not subscription:
+        return False
+
+    plan = subscription.plan.name.lower()
+
+    if plan == "basic":
+        return price_obj.basic_subscription
+
+    elif plan == "standard":
+        return price_obj.standard_subscription
+
+    elif plan == "premium":
+        return price_obj.premium_subscription
+
+    return False
+
 @login_required
 def book_laundry(request):
 
@@ -76,6 +96,25 @@ def book_laundry(request):
     ).distinct()
 
     if request.method == "POST":
+
+        # ==========================================
+        # SUBSCRIPTION MODE
+        # ==========================================
+
+        use_subscription = (
+            request.POST.get("use_subscription") == "true"
+        )
+
+        subscription = None
+
+        if use_subscription:
+
+            subscription = CustomerSubscription.objects.filter(
+                customer=request.user,
+                status="Active",
+                payment_status="Paid",
+                remaining_items__gt=0
+            ).select_related("plan").first()
 
         form = LaundryOrderForm(request.POST)
 

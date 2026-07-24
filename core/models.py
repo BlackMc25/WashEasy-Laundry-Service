@@ -62,6 +62,10 @@ class LaundryOrder(models.Model):
     related_name="orders"
     )
 
+    use_subscription = models.BooleanField(
+    default=False
+    )
+
     phone_number = models.CharField(
     max_length=15
    )

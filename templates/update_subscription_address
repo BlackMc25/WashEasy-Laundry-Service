@@ -1,0 +1,81 @@
+{% extends 'base_dashboard.html' %}
+
+{% block title %}
+
+Update Delivery Address
+
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="card shadow-lg border-0 rounded-4">
+
+        <div class="card-header bg-white">
+
+            <h3>
+
+                Update Delivery Address
+
+            </h3>
+
+            <small>
+
+                Subscription #{{ subscription.subscription_number }}
+
+            </small>
+
+        </div>
+
+        <div class="card-body">
+
+            <form method="POST">
+
+                {% csrf_token %}
+
+                <div class="mb-4">
+
+                    <label class="form-label">
+
+                        Delivery Address
+
+                    </label>
+
+                    <textarea
+                        name="delivery_address"
+                        class="form-control"
+                        rows="4"
+                        required>{{ subscription.delivery_address }}</textarea>
+
+                </div>
+
+                <div class="d-flex justify-content-between">
+
+                    <a
+                    href="{% url 'subscription_detail' subscription.id %}"
+                    class="btn btn-secondary">
+
+                        Cancel
+
+                    </a>
+
+                    <button
+                    type="submit"
+                    class="btn btn-primary">
+
+                        Save Changes
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

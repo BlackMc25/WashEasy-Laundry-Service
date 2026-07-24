@@ -313,6 +313,18 @@ urlpatterns = [
 
     ),
 
+    path(
+        "subscription/<int:subscription_id>/update-address/",
+        views.update_subscription_address,
+        name="update_subscription_address",
+    ),
+
+    path(
+        "subscription/<int:subscription_id>/submit-complaint/",
+        views.submit_subscription_complaint,
+        name="submit_subscription_complaint",
+    ),
+
 
 ]
 

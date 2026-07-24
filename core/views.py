@@ -811,6 +811,103 @@ def subscription_detail(request, subscription_id):
 
     )
 
+@login_required
+def update_subscription_address(request, subscription_id):
+
+    subscription = get_object_or_404(
+
+        CustomerSubscription,
+
+        id=subscription_id,
+
+        customer=request.user
+
+    )
+
+    if request.method == "POST":
+
+        subscription.delivery_address = request.POST.get(
+            "delivery_address"
+        )
+
+        subscription.save()
+
+        messages.success(
+
+            request,
+
+            "Delivery address updated successfully."
+
+        )
+
+        return redirect(
+
+            "subscription_detail",
+
+            subscription.id
+
+        )
+
+    return render(
+
+        request,
+
+        "update_subscription_address.html",
+
+        {
+
+            "subscription": subscription
+
+        }
+
+    )
+
+@login_required
+def submit_subscription_complaint(
+    request,
+    subscription_id
+):
+
+    subscription = get_object_or_404(
+        CustomerSubscription,
+        id=subscription_id,
+        customer=request.user
+    )
+
+    if request.method == "POST":
+
+        Complaint.objects.create(
+
+            customer=request.user,
+
+            subject=request.POST.get(
+                "subject"
+            ),
+
+            message=request.POST.get(
+                "message"
+            ),
+
+        )
+
+        messages.success(
+            request,
+            "Complaint submitted successfully."
+        )
+
+        return redirect(
+            "subscription_detail",
+            subscription_id=subscription.id
+        )
+
+    return render(
+        request,
+        "submit_subscription_complaint.html",
+        {
+            "subscription": subscription
+        }
+    )
+
 
 @login_required
 def initialize_subscription_payment(

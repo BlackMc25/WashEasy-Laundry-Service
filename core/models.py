@@ -470,6 +470,19 @@ class Complaint(models.Model):
         related_name='complaints'
     )
 
+    subscription = models.ForeignKey(
+    "core.CustomerSubscription",
+    on_delete=models.CASCADE,
+    related_name="complaints",
+    blank=True,
+    null=True
+)
+    
+    delivery_address = models.TextField(
+    blank=True,
+    null=True
+)
+
     subject = models.CharField(
         max_length=255
     )

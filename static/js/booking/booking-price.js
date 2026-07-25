@@ -29,6 +29,10 @@ function refreshPricing() {
                 GET ALL PRICING DATA
 =========================================================*/
 
+/*=========================================================
+                GET ALL PRICING DATA
+=========================================================*/
+
 function getPricingData(){
 
     const selectedItems =
@@ -38,10 +42,12 @@ function getPricingData(){
 
     let chargedItems = 0;
 
-    selectedItems.forEach(item=>{
+    selectedItems.forEach(item => {
 
         item.covered =
             isCoveredBySubscription(item);
+
+        item.lineTotal = 0;
 
         if(item.covered){
 
@@ -57,9 +63,12 @@ function getPricingData(){
 
     });
 
+    const laundryTotal =
+        calculateLaundryTotal(selectedItems);
+
     return{
 
-        laundryTotal:0,
+        laundryTotal,
 
         expressFee:0,
 
@@ -83,6 +92,38 @@ function getPricingData(){
             getTotalDistance()
 
     };
+
+}
+
+/*=========================================================
+            CALCULATE LAUNDRY TOTAL
+=========================================================*/
+
+function calculateLaundryTotal(selectedItems){
+
+    let total = 0;
+
+    selectedItems.forEach(item => {
+
+        // Covered by subscription
+        if(item.covered){
+
+            item.lineTotal = 0;
+
+            return;
+
+        }
+
+        // Normal laundry cost
+        item.lineTotal =
+            item.quantity *
+            item.price;
+
+        total += item.lineTotal;
+
+    });
+
+    return total;
 
 }
 
@@ -142,15 +183,49 @@ function getTotalDistance() {
 |--------------------------------------------------------------------------
 */
 
-function updateSummary(pricing) {
+/*=========================================================
+                UPDATE SUMMARY
+=========================================================*/
+
+function updateSummary(pricing){
+
+    console.clear();
+
+    console.log("========== PRICING ==========");
+
+    console.log(pricing);
+
+    pricing.selectedItems.forEach(item=>{
+
+        console.log(
+
+            item.item,
+
+            "Qty:",
+
+            item.quantity,
+
+            "| Covered:",
+
+            item.covered,
+
+            "| Line Total:",
+
+            item.lineTotal
+
+        );
+
+    });
 
     console.log(
-        "Pricing Summary:",
-        pricing
+
+        "Laundry Total:",
+
+        pricing.laundryTotal
+
     );
 
 }
-
 
 /*
 |--------------------------------------------------------------------------

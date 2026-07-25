@@ -132,8 +132,8 @@ function calculateLaundryItem(card){
                 SUBSCRIPTION CALCULATION
         =========================================*/
 
-        const subscriptionToggle =
-    document.getElementById("subscriptionToggle");
+       const subscriptionToggle =
+        document.getElementById("useSubscription");
 
         const useSubscription =
             subscriptionToggle &&
@@ -607,25 +607,26 @@ document
 // Load Summary When Page Opens
 updateSummary();
 
-subscriptionToggle.addEventListener(
-    "change",
-    function(){
+if (typeof recalculateTransportFee === "function") {
+    recalculateTransportFee();
+}
 
-        document.getElementById(
-            "use_subscription"
-        ).value =
+if (subscriptionToggle) {
 
-        this.checked ?
+    subscriptionToggle.addEventListener("change", function () {
 
-        "true"
+        // Keep hidden input in sync for the POST request
+        document.getElementById("use_subscription").value =
+            this.checked ? "true" : "false";
 
-        :
-
-        "false";
-
+        // Refresh the summary
         updateSummary();
 
-        recalculateTransportFee();
+        // Refresh transport fee
+        if (typeof recalculateTransportFee === "function") {
+            recalculateTransportFee();
+        }
 
-    }
-);
+    });
+
+}

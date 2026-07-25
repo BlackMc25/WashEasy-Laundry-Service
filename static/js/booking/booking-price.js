@@ -289,85 +289,254 @@ function getTotalDistance() {
 
 function updateSummary(pricing){
 
-    console.clear();
+    /*
+    ------------------------------------
+    Selected Items
+    ------------------------------------
+    */
 
-    console.log("========== BOOKING ==========");
+    const selectedItemsContainer =
+        document.getElementById(
+            "selected-items"
+        );
 
-    pricing.selectedItems.forEach(item=>{
+    selectedItemsContainer.innerHTML = "";
 
-        console.table({
+    if(pricing.selectedItems.length === 0){
 
-            Item:item.item,
+        selectedItemsContainer.innerHTML =
 
-            Qty:item.quantity,
+        `
+        <p class="text-muted">
 
-            ExpressQty:item.expressQuantity,
+            No items selected
 
-            Covered:item.covered,
+        </p>
+        `;
 
-            Standard:item.standardTotal,
+    }
 
-            ExpressLaundry:item.expressTotal,
+    else{
 
-            ExpressFee:item.expressFee,
+        pricing.selectedItems.forEach(item=>{
 
-            LineTotal:item.lineTotal
+            let badge = "";
+
+            if(item.covered){
+
+                badge =
+
+                `<span class="badge bg-success">
+
+                    FREE
+
+                </span>`;
+
+            }
+
+            selectedItemsContainer.innerHTML +=
+
+            `
+            <div class="summary-item">
+
+                <div>
+
+                    <strong>
+
+                        ${item.item}
+
+                    </strong>
+
+                    <br>
+
+                    <small>
+
+                        ${item.service}
+
+                    </small>
+
+                </div>
+
+                <div class="text-end">
+
+                    <div>
+
+                        x${item.quantity}
+
+                    </div>
+
+                    ${badge}
+
+                </div>
+
+            </div>
+
+            <hr>
+            `;
 
         });
 
-    });
+    }
 
-    console.log("----------------------------");
+    /*
+    ------------------------------------
+    Laundry Cost
+    ------------------------------------
+    */
 
-    console.log(
+    document.getElementById(
+        "laundry-cost"
+    ).innerText =
 
-        "Laundry :",
+    pricing.laundryTotal.toLocaleString();
 
-        pricing.laundryTotal
+    /*
+    ------------------------------------
+    Transport
+    ------------------------------------
+    */
 
-    );
+    document.getElementById(
+        "transport-fee"
+    ).innerText =
 
-    console.log(
+    "₦" +
 
-        "Express :",
+    pricing.transportFee.toLocaleString();
 
-        pricing.expressFee
+    /*
+    ------------------------------------
+    Express
+    ------------------------------------
+    */
 
-    );
+    document.getElementById(
+        "express-fee"
+    ).innerText =
 
-    console.log(
+    "₦" +
 
-        "Transport :",
+    pricing.expressFee.toLocaleString();
 
-        pricing.transportFee
+    /*
+    ------------------------------------
+    Grand Total
+    ------------------------------------
+    */
 
-    );
+    document.getElementById(
+        "total-cost"
+    ).innerText =
 
-    console.log(
-
-        "Grand Total :",
-
-        pricing.grandTotal
-
-    );
+    pricing.grandTotal.toLocaleString();
 
 }
-
 /*
 |--------------------------------------------------------------------------
 | Update Review Page
 |--------------------------------------------------------------------------
 */
 
-function updateReview(pricing) {
+/*=========================================================
+                UPDATE REVIEW
+=========================================================*/
 
-    console.log(
-        "Review Updated:",
-        pricing
-    );
+function updateReview(pricing){
+
+    const reviewItems =
+
+        document.getElementById(
+            "review-items"
+        );
+
+    if(!reviewItems){
+
+        return;
+
+    }
+
+    reviewItems.innerHTML = "";
+
+    pricing.selectedItems.forEach(item=>{
+
+        let text =
+
+        item.covered ?
+
+        "FREE"
+
+        :
+
+        "₦" +
+
+        item.lineTotal.toLocaleString();
+
+        reviewItems.innerHTML +=
+
+        `
+        <div class="review-item d-flex justify-content-between">
+
+            <div>
+
+                ${item.item}
+
+                (${item.service})
+
+            </div>
+
+            <strong>
+
+                ${text}
+
+            </strong>
+
+        </div>
+
+        `;
+
+    });
+
+    document.getElementById(
+        "review-charges"
+    ).innerHTML =
+
+    `
+    <p>
+
+        Laundry :
+
+        ₦${pricing.laundryTotal.toLocaleString()}
+
+    </p>
+
+    <p>
+
+        Express :
+
+        ₦${pricing.expressFee.toLocaleString()}
+
+    </p>
+
+    <p>
+
+        Transport :
+
+        ₦${pricing.transportFee.toLocaleString()}
+
+    </p>
+
+    <hr>
+
+    <h5>
+
+        Total :
+
+        ₦${pricing.grandTotal.toLocaleString()}
+
+    </h5>
+    `;
 
 }
-
 /*=========================================================
                 GET ALL SELECTED ITEMS
 =========================================================*/

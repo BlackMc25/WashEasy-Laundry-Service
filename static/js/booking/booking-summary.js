@@ -132,11 +132,12 @@ function calculateLaundryItem(card){
                 SUBSCRIPTION CALCULATION
         =========================================*/
 
+        const subscriptionToggle =
+    document.getElementById("subscriptionToggle");
+
         const useSubscription =
-
-            document.getElementById("use_subscription") &&
-
-            document.getElementById("use_subscription").value === "true";
+            subscriptionToggle &&
+            subscriptionToggle.checked;
 
         let covered = false;
 

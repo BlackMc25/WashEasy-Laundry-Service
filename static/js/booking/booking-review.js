@@ -121,37 +121,6 @@ function updateReviewPage(){
             "selected-items"
         ).innerHTML;
 
-
-    /*=========================
-        CHARGES
-    =========================*/
-
-    document.getElementById(
-        "review-charges"
-    ).innerHTML = `
-
-        <div class="summary-row">
-            <span>Laundry Cost</span>
-            <strong>₦${document.getElementById("laundry-cost").innerText}</strong>
-        </div>
-
-        <div class="summary-row">
-            <span>Transport Fee</span>
-            <strong>${document.getElementById("transport-fee").innerText}</strong>
-        </div>
-
-        <div class="summary-row">
-            <span>Express Fee</span>
-            <strong>${document.getElementById("express-fee").innerText}</strong>
-        </div>
-
-        <hr>
-
-        <div class="summary-total-card">
-            <small>Grand Total</small>
-            <h3>₦${document.getElementById("total-cost").innerText}</h3>
-        </div>
-
-    `;
+        refreshPricing();
 
 }

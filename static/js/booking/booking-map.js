@@ -23,31 +23,6 @@ const STORE_LAT = window.WashEasyConfig.STORE_LAT;
 const STORE_LNG = window.WashEasyConfig.STORE_LNG;
 
 /*=========================================================
-        SUBSCRIPTION TRANSPORT CHECK
-=========================================================*/
-
-function calculateTransportFee(totalDistance){
-
-    const PRICE_PER_KM =
-        window.WashEasyConfig.PRICE_PER_KM;
-
-    const useSubscription =
-
-        document.getElementById("use_subscription") &&
-
-        document.getElementById("use_subscription").value === "true";
-
-    if(useSubscription){
-
-        return 0;
-
-    }
-
-    return totalDistance * PRICE_PER_KM;
-
-}
-
-/*=========================================================
                 INITIALIZE MAP
 =========================================================*/
 
@@ -146,58 +121,6 @@ function calculateDistance(
 
     return R * c;
 
-}
-
-
-/*=========================================================
-                RECALCULATE TRANSPORT FEE
-=========================================================*/
-
-function recalculateTransportFee(){
-
-    // Pickup Distance
-    const pickupDistance =
-        parseFloat(
-            document.getElementById(
-                "id_pickup_distance_km"
-            ).value || 0
-        );
-
-    // Delivery Distance
-    const deliveryDistance =
-        parseFloat(
-            document.getElementById(
-                "id_delivery_distance_km"
-            ).value || 0
-        );
-
-    // Total Distance
-    const totalDistance =
-        pickupDistance +
-        deliveryDistance;
-
-    document.getElementById(
-        "total-distance"
-    ).innerText =
-        totalDistance.toFixed(2) +
-        " km";
-
-    document.getElementById(
-        "id_total_distance_km"
-    ).value =
-        totalDistance.toFixed(2);
-
-    // Transport Price Per Kilometer
-    const transportFee =
-    calculateTransportFee(totalDistance);
-
-    document.getElementById(
-        "transport-fee"
-    ).innerText =
-        "₦" +
-        transportFee.toLocaleString();
-
-    updateGrandTotal();
 }
 
 /*=========================================================
@@ -342,16 +265,7 @@ function initAutocomplete(){
                         TRANSPORT FEE
             =================================================*/
 
-            const transportFee =
-        calculateTransportFee(totalDistance);
-
-        document.getElementById(
-            "transport-fee"
-        ).innerText =
-            "₦" +
-            transportFee.toLocaleString();
-
-        updateGrandTotal();
+            refreshPricing();
 
             /*=================================================
                         SAVE COORDINATES
@@ -526,17 +440,7 @@ function initAutocomplete(){
             /*=================================================
                     TRANSPORT FEE
             =================================================*/
-
-        const transportFee =
-            calculateTransportFee(totalDistance);
-
-        document.getElementById(
-            "transport-fee"
-        ).innerText =
-            "₦" +
-            transportFee.toLocaleString();
-
-        updateGrandTotal();
+            refreshPricing();
 
             /*=================================================
                     SAVE COORDINATES
@@ -697,7 +601,7 @@ document
 
 
             // Recalculate Transport Fee
-            recalculateTransportFee();
+            refreshPricing();
 
         }
 
@@ -769,7 +673,7 @@ document
 
 
             // Recalculate Transport Fee
-            recalculateTransportFee();
+            refreshPricing();
 
         }
 

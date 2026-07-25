@@ -186,7 +186,7 @@ def book_laundry(request):
             )
 
             PRICE_PER_KM = Decimal("150")
-            if subscription and use_subscription:
+            if subscription:
                 transport_fee = 0
             else:
                 transport_fee = (

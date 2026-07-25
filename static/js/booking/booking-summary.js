@@ -606,34 +606,25 @@ document
 // Load Summary When Page Opens
 updateSummary();
 
-const subscriptionToggle =
-document.getElementById(
-    "useSubscription"
+subscriptionToggle.addEventListener(
+    "change",
+    function(){
+
+        document.getElementById(
+            "use_subscription"
+        ).value =
+
+        this.checked ?
+
+        "true"
+
+        :
+
+        "false";
+
+        updateSummary();
+
+        recalculateTransportFee();
+
+    }
 );
-
-if(subscriptionToggle){
-
-    subscriptionToggle.addEventListener(
-        "change",
-
-        function(){
-
-            document.getElementById(
-                "use_subscription"
-            ).value =
-
-            this.checked ?
-
-            "true"
-
-            :
-
-            "false";
-
-            updateSummary();
-
-        }
-
-    );
-
-}

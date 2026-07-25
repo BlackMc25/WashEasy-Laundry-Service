@@ -161,7 +161,19 @@
 
             <span>Transport Fee</span>
 
-            <strong>₦{{ order.transport_fee }}</strong>
+            <strong>
+                
+               {% if order.use_subscription %}
+
+                    FREE
+
+                    {% else %}
+
+                    ₦{{ order.transport_fee }}
+
+                    {% endif %}
+
+            </strong>
 
         </div>
 
@@ -241,7 +253,27 @@
 
         <h4 class="text-success">
 
-        ₦{{ item.total_subtotal }}
+        {% if item.covered_by_subscription %}
+
+            <span class="badge bg-success">
+
+                FREE
+
+            </span>
+
+            <br>
+
+            <small>
+
+                Covered by Subscription
+
+            </small>
+
+            {% else %}
+
+            ₦{{ item.total_subtotal }}
+            {% endif %}
+
 
         </h4>
 
@@ -305,7 +337,27 @@
 
         <strong>
 
-        ₦{{ item.subtotal }}
+       {% if item.covered_by_subscription %}
+
+            <span class="badge bg-success">
+
+                FREE
+
+            </span>
+
+            <br>
+
+            <small>
+
+                Covered by Subscription
+
+            </small>
+
+            {% else %}
+
+            ₦{{ item.subtotal }}
+
+            {% endif %}
 
         </strong>
 
@@ -341,7 +393,28 @@
 
         <span class="text-success">
 
-        ₦{{ item.total_subtotal }}
+        {% if item.covered_by_subscription %}
+
+            <span class="badge bg-success">
+
+                FREE
+
+            </span>
+
+            <br>
+
+            <small>
+
+                Covered by Subscription
+
+            </small>
+
+            {% else %}
+
+            ₦{{ item.total_subtotal }}
+
+            {% endif %}
+
 
         </span>
 
@@ -406,8 +479,27 @@
     </span>
 
     <strong>
+        {% if item.covered_by_subscription %}
 
-    ₦{{ laundry_total|floatformat:2 }}
+            <span class="badge bg-success">
+
+                FREE
+
+            </span>
+
+            <br>
+
+            <small>
+
+                Covered by Subscription
+
+            </small>
+
+            {% else %}
+
+            ₦{{ laundry_total|floatformat:2 }}
+            
+            {% endif %}
 
     </strong>
 
@@ -439,7 +531,15 @@
 
     <strong>
 
-    ₦{{ order.transport_fee|floatformat:2 }}
+    {% if order.use_subscription %}
+
+        FREE
+
+        {% else %}
+
+        ₦{{ order.transport_fee|floatformat:2 }}
+        {% endif %}
+
 
     </strong>
 

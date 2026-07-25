@@ -286,6 +286,7 @@ def book_laundry(request):
                     express_quantity=express_quantity,
                     express_fee=express_fee,
                     total_subtotal=total_subtotal,
+                    covered_by_subscription=covered_by_subscription,
                 )
 
                 total_amount += total_subtotal

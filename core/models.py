@@ -366,7 +366,7 @@ class OrderItem(models.Model):
 
     covered_by_subscription = models.BooleanField(
     default=False
-)
+    )
 
     def __str__(self):
         return f"{self.item.item_name}"
@@ -572,6 +572,10 @@ class SubscriptionPlan(models.Model):
         default=30
     )
 
+    free_transport_trips = models.PositiveIntegerField(
+    default=1
+)
+
     description = models.TextField(
         blank=True,
         null=True
@@ -675,8 +679,13 @@ class CustomerSubscription(models.Model):
         blank=True,
 
         null=True
+    )
+
+    free_transport_trips_remaining = models.PositiveIntegerField(
+    default=1
 
     )
+    
 
     total_items = models.PositiveIntegerField()
 

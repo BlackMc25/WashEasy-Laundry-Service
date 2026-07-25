@@ -186,9 +186,17 @@ def book_laundry(request):
             )
 
             PRICE_PER_KM = Decimal("150")
-            if subscription:
-                transport_fee = 0
+
+            if (
+                subscription
+                and
+                subscription.free_transport_trips_remaining > 0
+            ):
+
+                transport_fee = Decimal("0")
+
             else:
+
                 transport_fee = (
                     Decimal(str(order.total_distance_km))
                     * PRICE_PER_KM
@@ -299,6 +307,20 @@ def book_laundry(request):
             order.total_amount = total_amount
 
             order.save()
+
+            # ==========================================
+            # USE ONE FREE TRANSPORT TRIP
+            # ==========================================
+
+            if (
+                subscription
+                and
+                subscription.free_transport_trips_remaining > 0
+            ):
+
+                subscription.free_transport_trips_remaining -= 1
+
+                subscription.save()
 
             order.refresh_from_db()
 
@@ -1141,6 +1163,10 @@ def verify_subscription_payment(
 
         subscription.status = "Active"
 
+        subscription.free_transport_trips_remaining = (
+            subscription.plan.free_transport_trips
+        )
+
         subscription.save()
 
         messages.success(
@@ -1980,6 +2006,8 @@ def add_subscription_plan(request):
 
             validity_days=request.POST.get("validity_days"),
 
+            free_transport_trips=request.POST.get("free_transport_trips"),
+
             description=request.POST.get("description"),
 
             is_active=(
@@ -2346,6 +2374,8 @@ def update_subscription_plan(request, plan_id):
         plan.total_items = request.POST.get("total_items")
 
         plan.validity_days = request.POST.get("validity_days")
+
+        plan.free_transport_trips = request.POST.get("free_transport_trips")
 
         plan.description = request.POST.get("description")
 

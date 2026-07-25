@@ -364,6 +364,10 @@ class OrderItem(models.Model):
     default=0
     )
 
+    covered_by_subscription = models.BooleanField(
+    default=False
+)
+
     def __str__(self):
         return f"{self.item.item_name}"
 

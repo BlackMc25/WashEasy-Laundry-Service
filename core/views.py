@@ -306,6 +306,8 @@ def book_laundry(request):
 
             order.total_amount = total_amount
 
+            order.save()
+
             # ==========================================
             # USE ONE FREE TRANSPORT TRIP
             # ==========================================
@@ -318,7 +320,7 @@ def book_laundry(request):
 
                 subscription.free_transport_trips_remaining -= 1
 
-            order.save()
+
             order.refresh_from_db()
 
             # -----------------------------

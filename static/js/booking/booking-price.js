@@ -25,9 +25,6 @@ function refreshPricing() {
 |--------------------------------------------------------------------------
 */
 
-/*=========================================================
-                GET ALL PRICING DATA
-=========================================================*/
 
 /*=========================================================
                 GET ALL PRICING DATA
@@ -42,12 +39,10 @@ function getPricingData(){
 
     let chargedItems = 0;
 
-    selectedItems.forEach(item => {
+    selectedItems.forEach(item=>{
 
         item.covered =
             isCoveredBySubscription(item);
-
-        item.lineTotal = 0;
 
         if(item.covered){
 
@@ -63,18 +58,22 @@ function getPricingData(){
 
     });
 
-    const laundryTotal =
+    const totals =
         calculateLaundryTotal(selectedItems);
 
     return{
 
-        laundryTotal,
+        laundryTotal:
+            totals.laundryTotal,
 
-        expressFee:0,
+        expressFee:
+            totals.expressFee,
 
         transportFee:0,
 
-        grandTotal:0,
+        grandTotal:
+            totals.laundryTotal +
+            totals.expressFee,
 
         selectedItems,
 
@@ -95,38 +94,100 @@ function getPricingData(){
 
 }
 
+
 /*=========================================================
             CALCULATE LAUNDRY TOTAL
 =========================================================*/
 
 function calculateLaundryTotal(selectedItems){
 
-    let total = 0;
+    let laundryTotal = 0;
 
-    selectedItems.forEach(item => {
+    let expressFee = 0;
 
-        // Covered by subscription
+    selectedItems.forEach(item=>{
+
+        /*
+        ------------------------------------
+        STANDARD
+        ------------------------------------
+        */
+
         if(item.covered){
 
-            item.lineTotal = 0;
-
-            return;
+            item.standardTotal = 0;
 
         }
 
-        // Normal laundry cost
-        item.lineTotal =
-            item.quantity *
+        else{
+
+            item.standardTotal =
+
+                item.quantity *
+
+                item.price;
+
+        }
+
+        /*
+        ------------------------------------
+        EXPRESS
+        ------------------------------------
+        */
+
+        item.expressTotal =
+
+            item.expressQuantity *
+
             item.price;
 
-        total += item.lineTotal;
+        item.expressFee =
+
+            item.expressQuantity *
+
+            item.expressPrice;
+
+        /*
+        ------------------------------------
+        LINE TOTAL
+        ------------------------------------
+        */
+
+        item.lineTotal =
+
+            item.standardTotal +
+
+            item.expressTotal +
+
+            item.expressFee;
+
+        /*
+        ------------------------------------
+        GRAND LAUNDRY TOTAL
+        ------------------------------------
+        */
+
+        laundryTotal +=
+
+            item.standardTotal +
+
+            item.expressTotal;
+
+        expressFee +=
+
+            item.expressFee;
 
     });
 
-    return total;
+    return{
+
+        laundryTotal,
+
+        expressFee
+
+    };
 
 }
-
 /*
 |--------------------------------------------------------------------------
 | Subscription Toggle
@@ -187,41 +248,61 @@ function getTotalDistance() {
                 UPDATE SUMMARY
 =========================================================*/
 
+/*=========================================================
+                UPDATE SUMMARY
+=========================================================*/
+
 function updateSummary(pricing){
 
     console.clear();
 
-    console.log("========== PRICING ==========");
-
-    console.log(pricing);
+    console.log("========== BOOKING ==========");
 
     pricing.selectedItems.forEach(item=>{
 
-        console.log(
+        console.table({
 
-            item.item,
+            Item:item.item,
 
-            "Qty:",
+            Qty:item.quantity,
 
-            item.quantity,
+            Express:item.expressQuantity,
 
-            "| Covered:",
+            Covered:item.covered,
 
-            item.covered,
+            Standard:item.standardTotal,
 
-            "| Line Total:",
+            ExpressLaundry:item.expressTotal,
 
-            item.lineTotal
+            ExpressFee:item.expressFee,
 
-        );
+            LineTotal:item.lineTotal
+
+        });
 
     });
 
     console.log(
 
-        "Laundry Total:",
+        "Laundry:",
 
         pricing.laundryTotal
+
+    );
+
+    console.log(
+
+        "Express:",
+
+        pricing.expressFee
+
+    );
+
+    console.log(
+
+        "Grand:",
+
+        pricing.grandTotal
 
     );
 

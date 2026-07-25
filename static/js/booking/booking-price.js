@@ -58,22 +58,34 @@ function getPricingData(){
 
     });
 
-    const totals =
-        calculateLaundryTotal(selectedItems);
+    /*
+    ------------------------------------
+    Laundry
+    ------------------------------------
+    */
 
-    return{
+    const laundry =
+        calculateLaundryTotal(
+            selectedItems
+        );
+
+    /*
+    ------------------------------------
+    Pricing Object
+    ------------------------------------
+    */
+
+    const pricing = {
 
         laundryTotal:
-            totals.laundryTotal,
+            laundry.laundryTotal,
 
         expressFee:
-            totals.expressFee,
+            laundry.expressFee,
 
         transportFee:0,
 
-        grandTotal:
-            totals.laundryTotal +
-            totals.expressFee,
+        grandTotal:0,
 
         selectedItems,
 
@@ -92,8 +104,34 @@ function getPricingData(){
 
     };
 
-}
+    /*
+    ------------------------------------
+    Transport
+    ------------------------------------
+    */
 
+    pricing.transportFee =
+        calculateTransportFee(
+            pricing
+        );
+
+    /*
+    ------------------------------------
+    Grand Total
+    ------------------------------------
+    */
+
+    pricing.grandTotal =
+
+        pricing.laundryTotal +
+
+        pricing.expressFee +
+
+        pricing.transportFee;
+
+    return pricing;
+
+}
 
 /*=========================================================
             CALCULATE LAUNDRY TOTAL
@@ -244,9 +282,6 @@ function getTotalDistance() {
 |--------------------------------------------------------------------------
 */
 
-/*=========================================================
-                UPDATE SUMMARY
-=========================================================*/
 
 /*=========================================================
                 UPDATE SUMMARY
@@ -266,7 +301,7 @@ function updateSummary(pricing){
 
             Qty:item.quantity,
 
-            Express:item.expressQuantity,
+            ExpressQty:item.expressQuantity,
 
             Covered:item.covered,
 
@@ -282,9 +317,11 @@ function updateSummary(pricing){
 
     });
 
+    console.log("----------------------------");
+
     console.log(
 
-        "Laundry:",
+        "Laundry :",
 
         pricing.laundryTotal
 
@@ -292,7 +329,7 @@ function updateSummary(pricing){
 
     console.log(
 
-        "Express:",
+        "Express :",
 
         pricing.expressFee
 
@@ -300,7 +337,15 @@ function updateSummary(pricing){
 
     console.log(
 
-        "Grand:",
+        "Transport :",
+
+        pricing.transportFee
+
+    );
+
+    console.log(
+
+        "Grand Total :",
 
         pricing.grandTotal
 
@@ -518,6 +563,43 @@ function isCoveredBySubscription(item){
             return false;
 
     }
+
+}
+
+/*=========================================================
+            CALCULATE TRANSPORT FEE
+=========================================================*/
+
+function calculateTransportFee(pricing){
+
+    /*
+    ------------------------------------
+    Subscription Covers Transport
+    ------------------------------------
+    */
+
+    if(pricing.subscriptionUsed){
+
+        return 0;
+
+    }
+
+    /*
+    ------------------------------------
+    Price Per KM
+    ------------------------------------
+    */
+
+    const PRICE_PER_KM =
+        window.WashEasyConfig.PRICE_PER_KM || 0;
+
+    /*
+    ------------------------------------
+    Total Distance
+    ------------------------------------
+    */
+
+    return pricing.totalDistance * PRICE_PER_KM;
 
 }
 

@@ -741,13 +741,25 @@ function isCoveredBySubscription(item){
 
 function calculateTransportFee(pricing){
 
+    const PRICE_PER_KM =
+        window.WashEasyConfig.PRICE_PER_KM || 0;
+
+    const FREE_TRIPS =
+        window.WashEasyConfig.FREE_TRANSPORT_TRIPS || 0;
+
     /*
     ------------------------------------
-    Subscription Covers Transport
+    Free Transport Available
     ------------------------------------
     */
 
-    if(pricing.subscriptionUsed){
+    if(
+
+        pricing.subscriptionUsed &&
+
+        FREE_TRIPS > 0
+
+    ){
 
         return 0;
 
@@ -755,16 +767,7 @@ function calculateTransportFee(pricing){
 
     /*
     ------------------------------------
-    Price Per KM
-    ------------------------------------
-    */
-
-    const PRICE_PER_KM =
-        window.WashEasyConfig.PRICE_PER_KM || 0;
-
-    /*
-    ------------------------------------
-    Total Distance
+    Normal Transport
     ------------------------------------
     */
 

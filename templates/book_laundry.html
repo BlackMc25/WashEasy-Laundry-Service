@@ -1096,6 +1096,23 @@ window.WashEasyConfig = {
 
 </script>
 
+<script>
+
+window.subscriptionPlan =
+    "{{ active_subscription.plan.name|default:'' }}";
+
+window.WashEasyConfig = {
+
+    PRICE_PER_KM:
+        {{ site_settings.transport_price_per_km }},
+
+    FREE_TRANSPORT_TRIPS:
+        {{ active_subscription.free_transport_trips_remaining|default:0 }}
+
+};
+
+</script>
+
 <script src="{% static 'js/booking/booking-map.js' %}"></script>
 
 <script src="{% static 'js/booking/booking-price.js' %}"></script>

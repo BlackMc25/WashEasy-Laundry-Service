@@ -109,7 +109,7 @@ def book_laundry(request):
 
         if use_subscription:
 
-            active_subscription = CustomerSubscription.objects.filter(
+            subscription = CustomerSubscription.objects.filter(
                 customer=request.user,
                 status="Active",
                 payment_status="Paid",
@@ -320,7 +320,7 @@ def book_laundry(request):
 
                 subscription.free_transport_trips_remaining -= 1
 
-
+                subscription.save()
             order.refresh_from_db()
 
             # -----------------------------

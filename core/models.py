@@ -576,6 +576,15 @@ class SubscriptionPlan(models.Model):
     default=1
     )
 
+    priority = models.PositiveIntegerField(
+    default=1,
+    help_text="Higher number means a higher subscription tier."
+    )
+
+    upgrade_allowed = models.BooleanField(
+    default=True
+    )
+
     description = models.TextField(
         blank=True,
         null=True

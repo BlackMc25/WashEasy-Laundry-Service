@@ -1008,6 +1008,44 @@ def initialize_subscription_payment(
         is_active=True
     )
 
+
+    active_subscription = CustomerSubscription.objects.filter(
+    customer=request.user,
+    status="Active"
+    ).select_related("plan").first()
+
+    if active_subscription:
+
+        # Customer clicked the SAME plan
+        if active_subscription.plan.id == plan.id:
+
+            messages.warning(
+                request,
+                f"You already have an active {plan.name} subscription."
+            )
+
+            return redirect("subscription")
+
+        # Customer clicked a LOWER plan (Downgrade)
+        elif plan.priority < active_subscription.plan.priority:
+
+            messages.warning(
+                request,
+                f"You currently have an active {active_subscription.plan.name} subscription. "
+                "Please cancel it before purchasing a lower plan."
+            )
+
+            return redirect("subscription")
+
+        # Customer clicked a HIGHER plan (Upgrade)
+        elif plan.priority > active_subscription.plan.priority:
+
+            return redirect(
+                "upgrade_subscription",
+                active_subscription.id,
+                plan.id
+            )
+    
     subscription = CustomerSubscription.objects.create(
 
         customer=request.user,
@@ -2089,6 +2127,10 @@ def add_subscription_plan(request):
 
             free_transport_trips=request.POST.get("free_transport_trips"),
 
+            priority=request.POST.get("priority"),
+
+            upgrade_allowed=("upgrade_allowed" in request.POST),
+
             description=request.POST.get("description"),
 
             is_active=(
@@ -2457,6 +2499,10 @@ def update_subscription_plan(request, plan_id):
         plan.validity_days = request.POST.get("validity_days")
 
         plan.free_transport_trips = request.POST.get("free_transport_trips")
+
+        plan.priority = request.POST.get("priority")
+
+        plan.upgrade_allowed = ("upgrade_allowed" in request.POST)
 
         plan.description = request.POST.get("description")
 

@@ -332,11 +332,10 @@ urlpatterns = [
     ),
 
     path(
-        "admin-subscriptions/",
-        views.admin_subscriptions,
-        name="admin_subscriptions",
+        "admin-subscription/<int:subscription_id>/",
+        views.admin_subscription_detail,
+        name="admin_subscription_detail",
     ),
-
 
 ]
 

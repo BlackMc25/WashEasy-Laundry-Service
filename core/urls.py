@@ -344,16 +344,16 @@ urlpatterns = [
     ),
 
     path(
-        "subscription-upgrade/<int:plan_id>/",
+        "subscription/upgrade/<int:plan_id>/",
         views.upgrade_subscription,
         name="upgrade_subscription",
     ),
 
     path(
-        "admin-upgrade-settings/",
+        "admin/upgrade-settings/",
         views.upgrade_settings,
         name="upgrade_settings",
-    ),
+        ),
 
     path(
     "subscription/upgrade/payment/<int:plan_id>/",

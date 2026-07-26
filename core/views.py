@@ -3071,24 +3071,45 @@ def delete_subscription(request, subscription_id):
 def upgrade_settings(request):
 
     settings, created = UpgradeSettings.objects.get_or_create(
-        id=1
+
+        id=1,
+
+        defaults={
+
+            "max_days_percentage": 30,
+
+            "max_items_percentage": 30,
+
+        }
+
     )
 
     if request.method == "POST":
 
-        settings.max_days_percentage = request.POST.get(
-            "max_days_percentage"
+        settings.max_days_percentage = int(
+
+            request.POST.get(
+                "max_days_percentage"
+            )
+
         )
 
-        settings.max_items_percentage = request.POST.get(
-            "max_items_percentage"
+        settings.max_items_percentage = int(
+
+            request.POST.get(
+                "max_items_percentage"
+            )
+
         )
 
         settings.save()
 
         messages.success(
+
             request,
+
             "Upgrade settings updated successfully."
+
         )
 
         return redirect(

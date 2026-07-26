@@ -81,6 +81,277 @@
         </div>
 
 
+    {% if subscription %}
+
+    <div class="admin-card mb-4">
+
+    <div class="d-flex justify-content-between align-items-center">
+
+        <h4>
+
+            ⭐ Subscription Details
+
+        </h4>
+
+        <span class="badge bg-success">
+
+            {{ subscription.status }}
+
+        </span>
+
+    </div>
+
+    <hr>
+
+    <div class="row">
+
+        <div class="col-md-3">
+
+            <strong>Plan</strong>
+
+            <br>
+
+            {{ subscription.plan.name }}
+
+        </div>
+
+        <div class="col-md-3">
+
+            <strong>Items Remaining</strong>
+
+            <br>
+
+            {{ subscription.remaining_items }}
+
+            /
+
+            {{ subscription.total_items }}
+
+        </div>
+
+        <div class="col-md-3">
+
+            <strong>Free Transport</strong>
+
+            <br>
+
+            {{ subscription.free_transport_trips_remaining }}
+
+            Trip(s)
+
+        </div>
+
+        <div class="col-md-3">
+
+            <strong>Expiry</strong>
+
+            <br>
+
+            {{ subscription.expiry_date }}
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endif %}
+
+{% if subscription %}
+
+<div class="admin-card mb-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+
+        <h4>
+
+            ⚙️ Subscription Management
+
+        </h4>
+
+        <span class="badge bg-primary">
+
+            Admin Controls
+
+        </span>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-3">
+
+            <div class="border rounded p-3 text-center">
+
+                <h6>
+
+                    Items Used
+
+                </h6>
+
+                <h3>
+
+                    {{ subscription_usage.items_used }}
+
+                </h3>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="border rounded p-3 text-center">
+
+                <h6>
+
+                    Orders Used
+
+                </h6>
+
+                <h3>
+
+                    {{ subscription_usage.orders_used }}
+
+                </h3>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="border rounded p-3 text-center">
+
+                <h6>
+
+                    Complaints
+
+                </h6>
+
+                <h3>
+
+                    {{ subscription_usage.complaints }}
+
+                </h3>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="border rounded p-3 text-center">
+
+                <h6>
+
+                    Free Transport
+
+                </h6>
+
+                <h3>
+
+                    {{ subscription_usage.transport_remaining }}
+
+                </h3>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <hr>
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        <input
+            type="hidden"
+            name="update_subscription"
+            value="1">
+
+        <div class="row">
+
+            <div class="col-md-6">
+
+                <label class="form-label">
+
+                    Subscription Status
+
+                </label>
+
+                <select
+                    name="subscription_status"
+                    class="form-select">
+
+                    <option
+                        value="Active"
+                        {% if subscription.status == "Active" %}selected{% endif %}>
+
+                        Active
+
+                    </option>
+
+                    <option
+                        value="Inactive"
+                        {% if subscription.status == "Inactive" %}selected{% endif %}>
+
+                        Inactive
+
+                    </option>
+
+                    <option
+                        value="Suspended"
+                        {% if subscription.status == "Suspended" %}selected{% endif %}>
+
+                        Suspended
+
+                    </option>
+
+                    <option
+                        value="Cancelled"
+                        {% if subscription.status == "Cancelled" %}selected{% endif %}>
+
+                        Cancelled
+
+                    </option>
+
+                </select>
+
+            </div>
+
+            <div class="col-md-6">
+
+                <label class="form-label">
+
+                    Admin Note
+
+                </label>
+
+                <textarea
+                    name="admin_note"
+                    class="form-control"
+                    rows="3">{{ subscription.admin_note }}</textarea>
+
+            </div>
+
+        </div>
+
+        <button
+            class="btn btn-success mt-3"
+            type="submit">
+
+            Save Subscription Changes
+
+        </button>
+
+    </form>
+
+</div>
+
+{% endif %}
 
     </div>
 

@@ -574,7 +574,7 @@ class SubscriptionPlan(models.Model):
 
     free_transport_trips = models.PositiveIntegerField(
     default=1
-)
+    )
 
     description = models.TextField(
         blank=True,
@@ -679,6 +679,14 @@ class CustomerSubscription(models.Model):
         blank=True,
 
         null=True
+    )
+
+    admin_note = models.TextField(
+
+    blank=True,
+
+    null=True
+
     )
 
     free_transport_trips_remaining = models.PositiveIntegerField(

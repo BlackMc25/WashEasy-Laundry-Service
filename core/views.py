@@ -173,6 +173,8 @@ def book_laundry(request):
 
             order.customer = request.user
 
+            order.subscription = subscription
+
             order.pickup_distance_km = (
                 request.POST.get("pickup_distance_km", 0) or 0
             )
@@ -321,6 +323,7 @@ def book_laundry(request):
                 subscription.free_transport_trips_remaining -= 1
 
                 subscription.save()
+
             order.refresh_from_db()
 
             # -----------------------------
@@ -1347,6 +1350,68 @@ def admin_order_detail(request, order_id):
         id=order_id
     )
 
+    subscription = order.subscription
+
+    subscription_usage = {}
+
+    if subscription:
+
+        subscription_usage = {
+
+            "items_used":
+
+            subscription.total_items -
+
+            subscription.remaining_items,
+
+            "orders_used":
+
+            subscription.orders.count(),
+
+            "complaints":
+
+            Complaint.objects.filter(
+
+                subscription=subscription
+
+            ).count(),
+
+            "transport_remaining":
+
+            subscription.free_transport_trips_remaining,
+
+        }
+
+    if request.method == "POST":
+    
+        if "update_subscription" in request.POST:
+
+            subscription.status = request.POST.get(
+                "subscription_status"
+            )
+
+            subscription.admin_note = request.POST.get(
+                "admin_note"
+            )
+
+            subscription.save()
+
+            messages.success(
+
+                request,
+
+                "Subscription updated successfully."
+
+            )
+
+            return redirect(
+
+                "admin_order_detail",
+
+                order.id
+
+            )
+
     if request.method == "POST":
 
         new_status = request.POST.get(
@@ -1400,6 +1465,21 @@ is now {new_status}.
 
     items = order.items.all()
 
+    # ==========================================
+    # MARK SUBSCRIPTION ITEMS
+    # ==========================================
+
+    for item in items:
+
+        item.covered_by_subscription = False
+
+        if subscription:
+
+            item.covered_by_subscription = is_subscription_item(
+                item.item,
+                subscription
+            )
+
     laundry_total = sum(
         item.subtotal
         for item in items
@@ -1416,6 +1496,8 @@ is now {new_status}.
         {
             'order': order,
             'items': items,
+            "subscription": subscription,
+            "subscription_usage":subscription_usage,
             'laundry_total': laundry_total,
             'express_total': express_total,
 

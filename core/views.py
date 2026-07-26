@@ -2629,3 +2629,26 @@ def admin_subscription_detail(request, subscription_id):
         context
     )
 
+@staff_member_required
+def delete_subscription(request, subscription_id):
+
+    subscription = get_object_or_404(
+        CustomerSubscription,
+        id=subscription_id
+    )
+
+    customer_name = str(subscription.customer)
+
+    subscription.delete()
+
+    messages.success(
+
+        request,
+
+        f"{customer_name}'s subscription has been deleted successfully."
+
+    )
+
+    return redirect(
+        "admin_subscriptions"
+    )

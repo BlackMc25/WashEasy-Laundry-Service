@@ -337,6 +337,12 @@ urlpatterns = [
         name="admin_subscription_detail",
     ),
 
+    path(
+    "delete-subscription/<int:subscription_id>/",
+    views.delete_subscription,
+    name="delete_subscription",
+    ),
+
 ]
 
 

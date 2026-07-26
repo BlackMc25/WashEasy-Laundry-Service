@@ -3087,45 +3087,26 @@ def upgrade_settings(request):
     if request.method == "POST":
 
         settings.max_days_percentage = int(
-
-            request.POST.get(
-                "max_days_percentage"
-            )
-
+            request.POST.get("max_days_percentage")
         )
 
         settings.max_items_percentage = int(
-
-            request.POST.get(
-                "max_items_percentage"
-            )
-
+            request.POST.get("max_items_percentage")
         )
 
         settings.save()
 
         messages.success(
-
             request,
-
             "Upgrade settings updated successfully."
-
         )
 
-        return redirect(
-            "upgrade_settings"
-        )
+        return redirect("upgrade_settings")
 
     return render(
-
         request,
-
         "admin/upgrade_settings.html",
-
         {
-
             "settings": settings
-
         }
-
     )

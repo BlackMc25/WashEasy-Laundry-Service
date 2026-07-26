@@ -33,6 +33,43 @@ planButtons.forEach(button => {
         const card =
             this.closest(".plan-card");
 
+            // ==========================================
+            // CHECK IF THIS IS AN UPGRADE
+            // ==========================================
+
+            const action = card.dataset.action;
+
+            if (action === "upgrade") {
+
+                const planId = card.dataset.plan;
+
+                window.location.href =
+                    `/subscription/upgrade/${planId}/`;
+
+                return;
+
+            }
+
+            if (action === "downgrade") {
+
+                alert(
+                    "You cannot downgrade while your current subscription is active."
+                );
+
+                return;
+
+            }
+
+            if (action === "current") {
+
+                alert(
+                    "This is already your current subscription."
+                );
+
+                return;
+
+            }
+
         planCards.forEach(c => {
 
             c.classList.remove("selected");

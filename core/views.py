@@ -847,18 +847,87 @@ from .models import (
 def subscription(request):
 
     plans = SubscriptionPlan.objects.filter(
-
         is_active=True
-
-    ).order_by("price")
+    ).order_by("priority")
 
     form = CustomerSubscriptionForm()
+
+    active_subscription = CustomerSubscription.objects.filter(
+        customer=request.user,
+        status="Active"
+    ).select_related("plan").first()
+
+    for plan in plans:
+
+        # Default values
+        plan.action = "subscribe"
+        plan.button_text = "Subscribe"
+        plan.button_class = "btn btn-primary"
+        plan.disabled = False
+
+        if active_subscription:
+
+            current_plan = active_subscription.plan
+
+            # ----------------------------------------
+            # CURRENT PLAN
+            # ----------------------------------------
+
+            if plan.id == current_plan.id:
+
+                plan.action = "current"
+
+                plan.button_text = "Current Plan"
+
+                plan.button_class = "btn btn-success"
+
+                plan.disabled = True
+
+            # ----------------------------------------
+            # UPGRADE
+            # ----------------------------------------
+
+            elif (
+                plan.priority > current_plan.priority
+                and
+                plan.upgrade_allowed
+            ):
+
+                plan.action = "upgrade"
+
+                plan.button_text = "Upgrade"
+
+                plan.button_class = "btn btn-warning"
+
+            # ----------------------------------------
+            # DOWNGRADE
+            # ----------------------------------------
+
+            elif plan.priority < current_plan.priority:
+
+                plan.action = "downgrade"
+
+                plan.button_text = "Downgrade Not Allowed"
+
+                plan.button_class = "btn btn-secondary"
+
+                plan.disabled = True
+
+            # ----------------------------------------
+            # SAME PRIORITY
+            # ----------------------------------------
+
+            else:
+
+                plan.action = "subscribe"
 
     context = {
 
         "plans": plans,
 
         "form": form,
+
+        "active_subscription": active_subscription,
 
     }
 
@@ -871,7 +940,6 @@ def subscription(request):
         context,
 
     )
-
 @login_required
 def subscription_detail(request, subscription_id):
 

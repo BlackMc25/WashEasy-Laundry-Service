@@ -111,7 +111,9 @@ class="subscription-step">
 
         <div
             class="plan-card"
-            data-plan="{{ plan.id }}">
+            data-plan="{{ plan.id }}"
+            data-action="{{ plan.action }}"
+            data-priority="{{ plan.priority }}">
 
             <!-- Plan Header -->
 
@@ -299,16 +301,50 @@ class="subscription-step">
                 {% endif %}
 
             </div>
+                {% if plan.action == "current" %}
 
-            <button
-                type="button"
-                class="select-plan-btn">
+                <button
+                    type="button"
+                    class="select-plan-btn btn btn-success"
+                    disabled>
 
-                <i class="bi bi-check-circle-fill"></i>
+                    ✔ Current Plan
 
-                Choose Plan
+                </button>
 
-            </button>
+                {% elif plan.action == "upgrade" %}
+
+                <button
+                    type="button"
+                    class="select-plan-btn btn btn-warning"
+                    data-upgrade="true">
+
+                    ⬆ Upgrade
+
+                </button>
+
+                {% elif plan.action == "downgrade" %}
+
+                <button
+                    type="button"
+                    class="select-plan-btn btn btn-secondary"
+                    disabled>
+
+                    Downgrade Not Allowed
+
+                </button>
+
+                {% else %}
+
+                <button
+                    type="button"
+                    class="select-plan-btn btn btn-primary">
+
+                    Subscribe
+
+                </button>
+
+                {% endif %}
 
         </div>
 

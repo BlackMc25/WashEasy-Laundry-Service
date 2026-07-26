@@ -350,7 +350,7 @@ urlpatterns = [
     ),
 
     path(
-        "settings/upgrade/",
+        "upgrade-settings/",
         views.upgrade_settings,
         name="upgrade_settings",
     ),

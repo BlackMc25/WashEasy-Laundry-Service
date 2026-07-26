@@ -2514,3 +2514,118 @@ def delete_subscription_plan(request, plan_id):
 
     )
 
+from django.db.models import Q
+
+@staff_member_required
+def admin_subscriptions(request):
+
+    search = request.GET.get("search", "")
+
+    status = request.GET.get("status", "")
+
+    subscriptions = CustomerSubscription.objects.select_related(
+        "customer",
+        "plan"
+    ).order_by("-start_date")
+
+    if search:
+
+        subscriptions = subscriptions.filter(
+
+            Q(customer__first_name__icontains=search) |
+
+            Q(customer__last_name__icontains=search) |
+
+            Q(customer__email__icontains=search) |
+
+            Q(customer__phone_number__icontains=search) |
+
+            Q(plan__name__icontains=search)
+
+        )
+
+    if status:
+
+        subscriptions = subscriptions.filter(
+            status=status
+        )
+
+    return render(
+
+        request,
+
+        "admin/admin_subscriptions.html",
+
+        {
+
+            "subscriptions": subscriptions,
+
+            "search": search,
+
+            "status": status,
+
+        }
+
+    )
+
+@staff_member_required
+def admin_subscription_detail(request, subscription_id):
+
+    subscription = get_object_or_404(
+        CustomerSubscription,
+        id=subscription_id
+    )
+
+    if request.method == "POST":
+
+        subscription.status = request.POST.get(
+            "status"
+        )
+
+        subscription.admin_note = request.POST.get(
+            "admin_note"
+        )
+
+        subscription.save()
+
+        messages.success(
+            request,
+            "Subscription updated successfully."
+        )
+
+        return redirect(
+            "admin_subscription_detail",
+            subscription.id
+        )
+
+    orders = subscription.orders.all().order_by(
+        "-created_at"
+    )
+
+    complaints = Complaint.objects.filter(
+        subscription=subscription
+    ).order_by("-created_at")
+
+    items_used = (
+        subscription.total_items -
+        subscription.remaining_items
+    )
+
+    context = {
+
+        "subscription": subscription,
+
+        "orders": orders,
+
+        "complaints": complaints,
+
+        "items_used": items_used,
+
+    }
+
+    return render(
+        request,
+        "admin/admin_subscription_detail.html",
+        context
+    )
+

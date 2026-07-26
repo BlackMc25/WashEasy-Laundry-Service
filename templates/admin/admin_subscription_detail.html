@@ -1,0 +1,498 @@
+{% extends "admin/base_admin.html" %}
+
+{% load humanize %}
+
+{% block content %}
+
+<div class="container-fluid py-4">
+
+    <!-- ============================= -->
+    <!-- PAGE HEADER -->
+    <!-- ============================= -->
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <div>
+
+            <h2 class="fw-bold">
+
+                Subscription Details
+
+            </h2>
+
+            <p class="text-muted mb-0">
+
+                Manage customer subscription and monitor usage.
+
+            </p>
+
+        </div>
+
+        <a href="{% url 'admin_subscriptions' %}"
+           class="btn btn-secondary">
+
+            <i class="fas fa-arrow-left"></i>
+
+            Back
+
+        </a>
+
+    </div>
+
+
+    <!-- ============================= -->
+    <!-- SUBSCRIPTION OVERVIEW -->
+    <!-- ============================= -->
+
+    <div class="card shadow-sm border-0 mb-4">
+
+        <div class="card-header bg-primary text-white">
+
+            <h5 class="mb-0">
+
+                ⭐ Subscription Overview
+
+            </h5>
+
+        </div>
+
+        <div class="card-body">
+
+            <div class="row">
+
+                <div class="col-md-3 mb-3">
+
+                    <strong>Customer</strong>
+
+                    <br>
+
+                    {{ subscription.customer }}
+
+                </div>
+
+                <div class="col-md-3 mb-3">
+
+                    <strong>Plan</strong>
+
+                    <br>
+
+                    {{ subscription.plan.name }}
+
+                </div>
+
+                <div class="col-md-3 mb-3">
+
+                    <strong>Status</strong>
+
+                    <br>
+
+                    <span class="badge bg-success">
+
+                        {{ subscription.status }}
+
+                    </span>
+
+                </div>
+
+                <div class="col-md-3 mb-3">
+
+                    <strong>Payment Status</strong>
+
+                    <br>
+
+                    {{ subscription.payment_status }}
+
+                </div>
+
+                <div class="col-md-3 mb-3">
+
+                    <strong>Started</strong>
+
+                    <br>
+
+                    {{ subscription.start_date }}
+
+                </div>
+
+                <div class="col-md-3 mb-3">
+
+                    <strong>Expires</strong>
+
+                    <br>
+
+                    {{ subscription.expiry_date }}
+
+                </div>
+
+                <div class="col-md-3 mb-3">
+
+                    <strong>Total Items</strong>
+
+                    <br>
+
+                    {{ subscription.total_items }}
+
+                </div>
+
+                <div class="col-md-3 mb-3">
+
+                    <strong>Remaining Items</strong>
+
+                    <br>
+
+                    {{ subscription.remaining_items }}
+
+                </div>
+
+                <div class="col-md-3 mb-3">
+
+                    <strong>Items Used</strong>
+
+                    <br>
+
+                    {{ items_used }}
+
+                </div>
+
+                <div class="col-md-3 mb-3">
+
+                    <strong>Free Transport Trips</strong>
+
+                    <br>
+
+                    {{ subscription.free_transport_trips_remaining }}
+
+                </div>
+
+                <div class="col-md-3 mb-3">
+
+                    <strong>Amount Paid</strong>
+
+                    <br>
+
+                    ₦{{ subscription.amount_paid|intcomma }}
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ============================= -->
+    <!-- SUBSCRIPTION MANAGEMENT -->
+    <!-- ============================= -->
+
+    <div class="card shadow-sm border-0 mb-4">
+
+        <div class="card-header bg-dark text-white">
+
+            <h5 class="mb-0">
+
+                ⚙ Subscription Management
+
+            </h5>
+
+        </div>
+
+        <div class="card-body">
+
+            <form method="POST">
+
+                {% csrf_token %}
+
+                <div class="row">
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+
+                            Subscription Status
+
+                        </label>
+
+                        <select
+                            class="form-select"
+                            name="status">
+
+                            <option value="Active"
+                            {% if subscription.status == "Active" %}selected{% endif %}>
+
+                                Active
+
+                            </option>
+
+                            <option value="Inactive"
+                            {% if subscription.status == "Inactive" %}selected{% endif %}>
+
+                                Inactive
+
+                            </option>
+
+                            <option value="Suspended"
+                            {% if subscription.status == "Suspended" %}selected{% endif %}>
+
+                                Suspended
+
+                            </option>
+
+                            <option value="Cancelled"
+                            {% if subscription.status == "Cancelled" %}selected{% endif %}>
+
+                                Cancelled
+
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+
+                            Admin Note
+
+                        </label>
+
+                        <textarea
+                            class="form-control"
+                            rows="4"
+                            name="admin_note">{{ subscription.admin_note }}</textarea>
+
+                    </div>
+
+                </div>
+
+                <button
+                    class="btn btn-success">
+
+                    <i class="fas fa-save"></i>
+
+                    Save Changes
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- ============================= -->
+    <!-- ORDERS -->
+    <!-- ============================= -->
+
+    <div class="card shadow-sm border-0 mb-4">
+
+        <div class="card-header">
+
+            <h5 class="mb-0">
+
+                📦 Orders Under This Subscription
+
+            </h5>
+
+        </div>
+
+        <div class="card-body p-0">
+
+            <table class="table table-hover mb-0">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Order</th>
+
+                        <th>Date</th>
+
+                        <th>Status</th>
+
+                        <th>Total</th>
+
+                        <th></th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    {% for order in orders %}
+
+                    <tr>
+
+                        <td>
+
+                            #{{ order.customer_order_number }}
+
+                        </td>
+
+                        <td>
+
+                            {{ order.created_at }}
+
+                        </td>
+
+                        <td>
+
+                            {{ order.status }}
+
+                        </td>
+
+                        <td>
+
+                            ₦{{ order.total_amount|intcomma }}
+
+                        </td>
+
+                        <td>
+
+                            <a
+                                href="{% url 'admin_order_detail' order.id %}"
+                                class="btn btn-primary btn-sm">
+
+                                View
+
+                            </a>
+
+                        </td>
+
+                    </tr>
+
+                    {% empty %}
+
+                    <tr>
+
+                        <td colspan="5"
+                            class="text-center py-4">
+
+                            No orders found.
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+    <!-- ============================= -->
+    <!-- COMPLAINTS -->
+    <!-- ============================= -->
+
+    <div class="card shadow-sm border-0">
+
+        <div class="card-header">
+
+            <h5 class="mb-0">
+
+                📝 Complaints
+
+            </h5>
+
+        </div>
+
+        <div class="card-body p-0">
+
+            <table class="table table-hover mb-0">
+
+                <thead>
+
+                    <tr>
+
+                        <th>ID</th>
+
+                        <th>Subject</th>
+
+                        <th>Status</th>
+
+                        <th>Date</th>
+
+                        <th></th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    {% for complaint in complaints %}
+
+                    <tr>
+
+                        <td>
+
+                            #{{ complaint.id }}
+
+                        </td>
+
+                        <td>
+
+                            {{ complaint.subject }}
+
+                        </td>
+
+                        <td>
+
+                            {{ complaint.status }}
+
+                        </td>
+
+                        <td>
+
+                            {{ complaint.created_at }}
+
+                        </td>
+
+                        <td>
+
+                            <a
+                                href="{% url 'admin_complaint_detail' complaint.id %}"
+                                class="btn btn-outline-primary btn-sm">
+
+                                View
+
+                            </a>
+
+                        </td>
+
+                    </tr>
+
+                    {% empty %}
+
+                    <tr>
+
+                        <td colspan="5"
+                            class="text-center py-4">
+
+                            No complaints submitted.
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -25,6 +25,8 @@ from .models import (
     Complaint,
 
      SubscriptionPlan,
+
+      UpgradeSettings,
     
 )
 from core.models import ContactMessage
@@ -940,6 +942,7 @@ def subscription(request):
         context,
 
     )
+
 @login_required
 def subscription_detail(request, subscription_id):
 
@@ -1211,6 +1214,166 @@ def initialize_subscription_payment(
     )
 
 @login_required
+def initialize_upgrade_payment(request, plan_id):
+
+    # ==========================================
+    # GET CURRENT ACTIVE SUBSCRIPTION
+    # ==========================================
+
+    current_subscription = get_object_or_404(
+        CustomerSubscription,
+        customer=request.user,
+        status="Active"
+    )
+
+    # ==========================================
+    # GET NEW PLAN
+    # ==========================================
+
+    new_plan = get_object_or_404(
+        SubscriptionPlan,
+        id=plan_id,
+        is_active=True
+    )
+
+    # ==========================================
+    # SAFETY CHECK
+    # ==========================================
+
+    if new_plan.priority <= current_subscription.plan.priority:
+
+        messages.error(
+            request,
+            "Invalid upgrade request."
+        )
+
+        return redirect("subscription")
+
+    # ==========================================
+    # CALCULATE UPGRADE PRICE
+    # ==========================================
+
+    upgrade_amount = (
+        new_plan.price -
+        current_subscription.plan.price
+    )
+
+    if upgrade_amount <= 0:
+
+        messages.error(
+            request,
+            "Invalid upgrade amount."
+        )
+
+        return redirect("subscription")
+
+    # ==========================================
+    # CREATE PENDING SUBSCRIPTION
+    # ==========================================
+
+    subscription = CustomerSubscription.objects.create(
+
+        customer=request.user,
+
+        plan=new_plan,
+
+        total_items=new_plan.total_items,
+
+        remaining_items=new_plan.total_items,
+
+        amount_paid=upgrade_amount,
+
+        start_date=timezone.now().date(),
+
+        expiry_date=timezone.now().date() + timedelta(
+            days=new_plan.validity_days
+        ),
+
+        payment_status="Pending",
+
+        status="Pending",
+
+        previous_subscription=current_subscription
+
+    )
+
+    # ==========================================
+    # PAYSTACK INITIALIZATION
+    # ==========================================
+
+    url = "https://api.paystack.co/transaction/initialize"
+
+    headers = {
+
+        "Authorization":
+        f"Bearer {settings.PAYSTACK_SECRET_KEY}",
+
+        "Content-Type":
+        "application/json"
+
+    }
+
+    reference = f"UPGRADE-{subscription.id}"
+
+    data = {
+
+        "email":
+        request.user.email,
+
+        "amount":
+        int(upgrade_amount * 100),
+
+        "reference":
+        reference,
+
+        "callback_url":
+        request.build_absolute_uri(
+
+            f"/subscription/upgrade/verify/{subscription.id}/"
+
+        )
+
+    }
+
+    response = requests.post(
+
+        url,
+
+        json=data,
+
+        headers=headers
+
+    )
+
+    response_data = response.json()
+
+    if response_data.get("status"):
+
+        subscription.payment_reference = reference
+
+        subscription.save()
+
+        return redirect(
+
+            response_data["data"]["authorization_url"]
+
+        )
+
+    subscription.delete()
+
+    messages.error(
+
+        request,
+
+        "Unable to initialize upgrade payment."
+
+    )
+
+    return redirect(
+        "subscription"
+    )
+
+@login_required
 def verify_subscription_payment(
 
     request,
@@ -1305,6 +1468,143 @@ def verify_subscription_payment(
 
     return redirect(
         "subscription"
+    )
+
+@login_required
+def upgrade_subscription(request, plan_id):
+
+    current_subscription = get_object_or_404(
+        CustomerSubscription,
+        customer=request.user,
+        status="Active"
+    )
+
+    new_plan = get_object_or_404(
+        SubscriptionPlan,
+        id=plan_id,
+        is_active=True
+    )
+
+    # ==========================================
+    # CHECK IF PLAN IS A VALID UPGRADE
+    # ==========================================
+
+    if new_plan.priority <= current_subscription.plan.priority:
+
+        messages.error(
+            request,
+            "Invalid upgrade request."
+        )
+
+        return redirect("subscription")
+
+    # ==========================================
+    # LOAD UPGRADE SETTINGS
+    # ==========================================
+
+    upgrade_settings = UpgradeSettings.objects.first()
+
+    if not upgrade_settings:
+
+        messages.error(
+            request,
+            "Upgrade settings have not been configured."
+        )
+
+        return redirect("subscription")
+
+    # ==========================================
+    # DAYS USED
+    # ==========================================
+
+    today = timezone.now().date()
+
+    days_used = (
+        today -
+        current_subscription.start_date
+    ).days
+
+    total_days = current_subscription.plan.validity_days
+
+    days_percentage = (
+        days_used / total_days
+    ) * 100
+
+    # ==========================================
+    # ITEMS USED
+    # ==========================================
+
+    items_used = (
+        current_subscription.total_items -
+        current_subscription.remaining_items
+    )
+
+    items_percentage = (
+        items_used /
+        current_subscription.total_items
+    ) * 100
+
+    # ==========================================
+    # CHECK ELIGIBILITY
+    # ==========================================
+
+    if (
+        days_percentage >
+        upgrade_settings.max_days_percentage
+    ):
+
+        messages.error(
+            request,
+            "Your upgrade window has closed because too much time has passed."
+        )
+
+        return redirect("subscription")
+
+    if (
+        items_percentage >
+        upgrade_settings.max_items_percentage
+    ):
+
+        messages.error(
+            request,
+            "Your upgrade window has closed because too many subscription items have already been used."
+        )
+
+        return redirect("subscription")
+
+    # ==========================================
+    # CALCULATE UPGRADE PRICE
+    # ==========================================
+
+    upgrade_amount = (
+        new_plan.price -
+        current_subscription.plan.price
+    )
+
+    context = {
+
+        "current_subscription": current_subscription,
+
+        "new_plan": new_plan,
+
+        "upgrade_amount": upgrade_amount,
+
+        "days_used": days_used,
+
+        "days_percentage": round(days_percentage, 1),
+
+        "items_used": items_used,
+
+        "items_percentage": round(items_percentage, 1),
+
+        "upgrade_settings": upgrade_settings,
+
+    }
+
+    return render(
+        request,
+        "upgrade_subscription.html",
+        context
     )
 
 @login_required
@@ -2765,4 +3065,46 @@ def delete_subscription(request, subscription_id):
 
     return redirect(
         "admin_subscriptions"
+    )
+
+@staff_member_required
+def upgrade_settings(request):
+
+    settings, created = UpgradeSettings.objects.get_or_create(
+        id=1
+    )
+
+    if request.method == "POST":
+
+        settings.max_days_percentage = request.POST.get(
+            "max_days_percentage"
+        )
+
+        settings.max_items_percentage = request.POST.get(
+            "max_items_percentage"
+        )
+
+        settings.save()
+
+        messages.success(
+            request,
+            "Upgrade settings updated successfully."
+        )
+
+        return redirect(
+            "upgrade_settings"
+        )
+
+    return render(
+
+        request,
+
+        "admin/upgrade_settings.html",
+
+        {
+
+            "settings": settings
+
+        }
+
     )

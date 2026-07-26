@@ -1,0 +1,419 @@
+{% extends "base_dashboard.html" %}
+
+{% load humanize %}
+
+{% block title %}
+
+Upgrade Subscription
+
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-10">
+
+            <div class="card shadow-lg border-0">
+
+                <div class="card-header bg-warning text-dark">
+
+                    <h2 class="mb-0">
+
+                        ⬆ Upgrade Subscription
+
+                    </h2>
+
+                </div>
+
+                <div class="card-body">
+
+                    <div class="row">
+
+                        <!-- CURRENT PLAN -->
+
+                        <div class="col-md-6">
+
+                            <div class="border rounded p-4 h-100">
+
+                                <h4 class="text-primary">
+
+                                    Current Plan
+
+                                </h4>
+
+                                <hr>
+
+                                <h3>
+
+                                    {{ current_subscription.plan.name }}
+
+                                </h3>
+
+                                <p>
+
+                                    Price
+
+                                    <strong>
+
+                                        ₦{{ current_subscription.plan.price|intcomma }}
+
+                                    </strong>
+
+                                </p>
+
+                                <p>
+
+                                    Remaining Items
+
+                                    <strong>
+
+                                        {{ current_subscription.remaining_items }}
+
+                                    </strong>
+
+                                </p>
+
+                                <p>
+
+                                    Total Items
+
+                                    <strong>
+
+                                        {{ current_subscription.total_items }}
+
+                                    </strong>
+
+                                </p>
+
+                                <p>
+
+                                    Free Transport
+
+                                    <strong>
+
+                                        {{ current_subscription.free_transport_trips_remaining }}
+
+                                    </strong>
+
+                                </p>
+
+                                <p>
+
+                                    Expiry
+
+                                    <strong>
+
+                                        {{ current_subscription.expiry_date }}
+
+                                    </strong>
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <!-- NEW PLAN -->
+
+                        <div class="col-md-6">
+
+                            <div class="border rounded p-4 h-100 bg-light">
+
+                                <h4 class="text-success">
+
+                                    New Plan
+
+                                </h4>
+
+                                <hr>
+
+                                <h3>
+
+                                    {{ new_plan.name }}
+
+                                </h3>
+
+                                <p>
+
+                                    Price
+
+                                    <strong>
+
+                                        ₦{{ new_plan.price|intcomma }}
+
+                                    </strong>
+
+                                </p>
+
+                                <p>
+
+                                    Total Items
+
+                                    <strong>
+
+                                        {{ new_plan.total_items }}
+
+                                    </strong>
+
+                                </p>
+
+                                <p>
+
+                                    Free Transport
+
+                                    <strong>
+
+                                        {{ new_plan.free_transport_trips }}
+
+                                    </strong>
+
+                                </p>
+
+                                <p>
+
+                                    Validity
+
+                                    <strong>
+
+                                        {{ new_plan.validity_days }}
+
+                                        Days
+
+                                    </strong>
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <hr class="my-5">
+
+                    <!-- ELIGIBILITY -->
+
+                    <div class="row">
+
+                        <div class="col-md-6">
+
+                            <h5>
+
+                                Upgrade Eligibility
+
+                            </h5>
+
+                            <table class="table">
+
+                                <tr>
+
+                                    <th>
+
+                                        Days Used
+
+                                    </th>
+
+                                    <td>
+
+                                        {{ days_used }}
+
+                                        Days
+
+                                    </td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <th>
+
+                                        Days Used %
+
+                                    </th>
+
+                                    <td>
+
+                                        {{ days_percentage }}%
+
+                                    </td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <th>
+
+                                        Items Used
+
+                                    </th>
+
+                                    <td>
+
+                                        {{ items_used }}
+
+                                    </td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <th>
+
+                                        Items Used %
+
+                                    </th>
+
+                                    <td>
+
+                                        {{ items_percentage }}%
+
+                                    </td>
+
+                                </tr>
+
+                            </table>
+
+                        </div>
+
+                        <div class="col-md-6">
+
+                            <h5>
+
+                                Payment Summary
+
+                            </h5>
+
+                            <table class="table">
+
+                                <tr>
+
+                                    <th>
+
+                                        Current Plan Paid
+
+                                    </th>
+
+                                    <td>
+
+                                        ₦{{ current_subscription.plan.price|intcomma }}
+
+                                    </td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <th>
+
+                                        New Plan Price
+
+                                    </th>
+
+                                    <td>
+
+                                        ₦{{ new_plan.price|intcomma }}
+
+                                    </td>
+
+                                </tr>
+
+                                <tr class="table-success">
+
+                                    <th>
+
+                                        Upgrade Cost
+
+                                    </th>
+
+                                    <td>
+
+                                        <strong>
+
+                                            ₦{{ upgrade_amount|intcomma }}
+
+                                        </strong>
+
+                                    </td>
+
+                                </tr>
+
+                            </table>
+
+                        </div>
+
+                    </div>
+
+                    <hr>
+
+                    <div class="alert alert-info">
+
+                        <strong>
+
+                            What happens after upgrading?
+
+                        </strong>
+
+                        <ul class="mb-0 mt-2">
+
+                            <li>
+
+                                Your current subscription will be marked as <strong>Upgraded</strong>.
+
+                            </li>
+
+                            <li>
+
+                                Your remaining items will be carried over.
+
+                            </li>
+
+                            <li>
+
+                                Your subscription validity will restart with the new plan.
+
+                            </li>
+
+                            <li>
+
+                                You'll receive all benefits of the new plan.
+
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                    <div class="d-flex justify-content-between mt-4">
+
+                        <a
+                            href="{% url 'subscription' %}"
+                            class="btn btn-secondary">
+
+                            ← Back
+
+                        </a>
+
+                        <a
+                            href="{% url 'initialize_upgrade_payment' new_plan.id %}"
+                            class="btn btn-warning btn-lg">
+
+                            Upgrade Now
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

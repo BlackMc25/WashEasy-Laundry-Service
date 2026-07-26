@@ -702,6 +702,14 @@ class CustomerSubscription(models.Model):
     default=1
 
     )
+
+    previous_subscription = models.ForeignKey(
+    "self",
+    null=True,
+    blank=True,
+    on_delete=models.SET_NULL,
+    related_name="upgraded_subscriptions"
+    )
     
 
     total_items = models.PositiveIntegerField()
@@ -847,5 +855,25 @@ class SubscriptionUsage(models.Model):
     def __str__(self):
 
         return f"{self.subscription.plan.name} - {self.items_used} Items"
+    
+class UpgradeSettings(models.Model):
+    
+    max_days_percentage = models.PositiveIntegerField(
+        default=30,
+        help_text="Maximum percentage of subscription duration allowed for upgrades."
+    )
+
+    max_items_percentage = models.PositiveIntegerField(
+        default=30,
+        help_text="Maximum percentage of subscription items allowed for upgrades."
+    )
+
+    updated_at = models.DateTimeField(
+        auto_now=True
+    )
+
+    def __str__(self):
+
+        return "Subscription Upgrade Settings"
     
   

@@ -343,6 +343,23 @@ urlpatterns = [
     name="delete_subscription",
     ),
 
+    path(
+        "subscription/upgrade/<int:plan_id>/",
+        views.upgrade_subscription,
+        name="upgrade_subscription",
+    ),
+
+    path(
+    "admin/upgrade-settings/",
+    views.upgrade_settings,
+    name="upgrade_settings",
+    ),
+
+    path(
+    "subscription/upgrade/payment/<int:plan_id>/",
+    views.initialize_upgrade_payment,
+    name="initialize_upgrade_payment",
+),
 ]
 
 

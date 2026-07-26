@@ -350,7 +350,7 @@ urlpatterns = [
     ),
 
     path(
-        "admin-dashboard/upgrade-settings/",
+        "settings/upgrade/",
         views.upgrade_settings,
         name="upgrade_settings",
     ),

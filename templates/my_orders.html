@@ -117,50 +117,31 @@
 
             <div class="order-middle">
 
-                <div class="order-info">
+    <div class="order-row">
 
-                    <strong>Total Amount</strong>
+        <span>Total Amount</span>
 
-                    <span>
-
-                        ₦{{ order.total_amount }}
-
-                    </span>
-
-                </div>
-
-                <div class="order-info">
-
-                    <strong>Pickup Date</strong>
-
-                    <span>
-
-                        {{ order.pickup_date|date:"M d, Y"|default:"Pending" }}
-
-                    </span>
-
-                </div>
-
-            </div>
-
-            <div class="order-bottom">
-
-            <div class="order-price">
+        <strong>
 
             ₦{{ order.total_amount }}
 
-            </div>
+        </strong>
 
-            <div class="order-arrow">
+    </div>
 
-            <i class="bi bi-arrow-right"></i>
+    <div class="order-row">
 
-            </div>
+        <span>Pickup Date</span>
 
-            </div>
+        <strong>
 
-            </div>
+            {{ order.pickup_date|date:"M d, Y"|default:"Pending" }}
 
+        </strong>
+
+    </div>
+
+</div>
         </a>
         {% endfor %}
 

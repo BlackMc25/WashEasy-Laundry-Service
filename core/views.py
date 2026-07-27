@@ -1675,6 +1675,13 @@ def admin_dashboard(request):
             total=Sum('total_amount')
         )['total'] or 0
     
+
+    subscription_revenue = CustomerSubscription.objects.filter(
+        payment_status="Paid"
+    ).aggregate(
+        total=Sum("amount_paid")
+    )["total"] or 0
+    
     recent_orders = LaundryOrder.objects.order_by(
         '-created_at'
     )[:10]
@@ -1692,6 +1699,8 @@ def admin_dashboard(request):
         'total_customers': total_customers,
 
         'total_revenue': total_revenue,
+
+         "subscription_revenue": subscription_revenue,
 
         'recent_orders': recent_orders,
 

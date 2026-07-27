@@ -1,0 +1,103 @@
+.admin-stat-card{
+
+    background:#fff;
+
+    border-radius:22px;
+
+    padding:25px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:20px;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.08);
+
+    transition:.35s;
+
+    height:100%;
+
+}
+
+.admin-stat-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 20px 45px rgba(0,0,0,.15);
+
+}
+
+.subscription-card{
+
+    background:linear-gradient(
+        135deg,
+        #7c3aed,
+        #9333ea
+    );
+
+    color:#fff;
+
+}
+
+.subscription-card .card-icon{
+
+    width:70px;
+
+    height:70px;
+
+    border-radius:18px;
+
+    background:rgba(255,255,255,.18);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:30px;
+
+}
+
+.subscription-card h6{
+
+    color:rgba(255,255,255,.85);
+
+    margin-bottom:8px;
+
+    font-weight:600;
+
+}
+
+.subscription-card h2{
+
+    font-size:2rem;
+
+    font-weight:700;
+
+    margin-bottom:10px;
+
+}
+
+.subscription-card small{
+
+    color:rgba(255,255,255,.85);
+
+}
+
+.subscription-card .badge{
+
+    font-size:.85rem;
+
+    padding:8px 14px;
+
+    border-radius:20px;
+
+}
+
+.card-info{
+
+    flex:1;
+
+}

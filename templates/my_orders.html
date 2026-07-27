@@ -82,7 +82,7 @@
     </div>
 
     {% endif %}
-    
+
         {% for order in orders %}
 
        <a href="{% url 'order_detail' order.id %}" class="order-link">
@@ -117,25 +117,29 @@
 
             <div class="order-middle">
 
-            <div>
+                <div class="order-info">
 
-            <strong>Total</strong>
+                    <strong>Total Amount</strong>
 
-            <br>
+                    <span>
 
-            ₦{{ order.total_amount }}
+                        ₦{{ order.total_amount }}
 
-            </div>
+                    </span>
 
-            <div>
+                </div>
 
-            <strong>Pickup</strong>
+                <div class="order-info">
 
-            <br>
+                    <strong>Pickup Date</strong>
 
-            {{ order.pickup_date|date:"M d, Y"|default:"Pending" }}
+                    <span>
 
-            </div>
+                        {{ order.pickup_date|date:"M d, Y"|default:"Pending" }}
+
+                    </span>
+
+                </div>
 
             </div>
 

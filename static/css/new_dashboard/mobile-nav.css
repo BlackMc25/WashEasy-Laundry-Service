@@ -150,7 +150,7 @@
 
 .mobile-nav-item span{
 
-    font-size:18px;
+    font-size:.72rem;
 
     font-weight:600;
 
@@ -291,14 +291,6 @@
 .subscription-wrapper{
 
     padding-bottom:120px;
-
-}
-
-.subscription-footer{
-
-    position:sticky;
-
-    bottom:0;
 
 }
 

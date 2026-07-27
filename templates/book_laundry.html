@@ -7,57 +7,85 @@
 
     {% csrf_token %}
 
-    <div class="booking-hero">
+<div class="booking-hero">
 
         {% if active_subscription %}
 
 <div class="subscription-booking-banner">
 
+    <div class="subscription-glow"></div>
+
     <div class="subscription-left">
 
-        <h4>
+        <div class="membership-badge">
 
-            ⭐ WashEasy+ Active
+            <i class="fas fa-crown"></i>
 
-        </h4>
+            WashEasy+ Premium
+        </div>
 
-        <p>
+        <h2>
 
             {{ active_subscription.plan.name }} Plan
 
+        </h2>
+
+        <p>
+
+            Enjoy unlimited convenience with priority laundry service.
+
         </p>
 
-        <small>
+        <div class="subscription-progress">
 
-            {{ active_subscription.remaining_items }}
+            <div class="progress-info">
 
-            /
+                <span>Remaining Items</span>
 
-            {{ active_subscription.total_items }}
+                <span>
 
-            Items Remaining
+                    {{ active_subscription.remaining_items }}
+                    /
+                    {{ active_subscription.total_items }}
 
-        </small>
+                </span>
+
+            </div>
+
+            <div class="subscription-progress-bar">
+
+                <div
+                    class="subscription-progress-fill"
+                    style="width: {{ active_subscription.progress_percentage }}%;">
+                </div>
+
+            </div>
+
+        </div>
 
     </div>
 
     <div class="subscription-right">
 
-        <label class="form-check form-switch">
+        <div class="subscription-switch-card">
 
-            <input
-                type="checkbox"
-                class="form-check-input"
-                id="useSubscription"
-                checked>
+            <label class="form-check form-switch">
 
-            <span>
+                <input
+                    class="form-check-input"
+                    id="useSubscription"
+                    type="checkbox"
+                    checked>
 
-                Use Subscription
+                <span>
 
-            </span>
+                    Use Subscription
 
-        </label>
+                </span>
+
+            </label>
+
+        </div>
 
     </div>
 

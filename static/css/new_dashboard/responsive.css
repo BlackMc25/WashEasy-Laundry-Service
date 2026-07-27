@@ -289,5 +289,198 @@
 
 }
 
+.subscription-booking-banner{
+
+    flex-direction:column;
+
+    align-items:flex-start;
+
+    padding:18px;
+
+    gap:18px;
+
+}
+
+.subscription-left{
+
+    width:100%;
+
+}
+
+.subscription-right{
+
+    width:100%;
+
+}
+
+.subscription-switch-card{
+
+    width:100%;
+
+    min-width:unset;
+
+    padding:15px;
+
+}
+
+.subscription-switch-card .form-check{
+
+    width:100%;
+
+    justify-content:space-between;
+
+}
+
+.subscription-left h2{
+
+    font-size:1.8rem;
+
+}
+
+.category-card{
+
+    margin:0;
+
+    border-radius:18px;
+
+}
+
+.laundry-card{
+
+    width:100%;
+
+    margin:15px 0;
+
+    padding:18px;
+
+}
+
+.booking-progress{
+
+    display:flex;
+
+    overflow-x:auto;
+
+    gap:16px;
+
+    padding-bottom:10px;
+
+    scrollbar-width:none;
+
+}
+
+.booking-progress::-webkit-scrollbar{
+
+    display:none;
+
+}
+
+.progress-step{
+
+    min-width:95px;
+
+    flex-shrink:0;
+
+}
+
+.summary-card{
+
+    width:100%;
+
+    position:relative;
+
+    top:0;
+
+    margin-top:25px;
+
+}
+
+.total-card{
+
+    width:100%;
+
+    padding:20px;
+
+}
+
+.total-card h2{
+
+    font-size:2rem;
+
+}
+
+.booking-layout{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.booking-main{
+
+    width:100%;
+
+}
+
+.booking-sidebar{
+
+    width:100%;
+
+    margin-top:30px;
+
+    position:relative;
+
+    top:0;
+
+}
+
+.accordion-button{
+
+    padding:16px;
+
+    font-size:1rem;
+
+}
+
+.category-count{
+
+    font-size:.8rem;
+
+}
+
+.service-row{
+
+    flex-direction:column;
+
+    align-items:flex-start;
+
+    gap:15px;
+
+}
+
+.quantity-controls{
+
+    width:100%;
+
+    justify-content:center;
+
+}
+
+.booking-navigation{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:15px;
+
+}
+
+.booking-navigation .btn{
+
+    width:100%;
+
+}
 
 }

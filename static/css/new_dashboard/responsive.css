@@ -241,5 +241,41 @@
 
 }
 
+.order-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:8px 0;
+
+    border-bottom:1px solid #eef2f7;
+
+}
+
+.order-row:last-child{
+
+    border-bottom:none;
+
+}
+
+.order-row span{
+
+    color:#64748b;
+
+    font-size:.9rem;
+
+}
+
+.order-row strong{
+
+    font-size:.95rem;
+
+    text-align:right;
+
+}
+
 
 }

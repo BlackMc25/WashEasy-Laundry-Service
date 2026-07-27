@@ -378,7 +378,7 @@ href="{% static 'css/new_dashboard/subscription_detail.css' %}">
         </div>
 
     </section>
-    
+
 <!-- ==========================
         USAGE HISTORY
 =========================== -->
@@ -391,127 +391,61 @@ href="{% static 'css/new_dashboard/subscription_detail.css' %}">
 
     </h3>
 
-    {% if usage_history %}
+        {% if usage_history %}
+
+        <table class="table">
+
+        <thead>
+
+        <tr>
+
+        <th>Order</th>
+
+        <th>Date</th>
+
+        <th>Items Used</th>
+
+        <th>Remaining</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
 
         {% for usage in usage_history %}
 
-        <div class="usage-card">
+        <tr>
 
-            <div class="usage-header">
+        <td>#{{ usage.order.customer_order_number }}</td>
 
-                <div>
+        <td>{{ usage.created_at|date:"M d, Y" }}</td>
 
-                    <h5>
+        <td>{{ usage.items_used }}</td>
 
-                        Order #{{ usage.order.id }}
+        <td>{{ usage.remaining_items }}</td>
 
-                    </h5>
-
-                    <small>
-
-                        {{ usage.created_at|date:"d M Y" }}
-
-                    </small>
-
-                </div>
-
-                <span class="badge bg-success">
-
-                    {{ usage.order.status }}
-
-                </span>
-
-            </div>
-
-            <div class="usage-body">
-
-                <div>
-
-                    <strong>
-
-                        Items Used
-
-                    </strong>
-
-                    <p>
-
-                        {{ usage.items_used }}
-
-                    </p>
-
-                </div>
-
-                <div>
-
-                    <strong>
-
-                        Service
-
-                    </strong>
-
-                    <p>
-
-                        {{ usage.order.service_type }}
-
-                    </p>
-
-                </div>
-
-                <div>
-
-                    <strong>
-
-                        Total Paid
-
-                    </strong>
-
-                    <p>
-
-                        ₦{{ usage.order.total_amount }}
-
-                    </p>
-
-                </div>
-
-            </div>
-
-            <div class="usage-footer">
-
-                <a
-                href="{% url 'order_detail' usage.order.id %}"
-                class="btn btn-outline-primary">
-
-                    View Order
-
-                </a>
-
-            </div>
-
-        </div>
+        </tr>
 
         {% endfor %}
 
-    {% else %}
+        </tbody>
 
-        <div class="empty-usage">
+        </table>
 
-            <i class="bi bi-bag-x"></i>
+        {% else %}
 
-            <h4>
+        <div class="empty-state">
 
-                No Usage Yet
+        <h4>No Usage Yet</h4>
 
-            </h4>
-
-            <p>
-
-                Your subscription hasn't been used for any laundry orders yet.
-
-            </p>
+        <p>
+        Your subscription hasn't been used yet.
+        </p>
 
         </div>
 
-    {% endif %}
+        {% endif %}
 
 </section>
 

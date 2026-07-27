@@ -825,36 +825,36 @@ class CustomerSubscription(models.Model):
 # ==========================================================
 
 class SubscriptionUsage(models.Model):
-
+    
     subscription = models.ForeignKey(
-
         CustomerSubscription,
-
         on_delete=models.CASCADE,
-
         related_name="usage"
-
     )
 
     order = models.ForeignKey(
-
         LaundryOrder,
-
         on_delete=models.CASCADE
-
     )
 
     items_used = models.PositiveIntegerField()
 
+    remaining_items = models.PositiveIntegerField()
+
+    total_items = models.PositiveIntegerField()
+
     created_at = models.DateTimeField(
-
         auto_now_add=True
-
     )
 
-    def __str__(self):
+    class Meta:
+        ordering = ["-created_at"]
 
-        return f"{self.subscription.plan.name} - {self.items_used} Items"
+    def __str__(self):
+        return (
+            f"{self.subscription.customer.username} - "
+            f"{self.items_used} items"
+        )
     
 class UpgradeSettings(models.Model):
     

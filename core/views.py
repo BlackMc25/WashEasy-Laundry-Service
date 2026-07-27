@@ -1835,6 +1835,69 @@ def admin_order_detail(request, order_id):
         )
 
         order.status = new_status
+        # ==========================================
+        # SUBSCRIPTION USAGE ENGINE
+        # ==========================================
+
+        if (
+            new_status == "Delivered"
+            and order.subscription
+        ):
+
+            subscription = order.subscription
+
+            # Prevent duplicate deduction
+            already_recorded = SubscriptionUsage.objects.filter(
+                order=order
+            ).exists()
+
+            if not already_recorded:
+
+                subscription_items = 0
+
+                for item in order.items.all():
+
+                    if item.covered_by_subscription:
+
+                        subscription_items += item.quantity
+
+                if subscription_items > 0:
+
+                    subscription.remaining_items = max(
+                        subscription.remaining_items - subscription_items,
+                        0
+                    )
+
+                    subscription.save()
+
+                    SubscriptionUsage.objects.create(
+
+                        subscription=subscription,
+
+                        order=order,
+
+                        items_used=subscription_items,
+
+                        remaining_items=subscription.remaining_items,
+
+                        total_items=subscription.total_items,
+
+                    )
+
+                    Notification.objects.create(
+
+                        user=subscription.customer,
+
+                        title="Subscription Updated",
+
+                        message=(
+                            f"{subscription_items} subscription items "
+                            f"have been used.\n\n"
+                            f"Remaining items: "
+                            f"{subscription.remaining_items}"
+                        )
+
+                    )
 
         if new_status == 'Out For Delivery':
 
@@ -3206,9 +3269,7 @@ def verify_subscription_upgrade(request, subscription_id):
             previous_subscription.free_transport_trips_remaining
         )
 
-        previous_subscription.status = "Upgraded"
-
-        previous_subscription.payment_status = "Upgraded"
+        previous_subscription.status = "Expired"
 
         previous_subscription.save()
 

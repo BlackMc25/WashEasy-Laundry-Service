@@ -319,4 +319,42 @@
 
 }
 
+.subscription-summary{
+
+    text-align:center;
+
+    padding:20px;
+
+}
+
+.subscription-summary h4{
+
+    font-size:1.35rem;
+
+}
+
+.subscription-summary p{
+
+    font-size:.95rem;
+
+}
+
+.subscription-summary .btn{
+
+    width:100%;
+
+    margin-top:18px;
+
+}
+
+.subscription-items{
+
+    font-size:1rem;
+
+    font-weight:600;
+
+    margin-top:12px;
+
+}
+
 }

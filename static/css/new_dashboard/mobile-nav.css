@@ -8,6 +8,19 @@
 
 @media (max-width:768px){
 
+        body{
+
+        padding-bottom:110px;
+
+    }
+
+    .page-container{
+
+        padding-bottom:110px;
+
+    }
+
+
 /*---------------------------------------------------------
                     Bottom Navigation
 ---------------------------------------------------------*/
@@ -137,7 +150,7 @@
 
 .mobile-nav-item span{
 
-    font-size:.72rem;
+    font-size:18px;
 
     font-weight:600;
 
@@ -269,92 +282,25 @@
 
 }
 
-.order-card{
+.subscription-footer{
 
-    padding:18px;
-
-    border-radius:18px;
+    padding-bottom:110px;
 
 }
 
-.order-card .row{
+.subscription-wrapper{
 
-    flex-direction:column;
-
-    gap:12px;
+    padding-bottom:120px;
 
 }
 
-.order-status{
+.subscription-footer{
 
-    display:inline-flex;
+    position:sticky;
 
-    width:fit-content;
-
-}
-
-.order-amount{
-
-    font-size:1.4rem;
-
-    font-weight:700;
-
-    color:var(--primary);
+    bottom:0;
 
 }
 
-.order-date{
-
-    font-size:.9rem;
-
-    color:#64748b;
-
-}
-
-.order-arrow{
-
-    margin-top:10px;
-
-    align-self:flex-end;
-
-}
-
-.subscription-summary{
-
-    text-align:center;
-
-    padding:20px;
-
-}
-
-.subscription-summary h4{
-
-    font-size:1.35rem;
-
-}
-
-.subscription-summary p{
-
-    font-size:.95rem;
-
-}
-
-.subscription-summary .btn{
-
-    width:100%;
-
-    margin-top:18px;
-
-}
-
-.subscription-items{
-
-    font-size:1rem;
-
-    font-weight:600;
-
-    margin-top:12px;
-
-}
 
 }

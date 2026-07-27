@@ -483,4 +483,45 @@
 
 }
 
+.booking-progress{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:12px;
+
+    margin:20px 0;
+
+}
+
+.progress-step{
+
+    width:100%;
+
+    min-width:unset;
+
+    padding:14px;
+
+}
+
+.progress-step-number{
+
+    width:45px;
+
+    height:45px;
+
+    font-size:1rem;
+
+}
+
+.progress-step-title{
+
+    font-size:.85rem;
+
+    text-align:center;
+
+}
+
+
 }

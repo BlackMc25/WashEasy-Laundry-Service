@@ -745,3 +745,326 @@
     flex-wrap:wrap;
 
 }
+
+/* ================================
+   SUBSCRIPTION BANNER
+================================ */
+
+.subscription-booking-banner{
+
+    position: relative;
+    overflow: hidden;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 20px;
+
+    padding: 18px 24px;
+
+    margin-bottom: 25px;
+
+    border-radius: 18px;
+
+    background: linear-gradient(
+        135deg,
+        #2563eb,
+        #3b82f6,
+        #60a5fa
+    );
+
+    color: #fff;
+
+    box-shadow: 0 12px 28px rgba(37,99,235,.18);
+
+    transition: .35s ease;
+}
+
+.subscription-booking-banner:hover{
+
+    transform: translateY(-3px);
+
+    box-shadow: 0 16px 35px rgba(37,99,235,.22);
+
+}
+
+.subscription-booking-banner::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:260px;
+
+    height:260px;
+
+    background:rgba(255,255,255,.08);
+
+    border-radius:50%;
+
+    top:-100px;
+
+    right:-80px;
+
+}
+
+.membership-badge{
+
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+
+    padding:6px 14px;
+
+    border-radius:40px;
+
+    background:rgba(255,255,255,.15);
+
+    font-size:.8rem;
+
+    margin-bottom:10px;
+
+}
+
+.subscription-left{
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+.subscription-left h2{
+
+    font-size:2rem;
+    font-weight:700;
+    margin-bottom:4px;
+
+}
+
+.subscription-left h4{
+
+    font-size:2rem;
+
+    font-weight:700;
+
+    margin-bottom:8px;
+
+}
+
+.subscription-left p{
+
+    margin-bottom:8px;
+    
+    font-size:.92rem;
+
+    margin-bottom:12px;
+
+    color:rgba(255,255,255,.9);
+
+    opacity:.95;
+
+}
+
+.subscription-left small{
+
+    font-size:.95rem;
+
+    opacity:.85;
+
+}
+
+.subscription-right .form-check{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    padding:14px 22px;
+
+    background:rgba(255,255,255,.12);
+
+    border-radius:50px;
+
+    backdrop-filter:blur(10px);
+
+}
+
+.subscription-right span{
+
+    color:white;
+
+    font-weight:600;
+
+    font-size:1rem;
+
+}
+
+.subscription-right .form-check-input{
+
+    width:55px;
+
+    height:28px;
+
+    cursor:pointer;
+
+}
+
+.subscription-progress{
+
+    margin-top:10px;
+
+}
+
+.subscription-progress-bar{
+
+    height:8px;
+
+    border-radius:20px;
+
+}
+
+.progress-info{
+
+    font-size:.82rem;
+
+    margin-bottom:6px;
+
+}
+
+.subscription-switch-card{
+
+    padding:14px 18px;
+
+    min-width:170px;
+
+    border-radius:16px;
+
+    background:rgba(255,255,255,.12);
+
+    backdrop-filter:blur(10px);
+
+}
+
+.subscription-switch-card .form-check-input{
+
+    width:46px;
+    height:24px;
+
+}
+
+.subscription-benefits{
+
+    margin-top:12px;
+
+    gap:8px;
+
+}
+
+.subscription-benefits span{
+
+    padding:5px 10px;
+
+    font-size:.72rem;
+
+    border-radius:18px;
+
+}
+/* ==========================
+   LAUNDRY ITEM CARD
+========================== */
+
+.laundry-card{
+
+    background:#fff;
+
+    border-radius:18px;
+
+    padding:22px;
+
+    margin-bottom:18px;
+
+    border:1px solid #edf2f7;
+
+    transition:.35s;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.04);
+
+}
+
+.laundry-card:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
+
+}
+
+.laundry-title h5{
+
+    font-size:1.2rem;
+
+    font-weight:700;
+
+    color:#1e293b;
+
+}
+
+.laundry-title small{
+
+    color:#64748b;
+
+    font-size:.95rem;
+
+}
+
+.subscription-free{
+
+    background:linear-gradient(
+        135deg,
+        #16a34a,
+        #22c55e
+    );
+
+    color:white;
+
+    padding:8px 18px;
+
+    border-radius:50px;
+
+    font-size:.8rem;
+
+    font-weight:700;
+
+    letter-spacing:.5px;
+
+    text-transform:uppercase;
+
+    box-shadow:0 8px 18px rgba(34,197,94,.25);
+
+}
+
+.item-quantity{
+
+    font-size:1.1rem;
+
+    font-weight:700;
+
+    color:#1e293b;
+
+}
+
+.subscription-covered{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-top:18px;
+
+}

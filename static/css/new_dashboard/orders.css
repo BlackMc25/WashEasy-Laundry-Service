@@ -30,11 +30,13 @@
 
     display:grid;
 
-    grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    grid-template-columns:repeat(2,1fr);
 
-    gap:var(--space-lg);
+    gap:20px;
 
 }
+
+
 
 /*=========================================================
                     ORDER CARD
@@ -167,5 +169,15 @@
     background:var(--primary);
 
     color:white;
+
+}
+
+.orders-list{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:20px;
 
 }

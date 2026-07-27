@@ -109,6 +109,18 @@
 
 }
 
+.orders-grid{
+
+    grid-template-columns:1fr;
+
+}
+
+.orders-list{
+
+    flex-direction:column;
+
+}
+
 .order-top{
 
     display:flex;

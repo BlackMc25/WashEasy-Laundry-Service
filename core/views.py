@@ -1620,11 +1620,17 @@ def subscription_success(request, subscription_id):
         customer=request.user
     )
 
+    subscription_type = request.session.pop(
+        "subscription_type",
+        "new"
+    )
+
     return render(
         request,
         "subscription_success.html",
         {
-            "subscription": subscription
+            "subscription": subscription,
+            "subscription_type": subscription_type,
         }
     )
 
@@ -3189,6 +3195,7 @@ def verify_subscription_upgrade(request, subscription_id):
             (upgrade_settings.max_days_percentage / 100)
         )
 
+        subscription.total_items += transferred_items
         subscription.remaining_items += transferred_items
 
         subscription.expiry_date += timedelta(

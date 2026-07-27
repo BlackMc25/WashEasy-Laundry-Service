@@ -182,3 +182,32 @@ body{
 .recent-orders-section{
     margin-top:35px;
 }
+
+.subscription-action{
+
+    background:linear-gradient(
+        135deg,
+        #7c3aed,
+        #9333ea
+    );
+
+    color:#fff;
+
+}
+
+.subscription-action:hover{
+
+    background:linear-gradient(
+        135deg,
+        #6d28d9,
+        #7e22ce
+    );
+
+}
+
+.subscription-action h5,
+.subscription-action small{
+
+    color:white;
+
+}

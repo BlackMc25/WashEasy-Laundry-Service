@@ -91,24 +91,45 @@
 
         </a>
 
-        <a href="{% url 'profile' %}" class="action-card">
+        <a href="{% url 'subscription' %}" class="action-card subscription-action">
 
             <div class="action-icon">
 
-                <i class="bi bi-person-fill"></i>
+                <i class="fas fa-crown"></i>
 
             </div>
 
             <div>
 
-                <h5>Profile</h5>
+                <h5>Subscription</h5>
 
-                <small>Manage your account</small>
+                {% if subscription %}
+
+                <small>
+
+                    {{ subscription.plan.name }}
+
+                    •
+
+                    {{ subscription.remaining_items }}/{{ subscription.total_items }}
+
+                    Items
+
+                </small>
+
+                {% else %}
+
+                <small>
+
+                    Subscribe to WashEasy+
+
+                </small>
+
+                {% endif %}
 
             </div>
 
         </a>
-
     </section>
 
     <!-- Statistics -->

@@ -8,9 +8,9 @@
 
 .admin-card{
 
-    background:#17253d;
+    background:var(--white);
 
-    color:#ffffff;
+    color:var(--text);
 
     border-radius:15px;
 

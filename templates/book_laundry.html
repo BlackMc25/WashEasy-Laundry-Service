@@ -265,263 +265,44 @@
 
                 <div class="accordion-body">
 
-                    {% for item_name, services in clothing_items.items %}
-{% for item_name, item in clothing_items.items %}
+                    
+        {% for item_name, item in clothing_items.items %}
 
-<div class="laundry-card">
+                <div class="laundry-card">
 
-    <div class="laundry-title">
+                    <div class="laundry-title">
 
-        <div class="item-header">
+                        <div class="item-header">
 
-            <h5>{{ item_name }}</h5>
+                            <h5>{{ item_name }}</h5>
 
-            {% if item.covered %}
+                            {% if item.covered %}
 
-                <span class="subscription-covered">
+                                <span class="subscription-covered">
 
-                    👑 Covered
+                                    👑 Covered
 
-                </span>
+                                </span>
 
-            {% else %}
+                            {% else %}
 
-                <span class="subscription-not-covered">
+                                <span class="subscription-not-covered">
 
-                    ⚠ Not Covered
+                                    ⚠ Not Covered
 
-                </span>
+                                </span>
 
-            {% endif %}
-
-        </div>
-
-        <small>
-
-            Choose a laundry service
-
-        </small>
-
-    </div>
-
-    {% for service in item.services %}
-
-  
-                    <div
-                        id="item{{ forloop.counter }}"
-                        class="collapse">
-
-                        <div class="laundry-body">
-
-                            {% for service in services %}
-
-                            <div class="item-row mb-3" data-service-id="{{ service.id }}">
-
-                                    <!-- Top Row -->
-
-                                    <div class="service-row">
-
-                                        <div class="item-info">
-
-                                            <p class="fw-bold mb-1">
-                                                {{ service.service_type }}
-                                            </p>
-
-                                            <small>
-                                                ₦{{ service.price }}
-                                            </small>
-
-                                        </div>
-
-                                        <div class="quantity-controls2">
-
-                                            <button
-                                                class="qty2-btn2 minus-btn2"
-                                                type="button">
-
-                                                −
-
-                                            </button>
-
-                                            <input
-                                                type="number"
-                                                name="item_{{ service.id }}"
-                                                value="0"
-                                                min="0"
-                                                readonly
-                                                class="qty2-value2"
-                                                data-price="{{ service.price }}"
-                                                data-basic="{{ service.basic_subscription|yesno:'true,false' }}"
-                                                data-standard="{{ service.standard_subscription|yesno:'true,false' }}"
-                                                data-premium="{{ service.premium_subscription|yesno:'true,false' }}"
-                                                data-express="{{ service.express_price }}"
-                                                data-item="{{ item_name }}"
-                                                data-service="{{ service.service_type }}">
-
-                                            <button
-                                                class="qty2-btn2 plus-btn2"
-                                                type="button">
-
-                                                +
-
-                                            </button>
-
-                                        </div>
-
-                                    </div>
-
-                                    <!-- EXPRESS -->
-
-                                    <div class="express-container">
-
-                                        <div class="express-card">
-
-                                            <div class="express-top">
-
-                                                <div class="express-info">
-
-                                                    <span class="express-badge">
-
-                                                        ⚡ FASTEST
-
-                                                    </span>
-
-                                                    <h6>
-
-                                                        Express Care
-
-                                                    </h6>
-
-                                                    <p>
-
-                                                        Same-day cleaning with priority processing.
-
-                                                    </p>
-
-                                                </div>
-
-                                                <label class="express-switch">
-
-                                                    <input
-                                                        type="checkbox"
-                                                        class="express-toggle"
-                                                        data-id="{{ service.id }}">
-
-                                                    <span class="slider"></span>
-
-                                                </label>
-
-                                            </div>
-
-                                            <div class="express-price-card">
-
-                                                <small>
-
-                                                    Extra Fee
-
-                                                </small>
-
-                                                <strong>
-
-                                                    ₦{{ service.express_price }} / item
-
-                                                </strong>
-
-                                            </div>
-
-                                            <div
-                                                class="express-quantity"
-                                                id="expressQty{{ service.id }}"
-                                                style="display:none;">
-
-                                                <span class="quantity-title">
-
-                                                    Express Quantity
-
-                                                </span>
-
-                                                <div class="qty2-wrapper">
-
-                                                    <button
-                                                        type="button"
-                                                        class="minus-express-btn">
-
-                                                        −
-
-                                                    </button>
-
-                                            <input
-                                                type="number"
-                                                class="express-qty"
-                                                name="express_item_{{ service.id }}"
-                                                value="0"
-                                                min="0"
-                                                readonly
-                                                data-price="{{ service.price }}"
-                                                data-express="{{ service.express_price }}"
-                                                data-item="{{ item_name }}"
-                                                data-service="{{ service.service_type }}">
-
-                                            <button
-                                                type="button"
-                                                class="plus-express-btn">
-
-                                                +
-
-                                            </button>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-                            </div>
+                            {% endif %}
 
                         </div>
 
-                    <hr>
-    {% endfor %}
+                        <small>
 
-</div>
+                            Choose a laundry service
 
-{% endfor %}{% for item_name, item in clothing_items.items %}
+                        </small>
 
-        <div class="laundry-card">
-
-            <div class="laundry-title">
-
-                <div class="item-header">
-
-                    <h5>{{ item_name }}</h5>
-
-                    {% if item.covered %}
-
-                        <span class="subscription-covered">
-
-                            👑 Covered
-
-                        </span>
-
-                    {% else %}
-
-                        <span class="subscription-not-covered">
-
-                            ⚠ Not Covered
-
-                        </span>
-
-                    {% endif %}
-
-                </div>
-
-                <small>
-
-                    Choose a laundry service
-
-                </small>
-
-            </div>
+                    </div>
 
             {% for service in item.services %}
 

@@ -9,7 +9,7 @@
 
 <div class="booking-hero">
 
-        {% if active_subscription %}
+    {% if active_subscription %}
 
 <div class="subscription-booking-banner">
 
@@ -91,11 +91,11 @@
 
 </div>
 
-<input
-type="hidden"
-name="use_subscription"
-id="use_subscription"
-value="true">
+    <input
+    type="hidden"
+    name="use_subscription"
+    id="use_subscription"
+    value="true">
 
 {% endif %}
 
@@ -281,11 +281,25 @@ value="true">
 
                                         <div>
 
-                                            <h5>
+                                            <div class="item-header">
 
-                                                {{ item_name }}
+                                                <h5>{{ item_name }}</h5>
 
-                                            </h5>
+                                                {% if active_subscription %}
+
+                                                    <span
+                                                        class="subscription-badge"
+                                                        data-item="{{ item_name }}">
+
+                                                        <i class="fas fa-crown"></i>
+
+                                                        Covered
+
+                                                    </span>
+
+                                                {% endif %}
+
+                                            </div>
 
                                             <small>
 

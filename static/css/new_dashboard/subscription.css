@@ -1026,3 +1026,51 @@
     margin-top:18px;
 
 }
+
+.subscription-covered-badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:6px;
+
+    padding:6px 14px;
+
+    border-radius:30px;
+
+    background:#dcfce7;
+
+    color:#15803d;
+
+    font-size:.78rem;
+
+    font-weight:700;
+
+    border:1px solid #bbf7d0;
+
+}
+
+.subscription-not-covered{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:6px;
+
+    padding:6px 14px;
+
+    border-radius:30px;
+
+    background:#fff7ed;
+
+    color:#ea580c;
+
+    border:1px solid #fed7aa;
+
+    font-size:.78rem;
+
+    font-weight:700;
+
+}

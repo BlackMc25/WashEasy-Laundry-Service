@@ -1,53 +1,65 @@
-{% load static %}
-
 <nav class="mobile-bottom-nav">
 
+    <!-- Dashboard -->
     <a href="{% url 'dashboard' %}"
        class="mobile-nav-item {% if request.resolver_match.url_name == 'dashboard' %}active{% endif %}">
-        <i class="fa-solid fa-house"></i>
+
+        <div class="book-circle">
+            <i class="fas fa-home"></i>
+        </div>
+
         <span>Home</span>
+
     </a>
 
-    <a href="{% url 'book_laundry' %}"
-        class=" mobile-nav-item book-button
-        {% if request.resolver_match.url_name == 'book_laundry' %}
-        active
-        {% endif %}">
-
-            <div class="book-circle">
-
-                <i class="fa-solid fa-basket-shopping"></i>
-
-            </div>
-
-            <span>Book</span>
-
-        </a>
-
+    <!-- Orders -->
     <a href="{% url 'my_orders' %}"
        class="mobile-nav-item {% if request.resolver_match.url_name == 'my_orders' %}active{% endif %}">
-        <i class="fa-solid fa-box"></i>
+
+        <div class="book-circle">
+            <i class="fas fa-box"></i>
+        </div>
+
         <span>Orders</span>
+
     </a>
 
+    <!-- Subscription -->
+    <a href="{% url 'subscription' %}"
+       class="mobile-nav-item {% if 'subscription' in request.path %}active{% endif %}">
+
+        <div class="book-circle">
+
+            <i class="fas fa-crown"></i>
+
+            {% if active_subscription %}
+                <span class="subscription-dot"></span>
+            {% endif %}
+
+        </div>
+
+        <span>Subscription</span>
+
+    </a>
+
+    <!-- Notifications -->
     <a href="{% url 'notifications' %}"
-       class="mobile-nav-item {% if request.resolver_match.url_name == 'notifications' %}active{% endif %} notification-link">
+       class="mobile-nav-item {% if request.resolver_match.url_name == 'notifications' %}active{% endif %}">
 
-        <i class="fa-solid fa-bell"></i>
+        <div class="book-circle">
 
-        {% if unread_notifications > 0 %}
-       <span class="mobile-notification-badge">
-            {{ unread_notifications }}
-        </span>
-        {% endif %}
+            <i class="fas fa-bell"></i>
+
+            {% if unread_notifications > 0 %}
+                <span class="mobile-notification-badge">
+                    {{ unread_notifications }}
+                </span>
+            {% endif %}
+
+        </div>
 
         <span>Alerts</span>
-    </a>
 
-    <a href="{% url 'profile' %}"
-       class="mobile-nav-item {% if request.resolver_match.url_name == 'profile' %}active{% endif %}">
-        <i class="fa-solid fa-user"></i>
-        <span>Profile</span>
     </a>
 
 </nav>

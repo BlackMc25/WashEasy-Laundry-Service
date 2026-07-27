@@ -215,6 +215,26 @@
 
 }
 
+.subscription-dot{
+
+    position:absolute;
+
+    top:4px;
+
+    right:4px;
+
+    width:10px;
+
+    height:10px;
+
+    border-radius:50%;
+
+    background:#fbbf24;
+
+    border:2px solid white;
+
+}
+
 /*---------------------------------------------------------
                     Dashboard Layout
 ---------------------------------------------------------*/

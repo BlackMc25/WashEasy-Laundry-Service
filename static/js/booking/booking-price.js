@@ -324,13 +324,15 @@ function updateSummary(pricing){
 
             if(item.covered){
 
-                badge =
+                badge = `
+                <span class="subscription-free">
 
-                `<span class="badge bg-success">
+                    <i class="fas fa-check-circle"></i>
 
-                    FREE
+                    👑 Covered
 
-                </span>`;
+                </span>
+                `;
 
             }
 

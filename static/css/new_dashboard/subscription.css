@@ -977,51 +977,11 @@
    LAUNDRY ITEM CARD
 ========================== */
 
-.laundry-card{
-
-    background:#fff;
-
-    border-radius:18px;
-
-    padding:22px;
-
-    margin-bottom:18px;
-
-    border:1px solid #edf2f7;
-
-    transition:.35s;
-
-    box-shadow:0 8px 25px rgba(0,0,0,.04);
-
-}
-
-.laundry-card:hover{
-
-    transform:translateY(-5px);
-
-    box-shadow:0 15px 35px rgba(0,0,0,.08);
-
-}
-
-.laundry-title h5{
-
-    font-size:1.2rem;
-
-    font-weight:700;
-
-    color:#1e293b;
-
-}
-
-.laundry-title small{
-
-    color:#64748b;
-
-    font-size:.95rem;
-
-}
-
 .subscription-free{
+
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
 
     background:linear-gradient(
         135deg,
@@ -1029,19 +989,17 @@
         #22c55e
     );
 
-    color:white;
+    color:#fff;
 
-    padding:8px 18px;
+    padding:8px 16px;
 
     border-radius:50px;
 
-    font-size:.8rem;
+    font-size:.75rem;
 
     font-weight:700;
 
     letter-spacing:.5px;
-
-    text-transform:uppercase;
 
     box-shadow:0 8px 18px rgba(34,197,94,.25);
 

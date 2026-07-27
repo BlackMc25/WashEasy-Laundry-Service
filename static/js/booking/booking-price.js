@@ -46,13 +46,12 @@ function getPricingData(){
 
         if(item.covered){
 
-            coveredItems++;
+            coveredItems += item.quantity;
 
         }
-
         else{
 
-            chargedItems++;
+            chargedItems += item.quantity;
 
         }
 

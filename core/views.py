@@ -74,15 +74,53 @@ def book_laundry(request):
 
     categories = {}
 
+    # Customer's active plan
+    plan_name = None
+
+    if active_subscription:
+        plan_name = active_subscription.plan.name.lower()
+
     for item in items:
 
         if item.category not in categories:
             categories[item.category] = {}
 
         if item.item_name not in categories[item.category]:
-            categories[item.category][item.item_name] = []
 
-        categories[item.category][item.item_name].append(item)
+            categories[item.category][item.item_name] = {
+
+                "services": [],
+
+                "covered": False,
+
+                "plan_name": plan_name,
+
+            }
+
+        # Determine whether THIS service is covered
+        covered = False
+
+        if active_subscription:
+
+            if plan_name == "basic" and item.basic_subscription:
+
+                covered = True
+
+            elif plan_name == "standard" and item.standard_subscription:
+
+                covered = True
+
+            elif plan_name == "premium" and item.premium_subscription:
+
+                covered = True
+
+            # If ANY service for this clothing item is covered,
+            # mark the clothing item as covered.
+            if covered:
+
+                categories[item.category][item.item_name]["covered"] = True
+
+        categories[item.category][item.item_name]["services"].append(item)
 
     previous_addresses = LaundryOrder.objects.filter(
         customer=request.user

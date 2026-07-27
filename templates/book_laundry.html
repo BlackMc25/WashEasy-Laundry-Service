@@ -265,7 +265,7 @@
 
                 <div class="accordion-body">
 
-                    {% for item_name, services in clothing_items.items %}
+                    {% for item_name, item in clothing_items.items %}
 
                                 <!-- ==========================
                                     ITEM CARD
@@ -285,21 +285,43 @@
 
                                     <h5>{{ item_name }}</h5>
 
-                                    {% if active_subscription %}
+                                        {% if active_subscription %}
 
-                                        <span
-                                            class="subscription-badge"
-                                            data-item="{{ item_name }}">
+                                            {% if item.covered %}
 
-                                            <i class="fas fa-crown"></i>
+                                                <span class="subscription-covered-badge">
 
-                                            Covered
+                                                    <i class="fas fa-crown"></i>
 
-                                        </span>
+                                                    Included
 
-                                    {% endif %}
+                                                </span>
 
-                                </div>
+                                            {% else %}
+
+                                                <span class="subscription-not-covered">
+
+                                                    <i class="fas fa-lock"></i>
+
+                                                    Upgrade
+
+                                                </span>
+
+                                            {% endif %}
+
+                                        {% else %}
+
+                                            <span class="subscription-required">
+
+                                                <i class="fas fa-star"></i>
+
+                                                Subscribe
+
+                                            </span>
+
+                                        {% endif %}
+
+                                    </div>
 
                                 <small>
 
@@ -319,7 +341,7 @@
 
                         <div class="laundry-body">
 
-                            {% for service in services %}
+                            {% for service in item.services %}
 
                             <div class="item-row mb-3" data-service-id="{{ service.id }}">
 

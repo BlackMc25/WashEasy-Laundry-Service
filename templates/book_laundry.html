@@ -265,48 +265,54 @@
 
                 <div class="accordion-body">
 
-                    
-        {% for item_name, item in clothing_items.items %}
+                    {% for item_name, services in clothing_items.items %}
 
-                <div class="laundry-card">
+                                <!-- ==========================
+                                    ITEM CARD
+                                =========================== -->
 
-                    <div class="laundry-title">
+                                <div class="laundry-card">
 
-                        <div class="item-header">
+                                    <div
+                            class="laundry-title"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#item{{ forloop.counter }}"
+                            style="cursor:pointer;">
 
-                            <h5>{{ item_name }}</h5>
+                            <div>
 
-                            {% if item.covered %}
+                                <div class="item-header">
 
-                                <span class="subscription-covered">
+                                    <h5>{{ item_name }}</h5>
 
-                                    👑 Covered
+                                    {% if active_subscription %}
 
-                                </span>
+                                        <span
+                                            class="subscription-badge"
+                                            data-item="{{ item_name }}">
 
-                            {% else %}
+                                            <i class="fas fa-crown"></i>
 
-                                <span class="subscription-not-covered">
+                                            Covered
 
-                                    ⚠ Not Covered
+                                        </span>
 
-                                </span>
+                                    {% endif %}
 
-                            {% endif %}
+                                </div>
+
+                                <small>
+
+                                    Choose a laundry service
+
+                                </small>
+
+                            </div>
+
+                            <i class="bi bi-chevron-down"></i>
 
                         </div>
 
-                        <small>
-
-                            Choose a laundry service
-
-                        </small>
-
-                    </div>
-
-            {% for service in item.services %}
-
-  
                     <div
                         id="item{{ forloop.counter }}"
                         class="collapse">
@@ -481,11 +487,16 @@
                         </div>
 
                     <hr>
-                {% endfor %}
+
+                    {% endfor %}
+
+                </div>
 
             </div>
 
-        {% endfor %}
+        </div>
+
+            {% endfor %}
 
         </div>
 

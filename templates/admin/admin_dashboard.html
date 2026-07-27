@@ -110,33 +110,45 @@
 
     </div>
 
-    <div class="col-xl-3 col-md-6 mb-4">
+    <div class="col-md-4 mb-4">
 
-    <div class="admin-stat-card subscription-card">
+        <div class="admin-card subscription-income-card">
 
-        <div class="card-icon">
+            <div class="d-flex justify-content-between align-items-center">
 
-            <i class="fas fa-id-card"></i>
+                <div>
 
-        </div>
+                    <h6 class="text-white mb-2">
 
-        <div class="card-info">
+                        Subscription Revenue
 
-            <h6>Active Subscriptions</h6>
+                    </h6>
 
-            <h2>{{ active_subscriptions }}</h2>
+                    <h2 class="text-white fw-bold">
 
-            <small>
+                        ₦{{ subscription_revenue|intcomma }}
 
-                {{ subscription_percentage }}% of customers subscribed
+                    </h2>
 
-            </small>
+                    <small class="text-white-50">
+
+                        Total income from subscriptions
+
+                    </small>
+
+                </div>
+
+                <div class="income-icon">
+
+                    <i class="fas fa-crown"></i>
+
+                </div>
+
+            </div>
 
         </div>
 
     </div>
-
-</div>
 
     <div class="admin-card">
 

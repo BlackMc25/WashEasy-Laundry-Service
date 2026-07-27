@@ -360,6 +360,12 @@ urlpatterns = [
     views.initialize_upgrade_payment,
     name="initialize_upgrade_payment",
     ),
+
+    path(
+    "subscription/upgrade/verify/<int:subscription_id>/",
+    views.verify_subscription_upgrade,
+    name="verify_subscription_upgrade",
+),
 ]
 
 

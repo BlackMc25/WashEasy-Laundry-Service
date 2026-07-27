@@ -10,6 +10,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
 from django.conf import settings
 import random
+from django.urls import reverse
 from django.contrib.auth import logout
 from django.shortcuts import redirect
 from django.contrib import messages
@@ -1328,11 +1329,12 @@ def initialize_upgrade_payment(request, plan_id):
 
         "callback_url":
         request.build_absolute_uri(
-
-            f"/subscription/upgrade/verify/{subscription.id}/"
-
+            reverse(
+        "verify_subscription_upgrade",
+        args=[subscription.id]
         )
 
+        )
     }
 
     response = requests.post(
@@ -1447,6 +1449,8 @@ def verify_subscription_payment(
             "Subscription activated successfully."
 
         )
+
+        request.session["subscription_type"] = "new"
 
         return redirect(
 
@@ -3109,4 +3113,129 @@ def upgrade_settings(request):
         {
             "settings": settings
         }
+    )
+
+@login_required
+def verify_subscription_upgrade(request, subscription_id):
+
+    subscription = get_object_or_404(
+        CustomerSubscription,
+        id=subscription_id,
+        customer=request.user
+    )
+
+    # Prevent duplicate verification
+    if subscription.payment_status == "Paid":
+        return redirect(
+            "subscription_success",
+            subscription.id
+        )
+
+    url = (
+        "https://api.paystack.co/transaction/verify/"
+        f"{subscription.payment_reference}"
+    )
+
+    headers = {
+        "Authorization":
+        f"Bearer {settings.PAYSTACK_SECRET_KEY}"
+    }
+
+    response = requests.get(
+        url,
+        headers=headers
+    )
+
+    response_data = response.json()
+
+    if not (
+        response_data.get("status")
+        and
+        response_data["data"]["status"] == "success"
+    ):
+
+        subscription.delete()
+
+        messages.error(
+            request,
+            "Upgrade payment failed."
+        )
+
+        return redirect("subscription")
+
+    previous_subscription = subscription.previous_subscription
+
+    upgrade_settings = UpgradeSettings.objects.first()
+
+    transferred_items = 0
+    transferred_days = 0
+
+    if previous_subscription and upgrade_settings:
+
+        # Remaining Items
+        transferred_items = int(
+            previous_subscription.remaining_items *
+            (upgrade_settings.max_items_percentage / 100)
+        )
+
+        # Remaining Days
+        remaining_days = max(
+            (previous_subscription.expiry_date - timezone.now().date()).days,
+            0
+        )
+
+        transferred_days = int(
+            remaining_days *
+            (upgrade_settings.max_days_percentage / 100)
+        )
+
+        subscription.remaining_items += transferred_items
+
+        subscription.expiry_date += timedelta(
+            days=transferred_days
+        )
+
+        subscription.free_transport_trips_remaining += (
+            previous_subscription.free_transport_trips_remaining
+        )
+
+        previous_subscription.status = "Upgraded"
+
+        previous_subscription.payment_status = "Upgraded"
+
+        previous_subscription.save()
+
+    subscription.payment_status = "Paid"
+
+    subscription.payment_date = timezone.now()
+
+    subscription.status = "Active"
+
+    subscription.free_transport_trips_remaining = max(
+        subscription.free_transport_trips_remaining,
+        subscription.plan.free_transport_trips
+    )
+
+    subscription.save()
+
+    Notification.objects.create(
+        user=request.user,
+        title="Subscription Upgraded",
+        message=(
+            f"Congratulations! "
+            f"Your subscription has been upgraded to "
+            f"{subscription.plan.name} successfully."
+        )
+    )
+
+    messages.success(
+        request,
+        "Subscription upgraded successfully."
+    )
+
+    request.session["subscription_type"] = "upgrade"
+
+    return redirect(
+        "subscription_success",
+        subscription.id
     )

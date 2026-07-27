@@ -28,18 +28,31 @@ href="{% static 'css/new_dashboard/subscription.css' %}">
 
         </div>
 
+        {% if subscription_type == "upgrade" %}
+
         <h1>
-
-            Subscription Activated!
-
+        Subscription Upgraded Successfully!
         </h1>
 
-        <p class="success-message">
+        {% else %}
 
-            Thank you for subscribing to WashEasy+.
-            Your payment has been confirmed successfully.
+        <h1>
+        Subscription Activated!
+        </h1>
 
-        </p>
+        {% endif %}
+
+        {% if subscription_type == "upgrade" %}
+
+        Your subscription has been upgraded successfully.
+        Your new plan is now active.
+
+        {% else %}
+
+        Thank you for subscribing to WashEasy+.
+        Your payment has been confirmed successfully.
+
+        {% endif %}
 
         <div class="success-details">
 

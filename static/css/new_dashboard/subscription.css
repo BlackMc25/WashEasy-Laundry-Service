@@ -989,7 +989,7 @@
         #22c55e
     );
 
-    color:#fff;
+    color:var(--white);
 
     padding:8px 16px;
 

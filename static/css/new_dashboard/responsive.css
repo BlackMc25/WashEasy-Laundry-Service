@@ -845,4 +845,28 @@
     margin-bottom:20px;
 
 }
+
+.table{
+
+    table-layout:fixed;
+
+}
+
+.table th{
+
+    width:55%;
+
+    font-size:14px;
+
+}
+
+.table td{
+
+    width:45%;
+
+    text-align:right;
+
+    font-size:14px;
+
+}
 }

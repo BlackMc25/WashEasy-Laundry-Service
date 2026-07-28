@@ -1348,3 +1348,27 @@
     flex:1;
 
 }
+
+.table{
+
+    margin-bottom:0;
+
+}
+
+.table th{
+
+    color:#64748b;
+
+    font-weight:600;
+
+    width:60%;
+
+}
+
+.table td{
+
+    font-weight:700;
+
+    color:#0f172a;
+
+}

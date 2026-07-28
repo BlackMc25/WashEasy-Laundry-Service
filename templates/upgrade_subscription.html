@@ -198,85 +198,75 @@ Upgrade Subscription
 
                     <div class="row">
 
-                        <div class="col-md-6">
+                       <div class="col-md-6">
 
-                            <h5>
+                                <h5 class="mb-3">
 
-                                Upgrade Eligibility
+                                    Upgrade Eligibility
 
-                            </h5>
+                                </h5>
 
-                            <table class="table">
+                                <div class="table-responsive">
 
-                                <tr>
+                                    <table class="table align-middle">
 
-                                    <th>
+                                        <tbody>
 
-                                        Days Used
+                                            <tr>
 
-                                    </th>
+                                                <th>Days Used</th>
 
-                                    <td>
+                                                <td class="text-end">
 
-                                        {{ days_used }}
+                                                    <strong>{{ days_used }} Days</strong>
 
-                                        Days
+                                                </td>
 
-                                    </td>
+                                            </tr>
 
-                                </tr>
+                                            <tr>
 
-                                <tr>
+                                                <th>Days Used %</th>
 
-                                    <th>
+                                                <td class="text-end">
 
-                                        Days Used %
+                                                    <strong>{{ days_percentage }}%</strong>
 
-                                    </th>
+                                                </td>
 
-                                    <td>
+                                            </tr>
 
-                                        {{ days_percentage }}%
+                                            <tr>
 
-                                    </td>
+                                                <th>Items Used</th>
 
-                                </tr>
+                                                <td class="text-end">
 
-                                <tr>
+                                                    <strong>{{ items_used }}</strong>
 
-                                    <th>
+                                                </td>
 
-                                        Items Used
+                                            </tr>
 
-                                    </th>
+                                            <tr>
 
-                                    <td>
+                                                <th>Items Used %</th>
 
-                                        {{ items_used }}
+                                                <td class="text-end">
 
-                                    </td>
+                                                    <strong>{{ items_percentage }}%</strong>
 
-                                </tr>
+                                                </td>
 
-                                <tr>
+                                            </tr>
 
-                                    <th>
+                                        </tbody>
 
-                                        Items Used %
+                                    </table>
 
-                                    </th>
+                                </div>
 
-                                    <td>
-
-                                        {{ items_percentage }}%
-
-                                    </td>
-
-                                </tr>
-
-                            </table>
-
-                        </div>
+                            </div>
 
                         <div class="col-md-6">
 

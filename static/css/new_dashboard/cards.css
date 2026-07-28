@@ -160,7 +160,7 @@
 
     padding:28px;
 
-   box-shadow:var(--shadow-md);
+    box-shadow:var(--shadow-md);
 
 }
 
@@ -258,17 +258,18 @@
 
 .laundry-title{
 
-    font-size:1.1rem;
+    display:flex;
 
-    font-weight:700;
+    justify-content:space-between;
 
-    margin-bottom:18px;
+    align-items:center;
 
-    padding-bottom:14px;
+    cursor:pointer;
 
-    border-bottom:1px solid #edf2f7;
+    padding:18px 22px;
 
 }
+
 
 .booking-title{
 
@@ -293,5 +294,38 @@
     margin-bottom:22px;
 
     border:1px solid #dbeafe;
+
+}
+
+
+.laundry-title h5{
+
+    margin:0;
+
+    font-size:1.3rem;
+
+    font-weight:700;
+
+}
+
+.laundry-title small{
+
+    display:block;
+
+    margin-top:5px;
+
+    color:#64748b;
+
+    font-weight:500;
+
+}
+
+.laundry-title i{
+
+    font-size:1.2rem;
+
+    color:#64748b;
+
+    transition:.3s;
 
 }

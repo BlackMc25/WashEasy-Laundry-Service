@@ -76,73 +76,152 @@ href="{% static 'css/new_dashboard/subscription_detail.css' %}">
 
         </h3>
 
-        {% widthratio subscription.remaining_items subscription.total_items 100 as progress %}
+      {% widthratio subscription.remaining_items subscription.plan.total_items 100 as item_progress %}
+    {% widthratio subscription.free_transport_trips_remaining subscription.plan.free_transport_trips 100 as trip_progress %}
 
-        <div class="subscription-progress-card">
+    <div class="subscription-progress-card">
 
-            <div class="progress">
+        <!-- Laundry Items -->
 
-                <div
-                    class="progress-bar bg-primary"
-                    style="width:{{ progress }}%;">
+        <h5 class="progress-title">
 
-                </div>
+            Laundry Items
 
-            </div>
+        </h5>
 
-            <div class="usage-stats">
+        <div class="progress subscription-progress">
 
-                <div>
-
-                    <h4>
-
-                        {{ subscription.remaining_items }}
-
-                    </h4>
-
-                    <span>
-
-                        Remaining Items
-
-                    </span>
-
-                </div>
-
-                <div>
-
-                    <h4>
-
-                        {{ subscription.total_items }}
-
-                    </h4>
-
-                    <span>
-
-                        Total Items
-
-                    </span>
-
-                </div>
-
-                <div>
-
-                    <h4>
-
-                        {{ subscription.expiry_date }}
-
-                    </h4>
-
-                    <span>
-
-                        Expiry Date
-
-                    </span>
-
-                </div>
+            <div
+                class="progress-bar bg-primary"
+                style="width: {{ item_progress }}%;">
 
             </div>
 
         </div>
+
+        <small class="progress-label">
+
+            {{ subscription.remaining_items }}
+            of
+            {{ subscription.plan.total_items }}
+            Items Remaining
+
+        </small>
+
+        <br><br>
+
+        <!-- Free Trips -->
+
+        <h5 class="progress-title">
+
+            Free Transport Trips
+
+        </h5>
+
+        <div class="progress subscription-progress">
+
+            <div
+                class="progress-bar bg-success"
+                style="width: {{ trip_progress }}%;">
+
+            </div>
+
+        </div>
+
+        <small class="progress-label">
+
+            {{ subscription.free_transport_trips_remaining }}
+            of
+            {{ subscription.plan.free_transport_trips }}
+            Trips Remaining
+
+        </small>
+
+        <div class="usage-stats">
+
+            <div>
+
+                <h4>
+
+                    {{ subscription.remaining_items }}
+
+                </h4>
+
+                <span>
+
+                    Remaining Items
+
+                </span>
+
+            </div>
+
+            <div>
+
+                <h4>
+
+                {{ items_used }}
+
+                </h4>
+
+                <span>
+
+                Items Used
+
+                </span>
+
+            </div>
+
+            <div>
+
+                <h4>
+
+                    {{ subscription.free_transport_trips_remaining }}
+
+                </h4>
+
+                <span>
+
+                    Trips Left
+
+                </span>
+
+            </div>
+
+            <div>
+
+                <h4>
+
+                    {{ subscription.plan.free_transport_trips }}
+
+                </h4>
+
+                <span>
+
+                    Total Trips
+
+                </span>
+
+            </div>
+
+            <div>
+
+                <h4>
+
+                    {{ subscription.expiry_date|date:"M d, Y" }}
+
+                </h4>
+
+                <span>
+
+                    Expiry Date
+
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
 
     </section>
 

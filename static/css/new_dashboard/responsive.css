@@ -700,26 +700,6 @@
 
 }
 
-.subscription-title{
-
-    font-size:1.6rem;
-
-}
-
-.subscription-plan-name{
-
-    font-size:1rem;
-
-}
-
-.order-actions .btn{
-
-    padding:12px 18px;
-
-    font-size:.9rem;
-
-}
-
 .review-actions .btn{
 
     width:100%;
@@ -728,33 +708,43 @@
 
 }
 
-.booking-page{
-
-    display:flex;
+.order-hero{
 
     flex-direction:column;
 
+    align-items:flex-start;
+
+    gap:25px;
+
 }
 
-.booking-main{
+.hero-left{
 
     width:100%;
 
 }
 
-.booking-sidebar{
+.hero-right{
 
     width:100%;
-
-    margin-top:30px;
 
 }
 
-.summary-card{
+.hero-right .btn{
 
     width:100%;
 
-    max-width:100%;
+}
+
+.subscription-title{
+
+    font-size:1.55rem;
+
+}
+
+.subscription-plan-name{
+
+    font-size:.95rem;
 
 }
 }

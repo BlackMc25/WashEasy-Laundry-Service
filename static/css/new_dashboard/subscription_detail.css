@@ -200,3 +200,84 @@
     margin-bottom:15px;
 
 }
+
+/*=========================================
+            HERO
+=========================================*/
+
+.order-hero{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-start;
+
+    gap:30px;
+
+    margin-bottom:35px;
+
+}
+
+.hero-left{
+
+    flex:1;
+
+}
+
+.hero-right{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    align-items:flex-start;
+
+}
+
+.subscription-header{
+
+    margin-top:20px;
+
+}
+
+.subscription-title{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    flex-wrap:wrap;
+
+    font-size:2.2rem;
+
+    font-weight:800;
+
+    margin-bottom:8px;
+
+}
+
+.subscription-plan-name{
+
+    color:#64748b;
+
+    font-size:1rem;
+
+    margin-bottom:12px;
+
+}
+
+.title-icon{
+
+    flex-shrink:0;
+
+}
+
+.order-actions .btn,
+.hero-right .btn{
+
+    white-space:nowrap;
+
+}

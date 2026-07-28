@@ -19,21 +19,22 @@ href="{% static 'css/new_dashboard/subscription_detail.css' %}">
             HERO
     =========================== -->
 
-    <div class="order-hero">
+        <div class="order-hero">
 
-        <div>
+            <div class="hero-left">
 
-            <a
-            href="{% url 'my_orders' %}"
-            class="btn btn-outline">
+                <a
+                    href="{% url 'my_orders' %}"
+                    class="btn btn-outline">
 
-                <i class="bi bi-arrow-left"></i>
+                    <i class="bi bi-arrow-left"></i>
 
-                Back
+                    Back
 
-            </a>
+                </a>
 
-            <div class="subscription-header">
+                <div class="subscription-header">
+
                     <h1 class="subscription-title">
 
                         <span class="title-icon">
@@ -50,37 +51,37 @@ href="{% static 'css/new_dashboard/subscription_detail.css' %}">
 
                     </h1>
 
-                <p class="subscription-plan-name">
+                    <p class="subscription-plan-name">
 
-                    {{ subscription.plan.name }} Plan
+                        {{ subscription.plan.name }} Plan
 
-                </p>
+                    </p>
+
+                    <span class="badge badge-success">
+
+                        {{ subscription.status }}
+
+                    </span>
+
+                </div>
 
             </div>
 
-            <span class="badge badge-success">
+            <div class="hero-right">
 
-                {{ subscription.status }}
+                <a
+                    href="{% url 'update_subscription_address' subscription.id %}"
+                    class="btn btn-primary">
 
-            </span>
+                    <i class="bi bi-geo-alt-fill"></i>
 
-        </div>
+                    Update Address
 
-        <div class="order-actions">
+                </a>
 
-            <a
-            href="{% url 'update_subscription_address' subscription.id %}"
-            class="btn btn-primary">
-
-                <i class="bi bi-geo-alt-fill"></i>
-
-                Update Address
-
-            </a>
+            </div>
 
         </div>
-
-    </div>
 
 
     <!-- ==========================

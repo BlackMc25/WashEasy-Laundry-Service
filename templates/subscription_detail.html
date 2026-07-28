@@ -32,12 +32,24 @@ href="{% static 'css/new_dashboard/subscription_detail.css' %}">
                 Back
 
             </a>
+            
+            <div class="subscription-header">
 
-            <h1 class="page-title mt-md">
+                <h1 class="subscription-title">
 
-                Subscription #{{ subscription_number }}
+                    <i class="fas fa-crown text-warning me-2"></i>
 
-            </h1>
+                    WashEasy+ Membership
+
+                </h1>
+
+                <p class="subscription-plan-name">
+
+                    {{ subscription.plan.name }} Plan
+
+                </p>
+
+            </div>
 
             <span class="badge badge-success">
 

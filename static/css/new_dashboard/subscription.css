@@ -1292,3 +1292,25 @@
     font-weight:700;
 
 }
+
+.subscription-title{
+
+    font-size:2rem;
+
+    font-weight:800;
+
+    color:#0f172a;
+
+    margin-bottom:4px;
+
+}
+
+.subscription-plan-name{
+
+    color:#64748b;
+
+    font-size:1rem;
+
+    font-weight:500;
+
+}

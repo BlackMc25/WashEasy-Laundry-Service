@@ -181,3 +181,63 @@
     gap:20px;
 
 }
+
+.subscription-progress{
+
+    margin:20px 0;
+
+}
+
+.progress{
+
+    height:12px;
+
+    border-radius:30px;
+
+    overflow:hidden;
+
+    margin-bottom:12px;
+
+}
+
+.progress-details{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:6px;
+
+    font-size:15px;
+
+    font-weight:700;
+
+    color:#1e293b;
+
+}
+
+.remaining-count{
+
+    color:#2563eb;
+
+    font-size:18px;
+
+}
+
+.separator{
+
+    color:#64748b;
+
+}
+
+.remaining-label{
+
+    margin-left:6px;
+
+    font-weight:600;
+
+    color:#64748b;
+
+}

@@ -46,30 +46,49 @@
 
         </div>
 
-        <div class="subscription-progress">
+            <div class="subscription-progress">
 
-           {% widthratio subscription.remaining_items subscription.plan.total_items 100 as progress %}
+                {% widthratio subscription.remaining_items subscription.plan.total_items 100 as progress %}
 
-            <div class="progress">
+                <div class="progress">
 
-                <div
-                    class="progress-bar bg-primary"
-                    style="width: {{ progress }}%;">
+                    <div
+                        class="progress-bar bg-primary"
+                        style="width: {{ progress }}%;">
+
+                    </div>
+
+                </div>
+
+                <div class="progress-details">
+
+                    <span class="remaining-count">
+
+                        {{ subscription.remaining_items }}
+
+                    </span>
+
+                    <span class="separator">
+
+                        /
+
+                    </span>
+
+                    <span>
+
+                        {{ subscription.plan.total_items }}
+
+                    </span>
+
+                    <span class="remaining-label">
+
+                        Items Remaining
+
+                    </span>
 
                 </div>
 
             </div>
-
-            <p>
-
-                {{ subscription.remaining_items }}
-                /
-                {{ subscription.plan.total_items }}
-                Items Remaining
-
-            </p>
-
-        </div>
 
         <div class="subscription-actions">
 

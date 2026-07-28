@@ -1299,9 +1299,27 @@
 
     font-weight:800;
 
-    color:#0f172a;
+    line-height:1.2;
 
-    margin-bottom:4px;
+    word-break:break-word;
+
+}
+
+.subscription-title{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    flex-wrap:wrap;
+
+}
+
+.title-icon{
+
+    flex-shrink:0;
 
 }
 

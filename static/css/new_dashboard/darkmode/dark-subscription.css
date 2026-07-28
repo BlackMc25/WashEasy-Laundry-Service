@@ -1,0 +1,992 @@
+/*=========================================================
+                MEMBERSHIP CARD
+=========================================================*/
+
+body.dark .subscription-order-card,
+body.dark .subscription-card,
+body.dark .subscription-detail-card{
+
+    background:linear-gradient(
+        145deg,
+        #1e293b,
+        #162233
+    ) !important;
+
+    border:1px solid #334155;
+
+    color:#f8fafc;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.35);
+
+}
+
+body.dark .subscription-title{
+
+    color:#ffffff;
+
+}
+
+body.dark .subscription-plan-name,
+body.dark .subscription-subtitle{
+
+    color:#cbd5e1;
+
+}
+
+body.dark .membership-logo{
+
+    color:#60a5fa;
+
+}
+
+body.dark .membership-logo i{
+
+    color:#fbbf24;
+
+}
+
+/*=========================================================
+                PROGRESS BAR
+=========================================================*/
+
+body.dark .progress{
+
+    background:#334155;
+
+    border-radius:50px;
+
+}
+
+body.dark .progress-bar{
+
+    background:linear-gradient(
+        90deg,
+        #2563eb,
+        #60a5fa
+    );
+
+}
+
+body.dark .progress-summary strong{
+
+    color:#ffffff;
+
+}
+
+body.dark .progress-summary small{
+
+    color:#94a3b8;
+
+}
+
+/*=========================================================
+                USAGE HISTORY
+=========================================================*/
+
+body.dark .usage-history-card{
+
+    background:#1e293b;
+
+    border:1px solid #334155;
+
+}
+
+body.dark .usage-history-card h3,
+body.dark .usage-history-card h4,
+body.dark .usage-history-card h5{
+
+    color:#ffffff;
+
+}
+
+body.dark .usage-history-card table{
+
+    color:#f8fafc;
+
+}
+
+body.dark .usage-history-card th{
+
+    color:#94a3b8;
+
+}
+
+body.dark .usage-history-card td{
+
+    color:#ffffff;
+
+    border-color:#334155;
+
+}
+
+/*=========================================================
+                UPGRADE PAGE
+=========================================================*/
+
+body.dark .upgrade-card{
+
+    background:#1e293b;
+
+    border:1px solid #334155;
+
+}
+
+body.dark .upgrade-card h3,
+body.dark .upgrade-card h4{
+
+    color:#ffffff;
+
+}
+
+body.dark .upgrade-card p{
+
+    color:#cbd5e1;
+
+}
+
+body.dark .upgrade-card .table{
+
+    color:#ffffff;
+
+}
+
+body.dark .upgrade-card th{
+
+    color:#94a3b8;
+
+}
+
+body.dark .upgrade-card td{
+
+    color:#ffffff;
+
+}
+
+body.dark .payment-summary{
+
+    background:#162233;
+
+    border:1px solid #334155;
+
+}
+
+body.dark .payment-summary tr{
+
+    border-color:#334155;
+
+}
+
+body.dark .payment-summary .upgrade-cost{
+
+    background:#14532d;
+
+    color:#dcfce7;
+
+}
+
+/*=========================================================
+                SUBSCRIPTION BADGES
+=========================================================*/
+
+body.dark .service-covered{
+
+    background:#14532d;
+
+    color:#dcfce7;
+
+    border:1px solid #22c55e;
+
+}
+
+body.dark .service-upgrade{
+
+    background:#78350f;
+
+    color:#fef3c7;
+
+    border:1px solid #f59e0b;
+
+}
+
+body.dark .service-paid{
+
+    background:#1e3a8a;
+
+    color:#dbeafe;
+
+    border:1px solid #3b82f6;
+
+}
+
+/*=========================================================
+                EMPTY STATES
+=========================================================*/
+
+body.dark .empty-subscription,
+body.dark .empty-orders,
+body.dark .empty-history{
+
+    background:#1e293b;
+
+    border:1px dashed #475569;
+
+}
+
+body.dark .empty-subscription h4,
+body.dark .empty-orders h4{
+
+    color:#ffffff;
+
+}
+
+body.dark .empty-subscription p,
+body.dark .empty-orders p{
+
+    color:#94a3b8;
+
+}
+
+/*=========================================================
+                BOOK LAUNDRY HERO
+=========================================================*/
+
+body.dark .booking-header,
+body.dark .booking-hero,
+body.dark .booking-banner{
+
+    background:linear-gradient(
+        145deg,
+        #1e293b,
+        #162233
+    );
+
+    color:#ffffff;
+
+    border:1px solid #334155;
+
+}
+
+body.dark .booking-header h1,
+body.dark .booking-header h2,
+body.dark .booking-header p{
+
+    color:#ffffff;
+
+}
+
+/*=========================================================
+            SUBSCRIPTION BANNER
+=========================================================*/
+
+body.dark .subscription-order-card{
+
+    background:linear-gradient(
+        145deg,
+        #1e293b,
+        #162233
+    );
+
+    border:1px solid #334155;
+
+}
+
+body.dark .subscription-order-card h2,
+body.dark .subscription-order-card h3,
+body.dark .subscription-order-card p{
+
+    color:#ffffff;
+
+}
+
+body.dark .subscription-order-card small{
+
+    color:#cbd5e1;
+
+}
+
+/*=========================================================
+            CATEGORY HEADER
+=========================================================*/
+
+body.dark .accordion-item{
+
+    background:#1e293b;
+
+    border:1px solid #334155;
+
+}
+
+body.dark .accordion-button{
+
+    background:#2563eb;
+
+    color:#ffffff;
+
+}
+
+body.dark .accordion-button:not(.collapsed){
+
+    background:#1d4ed8;
+
+}
+
+body.dark .accordion-body{
+
+    background:#162233;
+
+}
+
+/*=========================================================
+            ITEM CARD
+=========================================================*/
+
+body.dark .laundry-card{
+
+    background:#1e293b;
+
+    border:1px solid #334155;
+
+}
+
+body.dark .laundry-title h5{
+
+    color:#ffffff;
+
+}
+
+body.dark .laundry-title small{
+
+    color:#94a3b8;
+
+}
+
+body.dark .laundry-title i{
+
+    color:#cbd5e1;
+
+}
+
+/*=========================================================
+            SERVICES
+=========================================================*/
+
+body.dark .service-row{
+
+    border-bottom:1px solid #334155;
+
+}
+
+body.dark .item-info p{
+
+    color:#ffffff;
+
+}
+
+body.dark .item-info small{
+
+    color:#94a3b8;
+
+}
+
+/*=========================================================
+            QUANTITY
+=========================================================*/
+
+body.dark .qty2-btn2{
+
+    background:#2563eb;
+
+    color:#ffffff;
+
+}
+
+body.dark .qty2-btn2:hover{
+
+    background:#1d4ed8;
+
+}
+
+body.dark .qty2-value2{
+
+    background:#334155;
+
+    color:#ffffff;
+
+    border:1px solid #475569;
+
+}
+
+/*=========================================================
+            EXPRESS CARD
+=========================================================*/
+
+body.dark .express-card{
+
+    background:#162233;
+
+    border:1px solid #334155;
+
+}
+
+body.dark .express-info h6{
+
+    color:#ffffff;
+
+}
+
+body.dark .express-info p{
+
+    color:#cbd5e1;
+
+}
+
+body.dark .express-price-card{
+
+    background:#0f172a;
+
+    color:#ffffff;
+
+}
+
+body.dark .express-badge{
+
+    background:#ea580c;
+
+    color:#ffffff;
+
+}
+
+/*=========================================================
+            SUMMARY
+=========================================================*/
+
+body.dark .summary-card{
+
+    background:#1e293b;
+
+    border:1px solid #334155;
+
+}
+
+body.dark .summary-card h2,
+body.dark .summary-card h3,
+body.dark .summary-card h4,
+body.dark .summary-card h5{
+
+    color:#ffffff;
+
+}
+
+body.dark .summary-card p{
+
+    color:#cbd5e1;
+
+}
+
+body.dark .summary-total{
+
+    background:#0f172a;
+
+    border-radius:15px;
+
+}
+
+/*=========================================================
+            MAP
+=========================================================*/
+
+body.dark #map{
+
+    border:1px solid #334155;
+
+    border-radius:15px;
+
+}
+
+/*=========================================================
+            ADDRESS
+=========================================================*/
+
+body.dark .address-card,
+body.dark .address-dropdown{
+
+    background:#1e293b;
+
+    border:1px solid #334155;
+
+    color:#ffffff;
+
+}
+
+body.dark .address-dropdown option{
+
+    background:#1e293b;
+
+    color:#ffffff;
+
+}
+
+/*=========================================================
+            FORM
+=========================================================*/
+
+body.dark input,
+body.dark select,
+body.dark textarea{
+
+    background:#334155;
+
+    color:#ffffff;
+
+    border:1px solid #475569;
+
+}
+
+body.dark input::placeholder,
+body.dark textarea::placeholder{
+
+    color:#94a3b8;
+
+}
+
+body.dark input:focus,
+body.dark select:focus,
+body.dark textarea:focus{
+
+    border-color:#3b82f6;
+
+    box-shadow:0 0 0 .2rem rgba(59,130,246,.25);
+
+}
+
+/*=========================================================
+            SERVICE BADGES
+=========================================================*/
+
+body.dark .service-covered{
+
+    background:#14532d;
+
+    color:#dcfce7;
+
+    border:1px solid #22c55e;
+
+}
+
+body.dark .service-upgrade{
+
+    background:#7c2d12;
+
+    color:#ffedd5;
+
+    border:1px solid #f97316;
+
+}
+
+body.dark .service-paid{
+
+    background:#1e3a8a;
+
+    color:#dbeafe;
+
+    border:1px solid #60a5fa;
+
+}
+
+/*=========================================================
+                MY ORDERS
+=========================================================*/
+
+body.dark .order-card{
+
+    background:linear-gradient(
+        145deg,
+        #1e293b,
+        #162233
+    ) !important;
+
+    border:1px solid #334155;
+
+    color:#f8fafc;
+
+}
+
+body.dark .order-card h3,
+body.dark .order-card h4,
+body.dark .order-card h5{
+
+    color:#ffffff;
+
+}
+
+body.dark .order-card p,
+body.dark .order-card span{
+
+    color:#cbd5e1;
+
+}
+
+body.dark .order-price{
+
+    color:#60a5fa;
+
+    font-weight:700;
+
+}
+
+body.dark .empty-orders{
+
+    background:#1e293b;
+
+    border:2px dashed #334155;
+
+}
+
+body.dark .empty-orders h3{
+
+    color:#ffffff;
+
+}
+
+body.dark .empty-orders p{
+
+    color:#94a3b8;
+
+}
+
+/*=========================================================
+                ORDER DETAILS
+=========================================================*/
+
+body.dark .order-detail-card{
+
+    background:#1e293b;
+
+    border:1px solid #334155;
+
+}
+
+body.dark .order-detail-card h2,
+body.dark .order-detail-card h3,
+body.dark .order-detail-card h4{
+
+    color:#ffffff;
+
+}
+
+body.dark .order-detail-card p{
+
+    color:#cbd5e1;
+
+}
+
+body.dark .timeline-card{
+
+    background:#162233;
+
+    border:1px solid #334155;
+
+}
+
+body.dark .timeline-item{
+
+    border-left:2px solid #3b82f6;
+
+}
+
+/*=========================================================
+                PROFILE
+=========================================================*/
+
+body.dark .profile-card{
+
+    background:#1e293b;
+
+    border:1px solid #334155;
+
+}
+
+body.dark .profile-card h2,
+body.dark .profile-card h3{
+
+    color:#ffffff;
+
+}
+
+body.dark .profile-card p,
+body.dark .profile-card label{
+
+    color:#cbd5e1;
+
+}
+
+body.dark .profile-avatar{
+
+    border:3px solid #3b82f6;
+
+}
+
+body.dark .profile-card input,
+body.dark .profile-card select,
+body.dark .profile-card textarea{
+
+    background:#334155;
+
+    color:#ffffff;
+
+    border:1px solid #475569;
+
+}
+
+body.dark .profile-card input:focus,
+body.dark .profile-card select:focus,
+body.dark .profile-card textarea:focus{
+
+    border-color:#3b82f6;
+
+}
+
+/*=========================================================
+                NOTIFICATIONS
+=========================================================*/
+
+body.dark .notification-card{
+
+    background:#1e293b;
+
+    border:1px solid #334155;
+
+}
+
+body.dark .notification-card h4{
+
+    color:#ffffff;
+
+}
+
+body.dark .notification-card p{
+
+    color:#cbd5e1;
+
+}
+
+body.dark .notification-card small{
+
+    color:#94a3b8;
+
+}
+
+body.dark .notification-unread{
+
+    border-left:4px solid #3b82f6;
+
+}
+
+/*=========================================================
+                CANCEL ORDER
+=========================================================*/
+
+body.dark .cancel-order-card{
+
+    background:#1e293b;
+
+    border:1px solid #334155;
+
+}
+
+body.dark .cancel-warning{
+
+    background:#7f1d1d;
+
+    color:#fee2e2;
+
+    border:1px solid #dc2626;
+
+}
+
+/*=========================================================
+                REFUNDS
+=========================================================*/
+
+body.dark .refund-card{
+
+    background:#1e293b;
+
+    border:1px solid #334155;
+
+}
+
+body.dark .refund-card h3{
+
+    color:#ffffff;
+
+}
+
+body.dark .refund-card p{
+
+    color:#cbd5e1;
+
+}
+
+/*=========================================================
+                STATUS BADGES
+=========================================================*/
+
+body.dark .badge{
+
+    border:none;
+
+}
+
+body.dark .badge.bg-success{
+
+    background:#16a34a !important;
+
+}
+
+body.dark .badge.bg-warning{
+
+    background:#f59e0b !important;
+
+    color:#ffffff;
+
+}
+
+body.dark .badge.bg-danger{
+
+    background:#dc2626 !important;
+
+}
+
+body.dark .badge.bg-info{
+
+    background:#2563eb !important;
+
+}
+
+/*=========================================================
+                BUTTONS
+=========================================================*/
+
+body.dark .btn-outline{
+
+    background:transparent;
+
+    color:#f8fafc;
+
+    border:1px solid #475569;
+
+}
+
+body.dark .btn-outline:hover{
+
+    background:#334155;
+
+}
+
+/*=========================================================
+                TABLES
+=========================================================*/
+
+body.dark table{
+
+    color:#f8fafc;
+
+}
+
+body.dark table thead{
+
+    background:#162233;
+
+}
+
+body.dark table tbody tr{
+
+    border-color:#334155;
+
+}
+
+body.dark table td,
+body.dark table th{
+
+    border-color:#334155;
+
+}
+
+/*=========================================================
+                EMPTY STATES
+=========================================================*/
+
+body.dark .empty-state{
+
+    background:#1e293b;
+
+    border:2px dashed #475569;
+
+}
+
+body.dark .empty-state h3{
+
+    color:#ffffff;
+
+}
+
+body.dark .empty-state p{
+
+    color:#94a3b8;
+
+}
+
+body.dark .empty-state i{
+
+    color:#3b82f6;
+
+}
+
+/*=========================================================
+                PAGINATION
+=========================================================*/
+
+body.dark .pagination .page-link{
+
+    background:#1e293b;
+
+    border-color:#334155;
+
+    color:#f8fafc;
+
+}
+
+body.dark .pagination .page-link:hover{
+
+    background:#334155;
+
+}
+
+body.dark .pagination .active .page-link{
+
+    background:#2563eb;
+
+    border-color:#2563eb;
+
+}
+
+/*=========================================================
+                SEARCH
+=========================================================*/
+
+body.dark .search-box input{
+
+    background:#334155;
+
+    color:#ffffff;
+
+    border:1px solid #475569;
+
+}
+
+body.dark .search-box input::placeholder{
+
+    color:#94a3b8;
+
+}

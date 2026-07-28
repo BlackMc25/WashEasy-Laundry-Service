@@ -281,55 +281,17 @@
 
                             <div>
 
-                                <div class="item-header">
+                               <div>
 
                                     <h5>{{ item_name }}</h5>
 
-                                        {% if active_subscription %}
+                                    <small>
 
-                                            {% if item.covered %}
+                                        Choose a laundry service
 
-                                                <span class="subscription-covered-badge">
+                                    </small>
 
-                                                    <i class="fas fa-crown"></i>
-
-                                                    Included
-
-                                                </span>
-
-                                            {% else %}
-
-                                                <span class="subscription-not-covered">
-
-                                                    <i class="fas fa-lock"></i>
-
-                                                    Upgrade
-
-                                                </span>
-
-                                            {% endif %}
-
-                                        {% else %}
-
-                                            <span class="subscription-required">
-
-                                                <i class="fas fa-star"></i>
-
-                                                Subscribe
-
-                                            </span>
-
-                                        {% endif %}
-
-                                    </div>
-
-                                <small>
-
-                                    Choose a laundry service
-
-                                </small>
-
-                            </div>
+                                </div>
 
                             <i class="bi bi-chevron-down"></i>
 
@@ -351,12 +313,76 @@
 
                                         <div class="item-info">
 
-                                            <p class="fw-bold mb-1">
-                                                {{ service.service_type }}
-                                            </p>
+                                            <div class="service-title">
+
+                                                <p class="fw-bold mb-0">
+
+                                                    {{ service.service_type }}
+
+                                                </p>
+
+                                                {% if active_subscription %}
+
+                                                    {% if active_subscription.plan.name == "Basic" and service.basic_subscription %}
+
+                                                        <span class="service-covered">
+
+                                                            <i class="fas fa-crown"></i>
+
+                                                            Included
+
+                                                        </span>
+
+                                                    {% elif active_subscription.plan.name == "Standard" and service.standard_subscription %}
+
+                                                        <span class="service-covered">
+
+                                                            <i class="fas fa-crown"></i>
+
+                                                            Included
+
+                                                        </span>
+
+                                                    {% elif active_subscription.plan.name == "Premium" and service.premium_subscription %}
+
+                                                        <span class="service-covered">
+
+                                                            <i class="fas fa-crown"></i>
+
+                                                            Included
+
+                                                        </span>
+
+                                                    {% else %}
+
+                                                        <span class="service-upgrade">
+
+                                                            <i class="fas fa-lock"></i>
+
+                                                            Upgrade
+
+                                                        </span>
+
+                                                    {% endif %}
+
+                                                {% else %}
+
+                                                    <span class="service-paid">
+
+                                                        <i class="fas fa-tag"></i>
+
+                                                        Paid
+
+                                                    </span>
+
+                                                {% endif %}
+
+                                            </div>
 
                                             <small>
+
                                                 ₦{{ service.price }}
+
                                             </small>
 
                                         </div>

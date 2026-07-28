@@ -38,8 +38,27 @@ from django.shortcuts import (
 
 
 def home(request):
-    return render(request, 'home.html')
 
+    active_subscription = None
+
+    if request.user.is_authenticated:
+
+        active_subscription = CustomerSubscription.objects.filter(
+            customer=request.user,
+            status="Active",
+            payment_status="Paid"
+        ).select_related("plan").first()
+
+    context = {
+        "active_subscription": active_subscription,
+    }
+
+    return render(
+        request,
+        "home.html",
+        context
+    )
+ 
 
 
 def is_subscription_item(price_obj, subscription):

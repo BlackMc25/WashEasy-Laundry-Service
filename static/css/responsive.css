@@ -1194,6 +1194,34 @@ body.dark .hero-stats span{
 
 }
 
+.subscription-home-card{
+
+    padding:35px 25px;
+
+    text-align:center;
+
+}
+
+.subscription-home-card h2{
+
+    font-size:2rem;
+
+}
+
+.subscription-benefits{
+
+    grid-template-columns:1fr;
+
+}
+
+.subscription-illustration{
+
+    font-size:6rem;
+
+    margin-top:30px;
+
+}
+
 
 
 }

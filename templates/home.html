@@ -1193,6 +1193,190 @@ margin:auto;
 
 </section>
 
+<!-- ==========================================
+        WASHEASY+ SUBSCRIPTION
+=========================================== -->
+
+<section class="subscription-home-section py-5">
+
+        <div class="container">
+
+        <div class="subscription-home-card">
+
+        {% if user.is_authenticated and active_subscription %}
+
+        <span class="subscription-tag">
+
+        👑 WashEasy+ Active
+
+        </span>
+
+        <h2>
+
+        {{ active_subscription.plan.name }} Plan
+
+        </h2>
+
+        <p>
+
+        Enjoy your subscription benefits every time you book laundry.
+
+        </p>
+
+        <div class="subscription-stats">
+
+        <div>
+
+        <h3>
+
+        {{ active_subscription.remaining_items }}
+
+        </h3>
+
+        <span>
+
+        Items Remaining
+
+        </span>
+
+        </div>
+
+        <div>
+
+        <h3>
+
+        {{ active_subscription.free_transport_trips_remaining }}
+
+        </h3>
+
+        <span>
+
+        Free Trips
+
+        </span>
+
+        </div>
+
+        <div>
+
+        <h3>
+
+        {{ active_subscription.end_date|date:"M d" }}
+
+        </h3>
+
+        <span>
+
+        Expires
+
+        </span>
+
+        </div>
+
+        </div>
+
+        <div class="progress mt-4">
+
+        <div
+        class="progress-bar bg-success"
+        style="width:{% widthratio active_subscription.remaining_items active_subscription.plan.total_items 100 %}%">
+
+        </div>
+
+        </div>
+
+        <div class="mt-4">
+
+        <a
+        href="{% url 'subscription' %}"
+        class="btn btn-light">
+
+        Manage Subscription
+
+        </a>
+
+        </div>
+
+        {% else %}
+
+        <span class="subscription-tag">
+
+        👑 WashEasy+
+
+        </span>
+
+        <h2>
+
+        Save More With Every Laundry Order
+
+        </h2>
+
+        <p>
+
+        Join WashEasy+ and enjoy covered laundry items,
+        free transport trips and priority bookings.
+
+        </p>
+
+        <div class="subscription-benefits">
+
+        <div>
+
+        ✔ Covered Laundry Items
+
+        </div>
+
+        <div>
+
+        ✔ Free Pickup Trips
+
+        </div>
+
+        <div>
+
+        ✔ Priority Booking
+
+        </div>
+
+        <div>
+
+        ✔ Upgrade Anytime
+
+        </div>
+
+        </div>
+
+            {% if user.is_authenticated %}
+
+                    <a
+                    href="{% url 'subscription' %}"
+                    class="btn btn-light">
+
+                    Explore Plans
+
+                    </a>
+
+                    {% else %}
+
+                <button
+                    class="btn btn-light"
+                    data-bs-toggle="modal"
+                    data-bs-target="#loginModal">
+
+                    Join WashEasy+
+
+                </button>
+
+            {% endif %}
+
+        {% endif %}
+
+        </div>
+
+    </div>
+
+</section>
+
 
 {% block content %}
 <section class="py-5">

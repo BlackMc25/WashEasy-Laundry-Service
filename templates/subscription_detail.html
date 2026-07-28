@@ -469,8 +469,9 @@ href="{% static 'css/new_dashboard/subscription_detail.css' %}">
         Usage History
 
     </h3>
+    <div class="table-responsive">
 
-        {% if usage_history %}
+    {% if usage_history %}
 
         <table class="table">
 
@@ -526,6 +527,8 @@ href="{% static 'css/new_dashboard/subscription_detail.css' %}">
 
         {% endif %}
 
+</div>
+      
 </section>
 
     <!-- ==========================

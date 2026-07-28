@@ -523,5 +523,149 @@
 
 }
 
+.subscription-card{
 
+    padding:20px;
+
+    border-radius:22px;
+
+}
+
+.subscription-card .btn{
+
+    width:100%;
+
+    margin-top:18px;
+
+}
+
+.subscription-header{
+
+    flex-direction:column;
+
+    align-items:flex-start;
+
+    gap:15px;
+
+}
+
+.subscription-info{
+
+    width:100%;
+
+}
+
+.subscription-actions{
+
+    width:100%;
+
+}
+
+.subscription-actions .btn{
+
+    width:100%;
+
+}
+
+.subscription-progress{
+
+    margin-top:18px;
+
+}
+
+.subscription-progress-card{
+
+    padding:20px;
+
+}
+
+.progress{
+
+    height:10px;
+
+     margin:15px 0;
+
+}
+
+.progress-title{
+
+    font-size:15px;
+
+}
+
+.progress-label{
+
+    font-size:13px;
+
+}
+.detail-section{
+
+    overflow:hidden;
+
+}
+
+.table{
+
+    min-width:650px;
+
+}
+
+.table-responsive{
+
+    overflow-x:auto;
+
+    -webkit-overflow-scrolling:touch;
+
+}
+
+.subscription-steps{
+
+    display:flex;
+
+    overflow-x:auto;
+
+    gap:15px;
+
+    padding-bottom:10px;
+
+    scroll-snap-type:x mandatory;
+
+}
+
+.subscription-step{
+
+    flex:0 0 140px;
+
+    scroll-snap-align:start;
+
+}
+
+.subscription-steps::-webkit-scrollbar{
+
+    display:none;
+
+}
+
+
+.usage-stats{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:15px;
+
+}
+
+.usage-stats div{
+
+    padding:18px;
+
+}
+
+.usage-stats h4{
+
+    font-size:24px;
+
+}
 }

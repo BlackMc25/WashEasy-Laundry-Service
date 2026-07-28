@@ -1590,6 +1590,67 @@ background:rgba(255,255,255,.2);
 
 }
 
+.coming-soon-card{
+
+    position:relative;
+
+    opacity:.85;
+
+    overflow:hidden;
+
+    cursor:not-allowed;
+
+    transition:.3s ease;
+
+}
+
+.coming-soon-card:hover{
+
+    transform:translateY(-6px);
+
+    opacity:1;
+
+}
+
+.coming-soon-badge{
+
+    position:absolute;
+
+    top:15px;
+
+    right:-45px;
+
+    width:170px;
+
+    text-align:center;
+
+    background:#f59e0b;
+
+    color:#fff;
+
+    padding:8px 0;
+
+    font-size:.8rem;
+
+    font-weight:700;
+
+    transform:rotate(35deg);
+
+    box-shadow:0 4px 10px rgba(0,0,0,.15);
+
+}
+
+.coming-soon-card .btn{
+
+    background:#e5e7eb;
+
+    color:#6b7280;
+
+    border:none;
+
+    cursor:not-allowed;
+
+}
 @keyframes float{
 
     0%,100%{

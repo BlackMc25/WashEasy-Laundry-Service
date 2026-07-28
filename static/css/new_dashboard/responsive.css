@@ -783,4 +783,48 @@
     font-size:.95rem;
 
 }
+
+.container{
+
+    padding-left:15px;
+
+    padding-right:15px;
+
+}
+
+.card-body{
+
+    padding:20px;
+
+}
+
+.table{
+
+    width:100%;
+
+    table-layout:fixed;
+
+}
+
+.table th{
+
+    width:55%;
+
+    font-size:14px;
+
+    word-break:break-word;
+
+}
+
+.table td{
+
+    width:45%;
+
+    text-align:right;
+
+    font-size:14px;
+
+    word-break:break-word;
+
+}
 }

@@ -258,7 +258,7 @@
 
                                     </h2>
 
-                <div
+            <div
                     id="category{{ forloop.counter }}"
                     class="accordion-collapse collapse {% if forloop.first %}show{% endif %}"
                     data-bs-parent="#laundryAccordion">
@@ -351,12 +351,76 @@
 
                                         <div class="item-info">
 
-                                            <p class="fw-bold mb-1">
-                                                {{ service.service_type }}
-                                            </p>
+                                            <div class="service-title">
 
-                                            <small>
+                                                <p class="fw-bold mb-0">
+
+                                                    {{ service.service_type }}
+
+                                                </p>
+
+                                                {% if active_subscription %}
+
+                                                    {% if active_subscription.plan.name == "Basic" and service.basic_subscription %}
+
+                                                        <span class="service-covered">
+
+                                                            <i class="fas fa-crown"></i>
+
+                                                            Included
+
+                                                        </span>
+
+                                                    {% elif active_subscription.plan.name == "Standard" and service.standard_subscription %}
+
+                                                        <span class="service-covered">
+
+                                                            <i class="fas fa-crown"></i>
+
+                                                            Included
+
+                                                        </span>
+
+                                                    {% elif active_subscription.plan.name == "Premium" and service.premium_subscription %}
+
+                                                        <span class="service-covered">
+
+                                                            <i class="fas fa-crown"></i>
+
+                                                            Included
+
+                                                        </span>
+
+                                                    {% else %}
+
+                                                        <span class="service-upgrade">
+
+                                                            <i class="fas fa-lock"></i>
+
+                                                            Upgrade
+
+                                                        </span>
+
+                                                    {% endif %}
+
+                                                {% else %}
+
+                                                    <span class="service-paid">
+
+                                                        <i class="fas fa-tag"></i>
+
+                                                        Paid
+
+                                                    </span>
+
+                                                {% endif %}
+
+                                            </div>
+
+                                            <small class="service-price">
+
                                                 ₦{{ service.price }}
+
                                             </small>
 
                                         </div>

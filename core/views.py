@@ -917,6 +917,10 @@ def subscription(request):
         status="Active"
     ).select_related("plan").first()
 
+    subscription_number = CustomerSubscription.objects.filter(
+        customer=request.user
+        ).order_by("start_date").count()
+
     for plan in plans:
 
         # Default values
@@ -986,6 +990,8 @@ def subscription(request):
         "plans": plans,
 
         "form": form,
+
+        "subscription_number" : subscription_number,
 
         "active_subscription": active_subscription,
 
@@ -3160,8 +3166,8 @@ def admin_subscription_detail(request, subscription_id):
     ).order_by("-created_at")
 
     items_used = (
-        subscription.total_items -
-        subscription.remaining_items
+    subscription.plan.total_items -
+    subscription.remaining_items
     )
 
     context = {

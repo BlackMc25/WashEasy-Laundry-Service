@@ -35,7 +35,7 @@ href="{% static 'css/new_dashboard/subscription_detail.css' %}">
 
             <h1 class="page-title mt-md">
 
-                Subscription #{{ subscription.id }}
+                Subscription #{{ subscription_number }}
 
             </h1>
 
@@ -357,24 +357,42 @@ href="{% static 'css/new_dashboard/subscription_detail.css' %}">
 
             {% if subscription.plan.name == "Basic" %}
 
-                <div>✔ Wash & Fold</div>
-                <div>✔ Pickup</div>
-                <div>✔ Delivery</div>
+                <li>✔ Wash & Fold</li>
+
+                    <li>✔ Free Pickup 1(Trip)</li>
+
+                    <li>✔ Free Delivery 1(Trip)</li>
+
 
             {% elif subscription.plan.name == "Standard" %}
 
-                <div>✔ Wash & Iron</div>
-                <div>✔ Fold</div>
-                <div>✔ Pickup</div>
-                <div>✔ Delivery</div>
-                <div>✔ Extra Care</div>
+                <li>✔ Wash & Iron</li>
+
+                    <li>✔ Fold</li>
+
+                    <li>✔ Free Pickup 2(Trip)</li>
+
+                    <li>✔ Free Delivery 2(Trip)</li>
+
+                    <li>✔ Surfactants</li>
+
+                    <li>✔ Hydrogen Peroxide</li>
 
             {% else %}
 
-                <div>✔ Premium Care</div>
-                <div>✔ Wash & Iron</div>
-                <div>✔ Pickup</div>
-                <div>✔ Delivery</div>
+                <li>✔ Premium Care</li>
+
+                    <li>✔ Wash & Iron</li>
+
+                    <li>✔ Free Pickup 4(Trip) </li>
+
+                    <li>✔ Free Delivery 4(Trip)</li>
+
+                    <li>✔ Surfactants</li>
+
+                    <li>✔ Hydrogen Peroxide</li>
+
+                    <li>✔ Sodium Bicarbonate</li>
 
             {% endif %}
 
@@ -399,23 +417,49 @@ href="{% static 'css/new_dashboard/subscription_detail.css' %}">
 
             {% if subscription.plan.name == "Basic" %}
 
-                <div>✔ Everyday Wear</div>
-                <div>✔ Underwear</div>
-                <div>✔ Children Wear</div>
+                    <li>✔ Everyday Wear</li>
+
+                    <li>✔ Children's Wear</li>
+
+                    <li>✔ Underwear</li>
+
+                    <li>✔ Traditional Wear</li>
+
+                     <li>✔ Corporate Wear</li>
 
             {% elif subscription.plan.name == "Standard" %}
 
-                <div>✔ Everyday Wear</div>
-                <div>✔ Corporate Wear</div>
-                <div>✔ Native Wear</div>
-                <div>✔ School Uniform</div>
+                  <li>✔ Everyday Wear</li>
+
+                    <li>✔ Underwear</li>
+
+                    <li>✔ Corporate Wear</li>
+
+                    <li>✔ Children's Wear</li>
+
+                    <li>✔  Traditional Wear</li>
+
+                    <li>✔ Shoes & Accessories</li>
+
+                    <li>✔ Bedding </li>
 
             {% else %}
 
-                <div>✔ Suits</div>
-                <div>✔ Blazers</div>
-                <div>✔ Silk</div>
-                <div>✔ Delicate Wear</div>
+                 <li>✔ Everyday Wear</li>
+
+                    <li>✔ Underwear</li>
+
+                    <li>✔ Corporate Wear</li>
+
+                    <li>✔ Children's Wear</li>
+
+                    <li>✔  Traditional Wear</li>
+
+                    <li>✔ Shoes & Accessories</li>
+
+                    <li>✔ Bedding </li>
+
+                    <li>✔ Special Care </li>
 
             {% endif %}
 

@@ -271,63 +271,22 @@
                                     ITEM CARD
                                 =========================== -->
 
-                                <div class="laundry-card">
+                        <div class="laundry-card">
 
-                                    <div
+                            <div
                             class="laundry-title"
                             data-bs-toggle="collapse"
                             data-bs-target="#item{{ forloop.counter }}"
                             style="cursor:pointer;">
 
-                            <div>
 
-                                <div class="item-header">
+                            <h5>{{ item_name }}</h5>
 
-                                    <h5>{{ item_name }}</h5>
+                            <small>
 
-                                        {% if active_subscription %}
+                                Choose a laundry service
 
-                                            {% if item.covered %}
-
-                                                <span class="subscription-covered-badge">
-
-                                                    <i class="fas fa-crown"></i>
-
-                                                    Included
-
-                                                </span>
-
-                                            {% else %}
-
-                                                <span class="subscription-not-covered">
-
-                                                    <i class="fas fa-lock"></i>
-
-                                                    Upgrade
-
-                                                </span>
-
-                                            {% endif %}
-
-                                        {% else %}
-
-                                            <span class="subscription-required">
-
-                                                <i class="fas fa-star"></i>
-
-                                                Subscribe
-
-                                            </span>
-
-                                        {% endif %}
-
-                                    </div>
-
-                                <small>
-
-                                    Choose a laundry service
-
-                                </small>
+                            </small>
 
                             </div>
 
@@ -351,12 +310,76 @@
 
                                         <div class="item-info">
 
-                                            <p class="fw-bold mb-1">
-                                                {{ service.service_type }}
-                                            </p>
+                                            <div class="service-header">
+
+                                                <p class="fw-bold mb-0">
+
+                                                    {{ service.service_type }}
+
+                                                </p>
+
+                                                {% if active_subscription %}
+
+                                                    {% if service.basic_subscription and active_subscription.plan.name == "Basic" %}
+
+                                                        <span class="service-covered">
+
+                                                            <i class="fas fa-crown"></i>
+
+                                                            Included
+
+                                                        </span>
+
+                                                    {% elif service.standard_subscription and active_subscription.plan.name == "Standard" %}
+
+                                                        <span class="service-covered">
+
+                                                            <i class="fas fa-crown"></i>
+
+                                                            Included
+
+                                                        </span>
+
+                                                    {% elif service.premium_subscription and active_subscription.plan.name == "Premium" %}
+
+                                                        <span class="service-covered">
+
+                                                            <i class="fas fa-crown"></i>
+
+                                                            Included
+
+                                                        </span>
+
+                                                    {% else %}
+
+                                                        <span class="service-upgrade">
+
+                                                            <i class="fas fa-lock"></i>
+
+                                                            Upgrade
+
+                                                        </span>
+
+                                                    {% endif %}
+
+                                                {% else %}
+
+                                                    <span class="service-paid">
+
+                                                        <i class="fas fa-tag"></i>
+
+                                                        Paid
+
+                                                    </span>
+
+                                                {% endif %}
+
+                                            </div>
 
                                             <small>
+
                                                 ₦{{ service.price }}
+
                                             </small>
 
                                         </div>

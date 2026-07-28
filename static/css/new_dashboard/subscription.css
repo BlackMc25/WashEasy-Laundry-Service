@@ -1206,3 +1206,89 @@
     font-weight:700;
 
 }
+
+.service-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:10px;
+
+    margin-bottom:5px;
+
+}
+
+.service-covered{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:5px;
+
+    background:#dcfce7;
+
+    color:#15803d;
+
+    padding:4px 10px;
+
+    border-radius:20px;
+
+    font-size:.72rem;
+
+    font-weight:700;
+
+}
+
+.service-covered i{
+
+    color:#fbbf24;
+
+}
+
+.service-upgrade{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:5px;
+
+    background:#fff7ed;
+
+    color:#ea580c;
+
+    padding:4px 10px;
+
+    border-radius:20px;
+
+    font-size:.72rem;
+
+    font-weight:700;
+
+}
+
+.service-paid{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:5px;
+
+    background:#eff6ff;
+
+    color:#2563eb;
+
+    padding:4px 10px;
+
+    border-radius:20px;
+
+    font-size:.72rem;
+
+    font-weight:700;
+
+}

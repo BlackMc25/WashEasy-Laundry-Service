@@ -1332,3 +1332,19 @@
     font-weight:500;
 
 }
+
+.upgrade-actions{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:15px;
+
+}
+
+.upgrade-actions .btn{
+
+    flex:1;
+
+}

@@ -26,6 +26,8 @@
 
     flex-wrap:wrap;
 
+    margin-bottom:30px;
+
 }
 
 /*=========================================================
@@ -41,6 +43,8 @@
     padding:2rem;
 
     margin-bottom:2rem;
+
+    margin-top:35px;
 
     box-shadow:var(--shadow-sm);
 

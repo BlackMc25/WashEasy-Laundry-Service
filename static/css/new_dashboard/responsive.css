@@ -229,6 +229,8 @@
 
     margin-top:18px;
 
+    margin-bottom:30px;
+
 }
 
 .subscription-actions .btn{
@@ -738,7 +740,21 @@
 
 .subscription-title{
 
-    font-size:1.55rem;
+    font-size:2rem;
+
+    line-height:1.15;
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:8px;
+
+}
+
+.title-icon{
+
+    font-size:1.8rem;
 
 }
 

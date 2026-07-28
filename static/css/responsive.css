@@ -332,6 +332,8 @@ button{
     justify-content:space-between;
     align-items:center;
     gap:15px;
+    height: auto;
+    min-height: auto;
 }
 
 .status-badge{

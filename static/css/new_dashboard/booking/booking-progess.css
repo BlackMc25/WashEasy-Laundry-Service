@@ -285,6 +285,7 @@ transform:translateY(0);
 
 }
 
+
 .review-actions{
 
     display:flex;
@@ -295,14 +296,24 @@ transform:translateY(0);
 
     gap:20px;
 
+    margin-top:30px;
+
 }
 
 .review-actions .btn{
 
-    min-width:220px;
+    flex:1;
 
     height:56px;
 
-    border-radius:16px;
+    border-radius:14px;
+
+}
+
+.review-btn{
+
+    width:100%;
+
+    max-width:100%;
 
 }

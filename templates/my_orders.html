@@ -16,53 +16,39 @@
 
         <div class="subscription-top">
 
-            <div>
+            <div class="subscription-info">
 
-                <div class="subscription-header">
+                <h2 class="subscription-title">
 
-                        <h1 class="subscription-title">
+                    <span class="title-icon">
 
-                            <span class="title-icon">
+                        <i class="fas fa-crown text-warning"></i>
 
-                                <i class="fas fa-crown text-warning"></i>
+                    </span>
 
-                            </span>
+                    WashEasy+
 
-                            <span>
+                </h2>
 
-                                WashEasy+ Membership
+                <p class="subscription-subtitle">
 
-                            </span>
-
-                        </h1>
-
-                    <p class="subscription-plan-name">
-
-                        {{ subscription.plan.name }} Plan
-
-                    </p>
-
-                </div>
-
-                <p>
-
-                    {{ subscription.plan.name }}
+                    {{ subscription.plan.name }} Membership
 
                 </p>
 
+                <span class="badge bg-success">
+
+                    {{ subscription.status }}
+
+                </span>
+
             </div>
-
-            <span class="badge bg-success">
-
-                {{ subscription.status }}
-
-            </span>
 
         </div>
 
         <div class="subscription-progress">
 
-            {% widthratio subscription.remaining_items subscription.total_items 100 as progress %}
+           {% widthratio subscription.remaining_items subscription.plan.total_items 100 as progress %}
 
             <div class="progress">
 
@@ -78,7 +64,7 @@
 
                 {{ subscription.remaining_items }}
                 /
-                {{ subscription.total_items }}
+                {{ subscription.plan.total_items }}
                 Items Remaining
 
             </p>

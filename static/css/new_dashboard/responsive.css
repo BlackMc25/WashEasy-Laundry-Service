@@ -197,8 +197,9 @@
 
     padding:20px;
 
-}
+    height:auto;
 
+}
 .subscription-top{
 
     display:flex;
@@ -570,6 +571,9 @@
 
     width:100%;
 
+    margin-top:20px;
+
+
 }
 
 .subscription-actions .btn{
@@ -583,6 +587,9 @@
     margin-top:18px;
 
     margin-bottom:20px;
+
+     margin:18px 0;
+
 }
 
 .subscription-progress small{
@@ -740,17 +747,30 @@
 
 .subscription-title{
 
-    font-size:2rem;
+    font-size:1.8rem;
 
     line-height:1.15;
 
     display:flex;
 
+    align-items:center;
+
+    gap:10px;
+
     flex-wrap:wrap;
 
-    gap:8px;
+}
+
+.subscription-subtitle{
+
+    font-size:.95rem;
+
+    color:#6b7280;
+
+    margin:0;
 
 }
+
 
 .title-icon{
 

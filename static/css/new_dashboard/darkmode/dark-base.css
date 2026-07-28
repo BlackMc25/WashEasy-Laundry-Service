@@ -1,190 +1,84 @@
 /*=========================================================
-                    DARK MODE BASE
+                WASHEASY DARK MODE VARIABLES
 =========================================================*/
-
-/*---------------------------------------------------------
-    Global Page
----------------------------------------------------------*/
 
 body.dark{
 
-    background:#0f172a;
+    /*=====================================================
+                    COLORS
+    =====================================================*/
 
-    color:#f8fafc;
+    --primary:#3B82F6;
+    --primary-light:#60A5FA;
+    --primary-dark:#2563EB;
 
-}
+    --secondary:#60A5FA;
 
-/*---------------------------------------------------------
-    Main Content
----------------------------------------------------------*/
+    --success:#22C55E;
+    --warning:#F59E0B;
+    --danger:#EF4444;
 
-body.dark .main-content{
+    --white:#FFFFFF;
 
-    background:#0f172a;
+    --background:#0F172A;
 
-}
+    --surface:#1E293B;
 
-/*---------------------------------------------------------
-    Sidebar
----------------------------------------------------------*/
+    --surface-hover:#243447;
 
-body.dark .sidebar{
+    --text:#F8FAFC;
 
-    background:#020617;
+    --text-light:#CBD5E1;
 
-    border-right:1px solid #1e293b;
+    --muted:#94A3B8;
 
-}
+    --border:#334155;
 
-/* Sidebar Links */
+    /*=====================================================
+                    SHADOWS
+    =====================================================*/
 
-body.dark .sidebar a{
+    --shadow-xs:
+    0 2px 6px rgba(0,0,0,.25);
 
-    color:#cbd5e1;
+    --shadow-sm:
+    0 8px 24px rgba(0,0,0,.35);
 
-}
+    --shadow-md:
+    0 15px 35px rgba(0,0,0,.45);
 
-body.dark .sidebar a:hover{
-
-    background:#1e293b;
-
-    color:#ffffff;
-
-}
-
-/* Active Sidebar Link */
-
-body.dark .sidebar .active{
-
-    background:#2563eb;
-
-    color:#ffffff;
+    --shadow-lg:
+    0 25px 55px rgba(0,0,0,.60);
 
 }
 
-/*---------------------------------------------------------
-    Top Navigation
----------------------------------------------------------*/
+/*=========================================================
+                BODY
+=========================================================*/
 
-body.dark .topbar{
+body.dark{
 
-    background:#020617;
+    background:var(--background);
 
-    border-bottom:1px solid #1e293b;
-
-}
-
-/*---------------------------------------------------------
-    Global Cards
----------------------------------------------------------*/
-
-body.dark .card,
-body.dark .stats-card,
-body.dark .booking-form,
-body.dark .order-card{
-
-    background:#1e293b !important;
-
-    color:#f8fafc !important;
-
-    border:1px solid #334155;
-
-    box-shadow:0 4px 12px rgba(0,0,0,.25);
+    color:var(--text);
 
 }
 
-/* Statistics Cards */
+body.dark main{
 
-body.dark .stats-card h3{
-
-    color:#60a5fa;
+    background:var(--background);
 
 }
 
-body.dark .stats-card h6{
+body.dark .page-container{
 
-    color:#cbd5e1;
-
-}
-
-/*---------------------------------------------------------
-    Form Controls
----------------------------------------------------------*/
-
-body.dark input,
-body.dark textarea,
-body.dark select{
-
-    background:#334155 !important;
-
-    color:#f8fafc !important;
-
-    border:1px solid #475569;
+    background:transparent;
 
 }
 
-/* Form Focus */
-
-body.dark input:focus,
-body.dark textarea:focus,
-body.dark select:focus{
-
-    border-color:#3b82f6;
-
-    box-shadow:0 0 0 .2rem rgba(59,130,246,.25);
-
-}
-
-/* Placeholder */
-
-body.dark input::placeholder,
-body.dark textarea::placeholder{
-
-    color:#94a3b8;
-
-}
-
-/* Labels */
-
-body.dark label{
-
-    color:#e2e8f0;
-
-}
-
-/*---------------------------------------------------------
-    Tables
----------------------------------------------------------*/
-
-body.dark table{
-
-    color:#f8fafc;
-
-}
-
-body.dark thead{
-
-    background:#334155;
-
-}
-
-body.dark tbody tr{
-
-    background:#1e293b;
-
-}
-
-body.dark tbody tr:hover{
-
-    background:#334155;
-
-}
-
-/*---------------------------------------------------------
-    Typography
----------------------------------------------------------*/
-
-/* Headings */
+/*=========================================================
+                TYPOGRAPHY
+=========================================================*/
 
 body.dark h1,
 body.dark h2,
@@ -193,53 +87,125 @@ body.dark h4,
 body.dark h5,
 body.dark h6{
 
-    color:#f8fafc;
+    color:var(--text);
 
 }
 
-/* Paragraphs */
+body.dark p{
 
-body.dark p,
+    color:var(--text-light);
+
+}
+
+body.dark small{
+
+    color:var(--muted);
+
+}
+
+body.dark label{
+
+    color:var(--text);
+
+}
+
+body.dark strong{
+
+    color:var(--text);
+
+}
+
 body.dark span{
 
-    color:#cbd5e1;
+    color:inherit;
 
 }
 
-/*---------------------------------------------------------
-    Buttons
----------------------------------------------------------*/
+/*=========================================================
+                LINKS
+=========================================================*/
 
-/* Primary Button */
+body.dark a{
 
-body.dark .btn-primary{
-
-    background:#2563eb;
-
-    border-color:#2563eb;
+    color:var(--primary-light);
 
 }
 
-body.dark .btn-primary:hover{
+body.dark a:hover{
 
-    background:#1d4ed8;
-
-    border-color:#1d4ed8;
+    color:#93C5FD;
 
 }
 
-/* Outline Button */
+/*=========================================================
+                SCROLLBAR
+=========================================================*/
 
-body.dark .btn-outline-dark{
+body.dark ::-webkit-scrollbar{
 
-    border-color:#475569;
+    width:10px;
 
-    color:#f8fafc;
+    height:10px;
 
 }
 
-body.dark .btn-outline-dark:hover{
+body.dark ::-webkit-scrollbar-track{
 
-    background:#334155;
+    background:#162033;
+
+}
+
+body.dark ::-webkit-scrollbar-thumb{
+
+    background:#475569;
+
+    border-radius:20px;
+
+}
+
+body.dark ::-webkit-scrollbar-thumb:hover{
+
+    background:#64748B;
+
+}
+
+/*=========================================================
+                TEXT SELECTION
+=========================================================*/
+
+body.dark ::selection{
+
+    background:#2563EB;
+
+    color:white;
+
+}
+
+/*=========================================================
+                DIVIDERS
+=========================================================*/
+
+body.dark hr{
+
+    border-color:var(--border);
+
+    opacity:.6;
+
+}
+
+/*=========================================================
+                GLOBAL CARDS
+=========================================================*/
+
+body.dark .card,
+body.dark .table-card{
+
+    background:var(--surface);
+
+    color:var(--text);
+
+    border:1px solid var(--border);
+
+    box-shadow:var(--shadow-sm);
 
 }

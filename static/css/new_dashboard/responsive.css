@@ -529,13 +529,22 @@
 
     border-radius:22px;
 
+    display:flex;
+
+    flex-direction:column;
+
 }
 
 .subscription-card .btn{
 
     width:100%;
+   
+    margin-top:0;
 
-    margin-top:18px;
+    margin-bottom:20px;
+
+    position:relative;
+
 
 }
 
@@ -571,6 +580,18 @@
 
     margin-top:18px;
 
+    margin-bottom:20px;
+}
+
+.subscription-progress small{
+
+    display:block;
+
+    margin-top:10px;
+
+    margin-bottom:18px;
+
+    font-weight:600;
 }
 
 .subscription-progress-card{

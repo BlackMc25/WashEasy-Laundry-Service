@@ -310,26 +310,38 @@ body.dark .booking-guide i{
 }
 
 /*=========================================================
-            BOOKING CARD
+        SPECIAL INSTRUCTIONS TEXTAREA
 =========================================================*/
 
-body.dark .booking-card{
+body.dark textarea,
+body.dark textarea.form-control,
+body.dark #id_special_instructions{
 
-    background:var(--surface);
+    background: var(--surface) !important;
 
-    border:1px solid var(--border);
+    color: var(--text) !important;
 
-}
-
-body.dark .booking-card-title h5{
-
-    color:var(--text);
+    border: 1px solid var(--border) !important;
 
 }
 
-body.dark .booking-card-title i{
+body.dark textarea::placeholder,
+body.dark #id_special_instructions::placeholder{
 
-    color:#60a5fa;
+    color: var(--muted) !important;
+
+}
+
+body.dark textarea:focus,
+body.dark #id_special_instructions:focus{
+
+    background: var(--surface) !important;
+
+    color: var(--text) !important;
+
+    border-color: var(--primary) !important;
+
+    box-shadow: 0 0 0 .2rem rgba(59,130,246,.25);
 
 }
 

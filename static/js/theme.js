@@ -1,5 +1,3 @@
-
-
 document.addEventListener("DOMContentLoaded", function () {
 
 /*=========================================================
@@ -46,9 +44,23 @@ updateIcons(theme);
 
 }
 
-const savedTheme=localStorage.getItem("theme")||"light";
+// =========================================
+// INITIAL THEME
+// =========================================
 
-setTheme(savedTheme);
+const savedTheme = localStorage.getItem("theme");
+
+if(savedTheme){
+
+    setTheme(savedTheme);
+
+}else{
+
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+    setTheme(prefersDark ? "dark" : "light");
+
+}
 
 function toggleTheme(){
 
@@ -77,5 +89,22 @@ if(mobileBtn){
 mobileBtn.addEventListener("click",toggleTheme);
 
 }
+
+// =========================================
+// FOLLOW PHONE THEME
+// =========================================
+
+window.matchMedia("(prefers-color-scheme: dark)")
+.addEventListener("change", function(e){
+
+    // Only follow the phone if the user
+    // hasn't manually selected a theme.
+    if(!localStorage.getItem("theme")){
+
+        setTheme(e.matches ? "dark" : "light");
+
+    }
+
+});
 
 });

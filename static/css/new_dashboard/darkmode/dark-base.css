@@ -211,121 +211,141 @@ body.dark .table-card{
 }
 
 /*=========================================================
-                BOOKING STEPS
+            BOOKING PROGRESS
 =========================================================*/
 
-body.dark .step-card{
+body.dark .booking-progress{
+
+    background:transparent;
+
+}
+
+body.dark .progress-step{
 
     background:var(--surface);
 
     border:1px solid var(--border);
 
+}
+
+body.dark .progress-step strong{
+
     color:var(--text);
 
 }
 
-body.dark .step-card h5,
-body.dark .step-card h6{
-
-    color:var(--text);
-
-}
-
-body.dark .step-card p{
+body.dark .progress-step small{
 
     color:var(--text-light);
 
 }
 
-body.dark .step-card.active{
-
-    background:#1f3b73;
-
-    border-color:var(--primary);
-
-}
-
-body.dark .step-number{
-
-    background:#334155;
-
-    color:#ffffff;
-
-}
-
-body.dark .step-card.active .step-number{
-
-    background:var(--primary);
-
-}
-
-/*=========================================================
-                HOW TO ORDER
-=========================================================*/
-
-body.dark .order-guide{
-
-    background:var(--surface);
-
-    border:1px solid var(--border);
-
-}
-
-body.dark .order-guide h4{
-
-    color:var(--text);
-
-}
-
-body.dark .order-guide p,
-body.dark .order-guide li{
-
-    color:var(--text-light);
-
-}
-
-body.dark .order-guide i{
-
-    color:#60A5FA;
-
-}
-
-/*=========================================================
-                SPECIAL INSTRUCTIONS
-=========================================================*/
-
-body.dark .special-instruction-card{
-
-    background:var(--surface);
-
-    border:1px solid var(--border);
-
-}
-
-body.dark .special-instruction-card h4{
-
-    color:var(--text);
-
-}
-
-body.dark .special-instruction-card textarea{
+body.dark .progress-number{
 
     background:#243447;
 
+    color:white;
+
+}
+
+body.dark .progress-active{
+
+    background:#1d4ed8;
+
+    border-color:#3b82f6;
+
+}
+
+body.dark .progress-active strong,
+body.dark .progress-active small{
+
+    color:white;
+
+}
+
+body.dark .progress-active .progress-number{
+
+    background:white;
+
+    color:#2563eb;
+
+}
+
+/*=========================================================
+            BOOKING GUIDE
+=========================================================*/
+
+body.dark .booking-guide{
+
+    background:var(--surface);
+
     border:1px solid var(--border);
 
     color:var(--text);
 
 }
 
-body.dark .special-instruction-card textarea::placeholder{
+body.dark .booking-guide strong{
 
-    color:var(--muted);
+    color:var(--text);
+
+}
+
+body.dark .booking-guide p{
+
+    color:var(--text-light);
+
+}
+
+body.dark .booking-guide li{
+
+    color:var(--text-light);
+
+}
+
+body.dark .booking-guide i{
+
+    color:#60a5fa;
+
+}
+
+body.dark .alert-info{
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    color:var(--text);
 
 }
 
 /*=========================================================
-                REVIEW
+            BOOKING CARD
+=========================================================*/
+
+body.dark .booking-card{
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+}
+
+body.dark .booking-card-title h5{
+
+    color:var(--text);
+
+}
+
+body.dark .booking-card-title i{
+
+    color:#60a5fa;
+
+}
+
+
+/*=========================================================
+            REVIEW CARD
 =========================================================*/
 
 body.dark .review-card{
@@ -336,62 +356,29 @@ body.dark .review-card{
 
 }
 
-body.dark .review-card h2,
-body.dark .review-card h3,
-body.dark .review-card h4{
+body.dark .review-header h2{
 
     color:var(--text);
 
 }
 
-body.dark .review-card p,
-body.dark .review-card span{
+body.dark .review-header p{
 
     color:var(--text-light);
 
 }
 
-body.dark .review-card strong{
+body.dark .review-section h5,
+body.dark .review-grid h6{
 
     color:var(--text);
 
 }
 
-body.dark .review-card hr{
+body.dark .review-section p,
+body.dark .review-grid p{
 
-    border-color:var(--border);
-
-}
-
-/*=========================================================
-                MOBILE NAV
-=========================================================*/
-
-body.dark .mobile-bottom-nav{
-
-    background:#1E293B;
-
-    border:1px solid #334155;
-
-    box-shadow:0 -10px 25px rgba(0,0,0,.45);
-
-}
-
-body.dark .mobile-bottom-nav a{
-
-    color:#94A3B8;
-
-}
-
-body.dark .mobile-bottom-nav a.active{
-
-    color:#60A5FA;
-
-}
-
-body.dark .mobile-bottom-nav i{
-
-    color:inherit;
+    color:var(--text-light);
 
 }
 

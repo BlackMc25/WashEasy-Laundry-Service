@@ -309,16 +309,6 @@ body.dark .booking-guide i{
 
 }
 
-body.dark .alert-info{
-
-    background:var(--surface);
-
-    border:1px solid var(--border);
-
-    color:var(--text);
-
-}
-
 /*=========================================================
             BOOKING CARD
 =========================================================*/
@@ -379,6 +369,38 @@ body.dark .review-section p,
 body.dark .review-grid p{
 
     color:var(--text-light);
+
+}
+
+/*=========================================================
+                MOBILE NAV
+=========================================================*/
+
+body.dark .mobile-bottom-nav{
+
+    background:#1E293B;
+
+    border:1px solid #334155;
+
+    box-shadow:0 -10px 25px rgba(0,0,0,.45);
+
+}
+
+body.dark .mobile-bottom-nav a{
+
+    color:#94A3B8;
+
+}
+
+body.dark .mobile-bottom-nav a.active{
+
+    color:#60A5FA;
+
+}
+
+body.dark .mobile-bottom-nav i{
+
+    color:inherit;
 
 }
 

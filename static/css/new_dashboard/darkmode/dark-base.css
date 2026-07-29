@@ -870,6 +870,18 @@ body.dark .table-success td{
 
 }
 
+body.dark .upgrade-eligibility .table td{
+
+    background:#243447 !important;
+
+}
+
+body.dark .upgrade-eligibility .table th{
+
+    background:#1E293B !important;
+
+}
+
 /*=========================================================
                 INFO ALERT
 =========================================================*/
@@ -988,5 +1000,55 @@ body.dark .payment-highlight{
 body.dark .payment-highlight strong{
 
     color:#DCFCE7;
+
+}
+
+/*=========================================================
+        DESKTOP UPGRADE TABLES - DARK MODE
+=========================================================*/
+
+body.dark .table{
+
+    --bs-table-bg: transparent;
+    --bs-table-color: var(--text);
+    --bs-table-border-color: var(--border);
+
+    color: var(--text) !important;
+    background: transparent !important;
+
+}
+
+body.dark .table th{
+
+    background: #243447 !important;
+    color: #ffffff !important;
+    border-color: var(--border) !important;
+    font-weight: 600;
+
+}
+
+body.dark .table td{
+
+    background: var(--surface) !important;
+    color: var(--text) !important;
+    border-color: var(--border) !important;
+
+}
+
+body.dark .table td *{
+
+    color: inherit !important;
+
+}
+
+body.dark .table td{
+
+    background: var(--surface) !important;
+
+}
+
+body.dark .table td strong{
+
+    color: #ffffff !important;
 
 }

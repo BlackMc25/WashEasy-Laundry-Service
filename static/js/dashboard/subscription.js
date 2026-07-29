@@ -369,23 +369,77 @@ nextStep2.addEventListener(
                     "small"
                 ).innerText;
 
-            document.getElementById(
-                "review-plan"
-            ).innerHTML = `
-                <h3>${plan}</h3>
-                <p>${price}</p>
-                <p>${items}</p>
-                <p>${duration}</p>
+            document.getElementById("review-plan").innerHTML = `
+
+            <div class="review-plan-card">
+
+                <div class="review-plan-header">
+
+                    <div>
+
+                        <h3>${plan}</h3>
+
+                        <span class="review-plan-badge">
+
+                            👑 WashEasy+ Membership
+
+                        </span>
+
+                    </div>
+
+                    <h2>${price}</h2>
+
+                </div>
+
+                <div class="review-plan-info">
+
+                    <div class="review-info-item">
+
+                        <small>Total Items</small>
+
+                        <strong>${items}</strong>
+
+                    </div>
+
+                    <div class="review-info-item">
+
+                        <small>Duration</small>
+
+                        <strong>${duration}</strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
             `;
 
-            document.getElementById(
-                "subscription-summary"
-            ).innerHTML = `
-                <strong>Plan:</strong> ${plan}<br>
-                <strong>Price:</strong> ${price}<br>
-                <strong>Items:</strong> ${items}<br>
-                <strong>Duration:</strong> ${duration}
-            `;
+            document.getElementById("subscription-summary").innerHTML = `
+            <div class="subscription-summary-card">
+
+                <div class="summary-row">
+                    <span>Plan</span>
+                    <strong>${plan}</strong>
+                </div>
+
+                <div class="summary-row">
+                    <span>Price</span>
+                    <strong>${price}</strong>
+                </div>
+
+                <div class="summary-row">
+                    <span>Items</span>
+                    <strong>${items}</strong>
+                </div>
+
+                <div class="summary-row">
+                    <span>Duration</span>
+                    <strong>${duration}</strong>
+                </div>
+
+            </div>
+        `;
         }
 
         step2.style.display = "none";

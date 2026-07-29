@@ -1372,3 +1372,221 @@
     color:#0f172a;
 
 }
+
+.subscription-summary-card{
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    border-radius: 18px;
+
+    padding: 20px;
+
+}
+
+.subscription-summary-card .summary-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:12px 0;
+
+    border-bottom:1px solid var(--border);
+
+}
+
+.subscription-summary-card .summary-row:last-child{
+
+    border-bottom:none;
+
+}
+
+.subscription-summary-card span{
+
+    color:var(--text-light);
+
+}
+
+.subscription-summary-card strong{
+
+    color:var(--text);
+
+}
+/*=========================================================
+            SUBSCRIPTION SUMMARY
+=========================================================*/
+
+.subscription-summary-card{
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    border-radius:18px;
+
+    padding:22px;
+
+}
+
+.summary-title{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    margin-bottom:20px;
+
+}
+
+.summary-title i{
+
+    color:#2563EB;
+
+    font-size:20px;
+
+}
+
+.summary-title h4{
+
+    margin:0;
+
+}
+
+.summary-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    padding:14px 0;
+
+    border-bottom:1px solid var(--border);
+
+}
+
+.summary-row:last-child{
+
+    border-bottom:none;
+
+}
+
+.summary-row span{
+
+    color:var(--text-light);
+
+}
+
+.summary-row strong{
+
+    color:var(--text);
+
+}
+/*=========================================================
+            REVIEW PLAN CARD
+=========================================================*/
+
+.review-plan-card{
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    border-radius:18px;
+
+    padding:24px;
+
+}
+
+.review-plan-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:20px;
+
+}
+
+.review-plan-header h3{
+
+    margin:0;
+
+    color:var(--text);
+
+}
+
+.review-plan-header h2{
+
+    color:var(--primary);
+
+    margin:0;
+
+    font-weight:700;
+
+}
+
+.review-plan-badge{
+
+    display:inline-block;
+
+    margin-top:8px;
+
+    padding:6px 14px;
+
+    border-radius:30px;
+
+    background:#EEF4FF;
+
+    color:#2563EB;
+
+    font-size:.85rem;
+
+    font-weight:600;
+
+}
+
+.review-plan-info{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:16px;
+
+}
+
+.review-info-item{
+
+    background:#F8FAFC;
+
+    padding:16px;
+
+    border-radius:14px;
+
+    text-align:center;
+
+}
+
+.review-info-item small{
+
+    display:block;
+
+    color:#64748B;
+
+    margin-bottom:6px;
+
+}
+
+.review-info-item strong{
+
+    font-size:18px;
+
+}

@@ -637,3 +637,42 @@ body.dark .payment-card p{
     color:var(--text-light);
 
 }
+
+/*=========================================================
+        SUBSCRIPTION SUMMARY
+=========================================================*/
+
+
+body.dark .subscription-summary-card{
+
+    background:var(--surface);
+
+    border-color:var(--border);
+
+}
+
+body.dark .subscription-summary-card span{
+
+    color:var(--text-light);
+
+}
+
+body.dark .subscription-summary-card strong{
+
+    color:var(--text);
+
+}
+
+body.dark .review-info-item{
+
+    background:#243447;
+
+}
+
+body.dark .review-plan-badge{
+
+    background:#1E3A8A;
+
+    color:#DBEAFE;
+
+}

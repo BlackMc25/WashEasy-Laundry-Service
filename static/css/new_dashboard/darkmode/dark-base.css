@@ -939,28 +939,3 @@ body.dark .btn-warning:hover{
     background:#F59E0B;
 
 }
-
-@media(max-width:768px){
-
-body.dark .table th,
-body.dark .table td{
-
-    white-space:normal;
-
-    font-size:14px;
-
-}
-
-body.dark .upgrade-actions{
-
-    flex-direction:column;
-
-}
-
-body.dark .upgrade-actions .btn{
-
-    width:100%;
-
-}
-
-}

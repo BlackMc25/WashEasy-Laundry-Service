@@ -237,3 +237,67 @@ body.dark .qty2-value2{
     border:1px solid #4b596d;
 
 }
+
+body.dark .usage-stats > div{
+
+    background:#243447;
+
+}
+
+body.dark .complaint-card{
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+}
+
+body.dark .complaint-card h3{
+
+    color:var(--text);
+
+}
+
+body.dark .complaint-card p{
+
+    color:var(--text-light);
+
+}
+
+body.dark .complaint-card .form-label{
+
+    color:var(--text);
+
+}
+
+body.dark .complaint-card .form-control{
+
+    background:#243447 !important;
+
+    border:1px solid var(--border);
+
+    color:var(--text) !important;
+
+}
+
+body.dark .complaint-card .form-control::placeholder{
+
+    color:var(--muted);
+
+}
+
+body.dark .subscription-header .badge{
+
+    background:#15803D;
+
+    color:#fff;
+
+    border:none;
+
+    padding:8px 18px;
+
+    border-radius:30px;
+
+    font-weight:600;
+
+}

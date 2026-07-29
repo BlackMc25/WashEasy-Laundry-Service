@@ -1052,3 +1052,205 @@ body.dark .table td strong{
     color: #ffffff !important;
 
 }
+
+/*=========================================================
+                PROFILE DROPDOWN
+=========================================================*/
+
+body.dark .dropdown-menu{
+
+    background: var(--surface) !important;
+
+    border: 1px solid var(--border);
+
+    box-shadow: var(--shadow-lg);
+
+}
+
+body.dark .dropdown-header{
+
+    color: var(--text);
+
+}
+
+body.dark .dropdown-divider{
+
+    border-color: var(--border);
+
+}
+
+body.dark .dropdown-item{
+
+    color: var(--text-light);
+
+}
+
+body.dark .dropdown-item i{
+
+    color: #60A5FA;
+
+}
+
+body.dark .dropdown-item:hover{
+
+    background: #243447;
+
+    color: #ffffff;
+
+}
+
+body.dark .dropdown-item.text-danger{
+
+    color: #F87171 !important;
+
+}
+
+body.dark .dropdown-item.text-danger:hover{
+
+    background: rgba(239,68,68,.15);
+
+}
+
+/*=========================================================
+                ITEM CARD
+=========================================================*/
+
+body.dark .item-card{
+
+    background:#1F2937;
+
+    border:1px solid var(--border);
+
+}
+
+body.dark .item-card h5{
+
+    color:var(--text);
+
+}
+
+body.dark .item-card span{
+
+    color:var(--text-light);
+
+}
+
+body.dark .item-card strong{
+
+    color:#ffffff;
+
+}
+
+body.dark .item-card hr{
+
+    border-color:var(--border);
+
+}
+
+body.dark .badge.bg-success{
+
+    background:#16A34A !important;
+
+    color:#ffffff !important;
+
+}
+
+body.dark .item-card small{
+
+    color:#CBD5E1;
+
+}
+
+body.dark .summary-item{
+
+    background:#243447;
+
+    border:1px solid var(--border);
+
+    border-radius:16px;
+
+    padding:18px;
+
+}
+
+body.dark .summary-item span{
+
+    color:#94A3B8;
+
+}
+
+body.dark .summary-item strong{
+
+    color:#ffffff;
+
+}
+
+body.dark .btn-primary{
+
+    background:#2563EB;
+
+    color:#ffffff;
+
+}
+
+body.dark .btn-danger{
+
+    background:#DC2626;
+
+    color:#ffffff;
+
+}
+
+body.dark .btn-outline{
+
+    background:transparent;
+
+    color:#ffffff;
+
+    border:1px solid var(--border);
+
+}
+
+body.dark .total-row{
+
+    border-bottom:1px solid var(--border);
+
+}
+
+body.dark .total-row span{
+
+    color:#CBD5E1;
+
+}
+
+body.dark .total-row strong{
+
+    color:#ffffff;
+
+}
+
+body.dark .total-row.grand{
+
+    background:#14532D;
+
+    padding:16px;
+
+    border-radius:12px;
+
+}
+
+body.dark .timeline-step{
+
+    background:#243447;
+
+    color:#CBD5E1;
+
+}
+
+body.dark .timeline-step.active{
+
+    background:#2563EB;
+
+    color:#ffffff;
+
+}

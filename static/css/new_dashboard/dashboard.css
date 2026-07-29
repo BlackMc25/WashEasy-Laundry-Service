@@ -9,8 +9,6 @@
 
 @import url("utilities.css");
 
-@import url("darkmode/darkmode.css");
-
 @import url("layout.css");
 
 @import url("sidebar.css");
@@ -66,4 +64,6 @@
 
 
 @import url("forms.css");
+
+@import url("darkmode/darkmode.css");
 

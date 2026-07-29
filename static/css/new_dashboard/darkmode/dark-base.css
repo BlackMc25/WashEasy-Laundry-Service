@@ -443,3 +443,197 @@ body.dark .shadow{
     box-shadow:var(--shadow-sm);
 
 }
+
+/*=========================================================
+        SUBSCRIPTION PROGRESS
+=========================================================*/
+
+body.dark .subscription-progress{
+
+    background:transparent;
+
+}
+
+body.dark .subscription-progress .progress-step{
+
+    background:var(--surface) !important;
+
+    border:1px solid var(--border);
+
+    color:var(--text);
+
+}
+
+body.dark .subscription-progress .progress-step span{
+
+    background:#243447;
+
+    color:#fff;
+
+}
+
+body.dark .subscription-progress .progress-step p{
+
+    color:var(--text-light);
+
+}
+
+body.dark .subscription-progress .progress-step.active{
+
+    background:var(--primary) !important;
+
+    border-color:var(--primary);
+
+}
+
+body.dark .subscription-progress .progress-step.active p{
+
+    color:#fff;
+
+}
+
+body.dark .subscription-progress .progress-step.active span{
+
+    background:#fff;
+
+    color:var(--primary);
+
+}
+
+/*=========================================================
+        PLAN CARD
+=========================================================*/
+
+body.dark .plan-card{
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    color:var(--text);
+
+    box-shadow:var(--shadow-sm);
+
+}
+
+body.dark .plan-header h1,
+body.dark .plan-header h2{
+
+    color:var(--text);
+
+}
+
+body.dark .plan-header p,
+body.dark .plan-header small{
+
+    color:var(--text-light);
+
+}
+
+body.dark .plan-section h5{
+
+    color:var(--text);
+
+}
+
+body.dark .plan-section li{
+
+    color:var(--text-light);
+
+}
+
+/*=========================================================
+        DETAILS CARD
+=========================================================*/
+
+body.dark .subscription-details-card{
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+}
+
+body.dark .subscription-details-card h3{
+
+    color:var(--text);
+
+}
+
+body.dark .subscription-details-card p{
+
+    color:var(--text-light);
+
+}
+
+body.dark .review-card{
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+}
+
+body.dark .review-header h2{
+
+    color:var(--text);
+
+}
+
+body.dark .review-header p{
+
+    color:var(--text-light);
+
+}
+
+body.dark .review-grid h6{
+
+    color:var(--text);
+
+}
+
+body.dark .review-grid p{
+
+    color:var(--text-light);
+
+}
+
+body.dark .subscription-success-card{
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+}
+
+body.dark .subscription-success-card h2{
+
+    color:var(--text);
+
+}
+
+body.dark .subscription-success-card p{
+
+    color:var(--text-light);
+
+}
+
+body.dark .payment-card{
+
+    background:#243447;
+
+    border:1px solid var(--border);
+
+}
+
+body.dark .payment-card h5{
+
+    color:var(--text);
+
+}
+
+body.dark .payment-card p{
+
+    color:var(--text-light);
+
+}

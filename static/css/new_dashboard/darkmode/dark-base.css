@@ -209,3 +209,216 @@ body.dark .table-card{
     box-shadow:var(--shadow-sm);
 
 }
+
+/*=========================================================
+                BOOKING STEPS
+=========================================================*/
+
+body.dark .step-card{
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    color:var(--text);
+
+}
+
+body.dark .step-card h5,
+body.dark .step-card h6{
+
+    color:var(--text);
+
+}
+
+body.dark .step-card p{
+
+    color:var(--text-light);
+
+}
+
+body.dark .step-card.active{
+
+    background:#1f3b73;
+
+    border-color:var(--primary);
+
+}
+
+body.dark .step-number{
+
+    background:#334155;
+
+    color:#ffffff;
+
+}
+
+body.dark .step-card.active .step-number{
+
+    background:var(--primary);
+
+}
+
+/*=========================================================
+                HOW TO ORDER
+=========================================================*/
+
+body.dark .order-guide{
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+}
+
+body.dark .order-guide h4{
+
+    color:var(--text);
+
+}
+
+body.dark .order-guide p,
+body.dark .order-guide li{
+
+    color:var(--text-light);
+
+}
+
+body.dark .order-guide i{
+
+    color:#60A5FA;
+
+}
+
+/*=========================================================
+                SPECIAL INSTRUCTIONS
+=========================================================*/
+
+body.dark .special-instruction-card{
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+}
+
+body.dark .special-instruction-card h4{
+
+    color:var(--text);
+
+}
+
+body.dark .special-instruction-card textarea{
+
+    background:#243447;
+
+    border:1px solid var(--border);
+
+    color:var(--text);
+
+}
+
+body.dark .special-instruction-card textarea::placeholder{
+
+    color:var(--muted);
+
+}
+
+/*=========================================================
+                REVIEW
+=========================================================*/
+
+body.dark .review-card{
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+}
+
+body.dark .review-card h2,
+body.dark .review-card h3,
+body.dark .review-card h4{
+
+    color:var(--text);
+
+}
+
+body.dark .review-card p,
+body.dark .review-card span{
+
+    color:var(--text-light);
+
+}
+
+body.dark .review-card strong{
+
+    color:var(--text);
+
+}
+
+body.dark .review-card hr{
+
+    border-color:var(--border);
+
+}
+
+/*=========================================================
+                MOBILE NAV
+=========================================================*/
+
+body.dark .mobile-bottom-nav{
+
+    background:#1E293B;
+
+    border:1px solid #334155;
+
+    box-shadow:0 -10px 25px rgba(0,0,0,.45);
+
+}
+
+body.dark .mobile-bottom-nav a{
+
+    color:#94A3B8;
+
+}
+
+body.dark .mobile-bottom-nav a.active{
+
+    color:#60A5FA;
+
+}
+
+body.dark .mobile-bottom-nav i{
+
+    color:inherit;
+
+}
+
+/*=========================================================
+                REVIEW ICONS
+=========================================================*/
+
+body.dark .review-card .bi,
+body.dark .review-card i{
+
+    color:#60A5FA;
+
+}
+
+/*=========================================================
+                GENERIC WHITE CARDS
+=========================================================*/
+
+body.dark .bg-white{
+
+    background:var(--surface)!important;
+
+}
+
+body.dark .shadow-sm,
+body.dark .shadow{
+
+    box-shadow:var(--shadow-sm);
+
+}

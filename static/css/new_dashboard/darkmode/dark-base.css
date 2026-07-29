@@ -760,3 +760,207 @@ body.dark .order-status.cancelled{
     color:#FECACA;
 
 }
+
+/*=========================================================
+                UPGRADE PLAN CARDS
+=========================================================*/
+
+body.dark .card{
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+}
+
+body.dark .border{
+
+    border-color:var(--border)!important;
+
+}
+
+body.dark .bg-light{
+
+    background:var(--surface)!important;
+
+}
+
+body.dark .card-header{
+
+    border-bottom:1px solid var(--border);
+
+}
+
+body.dark .card-header h2{
+
+    color:#111827;
+
+}
+
+body.dark .card h3,
+body.dark .card h4,
+body.dark .card h5{
+
+    color:var(--text);
+
+}
+
+body.dark .card p{
+
+    color:var(--text-light);
+
+}
+
+body.dark .card strong{
+
+    color:var(--text);
+
+}
+
+/*=========================================================
+                ELIGIBILITY TABLE
+=========================================================*/
+
+body.dark .table{
+
+    color:var(--text);
+
+    background:transparent;
+
+}
+
+body.dark .table th{
+
+    color:var(--text);
+
+    background:transparent;
+
+    border-color:var(--border);
+
+}
+
+body.dark .table td{
+
+    color:var(--text-light);
+
+    border-color:var(--border);
+
+}
+
+body.dark .table-responsive{
+
+    border-radius:16px;
+
+    overflow:hidden;
+
+}
+
+body.dark .table-success{
+
+    background:#14532D!important;
+
+    color:#DCFCE7!important;
+
+}
+
+body.dark .table-success th,
+body.dark .table-success td{
+
+    color:#DCFCE7!important;
+
+}
+
+/*=========================================================
+                INFO ALERT
+=========================================================*/
+
+body.dark .alert-info{
+
+    background:#243447!important;
+
+    border:1px solid var(--border);
+
+    color:var(--text);
+
+}
+
+body.dark .alert-info strong{
+
+    color:#60A5FA;
+
+}
+
+body.dark .alert-info li{
+
+    color:var(--text-light);
+
+}
+
+/*=========================================================
+                UPGRADE BUTTONS
+=========================================================*/
+
+body.dark .upgrade-actions{
+
+    display:flex;
+
+    gap:16px;
+
+    justify-content:flex-end;
+
+    flex-wrap:wrap;
+
+}
+
+body.dark .btn-secondary{
+
+    background:#334155;
+
+    color:#fff;
+
+    border:none;
+
+}
+
+body.dark .btn-warning{
+
+    background:#FBBF24;
+
+    color:#111827;
+
+    border:none;
+
+    font-weight:700;
+
+}
+
+body.dark .btn-warning:hover{
+
+    background:#F59E0B;
+
+}
+
+@media(max-width:768px){
+
+body.dark .table th,
+body.dark .table td{
+
+    white-space:normal;
+
+    font-size:14px;
+
+}
+
+body.dark .upgrade-actions{
+
+    flex-direction:column;
+
+}
+
+body.dark .upgrade-actions .btn{
+
+    width:100%;
+
+}
+
+}

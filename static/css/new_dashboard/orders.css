@@ -206,6 +206,10 @@
 
 .progress-text{
 
+    position:relative;
+
+    display:block;
+
     margin-top:12px;
 
     text-align:center;

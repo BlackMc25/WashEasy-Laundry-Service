@@ -938,4 +938,18 @@
     width:100%;
 
 }
+
+ .desktop-table{
+
+        display:none;
+
+    }
+
+    .mobile-upgrade-card,
+    .mobile-payment-card{
+
+        display:block;
+
+    }
+
 }

@@ -1627,3 +1627,101 @@
 
 }
 
+/*=========================================================
+            MOBILE UPGRADE CARDS
+=========================================================*/
+
+.mobile-upgrade-card,
+.mobile-payment-card{
+
+    display:none;
+
+}
+
+.upgrade-info-card{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:16px 18px;
+
+    border-bottom:1px solid var(--border);
+
+    background:var(--surface);
+
+}
+
+.upgrade-info-card:first-child{
+
+    border-radius:18px 18px 0 0;
+
+}
+
+.upgrade-info-card:last-child{
+
+    border-bottom:none;
+
+    border-radius:0 0 18px 18px;
+
+}
+
+.upgrade-info-card span{
+
+    color:var(--text-light);
+
+}
+
+.upgrade-info-card strong{
+
+    color:var(--text);
+
+}
+
+.payment-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:18px;
+
+    background:var(--surface);
+
+    border-bottom:1px solid var(--border);
+
+}
+
+.payment-row:first-child{
+
+    border-radius:18px 18px 0 0;
+
+}
+
+.payment-row:last-child{
+
+    border-bottom:none;
+
+    border-radius:0 0 18px 18px;
+
+}
+
+.payment-highlight{
+
+    background:#DCFCE7;
+
+}
+
+.payment-highlight strong{
+
+    color:#166534;
+
+    font-weight:700;
+
+}
+
+

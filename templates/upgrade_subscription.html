@@ -206,6 +206,8 @@ Upgrade Subscription
 
                                 </h5>
 
+                               <div class="desktop-table">
+
                                 <div class="table-responsive">
 
                                     <table class="table align-middle">
@@ -266,6 +268,44 @@ Upgrade Subscription
 
                                 </div>
 
+                                </div>
+
+                                <div class="mobile-upgrade-card">
+
+                                    <div class="upgrade-info-card">
+
+                                        <span>Days Used</span>
+
+                                        <strong>{{ days_used }} Days</strong>
+
+                                    </div>
+
+                                    <div class="upgrade-info-card">
+
+                                        <span>Days Used %</span>
+
+                                        <strong>{{ days_percentage }}%</strong>
+
+                                    </div>
+
+                                    <div class="upgrade-info-card">
+
+                                        <span>Items Used</span>
+
+                                        <strong>{{ items_used }}</strong>
+
+                                    </div>
+
+                                    <div class="upgrade-info-card">
+
+                                        <span>Items Used %</span>
+
+                                        <strong>{{ items_percentage }}%</strong>
+
+                                    </div>
+
+                                </div>
+
                             </div>
 
                         <div class="col-md-6">
@@ -275,7 +315,7 @@ Upgrade Subscription
                                 Payment Summary
 
                             </h5>
-
+                        <div class="desktop-table">
                             <div class="table-responsive">
                                 <table class="table">
 
@@ -335,6 +375,35 @@ Upgrade Subscription
 
                             </div>
 
+                            </div>
+                            <div class="mobile-payment-card">
+
+                                <div class="payment-row">
+
+                                    <span>Current Plan Paid</span>
+
+                                    <strong>₦{{ current_subscription.plan.price|intcomma }}</strong>
+
+                                </div>
+
+                                <div class="payment-row">
+
+                                    <span>New Plan Price</span>
+
+                                    <strong>₦{{ new_plan.price|intcomma }}</strong>
+
+                                </div>
+
+                                <div class="payment-row payment-highlight">
+
+                                    <span>Upgrade Cost</span>
+
+                                    <strong>₦{{ upgrade_amount|intcomma }}</strong>
+
+                                </div>
+
+                            </div>
+            
                         </div>
 
                     </div>

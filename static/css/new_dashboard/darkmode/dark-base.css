@@ -939,3 +939,54 @@ body.dark .btn-warning:hover{
     background:#F59E0B;
 
 }
+body.dark .upgrade-info-card{
+
+    background:#243447;
+
+    border-color:var(--border);
+
+}
+
+body.dark .upgrade-info-card span{
+
+    color:var(--text-light);
+
+}
+
+body.dark .upgrade-info-card strong{
+
+    color:var(--text);
+
+}
+
+body.dark .payment-row{
+
+    background:#243447;
+
+    border-color:var(--border);
+
+}
+
+body.dark .payment-row span{
+
+    color:var(--text-light);
+
+}
+
+body.dark .payment-row strong{
+
+    color:var(--text);
+
+}
+
+body.dark .payment-highlight{
+
+    background:#14532D;
+
+}
+
+body.dark .payment-highlight strong{
+
+    color:#DCFCE7;
+
+}

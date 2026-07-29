@@ -200,23 +200,29 @@
 
 }
 
-.progress-details{
+.progress-text{
 
-    display:flex;
+    margin-top:12px;
 
-    justify-content:center;
-
-    align-items:center;
-
-    gap:6px;
+    text-align:center;
 
     font-size:15px;
 
-    font-weight:700;
+    font-weight:600;
 
-    color:#1e293b;
+    color:var(--text);
 
 }
+
+.progress-text strong{
+
+    color:var(--primary);
+
+    font-size:20px;
+
+}
+
+
 
 .remaining-count{
 
@@ -239,5 +245,91 @@
     font-weight:600;
 
     color:#64748b;
+
+}
+
+/*=========================================================
+            ORDER STATUS
+=========================================================*/
+
+.order-status{
+
+    padding:8px 16px;
+
+    border-radius:30px;
+
+    font-size:13px;
+
+    font-weight:600;
+
+}
+
+/* Pending */
+
+.order-status.pending-pickup{
+
+    background:#EFF6FF;
+
+    color:#2563EB;
+
+}
+
+/* Processing */
+
+.order-status.processing{
+
+    background:#FFF7ED;
+
+    color:#EA580C;
+
+}
+
+/* Washing */
+
+.order-status.washing{
+
+    background:#FEF3C7;
+
+    color:#B45309;
+
+}
+
+/* Ready */
+
+.order-status.ready{
+
+    background:#ECFDF5;
+
+    color:#059669;
+
+}
+
+/* Out for Delivery */
+
+.order-status.out-for-delivery{
+
+    background:#F5F3FF;
+
+    color:#7C3AED;
+
+}
+
+/* Delivered */
+
+.order-status.delivered{
+
+    background:#DCFCE7;
+
+    color:#15803D;
+
+}
+
+/* Cancelled */
+
+.order-status.cancelled{
+
+    background:#FEE2E2;
+
+    color:#DC2626;
 
 }

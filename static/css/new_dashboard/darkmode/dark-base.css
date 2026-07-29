@@ -692,3 +692,71 @@ body.dark .btn-success i{
     color:#fff !important;
 
 }
+
+body.dark .progress-text{
+
+    color:var(--text);
+
+}
+
+body.dark .progress-text strong{
+
+    color:#60A5FA;
+
+}
+
+body.dark .order-status.pending-pickup{
+
+    background:#1E3A8A;
+
+    color:#DBEAFE;
+
+}
+
+body.dark .order-status.processing{
+
+    background:#7C2D12;
+
+    color:#FED7AA;
+
+}
+
+body.dark .order-status.washing{
+
+    background:#78350F;
+
+    color:#FDE68A;
+
+}
+
+body.dark .order-status.ready{
+
+    background:#14532D;
+
+    color:#BBF7D0;
+
+}
+
+body.dark .order-status.out-for-delivery{
+
+    background:#4C1D95;
+
+    color:#DDD6FE;
+
+}
+
+body.dark .order-status.delivered{
+
+    background:#166534;
+
+    color:#DCFCE7;
+
+}
+
+body.dark .order-status.cancelled{
+
+    background:#7F1D1D;
+
+    color:#FECACA;
+
+}

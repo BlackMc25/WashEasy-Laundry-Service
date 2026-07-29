@@ -54,33 +54,29 @@
 
                     <div
                         class="progress-bar bg-primary"
-                        style="width: {{ progress }}%;">
+                        style="width:{{ progress }}%;">
 
                     </div>
 
                 </div>
 
-                <div class="progress-details">
+                <div class="progress-text">
 
-                    <span class="remaining-count">
+                    <strong>
 
                         {{ subscription.remaining_items }}
 
-                    </span>
+                    </strong>
 
-                    <span class="separator">
+                    of
 
-                        /
-
-                    </span>
-
-                    <span>
+                    <strong>
 
                         {{ subscription.plan.total_items }}
 
-                    </span>
+                    </strong>
 
-                    <span class="remaining-label">
+                    <span>
 
                         Items Remaining
 
@@ -128,8 +124,10 @@
 
             </div>
 
-            <span class="badge badge-primary">
+            <span class="order-status {{ order.status|slugify }}">
+
                 {{ order.status }}
+
             </span>
 
         </div>

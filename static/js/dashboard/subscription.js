@@ -387,7 +387,11 @@ nextStep2.addEventListener(
 
                     </div>
 
-                    <h2>${price}</h2>
+                    <div class="review-plan-price">
+
+                        ${price}
+
+                    </div>
 
                 </div>
 

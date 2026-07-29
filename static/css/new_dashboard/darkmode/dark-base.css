@@ -676,3 +676,19 @@ body.dark .review-plan-badge{
     color:#DBEAFE;
 
 }
+
+body.dark .btn-success{
+
+    background:#16A34A !important;
+
+    color:#fff !important;
+
+    border:none;
+
+}
+
+body.dark .btn-success i{
+
+    color:#fff !important;
+
+}

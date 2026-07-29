@@ -869,4 +869,34 @@
     font-size:14px;
 
 }
+
+.review-plan-card{
+
+    padding:18px;
+
+}
+
+.review-plan-header h3{
+
+    font-size:1.8rem;
+
+}
+
+.review-plan-price{
+
+    font-size:1.8rem;
+
+}
+
+.review-plan-info{
+
+    flex-direction:column;
+
+}
+
+.review-info-item{
+
+    width:100%;
+
+}
 }

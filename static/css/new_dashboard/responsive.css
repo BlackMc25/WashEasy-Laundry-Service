@@ -199,6 +199,12 @@
 
     height:auto;
 
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
 }
 .subscription-top{
 
@@ -228,7 +234,7 @@
 
 .subscription-actions{
 
-    margin-top:18px;
+    margin-top:15px;
 
     margin-bottom:30px;
 
@@ -236,10 +242,41 @@
 
 .subscription-actions .btn{
 
+   
     width:100%;
 
-}
+    padding:14px 20px;
 
+}
+    .subscription-order-card{
+
+        padding:20px;
+
+    }
+
+    .subscription-progress{
+
+        margin-bottom:22px;
+
+    }
+
+    .subscription-actions{
+
+        margin-top:22px;
+
+    }
+
+    .subscription-actions .btn{
+
+        width:100%;
+
+        display:flex;
+
+        justify-content:center;
+
+        align-items:center;
+
+    }
 .order-info{
 
     display:flex;

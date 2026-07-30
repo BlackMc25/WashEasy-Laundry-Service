@@ -79,7 +79,7 @@ def signup_view(request):
 
                     "verified": False,
 
-                    "expires_at": timezone.now() + timedelta(minutes=10),
+                    "expires_at": timezone.now() + timedelta(seconds=60),
 
                     "resend_count": 0,
 

@@ -20,6 +20,7 @@ from accounts.models import AdminDeletePIN
 from django.http import JsonResponse
 from django.contrib.admin.views.decorators import staff_member_required
 import random
+from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 import requests
 import secrets
@@ -154,6 +155,12 @@ def login_view(request):
         )
         
     return redirect('home')
+
+
+
+def verify_email_link(request, token):
+
+    return HttpResponse("Email verification coming soon.")
 
 
 @login_required

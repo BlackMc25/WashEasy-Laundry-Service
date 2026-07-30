@@ -236,8 +236,6 @@ import traceback
 from django.http import HttpResponse
 
 def verify_otp(request, user_id):
-
-    try:
                 
             user = get_object_or_404(
 
@@ -247,14 +245,22 @@ def verify_otp(request, user_id):
 
             )
 
-            verification = get_object_or_404(
-
-                EmailVerification,
-
+            verification = EmailVerification.objects.filter(
                 user=user
+            ).first()
 
-            )
+            if verification is None:
 
+                messages.error(
+                    request,
+                    "Verification record not found. Please request a new verification code."
+                )
+
+                return redirect(
+                    "verify_email",
+                    user_id=user.id
+                )
+            
             if request.method != "POST":
 
                 return redirect(
@@ -382,12 +388,7 @@ def verify_otp(request, user_id):
 
             return redirect("dashboard")
 
-    except Exception:
-
-        return HttpResponse(
-            "<pre>" + traceback.format_exc() + "</pre>"
-        )
-
+    
 
 def resend_verification_code(request, user_id):
 

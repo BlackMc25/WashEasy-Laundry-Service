@@ -238,8 +238,6 @@ from django.http import HttpResponse
 def verify_otp(request, user_id):
 
     try:
-
-        def verify_otp(request, user_id):
                 
             user = get_object_or_404(
 
@@ -369,18 +367,7 @@ def verify_otp(request, user_id):
 
             user.save()
 
-            # Automatically log the user in
-            login(request, user)
-
-            messages.success(
-
-                request,
-
-                f"Welcome to WashEasy, {user.first_name}! Your account has been verified successfully."
-
-            )
-
-            return redirect("dashboard")
+            return HttpResponse("OTP VERIFIED SUCCESSFULLY")
 
     except Exception:
 

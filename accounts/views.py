@@ -159,8 +159,62 @@ def login_view(request):
 
 
 def verify_email_link(request, token):
+    
+    verification = get_object_or_404(
 
-    return HttpResponse("Email verification coming soon.")
+        EmailVerification,
+
+        token=token
+
+    )
+
+    if verification.verified:
+
+        messages.info(
+
+            request,
+
+            "Your email is already verified."
+
+        )
+
+        return redirect("login")
+
+    if timezone.now() > verification.expires_at:
+
+        messages.error(
+
+            request,
+
+            "Verification link has expired."
+
+        )
+
+        return redirect(
+
+            "verify_email",
+
+            user_id=verification.user.id
+
+        )
+
+    verification.verified = True
+
+    verification.save()
+
+    verification.user.is_active = True
+
+    verification.user.save()
+
+    messages.success(
+
+        request,
+
+        "Email verified successfully."
+
+    )
+
+    return redirect("login")
 
 
 def verify_email(request, user_id):
@@ -179,12 +233,138 @@ def verify_email(request, user_id):
     )
 
 
+
+
+
 def verify_otp(request, user_id):
 
-    return redirect(
-        "verify_email",
-        user_id=user_id
+    user = get_object_or_404(
+
+        CustomUser,
+
+        id=user_id
+
     )
+
+    verification = get_object_or_404(
+
+        EmailVerification,
+
+        user=user
+
+    )
+
+    if request.method != "POST":
+
+        return redirect(
+
+            "verify_email",
+
+            user_id=user.id
+
+        )
+
+    otp = request.POST.get("otp")
+
+    if not otp:
+
+        messages.error(
+
+            request,
+
+            "Please enter the verification code."
+
+        )
+
+        return redirect(
+
+            "verify_email",
+
+            user_id=user.id
+
+        )
+
+    # -------------------------------------
+    # Already verified
+    # -------------------------------------
+
+    if verification.verified:
+
+        messages.success(
+
+            request,
+
+            "Your email has already been verified."
+
+        )
+
+        return redirect("login")
+
+    # -------------------------------------
+    # Expired
+    # -------------------------------------
+
+    if timezone.now() > verification.expires_at:
+
+        messages.error(
+
+            request,
+
+            "Your verification code has expired."
+
+        )
+
+        return redirect(
+
+            "verify_email",
+
+            user_id=user.id
+
+        )
+
+    # -------------------------------------
+    # Wrong OTP
+    # -------------------------------------
+
+    if otp != verification.otp:
+
+        messages.error(
+
+            request,
+
+            "Invalid verification code."
+
+        )
+
+        return redirect(
+
+            "verify_email",
+
+            user_id=user.id
+
+        )
+
+    # -------------------------------------
+    # SUCCESS
+    # -------------------------------------
+
+    verification.verified = True
+
+    verification.save()
+
+    user.is_active = True
+
+    user.save()
+
+    messages.success(
+
+        request,
+
+        "Your email has been verified successfully. Please login."
+
+    )
+
+    return redirect("login")
 
 
 def resend_verification_code(request, user_id):

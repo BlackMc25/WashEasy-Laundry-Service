@@ -79,6 +79,12 @@ path(
 ),
 
 path(
+    "verify-email/<int:user_id>/",
+    views.verify_email,
+    name="verify_email",
+),
+
+path(
 
     "verify/<str:token>/",
 
@@ -86,6 +92,18 @@ path(
 
     name="verify_email_link",
 
-)
+),
+
+path(
+    "verify-otp/<int:user_id>/",
+    views.verify_otp,
+    name="verify_otp",
+),
+
+path(
+    "resend-verification/<int:user_id>/",
+    views.resend_verification_code,
+    name="resend_verification_code",
+),
 
 ]

@@ -1,0 +1,369 @@
+/*=========================================================
+                VERIFY EMAIL PAGE
+=========================================================*/
+
+*{
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+body{
+
+    font-family:"Poppins",sans-serif;
+
+    background:linear-gradient(135deg,#EFF6FF,#DBEAFE);
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:30px;
+
+}
+
+.verification-wrapper{
+
+    width:100%;
+
+    max-width:500px;
+
+}
+
+.verification-card{
+
+    background:#ffffff;
+
+    border-radius:24px;
+
+    padding:45px;
+
+    text-align:center;
+
+    box-shadow:0 25px 60px rgba(37,99,235,.15);
+
+}
+
+.verification-logo{
+
+    width:90px;
+
+    height:90px;
+
+    border-radius:50%;
+
+    margin:0 auto 25px;
+
+    background:linear-gradient(135deg,#2563EB,#3B82F6);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.verification-logo i{
+
+    font-size:38px;
+
+    color:#ffffff;
+
+}
+
+.verification-card h1{
+
+    font-size:2rem;
+
+    color:#0F172A;
+
+    margin-bottom:12px;
+
+}
+
+.verification-subtitle{
+
+    color:#334155;
+
+    margin-bottom:8px;
+
+}
+
+.verification-text{
+
+    color:#64748B;
+
+}
+
+.verification-email{
+
+    color:#2563EB;
+
+    font-weight:600;
+
+    margin:15px 0 35px;
+
+    word-break:break-word;
+
+}
+
+/*=========================================================
+                OTP
+=========================================================*/
+
+.otp-container{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:12px;
+
+    margin-bottom:35px;
+
+}
+
+.otp-input{
+
+    width:55px;
+
+    height:60px;
+
+    border:2px solid #CBD5E1;
+
+    border-radius:14px;
+
+    text-align:center;
+
+    font-size:24px;
+
+    font-weight:700;
+
+    transition:.3s;
+
+}
+
+.otp-input:focus{
+
+    outline:none;
+
+    border-color:#2563EB;
+
+    box-shadow:0 0 15px rgba(37,99,235,.2);
+
+}
+
+.verify-btn{
+
+    width:100%;
+
+    border:none;
+
+    padding:16px;
+
+    border-radius:14px;
+
+    background:linear-gradient(
+        135deg,
+        #2563EB,
+        #3B82F6
+    );
+
+    color:#ffffff;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.verify-btn:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:0 12px 25px rgba(37,99,235,.3);
+
+}
+
+.verification-footer{
+
+    margin-top:30px;
+
+}
+
+.verification-footer p{
+
+    color:#64748B;
+
+    margin-bottom:10px;
+
+}
+
+.verification-footer a{
+
+    color:#2563EB;
+
+    text-decoration:none;
+
+    font-weight:600;
+
+}
+
+#countdown{
+
+    display:block;
+
+    margin-top:10px;
+
+    color:#94A3B8;
+
+}
+
+.back-home{
+
+    margin-top:30px;
+
+}
+
+.back-home a{
+
+    text-decoration:none;
+
+    color:#64748B;
+
+}
+
+.back-home a:hover{
+
+    color:#2563EB;
+
+}
+
+.verification-message{
+
+    padding:14px;
+
+    border-radius:12px;
+
+    margin-bottom:20px;
+
+}
+
+.success{
+
+    background:#DCFCE7;
+
+    color:#166534;
+
+}
+
+.error{
+
+    background:#FEE2E2;
+
+    color:#DC2626;
+
+}
+
+/*=========================================================
+                DARK MODE
+=========================================================*/
+
+body.dark{
+
+    background:#0F172A;
+
+}
+
+body.dark .verification-card{
+
+    background:#1E293B;
+
+    border:1px solid #334155;
+
+}
+
+body.dark h1{
+
+    color:#F8FAFC;
+
+}
+
+body.dark .verification-subtitle{
+
+    color:#CBD5E1;
+
+}
+
+body.dark .verification-text{
+
+    color:#94A3B8;
+
+}
+
+body.dark .verification-email{
+
+    color:#60A5FA;
+
+}
+
+body.dark .otp-input{
+
+    background:#243447;
+
+    border-color:#475569;
+
+    color:#ffffff;
+
+}
+
+body.dark .back-home a{
+
+    color:#CBD5E1;
+
+}
+
+@media(max-width:576px){
+
+.verification-card{
+
+    padding:30px 20px;
+
+}
+
+.otp-container{
+
+    gap:8px;
+
+}
+
+.otp-input{
+
+    width:45px;
+
+    height:52px;
+
+    font-size:20px;
+
+}
+
+.verification-card h1{
+
+    font-size:1.7rem;
+
+}
+
+}

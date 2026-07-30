@@ -698,3 +698,60 @@ body.dark .signup-modal .form-control{
 
 }
 
+/*=========================================================
+                DARK MODE
+=========================================================*/
+
+body.dark{
+
+    background:#0F172A;
+
+}
+
+body.dark .verification-card{
+
+    background:#1E293B;
+
+    border:1px solid #334155;
+
+}
+
+body.dark h1{
+
+    color:#F8FAFC;
+
+}
+
+body.dark .verification-subtitle{
+
+    color:#CBD5E1;
+
+}
+
+body.dark .verification-text{
+
+    color:#94A3B8;
+
+}
+
+body.dark .verification-email{
+
+    color:#60A5FA;
+
+}
+
+body.dark .otp-input{
+
+    background:#243447;
+
+    border-color:#475569;
+
+    color:#ffffff;
+
+}
+
+body.dark .back-home a{
+
+    color:#CBD5E1;
+
+}

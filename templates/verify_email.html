@@ -1,0 +1,198 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+
+        Verify Email | WashEasy
+
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="{% static 'css/verify_email.css' %}">
+    <link rel="stylesheet" href="{% static 'css/darkmode.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="verification-wrapper">
+
+    <div class="verification-card">
+
+        <!-- Logo -->
+
+        <div class="verification-logo">
+
+            <i class="fas fa-envelope-open-text"></i>
+
+        </div>
+
+        <!-- Heading -->
+
+        <h1>
+
+            Verify Your Email
+
+        </h1>
+
+        <p class="verification-subtitle">
+
+            Welcome
+            <strong>
+
+                {{ user.first_name }}
+
+            </strong>
+
+        </p>
+
+        <p class="verification-text">
+
+            We've sent a 6-digit verification code to
+
+        </p>
+
+        <p class="verification-email">
+
+            {{ user.email }}
+
+        </p>
+
+        <!-- Messages -->
+
+        {% if messages %}
+
+            {% for message in messages %}
+
+                <div class="verification-message {{ message.tags }}">
+
+                    {{ message }}
+
+                </div>
+
+            {% endfor %}
+
+        {% endif %}
+
+        <!-- OTP FORM -->
+
+        <form
+            method="POST"
+            action="{% url 'verify_otp' user.id %}">
+
+            {% csrf_token %}
+
+            <div class="otp-container">
+
+                <input
+                    type="text"
+                    maxlength="1"
+                    class="otp-input"
+                    name="otp1"
+                    autofocus>
+
+                <input
+                    type="text"
+                    maxlength="1"
+                    class="otp-input"
+                    name="otp2">
+
+                <input
+                    type="text"
+                    maxlength="1"
+                    class="otp-input"
+                    name="otp3">
+
+                <input
+                    type="text"
+                    maxlength="1"
+                    class="otp-input"
+                    name="otp4">
+
+                <input
+                    type="text"
+                    maxlength="1"
+                    class="otp-input"
+                    name="otp5">
+
+                <input
+                    type="text"
+                    maxlength="1"
+                    class="otp-input"
+                    name="otp6">
+
+            </div>
+
+            <button
+                type="submit"
+                class="verify-btn">
+
+                Verify My Account
+
+            </button>
+
+        </form>
+
+        <!-- Resend -->
+
+        <div class="verification-footer">
+
+            <p>
+
+                Didn't receive the code?
+
+            </p>
+
+            <a
+                href="{% url 'resend_verification_code' user.id %}"
+                id="resendLink">
+
+                Resend Code
+
+            </a>
+
+            <span
+                id="countdown">
+
+                (60s)
+
+            </span>
+
+        </div>
+
+        <!-- Back -->
+
+        <div class="back-home">
+
+            <a href="{% url 'home' %}">
+
+                ← Back to Home
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="{% static 'js/verify_email.js' %}"></script>
+
+</body>
+
+</html>

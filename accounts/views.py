@@ -163,6 +163,39 @@ def verify_email_link(request, token):
     return HttpResponse("Email verification coming soon.")
 
 
+def verify_email(request, user_id):
+
+    user = get_object_or_404(
+        CustomUser,
+        id=user_id
+    )
+
+    return render(
+        request,
+        "verify_email.html",
+        {
+            "user": user,
+        }
+    )
+
+
+def verify_otp(request, user_id):
+
+    return redirect(
+        "verify_email",
+        user_id=user_id
+    )
+
+
+def resend_verification_code(request, user_id):
+
+    return redirect(
+        "verify_email",
+        user_id=user_id
+    )
+
+
+
 @login_required
 def dashboard(request):
 

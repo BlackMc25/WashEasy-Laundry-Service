@@ -29,6 +29,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (completed) {
 
+                document.getElementById("otpHidden").value =
+                    [...inputs].map(box => box.value).join("");
+
                 setTimeout(() => {
 
                     form.submit();

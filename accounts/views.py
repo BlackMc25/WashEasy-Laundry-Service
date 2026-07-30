@@ -112,7 +112,7 @@ def signup_view(request):
 
                 "verify_email",
 
-                user_id=user.id
+                token=token
 
             )
 

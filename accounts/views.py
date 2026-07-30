@@ -29,6 +29,7 @@ from .utils import send_verification_email
 from django.conf import settings
 from django.shortcuts import get_object_or_404
 from django.shortcuts import render
+from .utils import generate_verification_data
 from core.models import (
     LaundryOrder,
     OrderItem,
@@ -391,10 +392,49 @@ def verify_otp(request, user_id):
     
 
 def resend_verification_code(request, user_id):
+    
+    user = get_object_or_404(
+        CustomUser,
+        id=user_id
+    )
+
+    # Generate new OTP and token
+    otp, token, expiry = generate_verification_data()
+
+    # Update or create verification record
+    EmailVerification.objects.update_or_create(
+
+        user=user,
+
+        defaults={
+
+            "otp": otp,
+
+            "token": token,
+
+            "expires_at": expiry,
+
+            "verified": False,
+
+        }
+
+    )
+
+    # Send the new email
+    send_verification_email(
+        user,
+        otp,
+        token
+    )
+
+    messages.success(
+        request,
+        "A new verification code has been sent to your email."
+    )
 
     return redirect(
         "verify_email",
-        user_id=user_id
+        user_id=user.id
     )
 
 

@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from .models import CustomUser
-
+import re
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from .models import CustomUser
@@ -34,6 +34,8 @@ class SignUpForm(UserCreationForm):
             'password2'
         ]
 
+    
+
     def clean_username(self):
 
         username = self.cleaned_data.get("username")
@@ -46,10 +48,31 @@ class SignUpForm(UserCreationForm):
                 "This username is already taken."
             )
 
+        if len(username) < 5:
+
+            raise forms.ValidationError(
+                "Username must contain at least 5 characters."
+            )
+
+        if len(username) > 20:
+
+            raise forms.ValidationError(
+                "Username cannot exceed 20 characters."
+            )
+
+        if not re.match(
+            r'^[A-Za-z][A-Za-z0-9_]*$',
+            username
+        ):
+
+            raise forms.ValidationError(
+                "Username must start with a letter and contain only letters, numbers and underscore (_)."
+            )
+
         return username
 
     def clean_email(self):
-
+        
         email = self.cleaned_data.get("email")
 
         if CustomUser.objects.filter(
@@ -60,7 +83,57 @@ class SignUpForm(UserCreationForm):
                 "An account with this email already exists."
             )
 
-        return email
+        return email.lower()
+    
+    def clean_phone_number(self):
+    
+        phone = self.cleaned_data.get("phone_number")
+
+        if CustomUser.objects.filter(
+            phone_number=phone
+        ).exists():
+
+            raise forms.ValidationError(
+                "This phone number is already registered."
+            )
+
+        return phone
+    
+    def clean_password1(self):
+    
+        password = self.cleaned_data.get("password1")
+
+        if len(password) < 8:
+
+            raise forms.ValidationError(
+                "Password must contain at least 8 characters."
+            )
+
+        if not re.search(r"[A-Z]", password):
+
+            raise forms.ValidationError(
+                "Password must contain at least one uppercase letter."
+            )
+
+        if not re.search(r"[a-z]", password):
+
+            raise forms.ValidationError(
+                "Password must contain at least one lowercase letter."
+            )
+
+        if not re.search(r"\d", password):
+
+            raise forms.ValidationError(
+                "Password must contain at least one number."
+            )
+
+        if not re.search(r"[!@#$%^&*(),.?\":{}|<>]", password):
+
+            raise forms.ValidationError(
+                "Password must contain at least one special character."
+            )
+
+        return password
 
 class ProfileUpdateForm(forms.ModelForm):
     

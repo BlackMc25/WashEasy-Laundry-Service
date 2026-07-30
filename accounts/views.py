@@ -191,23 +191,26 @@ def verify_email_link(request, token):
 
         )
 
-    verification.verified = True
+    user = verification.user
 
-    verification.save()
+    verification.delete()
 
-    verification.user.is_active = True
+    user.is_active = True
 
-    verification.user.save()
+    user.save()
+
+    # Automatically log the user in
+    login(request, user)
 
     messages.success(
 
         request,
 
-        "Email verified successfully."
+        f"Welcome to WashEasy, {user.first_name}! Your account has been verified successfully."
 
     )
 
-    return redirect("login")
+    return redirect("dashboard")
 
 
 def verify_email(request, user_id):
@@ -351,23 +354,24 @@ def verify_otp(request, user_id):
     # SUCCESS
     # -------------------------------------
 
-    verification.verified = True
-
     verification.delete()
 
     user.is_active = True
 
     user.save()
 
+    # Automatically log the user in
+    login(request, user)
+
     messages.success(
 
         request,
 
-        "Your email has been verified successfully. Please login."
+        f"Welcome to WashEasy, {user.first_name}! Your account has been verified successfully."
 
     )
 
-    return redirect("login")
+    return redirect("dashboard")
 
 
 def resend_verification_code(request, user_id):

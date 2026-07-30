@@ -93,7 +93,7 @@
 
         <form
             method="POST"
-            action="{% url 'verify_otp' user.id %}">
+            action="{% url 'verify_otp' token %}">
 
             {% csrf_token %}
 
@@ -163,9 +163,9 @@
 
             </p>
 
-            <a
-                href="{% url 'resend_verification_code' user.id %}"
-                id="resendLink">
+          <a
+            href="{% url 'resend_verification_code' token %}"
+            id="resendLink">
 
                 Resend Code
 

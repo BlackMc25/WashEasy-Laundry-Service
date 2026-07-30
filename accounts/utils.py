@@ -25,11 +25,10 @@ def send_verification_email(user, otp, token):
     verify_url = (
         settings.SITE_URL +
         reverse(
-            "verify_email_link",
+            "verify_email",
             args=[token]
         )
     )
-
     context = {
 
         "user": user,

@@ -214,20 +214,43 @@ def verify_email_link(request, token):
     return redirect("dashboard")
 
 
-def verify_email(request, user_id):
-
-    user = get_object_or_404(
-        CustomUser,
-        id=user_id
+def verify_email(request, token):
+    
+    verification = get_object_or_404(
+        EmailVerification,
+        token=token
     )
 
+    # Prevent access if already verified
+    if verification.verified:
+
+        messages.info(
+            request,
+            "Your email has already been verified."
+        )
+
+        return redirect("login")
+
+    # Check if the verification link has expired
+    if timezone.now() > verification.expires_at:
+
+        messages.error(
+            request,
+            "Your verification link has expired. Please request a new verification code."
+        )
+
+        return redirect("home")
+
+    user = verification.user
+
     return render(
-    request,
-    "verify_email.html",
-    {
-        "user": user,
-        "email": user.email,
-    }
+        request,
+        "verify_email.html",
+        {
+            "user": user,
+            "email": user.email,
+            "token": token,
+        }
     )
 
 
@@ -236,182 +259,66 @@ def verify_email(request, user_id):
 import traceback
 from django.http import HttpResponse
 
-def verify_otp(request, user_id):
-                
-            user = get_object_or_404(
-
-                CustomUser,
-
-                id=user_id
-
-            )
-
-            verification = EmailVerification.objects.filter(
-                user=user
-            ).first()
-
-            if verification is None:
-
-                messages.error(
-                    request,
-                    "Verification record not found. Please request a new verification code."
-                )
-
-                return redirect(
-                    "verify_email",
-                    user_id=user.id
-                )
-            
-            if request.method != "POST":
-
-                return redirect(
-
-                    "verify_email",
-
-                    user_id=user.id
-
-                )
-
-            otp = request.POST.get("otp")
-
-            if not otp:
-
-                otp = "".join([
-
-                    request.POST.get("otp1", ""),
-
-                    request.POST.get("otp2", ""),
-
-                    request.POST.get("otp3", ""),
-
-                    request.POST.get("otp4", ""),
-
-                    request.POST.get("otp5", ""),
-
-                    request.POST.get("otp6", ""),
-
-                ])
-
-            if len(otp) != 6:
-                
-                messages.error(
-                    request,
-                    "Please enter the complete verification code."
-                )
-
-                return redirect(
-                    "verify_email",
-                    user_id=user.id
-                )
-
-            # -------------------------------------
-            # Already verified
-            # -------------------------------------
-
-            if verification.verified:
-
-                messages.success(
-
-                    request,
-
-                    "Your email has already been verified."
-
-                )
-
-                return redirect("login")
-
-            # -------------------------------------
-            # Expired
-            # -------------------------------------
-
-            if timezone.now() > verification.expires_at:
-
-                messages.error(
-                        request,
-                        "Your verification code has expired. Please click 'Resend Code' to receive a new one."
-                    )
-
-                return redirect(
-
-                    "verify_email",
-
-                    user_id=user.id
-
-                )
-
-            # -------------------------------------
-            # Wrong OTP
-            # -------------------------------------
-
-            if otp != verification.otp:
-
-                messages.error(
-
-                    request,
-
-                    "Invalid verification code."
-
-                )
-
-                return redirect(
-
-                    "verify_email",
-
-                    user_id=user.id
-
-                )
-
-            # -------------------------------------
-            # SUCCESS
-            # -------------------------------------
-
-            verification.delete()
-
-            user.is_active = True
-
-            user.save()
-
-            # Automatically log the user in
-            user.backend = "django.contrib.auth.backends.ModelBackend"
-
-            login(request, user)
-
-            messages.success(
-
-                request,
-
-                f"Welcome to WashEasy, {user.first_name}! Your account has been verified successfully."
-
-            )
-
-            return redirect("dashboard")
-
+def verify_otp(request, token):
     
+        verification = get_object_or_404(
+            EmailVerification,
+            token=token
+        )
 
-def resend_verification_code(request, user_id):
-    
-    user = get_object_or_404(
-        CustomUser,
-        id=user_id
-    )
+        user = verification.user
 
-    # Generate new OTP and token
-    otp, token, expiry = generate_verification_data()
+        verification = EmailVerification.objects.filter(
+            user=user
+        ).first()
 
-    # Check if a verification record already exists
-    verification = EmailVerification.objects.filter(
-        user=user
-    ).first()
-
-    if verification:
-
-        elapsed = timezone.now() - verification.created_at
-
-        if elapsed.total_seconds() < 60:
+        if verification is None:
 
             messages.error(
                 request,
-                "Please wait before requesting another code."
+                "Verification record not found. Please request a new verification code."
+            )
+
+            return redirect(
+                "verify_email",
+                user_id=user.id
+            )
+        
+        if request.method != "POST":
+
+            return redirect(
+
+                "verify_email",
+
+                user_id=user.id
+
+            )
+
+        otp = request.POST.get("otp")
+
+        if not otp:
+
+            otp = "".join([
+
+                request.POST.get("otp1", ""),
+
+                request.POST.get("otp2", ""),
+
+                request.POST.get("otp3", ""),
+
+                request.POST.get("otp4", ""),
+
+                request.POST.get("otp5", ""),
+
+                request.POST.get("otp6", ""),
+
+            ])
+
+        if len(otp) != 6:
+            
+            messages.error(
+                request,
+                "Please enter the complete verification code."
             )
 
             return redirect(
@@ -419,30 +326,141 @@ def resend_verification_code(request, user_id):
                 user_id=user.id
             )
 
-    # Update or create verification record
-    EmailVerification.objects.update_or_create(
+        # -------------------------------------
+        # Already verified
+        # -------------------------------------
 
-        user=user,
+        if verification.verified:
 
-        defaults={
+            messages.success(
 
-            "otp": otp,
+                request,
 
-            "token": token,
+                "Your email has already been verified."
 
-            "expires_at": expiry,
+            )
 
-            "verified": False,
+            return redirect("login")
 
-        }
+        # -------------------------------------
+        # Expired
+        # -------------------------------------
 
+        if timezone.now() > verification.expires_at:
+
+            messages.error(
+                    request,
+                    "Your verification code has expired. Please click 'Resend Code' to receive a new one."
+                )
+
+            return redirect(
+
+                "verify_email",
+
+                user_id=user.id
+
+            )
+
+        # -------------------------------------
+        # Wrong OTP
+        # -------------------------------------
+
+        if otp != verification.otp:
+
+            messages.error(
+
+                request,
+
+                "Invalid verification code."
+
+            )
+
+            return redirect(
+
+                "verify_email",
+
+                user_id=user.id
+
+            )
+
+        # -------------------------------------
+        # SUCCESS
+        # -------------------------------------
+
+        verification.delete()
+
+        user.is_active = True
+
+        user.save()
+
+        # Automatically log the user in
+        user.backend = "django.contrib.auth.backends.ModelBackend"
+
+        login(request, user)
+
+        messages.success(
+
+            request,
+
+            f"Welcome to WashEasy, {user.first_name}! Your account has been verified successfully."
+
+        )
+
+        return redirect("dashboard")
+
+    
+
+def resend_verification_code(request, token):
+    
+    verification = get_object_or_404(
+        EmailVerification,
+        token=token
     )
 
-    # Send the new email
+    user = verification.user
+
+    # Prevent resending if already verified
+    if verification.verified:
+
+        messages.info(
+            request,
+            "Your email has already been verified."
+        )
+
+        return redirect("login")
+
+    # Prevent spam
+    elapsed = timezone.now() - verification.updated_at
+
+    if elapsed.total_seconds() < 60:
+
+        messages.error(
+            request,
+            "Please wait before requesting another verification code."
+        )
+
+        return redirect(
+            "verify_email",
+            token=verification.token
+        )
+
+    # Generate a new OTP and token
+    otp, new_token, expiry = generate_verification_data()
+
+    verification.otp = otp
+    verification.token = new_token
+    verification.expires_at = expiry
+    verification.verified = False
+
+    # Reset timer
+    verification.created_at = timezone.now()
+
+    verification.save()
+
     send_verification_email(
         user,
         otp,
-        token
+        new_token
     )
 
     messages.success(
@@ -452,7 +470,7 @@ def resend_verification_code(request, user_id):
 
     return redirect(
         "verify_email",
-        user_id=user.id
+        token=new_token
     )
 
 

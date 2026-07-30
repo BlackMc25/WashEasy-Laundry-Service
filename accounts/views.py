@@ -116,21 +116,14 @@ def signup_view(request):
             )
 
         return render(
-
             request,
-
             "home.html",
-
             {
-
-                "form": form,
-
+                "signup_form": form,
+                "login_form": AuthenticationForm(),
                 "show_signup_modal": True,
-
             }
-
         )
-
     return redirect("home")
 
 def login_view(request):
@@ -225,15 +218,13 @@ def verify_email(request, user_id):
     )
 
     return render(
-        request,
-        "verify_email.html",
-        {
-            "user": user,
-        }
+    request,
+    "verify_email.html",
+    {
+        "user": user,
+        "email": user.email,
+    }
     )
-
-
-
 
 
 def verify_otp(request, user_id):
@@ -267,6 +258,22 @@ def verify_otp(request, user_id):
     otp = request.POST.get("otp")
 
     if not otp:
+
+        otp = "".join([
+
+            request.POST.get("otp1", ""),
+
+            request.POST.get("otp2", ""),
+
+            request.POST.get("otp3", ""),
+
+            request.POST.get("otp4", ""),
+
+            request.POST.get("otp5", ""),
+
+            request.POST.get("otp6", ""),
+
+        ])
 
         messages.error(
 

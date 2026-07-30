@@ -79,7 +79,7 @@ path(
 ),
 
 path(
-    "verify-email/<int:user_id>/",
+    "verify-email/<str:token>/",
     views.verify_email,
     name="verify_email",
 ),

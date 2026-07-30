@@ -230,8 +230,7 @@ def verify_email(request, token):
         )
 
         return redirect("login")
-
-    # Check if the verification link has expired
+    
     # Check if the verification link has expired
     expired = verification.is_expired()
 

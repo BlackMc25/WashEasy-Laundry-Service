@@ -401,6 +401,27 @@ def resend_verification_code(request, user_id):
     # Generate new OTP and token
     otp, token, expiry = generate_verification_data()
 
+    # Check if a verification record already exists
+    verification = EmailVerification.objects.filter(
+        user=user
+    ).first()
+
+    if verification:
+
+        elapsed = timezone.now() - verification.created_at
+
+        if elapsed.total_seconds() < 60:
+
+            messages.error(
+                request,
+                "Please wait before requesting another code."
+            )
+
+            return redirect(
+                "verify_email",
+                user_id=user.id
+            )
+
     # Update or create verification record
     EmailVerification.objects.update_or_create(
 

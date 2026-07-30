@@ -230,148 +230,163 @@ def verify_email(request, user_id):
     )
 
 
+
+
+import traceback
+from django.http import HttpResponse
+
 def verify_otp(request, user_id):
 
-    user = get_object_or_404(
+    try:
 
-        CustomUser,
+        def verify_otp(request, user_id):
+                
+            user = get_object_or_404(
 
-        id=user_id
+                CustomUser,
 
-    )
+                id=user_id
 
-    verification = get_object_or_404(
+            )
 
-        EmailVerification,
+            verification = get_object_or_404(
 
-        user=user
+                EmailVerification,
 
-    )
+                user=user
 
-    if request.method != "POST":
+            )
 
-        return redirect(
+            if request.method != "POST":
 
-            "verify_email",
+                return redirect(
 
-            user_id=user.id
+                    "verify_email",
 
+                    user_id=user.id
+
+                )
+
+            otp = request.POST.get("otp")
+
+            if not otp:
+
+                otp = "".join([
+
+                    request.POST.get("otp1", ""),
+
+                    request.POST.get("otp2", ""),
+
+                    request.POST.get("otp3", ""),
+
+                    request.POST.get("otp4", ""),
+
+                    request.POST.get("otp5", ""),
+
+                    request.POST.get("otp6", ""),
+
+                ])
+
+            if len(otp) != 6:
+                
+                messages.error(
+                    request,
+                    "Please enter the complete verification code."
+                )
+
+                return redirect(
+                    "verify_email",
+                    user_id=user.id
+                )
+
+            # -------------------------------------
+            # Already verified
+            # -------------------------------------
+
+            if verification.verified:
+
+                messages.success(
+
+                    request,
+
+                    "Your email has already been verified."
+
+                )
+
+                return redirect("login")
+
+            # -------------------------------------
+            # Expired
+            # -------------------------------------
+
+            if timezone.now() > verification.expires_at:
+
+                messages.error(
+
+                    request,
+
+                    "Your verification code has expired."
+
+                )
+
+                return redirect(
+
+                    "verify_email",
+
+                    user_id=user.id
+
+                )
+
+            # -------------------------------------
+            # Wrong OTP
+            # -------------------------------------
+
+            if otp != verification.otp:
+
+                messages.error(
+
+                    request,
+
+                    "Invalid verification code."
+
+                )
+
+                return redirect(
+
+                    "verify_email",
+
+                    user_id=user.id
+
+                )
+
+            # -------------------------------------
+            # SUCCESS
+            # -------------------------------------
+
+            verification.delete()
+
+            user.is_active = True
+
+            user.save()
+
+            # Automatically log the user in
+            login(request, user)
+
+            messages.success(
+
+                request,
+
+                f"Welcome to WashEasy, {user.first_name}! Your account has been verified successfully."
+
+            )
+
+            return redirect("dashboard")
+
+    except Exception:
+
+        return HttpResponse(
+            "<pre>" + traceback.format_exc() + "</pre>"
         )
-
-    otp = request.POST.get("otp")
-
-    if not otp:
-
-        otp = "".join([
-
-            request.POST.get("otp1", ""),
-
-            request.POST.get("otp2", ""),
-
-            request.POST.get("otp3", ""),
-
-            request.POST.get("otp4", ""),
-
-            request.POST.get("otp5", ""),
-
-            request.POST.get("otp6", ""),
-
-        ])
-
-    if len(otp) != 6:
-        
-        messages.error(
-            request,
-            "Please enter the complete verification code."
-        )
-
-        return redirect(
-            "verify_email",
-            user_id=user.id
-        )
-
-    # -------------------------------------
-    # Already verified
-    # -------------------------------------
-
-    if verification.verified:
-
-        messages.success(
-
-            request,
-
-            "Your email has already been verified."
-
-        )
-
-        return redirect("login")
-
-    # -------------------------------------
-    # Expired
-    # -------------------------------------
-
-    if timezone.now() > verification.expires_at:
-
-        messages.error(
-
-            request,
-
-            "Your verification code has expired."
-
-        )
-
-        return redirect(
-
-            "verify_email",
-
-            user_id=user.id
-
-        )
-
-    # -------------------------------------
-    # Wrong OTP
-    # -------------------------------------
-
-    if otp != verification.otp:
-
-        messages.error(
-
-            request,
-
-            "Invalid verification code."
-
-        )
-
-        return redirect(
-
-            "verify_email",
-
-            user_id=user.id
-
-        )
-
-    # -------------------------------------
-    # SUCCESS
-    # -------------------------------------
-
-    verification.delete()
-
-    user.is_active = True
-
-    user.save()
-
-    # Automatically log the user in
-    login(request, user)
-
-    messages.success(
-
-        request,
-
-        f"Welcome to WashEasy, {user.first_name}! Your account has been verified successfully."
-
-    )
-
-    return redirect("dashboard")
 
 
 def resend_verification_code(request, user_id):

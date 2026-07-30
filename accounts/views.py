@@ -188,7 +188,7 @@ def verify_email_link(request, token):
 
             "verify_email",
 
-            user_id=verification.user.id
+            token=verification.token
 
         )
 
@@ -281,7 +281,7 @@ def verify_otp(request, token):
 
             return redirect(
                 "verify_email",
-                user_id=user.id
+                token=verification.token
             )
         
         if request.method != "POST":
@@ -290,7 +290,7 @@ def verify_otp(request, token):
 
                 "verify_email",
 
-                user_id=user.id
+                token=verification.token
 
             )
 
@@ -323,7 +323,7 @@ def verify_otp(request, token):
 
             return redirect(
                 "verify_email",
-                user_id=user.id
+                token=verification.token
             )
 
         # -------------------------------------
@@ -357,7 +357,7 @@ def verify_otp(request, token):
 
                 "verify_email",
 
-                user_id=user.id
+                token=verification.token
 
             )
 
@@ -379,7 +379,7 @@ def verify_otp(request, token):
 
                 "verify_email",
 
-                user_id=user.id
+                token=verification.token
 
             )
 

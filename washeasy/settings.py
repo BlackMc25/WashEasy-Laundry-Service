@@ -233,6 +233,8 @@ DEFAULT_FROM_EMAIL = config("EMAIL_HOST_USER")
 
 SITE_ID = 1
 
+SITE_URL = "https://washeasy.peneirize.com"
+
 AUTHENTICATION_BACKENDS = (
 
     'django.contrib.auth.backends.ModelBackend',

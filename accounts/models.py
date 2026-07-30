@@ -1,6 +1,11 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.conf import settings
+from django.conf import settings
+from django.db import models
+from django.utils import timezone
+from datetime import timedelta
+import secrets
 
 class CustomUser(AbstractUser):
 
@@ -75,3 +80,47 @@ class AdminDeletePIN(models.Model):
         return f"{self.admin.username} - {self.purpose}"
     
 
+
+class EmailVerification(models.Model):
+
+    user = models.OneToOneField(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="email_verification"
+    )
+
+    otp = models.CharField(
+        max_length=6
+    )
+
+    token = models.CharField(
+        max_length=64,
+        unique=True
+    )
+
+    expires_at = models.DateTimeField()
+
+    verified = models.BooleanField(
+        default=False
+    )
+
+    created_at = models.DateTimeField(
+        auto_now_add=True
+    )
+
+    updated_at = models.DateTimeField(
+        auto_now=True
+    )
+
+    resend_count = models.PositiveIntegerField(
+    default=0
+)
+
+    def is_expired(self):
+        return timezone.now() > self.expires_at
+
+    def generate_new_token(self):
+        self.token = secrets.token_urlsafe(32)
+
+    def __str__(self):
+        return f"{self.user.email} Verification"

@@ -22,6 +22,9 @@ from django.contrib.admin.views.decorators import staff_member_required
 import random
 from django.contrib.auth.decorators import login_required
 import requests
+import secrets
+from .models import EmailVerification
+from .utils import send_verification_email
 from django.conf import settings
 from django.shortcuts import get_object_or_404
 from django.shortcuts import render
@@ -40,33 +43,94 @@ def signup_view(request):
 
         if form.is_valid():
 
-            form.save()
+            # ----------------------------------
+            # Create inactive user
+            # ----------------------------------
+            user = form.save(commit=False)
 
-            messages.success(
-                request,
-                "Account created successfully."
+            user.is_active = False
+
+            user.save()
+
+            # ----------------------------------
+            # Generate OTP
+            # ----------------------------------
+            otp = str(random.randint(100000, 999999))
+
+            # ----------------------------------
+            # Generate secure verification token
+            # ----------------------------------
+            token = secrets.token_urlsafe(32)
+
+            # ----------------------------------
+            # Save verification record
+            # ----------------------------------
+            EmailVerification.objects.update_or_create(
+
+                user=user,
+
+                defaults={
+
+                    "otp": otp,
+
+                    "token": token,
+
+                    "verified": False,
+
+                    "expires_at": timezone.now() + timedelta(minutes=10),
+
+                    "resend_count": 0,
+
+                }
+
             )
 
-            return redirect("home")
+            # ----------------------------------
+            # Send verification email
+            # ----------------------------------
+            send_verification_email(
+
+                user=user,
+
+                otp=otp,
+
+                token=token,
+
+            )
+
+            messages.success(
+
+                request,
+
+                "We've sent a verification code to your email."
+
+            )
+
+            return redirect(
+
+                "verify_email",
+
+                user_id=user.id
+
+            )
 
         return render(
+
             request,
+
             "home.html",
+
             {
+
                 "form": form,
+
                 "show_signup_modal": True,
+
             }
+
         )
 
-    form = SignUpForm()
-
-    return render(
-        request,
-        "home.html",
-        {
-            "form": form
-        }
-    )
+    return redirect("home")
 
 def login_view(request):
     if request.method == "POST":

@@ -19,6 +19,7 @@ from core.models import SiteSettings
 from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 from .forms import LaundryOrderForm
+from accounts.forms import SignUpForm
 from .models import (
     PriceList,
     LaundryOrder,
@@ -51,11 +52,14 @@ def home(request):
 
     context = {
         "active_subscription": active_subscription,
+
+         "form": SignUpForm(),
     }
 
     return render(
         request,
         "home.html",
+        
         context
     )
  

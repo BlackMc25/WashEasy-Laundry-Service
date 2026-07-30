@@ -78,4 +78,14 @@ path(
     name="verify_customer_delete"
 ),
 
+path(
+
+    "verify/<str:token>/",
+
+    views.verify_email_link,
+
+    name="verify_email_link",
+
+)
+
 ]

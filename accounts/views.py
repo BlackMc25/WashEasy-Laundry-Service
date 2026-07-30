@@ -275,20 +275,16 @@ def verify_otp(request, user_id):
 
         ])
 
+    if len(otp) != 6:
+        
         messages.error(
-
             request,
-
-            "Please enter the verification code."
-
+            "Please enter the complete verification code."
         )
 
         return redirect(
-
             "verify_email",
-
             user_id=user.id
-
         )
 
     # -------------------------------------
@@ -357,7 +353,7 @@ def verify_otp(request, user_id):
 
     verification.verified = True
 
-    verification.save()
+    verification.delete()
 
     user.is_active = True
 

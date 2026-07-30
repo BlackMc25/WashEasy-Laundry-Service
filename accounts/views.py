@@ -327,12 +327,9 @@ def verify_otp(request, user_id):
             if timezone.now() > verification.expires_at:
 
                 messages.error(
-
-                    request,
-
-                    "Your verification code has expired."
-
-                )
+                        request,
+                        "Your verification code has expired. Please click 'Resend Code' to receive a new one."
+                    )
 
                 return redirect(
 

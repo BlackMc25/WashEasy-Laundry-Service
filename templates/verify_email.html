@@ -90,6 +90,17 @@
         {% endif %}
 
         <!-- OTP FORM -->
+         {% if expired %}
+
+    <div class="alert alert-warning">
+
+        <strong>Verification code expired.</strong><br>
+
+        Please click <strong>Resend Code</strong> below to receive a new verification code.
+
+    </div>
+
+    {% endif %}
 
         <form
             method="POST"
@@ -145,7 +156,8 @@
 
             <button
                 type="submit"
-                class="verify-btn">
+                class="verify-btn"
+                {% if expired %}disabled{% endif %}>
 
                 Verify My Account
 

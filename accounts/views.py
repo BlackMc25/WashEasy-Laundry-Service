@@ -232,14 +232,8 @@ def verify_email(request, token):
         return redirect("login")
 
     # Check if the verification link has expired
-    if timezone.now() > verification.expires_at:
-
-        messages.error(
-            request,
-            "Your verification link has expired. Please request a new verification code."
-        )
-
-        return redirect("home")
+    # Check if the verification link has expired
+    expired = verification.is_expired()
 
     user = verification.user
 
@@ -250,6 +244,7 @@ def verify_email(request, token):
             "user": user,
             "email": user.email,
             "token": token,
+            "expired": expired,
         }
     )
 
@@ -347,7 +342,7 @@ def verify_otp(request, token):
         # -------------------------------------
 
         if timezone.now() > verification.expires_at:
-
+    
             messages.error(
                     request,
                     "Your verification code has expired. Please click 'Resend Code' to receive a new one."

@@ -367,7 +367,20 @@ def verify_otp(request, user_id):
 
             user.save()
 
-            return HttpResponse("OTP VERIFIED SUCCESSFULLY")
+            # Automatically log the user in
+            user.backend = "django.contrib.auth.backends.ModelBackend"
+
+            login(request, user)
+
+            messages.success(
+
+                request,
+
+                f"Welcome to WashEasy, {user.first_name}! Your account has been verified successfully."
+
+            )
+
+            return redirect("dashboard")
 
     except Exception:
 

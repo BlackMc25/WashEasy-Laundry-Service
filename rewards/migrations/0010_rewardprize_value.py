@@ -6,7 +6,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('rewards', '0010_rewardprize_value'),
+        ('rewards', '0009_customerreward_booking_ready_at_and_more'),
     ]
 
     operations = [

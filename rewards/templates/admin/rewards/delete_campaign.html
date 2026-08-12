@@ -1,0 +1,117 @@
+{% extends "admin/base_admin.html" %}
+
+{% block title %}
+Delete Campaign
+{% endblock %}
+
+{% block content %}
+
+<div class="delete-page">
+
+    <div class="delete-card">
+
+        <div class="delete-icon">
+
+            🗑
+
+        </div>
+
+        <h2>
+
+            Delete Campaign
+
+        </h2>
+
+        <p>
+
+            Are you sure you want to permanently delete
+
+            <strong>
+
+                "{{ campaign.title }}"
+
+            </strong>?
+
+        </p>
+
+        <p class="delete-warning">
+
+            This action cannot be undone.
+
+        </p>
+
+        <div class="campaign-summary">
+
+            <div>
+
+                <strong>Status:</strong>
+
+                {{ campaign.status }}
+
+            </div>
+
+            <div>
+
+                <strong>Maximum Winners:</strong>
+
+                {{ campaign.max_winners }}
+
+            </div>
+
+            <div>
+
+                <strong>Current Winners:</strong>
+
+                {{ campaign.winners_count }}
+
+            </div>
+
+            <div>
+
+                <strong>Start:</strong>
+
+                {{ campaign.start_time }}
+
+            </div>
+
+            <div>
+
+                <strong>End:</strong>
+
+                {{ campaign.end_time }}
+
+            </div>
+
+        </div>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <div class="delete-buttons">
+
+                <button
+                    type="submit"
+                    class="btn btn-danger">
+
+                    Yes, Delete Campaign
+
+                </button>
+
+                <a
+                    href="{% url 'view_reward_campaign' campaign.id %}"
+                    class="btn btn-secondary">
+
+                    Cancel
+
+                </a>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

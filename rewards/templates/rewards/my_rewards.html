@@ -1,0 +1,239 @@
+{% extends "base_dashboard.html" %}
+{% load static %}
+
+{% block content %}
+
+<section class="my-rewards-page">
+
+    <div class="rewards-container">
+
+        <!-- Header -->
+
+        <div class="rewards-header">
+
+            <div class="header-icon">
+                🎁
+            </div>
+
+            <h1>My Rewards</h1>
+
+            <p>
+                View your active rewards, redeemed rewards and reward usage.
+            </p>
+
+        </div>
+
+        <!-- Active Rewards -->
+
+        <div class="reward-section">
+
+            <h2>🟢 Active Rewards</h2>
+
+            <div class="reward-grid">
+
+                {% for reward in active_rewards %}
+
+                <div class="reward-card active">
+
+                    <div class="reward-icon">
+                        🎁
+                    </div>
+
+                    <div class="reward-content">
+
+                        <h3>{{ reward.prize.name }}</h3>
+
+                        <p>
+                            Won:
+                            {{ reward.activated_at|date:"d M Y" }}
+                        </p>
+
+                        <p>
+                            Expires:
+                            {{ reward.expires_at|date:"d M Y" }}
+                        </p>
+
+                        <span class="status active-status">
+                            Active
+                        </span>
+
+                    </div>
+
+                    {% if reward.is_booking_ready %}
+
+                            <a
+                                href="{% url 'remove-booking-reward' reward.id %}"
+                                class="reward-btn remove">
+
+                                ❌ Remove
+
+                            </a>
+
+                            {% else %}
+
+                            <a
+                                href="{% url 'activate-reward' reward.id %}"
+                                class="reward-btn">
+
+                                ✅ Activate for Booking
+
+                            </a>
+
+                            {% endif %}
+
+                </div>
+
+                {% empty %}
+
+                <div class="empty-state">
+
+                    <h3>No Active Rewards</h3>
+
+                    <p>
+
+                        You don't have any active rewards yet.
+
+                    </p>
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+        <!-- Reward Usage -->
+
+        <div class="reward-section">
+
+            <h2>📦 Reward Usage</h2>
+
+            <div class="reward-grid">
+
+                {% for reward in used_rewards %}
+
+                <div class="reward-card used">
+
+                    <div class="reward-icon">
+
+                        ✅
+
+                    </div>
+
+                    <div class="reward-content">
+
+                        <h3>
+
+                            {{ reward.prize.name }}
+
+                        </h3>
+
+                        <p>
+
+                            Used On:
+                            {{ reward.redeemed_at|date:"d M Y" }}
+
+                        </p>
+
+                        <p>
+
+                            Booking:
+                            {{ reward.booking.reference }}
+
+                        </p>
+
+                        <span class="status used-status">
+
+                            Used
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+                {% empty %}
+
+                <div class="empty-state">
+
+                    <p>
+
+                        No reward usage yet.
+
+                    </p>
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+        <!-- Expired Rewards -->
+
+        <div class="reward-section">
+
+            <h2>⌛ Expired Rewards</h2>
+
+            <div class="reward-grid">
+
+                {% for reward in expired_rewards %}
+
+                <div class="reward-card expired">
+
+                    <div class="reward-icon">
+
+                        ⌛
+
+                    </div>
+
+                    <div class="reward-content">
+
+                        <h3>
+
+                            {{ reward.prize.name }}
+
+                        </h3>
+
+                        <p>
+
+                            Expired:
+                            {{ reward.expires_at|date:"d M Y" }}
+
+                        </p>
+
+                        <span class="status expired-status">
+
+                            Expired
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+                {% empty %}
+
+                <div class="empty-state">
+
+                    <p>
+
+                        No expired rewards.
+
+                    </p>
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

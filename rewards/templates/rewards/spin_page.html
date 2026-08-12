@@ -1,0 +1,130 @@
+{% extends "base_dashboard.html" %}
+{% load static %}
+{% block content %}
+<section class="spin-page">
+
+    {% csrf_token %}
+
+    <div class="spin-container">
+
+        <div class="spin-header">
+
+            <div class="gift-icon">
+
+                🎁
+
+            </div>
+
+            <h1>
+
+                {{ reward_title }}
+
+            </h1>
+
+            <p>
+
+                Spin the wheel and win amazing rewards.
+
+            </p>
+
+        </div>
+        <div class="spin-status">
+
+            
+
+    <div class="status-card">
+
+        <h4>
+
+            Spins Remaining
+
+        </h4>
+
+        <h2 id="remainingSpins">
+
+            {{ remaining_spins }}
+
+        </h2>
+
+    </div>
+
+</div>
+
+    <div class="wheel-section">
+
+        <div class="wheel-wrapper">
+
+            <div class="wheel-pointer"></div>
+
+            {{ prizes|json_script:"reward-prizes" }}
+
+                <svg id="rewardWheel"
+                    width="600"
+                    height="600"
+                    viewBox="0 0 600 600">
+                </svg>
+
+        </div>
+
+    </div>
+
+<div class="spin-action">
+
+    <button
+        id="spinButton">
+
+        🎡 Spin Now
+
+    </button>
+
+</div>
+
+<div class="available-rewards">
+
+    <h2>
+
+        Rewards Available
+
+    </h2>
+
+    <div class="reward-grid">
+
+        <div>
+
+            🎁
+
+            Free Laundry Items
+
+        </div>
+
+        <div>
+
+            🚚
+
+            Free Transport
+
+        </div>
+
+        <div>
+
+            ⚡
+
+            Express Service
+
+        </div>
+
+        <div>
+
+            ⭐
+
+            Subscription Upgrade
+
+        </div>
+
+    </div>
+
+</div>
+
+{% include "rewards/spin_result_popup.html" %}
+
+{% endblock %}

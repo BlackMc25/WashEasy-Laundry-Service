@@ -36,7 +36,7 @@ if not DEBUG:
 
     CSRF_COOKIE_SECURE = True
 
-    SECURE_SSL_REDIRECT = True
+    SECURE_SSL_REDIRECT = False
 
     SECURE_BROWSER_XSS_FILTER = True
 
@@ -74,6 +74,7 @@ INSTALLED_APPS = [
      "django.contrib.sitemaps",
     'django.contrib.humanize',
     'django.contrib.sites',
+    
 
     'allauth',
     'allauth.account',
@@ -83,6 +84,8 @@ INSTALLED_APPS = [
 
     'core',
     'accounts',
+    "rewards",
+    "rest_framework",
 ]
 
 MIDDLEWARE = [

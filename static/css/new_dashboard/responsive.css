@@ -952,4 +952,365 @@
 
     }
 
+
+/*==========================
+    Dashboard Hero Mobile
+==========================*/
+
+.dashboard-hero{
+
+    min-height:340px;
+    overflow:hidden;
+
+}
+
+.dashboard-bubbles .glass-circle{
+
+    width:38px;
+
+    height:38px;
+
+}
+
+.bubble-icon{
+
+    font-size:22px;
+
+}
+
+.bubble-label{
+
+    font-size:10px;
+
+}
+
+/* Bubble Positions */
+
+.reward-bubble{
+
+    top:10px;
+    left:10px;
+
+}
+
+.my-rewards-bubble{
+
+    top:25px;
+    right:18px;
+
+}
+
+.promotion-bubble{
+
+    top:120px;
+    right:35px;
+
+}
+
+.news-bubble{
+
+    bottom:18px;
+    left:18px;
+
+}
+
+.settings-bubble{
+
+    bottom:18px;
+    right:35px;
+
+}
+
+    /*=========================================================
+                Dashboard Wheel
+=========================================================*/
+
+          .spin-page{
+
+        padding:20px 12px;
+
+    }
+
+    .spin-container{
+
+        padding:25px 15px;
+
+        border-radius:20px;
+
+    }
+
+    .gift-icon{
+
+        font-size:48px;
+
+    }
+
+    .spin-header h1{
+
+        font-size:32px;
+
+    }
+
+    .spin-header p{
+
+        font-size:15px;
+
+    }
+
+    .wheel-section{
+
+        margin:25px auto;
+
+    }
+
+    .wheel-wrapper{
+
+        width:95vw;
+
+        height:95vw;
+
+        max-width:380px;
+
+        max-height:380px;
+
+        transform: translateX(-80px);
+
+    }
+
+    #rewardWheel{
+
+        width:100%;
+
+        height:100%;
+
+    }
+
+    #wheel{
+
+        width:100%;
+
+        height:100%;
+
+    }
+
+    .wheel-pointer{
+
+        border-left:15px solid transparent;
+
+        border-right:15px solid transparent;
+
+        border-top:30px solid #ff3b30;
+
+        top:-16px;
+
+    }
+
+    #spinButton{
+
+        width:220px;
+
+        padding:16px 20px;
+
+        font-size:18px;
+
+        margin-top:25px;
+
+    }
+
+    .reward-grid{
+
+        grid-template-columns:1fr;
+
+        gap:15px;
+
+    }
+
+    .reward-grid div{
+
+        padding:18px;
+
+        font-size:17px;
+
+        transform: translateX(-20px);
+
+    }
+
+        .spin-result-card{
+
+        padding:30px 22px;
+
+        border-radius:22px;
+
+    }
+
+    .result-emoji{
+
+        font-size:65px;
+
+    }
+
+    #resultTitle{
+
+        font-size:2rem;
+
+    }
+
+    .reward-highlight{
+
+        padding:22px 18px;
+
+    }
+
+    .reward-highlight h3{
+
+        font-size:1.7rem;
+
+    }
+
+    .result-buttons{
+
+        flex-direction:column;
+
+    }
+
+    .primary-btn,
+
+    .secondary-btn{
+
+        width:100%;
+
+    }
+
+    /*=====================================
+        EXPRESS SERVICE MOBILE
+=====================================*/
+
+.express-card{
+
+    display:block !important;
+
+    padding:20px !important;
+
+}
+
+.express-top{
+
+    display:flex !important;
+
+    justify-content:space-between;
+
+    align-items:flex-start;
+
+    gap:15px;
+
+}
+
+.express-info{
+
+    flex:1;
+
+}
+
+.express-info h6{
+
+    font-size:28px;
+
+    line-height:1.2;
+
+    margin:15px 0 10px;
+
+}
+
+.express-info p{
+
+    font-size:17px;
+
+    line-height:1.7;
+
+}
+
+.express-badge{
+
+    display:inline-block;
+
+    margin-bottom:12px;
+
+}
+
+.express-switch{
+
+    margin-top:5px;
+
+}
+
+.express-price-card{
+
+    position:relative !important;
+
+    width:100% !important;
+
+    margin-top:25px;
+
+    padding:20px;
+
+    text-align:center;
+
+    transform:none !important;
+
+    left:auto !important;
+
+    right:auto !important;
+
+}
+
+.express-price-card small{
+
+    display:block;
+
+    margin-bottom:8px;
+
+}
+
+.express-price-card strong{
+
+    font-size:32px;
+
+}
+
+.express-quantity{
+
+    margin-top:25px;
+
+}
+
+.qty2-wrapper{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:18px;
+
+}
+
+.qty2-wrapper button{
+
+    width:48px;
+
+    height:48px;
+
+}
+
+.qty2-wrapper input{
+
+    width:80px;
+
+    text-align:center;
+
+    font-size:22px;
+
+}
+
 }

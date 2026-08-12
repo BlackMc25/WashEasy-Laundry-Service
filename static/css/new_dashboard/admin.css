@@ -107,3 +107,1119 @@
     color:#fff;
 
 }
+
+/*=========================================================*
+    REWARD DASHBOARD
+*=========================================================*/
+
+.reward-dashboard{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:30px;
+
+}
+
+/*=========================================================*
+    PAGE HEADER
+*=========================================================*/
+
+.page-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:10px;
+
+}
+
+.page-header h2{
+
+    font-size:32px;
+
+    font-weight:700;
+
+    color:#0f172a;
+
+}
+
+.page-header p{
+
+    color:#64748b;
+
+    margin-top:8px;
+
+    font-size:15px;
+
+}
+
+/*=========================================================*
+    KPI CARDS
+*=========================================================*/
+
+.reward-cards{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+
+    gap:25px;
+
+}
+
+.reward-card{
+
+    background:#fff;
+
+    border-radius:24px;
+
+    padding:28px;
+
+    box-shadow:0 12px 35px rgba(15,23,42,.08);
+
+    transition:.35s;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.reward-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 20px 45px rgba(37,99,235,.15);
+
+}
+
+.reward-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(
+        135deg,
+        rgba(37,99,235,.08),
+        transparent
+    );
+
+    opacity:0;
+
+    transition:.35s;
+
+}
+
+.reward-card:hover::before{
+
+    opacity:1;
+
+}
+
+.reward-icon{
+
+    width:60px;
+
+    height:60px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:30px;
+
+    border-radius:18px;
+
+    background:#eff6ff;
+
+    margin-bottom:20px;
+
+}
+
+.reward-card h5{
+
+    color:#64748b;
+
+    font-size:15px;
+
+    margin-bottom:8px;
+
+}
+
+.reward-card h3{
+
+    font-size:30px;
+
+    font-weight:700;
+
+    color:#0f172a;
+
+}
+
+/*=========================================================*
+    SECTIONS
+*=========================================================*/
+
+.admin-section{
+
+    background:#fff;
+
+    border-radius:24px;
+
+    padding:28px;
+
+    box-shadow:0 10px 35px rgba(15,23,42,.06);
+
+}
+
+.section-title{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:20px;
+
+}
+
+.section-title h4{
+
+    font-size:22px;
+
+    font-weight:700;
+
+    color:#0f172a;
+
+}
+
+/*=========================================================*
+    TABLE
+*=========================================================*/
+
+.table{
+
+    margin-bottom:0;
+
+}
+
+.table thead{
+
+    background:#eff6ff;
+
+}
+
+.table th{
+
+    color:#2563eb;
+
+    font-weight:600;
+
+    border:none;
+
+    padding:16px;
+
+}
+
+.table td{
+
+    vertical-align:middle;
+
+    padding:16px;
+
+    border-color:#f1f5f9;
+
+}
+
+/*=========================================================*
+    BADGES
+*=========================================================*/
+
+.badge{
+
+    padding:8px 14px;
+
+    border-radius:30px;
+
+    font-size:13px;
+
+}
+
+/*=========================================================*
+    QUICK ACTIONS
+*=========================================================*/
+
+.reward-actions{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:18px;
+
+}
+
+.reward-actions .btn{
+
+    padding:14px 24px;
+
+    border-radius:14px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.reward-actions .btn:hover{
+
+    transform:translateY(-3px);
+
+}
+
+/*=========================================================*
+    ALERT
+*=========================================================*/
+
+.alert{
+
+    border-radius:16px;
+
+    padding:18px;
+
+}
+
+/*=========================================================*
+    CAMPAIGN MANAGEMENT
+*=========================================================*/
+
+.campaign-page{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:30px;
+
+}
+
+.campaign-page-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.campaign-page-header h2{
+
+    font-size:32px;
+
+    font-weight:700;
+
+    margin-bottom:8px;
+
+}
+
+.campaign-page-header p{
+
+    color:#64748b;
+
+}
+
+.campaign-table-card{
+
+    background:#fff;
+
+    border-radius:18px;
+
+    padding:25px;
+
+    box-shadow:0 10px 30px rgba(15,23,42,.08);
+
+}
+
+.campaign-table-card table{
+
+    margin-bottom:0;
+
+}
+
+.campaign-table-card th{
+
+    font-weight:700;
+
+    color:#334155;
+
+    padding:18px;
+
+}
+
+.campaign-table-card td{
+
+    padding:18px;
+
+    vertical-align:middle;
+
+}
+
+.campaign-table-card tbody tr{
+
+    transition:.25s;
+
+}
+
+.campaign-table-card tbody tr:hover{
+
+    background:#f8fafc;
+
+}
+
+.campaign-table-card .btn{
+
+    margin:0 2px;
+
+}
+
+/*=========================================================*
+    CREATE CAMPAIGN PAGE
+*=========================================================*/
+
+.campaign-container{
+
+    max-width:950px;
+
+    margin:auto;
+
+}
+
+/*=========================================*
+    HEADER
+*=========================================*/
+
+.campaign-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:35px;
+
+}
+
+.campaign-header h2{
+
+    font-size:32px;
+
+    font-weight:700;
+
+    color:#1e293b;
+
+    margin-bottom:8px;
+
+}
+
+.campaign-header p{
+
+    color:#64748b;
+
+    font-size:15px;
+
+    margin:0;
+
+}
+
+/*=========================================*
+    FORM CARD
+*=========================================*/
+
+.campaign-form{
+
+    background:#ffffff;
+
+    border-radius:20px;
+
+    padding:35px;
+
+    box-shadow:0 10px 30px rgba(15,23,42,.08);
+
+    border:1px solid #e2e8f0;
+
+}
+
+/*=========================================*
+    FORM LAYOUT
+*=========================================*/
+
+.form-group{
+
+    display:flex;
+
+    flex-direction:column;
+
+    margin-bottom:25px;
+
+}
+
+.form-row{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:25px;
+
+}
+
+/*=========================================*
+    LABELS
+*=========================================*/
+
+.form-group label{
+
+    font-size:15px;
+
+    font-weight:600;
+
+    color:#334155;
+
+    margin-bottom:10px;
+
+}
+
+/*=========================================*
+    INPUTS
+*=========================================*/
+
+.form-group input,
+
+.form-group textarea,
+
+.form-group select{
+
+    width:100%;
+
+    padding:14px 16px;
+
+    border:1px solid #dbe3ee;
+
+    border-radius:12px;
+
+    background:#fff;
+
+    font-size:15px;
+
+    transition:.3s;
+
+    outline:none;
+
+}
+
+.form-group textarea{
+
+    resize:vertical;
+
+    min-height:130px;
+
+}
+
+/*=========================================*
+    INPUT FOCUS
+*=========================================*/
+
+.form-group input:focus,
+
+.form-group textarea:focus,
+
+.form-group select:focus{
+
+    border-color:#2563eb;
+
+    box-shadow:0 0 0 4px rgba(37,99,235,.15);
+
+}
+
+/*=========================================*
+    PLACEHOLDER
+*=========================================*/
+
+.form-group input::placeholder,
+
+.form-group textarea::placeholder{
+
+    color:#94a3b8;
+
+}
+
+/*=========================================*
+    BUTTONS
+*=========================================*/
+
+.campaign-buttons{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    gap:15px;
+
+    margin-top:35px;
+
+}
+
+.campaign-buttons .btn{
+
+    min-width:170px;
+
+    padding:13px 20px;
+
+    border-radius:12px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.campaign-buttons .btn:hover{
+
+    transform:translateY(-2px);
+
+}
+
+/*=========================================*
+    SUCCESS BUTTON
+*=========================================*/
+
+.btn-success{
+
+    background:#22c55e;
+
+    border:none;
+
+}
+
+.btn-success:hover{
+
+    background:#16a34a;
+
+}
+
+/*=========================================*
+    CANCEL BUTTON
+*=========================================*/
+
+.btn-secondary{
+
+    background:#64748b;
+
+    border:none;
+
+}
+
+.btn-secondary:hover{
+
+    background:#475569;
+
+}
+
+.form-section{
+
+    margin-bottom:30px;
+
+}
+
+.form-section h4{
+
+    font-size:20px;
+
+    font-weight:700;
+
+    color:#1e293b;
+
+    margin-bottom:10px;
+
+}
+
+.form-section hr{
+
+    border:none;
+
+    height:1px;
+
+    background:#e2e8f0;
+
+}.form-section{
+
+    margin-bottom:30px;
+
+}
+
+.form-section h4{
+
+    font-size:20px;
+
+    font-weight:700;
+
+    color:#1e293b;
+
+    margin-bottom:10px;
+
+}
+
+.form-section hr{
+
+    border:none;
+
+    height:1px;
+
+    background:#e2e8f0;
+
+}
+
+/*=========================================================*
+    VIEW CAMPAIGN
+*=========================================================*/
+
+.campaign-details{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:30px;
+
+}
+
+.campaign-info-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:20px;
+
+}
+
+.info-card{
+
+    background:#fff;
+
+    padding:25px;
+
+    border-radius:18px;
+
+    text-align:center;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+}
+
+.info-card h6{
+
+    color:#64748b;
+
+    margin-bottom:10px;
+
+}
+
+.info-card h4{
+
+    font-size:28px;
+
+    font-weight:700;
+
+}
+
+.campaign-section{
+
+    background:#fff;
+
+    padding:30px;
+
+    border-radius:18px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+}
+
+.campaign-actions{
+
+    display:flex;
+
+    gap:20px;
+
+    justify-content:flex-end;
+
+}
+
+/*=========================================================*
+    DELETE CAMPAIGN
+*=========================================================*/
+
+.delete-page{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:40px;
+
+}
+
+.delete-card{
+
+    max-width:650px;
+
+    width:100%;
+
+    background:#fff;
+
+    border-radius:20px;
+
+    padding:40px;
+
+    text-align:center;
+
+    box-shadow:0 12px 35px rgba(15,23,42,.08);
+
+}
+
+.delete-icon{
+
+    width:90px;
+
+    height:90px;
+
+    margin:auto;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:#fee2e2;
+
+    font-size:42px;
+
+    margin-bottom:25px;
+
+}
+
+.delete-card h2{
+
+    font-size:30px;
+
+    margin-bottom:15px;
+
+}
+
+.delete-card p{
+
+    color:#64748b;
+
+    margin-bottom:10px;
+
+}
+
+.delete-warning{
+
+    color:#dc2626 !important;
+
+    font-weight:600;
+
+    margin-bottom:30px;
+
+}
+
+.campaign-summary{
+
+    text-align:left;
+
+    background:#f8fafc;
+
+    border-radius:14px;
+
+    padding:20px;
+
+    margin-bottom:30px;
+
+}
+
+.campaign-summary div{
+
+    margin-bottom:12px;
+
+}
+
+.delete-buttons{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:20px;
+
+}
+
+/*=========================================================*
+    POLICY CHECKBOX GRID
+*=========================================================*/
+
+.checkbox-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:18px;
+
+    margin-bottom:30px;
+
+}
+
+.checkbox-card{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    padding:18px;
+
+    border:1px solid #dbe3ee;
+
+    border-radius:14px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    background:#fff;
+
+}
+
+.checkbox-card:hover{
+
+    border-color:#2563eb;
+
+    background:#eff6ff;
+
+}
+
+.checkbox-card input{
+
+    width:18px;
+
+    height:18px;
+
+}
+
+.checkbox-card span{
+
+    font-weight:600;
+
+    color:#334155;
+
+}
+
+.switch-label{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    font-weight:600;
+
+    margin-bottom:35px;
+
+}
+
+.switch-label input{
+
+    width:20px;
+
+    height:20px;
+
+}
+
+
+
+
+
+
+
+/*=========================================================*
+    RESPONSIVE
+*=========================================================*/
+
+@media(max-width:992px){
+
+.reward-cards{
+
+    grid-template-columns:repeat(2,1fr);
+
+}
+
+.campaign-page-header{
+
+    flex-direction:column;
+
+    align-items:flex-start;
+
+    gap:20px;
+
+}
+
+.campaign-page-header .btn{
+
+    width:100%;
+
+}
+
+.campaign-table-card{
+
+    overflow-x:auto;
+
+}
+
+.campaign-info-grid{
+
+    grid-template-columns:repeat(2,1fr);
+
+}
+
+.checkbox-grid{
+
+    grid-template-columns:repeat(2,1fr);
+
+}
+
+}
+
+@media(max-width:768px){
+
+.page-header{
+
+    flex-direction:column;
+
+    align-items:flex-start;
+
+    gap:10px;
+
+}
+
+.reward-cards{
+
+    grid-template-columns:1fr;
+
+}
+
+.reward-actions{
+
+    flex-direction:column;
+
+}
+
+.reward-actions .btn{
+
+    width:100%;
+
+}
+
+
+.campaign-header{
+
+    flex-direction:column;
+
+    align-items:flex-start;
+
+    gap:15px;
+
+}
+
+.form-row{
+
+    grid-template-columns:1fr;
+
+}
+
+.campaign-form{
+
+    padding:25px;
+
+}
+
+.campaign-buttons{
+
+    flex-direction:column;
+
+}
+
+.campaign-buttons .btn{
+
+    width:100%;
+
+}
+
+.campaign-info-grid{
+
+    grid-template-columns:1fr;
+
+}
+
+.campaign-actions{
+
+    flex-direction:column;
+
+}
+
+.campaign-actions .btn{
+
+    width:100%;
+
+}
+
+.checkbox-grid{
+
+    grid-template-columns:1fr;
+
+}
+
+.delete-buttons{
+
+    flex-direction:column;
+
+}
+
+.delete-buttons .btn{
+
+    width:100%;
+
+}
+
+
+}

@@ -128,15 +128,180 @@ table{
 
 }
 
+
+.express-mobile{
+    display:none;
+}
+
+/*==================================================
+ iPad Pro (1024px)
+==================================================*/
+
+
+
+
+
+
+
+
+
 /* ===============================
 TABLETS
 =============================== */
 
+
+
 @media (max-width:992px){
 
+    .navbar{
+
+        padding:18px 22px;
+
+    }
+
+.navbar .container{
+
+    display:grid;
+
+    grid-template-columns:60px 1fr 60px;
+
+    align-items:center;
+
+}
+
+    /* Show hamburger */
+
+
+    
+
+    /* Center logo */
+
+    .navbar-brand{
+
+        display:flex;
+
+        justify-content:center;
+
+        grid-column:2;
+
+        align-items:center;
+
+        margin:0;
+
+        flex:none;
+
+    }
+
+    /* Show theme button */
+
+    .theme-toggle-mobile{
+
+    display:flex !important;
+
+    justify-content:center;
+
+    grid-column:3;
+
+    justify-self:end;
+
+    align-items:center;
+
+    width:45px;
+
+    height:45px;
+
+}
+
+.navbar-toggler{
+
+    display:flex !important;
+
+    grid-column:1;
+
+    justify-self:start;
+
+}
+
+    .hero-section{
+
+    min-height:700px;
+
+}
+
+.hero-slider{
+
+    height:700px;
+
+}
+
+.hero-content{
+
+    width:80%;
+
+    max-width:700px;
+
+    padding:50px;
+
+}
+
+.hero-title{
+
+    font-size:56px;
+
+}
+
+.hero-description{
+
+    font-size:22px;
+
+}
+
+.stats-section{
+
+    margin-top:45px;
+
+}
+
+.stats-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:20px;
+
+}
+
+.stat-card{
+
+    padding:30px 20px;
+
+}
+
+.steps-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:30px;
+
+}
+
+.step-card{
+
+    padding:35px;
+
+}
+
 .container{
-    width:95%;
+
+    max-width:1000px;
+
+    width:92%;
+
     margin:auto;
+
 }
 
 .summary-card{
@@ -145,8 +310,457 @@ TABLETS
 
 }
 
+    /*=========================================
+        EXPRESS - TABLET
+=========================================*/
+
+
+.express-card{
+
+    display:flex !important;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:60px;
+
+    padding:70px 50px;
+
+    text-align:center;
+
+    border-radius:40px;
+
 }
 
+.express-left{
+
+    width:100%;
+
+    max-width:720px;
+
+    margin:auto;
+
+}
+
+.express-right{
+
+    width:100%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    position:relative;
+
+}
+
+.express-benefits{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:25px;
+
+    margin-top:45px;
+
+}
+
+.express-benefit-card{
+
+    min-height:180px;
+
+    padding:28px;
+
+}
+
+.card-one,
+.card-two,
+.card-three,
+.card-four{
+
+    display:none;
+
+}
+
+.express-center{
+
+    position:relative;
+
+    width:260px;
+
+    height:260px;
+
+    margin:-70px auto;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+
+}
+
+.express-flow{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:35px;
+
+    margin-top:30px;
+
+}
+
+.express-counter{
+
+    width:320px;
+
+    margin:-115px -75px;
+
+    padding:30px;
+
+    border-radius:28px;
+
+}
+
+.express-counter h2{
+
+    font-size:60px;
+
+}
+
+.express-counter p{
+
+    font-size:20px;
+
+}
+
+.express-btn{
+
+    width:340px;
+
+    height:70px;
+
+    margin:45px auto 0;
+
+    font-size:22px;
+
+}
+
+/*=========================================*
+        REWARDS - TABLET
+*=========================================*/
+
+.reward-home-content{
+
+    display:flex !important;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:60px;
+
+    padding:70px 50px;
+
+    text-align:center;
+
+    border-radius:40px;
+
+}
+
+.reward-left{
+
+    width:100%;
+
+    max-width:720px;
+
+    margin:auto;
+
+}
+
+.reward-right{
+
+    width:100%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    position:relative;
+
+}
+
+.reward-home-title{
+
+    font-size:58px;
+
+    line-height:1.1;
+
+    margin-bottom:25px;
+
+}
+
+.reward-home-description{
+
+    max-width:680px;
+
+    margin:auto;
+
+    font-size:22px;
+
+    line-height:1.8;
+
+}
+
+.reward-features{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:25px;
+
+    margin-top:45px;
+
+}
+
+.reward-feature-card{
+
+    min-height:180px;
+
+    padding:28px;
+
+}
+
+.reward-card-one,
+.reward-card-two,
+.reward-card-three,
+.reward-card-four{
+
+    display:none;
+
+}
+
+.reward-wheel-home{
+
+    position:relative;
+
+    width:260px;
+
+    height:260px;
+
+    margin:-70px auto;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+
+
+.reward-counter{
+
+    width:320px;
+
+    margin:-65px auto;
+
+    padding:30px;
+
+    border-radius:28px;
+
+}
+
+.reward-counter h2{
+
+    font-size:60px;
+
+}
+
+.reward-counter p{
+
+    font-size:20px;
+
+}
+
+.reward-flow{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:35px;
+
+    margin-top:30px;
+
+}
+
+.reward-home-btn{
+
+    width:340px;
+
+    height:70px;
+
+    margin:45px auto 0;
+
+    font-size:22px;
+
+}
+
+/*=========================================*
+        SUBSCRIPTION - TABLET
+*=========================================*/
+
+.subscription-home-content{
+
+    display:flex !important;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:60px;
+
+    padding:70px 50px;
+
+    text-align:center;
+
+    border-radius:40px;
+
+}
+
+.subscription-left{
+
+    width:100%;
+
+    max-width:720px;
+
+    margin:auto;
+
+}
+
+.subscription-right{
+
+    width:100%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    position:relative;
+
+}
+
+
+
+.subscription-benefits{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:25px;
+
+    margin-top:45px;
+}
+
+.subscription-benefit-card{
+
+    min-height:180px;
+
+    padding:28px;
+
+}
+
+.subscription-card-one,
+.subscription-card-two,
+.subscription-card-three,
+.subscription-card-four{
+
+    display:none;
+
+}
+
+.subscription-counter{
+
+    width:320px;
+
+    margin:45px auto;
+
+    padding:30px;
+
+    border-radius:28px;
+
+}
+
+.subscription-counter h2{
+
+    font-size:60px;
+
+}
+
+.subscription-counter p{
+
+    font-size:20px;
+
+}
+
+.subscription-flow{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:35px;
+
+    margin-top:30px;
+
+}
+
+.subscription-home-btn{
+
+    width:340px;
+
+    height:70px;
+
+    margin:45px auto 0;
+
+    font-size:22px;
+
+}
+
+}
 
 /*=========================================
 NOTIFICATIONS
@@ -167,6 +781,8 @@ margin-bottom:25px;
 line-height:1.8;
 
 }
+
+
 
 /*=========================================================
                 MOBILE RESPONSIVE
@@ -1015,8 +1631,8 @@ button{
 AUTH MODAL - MOBILE
 ======================================*/
 
-.login-modal .modal-dialog,
-.signup-modal .modal-dialog{
+#loginModal .modal-dialog,
+#signupModal .modal-dialog{
 
     width:92%;
     max-width:420px;
@@ -1033,8 +1649,8 @@ AUTH MODAL - MOBILE
 
 }
 
-.login-modal .modal-content,
-.signup-modal .modal-content{
+#loginModal .modal-content,
+#signupModal .modal-content{
 
     width:100%;
 
@@ -1052,8 +1668,8 @@ AUTH MODAL - MOBILE
 
 }
 
-.login-modal .modal-body,
-.signup-modal .modal-body{
+#loginModal .modal-body,
+#signupModal .modal-body{
 
     padding:28px 24px 35px;
 
@@ -1073,8 +1689,8 @@ AUTH MODAL - MOBILE
 
 }
 
-.login-modal input,
-.signup-modal input{
+#loginModalinput,
+#signupModal input{
 
  font-size:16px !important;
 
@@ -1256,7 +1872,979 @@ body.dark .hero-stats span{
 
 }
 
+/*=========================================================
+                Sub, Rewards, and Express
+=========================================================*/
+
+
+    .express-desktop{
+        display:none;
+    }
+
+    .express-mobile{
+
+        display:flex;
+
+        flex-direction:column;
+
+        align-items:center;
+
+        gap:28px;
+
+        margin:50px 0;
+
+        border-radius:35px;
+
+        background:
+
+    linear-gradient(
+
+    135deg,
+
+    #FFD43B,
+
+    #FFB703
+
+    );
+
+    box-shadow:
+
+    0 35px 80px rgba(255,193,7,.35);
+
+    }
+
+    .express-mobile .express-title{
+
+    font-size:42px;
+
+    line-height:1.15;
+
+    margin-bottom:18px;
+
 }
+
+.express-mobile .express-description{
+
+    font-size:16px;
+
+    line-height:1.7;
+
+    margin-bottom:25px;
+
+}
+
+.express-mobile .express-btn{
+
+    margin-bottom:35px;
+
+}
+
+.mobile-express-carousel{
+
+    position:relative;
+
+    height:32px;
+
+    margin:20px 0;
+
+    overflow:hidden;
+
+    width:100%;
+
+    text-align:center;
+
+}
+
+.mobile-slide{
+
+    position:absolute;
+
+    inset:0;
+
+    opacity:0;
+
+    transform:translateY(20px);
+
+    transition:.5s;
+
+    font-size:18px;
+
+    font-weight:700;
+
+    color:#1d4ed8;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.mobile-slide.active{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+}
+
+
+
+    /* Lightning */
+
+    .mobile-lightning{
+
+        width:140px;
+        height:140px;
+
+        border-radius:50%;
+
+        display:flex;
+        justify-content:center;
+        align-items:center;
+
+        font-size:70px;
+
+        background:rgba(255,255,255,.18);
+
+        backdrop-filter:blur(18px);
+
+        border:1px solid rgba(255,255,255,.20);
+
+        box-shadow:0 20px 45px rgba(0,0,0,.15);
+
+        animation:mobilePulse 3s infinite;
+
+    }
+
+    /* Feature Cards */
+
+    .mobile-feature-grid{
+
+        width:100%;
+
+        display:grid;
+
+        grid-template-columns:repeat(2,1fr);
+
+        gap:16px;
+
+    }
+
+    .mobile-feature-card{
+
+        background:rgba(255,255,255,.18);
+
+        backdrop-filter:blur(18px);
+
+        border-radius:22px;
+
+        padding:20px;
+
+        text-align:center;
+
+        box-shadow:0 12px 30px rgba(0,0,0,.12);
+
+    }
+
+    .mobile-feature-icon{
+
+        font-size:34px;
+
+        margin-bottom:10px;
+
+    }
+
+    .mobile-feature-card h5{
+
+        margin-bottom:6px;
+
+        font-weight:700;
+
+    }
+
+    .mobile-feature-card small{
+
+        color:#555;
+
+    }
+
+    /* Counter */
+
+    .mobile-counter-card{
+
+        width:100%;
+
+        text-align:center;
+
+        background:rgba(255,255,255,.18);
+
+        backdrop-filter:blur(18px);
+
+        border-radius:24px;
+
+        padding:24px;
+
+    }
+
+    .mobile-counter-card h2{
+
+        font-size:42px;
+
+        margin-bottom:8px;
+
+        font-weight:800;
+
+    }
+
+    /* Flow */
+
+    .mobile-flow{
+
+        display:flex;
+
+        flex-direction:column;
+
+        align-items:center;
+
+        gap:14px;
+
+    }
+
+    .mobile-step{
+
+        display:flex;
+
+        flex-direction:column;
+
+        align-items:center;
+
+    }
+
+    .mobile-step-icon{
+
+        width:70px;
+        height:70px;
+
+        border-radius:50%;
+
+        display:flex;
+        justify-content:center;
+        align-items:center;
+
+        background:white;
+
+        font-size:32px;
+
+        margin-bottom:8px;
+
+    }
+
+    .mobile-arrow{
+
+        font-size:28px;
+
+        color:#333;
+
+    }
+
+       .express-left{
+
+        width:100%;
+
+        max-width:100%;
+
+        padding:0;
+
+        margin:0 auto;
+
+        text-align:center;
+
+    }
+
+    .express-badge{
+
+        display:inline-flex;
+
+        margin:0 auto 20px;
+
+    }
+
+    .express-title{
+
+        font-size:clamp(2.5rem, 11vw, 3.5rem);
+
+        line-height:1.08;
+
+        margin-bottom:22px;
+
+        word-break:normal;
+
+    }
+
+    .express-description{
+
+        width:100%;
+
+        max-width:100%;
+
+        margin:0 auto 30px;
+
+        font-size:17px;
+
+        line-height:1.7;
+
+        text-align:center;
+
+    }
+
+        .express-btn{
+
+        width:100%;
+
+        display:flex;
+
+        justify-content:center;
+
+        align-items:center;
+
+    }
+
+    .reward-home-section{
+
+        display:none;
+
+    }
+
+.reward-mobile {
+
+    display:flex !important;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    text-align:center;
+
+    border-radius:35px;
+
+    margin:50px 0;
+
+    gap:24px;
+
+     background:
+    linear-gradient(
+        135deg,
+        #0b63ff,
+        #3b82f6,
+        #60a5fa
+    );
+
+    padding:30px 22px;
+
+}
+
+.mobile-wheel{
+
+    width:160px;
+
+    height:160px;
+
+    border-radius:50%;
+
+
+    background:white;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:95px;
+
+    box-shadow:0 20px 50px rgba(0,0,0,.15);
+
+    margin-top: 35%;
+
+    margin-right:-62%;
+
+
+
+}
+
+#mobileSpinWheel{
+
+    width:170px;
+
+    height:170px;
+
+    display:block;
+
+}
+
+
+
+.reward-mobile .reward-title{
+
+    font-size:clamp(2.2rem,9vw,3.4rem);
+
+    font-weight:800;
+
+    line-height:1.1;
+
+    color:#fff;
+
+    text-align:center;
+
+    letter-spacing:-1px;
+
+    margin:25px 0;
+
+}
+
+.reward-mobile .reward-description{
+
+    font-size:18px;
+
+    line-height:1.8;
+
+    color:rgba(255,255,255,.95);
+
+    max-width:320px;
+
+    margin:0 auto 30px;
+
+}
+
+.reward-mobile .reward-btn{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:12px;
+
+    width:100%;
+
+    max-width:320px;
+
+    height:60px;
+
+    margin:35px auto 0;
+
+    border-radius:60px;
+
+    text-decoration:none;
+
+    background:#ffffff;
+
+    color:#2563eb;
+
+    font-size:20px;
+
+    font-weight:700;
+
+    box-shadow:0 18px 40px rgba(0,0,0,.15);
+
+    transition:.35s;
+
+}
+
+.reward-mobile .reward-btn:hover{
+
+    transform:translateY(-4px);
+
+}
+
+.reward-mobile-cards{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:16px;
+
+    width:100%;
+
+}
+
+.reward-mini-card{
+
+    background:rgba(255,255,255,.18);
+
+    backdrop-filter:blur(18px);
+
+    border-radius:24px;
+
+    padding:25px 20px;
+
+    text-align:center;
+
+    transition:.35s;
+
+}
+
+.reward-mini-card:hover{
+
+    transform:translateY(-6px);
+
+}
+
+.reward-mini-icon{
+
+    font-size:42px;
+
+    margin-bottom:15px;
+
+}
+
+.reward-mini-card h4{
+
+    color:#fff;
+
+    font-size:20px;
+
+    margin-bottom:8px;
+
+}
+
+.reward-mini-card small{
+
+    color:rgba(255,255,255,.85);
+
+}
+
+.reward-mobile-counter{
+
+    width:100%;
+
+    padding:25px;
+
+    border-radius:22px;
+
+    background:rgba(255,255,255,.18);
+
+}
+
+.reward-mobile-counter h2{
+
+    font-size:48px;
+
+    margin-bottom:8px;
+
+    color:rgba(255,255,255,.85);
+
+}
+
+.reward-badge{
+
+    display:inline-flex;
+
+    margin:0 auto 20px;
+
+    color:rgba(255,255,255,.85);
+}
+
+.reward-step{
+
+    width:95px;
+
+    padding:18px;
+
+    border-radius:22px;
+
+    background:rgba(255,255,255,.18);
+
+    backdrop-filter:blur(18px);
+
+    text-align:center;
+
+}
+
+.reward-step-icon{
+
+    font-size:36px;
+
+    margin-bottom:10px;
+
+}
+
+.reward-step span{
+
+    color:#fff;
+
+    font-weight:700;
+
+}
+
+.reward-arrow{
+
+    font-size:28px;
+
+    color:white;
+
+}
+
+.reward-mobile-stars span{
+
+    position:absolute;
+
+    opacity:.15;
+
+    font-size:26px;
+
+    animation:rewardFloat 8s ease-in-out infinite;
+
+}
+
+.reward-mobile-stars span:nth-child(1){
+
+    top:30px;
+
+    left:20px;
+
+}
+
+.reward-mobile-stars span:nth-child(2){
+
+    top:180px;
+
+    right:25px;
+
+}
+
+.reward-mobile-stars span:nth-child(3){
+
+    bottom:220px;
+
+    left:35px;
+
+}
+
+.reward-mobile-stars span:nth-child(4){
+
+    bottom:100px;
+
+    right:30px;
+
+}
+
+/*=========================================*
+* MOBILE SUBSCRIPTION
+*=========================================*/
+
+.subscription-home-content{
+
+    display:none !important;
+
+}
+
+.subscription-mobile{
+
+    display:flex !important;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    gap:28px;
+
+    margin-top:30px;
+
+    border-radius:35px;
+
+    width:100%;
+
+}
+
+/*=========================================*
+* CENTER MEMBER ICON
+*=========================================*/
+
+.mobile-member-circle{
+
+    width:150px;
+
+    height:150px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:75px;
+
+    background:rgba(255,255,255,.18);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.25);
+
+    box-shadow:0 20px 45px rgba(0,0,0,.15);
+
+}
+
+/*=========================================*
+* FEATURE GRID
+*=========================================*/
+
+.mobile-member-grid{
+
+    width:100%;
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:18px;
+
+}
+
+.mobile-member-card{
+
+    background:rgba(255,255,255,.18);
+
+    backdrop-filter:blur(18px);
+
+    border-radius:22px;
+
+    padding:22px;
+
+    text-align:center;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.12);
+
+}
+
+.mobile-member-icon{
+
+    font-size:34px;
+
+    margin-bottom:12px;
+
+}
+
+.mobile-member-card h5{
+
+    margin-bottom:6px;
+
+    font-weight:700;
+
+}
+
+.mobile-member-card small{
+
+    color:#555;
+
+}
+
+/*=========================================*
+* COUNTER
+*=========================================*/
+
+.mobile-member-counter{
+
+    width:100%;
+
+    text-align:center;
+
+    padding:25px;
+
+    border-radius:25px;
+
+    background:rgba(255,255,255,.18);
+
+    backdrop-filter:blur(18px);
+
+    box-shadow:0 15px 35px rgba(0,0,0,.12);
+
+}
+
+.mobile-member-counter h2{
+
+    font-size:44px;
+
+    font-weight:800;
+
+    margin-bottom:10px;
+
+}
+
+.mobile-member-counter p{
+
+    font-weight:600;
+
+}
+
+/*=========================================*
+* FLOW
+*=========================================*/
+
+.mobile-member-flow{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    gap:16px;
+
+}
+
+.mobile-member-step{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+}
+
+.mobile-member-step-icon{
+
+    width:70px;
+
+    height:70px;
+
+    border-radius:50%;
+
+    background:white;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:32px;
+
+    margin-bottom:8px;
+
+}
+
+.mobile-member-arrow{
+
+    font-size:30px;
+
+}
+
+.mobile-member-btn,
+.subscription-mobile .subscription-home-btn{
+
+    width:100%;
+
+    max-width:320px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    margin:15px auto 0;
+
+}
+
+
+
+@keyframes rewardFloat{
+
+    0%,100%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-12px);
+
+    }
+
+}
+/*=========================================
+        REWARD WHEEL
+=========================================*/
+
+@keyframes spinWheel{
+
+    0%{
+
+        transform:translate(-50%,-50%) rotate(0deg);
+
+    }
+
+    45%{
+
+        transform:translate(-50%,-50%) rotate(360deg);
+
+    }
+
+    55%{
+
+        transform:translate(-50%,-50%) rotate(360deg);
+
+    }
+
+    100%{
+
+        transform:translate(-50%,-50%) rotate(720deg);
+
+    }
+
+}
+
+.mobile-wheel{
+
+    animation:spinWheel 12s linear infinite;
+
+}
+
+@keyframes mobilePulse{
+
+    0%,100%{
+
+        transform:scale(1);
+
+    }
+
+    50%{
+
+        transform:scale(1.08);
+
+    }
+
+    
+
+
+}
+
+}
+
+/*=========================================*
+* MOBILE SUBSCRIPTION
+*=========================================*/
+
+.subscription-mobile{
+
+    display:none;
+
+}
+
+.reward-mobile{
+    display : none;
+}
+
+
 
 
 

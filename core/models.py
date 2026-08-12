@@ -368,6 +368,38 @@ class OrderItem(models.Model):
     default=False
     )
 
+    covered_quantity = models.PositiveIntegerField(
+    default=0,
+    help_text="Quantity covered by subscription or reward."
+    )
+
+    paid_quantity = models.PositiveIntegerField(
+    default=0,
+    help_text="Quantity paid normally."
+    )
+
+    covered_by_reward = models.BooleanField(
+    default=False
+    )
+
+    reward_quantity = models.PositiveIntegerField(
+    default=0,
+    help_text="Number of items covered by reward."
+    )
+
+    reward_paid_quantity = models.PositiveIntegerField(
+    default=0,
+    help_text="Number of reward items that exceeded the reward limit."
+    )
+    
+    reward = models.ForeignKey(
+    "rewards.CustomerReward",
+    on_delete=models.SET_NULL,
+    null=True,
+    blank=True,
+    related_name="order_items"
+)
+
     def __str__(self):
         return f"{self.item.item_name}"
 

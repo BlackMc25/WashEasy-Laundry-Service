@@ -1,0 +1,196 @@
+{% extends "admin/base_admin.html" %}
+
+{% block title %}
+Reward Campaigns
+{% endblock %}
+
+{% block content %}
+
+<div class="campaign-page">
+
+    <!-- Header -->
+
+    <div class="campaign-page-header">
+
+        <div>
+
+            <h2>🎯 Reward Campaigns</h2>
+
+            <p>
+                Manage all reward campaigns from one place.
+            </p>
+
+        </div>
+
+        <a href="{% url 'create_reward_campaign' %}"
+           class="btn btn-primary">
+
+            <i class="fas fa-plus"></i>
+
+            Create Campaign
+
+        </a>
+
+    </div>
+
+    <!-- Campaign Table -->
+
+    <div class="campaign-table-card">
+
+        <table class="table table-hover align-middle">
+
+            <thead>
+
+                <tr>
+
+                    <th>Campaign</th>
+
+                    <th>Status</th>
+
+                    <th>Max Winners</th>
+
+                    <th>Current Winners</th>
+
+                    <th>Spins / Customer</th>
+
+                    <th>Start</th>
+
+                    <th>End</th>
+
+                    <th class="text-center">
+
+                        Actions
+
+                    </th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+            {% for campaign in campaigns %}
+
+                <tr>
+
+                    <td>
+
+                        <strong>
+
+                            {{ campaign.title }}
+
+                        </strong>
+
+                    </td>
+
+                    <td>
+
+                        {% if campaign.status == "Live" %}
+
+                            <span class="badge bg-success">
+
+                                Live
+
+                            </span>
+
+                        {% elif campaign.status == "Scheduled" %}
+
+                            <span class="badge bg-warning text-dark">
+
+                                Scheduled
+
+                            </span>
+
+                        {% else %}
+
+                            <span class="badge bg-secondary">
+
+                                Ended
+
+                            </span>
+
+                        {% endif %}
+
+                    </td>
+
+                    <td>
+
+                        {{ campaign.max_winners }}
+
+                    </td>
+
+                    <td>
+
+                        {{ campaign.winners_count }}
+
+                    </td>
+
+                    <td>
+
+                        {{ campaign.max_spins_per_customer }}
+
+                    </td>
+
+                    <td>
+
+                        {{ campaign.start_time|date:"M d, Y" }}
+
+                    </td>
+
+                    <td>
+
+                        {{ campaign.end_time|date:"M d, Y" }}
+
+                    </td>
+
+                    <td class="text-center">
+
+                   <a href="{% url 'view_reward_campaign' campaign.id %}"
+                            class="btn btn-sm btn-outline-primary">
+
+                                <i class="fas fa-eye"></i>
+
+                    </a>
+
+                        <a href="{% url 'edit_reward_campaign' campaign.id %}"
+                        class="btn btn-sm btn-outline-success">
+
+                            <i class="fas fa-edit"></i>
+
+                        </a>
+
+                    <a href="{% url 'delete_reward_campaign' campaign.id %}"
+                        class="btn btn-sm btn-outline-danger">
+
+                            <i class="fas fa-trash"></i>
+
+                    </a>
+
+                    </td>
+
+                </tr>
+
+            {% empty %}
+
+                <tr>
+
+                    <td colspan="8"
+                        class="text-center py-5">
+
+                        No reward campaigns available.
+
+                    </td>
+
+                </tr>
+
+            {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+{% endblock %}

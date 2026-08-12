@@ -1,0 +1,361 @@
+/*==========================================
+        REWARD RULES PAGE
+==========================================*/
+
+.reward-rules{
+
+    min-height:100vh;
+
+    padding:70px 20px;
+
+    background:linear-gradient(
+        180deg,
+        #f5f9ff 0%,
+        #ffffff 100%
+    );
+
+}
+
+.reward-container{
+
+    max-width:1050px;
+
+    margin:auto;
+
+    background:#fff;
+
+    border-radius:30px;
+
+    padding:50px;
+
+    box-shadow:
+
+        0 15px 45px rgba(0,0,0,.08);
+
+}
+
+.reward-header{
+
+    text-align:center;
+
+    margin-bottom:45px;
+
+}
+
+.reward-icon{
+
+    font-size:70px;
+
+    margin-bottom:20px;
+
+    animation:floatGift 3s ease-in-out infinite;
+
+}
+
+.reward-header h1{
+
+    font-size:48px;
+
+    color:#0d1b3e;
+
+    margin-bottom:15px;
+
+    font-weight:700;
+
+}
+
+.reward-header p{
+
+    font-size:20px;
+
+    color:#6d7280;
+
+}
+
+.reward-cards{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:25px;
+
+    margin-bottom:50px;
+
+}
+
+.info-card{
+
+    background:#f8fbff;
+
+    border-left:6px solid #2563eb;
+
+    border-radius:20px;
+
+    padding:25px;
+
+    text-align:center;
+
+    transition:.3s;
+
+}
+
+.info-card:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:
+
+        0 15px 30px rgba(0,0,0,.08);
+
+}
+
+.info-card h4{
+
+    margin-bottom:12px;
+
+    font-size:19px;
+
+    color:#1e3a8a;
+
+}
+
+.info-card p{
+
+    font-size:22px;
+
+    font-weight:700;
+
+    color:#111827;
+
+}
+
+.rules-section{
+
+    margin-top:50px;
+
+}
+
+.rules-section h2{
+
+    font-size:34px;
+
+    color:#0d1b3e;
+
+    margin-bottom:25px;
+
+}
+
+.rules-section ol{
+
+    padding-left:25px;
+
+}
+
+.rules-section li{
+
+    margin-bottom:16px;
+
+    line-height:1.8;
+
+    font-size:18px;
+
+    color:#555;
+
+}
+
+.tag-list{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:15px;
+
+}
+
+.reward-tag{
+
+    background:#2563eb;
+
+    color:white;
+
+    padding:
+
+        12px 22px;
+
+    border-radius:30px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.reward-tag:hover{
+
+    background:#0d47c4;
+
+    transform:scale(1.05);
+
+}
+
+.reward-footer{
+
+    margin-top:60px;
+
+    text-align:center;
+
+}
+
+.reward-footer label{
+
+    font-size:18px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:10px;
+
+    margin-bottom:30px;
+
+}
+
+.continue-btn{
+
+    display:inline-block;
+
+    background:#2563eb;
+
+    color:white;
+
+    text-decoration:none;
+
+    padding:
+
+        18px 45px;
+
+    border-radius:50px;
+
+    font-size:20px;
+
+    font-weight:700;
+
+    transition:.3s;
+
+}
+
+.continue-btn:hover{
+
+    background:#0d47c4;
+
+    transform:translateY(-3px);
+
+}
+
+.continue-btn.disabled{
+
+    pointer-events:none;
+
+    opacity:.45;
+
+}
+
+.reward-lock-box{
+
+    margin:35px 0;
+
+    padding:30px;
+
+    background:#fff8f2;
+
+    border:2px dashed #f59e0b;
+
+    border-radius:20px;
+
+    text-align:center;
+
+}
+
+.reward-lock-icon{
+
+    font-size:55px;
+
+    margin-bottom:15px;
+
+}
+
+.reward-lock-box h3{
+
+    color:#d97706;
+
+    margin-bottom:15px;
+
+}
+
+.reward-lock-box p{
+
+    color:#555;
+
+    line-height:1.8;
+
+}
+
+.locked-btn{
+
+    background:#cbd5e1 !important;
+
+    color:#6b7280 !important;
+
+    cursor:not-allowed;
+
+    opacity:.8;
+
+}
+
+@keyframes floatGift{
+
+    0%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-10px);
+
+    }
+
+    100%{
+
+        transform:translateY(0);
+
+    }
+
+}
+
+@media(max-width:900px){
+
+.reward-cards{
+
+    grid-template-columns:1fr;
+
+}
+
+.reward-header h1{
+
+    font-size:38px;
+
+}
+
+.reward-container{
+
+    padding:30px;
+
+}
+
+}

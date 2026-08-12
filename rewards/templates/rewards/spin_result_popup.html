@@ -1,0 +1,61 @@
+
+{% load static %}
+<div id="spinResultModal" class="spin-result-modal">
+
+    <div class="spin-result-card">
+
+        <div id="resultEmoji" class="result-emoji">
+            🎉
+        </div>
+
+        <h2 id="resultTitle">
+            Congratulations!
+        </h2>
+
+        <p id="resultMessage"></p>
+
+        <div class="reward-highlight">
+
+            <div id="rewardIcon" class="reward-icon">
+                🎁
+            </div>
+
+            <h3 id="rewardName"></h3>
+
+            <p id="rewardDescription"></p>
+
+        </div>
+
+        <div class="reward-summary">
+
+            <div class="summary-item">
+
+                <span>🎯 Remaining Spins</span>
+
+                <strong id="remainingSpinText"></strong>
+
+            </div>
+
+        </div>
+
+        <div class="result-buttons">
+
+            <a
+                href="{% url 'my-rewards' %}"
+                id="claimRewardBtn"
+                class="primary-btn">
+
+                🎁 View My Rewards
+
+            </a>
+            
+            <button id="closeResultBtn"
+                    class="secondary-btn">
+                Close
+            </button>
+
+        </div>
+
+    </div>
+
+</div>

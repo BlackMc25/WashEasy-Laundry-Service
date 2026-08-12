@@ -115,7 +115,7 @@ body.light .navbar{
 
     background:rgba(255,255,255,.82);
 
-    backdrop-filter:blur(20px);
+    backdrop-filter:none;
 
     border:1px solid rgba(255,255,255,.45);
 
@@ -245,7 +245,7 @@ box-shadow:0 15px 35px rgba(0,0,0,.35);
 
 }
 
-body.dark .express-section{
+body.dark .express-desktop{
 
 background:#0f172a;
 
@@ -267,15 +267,6 @@ box-shadow:0 25px 70px rgba(255,193,7,.4);
 
 }
 
-body.dark .express-right{
-
-opacity:.12;
-
-color:white;
-
-font-size:220px;
-
-}
 
 body.dark .why-section{
 
@@ -474,6 +465,17 @@ color:#1f2937 !important;
 
 }
 
+body.dark .express-mobile h2,
+body.dark .express-mobile h3,
+body.dark .express-mobile h4,
+body.dark .express-mobile h5,
+body.dark .express-mobile p,
+body.dark .express-mobile span{
+
+color:#1f2937 !important;
+
+}
+
 /*=========================================================
             PREMIUM NAVBAR DARK MODE
 =========================================================*/
@@ -482,9 +484,9 @@ body.dark .navbar{
 
     background:rgba(15,23,42,.88);
 
-    backdrop-filter:blur(22px);
+    backdrop-filter:none;
 
-    -webkit-backdrop-filter:blur(22px);
+    -webkit-backdrop-filter:none;
 
     border:1px solid rgba(124,196,255,.25);
 
@@ -537,7 +539,7 @@ body.dark .navbar-collapse{
 
     background:rgba(15,23,42,.95);
 
-    backdrop-filter:blur(18px);
+    backdrop-filter:none;
 
     border:1px solid rgba(124,196,255,.18);
 
@@ -689,8 +691,8 @@ body.dark .modal-content{
 
 }
 
-body.dark .login-modal .form-control,
-body.dark .signup-modal .form-control{
+body.dark #loginModal .form-control,
+body.dark #signupModal.form-control{
 
     background:rgba(30,41,59,.65);
 

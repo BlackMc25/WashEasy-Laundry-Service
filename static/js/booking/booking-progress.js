@@ -226,18 +226,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
         nextReview.addEventListener(
             "click",
-            ()=>{
+            async ()=>{
 
                 if(validateBooking()){
 
-                    updateReviewPage();
+                    await updateReviewPage();
 
                     showStep(3);
 
                 }
 
             }
-
         );
 
     }

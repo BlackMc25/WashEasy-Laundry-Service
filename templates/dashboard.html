@@ -6,27 +6,144 @@
     <!-- Dashboard Hero -->
     <section class="dashboard-hero">
 
-        <div class="hero-content">
+    <div class="hero-content">
 
-            <span class="hero-greeting">
-                👋 Welcome back,
+        <span class="hero-greeting">
+            👋 Welcome back,
+        </span>
+
+        <h1 class="hero-title">
+
+            {{ request.user.first_name }}
+
+        </h1>
+
+        <p class="hero-subtitle">
+
+            Manage your laundry bookings,
+            orders and deliveries all in one place.
+
+        </p>
+
+    </div>
+
+    <!-- Dashboard Floating Bubbles -->
+
+    <div class="dashboard-bubbles">
+
+        <!--==============================
+                REWARD
+        ===============================-->
+
+        {% if show_reward_bubble %}
+
+        <div
+            class="glass-circle modal-bubble reward-bubble"
+
+            data-title="{{ reward_title }}"
+
+            data-message="Win exciting laundry rewards this weekend!"
+
+            data-spins="{{ remaining_spins }}"
+
+            data-winners="{{ reward_winners_left }}"
+
+            data-end="{{ reward_end_time|date:'D, M j • g:i A' }}"
+
+            data-url="{% url 'reward-rules' %}">
+
+            <span class="bubble-icon">
+                🎁
             </span>
-
-            <h1 class="hero-title">
-
-                {{ request.user.first_name }}
-
-            </h1>
-
-            <p class="hero-subtitle">
-
-                Manage your laundry bookings, orders and deliveries all in one place.
-
-            </p>
 
         </div>
 
-    </section>
+        {% endif %}
+
+        <!--==================================
+                MY REWARDS
+        ===================================-->
+
+      <div
+            class="glass-circle modal-bubble my-rewards-bubble"
+
+            data-title="My Rewards"
+
+            data-message="View your active rewards, reward usage and expired rewards."
+
+            data-my-rewards-url="{% url 'my-rewards' %}"
+
+            data-has-rewards="{{ has_rewards|yesno:'true,false' }}">
+
+                <span class="bubble-icon">
+                    🏆 
+                </span>
+
+
+        </div>
+
+        <!--==============================
+                NEWS
+        ===============================-->
+
+        <div
+
+            class="glass-circle modal-bubble news-bubble"
+
+            data-title="WashEasy News"
+
+            data-message="Stay updated with the latest WashEasy announcements.">
+
+               <span class="bubble-icon">
+                    📢
+                </span>
+
+        </div>
+
+        <!--==============================
+                PROMOTION
+        ===============================-->
+
+        <div
+
+            class="glass-circle modal-bubble promotion-bubble"
+
+            data-title="Current Promotions"
+
+            data-message="Discover our latest discounts and special offers.">
+
+            
+
+                <span class="bubble-icon">
+                    🎉
+                </span>
+
+        </div>
+
+        <!--==============================
+                SETTINGS
+        ===============================-->
+
+        <div
+
+            class="glass-circle modal-bubble settings-bubble"
+
+            data-title="Quick Settings"
+
+            data-message="Manage your preferences and account settings."
+
+            data-settings-url="{% url 'settings' %}">
+                        
+                <span class="bubble-icon">
+                 ⚙️
+                </span>
+            
+
+        </div>
+
+    </div>
+
+</section>
 
     <!-- Quick Actions -->
     <section class="quick-actions">

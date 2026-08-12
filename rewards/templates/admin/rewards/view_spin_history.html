@@ -1,0 +1,336 @@
+{% extends "admin/base_admin.html" %}
+
+{% block title %}
+Spin Details
+{% endblock %}
+
+{% block content %}
+
+<div class="campaign-details">
+
+    <!-- Header -->
+
+    <div class="campaign-header">
+
+        <div>
+
+            <h2>
+
+                🎡 Spin #{{ spin.spin_number }}
+
+            </h2>
+
+            <p>
+
+                Spin History Details
+
+            </p>
+
+        </div>
+
+        <a href="{% url 'admin_spin_history' %}"
+           class="btn btn-secondary">
+
+            ← Back
+
+        </a>
+
+    </div>
+
+    <!-- Summary Cards -->
+
+    <div class="campaign-info-grid">
+
+        <div class="info-card">
+
+            <h6>
+
+                Customer
+
+            </h6>
+
+            <h4>
+
+                {{ spin.customer.username }}
+
+            </h4>
+
+        </div>
+
+        <div class="info-card">
+
+            <h6>
+
+                Campaign
+
+            </h6>
+
+            <h4>
+
+                {{ spin.campaign.title }}
+
+            </h4>
+
+        </div>
+
+        <div class="info-card">
+
+            <h6>
+
+                Result
+
+            </h6>
+
+            <h4>
+
+                {% if spin.has_won %}
+
+                    🏆 Winner
+
+                {% else %}
+
+                    ❌ Try Again
+
+                {% endif %}
+
+            </h4>
+
+        </div>
+
+        <div class="info-card">
+
+            <h6>
+
+                Claimed
+
+            </h6>
+
+            <h4>
+
+                {% if spin.reward_claimed %}
+
+                    ✅ Yes
+
+                {% else %}
+
+                    ❌ No
+
+                {% endif %}
+
+            </h4>
+
+        </div>
+
+    </div>
+
+    <!-- Spin Information -->
+
+    <div class="campaign-section">
+
+        <h4>
+
+            Spin Information
+
+        </h4>
+
+        <table class="table">
+
+            <tr>
+
+                <th>Customer</th>
+
+                <td>
+
+                    {{ spin.customer.username }}
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <th>Campaign</th>
+
+                <td>
+
+                    {{ spin.campaign.title }}
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <th>Spin Number</th>
+
+                <td>
+
+                    {{ spin.spin_number }}
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <th>Won Reward</th>
+
+                <td>
+
+                    {% if spin.has_won %}
+
+                        Yes
+
+                    {% else %}
+
+                        No
+
+                    {% endif %}
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <th>Prize</th>
+
+                <td>
+
+                    {% if spin.prize %}
+
+                        {{ spin.prize.name }}
+
+                    {% else %}
+
+                        —
+
+                    {% endif %}
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <th>Reward Applied</th>
+
+                <td>
+
+                    {% if spin.reward_applied %}
+
+                        ✅ Applied
+
+                    {% else %}
+
+                        ❌ Not Applied
+
+                    {% endif %}
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <th>Reward Claimed</th>
+
+                <td>
+
+                    {% if spin.reward_claimed %}
+
+                        ✅ Claimed
+
+                    {% else %}
+
+                        ❌ Not Claimed
+
+                    {% endif %}
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <th>Spin Date</th>
+
+                <td>
+
+                    {{ spin.spun_at|date:"F d, Y - h:i A" }}
+
+                </td>
+
+            </tr>
+
+        </table>
+
+    </div>
+
+    <!-- Linked Reward -->
+
+    <div class="campaign-section">
+
+        <h4>
+
+            Linked Customer Reward
+
+        </h4>
+
+        {% if customer_reward %}
+
+            <div class="alert alert-success">
+
+                <strong>
+
+                    Reward Created Successfully
+
+                </strong>
+
+                <br><br>
+
+                Customer Reward:
+
+                <strong>
+
+                    {{ customer_reward.prize.name }}
+
+                </strong>
+
+                <br><br>
+
+                Status:
+
+                <strong>
+
+                    {{ customer_reward.status }}
+
+                </strong>
+
+                <br><br>
+
+                <a href="{% url 'view_customer_reward' customer_reward.id %}"
+
+                   class="btn btn-success btn-sm">
+
+                    👁 View Customer Reward
+
+                </a>
+
+            </div>
+
+        {% else %}
+
+            <div class="alert alert-warning">
+
+                No Customer Reward has been generated for this spin.
+
+            </div>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+{% endblock %}

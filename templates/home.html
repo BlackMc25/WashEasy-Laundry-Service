@@ -185,7 +185,7 @@ margin:auto;
 <div id="pageContent">
 
     <!-- Navbar-->
-<nav class="navbar navbar-expand-lg">
+<nav class="navbar navbar-expand-xl">
 
     <div class="container">
 
@@ -1108,250 +1108,772 @@ margin:auto;
 
 </div>
 
-    <section class="express-section">
+<section class="express-desktop">
+<!--=========================================
+        EXPRESS CONTENT
+==========================================-->
 
-        <div class="container">
+<div class="express-card">
 
-        <div class="express-card">
+    <!-- LEFT SIDE -->
 
-        <div class="express-left">
+    <div class="express-left">
 
-        <span class="express-tag">
+        <span class="express-badge">
 
-        ⚡ EXPRESS SERVICE
+            ⚡ WashEasy Express
 
         </span>
 
-        <h2>
+        <h2 class="express-title">
 
-        Need Your Laundry Today?
+            Need It Today?
+            <br>
+            We'll Make It Happen.
 
         </h2>
 
-        <p>
+        <p class="express-description">
 
-        Skip the regular queue and enjoy priority washing, drying, ironing and delivery.
-
-        Perfect for meetings, weddings, interviews and emergencies.
+            Skip the regular queue and enjoy priority laundry
+            processing, faster turnaround and premium garment
+            care. Perfect for busy schedules, urgent occasions
+            and moments when every minute counts.
 
         </p>
 
-        <ul>
+        <!-- EXPRESS BENEFITS -->
 
-        <li>⚡ Priority Processing</li>
+        <div class="express-benefits">
 
-        <li>🚚 Faster Delivery</li>
+            <div class="express-benefit-card">
 
-        <li>🧺 Premium Handling</li>
+                <div class="benefit-icon">
 
-        <li>⏰ Same-Day Availability*</li>
+                    ⚡
 
-        </ul>
+                </div>
 
-        <a   
-        data-bs-toggle="modal"
-        data-bs-target="#loginModal"
-        class="express-btn">
+                <div>
 
-        Book Express
+                    <h4>
 
-        <i class="bi bi-arrow-right"></i>
+                        Priority Processing
 
-        </a>
+                    </h4>
+
+                    <small>
+
+                        Your order moves ahead of the queue.
+
+                    </small>
+
+                </div>
+
+            </div>
+
+            <div class="express-benefit-card">
+
+                <div class="benefit-icon">
+
+                    🚚
+
+                </div>
+
+                <div>
+
+                    <h4>
+
+                        Faster Delivery
+
+                    </h4>
+
+                    <small>
+
+                        Receive your laundry much sooner.
+
+                    </small>
+
+                </div>
+
+            </div>
+
+            <div class="express-benefit-card">
+
+                <div class="benefit-icon">
+
+                    🧺
+
+                </div>
+
+                <div>
+
+                    <h4>
+
+                        Premium Care
+
+                    </h4>
+
+                    <small>
+
+                        Extra attention for every garment.
+
+                    </small>
+
+                </div>
+
+            </div>
+
+            <div class="express-benefit-card">
+
+                <div class="benefit-icon">
+
+                    ⏰
+
+                </div>
+
+                <div>
+
+                    <h4>
+
+                        Same-Day Available*
+
+                    </h4>
+
+                    <small>
+
+                        Available for eligible orders.
+
+                    </small>
+
+                </div>
+
+            </div>
 
         </div>
 
-        <div class="express-right">
+        <!-- TEXT CAROUSEL -->
+
+        <div class="express-carousel">
+
+            <div class="express-slide active">
+
+                ⚡ Faster Processing.
+
+            </div>
+
+            <div class="express-slide">
+
+                🚚 Faster Delivery.
+
+            </div>
+
+            <div class="express-slide">
+
+                👔 Perfect for Busy Professionals.
+
+            </div>
+
+            <div class="express-slide">
+
+                🎉 Great for Weddings & Events.
+
+            </div>
+
+            <div class="express-slide">
+
+                ✨ Because Time Matters.
+
+            </div>
+
+        </div>
+
+        <!-- CTA -->
+
+        <a
+
+            href="{% url 'book_laundry' %}"
+
+            class="express-btn">
+
+            ⚡ Upgrade to Express
+
+        </a>
+
+    </div>
+
+    <!-- RIGHT SIDE -->
+
+    <div class="express-right">
+
+        <!-- FLOATING CARDS -->
+
+        <div class="floating-express-card card-one">
+
+            ⚡
+
+            <span>
+
+                Fastest
+
+            </span>
+
+        </div>
+
+        <div class="floating-express-card card-two">
+
+            🚚
+
+            <span>
+
+                Priority
+
+            </span>
+
+        </div>
+
+        <div class="floating-express-card card-three">
+
+            🧺
+
+            <span>
+
+                Premium
+
+            </span>
+
+        </div>
+
+        <div class="floating-express-card card-four">
+
+            ⏰
+
+            <span>
+
+                Today
+
+            </span>
+
+        </div>
+
+        <!-- CENTER ICON -->
+
+        <div class="express-center">
+
+            ⚡
+
+        </div>
+
+        <!-- FLOW -->
+
+        <div class="express-flow">
+
+            <div>
+
+                🧺
+
+                <span>
+
+                    Book
+
+                </span>
+
+            </div>
+
+            <div class="flow-arrow">
+
+                →
+
+            </div>
+
+            <div>
+
+                ⚡
+
+                <span>
+
+                    Express
+
+                </span>
+
+            </div>
+
+            <div class="flow-arrow">
+
+                →
+
+            </div>
+
+            <div>
+
+                🚚
+
+                <span>
+
+                    Deliver
+
+                </span>
+
+            </div>
+
+        </div>
+
+       
+        <!-- COUNTER -->
+
+        <div class="express-counter">
+
+            <h2 id="expressCounter">
+
+                0
+
+            </h2>
+
+            <p>
+
+                Express Orders Completed
+
+            </p>
+
+        </div>
+
+    </div>
+
+       
+</div>
+</section>
+
+
+<!-- MOBILE EXPRESS -->
+<div class="express-mobile">
+
+    <!-- Badge -->
+
+    <span class="express-badge">
+
+        ⚡ WashEasy Express
+
+    </span>
+
+    <!-- Title -->
+
+    <h2 class="express-title">
+
+        Need It Today?
+        <br>
+        We'll Make It Happen.
+
+    </h2>
+
+    <!-- Description -->
+
+    <p class="express-description">
+
+        Skip the regular queue and enjoy priority processing,
+        faster delivery and premium garment care whenever time
+        matters.
+
+    </p>
+
+    <!-- Text Slider -->
+
+    <div class="mobile-express-carousel">
+
+        <div class="mobile-slide active">
+
+            ⚡ Faster Processing
+
+        </div>
+
+        <div class="mobile-slide">
+
+            🚚 Faster Delivery
+
+        </div>
+
+        <div class="mobile-slide">
+
+            👔 Perfect for Busy Professionals
+
+        </div>
+
+        <div class="mobile-slide">
+
+            🎉 Great for Weddings & Events
+
+        </div>
+
+    </div>
+
+    <!-- CTA -->
+
+    <a href="{% url 'book_laundry' %}" class="express-btn">
+
+        ⚡ Upgrade to Express
+
+    </a>
+
+    <!-- Mobile Illustration -->
+
+    <div class="mobile-lightning">
 
         ⚡
 
-        </div>
+    </div>
+
+    <div class="mobile-feature-grid">
+
+        <div class="mobile-feature-card">
+
+            <div class="mobile-feature-icon">
+
+                ⚡
+
+            </div>
+
+            <h5>
+
+                Priority
+
+            </h5>
+
+            <small>
+
+                Skip the queue
+
+            </small>
 
         </div>
 
+        <div class="mobile-feature-card">
+
+            <div class="mobile-feature-icon">
+
+                🚚
+
+            </div>
+
+            <h5>
+
+                Fast Delivery
+
+            </h5>
+
+            <small>
+
+                Delivered sooner
+
+            </small>
+
         </div>
 
-    </section>
+    </div>
 
-</section>
+    <div class="mobile-counter-card">
 
-<!-- ==========================================
-        WASHEASY+ SUBSCRIPTION
-=========================================== -->
+        <h2 id="mobileExpressCounter">
 
-<section class="subscription-home-section py-5">
-
-        <div class="container">
-
-        <div class="subscription-home-card">
-
-        {% if user.is_authenticated and active_subscription %}
-
-        <span class="subscription-tag">
-
-        👑 WashEasy+ Active
-
-        </span>
-
-        <h2>
-
-        {{ active_subscription.plan.name }} Plan
+            1500+
 
         </h2>
 
         <p>
 
-        Enjoy your subscription benefits every time you book laundry.
+            Express Orders Completed
 
         </p>
 
-        <div class="subscription-stats">
+    </div>
 
-        <div>
+    <div class="mobile-flow">
 
-        <h3>
+        <div class="mobile-step">
 
-        {{ active_subscription.remaining_items }}
+            <div class="mobile-step-icon">
 
-        </h3>
+                🧺
 
-        <span>
+            </div>
 
-        Items Remaining
+            <span>
 
-        </span>
+                Book
 
-        </div>
-
-        <div>
-
-        <h3>
-
-        {{ active_subscription.free_transport_trips_remaining }}
-
-        </h3>
-
-        <span>
-
-        Free Trips
-
-        </span>
+            </span>
 
         </div>
 
-        <div>
+        <div class="mobile-arrow">
 
-        <h3>
-
-        {{ active_subscription.end_date|date:"M d" }}
-
-        </h3>
-
-        <span>
-
-        Expires
-
-        </span>
+            ↓
 
         </div>
 
-        </div>
+        <div class="mobile-step">
 
-        <div class="progress mt-4">
+            <div class="mobile-step-icon">
 
-        <div
-        class="progress-bar bg-success"
-        style="width:{% widthratio active_subscription.remaining_items active_subscription.plan.total_items 100 %}%">
+                ⚡
 
-        </div>
+            </div>
 
-        </div>
+            <span>
 
-        <div class="mt-4">
+                Express
 
-        <a
-        href="{% url 'subscription' %}"
-        class="btn btn-light">
-
-        Manage Subscription
-
-        </a>
+            </span>
 
         </div>
 
-        {% else %}
+        <div class="mobile-arrow">
 
-        <span class="subscription-tag">
-
-        👑 WashEasy+
-
-        </span>
-
-        <h2>
-
-        Save More With Every Laundry Order
-
-        </h2>
-
-        <p>
-
-        Join WashEasy+ and enjoy covered laundry items,
-        free transport trips and priority bookings.
-
-        </p>
-
-        <div class="subscription-benefits">
-
-        <div>
-
-        ✔ Covered Laundry Items
+            ↓
 
         </div>
 
-        <div>
+        <div class="mobile-step">
 
-        ✔ Free Pickup Trips
+            <div class="mobile-step-icon">
 
-        </div>
+                🚚
 
-        <div>
+            </div>
 
-        ✔ Priority Booking
+            <span>
 
-        </div>
+                Deliver
 
-        <div>
-
-        ✔ Upgrade Anytime
+            </span>
 
         </div>
 
+    </div>
+
+</div>
+
+<!--=========================================
+        WEEKEND REWARD SECTION
+==========================================-->
+
+<section class="reward-home-section">
+
+    <div class="floating-icons">
+
+        <span>✨</span>
+
+        <span>🎉</span>
+
+        <span>⭐</span>
+
+        <span>🎁</span>
+
+        <span>🏆</span>
+
         </div>
 
-            {% if user.is_authenticated %}
+    <div class="container">
 
-                    <a
-                    href="{% url 'subscription' %}"
-                    class="btn btn-light">
+        <div class="reward-home-content">
 
-                    Explore Plans
+            <!-- Left Side -->
 
-                    </a>
+            <div class="reward-left">
 
-                    {% else %}
+                <span class="reward-badge">
 
-                <button
-                    class="btn btn-light"
-                    data-bs-toggle="modal"
-                    data-bs-target="#loginModal">
+                    🎁 Weekend Reward Spin
 
-                    Join WashEasy+
+                </span>
 
-                </button>
+                <h2>
 
-            {% endif %}
+                    Complete Orders.
+                    <br>
+                    Spin. Win. Save.
 
-        {% endif %}
+                </h2>
+
+                <!-- Text Carousel -->
+
+                <div class="reward-carousel">
+
+                    <div class="reward-slide active">
+
+                        🎉 Every completed laundry order
+                        brings you closer to exciting rewards.
+
+                    </div>
+
+                    <div class="reward-slide">
+
+                        🎡 Complete your booking,
+                        earn your spins and try your luck.
+
+                    </div>
+
+                    <div class="reward-slide">
+
+                        👕 Win FREE Laundry Items
+                        for your next booking.
+
+                    </div>
+
+                    <div class="reward-slide">
+
+                        🚚 Enjoy FREE Pickup &
+                        Delivery rewards.
+
+                    </div>
+
+                    <div class="reward-slide">
+
+                        ⚡ Skip the queue with
+                        Express Service rewards.
+
+                    </div>
+
+                    <div class="reward-slide">
+
+                        🎁 New rewards arrive
+                        every campaign.
+
+                    </div>
+
+                    <div class="reward-slide">
+
+                        🏆 Every spin is a new
+                        chance to win.
+
+                    </div>
+
+                    <div class="reward-slide">
+
+                        ✨ Your next booking
+                        could unlock your next reward.
+
+                    </div>
+
+                </div>
+
+                <a
+                    href="{% url 'reward-rules' %}"
+                    class="reward-home-btn">
+
+                    🎡 Spin This Weekend
+
+                </a>
+
+            </div>
+
+            <!-- Right Side -->
+
+            <div class="reward-right">
+
+                <!-- Floating Rewards -->
+
+                <div class="floating-card card1">
+
+                    👕
+
+                    <span>FREE Laundry</span>
+
+                </div>
+
+                <div class="floating-card card2">
+
+                    🚚
+
+                    <span>FREE Transport</span>
+
+                </div>
+
+                <div class="floating-card card3">
+
+                    ⚡
+
+                    <span>Express</span>
+
+                </div>
+
+                <div class="floating-card card4">
+
+                    👑
+
+                    <span>Premium</span>
+
+                </div>
+
+                <!-- Animated Wheel -->
+
+                <div class="reward-wheel-home">
+
+                    🎡
+
+                </div>
+
+                <!-- Timeline -->
+
+                <div class="reward-flow">
+
+                    <div>
+
+                        🧺
+
+                        <small>Book</small>
+
+                    </div>
+
+                    <span>→</span>
+
+                    <div>
+
+                        ✅
+
+                        <small>Complete</small>
+
+                    </div>
+
+                    <span>→</span>
+
+                    <div>
+
+                        🎡
+
+                        <small>Spin</small>
+
+                    </div>
+
+                    <span>→</span>
+
+                    <div>
+
+                        🎁
+
+                        <small>Win</small>
+
+                    </div>
+
+                </div>
+
+                <!-- Counter -->
+
+                <div class="reward-counter">
+
+                    <h3 id="rewardCounter">
+
+                        0
+
+                    </h3>
+
+                    <p>
+
+                        Rewards Won
+
+                    </p>
+
+                </div>
+
+            </div>
 
         </div>
 
@@ -1360,6 +1882,483 @@ margin:auto;
 </section>
 
 
+<section class = "mobile_reward">
+<div class="reward-mobile">
+
+    <div class="floating-icons">
+
+        <span>✨</span>
+
+        <span>🎉</span>
+
+        <span>⭐</span>
+
+        <span>🎁</span>
+
+        <span>🏆</span>
+
+        </div>
+
+        <span class="reward-badge">
+
+            🎁 Weekend Reward Spin
+
+        </span>
+
+        <h2 class="reward-title">
+
+            Complete Orders.
+            <br>
+            Spin. Win. Save.
+
+        </h2>
+
+        <p class="reward-description">
+
+            ✨ Your next booking could unlock your next reward.
+
+        </p>
+
+        <div class="mobile-wheel" id="mobileSpinWheel">
+
+            🎡
+
+        </div>
+
+        <div class="reward-mobile-cards">
+
+           <div class="reward-mini-card">
+
+                <div class="reward-mini-icon">
+
+                    👕
+
+                </div>
+
+                <h4>
+
+                    Free Laundry Items
+
+                </h4>
+
+                <small>
+
+                    Up to 5 items
+
+                </small>
+
+            </div>
+
+            <div class="reward-mini-card">
+
+                <div class="reward-mini-icon">
+
+                    🚚
+
+                </div>
+
+                <h4>
+
+                    Free Transport
+
+                </h4>
+
+                <small>
+
+                    Pickup & Delivery
+
+                </small>
+
+            </div>
+
+        </div>
+
+    <div class="reward-mobile-flow">
+
+        <div class="reward-step">
+
+            <div class="reward-step-icon">🧺</div>
+
+            <span>Book</span>
+
+        </div>
+
+        <div class="reward-arrow">↓</div>
+
+        <div class="reward-step">
+
+            <div class="reward-step-icon">✅</div>
+
+            <span>Complete</span>
+
+        </div>
+
+        <div class="reward-arrow">↓</div>
+
+        <div class="reward-step">
+
+            <div class="reward-step-icon">🎡</div>
+
+            <span>Spin</span>
+
+        </div>
+
+        <div class="reward-arrow">↓</div>
+
+        <div class="reward-step">
+
+            <div class="reward-step-icon">🎁</div>
+
+            <span>Win</span>
+
+        </div>
+
+    </div>
+
+        <div class="reward-mobile-counter">
+
+            <h2 id="mobileRewardCounter">
+
+                0
+
+            </h2>
+
+            <p>
+
+                Happy Winners
+
+            </p>
+
+        </div>
+
+        <a href="{% url 'reward-rules' %}" class="reward-btn">
+
+            🎡 Spin This Weekend
+
+        </a>
+
+</div>
+
+</section>
+
+<!--=========================================
+        WASHEASY+ MEMBERSHIP
+==========================================-->
+
+<section class="subscription-home-section">
+
+    <div class="container">
+
+        <div class="subscription-home-content">
+
+            <!-- LEFT -->
+
+            <div class="subscription-left">
+
+                <span class="subscription-badge">
+
+                    👑 WashEasy+
+
+                </span>
+
+                <h2>
+
+                    Laundry Without Limits.
+
+                </h2>
+
+                <div class="subscription-carousel">
+
+                    <div class="subscription-slide active">
+
+                        👑 Premium laundry experience for every booking.
+
+                    </div>
+
+                    <div class="subscription-slide">
+
+                        🚚 Save more with every pickup and delivery.
+
+                    </div>
+
+                    <div class="subscription-slide">
+
+                        ⚡ Enjoy priority laundry processing.
+
+                    </div>
+
+                    <div class="subscription-slide">
+
+                        🎁 Unlock exclusive member rewards.
+
+                    </div>
+
+                    <div class="subscription-slide">
+
+                        💙 Join thousands of happy subscribers.
+
+                    </div>
+
+                    <div class="subscription-slide">
+
+                        ✨ More value. More savings. Less stress.
+
+                    </div>
+
+                </div>
+
+                <a
+                    href="{% url 'subscription' %}"
+                    class="subscription-home-btn">
+
+                    👑 Become a Member
+
+                </a>
+
+            </div>
+
+            <!-- RIGHT -->
+
+            <div class="subscription-right">
+
+                <!-- Floating Benefits -->
+
+                <div class="subscription-card card-a">
+
+                    🚚
+
+                    <span>Free Transport</span>
+
+                </div>
+
+                <div class="subscription-card card-b">
+
+                    ⚡
+
+                    <span>Priority Service</span>
+
+                </div>
+
+                <div class="subscription-card card-c">
+
+                    🎁
+
+                    <span>Member Rewards</span>
+
+                </div>
+
+                <div class="subscription-card card-d">
+
+                    👕
+                    <span>Laundry Credits</span>
+
+                </div>
+
+                <!-- Membership Card -->
+
+                <div class="membership-card">
+
+                    <div class="membership-top">
+
+                        👑
+
+                    </div>
+
+                    <h3>
+
+                        WashEasy+
+
+                    </h3>
+
+                    <p>
+
+                        Premium Member
+
+                    </p>
+
+                    <span class="membership-level">
+
+                        Platinum
+
+                    </span>
+
+                </div>
+
+                <!-- Counter -->
+
+                <div class="membership-counter">
+
+                    <h3 id="memberCounter">
+
+                        0
+
+                    </h3>
+
+                    <p>
+
+                        Active Members
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!--=========================================
+                MOBILE SUBSCRIPTION
+        ==========================================-->
+
+    <div class="subscription-mobile">
+
+            <div class="mobile-member-circle">
+
+                👑
+
+            </div>
+
+            <div class="mobile-member-grid">
+
+                <div class="mobile-member-card">
+
+                    <div class="mobile-member-icon">
+
+                        ⭐
+
+                    </div>
+
+                    <h5>
+
+                        VIP Care
+
+                    </h5>
+
+                    <small>
+
+                        Priority garment handling
+
+                    </small>
+
+                </div>
+
+                <div class="mobile-member-card">
+
+                    <div class="mobile-member-icon">
+
+                        💰
+
+                    </div>
+
+                    <h5>
+
+                        Save More
+
+                    </h5>
+
+                    <small>
+
+                        Exclusive member discounts
+
+                    </small>
+
+                </div>
+
+            </div>
+
+            <div class="mobile-member-counter">
+
+          <h2 id="mobileMemberCounter">
+                    0
+                </h2>
+
+                <p>
+
+                    Active Members
+
+                </p>
+
+            </div>
+
+            <div class="mobile-member-flow">
+
+                <div class="mobile-member-step">
+
+                    <div class="mobile-member-step-icon">
+
+                        🧺
+
+                    </div>
+
+                    <span>
+
+                        Join
+
+                    </span>
+
+                </div>
+
+                <div class="mobile-member-arrow">
+
+                    ↓
+
+                </div>
+
+                <div class="mobile-member-step">
+
+                    <div class="mobile-member-step-icon">
+
+                        👑
+
+                    </div>
+
+                    <span>
+
+                        Premium
+
+                    </span>
+
+                </div>
+
+                <div class="mobile-member-arrow">
+
+                    ↓
+
+                </div>
+
+                <div class="mobile-member-step">
+
+                    <div class="mobile-member-step-icon">
+
+                        🚚
+
+                    </div>
+
+                    <span>
+
+                        Enjoy
+
+                    </span>
+
+                </div>
+
+            </div>
+
+            <a href="{% url 'subscription' %}"
+
+            class="subscription-home-btn">
+
+                👑 Become a Member
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+        
 {% block content %}
 <section class="py-5">
     <div class="about-container" id="aboutus-container">
@@ -2560,40 +3559,7 @@ margin:auto;
 <script src="{% static 'js/bubbles.js' %}"></script>
 
 
-
-{% if show_signup_modal %}
-
-<script>
-
-document.addEventListener(
-    "DOMContentLoaded",
-    function(){
-
-        new bootstrap.Modal(
-            document.getElementById("signupModal")
-        ).show();
-
-    }
-);
-
-</script>
-
-
-{% endif %}
-
-<div id="bubblePopup">
-
-    <div class="popup-card">
-
-        <div id="popupIcon"></div>
-
-        <h3 id="popupTitle"></h3>
-
-        <p id="popupMessage"></p>
-
-    </div>
-
-</div>
+{% include "includes/bubble_popup.html" %}
 
 </body>
 

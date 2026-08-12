@@ -40,25 +40,6 @@ document
 );
 
 
-/*=========================================================
-            AUTO OPEN LOGIN MODAL
-=========================================================*/
-
-document.addEventListener(
-
-'DOMContentLoaded',
-
-function(){
-
-new bootstrap.Modal(
-
-document.getElementById('loginModal')
-
-).show();
-
-}
-
-);
 
 /*=========================================================
             PASSWORD STRENGTH CHECK
@@ -240,7 +221,7 @@ loginModalElement.addEventListener("show.bs.modal", function () {
 
     document
         .getElementById("pageContent")
-        .classList.add("page-blur");
+       .classList.add("page-focus");
 
 });
 
@@ -248,7 +229,7 @@ loginModalElement.addEventListener("hidden.bs.modal", function () {
 
     document
         .getElementById("pageContent")
-        .classList.remove("page-blur");
+       .classList.remove("page-focus");
 
 
         AOS.refreshHard();
@@ -263,7 +244,7 @@ signupModalElement.addEventListener("show.bs.modal", function () {
 
     document
         .getElementById("pageContent")
-        .classList.add("page-blur");
+        .classList.add("page-focus");
 
 });
 
@@ -271,7 +252,7 @@ signupModalElement.addEventListener("hidden.bs.modal", function () {
 
     document
         .getElementById("pageContent")
-        .classList.remove("page-blur");
+        .classList.remove("page-focus");
 
         AOS.refreshHard();
 });
@@ -395,7 +376,7 @@ document
         // Remove page blur
         document
         .getElementById("pageContent")
-        .classList.remove("page-blur");
+        .classList.remove("page-focus");
 
     });
 

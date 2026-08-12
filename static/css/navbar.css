@@ -2,6 +2,45 @@
  PREMIUM NAVBAR
 =====================================*/
 
+/* Navbar goes behind the modal when a modal is open */
+
+body.modal-open{
+
+    overflow:hidden;
+
+}
+
+body.modal-open .navbar{
+
+    z-index:1000 !important;
+
+}
+
+/* Bootstrap modal */
+
+.modal{
+
+     z-index:1060 !important;
+
+}
+
+/* Bootstrap backdrop */
+
+.modal-backdrop{
+
+     z-index:1050 !important;
+
+}
+
+.page-focus{
+    transition:.3s;
+}
+
+.modal-backdrop.show{
+    background: transparent !important;
+    opacity: 0 !important;
+}
+
 .navbar{
 
     position:fixed;
@@ -22,7 +61,7 @@
 
     background:rgba(255,255,255,.75);
 
-    backdrop-filter:blur(18px);
+    backdrop-filter:none;
 
     -webkit-backdrop-filter:blur(18px);
 
@@ -32,7 +71,7 @@
 
     transition:.4s ease;
 
-    z-index:9999;
+    z-index:1030;
 
 }
 
@@ -202,8 +241,8 @@
                 AUTH GLASS CARD
 =========================================================*/
 
-.login-modal,
-.signup-modal{
+#loginModal .modal-content,
+#signupModal .modal-content{
 
     position:relative;
 
@@ -221,14 +260,13 @@
         AUTH CARD
 ======================================================*/
 
-.login-modal .modal-content,
-.signup-modal .modal-content{
+#loginModal .modal-content,
+#signupModal .modal-content{
 
     position:relative;
 
     overflow:hidden;
 
-    border-radius:30px;
 
     background:linear-gradient(
         135deg,
@@ -241,23 +279,32 @@
     box-shadow:
     0 25px 60px rgba(0,0,0,.18);
 
+    height:100%;
+
+    max-height:100%;
+
+    overflow-y:auto;
+
+    border-radius:34px;
+
 }
 
 /*=========================================================
                 PREMIUM AUTH CARD SIZE
 =========================================================*/
 
-.login-modal .modal-dialog,
-.signup-modal .modal-dialog{
+#loginModal .modal-dialog,
+#signupModal .modal-dialog{
 
-    max-width:540px;
+   max-width:540px;
+    margin:2rem auto;
 
-    margin:3rem auto;
+    height:calc(100vh - 4rem);
 
 }
 
-.login-modal .modal-content,
-.signup-modal .modal-content{
+#loginModal .modal-content,
+#signupModal .modal-content{
 
     min-height:720px;
 
@@ -267,8 +314,8 @@
 
 /* Beautiful blue glow */
 
-.login-modal .modal-content::before,
-.signup-modal .modal-content::before{
+#loginModal   .modal-content::before,
+#signupModal .modal-content::before{
 
     content:"";
 
@@ -296,8 +343,8 @@
 
 }
 
-.login-modal .modal-content::after,
-.signup-modal .modal-content::after{
+#loginModal .modal-content::after,
+#signupModal .modal-content::after{
 
     content:"";
 
@@ -323,8 +370,8 @@
 
 }
 
-.login-modal .modal-body,
-.signup-modal .modal-body{
+#loginModal .modal-body,
+#signupModal .modal-body{
 
     position:relative;
 
@@ -336,14 +383,21 @@
 
 }
 
-.login-modal h2,
-.signup-modal h2{
+#loginModal  h2,
+#signupModal h2{
 
     color:white;
 
 }
-.login-modal p,
-.signup-modal p{
+#loginModal p,
+#signupModal p{
+
+    color:#f8fafc;
+
+}
+
+#loginModal input,
+#signupModal input{
 
     color:#f8fafc;
 
@@ -353,8 +407,8 @@
                     MODERN INPUTS
 =========================================================*/
 
-.login-modal .form-control,
-.signup-modal .form-control{
+#loginModal .form-control,
+#signupModal .form-control{
 
     background:transparent;
 
@@ -370,14 +424,14 @@
 
     font-size:17px;
 
-    color:#1e293b;
+    color:#f7fbff;
 
     box-shadow:none;
 
 }
 
-.login-modal .form-control:focus,
-.signup-modal .form-control:focus{
+#loginModal.form-control:focus,
+#signupModal .form-control:focus{
 
     border-bottom:
 
@@ -398,8 +452,8 @@
 
 }
 
-.login-modal .form-control::placeholder,
-.signup-modal .form-control::placeholder{
+#loginModal .form-control::placeholder,
+#signupModal .form-control::placeholder{
 
     color:#f8fafc;
 
@@ -421,21 +475,9 @@
 
 }
 
-/*=========================================
-BACKGROUND BLUR
-=========================================*/
 
-.page-blur{
 
-    filter:blur(10px);
 
-    transform:scale(.98);
-
-    transition:.4s;
-
-    opacity:.55;
-
-}
 /*=========================================================
                 PREMIUM BUTTONS
 =========================================================*/
@@ -565,7 +607,7 @@ BACKGROUND BLUR
 
     background:rgba(255,255,255,.15);
 
-    backdrop-filter:blur(20px);
+    backdrop-filter:none;
 
     border:1px solid rgba(255,255,255,.18);
 
@@ -841,7 +883,7 @@ transform:rotate(90deg);
 
     background:rgba(255,255,255,.95);
 
-    backdrop-filter:blur(18px);
+    backdrop-filter:none;
 
 }
 
@@ -870,5 +912,35 @@ transform:rotate(90deg);
     margin-top:10px;
 
 }
+
+}
+
+#loginModal .modal-content::-webkit-scrollbar,
+#signupModal .modal-content::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+#loginModal .modal-content::-webkit-scrollbar-track,
+#signupModal .modal-content::-webkit-scrollbar-track{
+
+    background:transparent;
+
+}
+
+#loginModal .modal-content::-webkit-scrollbar-thumb,
+#signupModal .modal-content::-webkit-scrollbar-thumb{
+
+    background:#3b82f6;
+
+    border-radius:20px;
+
+}
+
+#loginModal .modal-content::-webkit-scrollbar-thumb:hover,
+#signupModal .modal-content::-webkit-scrollbar-thumb:hover{
+
+    background:#2563eb;
 
 }

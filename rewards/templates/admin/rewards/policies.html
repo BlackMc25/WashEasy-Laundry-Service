@@ -1,0 +1,199 @@
+{% extends "admin/base_admin.html" %}
+
+{% block title %}
+Reward Policies
+{% endblock %}
+
+{% block content %}
+
+<div class="campaign-page">
+
+    <div class="campaign-page-header">
+
+        <div>
+
+            <h2>
+
+                ⚙ Reward Policies
+
+            </h2>
+
+            <p>
+
+                Configure reward policy rules.
+
+            </p>
+
+        </div>
+
+        <a href="{% url 'create_reward_policy' %}"
+
+        class="btn btn-primary">
+
+            <i class="fas fa-plus"></i>
+
+            Create Policy
+
+        </a>
+
+    </div>
+
+    <div class="campaign-table-card">
+
+        <table class="table table-hover align-middle">
+
+            <thead>
+
+                <tr>
+
+                    <th>
+
+                        Policy
+
+                    </th>
+
+                    <th>
+
+                        Applies To
+
+                    </th>
+
+                    <th>
+
+                        Categories
+
+                    </th>
+
+                    <th>
+
+                        Services
+
+                    </th>
+
+                    <th>
+
+                        Status
+
+                    </th>
+
+                    <th class="text-center">
+
+                        Actions
+
+                    </th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+            {% for policy in policies %}
+
+                <tr>
+
+                    <td>
+
+                        <strong>
+
+                            {{ policy.name }}
+
+                        </strong>
+
+                    </td>
+
+                    <td>
+
+                        {{ policy.get_apply_to_display }}
+
+                    </td>
+
+                    <td>
+
+                        {{ policy.allowed_categories.count }}
+
+                    </td>
+
+                    <td>
+
+                        {{ policy.allowed_services.count }}
+
+                    </td>
+
+                    <td>
+
+                        {% if policy.is_active %}
+
+                        <span class="badge bg-success">
+
+                            Active
+
+                        </span>
+
+                        {% else %}
+
+                        <span class="badge bg-danger">
+
+                            Disabled
+
+                        </span>
+
+                        {% endif %}
+
+                    </td>
+
+                    <td class="text-center">
+
+                        <a href="{% url 'view_reward_policy' policy.id %}"
+
+                        class="btn btn-sm btn-outline-primary">
+
+                            <i class="fas fa-eye"></i>
+
+                        </a>
+
+                        <a  href="{% url 'edit_reward_policy' policy.id %}"
+
+                        class="btn btn-sm btn-outline-success">
+
+                            <i class="fas fa-edit"></i>
+
+                        </a>
+
+                        <a href="{% url 'delete_reward_policy' policy.id %}"
+
+                        class="btn btn-sm btn-outline-danger">
+
+                            <i class="fas fa-trash"></i>
+
+                        </a>
+
+                    </td>
+
+                </tr>
+
+            {% empty %}
+
+                <tr>
+
+                    <td colspan="6"
+
+                    class="text-center py-5">
+
+                        No reward policies found.
+
+                    </td>
+
+                </tr>
+
+            {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+{% endblock %}

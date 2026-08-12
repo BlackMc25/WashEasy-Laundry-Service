@@ -1,0 +1,200 @@
+{% extends "admin/base_admin.html" %}
+
+{% block title %}
+Create Campaign
+{% endblock %}
+
+{% block content %}
+
+<div class="campaign-container">
+
+    <div class="campaign-header">
+
+        <div>
+
+            <h2>🎯 Create Reward Campaign</h2>
+
+            <p>
+
+                Create a new reward campaign.
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <form method="POST"
+          class="campaign-form">
+
+        {% csrf_token %}
+
+        <div class="form-group">
+
+            <label>
+
+                Campaign Title
+
+            </label>
+
+            <input
+                type="text"
+                name="title"
+                required>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>
+
+                Description
+
+            </label>
+
+            <textarea
+                name="description"
+                rows="4">
+
+            </textarea>
+
+        </div>
+
+        <div class="form-row">
+
+            <div class="form-group">
+
+                <label>
+
+                    Start Time
+
+                </label>
+
+                <input
+                    type="datetime-local"
+                    name="start_time"
+                    required>
+
+            </div>
+
+            <div class="form-group">
+
+                <label>
+
+                    End Time
+
+                </label>
+
+                <input
+                    type="datetime-local"
+                    name="end_time"
+                    required>
+
+            </div>
+
+        </div>
+
+        <div class="form-row">
+
+            <div class="form-group">
+
+                <label>
+
+                    Maximum Winners
+
+                </label>
+
+                <input
+                    type="number"
+                    name="max_winners"
+                    min="1"
+                    value="5"
+                    required>
+
+            </div>
+
+            <div class="form-group">
+
+                <label>
+
+                    Maximum Spins Per Customer
+
+                </label>
+
+                <input
+                    type="number"
+                    name="max_spins_per_customer"
+                    min="1"
+                    value="2"
+                    required>
+
+            </div>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>
+
+                Status
+
+            </label>
+
+            <select
+                name="status">
+
+                <option value="Draft">
+
+                    Draft
+
+                </option>
+
+                <option value="Live">
+
+                    Live
+
+                </option>
+
+                <option value="Closed">
+
+                    Closed
+
+                </option>
+
+            </select>
+
+        </div>
+
+        <div class="campaign-buttons">
+
+            <button
+                type="submit"
+                class="btn btn-success">
+
+                Save Campaign
+
+            </button>
+
+            <a
+                href="{% url 'admin_reward_campaigns' %}"
+                class="btn btn-secondary">
+
+                Cancel
+
+            </a>
+
+        </div>
+
+    </form>
+
+    <div class="form-section">
+
+        <h4>Campaign Information</h4>
+
+        <hr>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,270 @@
+{% extends "base_dashboard.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<section class="reward-rules">
+
+    <div class="reward-container">
+
+        <div class="reward-header">
+
+            <div class="reward-icon">
+
+                🎁
+
+            </div>
+
+            <h1>
+
+                {{ reward_title }}
+
+            </h1>
+
+            <p>
+
+                Win exciting laundry rewards this weekend!
+
+            </p>
+
+        </div>
+
+        <div class="reward-cards">
+
+            <div class="info-card">
+
+                <h4>
+
+                    📅 Campaign Ends
+
+                </h4>
+
+                <p>
+
+                    {{ reward_end_time|date:"D, M j • g:i A" }}
+
+                </p>
+
+            </div>
+
+            <div class="info-card">
+
+                <h4>
+
+                    🎯 Your Spins
+
+                </h4>
+
+                <p>
+
+                    {{ remaining_spins }}
+
+                </p>
+
+            </div>
+
+            <div class="info-card">
+
+                <h4>
+
+                    🏆 Rewards Remaining
+
+                </h4>
+
+                <p>
+
+                    {{ reward_rewards_left }}
+
+                </p>
+
+            </div>
+
+        </div>
+        {% if not has_completed_order %}
+
+    <div class="reward-lock-box">
+
+        <div class="reward-lock-icon">
+
+            🔒
+
+        </div>
+
+        <h3>
+
+            Complete Your First Laundry Order
+
+        </h3>
+
+        <p>
+
+            You're almost there!
+
+            To participate in the WashEasy Weekend Reward Spin,
+            you must first complete at least one laundry order.
+
+            Once your first order has been successfully delivered,
+            this reward will automatically unlock.
+
+        </p>
+
+    </div>
+
+    {% endif %}
+
+<div class="rules-section">
+
+    <h2>
+
+        How It Works
+
+    </h2>
+
+    <ol>
+
+        <li>
+
+            Every customer gets a maximum of 2 spins.
+
+        </li>
+
+        <li>
+
+            Only the first winners receive rewards.
+
+        </li>
+
+        <li>
+
+            Rewards expire after their validity period.
+
+        </li>
+
+        <li>
+
+            Rewards only apply to approved categories.
+
+        </li>
+
+        <li>
+
+            Customers must complete at least one successful laundry order before participating in the Weekend Reward Spin.
+
+        </li>
+
+    </ol>
+
+</div>
+
+<div class="rules-section">
+
+    <h2>
+
+        Allowed Categories
+
+    </h2>
+
+    <div class="tag-list">
+
+        {% for category in allowed_categories %}
+
+            <span class="reward-tag">
+
+                {{ category }}
+
+            </span>
+
+        {% empty %}
+
+            <p>
+
+                No category restrictions.
+
+            </p>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+<div class="rules-section">
+
+    <h2>
+
+        Allowed Services
+
+    </h2>
+
+    <div class="tag-list">
+
+        {% for service in allowed_services %}
+
+            <span class="reward-tag">
+
+                {{ service }}
+
+            </span>
+
+        {% empty %}
+
+            <p>
+
+                All services are allowed.
+
+            </p>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+<div class="reward-footer">
+
+    <label>
+
+        <input
+            type="checkbox"
+            id="agreeRules">
+
+        I have read and understood the rules.
+
+    </label>
+
+    {% if has_completed_order %}
+
+        <a
+
+            href="{% url 'reward-wheel' %}"
+
+            class="continue-btn disabled"
+
+            id="continueBtn">
+
+            Continue →
+
+        </a>
+
+        {% else %}
+
+        <button
+
+            class="continue-btn locked-btn"
+
+            disabled>
+
+            🔒 Complete Your First Order
+
+        </button>
+
+        {% endif %}
+
+</div>
+
+</div>
+
+</section>
+
+{% endblock %}

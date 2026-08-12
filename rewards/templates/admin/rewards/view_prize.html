@@ -1,0 +1,311 @@
+{% extends "admin/base_admin.html" %}
+
+{% block title %}
+Reward Prize Details
+{% endblock %}
+
+{% block content %}
+
+<div class="campaign-details">
+
+    <div class="campaign-header">
+
+        <div>
+
+            <h2>
+
+                🏆 {{ prize.name }}
+
+            </h2>
+
+            <p>
+
+                Reward Prize Overview
+
+            </p>
+
+        </div>
+
+        <a href="{% url 'admin_reward_prizes' %}"
+
+           class="btn btn-secondary">
+
+            ← Back
+
+        </a>
+
+    </div>
+
+    <div class="campaign-info-grid">
+
+        <div class="info-card">
+
+            <h6>
+
+                Campaign
+
+            </h6>
+
+            <h4>
+
+                {{ prize.campaign.title }}
+
+            </h4>
+
+        </div>
+
+        <div class="info-card">
+
+            <h6>
+
+                Prize Value
+
+            </h6>
+
+            <h4>
+
+                {{ prize.value }}
+
+            </h4>
+
+        </div>
+
+        <div class="info-card">
+
+            <h6>
+
+                Validity
+
+            </h6>
+
+            <h4>
+
+                {{ prize.validity_days }} Days
+
+            </h4>
+
+        </div>
+
+        <div class="info-card">
+
+            <h6>
+
+                Probability
+
+            </h6>
+
+            <h4>
+
+                {% if prize.probability >= 20 %}
+
+                    🟢 Very High
+
+                {% elif prize.probability >= 10 %}
+
+                    🔵 High
+
+                {% elif prize.probability >= 5 %}
+
+                    🟡 Medium
+
+                {% else %}
+
+                    🔴 Low
+
+                {% endif %}
+
+            </h4>
+
+        </div>
+
+    </div>
+
+    <div class="campaign-section">
+
+        <h4>
+
+            Prize Information
+
+        </h4>
+
+        <table class="table">
+
+            <tr>
+
+                <th>
+
+                    Prize Name
+
+                </th>
+
+                <td>
+
+                    {{ prize.name }}
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <th>
+
+                    Campaign
+
+                </th>
+
+                <td>
+
+                    {{ prize.campaign.title }}
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <th>
+
+                    Prize Type
+
+                </th>
+
+                <td>
+
+                    {{ prize.get_prize_type_display }}
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <th>
+
+                    Policy
+
+                </th>
+
+                <td>
+
+                    {% if prize.policy %}
+
+                        {{ prize.policy.name }}
+
+                    {% else %}
+
+                        -
+
+                    {% endif %}
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <th>
+
+                    Probability
+
+                </th>
+
+                <td>
+
+                    {{ prize.probability }}
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <th>
+
+                    Prize Value
+
+                </th>
+
+                <td>
+
+                    {{ prize.value }}
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <th>
+
+                    Validity
+
+                </th>
+
+                <td>
+
+                    {{ prize.validity_days }} Days
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <th>
+
+                    Status
+
+                </th>
+
+                <td>
+
+                    {% if prize.is_active %}
+
+                        <span class="badge bg-success">
+
+                            Active
+
+                        </span>
+
+                    {% else %}
+
+                        <span class="badge bg-danger">
+
+                            Disabled
+
+                        </span>
+
+                    {% endif %}
+
+                </td>
+
+            </tr>
+
+        </table>
+
+    </div>
+
+    <div class="campaign-actions">
+
+        <a href="{% url 'edit_reward_prize' prize.id %}"
+
+           class="btn btn-success">
+
+            ✏ Edit Prize
+
+        </a>
+
+        <a href="{% url 'delete_reward_prize' prize.id %}"
+
+           class="btn btn-danger">
+
+            🗑 Delete Prize
+
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}

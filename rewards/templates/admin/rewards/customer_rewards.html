@@ -1,0 +1,279 @@
+{% extends "admin/base_admin.html" %}
+
+{% block title %}
+
+Customer Rewards
+
+{% endblock %}
+
+{% block content %}
+
+<div class="reward-dashboard">
+
+    <div class="page-header">
+
+        <div>
+
+            <h2>
+
+                👥 Customer Rewards
+
+            </h2>
+
+            <p>
+
+                Monitor all customer rewards.
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- Statistics -->
+
+    <div class="reward-cards">
+
+        <div class="reward-card">
+
+            <div class="reward-icon">
+
+                🎁
+
+            </div>
+
+            <h5>
+
+                Active Rewards
+
+            </h5>
+
+            <h3>
+
+                {{ active_count }}
+
+            </h3>
+
+        </div>
+
+        <div class="reward-card">
+
+            <div class="reward-icon">
+
+                ✅
+
+            </div>
+
+            <h5>
+
+                Completed
+
+            </h5>
+
+            <h3>
+
+                {{ completed_count }}
+
+            </h3>
+
+        </div>
+
+        <div class="reward-card">
+
+            <div class="reward-icon">
+
+                ⌛
+
+            </div>
+
+            <h5>
+
+                Expired
+
+            </h5>
+
+            <h3>
+
+                {{ expired_count }}
+
+            </h3>
+
+        </div>
+
+        <div class="reward-card">
+
+            <div class="reward-icon">
+
+                🚚
+
+            </div>
+
+            <h5>
+
+                Booking Ready
+
+            </h5>
+
+            <h3>
+
+                {{ booking_ready_count }}
+
+            </h3>
+
+        </div>
+
+    </div>
+
+    <!-- Rewards Table -->
+
+    <div class="campaign-table-card">
+
+        <table class="table table-hover align-middle">
+
+            <thead>
+
+                <tr>
+
+                    <th>Customer</th>
+
+                    <th>Prize</th>
+
+                    <th>Status</th>
+
+                    <th>Booking</th>
+
+                    <th>Activated</th>
+
+                    <th>Expires</th>
+
+                    <th class="text-center">
+
+                        Actions
+
+                    </th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+            {% for reward in rewards %}
+
+                <tr>
+
+                    <td>
+
+                        {{ reward.customer.username }}
+
+                    </td>
+
+                    <td>
+
+                        {{ reward.prize.name }}
+
+                    </td>
+
+                    <td>
+
+                        {% if reward.status == "Active" %}
+
+                        <span class="badge bg-success">
+
+                            Active
+
+                        </span>
+
+                        {% elif reward.status == "Completed" %}
+
+                        <span class="badge bg-primary">
+
+                            Completed
+
+                        </span>
+
+                        {% else %}
+
+                        <span class="badge bg-danger">
+
+                            Expired
+
+                        </span>
+
+                        {% endif %}
+
+                    </td>
+
+                    <td>
+
+                        {% if reward.is_booking_ready %}
+
+                            ✅ Ready
+
+                        {% else %}
+
+                            ❌ Pending
+
+                        {% endif %}
+
+                    </td>
+
+                    <td>
+
+                        {{ reward.activated_at|date:"M d, Y" }}
+
+                    </td>
+
+                    <td>
+
+                        {{ reward.expires_at|date:"M d, Y" }}
+
+                    </td>
+
+                    <td class="text-center">
+
+                        <a
+                            href="{% url 'view_customer_reward' reward.id %}"
+                            class="btn btn-sm btn-outline-primary">
+
+                            <i class="fas fa-eye"></i>
+
+                        </a>
+
+                        <a
+                            href="{% url 'edit_customer_reward' reward.id %}"
+                            class="btn btn-sm btn-outline-success">
+
+                            <i class="fas fa-edit"></i>
+
+                        </a>
+
+                    </td>
+
+                </tr>
+
+            {% empty %}
+
+                <tr>
+
+                    <td colspan="7"
+
+                    class="text-center py-5">
+
+                        No customer rewards found.
+
+                    </td>
+
+                </tr>
+
+            {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+{% endblock %}

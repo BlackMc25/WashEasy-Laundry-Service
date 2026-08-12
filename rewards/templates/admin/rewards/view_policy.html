@@ -1,0 +1,204 @@
+{% extends "admin/base_admin.html" %}
+
+{% block title %}
+Reward Policy
+{% endblock %}
+
+{% block content %}
+
+<div class="campaign-details">
+
+    <div class="campaign-header">
+
+        <div>
+
+            <h2>
+
+                ⚙ {{ policy.name }}
+
+            </h2>
+
+            <p>
+
+                Reward Policy Overview
+
+            </p>
+
+        </div>
+
+        <a href="{% url 'admin_reward_policies' %}"
+           class="btn btn-secondary">
+
+            ← Back
+
+        </a>
+
+    </div>
+
+    <div class="campaign-info-grid">
+
+        <div class="info-card">
+
+            <h6>Applies To</h6>
+
+            <h4>
+
+                {{ policy.get_apply_to_display }}
+
+            </h4>
+
+        </div>
+
+        <div class="info-card">
+
+            <h6>Categories</h6>
+
+            <h4>
+
+                {{ policy.allowed_categories.count }}
+
+            </h4>
+
+        </div>
+
+        <div class="info-card">
+
+            <h6>Services</h6>
+
+            <h4>
+
+                {{ policy.allowed_services.count }}
+
+            </h4>
+
+        </div>
+
+        <div class="info-card">
+
+            <h6>Status</h6>
+
+            <h4>
+
+                {% if policy.is_active %}
+                    🟢 Active
+                {% else %}
+                    🔴 Disabled
+                {% endif %}
+
+            </h4>
+
+        </div>
+
+    </div>
+
+    <div class="campaign-section">
+
+        <h4>Policy Information</h4>
+
+        <table class="table">
+
+            <tr>
+
+                <th>Name</th>
+
+                <td>{{ policy.name }}</td>
+
+            </tr>
+
+            <tr>
+
+                <th>Description</th>
+
+                <td>{{ policy.description }}</td>
+
+            </tr>
+
+            <tr>
+
+                <th>Apply To</th>
+
+                <td>{{ policy.get_apply_to_display }}</td>
+
+            </tr>
+
+        </table>
+
+    </div>
+
+    <div class="campaign-section">
+
+        <h4>Allowed Categories</h4>
+
+        <div class="row">
+
+            {% for category in policy.allowed_categories.all %}
+
+                <div class="col-md-4 mb-3">
+
+                    <span class="badge bg-primary">
+
+                        {{ category.category }}
+
+                    </span>
+
+                </div>
+
+            {% empty %}
+
+                <p>No categories selected.</p>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+    <div class="campaign-section">
+
+        <h4>Allowed Services</h4>
+
+        <div class="row">
+
+            {% for service in policy.allowed_services.all %}
+
+                <div class="col-md-4 mb-3">
+
+                    <span class="badge bg-success">
+
+                        {{ service.service_type }}
+
+                    </span>
+
+                </div>
+
+            {% empty %}
+
+                <p>No services selected.</p>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+    <div class="campaign-actions">
+
+        <a href="{% url 'edit_reward_policy' policy.id %}"
+           class="btn btn-success">
+
+            ✏ Edit Policy
+
+        </a>
+
+        <a href="{% url 'delete_reward_policy' policy.id %}"
+           class="btn btn-danger">
+
+            🗑 Delete Policy
+
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}

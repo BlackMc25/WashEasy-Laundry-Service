@@ -140,6 +140,209 @@
     align-self:flex-start;
 }
 
+.booking-reward-panel{
+
+    margin-top:20px;
+
+    padding:20px;
+
+    border:2px solid #2563eb;
+
+    border-radius:16px;
+
+    background:#f8fbff;
+
+}
+
+.booking-reward-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:18px;
+
+}
+
+.booking-reward-item{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    padding:14px;
+
+    margin-bottom:12px;
+
+    background:white;
+
+    border:1px solid #e5e7eb;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.booking-reward-item:hover{
+
+    border-color:#2563eb;
+
+    box-shadow:0 6px 18px rgba(37,99,235,.12);
+
+}
+
+.booking-reward-item input{
+
+    transform:scale(1.2);
+
+}
+
+.change-reward-btn{
+
+    text-decoration:none;
+
+    color:#2563eb;
+
+    font-weight:600;
+
+}
+
+.reward-locked{
+
+    opacity: .55;
+
+    cursor: not-allowed;
+
+    border: 1px dashed #f0ad4e;
+
+    background: #fffaf2;
+
+}
+
+.reward-locked input{
+
+    cursor: not-allowed;
+
+}
+/*=========================================================
+                Benefit Section
+=========================================================*/
+
+.booking-benefits-section{
+
+    background:#fff;
+
+    border-radius:18px;
+
+    padding:30px;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.06);
+
+}
+
+.benefit-option{
+
+    border:2px solid #edf2f7;
+
+    border-radius:14px;
+
+    padding:18px;
+
+    transition:.25s;
+
+    cursor:pointer;
+
+    margin-bottom:18px;
+
+}
+
+.benefit-option:hover{
+
+    border-color:#3b82f6;
+
+    transform:translateY(-2px);
+
+}
+
+.benefit-option.active{
+
+    background:#eef6ff;
+
+    border-color:#2563eb;
+
+    box-shadow:0 5px 18px rgba(37,99,235,.18);
+
+}
+
+.reward-card{
+
+    border-radius:16px;
+
+    border:1px solid #e5e7eb;
+
+    padding:20px;
+
+    transition:.3s;
+
+}
+
+.reward-card:hover{
+
+    border-color:#2563eb;
+
+    transform:translateY(-3px);
+
+}
+
+.reward-expiry{
+
+    background:#fff7ed;
+
+    color:#ea580c;
+
+    padding:6px 12px;
+
+    border-radius:20px;
+
+    font-size:13px;
+
+}
+
+.remaining-items{
+
+    color:#16a34a;
+
+    font-weight:600;
+
+}
+
+.booking-layout{
+
+    display:grid;
+
+    grid-template-columns:340px 1fr;
+
+    gap:40px;
+
+}
+
+.reward-container{
+
+    background:#f8fbff;
+
+    border:2px solid #2563eb;
+
+    border-radius:18px;
+
+}
+
 /*=========================================================
                 RESPONSIVE
 =========================================================*/

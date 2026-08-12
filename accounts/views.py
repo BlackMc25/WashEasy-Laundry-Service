@@ -10,6 +10,10 @@ from django.contrib import messages
 from django.core.mail import send_mail
 from django.shortcuts import redirect
 from .forms import ProfileUpdateForm
+from rewards.benefit_engine import BenefitEngine
+from rewards.models import WeekendRewardCampaign
+from rewards.services import RewardEngine
+from rewards.utils import get_reward_context
 from django.db.models import Sum, Q
 from decimal import Decimal
 from django.shortcuts import get_object_or_404
@@ -25,6 +29,7 @@ from django.contrib.auth.decorators import login_required
 import requests
 import secrets
 from .models import EmailVerification
+from rewards.models import CustomerReward
 from .utils import send_verification_email
 from django.conf import settings
 from django.shortcuts import get_object_or_404
@@ -506,6 +511,59 @@ def dashboard(request):
     '-created_at'
         )[:5]
 
+    reward_campaign = None
+
+    remaining_spins = 0
+
+    reward_title = None
+    reward_message = None
+    reward_icon = None
+
+    reward_end_time = None
+    reward_rewards_left = 0
+
+    show_reward_bubble = False
+
+    campaign = WeekendRewardCampaign.objects.filter(
+        status="Live"
+    ).filter(
+        start_time__lte=timezone.now(),
+        end_time__gte=timezone.now(),
+    ).first()
+
+    if campaign and campaign.is_live():
+
+        reward_campaign = campaign
+
+        remaining_spins = RewardEngine.remaining_spins(
+            request.user,
+            campaign,
+        )
+
+        show_reward_bubble = RewardEngine.can_spin(
+            request.user,
+            campaign,
+        )
+
+        reward_title = ""
+        reward_end_time = None
+        reward_rewards_left = 0
+
+        if campaign:
+
+            reward_title = campaign.title
+
+            reward_end_time = campaign.end_time
+
+            reward_rewards_left = (
+                campaign.max_winners -
+                campaign.winners_count
+            )
+    has_rewards = CustomerReward.objects.filter(
+    customer=request.user,
+    status="Active"
+    ).exists()
+    
     context = {
 
         'total_orders': total_orders,
@@ -518,9 +576,27 @@ def dashboard(request):
 
         'amount_spent': amount_spent,
 
-        'recent_orders': recent_orders
+        'recent_orders': recent_orders,
 
+            # Reward Context
+        'show_reward_bubble': show_reward_bubble,
+
+        'remaining_spins': remaining_spins,
+
+        'reward_campaign': reward_campaign,
+
+        'reward_title': reward_title,
+
+        'reward_end_time': reward_end_time,
+
+        'reward_rewards_left': reward_rewards_left,
+
+        'has_rewards': has_rewards,
     }
+
+    context.update(
+    get_reward_context(request.user)
+    )
 
     return render(
         request,

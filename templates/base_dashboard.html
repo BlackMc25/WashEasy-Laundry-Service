@@ -7,7 +7,26 @@
 <title>WashEasy Dashboard</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="{% static 'css/new_dashboard/dashboard.css' %}">
+<link
+rel="stylesheet"
+href="{% static 'css/new_dashboard/subscription.css' %}">
+
+<link rel="stylesheet" href="{% static 'css/animation.css' %}">
+<link rel="stylesheet" href="{% static 'css/homepage.css' %}">
 <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+<link
+    rel="stylesheet"
+    href="{% static 'rewards/css/reward_rules.css' %}">
+    <link
+    rel="stylesheet"
+    href="{% static 'rewards/css/spin.css' %}">
+     <link
+    rel="stylesheet"
+    href="{% static 'rewards/css/result_popup.css' %}">
+
+    <link rel="stylesheet"
+      href="{% static 'rewards/css/my_rewards.css' %}">
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -705,7 +724,19 @@ function dragEnd(){
 
 <script src="{% static 'js/dashboard/dashboard.js' %}"></script>
 
+<script
+src="{% static 'js/dashboard/subscription.js' %}">
+</script>
 
+<script src="{% static 'js/bubbles.js' %}"></script>
+
+<script src="{% static 'js/reward_rules.js' %}"></script>
+
+<script src="{% static 'js/spin.js' %}"></script>
+
+
+
+{% include "includes/bubble_popup.html" %}
 
 </body>
 

@@ -1,0 +1,208 @@
+{% extends "admin/base_admin.html" %}
+
+{% block title %}
+Create Campaign
+{% endblock %}
+
+{% block content %}
+
+<div class="campaign-container">
+
+    <div class="campaign-header">
+
+        <div>
+            
+            <h2>
+
+                ✏ Edit Reward Campaign
+
+            </h2>
+
+            <p>
+
+                Update campaign information.
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <form method="POST"
+          class="campaign-form">
+
+        {% csrf_token %}
+
+        <div class="form-group">
+
+            <label>
+
+                Campaign Title
+
+            </label>
+
+           <input
+            type="text"
+            name="title"
+            value="{{ campaign.title }}"
+            required>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>
+
+                Description
+
+            </label>
+
+           <textarea
+            name="description"
+            rows="4">{{ campaign.description }}
+            </textarea>
+
+        </div>
+
+        <div class="form-row">
+
+            <div class="form-group">
+
+                <label>
+
+                    Start Time
+
+                </label>
+
+               <input
+                type="datetime-local"
+                name="start_time"
+                value="{{ campaign.start_time|date:'Y-m-d\\TH:i' }}"
+                required>
+
+            </div>
+
+            <div class="form-group">
+
+                <label>
+
+                    End Time
+
+                </label>
+
+                <input
+                type="datetime-local"
+                name="end_time"
+                value="{{ campaign.end_time|date:'Y-m-d\\TH:i' }}"
+                required>
+
+            </div>
+
+        </div>
+
+        <div class="form-row">
+
+            <div class="form-group">
+
+                <label>
+
+                    Maximum Winners
+
+                </label>
+
+             <input
+            type="number"
+            name="max_winners"
+            value="{{ campaign.max_winners }}"
+            required>
+
+            </div>
+
+            <div class="form-group">
+
+                <label>
+
+                    Maximum Spins Per Customer
+
+                </label>
+
+               <input
+                type="number"
+                name="max_spins_per_customer"
+                value="{{ campaign.max_spins_per_customer }}"
+                required>
+
+            </div>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>
+
+                Status
+
+            </label>
+
+            <select name="status">
+
+            <option
+                value="Draft"
+                {% if campaign.status == "Draft" %}
+                selected
+                {% endif %}>
+                Draft
+            </option>
+
+            <option
+                value="Live"
+                {% if campaign.status == "Live" %}
+                selected
+                {% endif %}>
+                Live
+            </option>
+
+            <option
+                value="Closed"
+                {% if campaign.status == "Closed" %}
+                selected
+                {% endif %}>
+                Closed
+            </option>
+
+        </select>
+        </div>
+
+        <div class="campaign-buttons">
+
+            <button
+                type="submit"
+                class="btn btn-success">
+
+                Update Campaign
+
+            </button>
+
+            <a
+                href="{% url 'admin_reward_campaigns' %}"
+                class="btn btn-secondary">
+
+                Cancel
+
+            </a>
+
+        </div>
+
+    </form>
+
+    <div class="form-section">
+
+        <h4>Campaign Information</h4>
+
+        <hr>
+
+    </div>
+
+</div>
+
+{% endblock %}

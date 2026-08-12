@@ -2,9 +2,7 @@
                 UPDATE REVIEW PAGE
 =========================================================*/
 
-function updateReviewPage(){
-
-    console.log("Updating Review Page...");
+async function updateReviewPage(){
 
     /*=========================
         PICKUP ADDRESS
@@ -14,8 +12,6 @@ function updateReviewPage(){
         document.getElementById(
             "pickup-address"
         ).value;
-
-    console.log("Pickup:", pickup);
 
     document.getElementById(
         "review-pickup"
@@ -32,8 +28,6 @@ function updateReviewPage(){
             "delivery-address"
         ).value;
 
-    console.log("Delivery:", delivery);
-
     document.getElementById(
         "review-delivery"
     ).innerText =
@@ -48,11 +42,6 @@ function updateReviewPage(){
         document.querySelector(
             'input[name="phone_number"]'
         );
-
-    console.log(
-        "Phone:",
-        phoneInput ? phoneInput.value : null
-    );
 
     document.getElementById(
         "review-phone"
@@ -71,11 +60,6 @@ function updateReviewPage(){
             "id_pickup_date"
         );
 
-    console.log(
-        "Pickup Date:",
-        pickupDate ? pickupDate.value : null
-    );
-
     document.getElementById(
         "review-date"
     ).innerText =
@@ -93,13 +77,6 @@ function updateReviewPage(){
             "id_payment_method"
         );
 
-    console.log(
-        "Payment:",
-        payment
-        ? payment.value
-        : null
-    );
-
     document.getElementById(
         "review-payment"
     ).innerText =
@@ -110,17 +87,9 @@ function updateReviewPage(){
         : "Not Selected";
 
 
-    /*=========================
-        LAUNDRY ITEMS
-    =========================*/
+  /*=========================
+    LAUNDRY ITEMS
+=========================*/
 
-    document.getElementById(
-        "review-items"
-    ).innerHTML =
-        document.getElementById(
-            "selected-items"
-        ).innerHTML;
-
-        refreshPricing();
-
+await refreshPricing();
 }

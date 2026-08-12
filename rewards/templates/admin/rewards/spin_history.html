@@ -1,0 +1,277 @@
+{% extends "admin/base_admin.html" %}
+
+{% block title %}
+Spin History
+{% endblock %}
+
+{% block content %}
+
+<div class="reward-dashboard">
+
+    <div class="page-header">
+
+        <div>
+
+            <h2>
+
+                🎡 Spin History
+
+            </h2>
+
+            <p>
+
+                Monitor every customer spin.
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- Statistics -->
+
+    <div class="reward-cards">
+
+        <div class="reward-card">
+
+            <div class="reward-icon">
+
+                🎡
+
+            </div>
+
+            <h5>
+
+                Total Spins
+
+            </h5>
+
+            <h3>
+
+                {{ total_spins }}
+
+            </h3>
+
+        </div>
+
+        <div class="reward-card">
+
+            <div class="reward-icon">
+
+                🏆
+
+            </div>
+
+            <h5>
+
+                Winning Spins
+
+            </h5>
+
+            <h3>
+
+                {{ winning_spins }}
+
+            </h3>
+
+        </div>
+
+        <div class="reward-card">
+
+            <div class="reward-icon">
+
+                ❌
+
+            </div>
+
+            <h5>
+
+                Losing Spins
+
+            </h5>
+
+            <h3>
+
+                {{ losing_spins }}
+
+            </h3>
+
+        </div>
+
+        <div class="reward-card">
+
+            <div class="reward-icon">
+
+                ✅
+
+            </div>
+
+            <h5>
+
+                Rewards Claimed
+
+            </h5>
+
+            <h3>
+
+                {{ claimed_rewards }}
+
+            </h3>
+
+        </div>
+
+    </div>
+
+    <!-- Spin Table -->
+
+    <div class="campaign-table-card">
+
+        <table class="table table-hover align-middle">
+
+            <thead>
+
+                <tr>
+
+                    <th>Customer</th>
+
+                    <th>Campaign</th>
+
+                    <th>Spin</th>
+
+                    <th>Result</th>
+
+                    <th>Prize</th>
+
+                    <th>Claimed</th>
+
+                    <th>Date</th>
+
+                    <th class="text-center">
+
+                        Action
+
+                    </th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+            {% for spin in spins %}
+
+                <tr>
+
+                    <td>
+
+                        {{ spin.customer.username }}
+
+                    </td>
+
+                    <td>
+
+                        {{ spin.campaign.title }}
+
+                    </td>
+
+                    <td>
+
+                        #{{ spin.spin_number }}
+
+                    </td>
+
+                    <td>
+
+                        {% if spin.has_won %}
+
+                        <span class="badge bg-success">
+
+                            Winner
+
+                        </span>
+
+                        {% else %}
+
+                        <span class="badge bg-secondary">
+
+                            Try Again
+
+                        </span>
+
+                        {% endif %}
+
+                    </td>
+
+                    <td>
+
+                        {% if spin.prize %}
+
+                            {{ spin.prize.name }}
+
+                        {% else %}
+
+                            —
+
+                        {% endif %}
+
+                    </td>
+
+                    <td>
+
+                        {% if spin.reward_claimed %}
+
+                            ✅
+
+                        {% else %}
+
+                            ❌
+
+                        {% endif %}
+
+                    </td>
+
+                    <td>
+
+                        {{ spin.spun_at|date:"M d, Y H:i" }}
+
+                    </td>
+
+                    <td class="text-center">
+
+                        <a href="{% url 'view_spin_history' spin.id %}"
+
+                           class="btn btn-sm btn-outline-primary">
+
+                            <i class="fas fa-eye"></i>
+
+                        </a>
+
+                    </td>
+
+                </tr>
+
+            {% empty %}
+
+                <tr>
+
+                    <td colspan="8"
+
+                    class="text-center py-5">
+
+                        No spins found.
+
+                    </td>
+
+                </tr>
+
+            {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -123,6 +123,37 @@ function calculateDistance(
 
 }
 
+function recalculateTransport(){
+
+    const pickupDistance = parseFloat(
+        document.getElementById(
+            "id_pickup_distance_km"
+        ).value || 0
+    );
+
+    const deliveryDistance = parseFloat(
+        document.getElementById(
+            "id_delivery_distance_km"
+        ).value || 0
+    );
+
+    const totalDistance =
+        pickupDistance + deliveryDistance;
+
+    document.getElementById(
+        "id_total_distance_km"
+    ).value =
+        totalDistance.toFixed(2);
+
+    document.getElementById(
+        "total-distance"
+    ).innerText =
+        totalDistance.toFixed(2) + " km";
+
+    refreshPricing();
+
+}
+
 /*=========================================================
                 INITIALIZE GOOGLE AUTOCOMPLETE
 =========================================================*/
@@ -229,44 +260,7 @@ function initAutocomplete(){
                 pickupDistance.toFixed(2);
 
 
-            /*=================================================
-                        GET DELIVERY DISTANCE
-            =================================================*/
-
-            const deliveryDistance =
-                parseFloat(
-                    document.getElementById(
-                        'id_delivery_distance_km'
-                    ).value || 0
-                );
-
-
-            /*=================================================
-                        TOTAL DISTANCE
-            =================================================*/
-
-            const totalDistance =
-                pickupDistance +
-                deliveryDistance;
-
-            document.getElementById(
-                'total-distance'
-            ).innerText =
-                totalDistance.toFixed(2)
-                + ' km';
-
-            document.getElementById(
-                'id_total_distance_km'
-            ).value =
-                totalDistance.toFixed(2);
-
-
-            /*=================================================
-                        TRANSPORT FEE
-            =================================================*/
-
-            refreshPricing();
-
+            recalculateTransport();
             /*=================================================
                         SAVE COORDINATES
             =================================================*/
@@ -405,42 +399,7 @@ function initAutocomplete(){
                 deliveryDistance.toFixed(2);
 
 
-            /*=================================================
-                    GET PICKUP DISTANCE
-            =================================================*/
-
-            const pickupDistance =
-                parseFloat(
-                    document.getElementById(
-                        'id_pickup_distance_km'
-                    ).value || 0
-                );
-
-
-            /*=================================================
-                    TOTAL DISTANCE
-            =================================================*/
-
-            const totalDistance =
-                pickupDistance +
-                deliveryDistance;
-
-            document.getElementById(
-                'total-distance'
-            ).innerText =
-                totalDistance.toFixed(2)
-                + ' km';
-
-            document.getElementById(
-                'id_total_distance_km'
-            ).value =
-                totalDistance.toFixed(2);
-
-
-            /*=================================================
-                    TRANSPORT FEE
-            =================================================*/
-            refreshPricing();
+            recalculateTransport();
 
             /*=================================================
                     SAVE COORDINATES
@@ -543,6 +502,7 @@ function initAutocomplete(){
 document
     .getElementById("clearPickup")
     .addEventListener(
+        
         "click",
         function(){
 
@@ -599,9 +559,10 @@ document
 
             }
 
-
-            // Recalculate Transport Fee
-            refreshPricing();
+            /*=================================================
+                        UPDATE TOTAL DISTANCE
+            =================================================*/
+            recalculateTransport();
 
         }
 
@@ -615,6 +576,7 @@ document
 document
     .getElementById("clearDelivery")
     .addEventListener(
+     
         "click",
         function(){
 
@@ -671,14 +633,15 @@ document
 
             }
 
+           /* =================================================
+                        UPDATE TOTAL DISTANCE
+            =================================================*/
+                recalculateTransport();
 
-            // Recalculate Transport Fee
-            refreshPricing();
-
-        }
+                    }
 
     );
-
+    
 
 /*=========================================================
                 INITIALIZE AUTOCOMPLETE

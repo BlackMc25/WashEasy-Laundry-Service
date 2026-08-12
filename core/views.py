@@ -20,6 +20,10 @@ from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 from .forms import LaundryOrderForm
 from accounts.forms import SignUpForm
+from rewards.services import RewardEngine
+from rewards.models import CustomerReward
+from rewards.subscription_items import is_subscription_item
+from rewards.benefit_engine import BenefitEngine
 from .models import (
     PriceList,
     LaundryOrder,
@@ -27,7 +31,7 @@ from .models import (
     Complaint,
 
      SubscriptionPlan,
-
+     
       UpgradeSettings,
     
 )
@@ -64,25 +68,6 @@ def home(request):
     )
  
 
-
-def is_subscription_item(price_obj, subscription):
-    
-    if not subscription:
-        return False
-
-    plan = subscription.plan.name.lower()
-
-    if plan == "basic":
-        return price_obj.basic_subscription
-
-    elif plan == "standard":
-        return price_obj.standard_subscription
-
-    elif plan == "premium":
-        return price_obj.premium_subscription
-
-    return False
-
 @login_required
 def book_laundry(request):
 
@@ -94,6 +79,31 @@ def book_laundry(request):
     payment_status="Paid",
     remaining_items__gt=0
     ).select_related("plan").first()
+
+    booking_rewards = CustomerReward.objects.filter(
+    customer=request.user,
+    status="Active",
+    is_booking_ready=True
+    ).select_related("prize")
+
+    for reward in booking_rewards:
+    
+        reward.is_locked = False
+        reward.lock_message = ""
+
+        if (
+            active_subscription
+            and reward.prize.prize_type in [
+                "subscription_standard",
+                "subscription_premium",
+            ]
+        ):
+
+            reward.is_locked = True
+
+            reward.lock_message = (
+                "Finish your current subscription first."
+            )
 
     categories = {}
 
@@ -159,26 +169,81 @@ def book_laundry(request):
         flat=True
     ).distinct()
 
+    order_transport_is_free = False
+
     if request.method == "POST":
 
         # ==========================================
         # SUBSCRIPTION MODE
         # ==========================================
 
-        use_subscription = (
-            request.POST.get("use_subscription") == "true"
+        # ==========================================
+        # BENEFIT MODE
+        # ==========================================
+
+        benefit_type = request.POST.get(
+            "benefit_type",
+            "NONE"
         )
 
+        VALID_BENEFITS = {
+            "NONE",
+            "SUBSCRIPTION",
+            "REWARD",
+        }
+
+        if benefit_type not in VALID_BENEFITS:
+            benefit_type = "NONE"
+
         subscription = None
+        active_reward = None
+        reward_type = None
 
-        if use_subscription:
+        # ----------------------------------
+        # Purchased Subscription
+        # ----------------------------------
 
-            subscription = CustomerSubscription.objects.filter(
-                customer=request.user,
-                status="Active",
-                payment_status="Paid",
-                remaining_items__gt=0
-            ).order_by("-start_date").first()
+        if benefit_type == "SUBSCRIPTION":
+
+            subscription, _ = BenefitEngine.resolve(
+
+                request.user,
+
+                "SUBSCRIPTION"
+
+            )
+
+        # ----------------------------------
+        # Selected Reward
+        # ----------------------------------
+
+        elif benefit_type == "REWARD":
+
+            reward_id = request.POST.get("booking_reward")
+
+            if reward_id:
+
+                active_reward = CustomerReward.objects.filter(
+
+                    id=reward_id,
+
+                    customer=request.user,
+
+                    status="Active",
+
+                    is_booking_ready=True,
+
+                ).select_related(
+
+                    "prize"
+
+                ).first()
+
+            if active_reward:
+
+                reward_type = active_reward.prize.prize_type
+
+        reward_result = None
 
         form = LaundryOrderForm(request.POST)
 
@@ -226,10 +291,144 @@ def book_laundry(request):
                         "previous_addresses": previous_addresses,
                         "previous_delivery_addresses": previous_delivery_addresses,
                         "site_settings": site_settings,
+                        "booking_rewards": booking_rewards,
                         "active_subscription": active_subscription,
                     },
                 )
+            booking_items = []
 
+            # ============================================
+            # Track remaining subscription items
+            # ============================================
+
+            subscription_remaining = 0
+
+            if subscription:
+
+                subscription_remaining = (
+                    subscription.remaining_items
+                )
+
+            for item in items:
+
+                quantity = int(
+                    request.POST.get(f"item_{item.id}", 0)
+                )
+
+                standard_subtotal = Decimal("0")
+
+                covered_by_subscription = False
+                covered_by_reward = False
+
+                if quantity > 0:
+
+                    booking_items.append({
+
+                        "price_list_id": item.id,
+
+                        "quantity": quantity
+
+                    })
+            print("=" * 60)
+            print("Benefit Type:", benefit_type)
+            print("Reward Type:", reward_type)
+
+            if active_reward:
+                print("Selected Reward Prize:", active_reward.prize.prize_type)
+            else:
+                print("No active reward")
+
+            print("=" * 60)
+
+            if benefit_type == "REWARD":
+    
+                # ----------------------------------
+                # Laundry Reward
+                # ----------------------------------
+
+                if reward_type.startswith("items_"):
+
+                    reward_result = RewardEngine.validate_booking(
+
+                        request.user,
+
+                        booking_items
+
+                    )
+
+                    if not reward_result["valid"]:
+
+                        messages.error(
+
+                            request,
+
+                            reward_result["message"]
+
+                        )
+
+                        return redirect("book_laundry")
+
+                # ----------------------------------
+                # Subscription Reward
+                # ----------------------------------
+
+                elif reward_type in [
+
+                    "subscription_standard",
+
+                    "subscription_premium",
+
+                ]:
+
+                    reward_result = RewardEngine.validate_subscription(
+
+                        customer=request.user,
+
+                        booking_items=booking_items,
+
+                        reward_id=active_reward.id,
+
+                    )
+
+                    if not reward_result["valid"]:
+
+                        messages.error(
+
+                            request,
+
+                            reward_result["message"]
+
+                        )
+
+                        return redirect("book_laundry")
+
+                # ----------------------------------
+                # Transport Reward
+                # ----------------------------------
+
+                elif reward_type.startswith("transport_"):
+
+                    reward_result = RewardEngine.validate_transport(
+
+                        customer=request.user,
+
+                        reward_id=active_reward.id,
+
+                    )
+
+                    if not reward_result["valid"]:
+
+                        messages.error(
+
+                            request,
+
+                            reward_result["message"]
+
+                        )
+
+                        return redirect("book_laundry")
+
+                    order_transport_is_free = True
             # -----------------------------
             # Save order
             # -----------------------------
@@ -253,7 +452,11 @@ def book_laundry(request):
 
             PRICE_PER_KM = Decimal("150")
 
-            if (
+            if order_transport_is_free:
+    
+                transport_fee = Decimal("0")
+
+            elif (
                 subscription
                 and
                 subscription.free_transport_trips_remaining > 0
@@ -267,6 +470,7 @@ def book_laundry(request):
                     Decimal(str(order.total_distance_km))
                     * PRICE_PER_KM
                 )
+
 
             order.transport_fee = transport_fee
 
@@ -290,10 +494,34 @@ def book_laundry(request):
 
             total_amount = Decimal("0")
 
+            # --------------------------------
+            # Reward Allocation Lookup
+            # --------------------------------
+
+            reward_allocations = {}
+
+            if reward_result:
+
+                # ----------------------------------
+                # Reward allocations
+                # ----------------------------------
+
+                reward_allocations = {}
+
+                if reward_result and "items" in reward_result:
+
+                    reward_allocations = {
+
+                        allocation["price_list_id"]: allocation
+
+                        for allocation in reward_result["items"]
+
+                    }
+
             # -----------------------------
             # Save each laundry item
             # -----------------------------
-            for item in items:
+            for item in items: 
 
                 quantity = int(
                     request.POST.get(
@@ -313,24 +541,164 @@ def book_laundry(request):
                     continue
 
                 covered_by_subscription = False
+                covered_by_reward = False
 
-                if subscription:
+                # Default values
+                covered_quantity = 0
 
-                    covered_by_subscription = is_subscription_item(
-                        item,
-                        subscription
+                payable_quantity = quantity
+
+                paid_quantity = quantity
+
+                reward_quantity = 0
+
+                reward_paid_quantity = 0
+
+                # ==========================================
+                # SUBSCRIPTION
+                # ==========================================
+
+                if subscription and is_subscription_item(item, subscription):
+
+                    covered_quantity = min(
+                        quantity,
+                        subscription_remaining
                     )
 
-                if covered_by_subscription:
+                    payable_quantity = (
+                        quantity - covered_quantity
+                    )
 
-                    standard_subtotal = 0
+                    subscription_remaining -= covered_quantity
+
+                    covered_by_subscription = (
+                        covered_quantity > 0
+                    )
+
+                    paid_quantity = payable_quantity
+
+                    standard_subtotal = (
+
+                        Decimal(payable_quantity)
+
+                        * item.price
+
+                    )
+
+                # ==========================================
+                # REWARD
+                # ==========================================
+
+                elif benefit_type == "REWARD":
+
+                    # ----------------------------------
+                    # Reward Subscription
+                    # ----------------------------------
+
+                    if reward_type in [
+
+                        "subscription_standard",
+
+                        "subscription_premium",
+
+                    ]:
+
+                        allocation = next(
+
+                            (
+                                x for x in reward_result["items"]
+
+                                if x["price_list_id"] == item.id
+                            ),
+
+                            None,
+
+                        )
+
+                        if allocation:
+
+                            covered_quantity = allocation["covered_quantity"]
+
+                            paid_quantity = allocation["paid_quantity"]
+
+                            covered_by_subscription = (
+
+                                covered_quantity > 0
+
+                            )
+
+                            standard_subtotal = (
+
+                                Decimal(paid_quantity)
+
+                                * item.price
+
+                            )
+
+                        else:
+
+                            paid_quantity = quantity
+
+                            standard_subtotal = (
+
+                                Decimal(quantity)
+
+                                * item.price
+
+                            )
+
+                    # ----------------------------------
+                    # Laundry Reward
+                    # ----------------------------------
+
+                    else:
+
+                        allocation = reward_allocations.get(item.id)
+
+                        if allocation:
+
+                            reward_quantity = allocation["reward_quantity"]
+
+                            reward_paid_quantity = allocation["paid_quantity"]
+
+                            covered_by_reward = (
+
+                                reward_quantity > 0
+
+                            )
+
+                            standard_subtotal = (
+
+                                Decimal(reward_paid_quantity)
+
+                                * item.price
+
+                            )
+
+                        else:
+
+                            reward_paid_quantity = quantity
+
+                            standard_subtotal = (
+
+                                Decimal(quantity)
+
+                                * item.price
+
+                            )
+                # ==========================================
+                # NORMAL BOOKING
+                # ==========================================
 
                 else:
-                        standard_subtotal = ( 
-                                    Decimal(quantity)
 
-                                    * item.price
-                                )
+                    standard_subtotal = (
+
+                        Decimal(quantity)
+
+                        * item.price
+
+                    )
 
                 express_subtotal = (
                     Decimal(express_quantity)
@@ -361,6 +729,13 @@ def book_laundry(request):
                     express_fee=express_fee,
                     total_subtotal=total_subtotal,
                     covered_by_subscription=covered_by_subscription,
+                    covered_by_reward=covered_by_reward,
+
+                    reward_quantity=reward_quantity,
+                    reward_paid_quantity=reward_paid_quantity,
+
+                    covered_quantity=covered_quantity,
+                    paid_quantity=paid_quantity,
                 )
 
                 total_amount += total_subtotal
@@ -374,6 +749,66 @@ def book_laundry(request):
 
             order.save()
 
+            if benefit_type == "REWARD":
+    
+                # ----------------------------------
+                # Laundry Item Reward
+                # ----------------------------------
+
+                if reward_type.startswith("items_"):
+
+                    RewardEngine.consume_rewards(
+
+                        reward_result[
+                            "reward_consumption"
+                        ]
+
+                    )
+
+                # ----------------------------------
+                # Subscription Reward
+                # ----------------------------------
+
+                elif reward_type in [
+
+                    "subscription_standard",
+
+                    "subscription_premium",
+
+                ]:
+
+                    RewardEngine.consume_subscription_reward(
+
+                        reward_result["reward"],
+
+                        reward_result["covered_items"]
+
+                    )
+
+                # ----------------------------------
+                # Transport Reward
+                # ----------------------------------
+
+                elif reward_type.startswith("transport_"):
+
+                    RewardEngine.consume_transport_reward(
+
+                        active_reward
+
+                    )
+            # ==========================================
+            # SAVE REMAINING SUBSCRIPTION ITEMS
+            # ==========================================
+
+            if subscription:
+
+                subscription.remaining_items = subscription_remaining
+
+                if subscription.remaining_items <= 0:
+    
+                    subscription.status = "Completed"
+
+                subscription.save()
             # ==========================================
             # USE ONE FREE TRANSPORT TRIP
             # ==========================================
@@ -432,6 +867,7 @@ def book_laundry(request):
             "previous_addresses": previous_addresses,
             "previous_delivery_addresses": previous_delivery_addresses,
             "site_settings": site_settings,
+            "booking_rewards": booking_rewards,
             "active_subscription": active_subscription,
         },
     )

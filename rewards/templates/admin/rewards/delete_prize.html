@@ -1,0 +1,117 @@
+{% extends "admin/base_admin.html" %}
+
+{% block title %}
+Delete Prize
+{% endblock %}
+
+{% block content %}
+
+<div class="delete-page">
+
+    <div class="delete-card">
+
+        <div class="delete-icon">
+
+            🏆
+
+        </div>
+
+        <h2>
+
+            Delete Reward Prize
+
+        </h2>
+
+        <p>
+
+            Are you sure you want to delete
+
+            <strong>
+
+                "{{ prize.name }}"
+
+            </strong>?
+
+        </p>
+
+        <p class="delete-warning">
+
+            This action cannot be undone.
+
+        </p>
+
+        <div class="campaign-summary">
+
+            <div>
+
+                <strong>Campaign:</strong>
+
+                {{ prize.campaign.title }}
+
+            </div>
+
+            <div>
+
+                <strong>Prize Type:</strong>
+
+                {{ prize.get_prize_type_display }}
+
+            </div>
+
+            <div>
+
+                <strong>Probability:</strong>
+
+                {{ prize.probability }}
+
+            </div>
+
+            <div>
+
+                <strong>Value:</strong>
+
+                {{ prize.value }}
+
+            </div>
+
+            <div>
+
+                <strong>Validity:</strong>
+
+                {{ prize.validity_days }} Days
+
+            </div>
+
+        </div>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <div class="delete-buttons">
+
+                <button
+                    type="submit"
+                    class="btn btn-danger">
+
+                    Delete Prize
+
+                </button>
+
+                <a
+                    href="{% url 'view_reward_prize' prize.id %}"
+                    class="btn btn-secondary">
+
+                    Cancel
+
+                </a>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

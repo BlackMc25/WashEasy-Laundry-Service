@@ -251,56 +251,97 @@
 
         </div>
 
-        <h4 class="text-success">
+       <h4 class="text-success">
 
-        {% if item.covered_by_subscription %}
+    {% if item.covered_by_subscription %}
 
-            <span class="badge bg-success">
+        <span class="badge bg-success">
+            FREE
+        </span>
 
-                FREE
+        <br>
 
-            </span>
+        <small>
+            Covered by Subscription
+        </small>
 
-            <br>
+    {% elif item.covered_by_reward %}
 
-            <small>
+        <span class="badge bg-warning text-dark">
+            FREE
+        </span>
 
-                Covered by Subscription
+        <br>
 
-            </small>
+        <small>
+            Covered by Reward
+        </small>
 
-            {% else %}
+    {% else %}
 
-            ₦{{ item.total_subtotal }}
-            {% endif %}
+        ₦{{ item.total_subtotal }}
 
+    {% endif %}
 
-        </h4>
-
+    </h4>
         </div>
 
         <hr>
 
         <div class="summary-grid mt-md">
 
-        <div>
+        {% if item.covered_by_subscription %}
 
-        <span>
+        {% if item.covered_quantity > 0 %}
+            <div>
 
-        Standard Quantity
+            <span>
 
-        </span>
+                Covered by Subscription
 
-        <strong>
+            </span>
 
-        {{ item.quantity }}
+            <strong class="text-success">
 
-        × ₦{{ item.item.price }}
+                {{ item.covered_quantity }}
 
-        </strong>
+                × ₦{{ item.item.price }}
 
-        </div>
+                </strong>
 
+                </div>
+        {% endif %}
+
+        {% if item.paid_quantity > 0 %}
+            <div>
+                <span>Additional Laundry</span>
+                <strong class="text-danger">
+                    {{ item.paid_quantity }} × ₦{{ item.item.price }}
+                </strong>
+            </div>
+        {% endif %}
+
+    {% elif item.covered_by_reward %}
+
+        {% if item.reward_quantity > 0 %}
+            <div>
+                <span>🎁 Covered by Reward</span>
+                <strong class="text-success">
+                    {{ item.reward_quantity }} × ₦{{ item.item.price }}
+                </strong>
+            </div>
+        {% endif %}
+
+        {% if item.reward_paid_quantity > 0 %}
+            <div>
+                <span>Additional Laundry</span>
+                <strong class="text-danger">
+                    {{ item.reward_paid_quantity }} × ₦{{ item.item.price }}
+                </strong>
+            </div>
+        {% endif %}
+
+    {% endif %}
         {% if item.express_quantity > 0 %}
 
         <div>
@@ -353,11 +394,27 @@
 
             </small>
 
-            {% else %}
+        {% elif item.covered_by_reward %}
+
+            <span class="badge bg-warning text-dark">
+
+                FREE
+
+            </span>
+
+            <br>
+
+            <small>
+
+                Covered by Reward
+
+            </small>
+
+        {% else %}
 
             ₦{{ item.subtotal }}
 
-            {% endif %}
+        {% endif %}
 
         </strong>
 
@@ -367,19 +424,47 @@
 
         <div class="total-row">
 
-        <span class="text-primary">
+            <span>
 
-        Express Fee
+                Covered Laundry
 
-        </span>
+            </span>
 
-        <strong class="text-primary">
+            <strong class="text-success">
 
-        ₦{{ item.express_fee }}
+                {% if item.covered_quantity > 0 %}
 
-        </strong>
+                    FREE
+
+                {% else %}
+
+                    —
+
+                {% endif %}
+
+            </strong>
 
         </div>
+
+        {% if item.paid_quantity > 0 %}
+
+        <div class="total-row">
+
+            <span>
+
+                Additional Laundry
+
+            </span>
+
+            <strong class="text-danger">
+
+                ₦{{ item.subtotal }}
+
+            </strong>
+
+        </div>
+
+        {% endif %}
 
         {% endif %}
 
@@ -409,12 +494,27 @@
 
             </small>
 
-            {% else %}
+        {% elif item.covered_by_reward %}
+
+            <span class="badge bg-warning text-dark">
+
+                FREE
+
+            </span>
+
+            <br>
+
+            <small>
+
+                Covered by Reward
+
+            </small>
+
+        {% else %}
 
             ₦{{ item.total_subtotal }}
 
-            {% endif %}
-
+        {% endif %}
 
         </span>
 

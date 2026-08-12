@@ -598,3 +598,482 @@ transform:scale(1);
 
 }
 
+/*=========================================
+        FLOATING ANIMATION
+=========================================*/
+
+@keyframes floatCard{
+
+    0%,100%{
+
+        transform:translateY(0px);
+
+    }
+
+    50%{
+
+        transform:translateY(-15px);
+
+    }
+
+}
+
+.card1{
+
+    animation:floatCard 4s ease-in-out infinite;
+
+}
+
+.card2{
+
+    animation:floatCard 5s ease-in-out infinite;
+
+}
+
+.card3{
+
+    animation:floatCard 4.5s ease-in-out infinite;
+
+}
+
+.card4{
+
+    animation:floatCard 5.5s ease-in-out infinite;
+
+}
+
+/*=========================================
+        REWARD WHEEL
+=========================================*/
+
+@keyframes spinWheel{
+
+    0%{
+
+        transform:translate(-50%,-50%) rotate(0deg);
+
+    }
+
+    45%{
+
+        transform:translate(-50%,-50%) rotate(360deg);
+
+    }
+
+    55%{
+
+        transform:translate(-50%,-50%) rotate(360deg);
+
+    }
+
+    100%{
+
+        transform:translate(-50%,-50%) rotate(720deg);
+
+    }
+
+}
+
+.reward-wheel-home .mobile-wheel{
+
+    animation:spinWheel 12s linear infinite;
+
+}
+
+/*=========================================
+        BUTTON GLOW
+=========================================*/
+
+@keyframes pulseButton{
+
+    0%,100%{
+
+        box-shadow:
+
+        0 15px 40px rgba(0,0,0,.15);
+
+    }
+
+    50%{
+
+        box-shadow:
+
+        0 20px 50px rgba(255,255,255,.55);
+
+    }
+
+}
+
+.reward-home-btn{
+
+    animation:pulseButton 3s infinite;
+
+}
+
+.reward-home-btn{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.reward-home-btn::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:-120%;
+
+    top:0;
+
+    width:70%;
+
+    height:100%;
+
+    background:
+
+    linear-gradient(
+
+        90deg,
+
+        transparent,
+
+        rgba(255,255,255,.8),
+
+        transparent
+
+    );
+
+    transform:skewX(-30deg);
+
+}
+
+.reward-home-btn:hover::before{
+
+    animation:shine .9s;
+
+}
+
+@keyframes shine{
+
+    to{
+
+        left:160%;
+
+    }
+
+}
+
+.reward-home-section::before{
+
+    animation:bgMove 10s linear infinite alternate;
+
+}
+
+@keyframes bgMove{
+
+    from{
+
+        transform:translateY(0);
+
+    }
+
+    to{
+
+        transform:translateY(-25px);
+
+    }
+
+}
+
+/*=========================================
+        MEMBERSHIP CARD FLOAT
+=========================================*/
+
+@keyframes floatMembership{
+
+    0%,100%{
+
+        transform:
+        translate(-50%,-50%)
+        translateY(0)
+        rotate(-2deg);
+
+    }
+
+    50%{
+
+        transform:
+        translate(-50%,-50%)
+        translateY(-15px)
+        rotate(2deg);
+
+    }
+
+}
+
+.membership-card{
+
+    animation:floatMembership 6s ease-in-out infinite;
+
+}
+
+/*=========================================
+        BENEFIT CARD FLOAT
+=========================================*/
+
+@keyframes floatBenefit{
+
+    0%,100%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-12px);
+
+    }
+
+}
+
+.card-a{
+
+    animation:floatBenefit 4s ease-in-out infinite;
+
+}
+
+.card-b{
+
+    animation:floatBenefit 5s ease-in-out infinite;
+
+}
+
+.card-c{
+
+    animation:floatBenefit 4.5s ease-in-out infinite;
+
+}
+
+.card-d{
+
+    animation:floatBenefit 5.5s ease-in-out infinite;
+
+}
+
+/*=========================================
+        BUTTON PULSE
+=========================================*/
+
+@keyframes memberPulse{
+
+    0%,100%{
+
+        box-shadow:
+        0 15px 40px rgba(0,0,0,.18);
+
+    }
+
+    50%{
+
+        box-shadow:
+        0 20px 60px rgba(255,215,0,.45);
+
+    }
+
+}
+
+.subscription-home-btn{
+
+    animation:memberPulse 3s infinite;
+
+}
+
+.subscription-home-btn{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.subscription-home-btn::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:-120%;
+
+    top:0;
+
+    width:70%;
+
+    height:100%;
+
+    background:
+
+        linear-gradient(
+
+            90deg,
+
+            transparent,
+
+            rgba(255,255,255,.8),
+
+            transparent
+
+        );
+
+    transform:skewX(-30deg);
+
+}
+
+.subscription-home-btn:hover::before{
+
+    animation:memberShine .9s;
+
+}
+
+@keyframes memberShine{
+
+    to{
+
+        left:160%;
+
+    }
+
+}
+
+.subscription-home-section::before{
+
+    animation:bgGlow 12s ease-in-out infinite alternate;
+
+}
+
+@keyframes bgGlow{
+
+    from{
+
+        transform:translateY(0);
+
+    }
+
+    to{
+
+        transform:translateY(-25px);
+
+    }
+
+}
+
+/*=========================================
+        FLOATING EXPRESS CARDS
+=========================================*/
+
+@keyframes floatExpress{
+
+    0%,100%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-15px);
+
+    }
+
+}
+
+.card-one{
+
+    animation:floatExpress 4s ease-in-out infinite;
+
+}
+
+.card-two{
+
+    animation:floatExpress 5s ease-in-out infinite;
+
+}
+
+.card-three{
+
+    animation:floatExpress 4.5s ease-in-out infinite;
+
+}
+
+.card-four{
+
+    animation:floatExpress 5.5s ease-in-out infinite;
+
+}
+
+/*=========================================
+        LIGHTNING PULSE
+=========================================*/
+
+@keyframes pulseLightning{
+
+    0%,100%{
+
+        transform:translate(-50%,-50%) scale(1);
+
+        box-shadow:
+
+            0 25px 60px rgba(0,0,0,.15);
+
+    }
+
+    50%{
+
+        transform:translate(-50%,-50%) scale(1.08);
+
+        box-shadow:
+
+            0 35px 90px rgba(255,193,7,.45);
+
+    }
+
+}
+
+.express-center{
+
+    animation:pulseLightning 3s ease-in-out infinite;
+
+}
+
+/*=========================================
+        BUTTON GLOW
+=========================================*/
+
+@keyframes expressPulse{
+
+    0%,100%{
+
+        box-shadow:
+
+            0 20px 45px rgba(0,0,0,.18);
+
+    }
+
+    50%{
+
+        box-shadow:
+
+            0 20px 55px rgba(255,193,7,.45);
+
+    }
+
+}
+
+.express-btn{
+
+    animation:expressPulse 3s infinite;
+
+}

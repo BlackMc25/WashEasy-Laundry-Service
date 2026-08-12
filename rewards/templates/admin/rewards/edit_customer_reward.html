@@ -1,0 +1,209 @@
+{% extends "admin/base_admin.html" %}
+
+{% block title %}
+Manage Customer Reward
+{% endblock %}
+
+{% block content %}
+
+<div class="campaign-container">
+
+    <div class="campaign-header">
+
+        <div>
+
+            <h2>
+
+                ⚙ Manage Customer Reward
+
+            </h2>
+
+            <p>
+
+                Update operational reward information.
+
+            </p>
+
+        </div>
+
+        <a href="{% url 'view_customer_reward' reward.id %}"
+
+           class="btn btn-secondary">
+
+            ← Back
+
+        </a>
+
+    </div>
+
+    <form method="POST"
+
+          class="campaign-form">
+
+        {% csrf_token %}
+
+        <div class="form-section">
+
+            <h4>
+
+                Reward Usage
+
+            </h4>
+
+            <hr>
+
+        </div>
+
+        <div class="form-row">
+
+            <div class="form-group">
+
+                <label>
+
+                    Remaining Laundry Items
+
+                </label>
+
+                <input
+                    type="number"
+                    name="remaining_items"
+                    value="{{ reward.remaining_items }}">
+
+            </div>
+
+            <div class="form-group">
+
+                <label>
+
+                    Free Transport Trips
+
+                </label>
+
+                <input
+                    type="number"
+                    name="free_transport_trips"
+                    value="{{ reward.free_transport_trips }}">
+
+            </div>
+
+        </div>
+
+        <div class="form-row">
+
+            <div class="form-group">
+
+                <label>
+
+                    Express Services
+
+                </label>
+
+                <input
+                    type="number"
+                    name="free_express_services"
+                    value="{{ reward.free_express_services }}">
+
+            </div>
+
+            <div class="form-group">
+
+                <label>
+
+                    Subscription Days
+
+                </label>
+
+                <input
+                    type="number"
+                    name="subscription_days"
+                    value="{{ reward.subscription_days }}">
+
+            </div>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>
+
+                Reward Status
+
+            </label>
+
+            <select
+                name="status">
+
+                {% for value,label in status_choices %}
+
+                <option
+
+                    value="{{ value }}"
+
+                    {% if reward.status == value %}
+
+                    selected
+
+                    {% endif %}>
+
+                    {{ label }}
+
+                </option>
+
+                {% endfor %}
+
+            </select>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>
+
+                Expiration Date
+
+            </label>
+
+            <input
+                type="datetime-local"
+                name="expires_at"
+                value="{% if reward.expires_at %}{{ reward.expires_at|date:'Y-m-d\\TH:i' }}{% endif %}">
+
+        </div>
+
+        <div class="switch-label">
+
+            <input
+
+                type="checkbox"
+
+                name="is_booking_ready"
+
+                {% if reward.is_booking_ready %}
+
+                checked
+
+                {% endif %}>
+
+            Booking Ready
+
+        </div>
+
+        <div class="campaign-buttons">
+
+            <button
+
+                type="submit"
+
+                class="btn btn-success">
+
+                Update Reward
+
+            </button>
+
+        </div>
+
+    </form>
+
+</div>
+
+{% endblock %}

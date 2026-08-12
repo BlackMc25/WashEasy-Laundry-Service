@@ -1,0 +1,151 @@
+{% extends "admin/base_admin.html" %}
+
+{% block title %}
+Delete Reward Policy
+{% endblock %}
+
+{% block content %}
+
+<div class="delete-page">
+
+    <div class="delete-card">
+
+        <div class="delete-icon">
+
+            ⚙️
+
+        </div>
+
+        <h2>
+
+            Delete Reward Policy
+
+        </h2>
+
+        <p>
+
+            Are you sure you want to permanently delete
+
+            <strong>
+
+                "{{ policy.name }}"
+
+            </strong>?
+
+        </p>
+
+        <p class="delete-warning">
+
+            This action cannot be undone.
+
+        </p>
+
+        <div class="campaign-summary">
+
+            <div>
+
+                <strong>Policy Name:</strong>
+
+                {{ policy.name }}
+
+            </div>
+
+            <div>
+
+                <strong>Applies To:</strong>
+
+                {{ policy.get_apply_to_display }}
+
+            </div>
+
+            <div>
+
+                <strong>Description:</strong>
+
+                {% if policy.description %}
+
+                    {{ policy.description }}
+
+                {% else %}
+
+                    <em>No description provided.</em>
+
+                {% endif %}
+
+            </div>
+
+            <div>
+
+                <strong>Allowed Categories:</strong>
+
+                {{ policy.allowed_categories.count }}
+
+            </div>
+
+            <div>
+
+                <strong>Allowed Services:</strong>
+
+                {{ policy.allowed_services.count }}
+
+            </div>
+
+            <div>
+
+                <strong>Status:</strong>
+
+                {% if policy.is_active %}
+
+                    <span class="badge bg-success">
+
+                        Active
+
+                    </span>
+
+                {% else %}
+
+                    <span class="badge bg-danger">
+
+                        Disabled
+
+                    </span>
+
+                {% endif %}
+
+            </div>
+
+        </div>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <div class="delete-buttons">
+
+                <button
+                    type="submit"
+                    class="btn btn-danger">
+
+                    <i class="fas fa-trash-alt"></i>
+
+                    Delete Policy
+
+                </button>
+
+                <a
+                    href="{% url 'view_reward_policy' policy.id %}"
+                    class="btn btn-secondary">
+
+                    Cancel
+
+                </a>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

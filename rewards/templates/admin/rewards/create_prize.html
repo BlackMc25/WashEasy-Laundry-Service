@@ -1,0 +1,283 @@
+{% extends "admin/base_admin.html" %}
+
+{% block title %}
+Create Reward Prize
+{% endblock %}
+
+{% block content %}
+
+<div class="campaign-container">
+
+    <div class="campaign-header">
+
+        <div>
+
+            <h2>🏆 Create Reward Prize</h2>
+
+            <p>
+
+                Add a new reward prize.
+
+            </p>
+
+        </div>
+
+        <a href="{% url 'admin_reward_prizes' %}"
+           class="btn btn-secondary">
+
+            ← Back
+
+        </a>
+
+    </div>
+
+    <form method="POST"
+          class="campaign-form">
+
+        {% csrf_token %}
+
+        <div class="form-section">
+
+            <h4>
+
+                Prize Information
+
+            </h4>
+
+            <hr>
+
+        </div>
+
+        <!-- Prize Name -->
+
+        <div class="form-group">
+
+            <label>
+
+                Prize Name
+
+            </label>
+
+            <input
+                type="text"
+                name="name"
+                placeholder="Enter prize name"
+                required>
+
+        </div>
+
+        <!-- Campaign -->
+
+        <div class="form-group">
+
+            <label>
+
+                Campaign
+
+            </label>
+
+            <select
+                name="campaign"
+                required>
+
+                <option value="">
+
+                    Select Campaign
+
+                </option>
+
+                {% for campaign in campaigns %}
+
+                <option value="{{ campaign.id }}">
+
+                    {{ campaign.title }}
+
+                </option>
+
+                {% endfor %}
+
+            </select>
+
+        </div>
+
+        <!-- Policy -->
+
+        <div class="form-group">
+
+            <label>
+
+                Reward Policy
+
+            </label>
+
+            <select
+                name="policy">
+
+                <option value="">
+
+                    No Policy
+
+                </option>
+
+                {% for policy in policies %}
+
+                <option value="{{ policy.id }}">
+
+                    {{ policy.name }}
+
+                </option>
+
+                {% endfor %}
+
+            </select>
+
+        </div>
+
+        <!-- Prize Type -->
+
+        <div class="form-group">
+
+            <label>
+
+                Prize Type
+
+            </label>
+
+            <select
+                name="prize_type"
+                required>
+
+                {% for value,label in prize_types %}
+
+                <option value="{{ value }}">
+
+                    {{ label }}
+
+                </option>
+
+                {% endfor %}
+
+            </select>
+
+        </div>
+
+        <!-- Two Columns -->
+
+        <div class="form-row">
+
+            <div class="form-group">
+
+                <label>
+
+                    Prize Value
+
+                </label>
+
+                <input
+                    type="number"
+                    name="value"
+                    min="0"
+                    value="0"
+                    required>
+
+            </div>
+
+            <div class="form-group">
+
+                <label>
+
+                    Validity (Days)
+
+                </label>
+
+                <input
+                    type="number"
+                    name="validity_days"
+                    value="14"
+                    required>
+
+            </div>
+
+        </div>
+
+        <div class="form-row">
+
+            <div class="form-group">
+
+                <label>
+
+                    Probability
+
+                </label>
+
+                <input
+                    type="number"
+                    name="probability"
+                    value="1"
+                    min="1"
+                    required>
+
+                <small>
+
+                    Higher number means a greater chance of winning.
+
+                </small>
+
+            </div>
+
+            <div class="form-group">
+
+                <label>
+
+                    Active
+
+                </label>
+
+                <div class="form-check mt-3">
+
+                    <input
+
+                        class="form-check-input"
+
+                        type="checkbox"
+
+                        name="is_active"
+
+                        checked>
+
+                    <label class="form-check-label">
+
+                        Prize Available
+
+                    </label>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="campaign-buttons">
+
+            <button
+                type="submit"
+                class="btn btn-success">
+
+                Save Prize
+
+            </button>
+
+            <a href="{% url 'admin_reward_prizes' %}"
+               class="btn btn-secondary">
+
+                Cancel
+
+            </a>
+
+        </div>
+
+    </form>
+
+</div>
+
+{% endblock %}

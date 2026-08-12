@@ -1,0 +1,281 @@
+{% extends "admin/base_admin.html" %}
+
+{% block title %}
+
+Customer Reward
+
+{% endblock %}
+
+{% block content %}
+
+<div class="campaign-details">
+
+    <!-- Header -->
+
+    <div class="campaign-header">
+
+        <div>
+
+            <h2>
+
+                👤 {{ reward.customer.username }}
+
+            </h2>
+
+            <p>
+
+                Customer Reward Details
+
+            </p>
+
+        </div>
+
+        <a href="{% url 'admin_customer_rewards' %}"
+
+           class="btn btn-secondary">
+
+            ← Back
+
+        </a>
+
+    </div>
+
+    <!-- Summary Cards -->
+
+    <div class="campaign-info-grid">
+
+        <div class="info-card">
+
+            <h6>
+
+                Prize
+
+            </h6>
+
+            <h4>
+
+                {{ reward.prize.name }}
+
+            </h4>
+
+        </div>
+
+        <div class="info-card">
+
+            <h6>
+
+                Status
+
+            </h6>
+
+            <h4>
+
+                {% if reward.status == "Active" %}
+
+                    🟢 Active
+
+                {% elif reward.status == "Completed" %}
+
+                    🔵 Completed
+
+                {% else %}
+
+                    🔴 Expired
+
+                {% endif %}
+
+            </h4>
+
+        </div>
+
+        <div class="info-card">
+
+            <h6>
+
+                Booking
+
+            </h6>
+
+            <h4>
+
+                {% if reward.is_booking_ready %}
+
+                    ✅ Ready
+
+                {% else %}
+
+                    ❌ Pending
+
+                {% endif %}
+
+            </h4>
+
+        </div>
+
+        <div class="info-card">
+
+            <h6>
+
+                Spin ID
+
+            </h6>
+
+            <h4>
+
+                #{{ reward.spin.id }}
+
+            </h4>
+
+        </div>
+
+    </div>
+
+    <!-- Reward Information -->
+
+    <div class="campaign-section">
+
+        <h4>
+
+            Reward Information
+
+        </h4>
+
+        <table class="table">
+
+            <tr>
+
+                <th>Customer</th>
+
+                <td>
+
+                    {{ reward.customer.username }}
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <th>Prize</th>
+
+                <td>
+
+                    {{ reward.prize.name }}
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <th>Total Laundry Items</th>
+
+                <td>
+
+                    {{ reward.total_items }}
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <th>Remaining Items</th>
+
+                <td>
+
+                    {{ reward.remaining_items }}
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <th>Free Transport Trips</th>
+
+                <td>
+
+                    {{ reward.free_transport_trips }}
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <th>Express Services</th>
+
+                <td>
+
+                    {{ reward.free_express_services }}
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <th>Subscription Days</th>
+
+                <td>
+
+                    {{ reward.subscription_days }}
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <th>Activated</th>
+
+                <td>
+
+                    {{ reward.activated_at }}
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <th>Expires</th>
+
+                <td>
+
+                    {{ reward.expires_at }}
+
+                </td>
+
+            </tr>
+
+        </table>
+
+    </div>
+
+    <!-- Action Buttons -->
+
+    <div class="campaign-actions">
+
+        <a href="{% url 'edit_customer_reward' reward.id %}"
+
+           class="btn btn-success">
+
+            ✏ Update Reward
+
+        </a>
+
+        <a href="{% url 'view_spin_history' reward.spin.id %}"
+
+           class="btn btn-primary">
+
+            🎡 View Spin
+
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}

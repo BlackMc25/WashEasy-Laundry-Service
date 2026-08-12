@@ -3,6 +3,9 @@ from . import views
 from django.contrib.sitemaps.views import sitemap
 from .sitemaps import StaticViewSitemap
 
+from .booking_api import SubscriptionValidationAPIView
+
+from core import admin_views
 
 sitemaps = {
     "static": StaticViewSitemap,
@@ -10,6 +13,7 @@ sitemaps = {
 
 
 urlpatterns = [
+    
 
     path(
         '',
@@ -365,7 +369,159 @@ urlpatterns = [
     "subscription/upgrade/verify/<int:subscription_id>/",
     views.verify_subscription_upgrade,
     name="verify_subscription_upgrade",
+    ),
+
+        # -----------------------------
+        # Rewards_Management Urls
+        # -----------------------------
+
+    path(
+        "rewards/",
+        admin_views.admin_rewards_dashboard,
+        name="admin_rewards_dashboard",
+    ),
+
+    path(
+            "rewards/campaigns/",
+            admin_views.admin_reward_campaigns,
+            name="admin_reward_campaigns",
+        ),
+
+    path(
+            "rewards/campaigns/create/",
+            admin_views.create_reward_campaign,
+            name="create_reward_campaign",
+        ),
+
+    path(
+            "rewards/campaigns/<int:campaign_id>/",
+            admin_views.view_reward_campaign,
+            name="view_reward_campaign",
+        ),
+
+    path(
+            "rewards/campaigns/<int:campaign_id>/edit/",
+            admin_views.edit_reward_campaign,
+            name="edit_reward_campaign",
+        ),
+
+        path(
+            "rewards/prizes/create/",
+            admin_views.create_reward_prize,
+            name="create_reward_prize",
+        ),
+
+    path(
+            "rewards/campaigns/<int:campaign_id>/delete/",
+            admin_views.delete_reward_campaign,
+            name="delete_reward_campaign",
+        ),
+
+    path(
+            "rewards/prizes/",
+            admin_views.admin_reward_prizes,
+            name="admin_reward_prizes",
+        ),
+
+    path(
+            "rewards/prizes/<int:prize_id>/",
+            admin_views.view_reward_prize,
+            name="view_reward_prize",
+        ),
+
+    path(
+            "rewards/prizes/<int:prize_id>/edit/",
+            admin_views.edit_reward_prize,
+            name="edit_reward_prize",
+        ),
+
+    path(
+            "rewards/prizes/<int:prize_id>/delete/",
+            admin_views.delete_reward_prize,
+            name="delete_reward_prize",
+        ),
+
+    path(
+            "rewards/policies/",
+            admin_views.admin_reward_policies,
+            name="admin_reward_policies",
+        ),
+
+    path(
+            "rewards/policies/create/",
+            admin_views.create_reward_policy,
+            name="create_reward_policy",
+        ),
+
+    path(
+            "rewards/policies/<int:policy_id>/",
+            admin_views.view_reward_policy,
+            name="view_reward_policy",
+        ),
+
+    path(
+            "rewards/policies/<int:policy_id>/edit/",
+            admin_views.edit_reward_policy,
+            name="edit_reward_policy",
+        ),
+
+
+    path(
+            "rewards/policies/<int:policy_id>/delete/",
+            admin_views.delete_reward_policy,
+            name="delete_reward_policy",
+        ),
+
+    path(
+            "rewards/customer-rewards/",
+            admin_views.admin_customer_rewards,
+            name="admin_customer_rewards",
+        ),
+
+    path(
+            "rewards/customer-rewards/<int:reward_id>/",
+            admin_views.view_customer_reward,
+            name="view_customer_reward",
+        ),
+
+    path(
+            "rewards/customer-rewards/<int:reward_id>/edit/",
+            admin_views.edit_customer_reward,
+            name="edit_customer_reward",
+        ),
+
+    path(
+            "rewards/spin-history/",
+            admin_views.admin_spin_history,
+            name="admin_spin_history",
+        ),
+
+    path(
+            "rewards/spin-history/<int:spin_id>/",
+            admin_views.view_spin_history,
+            name="view_spin_history",
+        ),
+
+    
+
+
+
+
+
+
+        # -----------------------------
+        # API's Urls
+        # -----------------------------
+
+    path(
+    "api/subscriptions/validate-booking/",
+    SubscriptionValidationAPIView.as_view(),
+    name="subscription-validate-booking",
 ),
+
+    
+
+
 ]
 
 

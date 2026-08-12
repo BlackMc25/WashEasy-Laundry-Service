@@ -8,13 +8,233 @@
 |--------------------------------------------------------------------------
 */
 
-function refreshPricing() {
+async function refreshPricing(){
 
-    const pricing = getPricingData();
+    let pricing = getPricingData();
+
+    if(getBenefitType() === "REWARD"){
+
+        const rewardResult = await validateReward(
+            pricing.selectedItems
+        );
+
+        pricing.rewardPlan = rewardResult.plan;
+
+        if (rewardResult.valid) {
+
+            /*
+            ==========================================
+            FREE TRANSPORT REWARD
+            ==========================================
+            */
+
+            if (rewardResult.transport_fee !== undefined) {
+
+                pricing.transportFee = rewardResult.transport_fee;
+
+                pricing.grandTotal =
+                    pricing.laundryTotal +
+                    pricing.transportFee +
+                    pricing.expressFee;
+            }
+
+            /*
+            ==========================================
+            REWARD SUBSCRIPTION / LAUNDRY REWARD
+            ==========================================
+            */
+
+            else {
+
+                pricing.laundryTotal = rewardResult.payable_laundry;
+
+                pricing.rewardPlan = rewardResult.plan;
+
+                pricing.coveredItems =
+                    rewardResult.covered_items || 0;
+
+                pricing.chargedItems =
+                    rewardResult.paid_items || 0;
+
+                pricing.remainingSubscription =
+                    rewardResult.remaining_after_booking || 0;
+
+                pricing.selectedItems.forEach(item => {
+
+                    const allocation = rewardResult.items.find(
+
+                        x => x.price_list_id === item.price_list_id
+
+                    );
+
+                    if(!allocation){
+
+                        item.rewardQuantity = 0;
+
+                        item.rewardPaidQuantity = item.quantity;
+
+                        return;
+
+                    }
+
+                    /*
+                    Reward Subscription
+                    */
+
+                    if (
+
+                        rewardResult.plan === "subscription_standard" ||
+
+                        rewardResult.plan === "subscription_premium"
+
+                    ) {
+
+                        item.coveredQuantity =
+                            allocation.covered_quantity;
+
+                        item.paidQuantity =
+                            allocation.paid_quantity;
+
+                    }
+
+                    /*
+                    Laundry Reward
+                    */
+
+                    else {
+
+                        item.rewardQuantity =
+                            allocation.reward_quantity;
+
+                        item.rewardPaidQuantity =
+                            allocation.paid_quantity;
+
+                    }
+
+                });
+
+                pricing.grandTotal =
+                    pricing.laundryTotal +
+                    pricing.transportFee +
+                    pricing.expressFee;
+
+            }
+
+}
+
+    }
+
+        /*
+    ------------------------------------
+    Subscription Validation
+    ------------------------------------
+    */
+
+    if(getBenefitType() === "SUBSCRIPTION"){
+
+        const subscriptionResult = await validateSubscription(
+
+            pricing.selectedItems
+
+        );
+
+        if(subscriptionResult.valid){
+
+            pricing.laundryTotal =
+
+                subscriptionResult.payable_laundry;
+
+            pricing.coveredItems =
+
+                subscriptionResult.covered_items;
+
+            pricing.chargedItems =
+
+                subscriptionResult.paid_items;
+
+            pricing.remainingSubscription =
+
+                subscriptionResult.remaining_after_booking;
+
+                 /*
+                ------------------------------------
+                Attach per-item subscription result
+                ------------------------------------
+                */
+
+                pricing.selectedItems.forEach(item => {
+
+                    const allocation = subscriptionResult.items.find(
+
+                        x => x.price_list_id === item.price_list_id
+
+                    );
+
+                    if(allocation){
+
+                        item.coveredQuantity = allocation.covered_quantity;
+
+                        item.paidQuantity = allocation.paid_quantity;
+
+                    }
+
+                    else{
+
+                        item.coveredQuantity = 0;
+
+                        item.paidQuantity = item.quantity;
+
+                    }
+
+                });
+
+            pricing.grandTotal =
+
+                pricing.laundryTotal +
+
+                pricing.transportFee +
+
+                pricing.expressFee;
+
+        }
+
+    }
 
     updateSummary(pricing);
 
     updateReview(pricing);
+
+}
+
+async function validateSubscription(selectedItems){
+
+    const response = await fetch(
+
+        "/api/subscriptions/validate-booking/",
+
+        {
+
+            method: "POST",
+
+            headers: {
+
+                "Content-Type": "application/json",
+
+                "X-CSRFToken": getCSRFToken()
+
+            },
+
+            body: JSON.stringify({
+
+                items: selectedItems
+
+            })
+
+        }
+
+    );
+
+    return await response.json();
 
 }
 
@@ -100,6 +320,7 @@ function getPricingData(){
 
         totalDistance:
             getTotalDistance()
+
 
     };
 
@@ -225,20 +446,162 @@ function calculateLaundryTotal(selectedItems){
     };
 
 }
+
+        document
+        .getElementById("clearAllAddresses")
+        .addEventListener("click", function(){
+
+            /*
+            ==========================
+            Addresses
+            ==========================
+            */
+
+            document.getElementById(
+                "pickup-address"
+            ).value = "";
+
+            document.getElementById(
+                "delivery-address"
+            ).value = "";
+
+            /*
+            ==========================
+            Coordinates
+            ==========================
+            */
+
+            document.getElementById(
+                "id_pickup_latitude"
+            ).value = "";
+
+            document.getElementById(
+                "id_pickup_longitude"
+            ).value = "";
+
+            document.getElementById(
+                "id_delivery_latitude"
+            ).value = "";
+
+            document.getElementById(
+                "id_delivery_longitude"
+            ).value = "";
+
+            /*
+            ==========================
+            Distances
+            ==========================
+            */
+
+            document.getElementById(
+                "pickup-distance"
+            ).innerText = "0 km";
+
+            document.getElementById(
+                "delivery-distance"
+            ).innerText = "0 km";
+
+            document.getElementById(
+                "total-distance"
+            ).innerText = "0 km";
+
+            document.getElementById(
+                "summary-pickup-distance"
+            ).innerText = "0 km";
+
+            document.getElementById(
+                "summary-delivery-distance"
+            ).innerText = "0 km";
+
+            /*
+            ==========================
+            Hidden Inputs
+            ==========================
+            */
+
+            document.getElementById(
+                "id_pickup_distance_km"
+            ).value = 0;
+
+            document.getElementById(
+                "id_delivery_distance_km"
+            ).value = 0;
+
+            document.getElementById(
+                "id_total_distance_km"
+            ).value = 0;
+
+            /*
+            ==========================
+            Remove Map Objects
+            ==========================
+            */
+
+            if(pickupMarker){
+
+                map.removeLayer(
+                    pickupMarker
+                );
+
+                pickupMarker = null;
+
+            }
+
+            if(deliveryMarker){
+
+                map.removeLayer(
+                    deliveryMarker
+                );
+
+                deliveryMarker = null;
+
+            }
+
+            if(pickupRoute){
+
+                map.removeLayer(
+                    pickupRoute
+                );
+
+                pickupRoute = null;
+
+            }
+
+            if(deliveryRoute){
+
+                map.removeLayer(
+                    deliveryRoute
+                );
+
+                deliveryRoute = null;
+
+            }
+
+            refreshPricing();
+
+        });
+
 /*
 |--------------------------------------------------------------------------
 | Subscription Toggle
 |--------------------------------------------------------------------------
 */
 
-function isSubscriptionEnabled() {
+function getBenefitType(){
 
-    const toggle =
-        document.getElementById("useSubscription");
+    return document.getElementById(
 
-    return toggle
-        ? toggle.checked
-        : false;
+        "benefitType"
+
+    ).value;
+
+}
+
+function isSubscriptionEnabled(){
+
+    return getBenefitType() ===
+
+        "SUBSCRIPTION";
 
 }
 
@@ -317,63 +680,399 @@ function updateSummary(pricing){
 
     else{
 
-        pricing.selectedItems.forEach(item=>{
+        pricing.selectedItems.forEach(item => {
 
-            let badge = "";
+            const benefitType = getBenefitType();
 
-            if(item.covered){
+            const rewardType = document.getElementById(
+                    "rewardType"
+                )?.value;
 
-                badge = `
-                <span class="subscription-free">
+            const isRewardSubscription =
 
-                    <i class="fas fa-check-circle"></i>
+                benefitType === "REWARD" && (
 
-                    👑 Covered
+                    pricing.rewardPlan === "subscription_standard" ||
 
-                </span>
+                    pricing.rewardPlan === "subscription_premium"
+
+                );
+
+            /*
+            ==========================================
+            SUBSCRIPTION OR REWARD SUBSCRIPTION
+            ==========================================
+            */
+
+            if(benefitType === "SUBSCRIPTION" || isRewardSubscription){
+
+                const coveredLabel = isRewardSubscription
+
+                    ? "👑 Covered by Reward Subscription"
+
+                    : "👑 Covered by Subscription";
+
+                if(item.coveredQuantity > 0){
+
+                    selectedItemsContainer.innerHTML += `
+
+                    <div class="summary-item">
+
+                        <div>
+
+                            <strong>
+
+                                ${item.item}
+
+                            </strong>
+
+                            <br>
+
+                            <small>
+
+                                ${item.service}
+
+                            </small>
+
+                        </div>
+
+                        <div class="text-end">
+
+                            <div>
+
+                                x${item.coveredQuantity}
+
+                            </div>
+
+                            <span class="subscription-free">
+
+                                ${coveredLabel}
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                    <hr>
+
+                    `;
+
+                }
+
+                if(item.paidQuantity > 0){
+
+                    const total =
+
+                        item.paidQuantity *
+
+                        item.price;
+
+                    selectedItemsContainer.innerHTML += `
+
+                    <div class="summary-item">
+
+                        <div>
+
+                            <strong>
+
+                                ${item.item}
+
+                            </strong>
+
+                            <br>
+
+                            <small>
+
+                                ${item.service}
+
+                            </small>
+
+                        </div>
+
+                        <div class="text-end">
+
+                            <div>
+
+                                x${item.paidQuantity}
+
+                            </div>
+
+                            <span class="text-danger fw-bold">
+
+                                💳 Additional Laundry
+
+                            </span>
+
+                            <br>
+
+                            <strong>
+
+                                ₦${total.toLocaleString()}
+
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                    <hr>
+
+                    `;
+
+                }
+
+            }
+
+            /*
+            ==========================================
+            LAUNDRY REWARD
+            ==========================================
+            */
+
+                else if (
+
+                    benefitType === "REWARD" &&
+
+                    rewardType !== "transport_1" &&
+
+                    rewardType !== "transport_3"
+
+                ) {
+
+                if(item.rewardQuantity > 0){
+
+                    selectedItemsContainer.innerHTML += `
+
+                    <div class="summary-item">
+
+                        <div>
+
+                            <strong>
+
+                                ${item.item}
+
+                            </strong>
+
+                            <br>
+
+                            <small>
+
+                                ${item.service}
+
+                            </small>
+
+                        </div>
+
+                        <div class="text-end">
+
+                            <div>
+
+                                x${item.rewardQuantity}
+
+                            </div>
+
+                            <span class="subscription-free">
+
+                                🎁 Covered by Reward
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                    <hr>
+
+                    `;
+
+                }
+
+                if(item.rewardPaidQuantity > 0){
+
+                    const total =
+
+                        item.rewardPaidQuantity *
+
+                        item.price;
+
+                    selectedItemsContainer.innerHTML += `
+
+                    <div class="summary-item">
+
+                        <div>
+
+                            <strong>
+
+                                ${item.item}
+
+                            </strong>
+
+                            <br>
+
+                            <small>
+
+                                ${item.service}
+
+                            </small>
+
+                        </div>
+
+                        <div class="text-end">
+
+                            <div>
+
+                                x${item.rewardPaidQuantity}
+
+                            </div>
+
+                            <span class="text-danger fw-bold">
+
+                                💳 Additional Laundry
+
+                            </span>
+
+                            <br>
+
+                            <strong>
+
+                                ₦${total.toLocaleString()}
+
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                    <hr>
+
+                    `;
+
+                }
+
+            }
+
+            /*
+            ==========================================
+            TRANSPORT REWARD
+            ==========================================
+            */
+
+                else if (
+
+                    benefitType === "REWARD" &&
+
+                    (
+
+                        rewardType === "transport_1" ||
+
+                        rewardType === "transport_3"
+
+                    )
+
+                ) {
+
+                const total = item.quantity * item.price;
+
+                selectedItemsContainer.innerHTML += `
+
+                <div class="summary-item">
+
+                    <div>
+
+                        <strong>${item.item}</strong><br>
+
+                        <small>${item.service}</small>
+
+                    </div>
+
+                    <div class="text-end">
+
+                        <div>x${item.quantity}</div>
+
+                        <strong>
+
+                            ₦${total.toLocaleString()}
+
+                        </strong>
+
+                        <br>
+
+                        <small class="text-success">
+
+                            🚚 Free Transport Applied
+
+                        </small>
+
+                    </div>
+
+                </div>
+
+                <hr>
+
                 `;
 
             }
 
-            selectedItemsContainer.innerHTML +=
+            /*
+            ==========================================
+            NORMAL BOOKING
+            ==========================================
+            */
 
-            `
-            <div class="summary-item">
+            else{
 
-                <div>
+                const total =
 
-                    <strong>
+                    item.quantity *
 
-                        ${item.item}
+                    item.price;
 
-                    </strong>
+                selectedItemsContainer.innerHTML += `
 
-                    <br>
-
-                    <small>
-
-                        ${item.service}
-
-                    </small>
-
-                </div>
-
-                <div class="text-end">
+                <div class="summary-item">
 
                     <div>
 
-                        x${item.quantity}
+                        <strong>
+
+                            ${item.item}
+
+                        </strong>
+
+                        <br>
+
+                        <small>
+
+                            ${item.service}
+
+                        </small>
 
                     </div>
 
-                    ${badge}
+                    <div class="text-end">
+
+                        <div>
+
+                            x${item.quantity}
+
+                        </div>
+
+                        <strong>
+
+                            ₦${total.toLocaleString()}
+
+                        </strong>
+
+                    </div>
 
                 </div>
 
-            </div>
+                <hr>
 
-            <hr>
-            `;
+                `;
+
+            }
 
         });
 
@@ -386,11 +1085,12 @@ function updateSummary(pricing){
     */
 
     document.getElementById(
-        "laundry-cost"
+    "laundry-cost"
     ).innerText =
 
-    pricing.laundryTotal.toLocaleString();
+    "₦" +
 
+    pricing.laundryTotal.toLocaleString();
     /*
     ------------------------------------
     Transport
@@ -442,6 +1142,13 @@ function updateSummary(pricing){
                 UPDATE REVIEW
 =========================================================*/
 
+async function updateReviewPage(){
+
+    // all your address, phone, payment code...
+
+    await refreshPricing();
+}
+
 function updateReview(pricing){
 
     const reviewItems =
@@ -458,24 +1165,348 @@ function updateReview(pricing){
 
     reviewItems.innerHTML = "";
 
-    pricing.selectedItems.forEach(item=>{
+   pricing.selectedItems.forEach(item => {
 
-        let text =
+    const benefitType = getBenefitType();
 
-        item.covered ?
+    const isRewardSubscription =
 
-        "FREE"
+    benefitType === "REWARD" && (
 
-        :
+        pricing.rewardPlan === "subscription_standard" ||
 
-        "₦" +
+        pricing.rewardPlan === "subscription_premium"
 
-        item.lineTotal.toLocaleString();
+    );
 
-        reviewItems.innerHTML +=
+    /*
+    ==========================================
+    SUBSCRIPTION REVIEW
+    ==========================================
+    */
 
-        `
-        <div class="review-item d-flex justify-content-between">
+    if( benefitType === "SUBSCRIPTION" || isRewardSubscription){
+
+        if(item.coveredQuantity > 0){
+
+            reviewItems.innerHTML += `
+
+            <div class="review-item d-flex justify-content-between align-items-center mb-2">
+
+                <div>
+
+                    ${item.item}
+
+                    (${item.service})
+
+                    <br>
+
+                    <small class="text-success">
+
+                        ${isRewardSubscription
+                    ? "👑 Covered by Reward Subscription"
+                    : "👑 Covered by Subscription"} ×${item.coveredQuantity}
+
+                    </small>
+
+                </div>
+
+                <strong class="text-success">
+
+                    FREE
+
+                </strong>
+
+            </div>
+
+            `;
+
+        }
+
+        if(item.paidQuantity > 0){
+
+            const amount = item.paidQuantity * item.price;
+
+            reviewItems.innerHTML += `
+
+            <div class="review-item d-flex justify-content-between align-items-center mb-2">
+
+                <div>
+
+                    ${item.item}
+
+                    (${item.service})
+
+                    <br>
+
+                    <small class="text-danger">
+
+                        💳 Additional Laundry ×${item.paidQuantity}
+
+                    </small>
+
+                </div>
+
+                <strong class="text-danger">
+
+                    ₦${amount.toLocaleString()}
+
+                </strong>
+
+            </div>
+
+            `;
+
+        }
+
+    }
+
+    /*
+    ==========================================
+    REWARD REVIEW
+    ==========================================
+    */
+
+    else if(
+    benefitType === "REWARD" &&
+    !isRewardSubscription){
+
+    const rewardType = document.getElementById(
+        "rewardType"
+    )?.value;
+
+    /*
+    ==========================================
+    TRANSPORT REWARD
+    ==========================================
+    */
+
+    if (
+
+        rewardType === "transport_1" ||
+
+        rewardType === "transport_3"
+
+    ) {
+
+        const amount = item.quantity * item.price;
+
+        reviewItems.innerHTML += `
+
+        <div class="review-item d-flex justify-content-between align-items-center mb-2">
+
+            <div>
+
+                ${item.item}
+
+                (${item.service})
+
+                <br>
+
+                <small class="text-success fw-bold">
+
+                    🚚 Free Transport Applied
+
+                </small>
+
+            </div>
+
+            <strong>
+
+                ₦${amount.toLocaleString()}
+
+            </strong>
+
+        </div>
+
+        `;
+
+        return;
+
+
+
+    }
+
+    /*
+    ==========================================
+    REWARD SUBSCRIPTION
+    ==========================================
+    */
+
+    if(
+
+        rewardType === "subscription_standard" ||
+
+        rewardType === "subscription_premium"
+
+    ){
+
+        if(item.coveredQuantity > 0){
+
+            reviewItems.innerHTML += `
+
+            <div class="review-item d-flex justify-content-between align-items-center mb-2">
+
+                <div>
+
+                    ${item.item}
+
+                    (${item.service})
+
+                    <br>
+
+                    <small class="text-success fw-bold">
+
+                        👑 Covered by Reward Subscription ×${item.coveredQuantity}
+
+                    </small>
+
+                </div>
+
+                <strong class="text-success">
+
+                    FREE
+
+                </strong>
+
+            </div>
+
+            `;
+
+        }
+
+        if(item.paidQuantity > 0){
+
+            const amount = item.paidQuantity * item.price;
+
+            reviewItems.innerHTML += `
+
+            <div class="review-item d-flex justify-content-between align-items-center mb-2">
+
+                <div>
+
+                    ${item.item}
+
+                    (${item.service})
+
+                    <br>
+
+                    <small class="text-danger fw-bold">
+
+                        💳 Additional Laundry ×${item.paidQuantity}
+
+                    </small>
+
+                </div>
+
+                <strong class="text-danger">
+
+                    ₦${amount.toLocaleString()}
+
+                </strong>
+
+            </div>
+
+            `;
+
+        }
+
+    }
+
+    /*
+    ==========================================
+    LAUNDRY REWARD
+    ==========================================
+    */
+
+    else{
+
+        if(item.rewardQuantity > 0){
+
+            reviewItems.innerHTML += `
+
+            <div class="review-item d-flex justify-content-between align-items-center mb-2">
+
+                <div>
+
+                    ${item.item}
+
+                    (${item.service})
+
+                    <br>
+
+                    <small class="text-warning fw-bold">
+
+                        🎁 Covered by Reward ×${item.rewardQuantity}
+
+                    </small>
+
+                </div>
+
+                <strong class="text-success">
+
+                    FREE
+
+                </strong>
+
+            </div>
+
+            `;
+
+        }
+
+        if(item.rewardPaidQuantity > 0){
+
+            const amount = item.rewardPaidQuantity * item.price;
+
+            reviewItems.innerHTML += `
+
+            <div class="review-item d-flex justify-content-between align-items-center mb-2">
+
+                <div>
+
+                    ${item.item}
+
+                    (${item.service})
+
+                    <br>
+
+                    <small class="text-danger fw-bold">
+
+                        💳 Additional Laundry ×${item.rewardPaidQuantity}
+
+                    </small>
+
+                </div>
+
+                <strong class="text-danger">
+
+                    ₦${amount.toLocaleString()}
+
+                </strong>
+
+            </div>
+
+            `;
+
+        }
+
+    }
+
+}
+    /*
+    ==========================================
+    NORMAL BOOKING
+    ==========================================
+    */
+
+    else{
+
+        const amount = item.quantity * item.price;
+
+        reviewItems.innerHTML += `
+
+        <div class="review-item d-flex justify-content-between align-items-center mb-2">
 
             <div>
 
@@ -487,7 +1518,7 @@ function updateReview(pricing){
 
             <strong>
 
-                ${text}
+                ₦${amount.toLocaleString()}
 
             </strong>
 
@@ -495,7 +1526,10 @@ function updateReview(pricing){
 
         `;
 
-    });
+    }
+
+});
+    
 
     document.getElementById(
         "review-charges"
@@ -573,38 +1607,133 @@ function getSelectedItems(){
 
         items.push({
 
-            item:
-                input.dataset.item,
+                price_list_id:
+                    parseInt(input.dataset.priceListId),
 
-            service:
-                input.dataset.service,
+                item:
+                    input.dataset.item,
 
-            price:
-                parseFloat(input.dataset.price),
+                service:
+                    input.dataset.service,
 
-            expressPrice:
-                parseFloat(input.dataset.express),
+                price:
+                    parseFloat(input.dataset.price),
 
-            quantity,
+                expressPrice:
+                    parseFloat(input.dataset.express),
 
-            expressQuantity,
+                quantity,
 
-            basic:
-                input.dataset.basic === "true",
+                expressQuantity,
 
-            standard:
-                input.dataset.standard === "true",
+                basic:
+                    input.dataset.basic === "true",
 
-            premium:
-                input.dataset.premium === "true"
+                standard:
+                    input.dataset.standard === "true",
 
-        });
+                premium:
+                    input.dataset.premium === "true"
 
+            });
     });
 
     return items;
 
 }
+
+function getRewardValidationEndpoint() {
+
+    const rewardType = document.getElementById(
+        "rewardType"
+    )?.value;
+
+    switch (rewardType) {
+
+        case "transport_1":
+        case "transport_3":
+            return "/api/rewards/validate-transport/";
+
+        case "subscription_standard":
+        case "subscription_premium":
+            return "/api/rewards/validate-subscription/";
+
+        case "express":
+            return "/api/rewards/validate-express/";
+
+        default:
+            return "/api/rewards/validate-booking/";
+    }
+
+}
+
+async function validateReward(selectedItems){
+
+    const selectedReward = document.querySelector(
+            'input[name="booking_reward"]:checked'
+        );
+
+
+   const response = await fetch(
+
+        getRewardValidationEndpoint(),
+
+        {
+
+            method: "POST",
+
+            headers: {
+
+                "Content-Type": "application/json",
+
+                "X-CSRFToken": getCSRFToken()
+
+            },
+
+          
+
+            body: JSON.stringify({
+
+                items: selectedItems,
+
+                reward_id: selectedReward
+                    ? selectedReward.value
+                    : null
+
+            })
+
+        }
+
+    );
+
+    return await response.json();
+
+}
+
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    document
+    .querySelectorAll(
+        'input[name="booking_reward"]'
+    )
+    .forEach(radio => {
+
+        radio.addEventListener("change", function(){
+
+            document.getElementById("benefitType").value = "REWARD";
+
+            document.getElementById("rewardType").value =
+                this.dataset.prizeType;
+
+            refreshPricing();
+
+        });
+
+    });
+
+});
+
 
 /*=========================================================
             CHECK SUBSCRIPTION COVERAGE
@@ -691,18 +1820,25 @@ function calculateTransportFee(pricing){
 
 }
 
+document.querySelectorAll(
+    'input[name="benefit_choice"]'
+).forEach(function(radio){
+
+    radio.addEventListener("change", function(){
+
+        document.getElementById(
+            "benefitType"
+        ).value = this.value;
+
+        refreshPricing();
+
+    });
+
+});
+
 document.addEventListener(
 
     "DOMContentLoaded",
 
-    function(){
-
-        console.log(
-
-            getPricingData()
-
-        );
-
-    }
-
 );
+

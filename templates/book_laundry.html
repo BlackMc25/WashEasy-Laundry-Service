@@ -7,115 +7,232 @@
 
     {% csrf_token %}
 
-<div class="booking-hero">
 
-    {% if active_subscription %}
 
-<div class="subscription-booking-banner">
+    <div class="booking-benefits-section">
 
-    <div class="subscription-glow"></div>
+        <div class="booking-hero">
 
-    <div class="subscription-left">
+            {% if active_subscription or booking_rewards  %}
+                <!-- ==========================
+                        BENEFIT SELECTOR
+                ========================== -->
 
-        <div class="membership-badge">
+                <div class="benefit-card">
 
-            <i class="fas fa-crown"></i>
+                    <h4>
 
-            WashEasy+ Premium
-        </div>
+                        🎁 Choose Benefit
 
-        <h2>
+                    </h4>
 
-            {{ active_subscription.plan.name }} Plan
+                    <p>
 
-        </h2>
+                        Select how you want to pay for this booking.
 
-        <p>
+                    </p>
 
-            Enjoy unlimited convenience with priority laundry service.
+                    <input
+                        type="hidden"
+                        name="benefit_type"
+                        id="benefitType"
+                        value="NONE">
 
-        </p>
+                        <input
+                            type="hidden"
+                            id="rewardType"
+                            value="">
 
-        <div class="subscription-progress">
+                    <div class="benefit-options">
 
-            <div class="progress-info">
+                        <!-- Normal -->
 
-                <span>Remaining Items</span>
+                        <label class="benefit-option active">
 
-                <span>
+                            <input
+                                type="radio"
+                                name="benefit_choice"
+                                value="NONE"
+                                checked>
 
-                    {{ active_subscription.remaining_items }}
-                    /
-                    {{ active_subscription.total_items }}
+                            <div>
 
-                </span>
+                                <h5>
 
-            </div>
+                                    💳 Normal Payment
 
-            <div class="subscription-progress-bar">
+                                </h5>
 
-                <div
-                    class="subscription-progress-fill"
-                    style="width: {{ active_subscription.progress_percentage }}%;">
+                                <small>
+
+                                    Pay the standard booking price.
+
+                                </small>
+
+                            </div>
+
+                        </label>
+
+                        <!-- Subscription -->
+
+                        {% if active_subscription %}
+
+                        <label class="benefit-option">
+
+                            <input
+                                type="radio"
+                                name="benefit_choice"
+                                value="SUBSCRIPTION">
+
+                            <div>
+
+                                <h5>
+
+                                    👑 Subscription
+
+                                </h5>
+
+                                <small>
+
+                                    {{ active_subscription.remaining_items }}
+
+                                    items remaining
+
+                                </small>
+
+                            </div>
+
+                        </label>
+
+                        {% endif %}
+
+                        <!-- Reward -->
+
+                        {% if booking_rewards %}
+
+                        <label class="benefit-option">
+
+                            <input
+                                type="radio"
+                                name="benefit_choice"
+                                value="REWARD">
+
+                            <div>
+
+                                <h5>
+
+                                    🎁 Reward
+
+                                </h5>
+
+                                <small>
+
+                                    {{ booking_rewards|length }} reward(s) ready
+
+                                </small>
+
+                            </div>
+
+                        </label>
+
+                        {% endif %}
+
+                    </div>
+
+                    {% if booking_rewards %}
+
+                <div id="bookingRewardPanel"
+                        class="booking-reward-panel"
+                        style="display:none;">
+
+                        <h5>
+
+                            🎁 Booking Rewards
+
+                        </h5>
+
+                        {% for reward in booking_rewards %}
+
+                        <label class="booking-reward-item {% if reward.is_locked %}reward-locked{% endif %}">
+
+                            <input
+                                type="radio"
+                                name="booking_reward"
+                                value="{{ reward.id }}"
+                                data-prize-type="{{ reward.prize.prize_type }}"
+                                {% if forloop.first and not reward.is_locked %}checked{% endif %}
+                                {% if reward.is_locked %}disabled{% endif %}>
+
+                            <div>
+
+                                <strong>
+
+                                    {{ reward.prize.name }}
+
+                                </strong>
+
+                                <br>
+
+                                <small>
+
+                                    Expires:
+                                    {{ reward.expires_at|date:"d M Y" }}
+
+                                </small>
+
+                                {% if reward.is_locked %}
+
+                                    <br>
+
+                                    <small class="text-warning fw-bold">
+
+                                        🔒 {{ reward.lock_message }}
+
+                                    </small>
+
+                                {% endif %}
+
+                            </div>
+
+                        </label>
+
+                        {% endfor %}
+
+                        <a
+                            href="{% url 'my-rewards' %}"
+                            class="change-reward-btn">
+
+                            🔄 Change My Rewards
+
+                        </a>
+
+                    </div>
+
+                    {% endif %}
+
                 </div>
 
+        {% endif %}
+
+            <div>
+
+            <h1 class="page-title booking-title">
+
+            Book Laundry
+
+            </h1>
+
+            <p class="booking-subtitle">
+
+            Select your laundry items, choose your pickup and delivery locations, and we'll handle the rest.
+
+            </p>
+
+            </div>
+
             </div>
 
         </div>
-
-    </div>
-
-    <div class="subscription-right">
-
-        <div class="subscription-switch-card">
-
-            <label class="form-check form-switch">
-
-                <input
-                    class="form-check-input"
-                    id="useSubscription"
-                    type="checkbox"
-                    checked>
-
-                <span>
-
-                    Use Subscription
-
-                </span>
-
-            </label>
-
-        </div>
-
-    </div>
-
-</div>
-
-    <input
-    type="hidden"
-    name="use_subscription"
-    id="use_subscription"
-    value="true">
-
-{% endif %}
-
-    <div>
-
-    <h1 class="page-title booking-title">
-
-    Book Laundry
-
-    </h1>
-
-    <p class="booking-subtitle">
-
-    Select your laundry items, choose your pickup and delivery locations, and we'll handle the rest.
-
-    </p>
-
-    </div>
-
-    </div>
 
         <!-- ==========================
             BOOKING PROGRESS
@@ -401,6 +518,12 @@
                                                 min="0"
                                                 readonly
                                                 class="qty2-value2"
+
+                                                data-price-list-id="{{ service.id }}"
+
+                                                data-category="{{ category }}"
+
+                                                data-service-type="{{ service.service_type }}"
                                                 data-price="{{ service.price }}"
                                                 data-basic="{{ service.basic_subscription|yesno:'true,false' }}"
                                                 data-standard="{{ service.standard_subscription|yesno:'true,false' }}"
@@ -688,7 +811,8 @@
                                 </div>
 
                             </div>
-                        </div>
+                            
+                            
                             
 
                         {{ form.pickup_distance_km }}
@@ -760,7 +884,21 @@
                                     </strong>
 
                                 </div>
+                                <div class="text-center mt-3">
 
+                                <button
+                                    type="button"
+                                    id="clearAllAddresses"
+                                    class="btn btn-outline-danger">
+
+                                    <i class="fas fa-trash-alt"></i>
+
+                                    Clear All Locations
+
+                                </button>
+
+                            </div>
+                        </div>
                             </div>
 
                         </div>
@@ -1078,7 +1216,7 @@
 
                 <strong>
 
-                ₦<span id="laundry-cost">0</span>
+                <span id="laundry-cost">0</span>
 
                 </strong>
 
@@ -1211,6 +1349,8 @@ window.WashEasyConfig = {
 <script src="{% static 'js/booking/booking-review.js' %}"></script>
 
 <script src="{% static 'js/booking/booking-items.js' %}"></script>
+
+<script src="{% static 'js/booking/booking-benefits.js' %}"></script>
 
 {% endblock %}
 

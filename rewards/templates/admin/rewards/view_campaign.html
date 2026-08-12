@@ -1,0 +1,194 @@
+{% extends "admin/base_admin.html" %}
+
+{% block title %}
+Campaign Details
+{% endblock %}
+
+{% block content %}
+
+<div class="campaign-details">
+
+    <div class="campaign-header">
+
+        <div>
+
+            <h2>
+
+                🎯 {{ campaign.title }}
+
+            </h2>
+
+            <p>
+
+                Reward Campaign Overview
+
+            </p>
+
+        </div>
+
+        <a href="{% url 'admin_reward_campaigns' %}"
+           class="btn btn-secondary">
+
+            ← Back
+
+        </a>
+
+    </div>
+
+    <div class="campaign-info-grid">
+
+        <div class="info-card">
+
+            <h6>Status</h6>
+
+            <h4>
+
+                {{ campaign.status }}
+
+            </h4>
+
+        </div>
+
+        <div class="info-card">
+
+            <h6>Maximum Winners</h6>
+
+            <h4>
+
+                {{ campaign.max_winners }}
+
+            </h4>
+
+        </div>
+
+        <div class="info-card">
+
+            <h6>Current Winners</h6>
+
+            <h4>
+
+                {{ campaign.winners_count }}
+
+            </h4>
+
+        </div>
+
+        <div class="info-card">
+
+            <h6>Remaining Winners</h6>
+
+            <h4>
+
+               {{ remaining_winners }}
+
+            </h4>
+
+        </div>
+
+    </div>
+
+    <div class="campaign-section">
+
+        <h4>
+
+            Campaign Information
+
+        </h4>
+
+        <table class="table">
+
+            <tr>
+
+                <th>Campaign Name</th>
+
+                <td>
+
+                    {{ campaign.title }}
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <th>Description</th>
+
+                <td>
+
+                    {{ campaign.description }}
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <th>Start Time</th>
+
+                <td>
+
+                    {{ campaign.start_time }}
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <th>End Time</th>
+
+                <td>
+
+                    {{ campaign.end_time }}
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <th>Maximum Spins Per Customer</th>
+
+                <td>
+
+                    {{ campaign.max_spins_per_customer }}
+
+                </td>
+
+            </tr>
+
+        </table>
+
+    </div>
+
+    <div class="campaign-actions">
+
+        <a href="{% url 'edit_reward_campaign' campaign.id %}"
+           class="btn btn-success">
+
+            ✏ Edit Campaign
+
+        </a>
+
+       <a href="{% url 'delete_reward_campaign' campaign.id %}"
+        class="btn btn-danger">
+
+            🗑 Delete Campaign
+
+        </a>
+
+
+       <a href="{% url 'admin_reward_prizes' %}"
+                class="btn btn-primary">
+
+        class="btn btn-sm btn-outline-primary">
+
+            <i class="fas fa-eye"> 🎁 Manage Prizes</i>
+
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}

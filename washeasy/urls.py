@@ -36,6 +36,8 @@ urlpatterns = [
 
     path('', include('accounts.urls')),
 
+   path("api/rewards/", include("rewards.urls")),
+
     path(
         'password-change/',
         auth_views.PasswordChangeView.as_view(
@@ -94,5 +96,7 @@ urlpatterns = [
         ),
         name="password_reset_complete",
     ),
+
+
 
 ]

@@ -587,15 +587,17 @@ function calculateLaundryTotal(selectedItems){
 |--------------------------------------------------------------------------
 */
 
-function getBenefitType(){
+function getBenefitType() {
 
-    return document.getElementById(
+    const benefitType = document.getElementById("benefitType");
 
-        "benefitType"
+    if (!benefitType) {
+        return "";
+    }
 
-    ).value;
-
+    return benefitType.value || "";
 }
+
 
 function isSubscriptionEnabled(){
 
@@ -657,12 +659,28 @@ function updateSummary(pricing){
     ------------------------------------
     */
 
+    function updateSummary(pricing) {
+
     const selectedItemsContainer =
-        document.getElementById(
-            "selected-items"
-        );
+        document.getElementById("selected-items");
+
+    if (!selectedItemsContainer) {
+        return;
+    }
 
     selectedItemsContainer.innerHTML = "";
+
+    if (pricing.selectedItems.length === 0) {
+
+        selectedItemsContainer.innerHTML = `
+            <p class="text-muted">
+                No items selected
+            </p>
+        `;
+    }
+
+    // rest of your function...
+}
 
     if(pricing.selectedItems.length === 0){
 

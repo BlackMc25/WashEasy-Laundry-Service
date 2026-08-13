@@ -1,21 +1,34 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    const checkbox = document.getElementById("agreeRules");
+    const checkbox =
+        document.getElementById("agreeRules");
 
-    const button = document.getElementById("continueBtn");
+    const button =
+        document.getElementById("continueBtn");
 
-    checkbox.addEventListener("change", function () {
 
-        if (checkbox.checked){
+    // If the reward rules section is not on this page,
+    // stop without causing a JavaScript error.
+    if (!checkbox || !button) {
+        return;
+    }
 
-            button.classList.remove("disabled");
 
-        }else{
+    checkbox.addEventListener(
+        "change",
+        function () {
 
-            button.classList.add("disabled");
+            if (checkbox.checked) {
+
+                button.classList.remove("disabled");
+
+            } else {
+
+                button.classList.add("disabled");
+
+            }
 
         }
-
-    });
+    );
 
 });

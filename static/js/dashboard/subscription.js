@@ -157,26 +157,36 @@ const progressLine3 =
 
 /* Step 1 -> Step 2 */
 
-nextButton.addEventListener(
-    "click",
-    function(){
+if (
+    nextButton &&
+    selectedPlanInput &&
+    step1 &&
+    step2
+) {
 
-        if(selectedPlanInput.value === ""){
+    nextButton.addEventListener(
+        "click",
+        function () {
 
-            alert("Please select a subscription plan before continuing.");
+            if (selectedPlanInput.value === "") {
 
-            return;
+                alert(
+                    "Please select a subscription plan before continuing."
+                );
+
+                return;
+            }
+
+            step1.style.display = "none";
+
+            step2.style.display = "block";
+
+            updateProgress(2);
 
         }
+    );
 
-        step1.style.display = "none";
-
-        step2.style.display = "block";
-
-        updateProgress(2);
-
-    }
-);
+}
 
 function updateProgress(step){
 
@@ -237,18 +247,18 @@ function updateProgress(step){
 }
 /* Step 2 -> Step 1 */
 
-backButton.addEventListener(
-    "click",
-    function(){
+if (backButton && step2 && step1) {
 
-        step2.style.display="none";
+    backButton.addEventListener("click", function () {
 
-        step1.style.display="block";
+        step2.style.display = "none";
+        step1.style.display = "block";
 
         updateProgress(1);
 
-    }
-);
+    });
+
+}
 
 /*==========================================================
                 STEP 2 -> STEP 3
@@ -459,22 +469,19 @@ nextStep2.addEventListener(
 
 /* Back */
 
-backStep2.addEventListener(
 
-    "click",
+if (backStep2 && step3 && step2) {
 
-    function(){
+    backStep2.addEventListener("click", function () {
 
-        step3.style.display="none";
+        step3.style.display = "none";
+        step2.style.display = "block";
 
-        step2.style.display="block";
+        updateProgress(2);
 
-       updateProgress(2);
+    });
 
-    }
-
-);
-
+}
 
 
 });

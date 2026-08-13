@@ -7,19 +7,71 @@ let prizeMap = {};
 
 document.addEventListener("DOMContentLoaded", function () {
 
-    const svg = document.getElementById("rewardWheel");
+    const svg =
+        document.getElementById("rewardWheel");
 
-    prizes = JSON.parse(
-        document.getElementById("reward-prizes").textContent
-    );
+    const rewardPrizesElement =
+        document.getElementById("reward-prizes");
+
+    const spinButton =
+        document.getElementById("spinButton");
+
+
+    /*
+    ------------------------------------
+    Reward wheel does not exist
+    ------------------------------------
+    */
+
+    if (!svg || !rewardPrizesElement) {
+        return;
+    }
+
+
+    /*
+    ------------------------------------
+    Load prizes
+    ------------------------------------
+    */
+
+    try {
+
+        prizes = JSON.parse(
+            rewardPrizesElement.textContent
+        );
+
+    } catch (error) {
+
+        console.error(
+            "Failed to load reward prizes:",
+            error
+        );
+
+        return;
+    }
+
+
+    /*
+    ------------------------------------
+    Draw wheel
+    ------------------------------------
+    */
 
     drawWheel(svg, prizes);
 
-    const spinButton = document.getElementById("spinButton");
+
+    /*
+    ------------------------------------
+    Spin button
+    ------------------------------------
+    */
 
     if (spinButton) {
 
-        spinButton.addEventListener("click", spinWheel);
+        spinButton.addEventListener(
+            "click",
+            spinWheel
+        );
 
     }
 
@@ -443,13 +495,9 @@ async function spinWheel() {
 
         }
 
-        console.log(data);
 
         const winningPrize = prizeMap[data.prize.id];
 
-        console.log("Winning Prize");
-
-        console.table(winningPrize);
 
         rotateWheel(
 

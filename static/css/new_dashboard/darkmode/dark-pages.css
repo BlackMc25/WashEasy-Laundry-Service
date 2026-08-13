@@ -831,3 +831,7 @@ body.dark .popup-feature{
 body.dark .popup-feature small{
     color:#d1d5db;
 }
+
+body.dark .reward-lock-box{
+    color:#000;
+}

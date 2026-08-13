@@ -251,6 +251,8 @@
 
     margin-top:auto;
 
+    position: relative;
+
     border:none;
 
     background:#0f4fff;
@@ -259,15 +261,21 @@
 
     padding:14px;
 
+    z-index: 1000;
+
     border-radius:12px;
 
     cursor:pointer;
+
+    pointer-events: auto;
 
     font-weight:600;
 
     transition:.3s;
 
 }
+
+
 
 .reward-btn:hover{
 

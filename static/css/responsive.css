@@ -2326,6 +2326,10 @@ body.dark .hero-stats span{
 
     align-items:center;
 
+    position: relative;
+
+    pointer-events: auto;
+
     gap:12px;
 
     width:100%;
@@ -2342,9 +2346,13 @@ body.dark .hero-stats span{
 
     background:#ffffff;
 
+    cursor:pointer;
+
     color:#2563eb;
 
     font-size:20px;
+
+    z-index: 1000;
 
     font-weight:700;
 
@@ -2353,6 +2361,8 @@ body.dark .hero-stats span{
     transition:.35s;
 
 }
+
+
 
 .reward-mobile .reward-btn:hover{
 

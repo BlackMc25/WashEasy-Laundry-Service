@@ -8,7 +8,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('core', '0049_alter_subscriptionusage_options_and_more'),
-        ('rewards', '0010_rewardprize_value'),
+        ('rewards', '0001_initial'),
     ]
 
     operations = [

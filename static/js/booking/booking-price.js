@@ -659,8 +659,6 @@ function updateSummary(pricing){
     ------------------------------------
     */
 
-    function updateSummary(pricing) {
-
     const selectedItemsContainer =
         document.getElementById("selected-items");
 
@@ -669,18 +667,6 @@ function updateSummary(pricing){
     }
 
     selectedItemsContainer.innerHTML = "";
-
-    if (pricing.selectedItems.length === 0) {
-
-        selectedItemsContainer.innerHTML = `
-            <p class="text-muted">
-                No items selected
-            </p>
-        `;
-    }
-
-    // rest of your function...
-}
 
     if(pricing.selectedItems.length === 0){
 
@@ -702,18 +688,15 @@ function updateSummary(pricing){
 
             const benefitType = getBenefitType();
 
-            const rewardType = document.getElementById(
+            const rewardType =
+                document.getElementById(
                     "rewardType"
                 )?.value;
 
             const isRewardSubscription =
-
                 benefitType === "REWARD" && (
-
                     pricing.rewardPlan === "subscription_standard" ||
-
                     pricing.rewardPlan === "subscription_premium"
-
                 );
 
             /*
@@ -722,58 +705,48 @@ function updateSummary(pricing){
             ==========================================
             */
 
-            if(benefitType === "SUBSCRIPTION" || isRewardSubscription){
+            if(
+                benefitType === "SUBSCRIPTION" ||
+                isRewardSubscription
+            ){
 
-                const coveredLabel = isRewardSubscription
-
-                    ? "👑 Covered by Reward Subscription"
-
-                    : "👑 Covered by Subscription";
+                const coveredLabel =
+                    isRewardSubscription
+                        ? "👑 Covered by Reward Subscription"
+                        : "👑 Covered by Subscription";
 
                 if(item.coveredQuantity > 0){
 
                     selectedItemsContainer.innerHTML += `
-
-                    <div class="summary-item">
-
-                        <div>
-
-                            <strong>
-
-                                ${item.item}
-
-                            </strong>
-
-                            <br>
-
-                            <small>
-
-                                ${item.service}
-
-                            </small>
-
-                        </div>
-
-                        <div class="text-end">
+                        <div class="summary-item">
 
                             <div>
+                                <strong>
+                                    ${item.item}
+                                </strong>
 
-                                x${item.coveredQuantity}
+                                <br>
+
+                                <small>
+                                    ${item.service}
+                                </small>
+                            </div>
+
+                            <div class="text-end">
+
+                                <div>
+                                    x${item.coveredQuantity}
+                                </div>
+
+                                <span class="subscription-free">
+                                    ${coveredLabel}
+                                </span>
 
                             </div>
 
-                            <span class="subscription-free">
-
-                                ${coveredLabel}
-
-                            </span>
-
                         </div>
 
-                    </div>
-
-                    <hr>
-
+                        <hr>
                     `;
 
                 }
@@ -781,61 +754,45 @@ function updateSummary(pricing){
                 if(item.paidQuantity > 0){
 
                     const total =
-
                         item.paidQuantity *
-
                         item.price;
 
                     selectedItemsContainer.innerHTML += `
-
-                    <div class="summary-item">
-
-                        <div>
-
-                            <strong>
-
-                                ${item.item}
-
-                            </strong>
-
-                            <br>
-
-                            <small>
-
-                                ${item.service}
-
-                            </small>
-
-                        </div>
-
-                        <div class="text-end">
+                        <div class="summary-item">
 
                             <div>
+                                <strong>
+                                    ${item.item}
+                                </strong>
 
-                                x${item.paidQuantity}
+                                <br>
+
+                                <small>
+                                    ${item.service}
+                                </small>
+                            </div>
+
+                            <div class="text-end">
+
+                                <div>
+                                    x${item.paidQuantity}
+                                </div>
+
+                                <span class="text-danger fw-bold">
+                                    💳 Additional Laundry
+                                </span>
+
+                                <br>
+
+                                <strong>
+                                    ₦${total.toLocaleString()}
+                                </strong>
 
                             </div>
 
-                            <span class="text-danger fw-bold">
-
-                                💳 Additional Laundry
-
-                            </span>
-
-                            <br>
-
-                            <strong>
-
-                                ₦${total.toLocaleString()}
-
-                            </strong>
-
                         </div>
 
-                    </div>
-
-                    <hr>
-
+                        <hr>
                     `;
 
                 }
@@ -848,60 +805,44 @@ function updateSummary(pricing){
             ==========================================
             */
 
-                else if (
-
-                    benefitType === "REWARD" &&
-
-                    rewardType !== "transport_1" &&
-
-                    rewardType !== "transport_3"
-
-                ) {
+            else if(
+                benefitType === "REWARD" &&
+                rewardType !== "transport_1" &&
+                rewardType !== "transport_3"
+            ){
 
                 if(item.rewardQuantity > 0){
 
                     selectedItemsContainer.innerHTML += `
-
-                    <div class="summary-item">
-
-                        <div>
-
-                            <strong>
-
-                                ${item.item}
-
-                            </strong>
-
-                            <br>
-
-                            <small>
-
-                                ${item.service}
-
-                            </small>
-
-                        </div>
-
-                        <div class="text-end">
+                        <div class="summary-item">
 
                             <div>
+                                <strong>
+                                    ${item.item}
+                                </strong>
 
-                                x${item.rewardQuantity}
+                                <br>
+
+                                <small>
+                                    ${item.service}
+                                </small>
+                            </div>
+
+                            <div class="text-end">
+
+                                <div>
+                                    x${item.rewardQuantity}
+                                </div>
+
+                                <span class="subscription-free">
+                                    🎁 Covered by Reward
+                                </span>
 
                             </div>
 
-                            <span class="subscription-free">
-
-                                🎁 Covered by Reward
-
-                            </span>
-
                         </div>
 
-                    </div>
-
-                    <hr>
-
+                        <hr>
                     `;
 
                 }
@@ -909,61 +850,45 @@ function updateSummary(pricing){
                 if(item.rewardPaidQuantity > 0){
 
                     const total =
-
                         item.rewardPaidQuantity *
-
                         item.price;
 
                     selectedItemsContainer.innerHTML += `
-
-                    <div class="summary-item">
-
-                        <div>
-
-                            <strong>
-
-                                ${item.item}
-
-                            </strong>
-
-                            <br>
-
-                            <small>
-
-                                ${item.service}
-
-                            </small>
-
-                        </div>
-
-                        <div class="text-end">
+                        <div class="summary-item">
 
                             <div>
+                                <strong>
+                                    ${item.item}
+                                </strong>
 
-                                x${item.rewardPaidQuantity}
+                                <br>
+
+                                <small>
+                                    ${item.service}
+                                </small>
+                            </div>
+
+                            <div class="text-end">
+
+                                <div>
+                                    x${item.rewardPaidQuantity}
+                                </div>
+
+                                <span class="text-danger fw-bold">
+                                    💳 Additional Laundry
+                                </span>
+
+                                <br>
+
+                                <strong>
+                                    ₦${total.toLocaleString()}
+                                </strong>
 
                             </div>
 
-                            <span class="text-danger fw-bold">
-
-                                💳 Additional Laundry
-
-                            </span>
-
-                            <br>
-
-                            <strong>
-
-                                ₦${total.toLocaleString()}
-
-                            </strong>
-
                         </div>
 
-                    </div>
-
-                    <hr>
-
+                        <hr>
                     `;
 
                 }
@@ -976,58 +901,48 @@ function updateSummary(pricing){
             ==========================================
             */
 
-                else if (
+            else if(
+                benefitType === "REWARD" &&
+                (
+                    rewardType === "transport_1" ||
+                    rewardType === "transport_3"
+                )
+            ){
 
-                    benefitType === "REWARD" &&
-
-                    (
-
-                        rewardType === "transport_1" ||
-
-                        rewardType === "transport_3"
-
-                    )
-
-                ) {
-
-                const total = item.quantity * item.price;
+                const total =
+                    item.quantity *
+                    item.price;
 
                 selectedItemsContainer.innerHTML += `
+                    <div class="summary-item">
 
-                <div class="summary-item">
+                        <div>
+                            <strong>${item.item}</strong>
+                            <br>
+                            <small>${item.service}</small>
+                        </div>
 
-                    <div>
+                        <div class="text-end">
 
-                        <strong>${item.item}</strong><br>
+                            <div>
+                                x${item.quantity}
+                            </div>
 
-                        <small>${item.service}</small>
+                            <strong>
+                                ₦${total.toLocaleString()}
+                            </strong>
 
-                    </div>
+                            <br>
 
-                    <div class="text-end">
+                            <small class="text-success">
+                                🚚 Free Transport Applied
+                            </small>
 
-                        <div>x${item.quantity}</div>
-
-                        <strong>
-
-                            ₦${total.toLocaleString()}
-
-                        </strong>
-
-                        <br>
-
-                        <small class="text-success">
-
-                            🚚 Free Transport Applied
-
-                        </small>
+                        </div>
 
                     </div>
 
-                </div>
-
-                <hr>
-
+                    <hr>
                 `;
 
             }
@@ -1041,53 +956,41 @@ function updateSummary(pricing){
             else{
 
                 const total =
-
                     item.quantity *
-
                     item.price;
 
                 selectedItemsContainer.innerHTML += `
-
-                <div class="summary-item">
-
-                    <div>
-
-                        <strong>
-
-                            ${item.item}
-
-                        </strong>
-
-                        <br>
-
-                        <small>
-
-                            ${item.service}
-
-                        </small>
-
-                    </div>
-
-                    <div class="text-end">
+                    <div class="summary-item">
 
                         <div>
 
-                            x${item.quantity}
+                            <strong>
+                                ${item.item}
+                            </strong>
+
+                            <br>
+
+                            <small>
+                                ${item.service}
+                            </small>
 
                         </div>
 
-                        <strong>
+                        <div class="text-end">
 
-                            ₦${total.toLocaleString()}
+                            <div>
+                                x${item.quantity}
+                            </div>
 
-                        </strong>
+                            <strong>
+                                ₦${total.toLocaleString()}
+                            </strong>
+
+                        </div>
 
                     </div>
 
-                </div>
-
-                <hr>
-
+                    <hr>
                 `;
 
             }
@@ -1095,7 +998,7 @@ function updateSummary(pricing){
         });
 
     }
-
+    
     /*
     ------------------------------------
     Laundry Cost

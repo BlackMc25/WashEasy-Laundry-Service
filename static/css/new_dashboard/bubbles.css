@@ -494,3 +494,28 @@
     }
 
 }
+
+.popup-feature::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+.popup-feature::-webkit-scrollbar-track{
+
+    background:transparent;
+
+}
+
+.popup-feature ::-webkit-scrollbar-thumb{
+
+    background:#3b82f6;
+
+    border-radius:20px;
+
+}
+.popup-feature ::-webkit-scrollbar-thumb:hover{
+
+    background:#2563eb;
+
+}

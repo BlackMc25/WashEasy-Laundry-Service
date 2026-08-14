@@ -841,9 +841,9 @@ body.dark .booking-note{
 }
 
 body.dark .membership-card h3{
-    color:#9fc9ff;
+    color:#9fc9ff !important;
 }
 
 body.dark .membership-card p{
-    color:#000;
+    color:#000 !important;
 }

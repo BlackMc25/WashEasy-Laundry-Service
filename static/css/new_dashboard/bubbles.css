@@ -495,27 +495,25 @@
 
 }
 
-#popupCard ::-webkit-scrollbar{
+#popupCard{
+    max-height:80vh;
+    overflow-y:auto;
+    overflow-x:hidden;
+}
 
+#popupCard::-webkit-scrollbar{
     width:8px;
-
 }
 
 #popupCard::-webkit-scrollbar-track{
-
     background:transparent;
-
 }
 
-#popupCard ::-webkit-scrollbar-thumb{
-
+#popupCard::-webkit-scrollbar-thumb{
     background:#3b82f6;
-
     border-radius:20px;
-
 }
-#popupCard ::-webkit-scrollbar-thumb:hover{
 
+#popupCard::-webkit-scrollbar-thumb:hover{
     background:#2563eb;
-
 }

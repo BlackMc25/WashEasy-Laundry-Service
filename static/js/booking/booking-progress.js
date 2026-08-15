@@ -136,11 +136,13 @@ document.addEventListener("DOMContentLoaded", () => {
     function validateItems(){
 
         const quantities =
-            document.querySelectorAll(".qty2-value2");
+            document.querySelectorAll(
+                ".qty2-value2, .express-qty"
+            );
 
         for(const qty of quantities){
 
-            if(parseInt(qty.value)>0){
+            if(parseInt(qty.value) > 0){
 
                 return true;
 
@@ -151,7 +153,6 @@ document.addEventListener("DOMContentLoaded", () => {
         alert("Please select at least one laundry item.");
 
         return false;
-
     }
 
     function validateBooking(){

@@ -651,47 +651,45 @@ function getTotalDistance() {
                 UPDATE SUMMARY
 =========================================================*/
 
-function updateSummary(pricing){
+    function updateSummary(pricing){
 
-    /*
-    ------------------------------------
-    Selected Items
-    ------------------------------------
-    */
+        /*
+        ------------------------------------
+        Selected Items
+        ------------------------------------
+        */
 
-    const selectedItemsContainer =
-        document.getElementById("selected-items");
+        const selectedItemsContainer =
+            document.getElementById("selected-items");
 
-    if (!selectedItemsContainer) {
-        return;
-    }
+        if (!selectedItemsContainer) {
+            return;
+        }
 
-    selectedItemsContainer.innerHTML = "";
+        selectedItemsContainer.innerHTML = "";
 
-    if(pricing.selectedItems.length === 0){
+        if (pricing.selectedItems.length === 0) {
 
-        selectedItemsContainer.innerHTML =
+            selectedItemsContainer.innerHTML = `
+                <p class="text-muted">
+                    No items selected
+                </p>
+            `;
 
-        `
-        <p class="text-muted">
+            return;
+        }
 
-            No items selected
-
-        </p>
-        `;
-
-    }
-
-    else{
 
         pricing.selectedItems.forEach(item => {
 
-            const benefitType = getBenefitType();
+            const benefitType =
+                getBenefitType();
 
             const rewardType =
                 document.getElementById(
                     "rewardType"
                 )?.value;
+
 
             const isRewardSubscription =
                 benefitType === "REWARD" && (
@@ -699,23 +697,31 @@ function updateSummary(pricing){
                     pricing.rewardPlan === "subscription_premium"
                 );
 
+
             /*
             ==========================================
             SUBSCRIPTION OR REWARD SUBSCRIPTION
             ==========================================
             */
 
-            if(
+            if (
                 benefitType === "SUBSCRIPTION" ||
                 isRewardSubscription
-            ){
+            ) {
 
                 const coveredLabel =
                     isRewardSubscription
                         ? "👑 Covered by Reward Subscription"
                         : "👑 Covered by Subscription";
 
-                if(item.coveredQuantity > 0){
+
+                /*
+                ------------------------------------
+                Covered Quantity
+                ------------------------------------
+                */
+
+                if (item.coveredQuantity > 0) {
 
                     selectedItemsContainer.innerHTML += `
                         <div class="summary-item">
@@ -748,10 +754,16 @@ function updateSummary(pricing){
 
                         <hr>
                     `;
-
                 }
 
-                if(item.paidQuantity > 0){
+
+                /*
+                ------------------------------------
+                Paid Quantity
+                ------------------------------------
+                */
+
+                if (item.paidQuantity > 0) {
 
                     const total =
                         item.paidQuantity *
@@ -794,10 +806,10 @@ function updateSummary(pricing){
 
                         <hr>
                     `;
-
                 }
 
             }
+
 
             /*
             ==========================================
@@ -805,13 +817,19 @@ function updateSummary(pricing){
             ==========================================
             */
 
-            else if(
+            else if (
                 benefitType === "REWARD" &&
                 rewardType !== "transport_1" &&
                 rewardType !== "transport_3"
-            ){
+            ) {
 
-                if(item.rewardQuantity > 0){
+                /*
+                ------------------------------------
+                Reward Quantity
+                ------------------------------------
+                */
+
+                if (item.rewardQuantity > 0) {
 
                     selectedItemsContainer.innerHTML += `
                         <div class="summary-item">
@@ -844,10 +862,16 @@ function updateSummary(pricing){
 
                         <hr>
                     `;
-
                 }
 
-                if(item.rewardPaidQuantity > 0){
+
+                /*
+                ------------------------------------
+                Reward Paid Quantity
+                ------------------------------------
+                */
+
+                if (item.rewardPaidQuantity > 0) {
 
                     const total =
                         item.rewardPaidQuantity *
@@ -890,10 +914,10 @@ function updateSummary(pricing){
 
                         <hr>
                     `;
-
                 }
 
             }
+
 
             /*
             ==========================================
@@ -901,51 +925,103 @@ function updateSummary(pricing){
             ==========================================
             */
 
-            else if(
+            else if (
                 benefitType === "REWARD" &&
                 (
                     rewardType === "transport_1" ||
                     rewardType === "transport_3"
                 )
-            ){
+            ) {
+
+                /*
+                ------------------------------------
+                Normal + Express quantities
+                ------------------------------------
+                */
+
+                const normalQuantity =
+                    item.quantity || 0;
+
+                const expressQuantity =
+                    item.expressQuantity || 0;
+
+
+                const totalQuantity =
+                    normalQuantity +
+                    expressQuantity;
+
+
+                /*
+                ------------------------------------
+                Total
+                ------------------------------------
+                */
 
                 const total =
-                    item.quantity *
-                    item.price;
+                    (item.standardTotal || 0) +
+                    (item.expressTotal || 0) +
+                    (item.expressFee || 0);
 
-                selectedItemsContainer.innerHTML += `
-                    <div class="summary-item">
 
-                        <div>
-                            <strong>${item.item}</strong>
-                            <br>
-                            <small>${item.service}</small>
-                        </div>
+                if (totalQuantity > 0) {
 
-                        <div class="text-end">
+                    selectedItemsContainer.innerHTML += `
+                        <div class="summary-item">
 
                             <div>
-                                x${item.quantity}
+                                <strong>
+                                    ${item.item}
+                                </strong>
+
+                                <br>
+
+                                <small>
+                                    ${item.service}
+                                </small>
                             </div>
 
-                            <strong>
-                                ₦${total.toLocaleString()}
-                            </strong>
+                            <div class="text-end">
 
-                            <br>
+                                ${
+                                    normalQuantity > 0
+                                    ? `
+                                        <div>
+                                            Normal: x${normalQuantity}
+                                        </div>
+                                    `
+                                    : ""
+                                }
 
-                            <small class="text-success">
-                                🚚 Free Transport Applied
-                            </small>
+                                ${
+                                    expressQuantity > 0
+                                    ? `
+                                        <div class="text-warning fw-bold">
+                                            Express: x${expressQuantity}
+                                        </div>
+                                    `
+                                    : ""
+                                }
+
+                                <strong>
+                                    ₦${total.toLocaleString()}
+                                </strong>
+
+                                <br>
+
+                                <small class="text-success">
+                                    🚚 Free Transport Applied
+                                </small>
+
+                            </div>
 
                         </div>
 
-                    </div>
-
-                    <hr>
-                `;
+                        <hr>
+                    `;
+                }
 
             }
+
 
             /*
             ==========================================
@@ -953,60 +1029,100 @@ function updateSummary(pricing){
             ==========================================
             */
 
-            else{
+            else {
+
+                const normalQuantity =
+                    item.quantity || 0;
+
+                const expressQuantity =
+                    item.expressQuantity || 0;
+
+
+                /*
+                ------------------------------------
+                Total Number Of Items
+                ------------------------------------
+                */
+
+                const totalQuantity =
+                    normalQuantity +
+                    expressQuantity;
+
+
+                /*
+                ------------------------------------
+                Correct Line Total
+                ------------------------------------
+
+                IMPORTANT:
+                We use the values already calculated
+                by calculateLaundryTotal().
+                */
 
                 const total =
-                    item.quantity *
-                    item.price;
+                    (item.standardTotal || 0) +
+                    (item.expressTotal || 0) +
+                    (item.expressFee || 0);
 
-                selectedItemsContainer.innerHTML +=
-                `
-                <div class="summary-item">
 
-                    <div>
+                /*
+                ------------------------------------
+                Display Item
+                ------------------------------------
+                */
 
-                        <strong>
-                            ${item.item}
-                        </strong>
+                if (totalQuantity > 0) {
 
-                        <br>
+                    selectedItemsContainer.innerHTML += `
+                        <div class="summary-item">
 
-                        <small>
-                            ${item.service}
-                        </small>
+                            <div>
 
-                    </div>
+                                <strong>
+                                    ${item.item}
+                                </strong>
 
-                    <div class="text-end">
+                                <br>
 
-                        ${
-                            item.quantity > 0
-                            ? `
-                                <div>
-                                    Normal: x${item.quantity}
-                                </div>
-                            `
-                            : ""
-                        }
+                                <small>
+                                    ${item.service}
+                                </small>
 
-                        ${
-                            item.expressQuantity > 0
-                            ? `
-                                <div class="text-warning fw-bold">
-                                    Express: x${item.expressQuantity}
-                                </div>
-                            `
-                            : ""
-                        }
+                            </div>
 
-                        ${badge}
+                            <div class="text-end">
 
-                    </div>
+                                ${
+                                    normalQuantity > 0
+                                    ? `
+                                        <div>
+                                            Normal: x${normalQuantity}
+                                        </div>
+                                    `
+                                    : ""
+                                }
 
-                </div>
+                                ${
+                                    expressQuantity > 0
+                                    ? `
+                                        <div class="text-warning fw-bold">
+                                            Express: x${expressQuantity}
+                                        </div>
+                                    `
+                                    : ""
+                                }
 
-                <hr>
-                `;
+                                <strong>
+                                    ₦${total.toLocaleString()}
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                        <hr>
+                    `;
+                }
 
             }
 

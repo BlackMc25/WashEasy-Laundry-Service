@@ -959,38 +959,53 @@ function updateSummary(pricing){
                     item.quantity *
                     item.price;
 
-                selectedItemsContainer.innerHTML += `
-                    <div class="summary-item">
+                selectedItemsContainer.innerHTML +=
+                `
+                <div class="summary-item">
 
-                        <div>
+                    <div>
 
-                            <strong>
-                                ${item.item}
-                            </strong>
+                        <strong>
+                            ${item.item}
+                        </strong>
 
-                            <br>
+                        <br>
 
-                            <small>
-                                ${item.service}
-                            </small>
-
-                        </div>
-
-                        <div class="text-end">
-
-                            <div>
-                                x${item.quantity}
-                            </div>
-
-                            <strong>
-                                ₦${total.toLocaleString()}
-                            </strong>
-
-                        </div>
+                        <small>
+                            ${item.service}
+                        </small>
 
                     </div>
 
-                    <hr>
+                    <div class="text-end">
+
+                        ${
+                            item.quantity > 0
+                            ? `
+                                <div>
+                                    Normal: x${item.quantity}
+                                </div>
+                            `
+                            : ""
+                        }
+
+                        ${
+                            item.expressQuantity > 0
+                            ? `
+                                <div class="text-warning fw-bold">
+                                    Express: x${item.expressQuantity}
+                                </div>
+                            `
+                            : ""
+                        }
+
+                        ${badge}
+
+                    </div>
+
+                </div>
+
+                <hr>
                 `;
 
             }

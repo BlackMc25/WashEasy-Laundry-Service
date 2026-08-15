@@ -651,45 +651,47 @@ function getTotalDistance() {
                 UPDATE SUMMARY
 =========================================================*/
 
-    function updateSummary(pricing){
+function updateSummary(pricing){
 
-        /*
-        ------------------------------------
-        Selected Items
-        ------------------------------------
-        */
+    /*
+    ------------------------------------
+    Selected Items
+    ------------------------------------
+    */
 
-        const selectedItemsContainer =
-            document.getElementById("selected-items");
+    const selectedItemsContainer =
+        document.getElementById("selected-items");
 
-        if (!selectedItemsContainer) {
-            return;
-        }
+    if (!selectedItemsContainer) {
+        return;
+    }
 
-        selectedItemsContainer.innerHTML = "";
+    selectedItemsContainer.innerHTML = "";
 
-        if (pricing.selectedItems.length === 0) {
+    if(pricing.selectedItems.length === 0){
 
-            selectedItemsContainer.innerHTML = `
-                <p class="text-muted">
-                    No items selected
-                </p>
-            `;
+        selectedItemsContainer.innerHTML =
 
-            return;
-        }
+        `
+        <p class="text-muted">
 
+            No items selected
+
+        </p>
+        `;
+
+    }
+
+    else{
 
         pricing.selectedItems.forEach(item => {
 
-            const benefitType =
-                getBenefitType();
+            const benefitType = getBenefitType();
 
             const rewardType =
                 document.getElementById(
                     "rewardType"
                 )?.value;
-
 
             const isRewardSubscription =
                 benefitType === "REWARD" && (
@@ -697,31 +699,23 @@ function getTotalDistance() {
                     pricing.rewardPlan === "subscription_premium"
                 );
 
-
             /*
             ==========================================
             SUBSCRIPTION OR REWARD SUBSCRIPTION
             ==========================================
             */
 
-            if (
+            if(
                 benefitType === "SUBSCRIPTION" ||
                 isRewardSubscription
-            ) {
+            ){
 
                 const coveredLabel =
                     isRewardSubscription
                         ? "👑 Covered by Reward Subscription"
                         : "👑 Covered by Subscription";
 
-
-                /*
-                ------------------------------------
-                Covered Quantity
-                ------------------------------------
-                */
-
-                if (item.coveredQuantity > 0) {
+                if(item.coveredQuantity > 0){
 
                     selectedItemsContainer.innerHTML += `
                         <div class="summary-item">
@@ -754,16 +748,10 @@ function getTotalDistance() {
 
                         <hr>
                     `;
+
                 }
 
-
-                /*
-                ------------------------------------
-                Paid Quantity
-                ------------------------------------
-                */
-
-                if (item.paidQuantity > 0) {
+                if(item.paidQuantity > 0){
 
                     const total =
                         item.paidQuantity *
@@ -806,10 +794,10 @@ function getTotalDistance() {
 
                         <hr>
                     `;
+
                 }
 
             }
-
 
             /*
             ==========================================
@@ -817,19 +805,13 @@ function getTotalDistance() {
             ==========================================
             */
 
-            else if (
+            else if(
                 benefitType === "REWARD" &&
                 rewardType !== "transport_1" &&
                 rewardType !== "transport_3"
-            ) {
+            ){
 
-                /*
-                ------------------------------------
-                Reward Quantity
-                ------------------------------------
-                */
-
-                if (item.rewardQuantity > 0) {
+                if(item.rewardQuantity > 0){
 
                     selectedItemsContainer.innerHTML += `
                         <div class="summary-item">
@@ -862,16 +844,10 @@ function getTotalDistance() {
 
                         <hr>
                     `;
+
                 }
 
-
-                /*
-                ------------------------------------
-                Reward Paid Quantity
-                ------------------------------------
-                */
-
-                if (item.rewardPaidQuantity > 0) {
+                if(item.rewardPaidQuantity > 0){
 
                     const total =
                         item.rewardPaidQuantity *
@@ -914,10 +890,10 @@ function getTotalDistance() {
 
                         <hr>
                     `;
+
                 }
 
             }
-
 
             /*
             ==========================================
@@ -925,103 +901,51 @@ function getTotalDistance() {
             ==========================================
             */
 
-            else if (
+            else if(
                 benefitType === "REWARD" &&
                 (
                     rewardType === "transport_1" ||
                     rewardType === "transport_3"
                 )
-            ) {
-
-                /*
-                ------------------------------------
-                Normal + Express quantities
-                ------------------------------------
-                */
-
-                const normalQuantity =
-                    item.quantity || 0;
-
-                const expressQuantity =
-                    item.expressQuantity || 0;
-
-
-                const totalQuantity =
-                    normalQuantity +
-                    expressQuantity;
-
-
-                /*
-                ------------------------------------
-                Total
-                ------------------------------------
-                */
+            ){
 
                 const total =
-                    (item.standardTotal || 0) +
-                    (item.expressTotal || 0) +
-                    (item.expressFee || 0);
+                    item.quantity *
+                    item.price;
 
+                selectedItemsContainer.innerHTML += `
+                    <div class="summary-item">
 
-                if (totalQuantity > 0) {
+                        <div>
+                            <strong>${item.item}</strong>
+                            <br>
+                            <small>${item.service}</small>
+                        </div>
 
-                    selectedItemsContainer.innerHTML += `
-                        <div class="summary-item">
+                        <div class="text-end">
 
                             <div>
-                                <strong>
-                                    ${item.item}
-                                </strong>
-
-                                <br>
-
-                                <small>
-                                    ${item.service}
-                                </small>
+                                x${item.quantity}
                             </div>
 
-                            <div class="text-end">
+                            <strong>
+                                ₦${total.toLocaleString()}
+                            </strong>
 
-                                ${
-                                    normalQuantity > 0
-                                    ? `
-                                        <div>
-                                            Normal: x${normalQuantity}
-                                        </div>
-                                    `
-                                    : ""
-                                }
+                            <br>
 
-                                ${
-                                    expressQuantity > 0
-                                    ? `
-                                        <div class="text-warning fw-bold">
-                                            Express: x${expressQuantity}
-                                        </div>
-                                    `
-                                    : ""
-                                }
-
-                                <strong>
-                                    ₦${total.toLocaleString()}
-                                </strong>
-
-                                <br>
-
-                                <small class="text-success">
-                                    🚚 Free Transport Applied
-                                </small>
-
-                            </div>
+                            <small class="text-success">
+                                🚚 Free Transport Applied
+                            </small>
 
                         </div>
 
-                        <hr>
-                    `;
-                }
+                    </div>
+
+                    <hr>
+                `;
 
             }
-
 
             /*
             ==========================================
@@ -1029,102 +953,77 @@ function getTotalDistance() {
             ==========================================
             */
 
-            else {
+            else{
 
-                const normalQuantity =
-                    item.quantity || 0;
+            const normalQuantity =
+                item.quantity || 0;
 
-                const expressQuantity =
-                    item.expressQuantity || 0;
+            const expressQuantity =
+                item.expressQuantity || 0;
 
+            const totalQuantity =
+                normalQuantity + expressQuantity;
 
-                /*
-                ------------------------------------
-                Total Number Of Items
-                ------------------------------------
-                */
+            const total =
+                (item.standardTotal || 0) +
+                (item.expressTotal || 0) +
+                (item.expressFee || 0);
 
-                const totalQuantity =
-                    normalQuantity +
-                    expressQuantity;
+            if(totalQuantity > 0){
 
+                selectedItemsContainer.innerHTML += `
+                    <div class="summary-item">
 
-                /*
-                ------------------------------------
-                Correct Line Total
-                ------------------------------------
+                        <div>
 
-                IMPORTANT:
-                We use the values already calculated
-                by calculateLaundryTotal().
-                */
+                            <strong>
+                                ${item.item}
+                            </strong>
 
-                const total =
-                    (item.standardTotal || 0) +
-                    (item.expressTotal || 0) +
-                    (item.expressFee || 0);
+                            <br>
 
-
-                /*
-                ------------------------------------
-                Display Item
-                ------------------------------------
-                */
-
-                if (totalQuantity > 0) {
-
-                    selectedItemsContainer.innerHTML += `
-                        <div class="summary-item">
-
-                            <div>
-
-                                <strong>
-                                    ${item.item}
-                                </strong>
-
-                                <br>
-
-                                <small>
-                                    ${item.service}
-                                </small>
-
-                            </div>
-
-                            <div class="text-end">
-
-                                ${
-                                    normalQuantity > 0
-                                    ? `
-                                        <div>
-                                            Normal: x${normalQuantity}
-                                        </div>
-                                    `
-                                    : ""
-                                }
-
-                                ${
-                                    expressQuantity > 0
-                                    ? `
-                                        <div class="text-warning fw-bold">
-                                            Express: x${expressQuantity}
-                                        </div>
-                                    `
-                                    : ""
-                                }
-
-                                <strong>
-                                    ₦${total.toLocaleString()}
-                                </strong>
-
-                            </div>
+                            <small>
+                                ${item.service}
+                            </small>
 
                         </div>
 
-                        <hr>
-                    `;
-                }
+                        <div class="text-end">
+
+                            ${
+                                normalQuantity > 0
+                                ? `
+                                    <div>
+                                        Normal: x${normalQuantity}
+                                    </div>
+                                `
+                                : ""
+                            }
+
+                            ${
+                                expressQuantity > 0
+                                ? `
+                                    <div class="text-warning fw-bold">
+                                        Express: x${expressQuantity}
+                                    </div>
+                                `
+                                : ""
+                            }
+
+                            <strong>
+                                ₦${total.toLocaleString()}
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                    <hr>
+                `;
 
             }
+
+        }
 
         });
 

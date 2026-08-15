@@ -998,7 +998,7 @@ function updateSummary(pricing){
         });
 
     }
-    
+
     /*
     ------------------------------------
     Laundry Cost
@@ -1507,60 +1507,100 @@ function getSelectedItems(){
         const quantity =
             parseInt(input.value) || 0;
 
+
+        /*
+        ------------------------------------
+        Find Express Quantity
+        ------------------------------------
+        */
+
         const expressInput =
             document.querySelector(
-
                 `input[name="express_${input.name}"]`
-
             );
 
         const expressQuantity =
             expressInput
-            ? parseInt(expressInput.value) || 0
-            : 0;
+                ? parseInt(expressInput.value) || 0
+                : 0;
 
-        if(
-            quantity === 0 &&
-            expressQuantity === 0
-        ){
+
+        /*
+        ------------------------------------
+        Total Quantity
+        ------------------------------------
+        */
+
+        const totalQuantity =
+            quantity + expressQuantity;
+
+
+        /*
+        ------------------------------------
+        Nothing selected
+        ------------------------------------
+        */
+
+        if(totalQuantity === 0){
             return;
         }
 
+
+        /*
+        ------------------------------------
+        Add Item
+        ------------------------------------
+        */
+
         items.push({
 
-                price_list_id:
-                    parseInt(input.dataset.priceListId),
+            price_list_id:
+                parseInt(
+                    input.dataset.priceListId
+                ),
 
-                item:
-                    input.dataset.item,
+            item:
+                input.dataset.item,
 
-                service:
-                    input.dataset.service,
+            service:
+                input.dataset.service,
 
-                price:
-                    parseFloat(input.dataset.price),
+            price:
+                parseFloat(
+                    input.dataset.price
+                ),
 
-                expressPrice:
-                    parseFloat(input.dataset.express),
+            expressPrice:
+                parseFloat(
+                    input.dataset.express
+                ),
+
+            quantity:
 
                 quantity,
 
+            expressQuantity:
+
                 expressQuantity,
 
-                basic:
-                    input.dataset.basic === "true",
+            totalQuantity:
 
-                standard:
-                    input.dataset.standard === "true",
+                totalQuantity,
 
-                premium:
-                    input.dataset.premium === "true"
+            basic:
+                input.dataset.basic === "true",
 
-            });
+            standard:
+                input.dataset.standard === "true",
+
+            premium:
+                input.dataset.premium === "true"
+
+        });
+
     });
 
     return items;
-
 }
 
 function getRewardValidationEndpoint() {

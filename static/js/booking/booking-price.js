@@ -1451,30 +1451,80 @@ function updateReview(pricing){
     ==========================================
     */
 
+    /*
+    ==========================================
+    NORMAL BOOKING
+    ==========================================
+    */
+
     else{
 
-        const amount = item.quantity * item.price;
+        const normalQuantity =
+            item.quantity || 0;
+
+        const expressQuantity =
+            item.expressQuantity || 0;
+
+        const normalAmount =
+            normalQuantity * item.price;
+
+        const expressAmount =
+            expressQuantity * item.price;
+
+        const laundryAmount =
+            normalAmount + expressAmount;
+
+
+        /*
+        --------------------------------------
+        NORMAL + EXPRESS REVIEW
+        --------------------------------------
+        */
 
         reviewItems.innerHTML += `
+            <div class="review-item d-flex justify-content-between align-items-center mb-2">
 
-        <div class="review-item d-flex justify-content-between align-items-center mb-2">
+                <div>
 
-            <div>
+                    <strong>
+                        ${item.item}
+                    </strong>
 
-                ${item.item}
+                    <br>
 
-                (${item.service})
+                    <small>
+                        ${item.service}
+                    </small>
+
+                    ${
+                        normalQuantity > 0
+                        ? `
+                            <br>
+                            <small>
+                                Normal ×${normalQuantity}
+                            </small>
+                        `
+                        : ""
+                    }
+
+                    ${
+                        expressQuantity > 0
+                        ? `
+                            <br>
+                            <small class="text-warning fw-bold">
+                                Express ×${expressQuantity}
+                            </small>
+                        `
+                        : ""
+                    }
+
+                </div>
+
+                <strong>
+                    ₦${laundryAmount.toLocaleString()}
+                </strong>
 
             </div>
-
-            <strong>
-
-                ₦${amount.toLocaleString()}
-
-            </strong>
-
-        </div>
-
         `;
 
     }

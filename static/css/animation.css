@@ -674,10 +674,14 @@ transform:scale(1);
 
 }
 
+/* Desktop wheel */
+.reward-wheel-home{
+    animation: spinWheel 12s linear infinite;
+}
+
+/* Mobile wheel */
 .reward-wheel-home .mobile-wheel{
-
-    animation:spinWheel 12s linear infinite;
-
+    animation: spinWheel 12s linear infinite;
 }
 
 /*=========================================
